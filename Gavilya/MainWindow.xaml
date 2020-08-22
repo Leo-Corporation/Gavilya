@@ -214,7 +214,7 @@
                         </StackPanel>
                     </Border>
 
-                    <Frame Name="PageContent" Grid.Column="2" NavigationUIVisibility="Hidden">                    </Frame>
+                    <Frame Margin="8 0 0 0" Name="PageContent" Grid.Column="2" NavigationUIVisibility="Hidden">                    </Frame>
                 </Grid>
             </Border>
         </Grid>
