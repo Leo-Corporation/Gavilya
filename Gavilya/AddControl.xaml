@@ -5,12 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gavilya"
              mc:Ignorable="d" Width="155" Height="195" Background="Transparent">
-    <Border CornerRadius="10" BorderThickness="0" Background="#FF46465C" BorderBrush="#FF46465C">
-        <Button Background="Transparent">
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="&#xe901;" Foreground="White" FontSize="60" FontFamily="FluentlyIcons"/>
-                <TextBlock Margin="0 10 0 0" Text="{StaticResource Add}" Foreground="White" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
-            </StackPanel>
-        </Button>
-    </Border>
+    <Button Style="{DynamicResource AddButton}" Background="#FF46465C">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="&#xe901;" Foreground="White" FontSize="60" FontFamily="FluentlyIcons"/>
+            <TextBlock Margin="0 10 0 0" Text="{StaticResource Add}" Foreground="White" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
+        </StackPanel>
+    </Button>
 </UserControl>
