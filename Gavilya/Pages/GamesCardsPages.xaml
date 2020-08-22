@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="{DynamicResource YourGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
-        <StackPanel Grid.Row="1">
+        <StackPanel Name="GamePresenter" Grid.Row="1">
             
         </StackPanel>
     </Grid>

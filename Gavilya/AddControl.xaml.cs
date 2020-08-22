@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -12,17 +11,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Gavilya.Pages
+namespace Gavilya
 {
     /// <summary>
-    /// Logique d'interaction pour GamesCardsPages.xaml
+    /// Logique d'interaction pour AddControl.xaml
     /// </summary>
-    public partial class GamesCardsPages : Page
+    public partial class AddControl : UserControl
     {
-        public GamesCardsPages()
+        public AddControl()
         {
             InitializeComponent();
-            GamePresenter.Children.Add(new AddControl()); // Add the "Add Control"
         }
     }
 }

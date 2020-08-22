@@ -4,5 +4,6 @@
 
     <system:String x:Key="YourGames">Vos jeux</system:String>
     <system:String x:Key="MainWindowTitle">Gavilya</system:String>
+    <system:String x:Key="Add">Ajouter</system:String>
     
 </ResourceDictionary>

@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="Gavilya.AddControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gavilya"
+             mc:Ignorable="d" Width="155" Height="195" Background="Transparent">
+    <Border CornerRadius="10" BorderThickness="0" Background="#FF46465C" BorderBrush="#FF46465C">
+        <Button Background="Transparent">
+            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                <TextBlock Text="&#xe901;" Foreground="White" FontSize="60" FontFamily="FluentlyIcons"/>
+                <TextBlock Margin="0 10 0 0" Text="{StaticResource Add}" Foreground="White" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
+            </StackPanel>
+        </Button>
+    </Border>
+</UserControl>
