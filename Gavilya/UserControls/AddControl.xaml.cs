@@ -11,7 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Gavilya
+namespace Gavilya.UserControls
 {
     /// <summary>
     /// Logique d'interaction pour AddControl.xaml
