@@ -5,6 +5,12 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Gavilya.ico</ApplicationIcon>
+    <AssemblyVersion>1.0.0.2009</AssemblyVersion>
+    <FileVersion>1.0.0.2009</FileVersion>
+    <RepositoryType>git</RepositoryType>
+    <Authors>Léo Corporation</Authors>
+    <Company>Léo Corporation</Company>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
