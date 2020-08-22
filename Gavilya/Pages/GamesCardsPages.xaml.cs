@@ -22,6 +22,7 @@ namespace Gavilya.Pages
         public GamesCardsPages()
         {
             InitializeComponent();
+            
         }
     }
 }

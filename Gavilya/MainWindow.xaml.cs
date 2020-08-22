@@ -1,4 +1,5 @@
 ﻿using Gavilya.Classes;
+using Gavilya.Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,7 @@ namespace Gavilya
         {
             InitializeComponent();
             SetLanguageDictonnary();
+            PageContent.Content = new GamesCardsPages();
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace Gavilya
                     resourceDictionary.Source = new Uri("\\Resources\\StringsRessources.xaml", UriKind.Relative); // Set the source
                     break;
             }
-            Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictonnary to the ressources
+            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictonnary to the ressources of the application
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
