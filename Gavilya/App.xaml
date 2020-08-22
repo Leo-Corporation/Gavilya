@@ -36,7 +36,7 @@
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="border" MinHeight="20" Background="#FF5A5A70" BorderThickness="0" BorderBrush="#FF5A5A70" CornerRadius="5" SnapsToDevicePixels="true" Margin="5" Padding="5,5,5,5">
+                            <Border x:Name="border" MinHeight="20" Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="#FF5A5A70" CornerRadius="5" SnapsToDevicePixels="true" Margin="5" Padding="5,5,5,5">
                                 <Border.Effect>
                                     <DropShadowEffect  ShadowDepth="0" Opacity="0"/>
                                 </Border.Effect>
@@ -61,7 +61,14 @@
                                     <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Background" TargetName="border" Value="#64647a"/>
+                                    <Setter Property="Background" TargetName="border">
+                                        <Setter.Value>
+                                            <LinearGradientBrush>
+                                                <GradientStop Color="#FFB589F4"/>
+                                                <GradientStop Color="#FF8561C5" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
                                     <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
