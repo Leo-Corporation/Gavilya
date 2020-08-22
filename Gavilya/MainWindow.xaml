@@ -128,7 +128,7 @@
 		Margin="10 0 0 0"
 		VerticalAlignment="Center"
 		FontSize="19"
-		Text="Gavilya"
+		Text="{DynamicResource MainWindowTitle}"
         FontWeight="Bold"
         Foreground="White">
                         <TextBlock.Style>
@@ -212,9 +212,7 @@
                             <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="FluentlyIcons"/>
                         </StackPanel>
                     </Border>
-                    <Frame Grid.Column="2" NavigationUIVisibility="Hidden">
-                        
-                    </Frame>
+                    <Frame Grid.Column="2" NavigationUIVisibility="Hidden"></Frame>
                 </Grid>
             </Border>
         </Grid>

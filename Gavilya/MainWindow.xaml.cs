@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
@@ -26,6 +27,29 @@ namespace Gavilya
         public MainWindow()
         {
             InitializeComponent();
+            SetLanguageDictonnary();
+        }
+
+        /// <summary>
+        /// Set the language of the application.
+        /// </summary>
+        private void SetLanguageDictonnary()
+        {
+            ResourceDictionary resourceDictionary = new ResourceDictionary(); // Ressource dictonnary
+
+            switch (Thread.CurrentThread.CurrentUICulture.ToString()) // For each case
+            {
+                case "en-US": // Language: English (United States)
+                    resourceDictionary.Source = new Uri("\\Resources\\StringsRessources.xaml", UriKind.Relative); // Set the source
+                    break;
+                case "fr-FR": // Language: French (France)
+                    resourceDictionary.Source = new Uri("\\Resources\\StringsRessources.fr-FR.xaml", UriKind.Relative); // Set the source
+                    break;
+                default: // Languagae (default): English (United States)
+                    resourceDictionary.Source = new Uri("\\Resources\\StringsRessources.xaml", UriKind.Relative); // Set the source
+                    break;
+            }
+            Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictonnary to the ressources
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
