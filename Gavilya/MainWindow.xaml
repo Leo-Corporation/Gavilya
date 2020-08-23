@@ -208,7 +208,7 @@
                             <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.595"/>
                         </Border.Effect>
                         <StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                            <Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xe90f;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="FluentlyIcons"/>
+                            <Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xea17;" Background="#FF5A5A70" FontSize="19" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="FluentlyIcons"/>
                             <Button Name="RecentButton" Click="RecentButton_Click" Content="&#xea2c;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="FluentlyIcons"/>
                             <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="FluentlyIcons"/>
                         </StackPanel>
