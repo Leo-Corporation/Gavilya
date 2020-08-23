@@ -175,8 +175,8 @@
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Setter Property="Background" TargetName="checkBoxBorder" Value="Transparent"/>
                                     <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#B589E0"/>
-                                    <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
-                                    <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.MouseOver.Glyph}"/>
+                                    <Setter Property="Fill" TargetName="optionMark" Value="White"/>
+                                    <Setter Property="Fill" TargetName="indeterminateMark" Value="White"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Disabled.Background}"/>
@@ -187,8 +187,8 @@
                                 <Trigger Property="IsPressed" Value="true">
                                     <Setter Property="Background" TargetName="checkBoxBorder" Value="#FF505066"/>
                                     <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#B589E0"/>
-                                    <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
-                                    <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                                    <Setter Property="Fill" TargetName="optionMark" Value="LightGray"/>
+                                    <Setter Property="Fill" TargetName="indeterminateMark" Value="LightGray"/>
                                 </Trigger>
                                 <Trigger Property="IsChecked" Value="true">
                                     <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
@@ -370,7 +370,14 @@
                                     <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="border" Value="#64647a"/>
+                                    <Setter Property="Background" TargetName="border">
+                                        <Setter.Value>
+                                            <LinearGradientBrush>
+                                                <GradientStop Color="#FFB589F4"/>
+                                                <GradientStop Color="#FF8561C5" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Setter.Value>
+                                    </Setter>
                                     <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="false">
