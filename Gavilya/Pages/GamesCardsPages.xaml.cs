@@ -24,7 +24,6 @@ namespace Gavilya.Pages
         {
             InitializeComponent();
             GamePresenter.Children.Add(new AddControl()); // Add the "Add Control"
-            GamePresenter.Children.Add(new GameCard());
         }
     }
 }
