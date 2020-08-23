@@ -6,5 +6,6 @@
     <system:String x:Key="YourGames">Your Games</system:String>
     <system:String x:Key="MainWindowTitle">Gavilya</system:String>
     <system:String x:Key="Add">Add</system:String>
+    <system:String x:Key="Play">PLAY</system:String>
     
 </ResourceDictionary>

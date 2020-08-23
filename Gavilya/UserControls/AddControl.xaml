@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gavilya.UserControls"
              mc:Ignorable="d" 
-             Height="180" Width="150">
+             Height="180" Width="150" Margin="0 0 10 0">
     <Grid>
         <Button Cursor="Hand" Style="{DynamicResource AddButton}" Background="#FF46465C">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
