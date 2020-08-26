@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gavilya.Windows;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -21,6 +22,11 @@ namespace Gavilya.UserControls
         public AddControl()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            new AddGame().Show(); // Show the window to add a game
         }
     }
 }

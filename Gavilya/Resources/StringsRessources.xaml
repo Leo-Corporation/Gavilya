@@ -7,5 +7,11 @@
     <system:String x:Key="MainWindowTitle">Gavilya</system:String>
     <system:String x:Key="Add">Add</system:String>
     <system:String x:Key="Play">PLAY</system:String>
+    <system:String x:Key="AddGame">Add a game</system:String>
+    <system:String x:Key="Browse">Browse</system:String>
+    <system:String x:Key="Image">Image</system:String>
+    <system:String x:Key="Name">Name</system:String>
+    <system:String x:Key="Version">Version</system:String>
+    <system:String x:Key="Location">Location</system:String>
     
 </ResourceDictionary>

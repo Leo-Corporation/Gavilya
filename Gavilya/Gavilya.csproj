@@ -24,10 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Windows\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <EmbeddedResource Include="Resources\StringsRessources.fr-FR.xaml" />
     <EmbeddedResource Include="Resources\StringsRessources.xaml" />
   </ItemGroup>
