@@ -28,8 +28,12 @@ namespace Gavilya
         public MainWindow()
         {
             InitializeComponent();
-            SetLanguageDictonnary();
-            PageContent.Content = new GamesCardsPages();
+            SetLanguageDictonnary(); // Set the language of the app.
+            GamesCardsPages gamesCardsPages = new GamesCardsPages(); // GamesCardsPage
+            Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
+            PageContent.Content = gamesCardsPages; // Show the page
+            Definitions.MainWindow = this; // Define the Main Window
+            LoadPage(); // Load the button on the button corresponding to the active page
         }
 
         /// <summary>
@@ -52,6 +56,19 @@ namespace Gavilya
                     break;
             }
             Application.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictonnary to the ressources of the application
+        }
+
+        private void LoadPage()
+        {
+            RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
+            RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
+
+            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+
+            ShadowElement(AppCardButton); // Put a shadow under the button
+
+            ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
         }
 
         private void Window_StateChanged(object sender, EventArgs e)

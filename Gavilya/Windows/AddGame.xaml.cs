@@ -1,4 +1,6 @@
-﻿using Microsoft.Win32;
+﻿using Gavilya.Classes;
+using Gavilya.UserControls;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,6 +22,7 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class AddGame : Window
     {
+        string GameIconLocation;
         public AddGame()
         {
             InitializeComponent();
@@ -62,6 +65,7 @@ namespace Gavilya.Windows
                 {
                     BitmapImage image = new BitmapImage(new Uri(openFileDialog.FileName)); // Create the image
                     GameImg.Source = image; // Set the GameImg's source to the image
+                    GameIconLocation = openFileDialog.FileName; // Set the path to the image
                 }
                 catch (Exception ex)
                 {
@@ -85,6 +89,24 @@ namespace Gavilya.Windows
                 versionTxt.Text = fileVersionInfo.FileVersion; // Version of the file
                 locationTxt.Text = openFileDialog.FileName; // Location of the file
             }
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GameInfo gameInfo = new GameInfo(); // Create a GameInfo class
+            gameInfo.FileLocation = locationTxt.Text; // The file location of the game
+            gameInfo.Icon = GameImg; // The icon of the game
+            gameInfo.Name = nameTxt.Text; // The name of the game
+            gameInfo.Version = versionTxt.Text; // The version of the game
+            gameInfo.IconFileLocation = GameIconLocation; // The location of the icon of the game
+
+            Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
+            Close(); // Close the Window
+        }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close(); // Close the Window
         }
     }
 }

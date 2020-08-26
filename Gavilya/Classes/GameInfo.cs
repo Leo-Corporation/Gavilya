@@ -6,7 +6,7 @@ using System.Windows.Controls;
 namespace Gavilya.Classes
 {
     /// <summary>
-    /// Informations that a "Game" countains.
+    /// Informations that a "Game" contains.
     /// </summary>
     public class GameInfo
     {
@@ -34,5 +34,15 @@ namespace Gavilya.Classes
         /// The icon of the game.
         /// </summary>
         public Image Icon { get; set; }
+
+        /// <summary>
+        /// The last time the game was launched.
+        /// </summary>
+        public int LastTimePlayed { get; set; }
+
+        /// <summary>
+        /// The total time the game was played.
+        /// </summary>
+        public int TotalTimePlayed { get; set; }
     }
 }

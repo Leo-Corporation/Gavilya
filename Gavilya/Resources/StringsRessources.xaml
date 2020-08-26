@@ -13,5 +13,6 @@
     <system:String x:Key="Name">Name</system:String>
     <system:String x:Key="Version">Version</system:String>
     <system:String x:Key="Location">Location</system:String>
+    <system:String x:Key="Cancel">Cancel</system:String>
     
 </ResourceDictionary>

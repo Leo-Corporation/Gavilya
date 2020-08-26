@@ -112,7 +112,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Fill="#323248" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+                <Rectangle Fill="#FF3C3C52" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0"/>
                     </Rectangle.Effect>
@@ -192,6 +192,11 @@
                         <TextBlock Text="{DynamicResource Location}" Foreground="White" FontSize="15" FontWeight="Bold"/>
                         <TextBox Name="locationTxt" IsReadOnly="True" BorderThickness="2" Foreground="White" Background="#FF3C3C52" Style="{DynamicResource RegularTextBox}" Margin="10 0 10 0" Width="260" BorderBrush="#FF64647A"/>
                         <Button Click="BrowseBtn_Click" x:Name="BrowseBtn" Width="80" Content="{DynamicResource Browse}" Style="{DynamicResource RegularButton}" FontWeight="Bold" Foreground="White" Background="#FF5A5A70"/>
+                    </StackPanel>
+
+                    <StackPanel HorizontalAlignment="Center" Margin="0 50 0 0" Orientation="Horizontal">
+                        <Button Name="AddBtn" Click="AddBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="5" Content="{DynamicResource Add}" FontWeight="Bold"/>
+                        <Button Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF5A5A70" Margin="0" Foreground="White" Padding="5" Content="{DynamicResource Cancel}" FontWeight="Bold"/>
                     </StackPanel>
                 </StackPanel>
                 

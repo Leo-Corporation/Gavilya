@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Gavilya.Pages;
+using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Text;
 using System.Windows.Media;
 
@@ -42,8 +44,18 @@ namespace Gavilya.Classes
         }
 
         /// <summary>
-        /// Version of the software (Gavilya)
+        /// Version of the software (Gavilya).
         /// </summary>
         public static string Version { get => "1.0.0.2009"; }
+
+        /// <summary>
+        /// The Main <see cref="System.Windows.Window"/> of the App.
+        /// </summary>
+        public static MainWindow MainWindow { get; set; }
+
+        /// <summary>
+        /// The <see cref="Pages.GamesCardsPages"/> of the <see cref="MainWindow"/>.
+        /// </summary>
+        public static GamesCardsPages GamesCardsPages { get; set; }
     }
 }

@@ -12,5 +12,6 @@
     <system:String x:Key="Name">Nom</system:String>
     <system:String x:Key="Version">Version</system:String>
     <system:String x:Key="Location">Emplacement</system:String>
+    <system:String x:Key="Cancel">Annuler</system:String>
     
 </ResourceDictionary>
