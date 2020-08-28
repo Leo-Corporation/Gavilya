@@ -16,6 +16,8 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="{DynamicResource YourGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
-        <WrapPanel x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Name="GamePresenter" Grid.Row="1"></WrapPanel>
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <WrapPanel x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Name="GamePresenter" Grid.Row="1"></WrapPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
