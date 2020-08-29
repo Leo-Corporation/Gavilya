@@ -28,7 +28,7 @@ namespace Gavilya
         public MainWindow()
         {
             InitializeComponent();
-            Title = Languages.Lang.MainWindowTitle;
+            Title = Properties.Resources.MainWindowTitle;
             GamesCardsPages gamesCardsPages = new GamesCardsPages(); // GamesCardsPage
             Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
             PageContent.Content = gamesCardsPages; // Show the page

@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:pages="clr-namespace:Gavilya.Pages"
-        xmlns:lang="clr-namespace:Gavilya.Languages"
+        xmlns:lang="clr-namespace:Gavilya.Properties"
         xmlns:local="clr-namespace:Gavilya"
         mc:Ignorable="d"
         Title="Gavilya" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" >
@@ -130,7 +130,7 @@
 		Margin="10 0 0 0"
 		VerticalAlignment="Center"
 		FontSize="19"
-		Text="Gavilya"
+		Text="{x:Static lang:Resources.MainWindowTitle}"
         FontWeight="Bold"
         Foreground="White">
                         <TextBlock.Style>
