@@ -28,34 +28,12 @@ namespace Gavilya
         public MainWindow()
         {
             InitializeComponent();
-            SetLanguageDictonnary(); // Set the language of the app.
+            Title = Languages.Lang.MainWindowTitle;
             GamesCardsPages gamesCardsPages = new GamesCardsPages(); // GamesCardsPage
             Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
             PageContent.Content = gamesCardsPages; // Show the page
             Definitions.MainWindow = this; // Define the Main Window
             LoadPage(); // Load the button on the button corresponding to the active page
-        }
-
-        /// <summary>
-        /// Set the language of the application.
-        /// </summary>
-        private void SetLanguageDictonnary()
-        {
-            ResourceDictionary resourceDictionary = new ResourceDictionary(); // Ressource dictonnary
-
-            switch (Thread.CurrentThread.CurrentUICulture.ToString()) // For each case
-            {
-                case "en-US": // Language: English (United States)
-                    resourceDictionary.Source = new Uri("\\Resources\\StringsRessources.xaml", UriKind.Relative); // Set the source
-                    break;
-                case "fr-FR": // Language: French (France)
-                    resourceDictionary.Source = new Uri("\\Resources\\StringsRessources.fr-FR.xaml", UriKind.Relative); // Set the source
-                    break;
-                default: // Languagae (default): English (United States)
-                    resourceDictionary.Source = new Uri("\\Resources\\StringsRessources.xaml", UriKind.Relative); // Set the source
-                    break;
-            }
-            Application.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictonnary to the ressources of the application
         }
 
         private void LoadPage()

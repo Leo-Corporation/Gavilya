@@ -4,13 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gavilya.UserControls"
+             xmlns:lang="clr-namespace:Gavilya.Languages"
              mc:Ignorable="d" 
              Height="200" Width="170" Margin="0 10 10 0">
     <Grid>
         <Button Click="Button_Click" Cursor="Hand" Style="{DynamicResource AddButton}" Background="#FF46465C">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 <TextBlock Text="&#xe901;" Foreground="White" FontSize="60" FontFamily="FluentlyIcons"/>
-                <TextBlock Margin="0 10 0 0" Text="{StaticResource Add}" Foreground="White" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
+                <TextBlock Margin="0 10 0 0" Text="{x:Static lang:Lang.Add}" Foreground="White" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
             </StackPanel>
         </Button>
     </Grid>
