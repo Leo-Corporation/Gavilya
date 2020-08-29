@@ -56,7 +56,10 @@ namespace Gavilya.UserControls
 
         private void Button_Click(object sender, RoutedEventArgs e) // Play button
         {
-            Process.Start(location); // Start the game
+            if (File.Exists(location)) // If the file exist
+            {
+                Process.Start(location); // Start the game
+            }
         }
     }
 }
