@@ -211,7 +211,32 @@ namespace Gavilya
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: Implement the delete system
+            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 1)
+            {
+                List<GameCard> games = new List<GameCard>(); // List of all the games
+
+                foreach (UIElement uIElement in Definitions.GamesCardsPages.GamePresenter.Children) // Foreach elements
+                {
+                    if (uIElement is GameCard) // If the element is a GameCard
+                    {
+                        GameCard gameCard = (GameCard)uIElement; // Convert the element to a GameCard
+                        if (gameCard.CheckBox.IsChecked ?? true) // If the element is checked
+                        {
+                            games.Add(gameCard); // Add to the list the GameCard
+                        }
+                    }
+                }
+
+                foreach (GameCard gameCard1 in games) // For each games in the list
+                {
+                    Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
+                }
+            } 
+        }
+
+        private void MoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO: Implement the More button and menu
         }
     }
 }
