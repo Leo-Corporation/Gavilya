@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -22,7 +23,7 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class AddGame : Window
     {
-        string GameIconLocation;
+        string GameIconLocation = string.Empty;
         public AddGame()
         {
             InitializeComponent();
@@ -88,6 +89,20 @@ namespace Gavilya.Windows
 
                 versionTxt.Text = fileVersionInfo.FileVersion; // Version of the file
                 locationTxt.Text = openFileDialog.FileName; // Location of the file
+                if (GameIconLocation == string.Empty) // If there is no image
+                {
+                    try
+                    {
+                        Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(openFileDialog.FileName); // Grab the icon of the game
+                        GameImg.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+                    }
+                    catch
+                    {
+
+                    }
+                }
+                
+
             }
         }
 
