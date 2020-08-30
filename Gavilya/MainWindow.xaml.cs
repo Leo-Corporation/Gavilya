@@ -1,5 +1,6 @@
 ﻿using Gavilya.Classes;
 using Gavilya.Pages;
+using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -181,6 +182,34 @@ namespace Gavilya
             ShadowElement(AppListButton); // Put a shadow under the control
 
             ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
+        }
+
+        private void SelectBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 1) // If there is game(s)
+            {
+                for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
+                {
+                    if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard) // If the element is a GameCard
+                    {
+                        GameCard gameCard = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
+                        if (gameCard.CheckBox.IsVisible) // If the check box is visible
+                        {
+                            gameCard.CheckBox.Visibility = Visibility.Hidden; // The checkbox isn't visible
+                        }
+                        else
+                        {
+                            gameCard.CheckBox.Visibility = Visibility.Visible; // The checkbox is visible
+                        }
+                        Definitions.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
+                    }
+                }
+            }
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

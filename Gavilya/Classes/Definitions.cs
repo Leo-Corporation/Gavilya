@@ -57,5 +57,10 @@ namespace Gavilya.Classes
         /// The <see cref="Pages.GamesCardsPages"/> of the <see cref="MainWindow"/>.
         /// </summary>
         public static GamesCardsPages GamesCardsPages { get; set; }
+
+        /// <summary>
+        /// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.
+        /// </summary>
+        public static bool IsGamesCardsPagesCheckBoxesVisible { get; set; }
     }
 }

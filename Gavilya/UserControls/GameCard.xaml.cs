@@ -46,6 +46,16 @@ namespace Gavilya.UserControls
             // Icon
             GameIcon.Source = gameInfo.Icon.Source;
 
+            // Checkbox visibility
+            if (Definitions.IsGamesCardsPagesCheckBoxesVisible) // If the checkboxes are visibles
+            {
+                CheckBox.Visibility = Visibility.Visible; // Visible
+            }
+            else
+            {
+                CheckBox.Visibility = Visibility.Hidden; // Hiddent
+            }
+
             // Icon (in case the precedent didn't work)
             /*if (File.Exists(gameInfo.IconFileLocation))
             {

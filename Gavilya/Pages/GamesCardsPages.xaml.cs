@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Gavilya.Classes;
 using Gavilya.UserControls;
 
 namespace Gavilya.Pages
@@ -24,6 +25,7 @@ namespace Gavilya.Pages
         {
             InitializeComponent();
             GamePresenter.Children.Add(new AddControl()); // Add the "Add Control"
+            Definitions.GamesCardsPages = this; // Define the GamesCardsPages
         }
     }
 }

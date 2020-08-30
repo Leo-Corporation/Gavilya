@@ -7,10 +7,10 @@
         xmlns:lang="clr-namespace:Gavilya.Properties"
         xmlns:local="clr-namespace:Gavilya"
         mc:Ignorable="d"
-        Title="Gavilya" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" >
+        Title="Gavilya" Height="480" Width="840" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" >
     
     <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="50" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
+        <WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
     </WindowChrome.WindowChrome>
 
     <Window.Resources>
@@ -97,9 +97,9 @@
     </Window.Resources>
 
     <Window.Effect>
-        <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="25"/>
+        <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality"/>
     </Window.Effect>
-    <Border BorderThickness="0" Background="#3C3C52" CornerRadius="5 5 0 0">
+    <Border Margin="10" BorderThickness="0" Background="#3C3C52" CornerRadius="5 5 0 0">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
@@ -143,6 +143,10 @@
                             </Style>
                         </TextBlock.Style>
                     </TextBlock>
+
+                    <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="2" Width="32" Height="32" FontFamily="FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
+                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
+                    <Button Content="&#xe9db;" FontSize="20" Grid.Column="4" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="FluentlyIcons"/>
 
                     <Button
 		Grid.Column="5"
