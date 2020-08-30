@@ -99,7 +99,7 @@
     <Window.Effect>
         <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality"/>
     </Window.Effect>
-    <Border Margin="10" BorderThickness="0" Background="#3C3C52" CornerRadius="5 5 0 0">
+    <Border Name="WindowBorder" Margin="10" BorderThickness="0" Background="#3C3C52" CornerRadius="5 5 0 0">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
