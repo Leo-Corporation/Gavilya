@@ -10,7 +10,7 @@
     <Grid>
         <Button Click="Button_Click" Cursor="Hand" Style="{DynamicResource AddButton}" Background="#FF46465C">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="&#xe901;" Foreground="White" FontSize="60" FontFamily="FluentlyIcons"/>
+                <TextBlock Text="&#xe901;" Foreground="White" FontSize="60" FontFamily="..\Fonts\#FluentlyIcons"/>
                 <TextBlock Margin="0 10 0 0" Text="{x:Static lang:Resources.Add}" Foreground="White" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
             </StackPanel>
         </Button>

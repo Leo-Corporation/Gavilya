@@ -144,9 +144,9 @@
                         </TextBlock.Style>
                     </TextBlock>
 
-                    <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="2" Width="32" Height="32" FontFamily="FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
-                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
-                    <Button Content="&#xe9db;" FontSize="20" Grid.Column="4" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="FluentlyIcons"/>
+                    <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="2" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
+                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
+                    <Button Content="&#xe9db;" FontSize="20" Grid.Column="4" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
 
                     <Button
 		Grid.Column="5"
@@ -213,9 +213,9 @@
                             <DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.595"/>
                         </Border.Effect>
                         <StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                            <Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xea17;" Background="#FF5A5A70" FontSize="19" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="FluentlyIcons"/>
-                            <Button Name="RecentButton" Click="RecentButton_Click" Content="&#xea2c;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="FluentlyIcons"/>
-                            <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="FluentlyIcons"/>
+                            <Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xea17;" Background="#FF5A5A70" FontSize="19" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons"/>
+                            <Button Name="RecentButton" Click="RecentButton_Click" Content="&#xea2c;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons"/>
+                            <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons"/>
                         </StackPanel>
                     </Border>
 
