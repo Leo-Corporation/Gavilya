@@ -57,7 +57,7 @@ namespace Gavilya.Windows
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog(); // OpenFileDialog
-            openFileDialog.Filter = "JPG|*.jpg|PNG|*.png|Bitmap|*.bmp|All Files|*.*"; // Filter
+            openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
             
             if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
             {
@@ -93,15 +93,22 @@ namespace Gavilya.Windows
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            GameInfo gameInfo = new GameInfo(); // Create a GameInfo class
-            gameInfo.FileLocation = locationTxt.Text; // The file location of the game
-            gameInfo.Icon = GameImg; // The icon of the game
-            gameInfo.Name = nameTxt.Text; // The name of the game
-            gameInfo.Version = versionTxt.Text; // The version of the game
-            gameInfo.IconFileLocation = GameIconLocation; // The location of the icon of the game
+            if (!(string.IsNullOrEmpty(nameTxt.Text) || string.IsNullOrEmpty(locationTxt.Text))) /// If the fields are filled
+            {
+                GameInfo gameInfo = new GameInfo(); // Create a GameInfo class
+                gameInfo.FileLocation = locationTxt.Text; // The file location of the game
+                gameInfo.Icon = GameImg; // The icon of the game
+                gameInfo.Name = nameTxt.Text; // The name of the game
+                gameInfo.Version = versionTxt.Text; // The version of the game
+                gameInfo.IconFileLocation = GameIconLocation; // The location of the icon of the game
 
-            Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
-            Close(); // Close the Window
+                Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
+                Close(); // Close the Window
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.GameFieldsEmpty);
+            }
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

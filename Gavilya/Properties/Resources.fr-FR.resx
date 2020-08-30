@@ -150,4 +150,7 @@
   <data name="Location" xml:space="preserve">
     <value>Emplacement</value>
   </data>
+  <data name="GameFieldsEmpty" xml:space="preserve">
+    <value>Veuillez compléter les informations du jeu.</value>
+  </data>
 </root>

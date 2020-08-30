@@ -35,7 +35,7 @@
                         <Border
 					x:Name="border"
 					Background="Transparent"
-					BorderThickness="0"
+					BorderThickness="0" CornerRadius="5"
 					SnapsToDevicePixels="true">
                             <ContentPresenter
 						x:Name="contentPresenter"
@@ -70,7 +70,7 @@
                         <Border
 					x:Name="border"
 					Background="Transparent"
-					BorderThickness="0"
+					BorderThickness="0" CornerRadius="5"
 					SnapsToDevicePixels="true">
                             <ContentPresenter
 						x:Name="contentPresenter"

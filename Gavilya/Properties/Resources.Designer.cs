@@ -97,6 +97,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Please complete the game&apos;s information..
+        /// </summary>
+        public static string GameFieldsEmpty {
+            get {
+                return ResourceManager.GetString("GameFieldsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Byte[].
         /// </summary>
         public static byte[] Gavilya {
