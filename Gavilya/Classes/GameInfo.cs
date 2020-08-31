@@ -44,5 +44,10 @@ namespace Gavilya.Classes
         /// The total time the game was played.
         /// </summary>
         public int TotalTimePlayed { get; set; }
+
+        /// <summary>
+        /// <see cref="true"/> if the game is a favorite, <see cref="false"/> if not.
+        /// </summary>
+        public bool IsFavorite { get; set; }
     }
 }

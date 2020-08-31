@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Gavilya.UserControls.FavoriteGameCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gavilya.UserControls"
+             mc:Ignorable="d" 
+             Height="50" Width="100" Margin="5">
+    <Border CornerRadius="10" Background="#FF505066">
+        <Grid>
+            <StackPanel Orientation="Horizontal">
+                <Border CornerRadius="5" Margin="0">
+                    <Image Name="GameIcon" Width="40" Height="40" Margin="10 0 10 0" Stretch="Fill" StretchDirection="Both"/>
+                </Border>
+                <Button Cursor="Hand" Name="PlayBtn" Click="PlayBtn_Click" Content="&#xeab5;" Height="25" Width="25" Style="{StaticResource PlayButton}" Foreground="#fff" FontFamily="..\Fonts\#FluentlyIcons"/>
+            </StackPanel>
+        </Grid>    
+    </Border>
+</UserControl>

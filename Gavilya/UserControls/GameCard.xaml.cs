@@ -10,6 +10,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -21,11 +22,18 @@ namespace Gavilya.UserControls
     /// </summary>
     public partial class GameCard : UserControl
     {
-        string location;
+        string location; // Location
+
+        /// <summary>
+        /// The infos of the game
+        /// </summary>
+        public GameInfo GameInfo { get; set; }
+
         public GameCard(GameInfo gameInfo)
         {
             InitializeComponent();
-            InitializeUI(gameInfo);
+            GameInfo = gameInfo; // Define the info
+            InitializeUI(gameInfo); // Load the UI
         }
 
         /// <summary>
@@ -84,6 +92,25 @@ namespace Gavilya.UserControls
             Infos.Background = new SolidColorBrush { Opacity = 0 }; // Hide the background
             Title.Visibility = Visibility.Hidden; // Hide
             Version.Visibility = Visibility.Hidden; // Hide
+        }
+
+        FavoriteGameCard FavoriteGameCard;
+
+        private void FavBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (GameInfo.IsFavorite) // If the game is a favorite
+            {
+                GameInfo.IsFavorite = false; // The game is no longer a favorite
+                Definitions.MainWindow.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
+                FavBtn.Content = ""; // Change icon
+            }
+            else
+            {
+                GameInfo.IsFavorite = true; // Set the game to be a favorite
+                FavoriteGameCard = new FavoriteGameCard(GameInfo);
+                Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
+                FavBtn.Content = ""; // Change icon
+            } 
         }
     }
 }

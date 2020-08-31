@@ -23,13 +23,16 @@
                 <ColumnDefinition Width="30"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
             </Grid.ColumnDefinitions>
 
             <CheckBox Cursor="Hand" x:Name="CheckBox" Style="{DynamicResource CheckBoxStyle1}" Background="Transparent" Grid.Column="0" x:FieldModifier="public" Visibility="Hidden" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            <Button Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xe9ef;" Foreground="White" FontFamily="..\Fonts\#FluentlyIcons" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Grid.Row="0"></Button>
+            <Button Name="FavBtn" Click="FavBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xeb01;" Foreground="White" FontFamily="..\Fonts\#FluentlyIcons" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Grid.Row="0"></Button>
+            <Button Name="EditBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xe9ef;" Foreground="White" FontFamily="..\Fonts\#FluentlyIcons" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Grid.Row="0"></Button>
 
             <!--<Image x:Name="GameIcon" Grid.Row="1" Grid.Column="1" Height="70" Width="70" VerticalAlignment="Top" Margin="0 -10 0 0"/>-->
-            <StackPanel Name="Infos" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+            <StackPanel Name="Infos" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+                
                 <TextBlock x:Name="Title" FontSize="17"  Grid.Row="1" Grid.Column="1" FontWeight="Bold" Foreground="White" TextAlignment="Center" VerticalAlignment="Bottom"/>
                 <TextBlock x:Name="Version" Margin="0 0 0 10" TextAlignment="Center" Foreground="White" FontSize="10" Grid.Column="1" Grid.Row="1" VerticalAlignment="Bottom"/>
                 <Button Click="Button_Click" Cursor="Hand" Margin="20 0 20 15" Style="{DynamicResource PlayButton}" Grid.Row="1" Foreground="White" FontWeight="Bold" FontSize="15" Grid.Column="1" Height="35" VerticalAlignment="Bottom">

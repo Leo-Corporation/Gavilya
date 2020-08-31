@@ -153,4 +153,7 @@
   <data name="GameFieldsEmpty" xml:space="preserve">
     <value>Veuillez compléter les informations du jeu.</value>
   </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Favoris</value>
+  </data>
 </root>

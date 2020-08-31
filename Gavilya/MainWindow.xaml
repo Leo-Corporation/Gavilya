@@ -7,7 +7,7 @@
         xmlns:lang="clr-namespace:Gavilya.Properties"
         xmlns:local="clr-namespace:Gavilya"
         mc:Ignorable="d"
-        Title="Gavilya" Height="480" Width="840" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" >
+        Title="Gavilya" Height="510" Width="840" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" >
     
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
@@ -221,8 +221,22 @@
                             <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons"/>
                         </StackPanel>
                     </Border>
+                    <Grid Grid.Column="2">
 
-                    <Frame Margin="8 0 0 0" Name="PageContent" Grid.Column="2" NavigationUIVisibility="Hidden">                    </Frame>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="105"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Margin="8 0 0 0" Height="105">
+                            <TextBlock Text="{x:Static lang:Resources.Favorites}" FontWeight="Bold" FontSize="20" Foreground="White"/>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Hidden">
+                                <WrapPanel Name="FavoriteBar" Orientation="Horizontal" Height="60"></WrapPanel>
+                            </ScrollViewer>
+                        </StackPanel>
+                        
+                        <Frame Margin="8 0 0 0" Grid.Row="1" Name="PageContent"  NavigationUIVisibility="Hidden"></Frame>
+                    </Grid>
                 </Grid>
             </Border>
         </Grid>

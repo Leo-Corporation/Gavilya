@@ -314,7 +314,7 @@
             </Style>
             <SolidColorBrush x:Key="Button.Static.Background2" Color="#FFDDDDDD"/>
             <SolidColorBrush x:Key="Button.Static.Border2" Color="#FF707070"/>
-            <SolidColorBrush x:Key="Button.MouseOver.Background2" Color="#5a5a70"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background2" Color="#7F5A5A70"/>
             <SolidColorBrush x:Key="Button.MouseOver.Border2" Color="#FF3C7FB1"/>
             <SolidColorBrush x:Key="Button.Pressed.Background2" Color="#5a5a70"/>
             <SolidColorBrush x:Key="Button.Pressed.Border2" Color="#FF2C628B"/>
