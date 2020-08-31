@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Gavilya.UserControls"
              xmlns:lang="clr-namespace:Gavilya.Properties"
              mc:Ignorable="d" 
-             Height="200" Width="170" Margin="0 10 10 0">
+             Height="255" Width="170" Margin="0 10 10 0">
     <Grid>
         <Button Click="Button_Click" Cursor="Hand" Style="{DynamicResource AddButton}" Background="#FF46465C">
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">

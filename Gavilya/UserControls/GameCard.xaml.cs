@@ -44,7 +44,7 @@ namespace Gavilya.UserControls
             location = gameInfo.FileLocation;
 
             // Icon
-            GameIcon.Source = gameInfo.Icon.Source;
+            GameIcon.ImageSource = gameInfo.Icon.Source;
 
             // Checkbox visibility
             if (Definitions.IsGamesCardsPagesCheckBoxesVisible) // If the checkboxes are visibles
@@ -70,6 +70,20 @@ namespace Gavilya.UserControls
             {
                 Process.Start(location); // Start the game
             }
+        }
+
+        private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Infos.Background = new SolidColorBrush { Color = Color.FromArgb(100, 50, 50, 72), Opacity = 0.8 }; // Show the background
+            Title.Visibility = Visibility.Visible; // Show
+            Version.Visibility = Visibility.Visible; // Show
+        }
+
+        private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Infos.Background = new SolidColorBrush { Opacity = 0 }; // Hide the background
+            Title.Visibility = Visibility.Hidden; // Hide
+            Version.Visibility = Visibility.Hidden; // Hide
         }
     }
 }
