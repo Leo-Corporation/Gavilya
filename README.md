@@ -8,5 +8,7 @@ To contribute to the project, you'll need:
   - Microsoft Visual Studio Installer Project
 - Git
 - .NET Core 3.1
+
+[Click here](https://github.com/Leo-Corporation/Gavilya/blob/master/CONTRIBUTING.md) to see the full guidelines.
 ## License
-This project is under the MIT License.
+This project is under the [MIT License](https://github.com/Leo-Corporation/Gavilya/blob/master/LICENSE).
