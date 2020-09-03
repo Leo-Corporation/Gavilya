@@ -161,12 +161,12 @@
                                             <TransformGroup>
                                                 <ScaleTransform CenterY="0.5" CenterX="0.5"/>
                                                 <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                                <RotateTransform Angle="180" CenterY="0.5" CenterX="0.5"/>
                                                 <TranslateTransform/>
                                             </TransformGroup>
                                         </LinearGradientBrush.RelativeTransform>
-                                        <GradientStop Color="#FF005BEA"/>
-                                        <GradientStop Color="#FF00C2F6" Offset="1"/>
+                                        <GradientStop Color="#3779EE"/>
+                                        <GradientStop Color="#3E84ED" Offset="1"/>
                                     </LinearGradientBrush>
                                 </Border.Background>
                                 <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -183,11 +183,11 @@
                                                     <TransformGroup>
                                                         <ScaleTransform CenterY="0.5" CenterX="0.5"/>
                                                         <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                        <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                                                        <RotateTransform Angle="180" CenterY="0.5" CenterX="0.5"/>
                                                         <TranslateTransform/>
                                                     </TransformGroup>
                                                 </LinearGradientBrush.RelativeTransform>
-                                                <GradientStop Color="#04B63A"/>
+                                                <GradientStop Color="#00E20A"/>
                                                 <GradientStop Color="#00FB1C" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Setter.Value>
