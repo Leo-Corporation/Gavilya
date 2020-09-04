@@ -12,12 +12,19 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
-        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Button Click="AddBtn_Click" Margin="5" Grid.Row="1" x:Name="AddBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Width="70" Background="#FF505066" Foreground="White">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="0 0 5 0" Text="&#xe901;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
+                <TextBlock Text="{x:Static lang:Resources.Add}" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
             <WrapPanel x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Name="GamePresenter" Grid.Row="1"></WrapPanel>
         </ScrollViewer>
     </Grid>

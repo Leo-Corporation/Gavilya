@@ -234,8 +234,7 @@
                                 <WrapPanel Name="FavoriteBar" Orientation="Horizontal" Height="60"></WrapPanel>
                             </ScrollViewer>
                         </StackPanel>
-                        
-                        <Frame Margin="8 0 0 0" Grid.Row="1" Name="PageContent"  NavigationUIVisibility="Hidden"></Frame>
+                        <Frame Margin="8 0 0 0" Height="Auto" Name="PageContent" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
                     </Grid>
                 </Grid>
             </Border>

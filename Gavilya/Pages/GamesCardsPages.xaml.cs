@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Gavilya.Classes;
 using Gavilya.UserControls;
+using Gavilya.Windows;
 
 namespace Gavilya.Pages
 {
@@ -24,8 +25,12 @@ namespace Gavilya.Pages
         public GamesCardsPages()
         {
             InitializeComponent();
-            GamePresenter.Children.Add(new AddControl()); // Add the "Add Control"
             Definitions.GamesCardsPages = this; // Define the GamesCardsPages
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new AddGame().Show(); // Open the "Add Game" dialog
         }
     }
 }
