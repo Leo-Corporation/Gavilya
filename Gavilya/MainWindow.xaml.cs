@@ -36,6 +36,21 @@ namespace Gavilya
             PageContent.Content = gamesCardsPages; // Show the page
             Definitions.MainWindow = this; // Define the Main Window
             LoadPage(); // Load the button on the button corresponding to the active page
+            new GameSaver().Load(); // Load the .gav file in the Definitions class
+            LoadGames();
+        }
+
+        private void LoadGames()
+        {
+            foreach (GameInfo gameInfo in Definitions.Games) // For each games
+            {
+                Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
+
+                if (gameInfo.IsFavorite)
+                {
+                    FavoriteBar.Children.Add(new FavoriteGameCard(gameInfo)); // Add the game to the favorite bar
+                }
+            }
         }
 
         private void LoadPage()
@@ -248,6 +263,7 @@ namespace Gavilya
                     }
                     Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
                     Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
+                    new GameSaver().Save(Definitions.Games); // Update the save file
                 }
             } 
         }

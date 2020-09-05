@@ -27,6 +27,21 @@ namespace Gavilya.Classes
             streamWriter.Dispose();
         }
 
+        /// <summary>
+        /// Load the saved games into a <see cref="List{GameInfo}"/>.
+        /// </summary>
+        internal void Load()
+        {
+            if (File.Exists(AppDataPath + @"\Gavilya\Games.gav")) // If there is a save file
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<GameInfo>)); // XML Serializer
+                StreamReader streamReader = new StreamReader(AppDataPath + @"\Gavilya\Games.gav"); // The place where the file is gonna be read
+
+                Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
+                streamReader.Dispose();
+            }
+        }
+
         private string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
     }
 }
