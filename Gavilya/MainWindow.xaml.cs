@@ -247,6 +247,7 @@ namespace Gavilya
                         }
                     }
                     Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
+                    Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
                 }
             } 
         }

@@ -52,7 +52,16 @@ namespace Gavilya.UserControls
             location = gameInfo.FileLocation;
 
             // Icon
-            GameIcon.ImageSource = gameInfo.Icon.Source;
+            if (gameInfo.IconFileLocation != string.Empty) // If a custom image is used
+            {
+                GameIcon.ImageSource = new BitmapImage(new Uri(gameInfo.IconFileLocation));
+            }
+            else
+            {
+                System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
+                GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+            }
+
 
             // Checkbox visibility
             if (Definitions.IsGamesCardsPagesCheckBoxesVisible) // If the checkboxes are visibles
@@ -63,13 +72,6 @@ namespace Gavilya.UserControls
             {
                 CheckBox.Visibility = Visibility.Hidden; // Hiddent
             }
-
-            // Icon (in case the precedent didn't work)
-            /*if (File.Exists(gameInfo.IconFileLocation))
-            {
-                BitmapImage bitmapImage = new BitmapImage(new Uri(gameInfo.IconFileLocation)); // Find the image
-                GameIcon.Source = bitmapImage; // Set the image
-            }*/
         }
 
         private void Button_Click(object sender, RoutedEventArgs e) // Play button

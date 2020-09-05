@@ -33,7 +33,7 @@ namespace Gavilya.Classes
         /// <summary>
         /// The icon of the game.
         /// </summary>
-        public Image Icon { get; set; }
+        //public Image Icon;
 
         /// <summary>
         /// The last time the game was launched.

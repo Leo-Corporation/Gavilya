@@ -101,8 +101,6 @@ namespace Gavilya.Windows
 
                     }
                 }
-                
-
             }
         }
 
@@ -112,12 +110,14 @@ namespace Gavilya.Windows
             {
                 GameInfo gameInfo = new GameInfo(); // Create a GameInfo class
                 gameInfo.FileLocation = locationTxt.Text; // The file location of the game
-                gameInfo.Icon = GameImg; // The icon of the game
                 gameInfo.Name = nameTxt.Text; // The name of the game
                 gameInfo.Version = versionTxt.Text; // The version of the game
                 gameInfo.IconFileLocation = GameIconLocation; // The location of the icon of the game
+                gameInfo.IsFavorite = false; // The game is not a favorite by default
 
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
+                Definitions.Games.Add(gameInfo);
+                new GameSaver().Save(Definitions.Games);
                 Close(); // Close the Window
             }
             else
