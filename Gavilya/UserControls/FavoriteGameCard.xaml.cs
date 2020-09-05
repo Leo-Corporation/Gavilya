@@ -22,10 +22,12 @@ namespace Gavilya.UserControls
     /// </summary>
     public partial class FavoriteGameCard : UserControl
     {
+        public GameInfo GameInfo { get; set; }
         string GamePath = ""; // Location of the game
         public FavoriteGameCard(GameInfo gameInfo)
         {
             InitializeComponent();
+            GameInfo = gameInfo;
             InitUI(gameInfo); // Load the UI
         }
 

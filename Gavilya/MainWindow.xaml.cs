@@ -189,7 +189,7 @@ namespace Gavilya
 
         private void SelectBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 1) // If there is game(s)
+            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
             {
                 for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
                 {
@@ -212,7 +212,7 @@ namespace Gavilya
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 1)
+            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0)
             {
                 List<GameCard> games = new List<GameCard>(); // List of all the games
 
@@ -230,6 +230,22 @@ namespace Gavilya
 
                 foreach (GameCard gameCard1 in games) // For each games in the list
                 {
+                    if (gameCard1.GameInfo.IsFavorite) // If the game is a favorite
+                    {
+                        List<FavoriteGameCard> favoriteGameCards = new List<FavoriteGameCard>();
+                        foreach (FavoriteGameCard favoriteGameCard in FavoriteBar.Children) // Foreach favorite
+                        {
+                            favoriteGameCards.Add(favoriteGameCard); // Add to the list
+                        }
+
+                        foreach (FavoriteGameCard favoriteGameCard1 in favoriteGameCards)
+                        {
+                            if (favoriteGameCard1.GameInfo == gameCard1.GameInfo) // If the favorite is corresponding to the game
+                            {
+                                FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
+                            }
+                        }
+                    }
                     Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
                 }
             } 
