@@ -72,7 +72,6 @@ namespace Gavilya.Windows
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
                 }
-                
             }
         }
 

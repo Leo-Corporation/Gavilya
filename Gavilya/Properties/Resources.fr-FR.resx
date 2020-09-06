@@ -156,4 +156,10 @@
   <data name="Favorites" xml:space="preserve">
     <value>Favoris</value>
   </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
+  <data name="EditGame" xml:space="preserve">
+    <value>Modifier un jeu</value>
+  </data>
 </root>

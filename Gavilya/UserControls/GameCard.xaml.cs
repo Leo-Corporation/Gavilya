@@ -1,4 +1,5 @@
 ﻿using Gavilya.Classes;
+using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -39,8 +40,9 @@ namespace Gavilya.UserControls
         /// <summary>
         /// Initialize the elements of the Interface.
         /// </summary>
-        /// <param name="gameInfo"></param>
-        private void InitializeUI(GameInfo gameInfo)
+        /// <param name="gameInfo"><see cref="Classes.GameInfo"/></param>
+        /// <param name="isFromEdit"><see cref="true"/> if is called from the <see cref="Windows.EditGame"/> window.</param>
+        internal void InitializeUI(GameInfo gameInfo, bool isFromEdit = false)
         {
             // Name of the game
             Title.Text = gameInfo.Name;
@@ -63,7 +65,7 @@ namespace Gavilya.UserControls
             }
 
             // Favorite
-            if (gameInfo.IsFavorite) // If the game is a favorite
+            if (gameInfo.IsFavorite && !isFromEdit) // If the game is a favorite
             {
                 FavoriteGameCard = new FavoriteGameCard(gameInfo);
                 Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
@@ -121,6 +123,11 @@ namespace Gavilya.UserControls
                 FavBtn.Content = ""; // Change icon
             }
             new GameSaver().Save(Definitions.Games); // Save the changes
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new EditGame(this).Show(); // Show the EditGame window
         }
     }
 }
