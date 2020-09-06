@@ -45,11 +45,6 @@ namespace Gavilya
             foreach (GameInfo gameInfo in Definitions.Games) // For each games
             {
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
-
-                if (gameInfo.IsFavorite)
-                {
-                    FavoriteBar.Children.Add(new FavoriteGameCard(gameInfo)); // Add the game to the favorite bar
-                }
             }
         }
 

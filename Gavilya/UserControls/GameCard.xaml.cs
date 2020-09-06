@@ -62,6 +62,13 @@ namespace Gavilya.UserControls
                 GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
             }
 
+            // Favorite
+            if (gameInfo.IsFavorite) // If the game is a favorite
+            {
+                FavoriteGameCard = new FavoriteGameCard(gameInfo);
+                Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
+                FavBtn.Content = ""; // Change icon
+            }
 
             // Checkbox visibility
             if (Definitions.IsGamesCardsPagesCheckBoxesVisible) // If the checkboxes are visibles
@@ -112,7 +119,8 @@ namespace Gavilya.UserControls
                 FavoriteGameCard = new FavoriteGameCard(GameInfo);
                 Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
                 FavBtn.Content = ""; // Change icon
-            } 
+            }
+            new GameSaver().Save(Definitions.Games); // Save the changes
         }
     }
 }

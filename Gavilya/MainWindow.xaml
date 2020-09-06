@@ -7,7 +7,7 @@
         xmlns:lang="clr-namespace:Gavilya.Properties"
         xmlns:local="clr-namespace:Gavilya"
         mc:Ignorable="d"
-        Title="Gavilya" Height="510" Width="840" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" >
+        Title="Gavilya" Height="610" Width="960" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" >
     
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
