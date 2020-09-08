@@ -8,6 +8,8 @@
 
     "ignore": [
         "**/*.Designer.cs",
-        "Gavilya/Properties/"
+        "Gavilya/Properties/",
+        "Gavilya/Ressources/",
+        "AssemblyInfo.cs"
     ]
 }
