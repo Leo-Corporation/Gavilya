@@ -10,6 +10,8 @@
         "**/*.Designer.cs",
         "Gavilya/Properties/",
         "Gavilya/Ressources/",
+        "Xalyus Updater/Properties/",
+        "Xalyus Updater/Resources/",
         "AssemblyInfo.cs"
     ]
 }
