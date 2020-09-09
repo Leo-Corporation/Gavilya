@@ -1,0 +1,122 @@
+﻿<Window x:Class="Xalyus_Updater.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Xalyus_Updater"
+        xmlns:prop="clr-namespace:Xalyus_Updater.Properties"
+        mc:Ignorable="d"
+        Title="Xalyus Updater" AllowsTransparency="True" Background="Transparent" Height="270" Width="470" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome ResizeBorderThickness="10" CaptionHeight="25"/>
+    </WindowChrome.WindowChrome>
+
+    <Window.Resources>
+        <Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+					x:Name="border"
+					Background="Transparent"
+					BorderThickness="0" CornerRadius="5"
+					SnapsToDevicePixels="true">
+                            <ContentPresenter
+						x:Name="contentPresenter"
+						Margin="0"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Focusable="False"
+						RecognizesAccessKey="True" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="Red" />
+                                <Setter Property="Foreground" Value="DarkRed" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="Red" />
+                                <Setter Property="Foreground" Value="DarkRed" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Border Margin="10" CornerRadius="10" Background="#FF323248">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="20" Opacity="0.6"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Margin="7 0 -5 0" Name="AppLogo" Source="\Resources\Xalyus Updater.png"/>
+            <TextBlock
+		Grid.Column="1"
+		Margin="10 0 0 0"
+		VerticalAlignment="Center"
+		FontSize="15"
+		Text="Xalyus Updater"
+        FontWeight="Bold"
+        Foreground="White">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource WindowTitleBarInactiveText}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <Button
+		Grid.Column="3"
+        Name="CloseBtn"
+		Click="CloseBtn_Click"
+		Style="{StaticResource TitleBarCloseButtonStyle}">
+                <Path
+			Width="46"
+			Height="32" Margin="0 0 10 0"
+			Data="M 18,11 27,20 M 18,20 27,11"
+			Stroke="{Binding Path=Foreground,
+							 RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
+			StrokeThickness="1" />
+            </Button>
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                <Border Margin="20 20 20 90" Background="#FF46465C" CornerRadius="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Grid.Column="0" Margin="15" Source="\Resources\Xalyus Updater.png"/>
+                        <StackPanel Margin="10 15 0 0" Grid.Column="1">
+                            <TextBlock FontWeight="Bold" FontSize="20" Foreground="White" Text="Gavilya"/>
+                            <TextBlock FontSize="15" Foreground="White" Text="Gavilya"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+            
+        </Grid>
+    </Border>
+</Window>
