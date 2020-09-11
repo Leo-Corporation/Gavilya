@@ -30,16 +30,16 @@ namespace Xalyus_Updater
     /// <summary>
     /// Informations for the update system.
     /// </summary>
-    internal class UpdateInfo
+    public class UpdateInfo
     {
         /// <summary>
         /// The application/file path to replace.
         /// </summary>
-        internal string ApplicationPath { get; set; }
+        public string ApplicationPath { get; set; }
 
         /// <summary>
         /// The link to the new file to download.
         /// </summary>
-        internal string FileLink { get; set; }
+        public string FileLink { get; set; }
     }
 }
