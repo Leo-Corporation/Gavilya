@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Xalyus_Updater"
         xmlns:prop="clr-namespace:Xalyus_Updater.Properties"
         mc:Ignorable="d"
-        Title="Xalyus Updater" AllowsTransparency="True" Background="Transparent" Height="310" Width="549" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+        Title="Xalyus Updater" Loaded="Window_Loaded" AllowsTransparency="True" Background="Transparent" Height="310" Width="549" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
 
     <WindowChrome.WindowChrome>
         <WindowChrome ResizeBorderThickness="10" CaptionHeight="25"/>
@@ -43,6 +43,69 @@
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter TargetName="border" Property="Background" Value="Red" />
                                 <Setter Property="Foreground" Value="DarkRed" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <SolidColorBrush x:Key="ProgressBar.Progress" Color="#FF06B025"/>
+        <SolidColorBrush x:Key="ProgressBar.Background" Color="#FFE6E6E6"/>
+        <SolidColorBrush x:Key="ProgressBar.Border" Color="#FFBCBCBC"/>
+        <Style x:Key="RoundedProgressBar" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Foreground" Value="{StaticResource ProgressBar.Progress}"/>
+            <Setter Property="Background" Value="{StaticResource ProgressBar.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource ProgressBar.Border}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <Grid x:Name="TemplateRoot">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Determinate"/>
+                                    <VisualState x:Name="Indeterminate">
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25"/>
+                                                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                                <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5"/>
+                                                <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
+                                                <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5"/>
+                                            </PointAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border CornerRadius="5" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"/>
+                            <Rectangle x:Name="PART_Track"/>
+                            <Grid x:Name="PART_Indicator" ClipToBounds="true" HorizontalAlignment="Left">
+                                <Rectangle RadiusX="5" RadiusY="5" x:Name="Indicator" Fill="{TemplateBinding Foreground}"/>
+                                <Rectangle RadiusX="5" RadiusY="5" x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5">
+                                    <Rectangle.RenderTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform/>
+                                            <SkewTransform/>
+                                            <RotateTransform/>
+                                            <TranslateTransform/>
+                                        </TransformGroup>
+                                    </Rectangle.RenderTransform>
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="Orientation" Value="Vertical">
+                                <Setter Property="LayoutTransform" TargetName="TemplateRoot">
+                                    <Setter.Value>
+                                        <RotateTransform Angle="-90"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsIndeterminate" Value="true">
+                                <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -115,8 +178,8 @@
 
                         <Image Grid.Column="0" Margin="15" Source="\Resources\Xalyus Updater.png"/>
                         <StackPanel Margin="10 15 0 0" Grid.Column="1">
-                            <TextBlock FontWeight="Bold" FontSize="20" Foreground="White" Text="Gavilya"/>
-                            <TextBlock FontSize="15" Foreground="White" Text="Gavilya"/>
+                            <TextBlock x:Name="TitleTxt" FontWeight="Bold" FontSize="20" Foreground="White" Text="Gavilya"/>
+                            <TextBlock x:Name="DescriptionTxt" FontSize="15" TextWrapping="Wrap" Foreground="White" Text="Gavilya"/>
                         </StackPanel>
                     </Grid>
                 </Border>
@@ -125,23 +188,23 @@
                     <Grid>
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10 15 0 0" Grid.Column="1">
                             <TextBlock TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="White" Text="Download in progress"/>
-                            <TextBlock Margin="0 0 0 10" TextAlignment="Center" FontSize="15" Foreground="White" Text="0%"/>
-                            <ProgressBar BorderThickness="0" Height="10" Width="452" Background="#FF414157">
-                                <ProgressBar.Foreground>
-                                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                        <LinearGradientBrush.RelativeTransform>
-                                            <TransformGroup>
-                                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                <RotateTransform Angle="-90" CenterY="0.5" CenterX="0.5"/>
-                                                <TranslateTransform/>
-                                            </TransformGroup>
-                                        </LinearGradientBrush.RelativeTransform>
-                                        <GradientStop Color="#6458FF" Offset="0"/>
-                                        <GradientStop Color="DodgerBlue" Offset="1"/>
-                                    </LinearGradientBrush>
-                                </ProgressBar.Foreground>
-                            </ProgressBar>
+                            <TextBlock x:Name="ProgressTxt" Margin="0 0 0 10" TextAlignment="Center" FontSize="15" Foreground="White" Text="0%"/>
+                            <ProgressBar x:Name="Pgb" Style="{DynamicResource RoundedProgressBar}" BorderThickness="0" Height="10" Width="452" Background="#FF414157">
+                                    <ProgressBar.Foreground>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <LinearGradientBrush.RelativeTransform>
+                                                <TransformGroup>
+                                                    <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                                    <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                                    <RotateTransform Angle="-90" CenterY="0.5" CenterX="0.5"/>
+                                                    <TranslateTransform/>
+                                                </TransformGroup>
+                                            </LinearGradientBrush.RelativeTransform>
+                                            <GradientStop Color="#6458FF" Offset="0"/>
+                                            <GradientStop Color="DodgerBlue" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </ProgressBar.Foreground>
+                                </ProgressBar>
                         </StackPanel>
                     </Grid>
                 </Border>
