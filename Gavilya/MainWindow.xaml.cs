@@ -61,7 +61,6 @@ namespace Gavilya
             LoadPage(); // Load the button on the button corresponding to the active page
             new GameSaver().Load(); // Load the .gav file in the Definitions class
             LoadGames();
-            new About().Show();
         }
 
         private void LoadGames()

@@ -83,7 +83,7 @@
 
 			<Grid Grid.Row="1" Grid.ColumnSpan="3">
 				<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-					<Image Source="/Resources/Gavilya.png" Name="Logo" Width="100"/>
+					<Image Source="/Gavilya.ico" Name="Logo" Width="100"/>
 					<TextBlock TextAlignment="Center" Text="{x:Static lang:Resources.AppName}" Foreground="White" FontWeight="Bold" FontSize="17"/>
 					<TextBlock Margin="0 0 0 10" x:Name="VersionTxt" TextAlignment="Center" Text="" Foreground="White" FontSize="12"/>
 					<Button Name="UpdateBtn" Click="UpdateBtn_Click" Cursor="Hand" Padding="5" FontSize="14" Style="{StaticResource RegularButton}" FontWeight="Bold" Background="#FF46465C" Foreground="White">
