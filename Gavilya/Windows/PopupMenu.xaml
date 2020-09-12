@@ -1,0 +1,28 @@
+﻿<Window x:Class="Gavilya.Windows.PopupMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gavilya.Windows"
+        mc:Ignorable="d"
+        Title="PopupMenu" Height="218" Width="405" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Path Panel.ZIndex="10" Data="M16 0L32 32L0 32L16 0Z" Fill="#FF3C3C52" HorizontalAlignment="Center">
+            <Path.Effect>
+                <DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
+            </Path.Effect>
+        </Path>
+        <Border Grid.Row="1" CornerRadius="10" Margin="10 0 10 10" Background="#FF3C3C52">
+            <Border.Effect>
+                <DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
+            </Border.Effect>
+            <Grid>
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

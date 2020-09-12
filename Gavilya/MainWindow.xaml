@@ -7,7 +7,8 @@
 		xmlns:lang="clr-namespace:Gavilya.Properties"
 		xmlns:local="clr-namespace:Gavilya"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
-		mc:Ignorable="d"
+		xmlns:uc="clr-namespace:Gavilya.UserControls"
+        mc:Ignorable="d"
 		Title="Gavilya" Height="610" Width="960" WindowStartupLocation="CenterScreen" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" >
 	
 	<WindowChrome.WindowChrome>
@@ -109,18 +110,18 @@
 
 			<Border Height="50" Style="{StaticResource WindowMainPanelStyle}">
 				<Grid Height="50" VerticalAlignment="Top">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-					</Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
-					<Rectangle Fill="#323248" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+                    <Rectangle Fill="#323248" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
 						<Rectangle.Effect>
 							<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0"/>
 						</Rectangle.Effect>
@@ -148,33 +149,10 @@
 					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="2" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
                     <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
                     <StackPanel Grid.Column="4" Orientation="Horizontal">
-						<Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
-							<Button.ContextMenu>
-								<ContextMenu BorderBrush="#FF323248" BorderThickness="0" Padding="0" Background="#FF323248" x:Name="MainContextMenu" PlacementRectangle="{Binding RelativeSource={RelativeSource Self}}">
-                                    <MenuItem FontSize="13" FontWeight="Bold" Padding="5" Background="#FF323248" Foreground="White" Header="{x:Static lang:Resources.About}"></MenuItem>
-								</ContextMenu>
-							</Button.ContextMenu>
-
-                            <Button.Triggers>
-                                <EventTrigger SourceName="MoreBtn" RoutedEvent="Button.Click">
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="MainContextMenu" Storyboard.TargetProperty="(ContextMenu.IsOpen)">
-                                                <DiscreteObjectKeyFrame KeyTime="0:0:0">
-                                                    <DiscreteObjectKeyFrame.Value>
-                                                        <sys:Boolean>True</sys:Boolean>
-                                                    </DiscreteObjectKeyFrame.Value>
-                                                </DiscreteObjectKeyFrame>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger>
-                            </Button.Triggers>
-                        </Button>
-						<Button Content="&#xe9db;" FontSize="20" Grid.Column="4" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
-					</StackPanel>
-
-					<Button
+                        <Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"></Button>
+                        <Button Content="&#xe9db;" FontSize="20" Grid.Column="4" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
+                    </StackPanel>
+                    <Button
 		Grid.Column="5"
 		Click="Button_Click"
 		RenderOptions.EdgeMode="Aliased"
