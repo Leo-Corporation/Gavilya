@@ -69,7 +69,7 @@ namespace Gavilya.Classes
         /// <summary>
         /// Version of the software (Gavilya).
         /// </summary>
-        public static string Version { get => "1.0.0.2009"; }
+        public static string Version { get => "0.1.0.2009"; }
 
         /// <summary>
         /// The Main <see cref="System.Windows.Window"/> of the App.
@@ -90,5 +90,10 @@ namespace Gavilya.Classes
         /// The games that are added to the <see cref="MainWindow"/>.
         /// </summary>
         public static List<GameInfo> Games = new List<GameInfo>();
+
+        /// <summary>
+        /// The link of the last version <see cref="string"/>.
+        /// </summary>
+        public static string LastVersionLink { get => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Version.txt"; }
     }
 }

@@ -162,4 +162,13 @@
   <data name="EditGame" xml:space="preserve">
     <value>Edit game</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Gavilya</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>Check updates</value>
+  </data>
 </root>
