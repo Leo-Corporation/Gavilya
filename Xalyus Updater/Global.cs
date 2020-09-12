@@ -45,6 +45,11 @@ namespace Xalyus_Updater
         /// <summary>
         /// The directory where the file is downloaded.
         /// </summary>
-        public static string Directory = AppDomain.CurrentDomain.BaseDirectory + @"\UpdatedFiles.zip";
+        public static string Directory = AppDomain.CurrentDomain.BaseDirectory + @"\UpdatedGavilyaFiles.zip";
+
+        /// <summary>
+        /// The displayed message when the update is installed.
+        /// </summary>
+        public static string InstallMessage { get; set; }
     }
 }

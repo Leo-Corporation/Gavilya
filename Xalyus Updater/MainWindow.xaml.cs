@@ -23,7 +23,9 @@ SOFTWARE.
 */
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -51,6 +53,7 @@ namespace Xalyus_Updater
         {
             InitializeComponent();
             InitText(); // Load the text
+            Global.ZIPLink = "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Download.txt";
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -66,16 +69,19 @@ namespace Xalyus_Updater
                     TitleTxt.Text = "Gavilya"; // Title
                     DescriptionTxt.Text = "Gavilya est un simple lanceur de jeu."; // Description
                     DownloadTxt.Text = "Téléchargement en cours"; // Download
+                    Global.InstallMessage = "Installation en cours"; // Installation message
                     break;
                 case "en-US": // If the language is English
                     TitleTxt.Text = "Gavilya"; // Title
                     DescriptionTxt.Text = "Gavilya is a simple a game launcher."; // Description
                     DownloadTxt.Text = "Download in progress"; // Download
+                    Global.InstallMessage = "Installation in progress"; // Intallation message
                     break;
                 default: // Default
                     TitleTxt.Text = "Gavilya"; // Title
                     DescriptionTxt.Text = "Gavilya is a simple a game launcher."; // Description
                     DownloadTxt.Text = "Download in progress"; // Download
+                    Global.InstallMessage = "Installation in progress"; // Intallation message
                     break;
             }
         }
@@ -103,8 +109,28 @@ namespace Xalyus_Updater
         {
             Dispatcher.Invoke(() =>
             {
-                Close(); // Close the window
+                Install();
+                Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe");
+                Environment.Exit(0); // Close the app
             });
+        }
+
+        /// <summary>
+        /// Install the update.
+        /// </summary>
+        private void Install()
+        {
+            DownloadTxt.Text = Global.InstallMessage; // Display the installation message
+
+            try
+            {
+                ZipFile.ExtractToDirectory(Global.Directory, AppDomain.CurrentDomain.BaseDirectory, true); // Extract the files
+                File.Delete(Global.Directory); // Delete the ZIP File
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occured:" + Environment.NewLine + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
+            }
         }
 
         private void Client_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
