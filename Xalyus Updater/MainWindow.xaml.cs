@@ -65,15 +65,17 @@ namespace Xalyus_Updater
                 case "fr-FR": // If the language is French
                     TitleTxt.Text = "Gavilya"; // Title
                     DescriptionTxt.Text = "Gavilya est un simple lanceur de jeu."; // Description
+                    DownloadTxt.Text = "Téléchargement en cours"; // Download
                     break;
                 case "en-US": // If the language is English
                     TitleTxt.Text = "Gavilya"; // Title
                     DescriptionTxt.Text = "Gavilya is a simple a game launcher."; // Description
+                    DownloadTxt.Text = "Download in progress"; // Download
                     break;
-
                 default: // Default
                     TitleTxt.Text = "Gavilya"; // Title
                     DescriptionTxt.Text = "Gavilya is a simple a game launcher."; // Description
+                    DownloadTxt.Text = "Download in progress"; // Download
                     break;
             }
         }
@@ -101,7 +103,7 @@ namespace Xalyus_Updater
         {
             Dispatcher.Invoke(() =>
             {
-                Close();
+                Close(); // Close the window
             });
         }
 
