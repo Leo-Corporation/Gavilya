@@ -171,4 +171,7 @@
   <data name="CheckForUpdates" xml:space="preserve">
     <value>Check updates</value>
   </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>

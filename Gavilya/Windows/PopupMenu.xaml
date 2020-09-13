@@ -4,14 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Gavilya.Windows"
+        xmlns:lang="clr-namespace:Gavilya.Properties"
         mc:Ignorable="d"
-        Title="PopupMenu" Height="218" Width="405" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None">
+        Title="PopupMenu" Height="80" Width="159" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None" Deactivated="Window_Deactivated">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Path Panel.ZIndex="10" Data="M16 0L32 32L0 32L16 0Z" Fill="#FF3C3C52" HorizontalAlignment="Center">
+        <Path Panel.ZIndex="10" Data="M6.5 0L13 13L0 13L6.5 0Z" Fill="#FF3C3C52" HorizontalAlignment="Center">
             <Path.Effect>
                 <DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
             </Path.Effect>
@@ -20,8 +21,30 @@
             <Border.Effect>
                 <DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
             </Border.Effect>
-            <Grid>
+            <Grid VerticalAlignment="Center">
+                <StackPanel>
+                    <Button x:Name="AboutBtn" Click="AboutBtn_Click" Style="{StaticResource RegularButton}" BorderThickness="0" Background="Transparent" Padding="3">
+                        <Grid Margin="5 0 0 0" Width="135">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="0 0 10 0" FontSize="13" Foreground="White" Text="&#xea38;" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" FontWeight="Bold" FontSize="13" Foreground="White" Text="{x:Static lang:Resources.About}" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </Button>
 
+                    <Button x:Name="SettingsBtn" Click="SettingsBtn_Click" Style="{StaticResource RegularButton}" BorderThickness="0" Background="Transparent" Padding="3">
+                        <Grid Margin="5 0 0 0" Width="135">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="0 0 10 0" FontSize="13" Foreground="White" Text="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" FontWeight="Bold" FontSize="13" Foreground="White" Text="{x:Static lang:Resources.Settings}" HorizontalAlignment="Left"/>
+                        </Grid>
+                    </Button>
+                </StackPanel>
             </Grid>
         </Border>
     </Grid>

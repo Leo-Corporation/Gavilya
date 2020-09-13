@@ -111,7 +111,7 @@ namespace Gavilya
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Close(); // Close
+            Environment.Exit(0); // Quit the app
         }
 
         /// <summary>
@@ -287,13 +287,12 @@ namespace Gavilya
         }
 
         PopupMenu PopupMenu = new PopupMenu(); // The menu
-        bool isShown = false; // True if the menu is shown
         private void MoreBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (isShown) // If the menu is visible
+            if (Definitions.IsMenuShown) // If the menu is visible
             {
-                PopupMenu.Hide(); // Hide
-                isShown = false; // Is not shown
+                PopupMenu.Hide(); // Close
+                Definitions.IsMenuShown = false; // Is not shown
             }
             else
             {
@@ -301,7 +300,7 @@ namespace Gavilya
                 PopupMenu.Left = PointToScreen(Mouse.GetPosition(this)).X - PopupMenu.Width / 2; // Calculate the X position
                 PopupMenu.Top = PointToScreen(Mouse.GetPosition(this)).Y + 5; // Calculate the Y position
                 PopupMenu.Show(); // Show
-                isShown = true; // Is shown
+                Definitions.IsMenuShown = true; // Is shown
             }
         }
     }

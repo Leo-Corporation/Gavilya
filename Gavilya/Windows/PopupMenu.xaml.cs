@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -43,6 +44,26 @@ namespace Gavilya.Windows
         public PopupMenu()
         {
             InitializeComponent();
+        }
+
+        private void Window_Deactivated(object sender, EventArgs e)
+        {
+            if (Definitions.IsMenuShown)
+            {
+                Hide(); // Close
+                Definitions.IsMenuShown = false; // Define
+            }
+        }
+
+        private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO
+        }
+
+        private void AboutBtn_Click(object sender, RoutedEventArgs e)
+        {
+            About about = new About(); // About window
+            about.Show(); // Show the About window
         }
     }
 }
