@@ -12,7 +12,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Path Panel.ZIndex="10" Data="M6.5 0L13 13L0 13L6.5 0Z" Fill="#FF3C3C52" HorizontalAlignment="Center">
+        <Path Panel.ZIndex="10" Data="M6 0L12 12L0 12L6 0Z" Fill="#FF3C3C52" HorizontalAlignment="Center">
             <Path.Effect>
                 <DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
             </Path.Effect>

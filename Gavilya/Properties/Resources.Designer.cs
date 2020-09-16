@@ -124,6 +124,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Do you want to continue?.
+        /// </summary>
+        public static string ContinueInstall {
+            get {
+                return ResourceManager.GetString("ContinueInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Edit.
         /// </summary>
         public static string Edit {
@@ -189,6 +198,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Install.
+        /// </summary>
+        public static string Install {
+            get {
+                return ResourceManager.GetString("Install", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Location.
         /// </summary>
         public static string Location {
@@ -230,6 +248,42 @@ namespace Gavilya.Properties {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Updates available.
+        /// </summary>
+        public static string UpdateAv {
+            get {
+                return ResourceManager.GetString("UpdateAv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Updates are available for Gavilya:.
+        /// </summary>
+        public static string UpdateAvMessage {
+            get {
+                return ResourceManager.GetString("UpdateAvMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à No updates available.
+        /// </summary>
+        public static string UpdateUn {
+            get {
+                return ResourceManager.GetString("UpdateUn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Version:.
+        /// </summary>
+        public static string UpdateVersion {
+            get {
+                return ResourceManager.GetString("UpdateVersion", resourceCulture);
             }
         }
         

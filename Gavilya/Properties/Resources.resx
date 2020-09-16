@@ -181,4 +181,22 @@
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="UpdateAv" xml:space="preserve">
+    <value>Updates available</value>
+  </data>
+  <data name="UpdateUn" xml:space="preserve">
+    <value>No updates available</value>
+  </data>
+  <data name="UpdateAvMessage" xml:space="preserve">
+    <value>Updates are available for Gavilya:</value>
+  </data>
+  <data name="UpdateVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Install</value>
+  </data>
+  <data name="ContinueInstall" xml:space="preserve">
+    <value>Do you want to continue?</value>
+  </data>
 </root>

@@ -6,7 +6,7 @@
 		xmlns:local="clr-namespace:Gavilya.Windows"
 		xmlns:lang="clr-namespace:Gavilya.Properties"
 		mc:Ignorable="d"
-		Title="About" Height="265" Width="517" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" WindowStyle="None" Background="Transparent">
+		Title="{x:Static lang:Resources.About}" Height="265" Width="517" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" WindowStyle="None" Background="Transparent">
 	<Window.Resources>
 		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
 			<Setter Property="Foreground" Value="White" />
