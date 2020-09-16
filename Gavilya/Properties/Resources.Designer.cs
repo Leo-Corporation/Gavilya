@@ -315,6 +315,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Xalyus Store doesn&apos;t exist, please reinstall Gavilya..
+        /// </summary>
+        public static string XUDoesNotExist {
+            get {
+                return ResourceManager.GetString("XUDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Your Games.
         /// </summary>
         public static string YourGames {
