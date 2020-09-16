@@ -15,19 +15,19 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_2064C0FFA9D3453AB27B849F9D02B465"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_55BB3CAEF74A471B9825999275E9AD23"
+        "MsmKey" = "8:_8A720E7ED3584A3783A100BACD9A0399"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_8DAF6FA400734AEB9B06289D376D6687"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B4144FC37F8C47AB995E41437F8C1B3F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -82,6 +82,16 @@
         {
             "LaunchCondition"
             {
+                "{A06ECF26-33A3-4562-8140-9B0E340D4F24}:_1D646D10BECE4A7381A58A690CB05B99"
+                {
+                "Name" = "8:.NET Core"
+                "Message" = "8:[VSDNETCOREMSG]"
+                "AllowLaterVersions" = "11:FALSE"
+                "InstallUrl" = "8:https://dotnet.microsoft.com/download/dotnet-core/[NetCoreVerMajorDotMinor]"
+                "IsNETCore" = "11:TRUE"
+                "Architecture" = "2:0"
+                "Runtime" = "2:0"
+                }
             }
         }
         "File"
@@ -173,15 +183,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Gavilya"
-        "ProductCode" = "8:{B1EDCFAD-A09E-493E-B51A-42F2D54E12DD}"
-        "PackageCode" = "8:{EB94B8F8-6C95-4989-8AC5-07DB620A7B65}"
+        "ProductCode" = "8:{EB7899C7-350B-4277-AEC0-6D67ADF941ED}"
+        "PackageCode" = "8:{F18AEB98-0500-45F3-AAA6-CB8A2CB76277}"
         "UpgradeCode" = "8:{89308637-A507-490C-A096-65417A9D3DE6}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:0.1.0"
         "Manufacturer" = "8:Léo Corporation"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:https://www.leocorp.fr/forum/support"
@@ -302,7 +312,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_55BB3CAEF74A471B9825999275E9AD23"
+            "Target" = "8:_B4144FC37F8C47AB995E41437F8C1B3F"
             "Folder" = "8:_F19F56233E1042458BFB59F1A72E61F5"
             "WorkingFolder" = "8:_020D543F3E97413FBC8AA0890D54CB3B"
             "Icon" = "8:_8DAF6FA400734AEB9B06289D376D6687"
@@ -316,7 +326,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_55BB3CAEF74A471B9825999275E9AD23"
+            "Target" = "8:_B4144FC37F8C47AB995E41437F8C1B3F"
             "Folder" = "8:_0A17AA7CEB99484A90166023747A8F64"
             "WorkingFolder" = "8:_020D543F3E97413FBC8AA0890D54CB3B"
             "Icon" = "8:_8DAF6FA400734AEB9B06289D376D6687"
@@ -721,62 +731,6 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_2064C0FFA9D3453AB27B849F9D02B465"
-            {
-            "SourcePath" = "8:..\\Xalyus Updater\\obj\\Release\\netcoreapp3.1\\Xalyus Updater.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_020D543F3E97413FBC8AA0890D54CB3B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{58D88E42-9977-4827-94B4-4F6669B186AF}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_55BB3CAEF74A471B9825999275E9AD23"
-            {
-            "SourcePath" = "8:..\\Gavilya\\obj\\Release\\netcoreapp3.1\\Gavilya.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_020D543F3E97413FBC8AA0890D54CB3B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{594A93A2-5BF0-4747-9B4F-92B287C24102}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_6A3AC48E5EBD4DD3A8A8373F503033B5"
             {
             "SourcePath" = "8:"
@@ -799,6 +753,62 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
+            "OutputProjectGuid" = "8:{594A93A2-5BF0-4747-9B4F-92B287C24102}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8A720E7ED3584A3783A100BACD9A0399"
+            {
+            "SourcePath" = "8:..\\Xalyus Updater\\obj\\Release\\netcoreapp3.1\\Xalyus Updater.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_020D543F3E97413FBC8AA0890D54CB3B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:PublishItems"
+            "OutputProjectGuid" = "8:{58D88E42-9977-4827-94B4-4F6669B186AF}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B4144FC37F8C47AB995E41437F8C1B3F"
+            {
+            "SourcePath" = "8:..\\Gavilya\\obj\\Release\\netcoreapp3.1\\Gavilya.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_020D543F3E97413FBC8AA0890D54CB3B"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:PublishItems"
             "OutputProjectGuid" = "8:{594A93A2-5BF0-4747-9B4F-92B287C24102}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
