@@ -124,6 +124,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Do you want to continue?.
         /// </summary>
         public static string ContinueInstall {
@@ -275,6 +284,15 @@ namespace Gavilya.Properties {
         public static string UpdateUn {
             get {
                 return ResourceManager.GetString("UpdateUn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à No updates are currently available..
+        /// </summary>
+        public static string UpdateUnMessage {
+            get {
+                return ResourceManager.GetString("UpdateUnMessage", resourceCulture);
             }
         }
         

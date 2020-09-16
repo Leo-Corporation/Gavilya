@@ -56,13 +56,13 @@ namespace Gavilya.Windows
         private async void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             string lastVersion = await Update.GetLastVersionAsync(Definitions.LastVersionLink); // Last version of Gavilya
-            if (!Update.IsAvailable(Definitions.Version, lastVersion)) // If updates are available
+            if (Update.IsAvailable(Definitions.Version, lastVersion)) // If updates are available
             {
                 new UpdateAvailable().Show(); // Show the updates available window
             }
             else
             {
-                
+                new NoUpdateAvailable().Show(); // Show the no updates available window
             }
         }
     }

@@ -192,4 +192,10 @@
   <data name="ContinueInstall" xml:space="preserve">
     <value>Voulez-vous continuer ?</value>
   </data>
+  <data name="UpdateUnMessage" xml:space="preserve">
+    <value>Aucunes mises à jour ne sont actuellement disponibles.</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
 </root>

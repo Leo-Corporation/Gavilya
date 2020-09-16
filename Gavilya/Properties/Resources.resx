@@ -199,4 +199,10 @@
   <data name="ContinueInstall" xml:space="preserve">
     <value>Do you want to continue?</value>
   </data>
+  <data name="UpdateUnMessage" xml:space="preserve">
+    <value>No updates are currently available.</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
 </root>
