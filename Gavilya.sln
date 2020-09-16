@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gavilya", "Gavilya\Gavilya.csproj", "{594A93A2-5BF0-4747-9B4F-92B287C24102}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xalyus Updater", "Xalyus Updater\Xalyus Updater.csproj", "{58D88E42-9977-4827-94B4-4F6669B186AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xalyus Updater", "Xalyus Updater\Xalyus Updater.csproj", "{58D88E42-9977-4827-94B4-4F6669B186AF}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GavilyaSetup", "GavilyaSetup\GavilyaSetup.vdproj", "{4CFAA2EF-AAB1-4A87-9906-3926F2DA5EBC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{58D88E42-9977-4827-94B4-4F6669B186AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58D88E42-9977-4827-94B4-4F6669B186AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58D88E42-9977-4827-94B4-4F6669B186AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CFAA2EF-AAB1-4A87-9906-3926F2DA5EBC}.Debug|Any CPU.ActiveCfg = Debug
+		{4CFAA2EF-AAB1-4A87-9906-3926F2DA5EBC}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
