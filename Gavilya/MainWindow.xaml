@@ -36,7 +36,7 @@
 					<ControlTemplate TargetType="{x:Type Button}">
 						<Border
 					x:Name="border"
-					Background="Transparent"
+					Background="{TemplateBinding Background}"
 					BorderThickness="0" CornerRadius="5"
 					SnapsToDevicePixels="true">
 							<ContentPresenter
@@ -156,7 +156,7 @@
 		Grid.Column="5"
 		Click="Button_Click"
 		RenderOptions.EdgeMode="Aliased"
-		Style="{StaticResource TitleBarButtonStyle}">
+		Style="{StaticResource TitleBarButtonStyle}" Background="Transparent">
 						<Path
 			Width="46"
 			Height="32"
@@ -168,7 +168,7 @@
 					<Button
 		Name="maximizeButton"
 		Grid.Column="6"
-		Click="maximizeButton_Click"
+		Click="maximizeButton_Click" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}">
 						<Path
 			Width="46"
@@ -182,7 +182,7 @@
 		Name="restoreButton"
 		Grid.Column="6"
 		Click="restoreButton_Click"
-		Visibility="Collapsed"
+		Visibility="Collapsed" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}">
 						<Path
 			Width="46"

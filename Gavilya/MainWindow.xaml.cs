@@ -233,10 +233,14 @@ namespace Gavilya
                         if (gameCard.CheckBox.IsVisible) // If the check box is visible
                         {
                             gameCard.CheckBox.Visibility = Visibility.Hidden; // The checkbox isn't visible
+                            ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
+                            RemoveShadowElement(SelectBtn); // Remove shadow
                         }
                         else
                         {
                             gameCard.CheckBox.Visibility = Visibility.Visible; // The checkbox is visible
+                            ColorElement(SelectBtn, Definitions.HomeButtonBackColor); // Change the background
+                            ShadowElement(SelectBtn); // Shadow
                         }
                         Definitions.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
                     }
@@ -255,7 +259,7 @@ namespace Gavilya
                     if (uIElement is GameCard) // If the element is a GameCard
                     {
                         GameCard gameCard = (GameCard)uIElement; // Convert the element to a GameCard
-                        if (gameCard.CheckBox.IsChecked ?? true) // If the element is checked
+                        if ((gameCard.CheckBox.IsChecked ?? true) && (gameCard.CheckBox.Visibility == Visibility.Visible)) // If the element is checked
                         {
                             games.Add(gameCard); // Add to the list the GameCard
                         }
