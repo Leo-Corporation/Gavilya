@@ -4,9 +4,9 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:GavilyaSetup"
-"LanguageId" = "3:0"
+"LanguageId" = "3:1033"
 "CodePage" = "3:1252"
-"UILanguageId" = "3:0"
+"UILanguageId" = "3:1033"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
@@ -228,7 +228,7 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:0"
+        "LangId" = "3:1033"
         "RequiresElevation" = "11:FALSE"
         }
         "Product"
@@ -236,7 +236,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Gavilya"
         "ProductCode" = "8:{9330100F-86F4-40AF-9762-4A4692D1F766}"
-        "PackageCode" = "8:{019D9BC3-6C42-41AE-9371-9256233C57AB}"
+        "PackageCode" = "8:{288F99A8-DBCC-4D07-8AE3-BF0F56CF4AF5}"
         "UpgradeCode" = "8:{89308637-A507-490C-A096-65417A9D3DE6}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -253,7 +253,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:https://www.leocorp.fr"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_8DAF6FA400734AEB9B06289D376D6687"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
