@@ -58,12 +58,14 @@ namespace Gavilya.SDK.RAWG
         public int id { get; set; }
         public object score { get; set; }
         public Clip clip { get; set; }
-        //TODO: Tags
+        public List<Tag> tags { get; set; }
         public object user_count { get; set; }
         public int reviews_count { get; set; }
         public string saturated_color { get; set; }
         public string dominant_color { get; set; }
-        //TODO: Short screenshots, Parent Platforms and Genres
+        public List<Short_Screenshot> short_screenshots { get; set; }
+        public List<Parent_Platform> parent_platforms { get; set; }
+        public Genre[] genres { get; set; }
     }
 
     public class Added_By_Status
@@ -91,6 +93,18 @@ namespace Gavilya.SDK.RAWG
         public string full { get; set; }
     }
 
+    public class Genre
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string slug { get; set; }
+    }
+
+    public class Parent_Platform
+    {
+        public Platform platform { get; set; }
+    }
+
     public class Platform
     {
         public int id { get; set; }
@@ -106,10 +120,26 @@ namespace Gavilya.SDK.RAWG
         public float percent { get; set; }
     }
 
+    public class Short_Screenshot
+    {
+        public int id { get; set; }
+        public string image { get; set; }
+    }
+
     public class Store
     {
         public int id { get; set; }
         public string name { get; set; }
         public string slug { get; set; }
+    }
+
+    public class Tag
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string slug { get; set; }
+        public string language { get; set; }
+        public int games_count { get; set; }
+        public string image_background { get; set; }
     }
 }
