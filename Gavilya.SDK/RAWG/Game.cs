@@ -53,7 +53,7 @@ namespace Gavilya.SDK.RAWG
         public int review_text_count { get; set; }
         public int added { get; set; }
         public Added_By_Status added_by_status { get; set; }
-        public int metacritic { get; set; }
+        public int? metacritic { get; set; }
         public int suggestion_count { get; set; }
         public int id { get; set; }
         public object score { get; set; }
