@@ -67,11 +67,8 @@ namespace Gavilya.UserControls
         /// <param name="isFromEdit"><see cref="true"/> if is called from the <see cref="Windows.EditGame"/> window.</param>
         internal void InitializeUI(GameInfo gameInfo, bool isFromEdit = false)
         {
-            // Name of the game
-            Title.Text = gameInfo.Name;
-
-            // Version
-            Version.Text = gameInfo.Version;
+            // Border thickness
+            GameCardBorder.BorderThickness = new Thickness { Bottom = 0, Top = 0, Left = 0, Right = 0 }; // Set the border thickness
 
             // Location
             location = gameInfo.FileLocation;
@@ -116,16 +113,12 @@ namespace Gavilya.UserControls
 
         private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
         {
-            Infos.Background = new SolidColorBrush { Color = Color.FromArgb(100, 50, 50, 72), Opacity = 0.8 }; // Show the background
-            Title.Visibility = Visibility.Visible; // Show
-            Version.Visibility = Visibility.Visible; // Show
+            GameCardBorder.BorderThickness = new Thickness { Bottom = 3, Top = 3, Left = 3, Right = 3 }; // Set the border thickness
         }
 
         private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
         {
-            Infos.Background = new SolidColorBrush { Opacity = 0 }; // Hide the background
-            Title.Visibility = Visibility.Hidden; // Hide
-            Version.Visibility = Visibility.Hidden; // Hide
+            GameCardBorder.BorderThickness = new Thickness { Bottom = 0, Top = 0, Left = 0, Right = 0 }; // Set the border thickness
         }
 
         FavoriteGameCard FavoriteGameCard;
