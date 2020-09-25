@@ -41,7 +41,7 @@ namespace Gavilya.SDK.RAWG
         public string slug { get; set; }
         public string name { get; set; }
         public int playtime { get; set; }
-        public List<Platform> platforms { get; set; }
+        public List<ReturnedPlatforms> platforms { get; set; }
         public List<Store> stores { get; set; }
         public string released { get; set; }
         public bool tba { get; set; }
@@ -101,6 +101,11 @@ namespace Gavilya.SDK.RAWG
     }
 
     public class Parent_Platform
+    {
+        public Platform platform { get; set; }
+    }
+
+    public class ReturnedPlatforms
     {
         public Platform platform { get; set; }
     }
