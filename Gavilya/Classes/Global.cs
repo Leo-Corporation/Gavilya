@@ -21,9 +21,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.SDK.RAWG;
+using LeoCorpLibrary;
+using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Text;
+using System.Text.Json;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
@@ -42,6 +49,41 @@ namespace Gavilya.Classes
         {
             Uri icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.ico"); // Define the path to the icon
             window.Icon = BitmapFrame.Create(icon); // Set the icon
+        }
+
+        /// <summary>
+        /// Gets the game's image.
+        /// </summary>
+        /// <param name="gameName">Name of the game to get the image from.</param>
+        /// <returns>A <seealso cref="Task{string}"/> value.</returns>
+        public static async Task<string> GetCoverImageAsync(string gameName)
+        {
+            var client = new RestClient(); // Create a REST Client
+            client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
+            var request = new RestRequest(Method.GET); // Create a request
+            request.AddQueryParameter("search", gameName); // Config the request
+            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
+
+            int gameID = gameResults.results[0].id; // Get the firts result's id
+
+            if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+            {
+                Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
+            }
+
+            if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{gameID}")) // If the directory doesn't exist
+            {
+                Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}"); // Create the game directory
+            }
+
+            
+            WebClient webClient = new WebClient(); // Create a WebClient
+            await webClient.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
+            webClient.Dispose(); // Release used ressources
+
+            return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the path
         }
     }
 }

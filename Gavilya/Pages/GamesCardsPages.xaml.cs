@@ -59,7 +59,7 @@ namespace Gavilya.Pages
             new AddGame().Show(); // Open the "Add Game" dialog
         }
 
-        private void GamePresenter_Drop(object sender, DragEventArgs e)
+        private async void GamePresenter_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
@@ -84,7 +84,7 @@ namespace Gavilya.Pages
                         Name = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName,
                         LastTimePlayed = 0,
                         TotalTimePlayed = 0,
-                        IconFileLocation = string.Empty,
+                        IconFileLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName),
                         Version = fileVersionInfo.FileVersion // Get the version
                     };
                     Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
