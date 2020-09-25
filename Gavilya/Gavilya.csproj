@@ -25,6 +25,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Gavilya.SDK">
+      <HintPath>Lib\Gavilya.SDK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Fonts\FluentlyIcons.ttf" />
     <Resource Include="Resources\Gavilya.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
