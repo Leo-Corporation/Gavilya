@@ -199,6 +199,9 @@
     <value>Close</value>
   </data>
   <data name="XUDoesNotExist" xml:space="preserve">
-    <value>Xalyus Store doesn't exist, please reinstall Gavilya.</value>
+    <value>Xalyus Updater doesn't exist, please reinstall Gavilya.</value>
+  </data>
+  <data name="CoverSearch" xml:space="preserve">
+    <value>Search for a game cover</value>
   </data>
 </root>

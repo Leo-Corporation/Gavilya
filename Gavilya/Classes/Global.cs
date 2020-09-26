@@ -79,6 +79,10 @@ namespace Gavilya.Classes
                 {
                     Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}"); // Create the game directory
                 }
+                else
+                {
+                    return Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg";
+                }
 
 
                 WebClient webClient = new WebClient(); // Create a WebClient

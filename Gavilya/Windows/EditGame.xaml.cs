@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -106,30 +107,47 @@ namespace Gavilya.Windows
             Close(); // Close the window
         }
 
-        private void BrowseBtn_Click(object sender, RoutedEventArgs e)
+        private async void BrowseBtn_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog(); // OpenFileDialog
             openFileDialog.Filter = "EXE|*.exe"; // Filter
 
             if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
             {
-                nameTxt.Text = openFileDialog.SafeFileName.Remove(openFileDialog.SafeFileName.Length - 4); // Name of the file
-
                 FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(openFileDialog.FileName); // Get the version
 
+                nameTxt.Text = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName; // Name of the file
                 versionTxt.Text = fileVersionInfo.FileVersion; // Version of the file
                 locationTxt.Text = openFileDialog.FileName; // Location of the file
-                if (iconLocation == string.Empty) // If there is no image
+
+                try
                 {
-                    try
+                    iconLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName);
+
+                    if (iconLocation == string.Empty)
                     {
                         Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(openFileDialog.FileName); // Grab the icon of the game
                         GameImg.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
                     }
-                    catch
+                    else
                     {
+                        var bitmap = new BitmapImage(); // Create Bitmap
+                        var stream = File.OpenRead(iconLocation); // Create a stream
 
+                        bitmap.BeginInit(); // Init bitmap
+                        bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmap.StreamSource = stream;
+                        bitmap.EndInit(); // End init bitmap
+                        stream.Close(); // Close the stream
+                        stream.Dispose(); // Release ressources
+                        bitmap.Freeze(); // Freeze bitmap
+
+                        GameImg.Source = bitmap; // Show the image
                     }
+                }
+                catch
+                {
+
                 }
             }
         }
@@ -162,6 +180,11 @@ namespace Gavilya.Windows
                     MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
                 }
             }
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            new SearchGameCover().Show(); // Show the window
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

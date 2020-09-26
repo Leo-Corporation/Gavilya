@@ -201,4 +201,7 @@
   <data name="XUDoesNotExist" xml:space="preserve">
     <value>Xalyus Updater n'existe pas, veuillez réinstaller Gavilya.</value>
   </data>
+  <data name="CoverSearch" xml:space="preserve">
+    <value>Rechercher une couverture de jeu</value>
+  </data>
 </root>

@@ -142,6 +142,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Search for a game cover.
+        /// </summary>
+        public static string CoverSearch {
+            get {
+                return ResourceManager.GetString("CoverSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Edit.
         /// </summary>
         public static string Edit {
@@ -315,7 +324,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Xalyus Store doesn&apos;t exist, please reinstall Gavilya..
+        ///   Recherche une chaîne localisée semblable à Xalyus Updater doesn&apos;t exist, please reinstall Gavilya..
         /// </summary>
         public static string XUDoesNotExist {
             get {
