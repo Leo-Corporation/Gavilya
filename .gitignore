@@ -10,6 +10,10 @@
 *.userosscache
 *.sln.docstates
 
+# Gavilya.Setup
+/Gavilya.Setup/Files/
+/Gavilya.Setup/Output/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
