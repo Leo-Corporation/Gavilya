@@ -66,24 +66,31 @@ namespace Gavilya.Classes
 
             var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
 
-            int gameID = gameResults.results[0].id; // Get the firts result's id
-
-            if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+            if (gameResults.results.Count > 0) // If there is results
             {
-                Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
-            }
+                int gameID = gameResults.results[0].id; // Get the firts result's id
 
-            if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{gameID}")) // If the directory doesn't exist
+                if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+                {
+                    Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
+                }
+
+                if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{gameID}")) // If the directory doesn't exist
+                {
+                    Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}"); // Create the game directory
+                }
+
+
+                WebClient webClient = new WebClient(); // Create a WebClient
+                await webClient.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
+                webClient.Dispose(); // Release used ressources
+
+                return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the path
+            }
+            else // If there isn't any results
             {
-                Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}"); // Create the game directory
+                return string.Empty; // Empty means that Gavilya will use the executable icon
             }
-
-            
-            WebClient webClient = new WebClient(); // Create a WebClient
-            await webClient.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
-            webClient.Dispose(); // Release used ressources
-
-            return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the path
         }
     }
 }
