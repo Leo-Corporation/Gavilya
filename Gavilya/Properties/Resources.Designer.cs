@@ -196,11 +196,29 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Card vue.
+        /// </summary>
+        public static string GameCard {
+            get {
+                return ResourceManager.GetString("GameCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Please complete the game&apos;s information..
         /// </summary>
         public static string GameFieldsEmpty {
             get {
                 return ResourceManager.GetString("GameFieldsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à List vue.
+        /// </summary>
+        public static string GameList {
+            get {
+                return ResourceManager.GetString("GameList", resourceCulture);
             }
         }
         
@@ -311,6 +329,15 @@ namespace Gavilya.Properties {
         public static string RAWGPowered {
             get {
                 return ResourceManager.GetString("RAWGPowered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Games recently played.
+        /// </summary>
+        public static string RecentGames {
+            get {
+                return ResourceManager.GetString("RecentGames", resourceCulture);
             }
         }
         

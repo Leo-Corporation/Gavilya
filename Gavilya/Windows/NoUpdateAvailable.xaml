@@ -94,6 +94,10 @@
                                 <TextBlock Margin="0 0 10 0" Foreground="White" Text="&#xe9d8;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <TextBlock Foreground="White" Text="{x:Static lang:Resources.Close}" FontSize="13" FontWeight="Bold"/>
                             </StackPanel>
+
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Close}" Background="#FF323248" Foreground="White"/>
+                            </Button.ToolTip>
                         </Button>
                     </StackPanel>
 

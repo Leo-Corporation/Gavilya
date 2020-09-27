@@ -45,6 +45,7 @@ namespace Gavilya.UserControls
         {
             InitializeComponent();
             GameName.Text = gameName; // Put the name of the game
+            GameNameToolTip.Content = gameName; // Set the name of the game in the tool tip
             Id = id; // Define the Game Id
         }
 

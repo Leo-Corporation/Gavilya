@@ -238,4 +238,13 @@
   <data name="SelectGames" xml:space="preserve">
     <value>Select games</value>
   </data>
+  <data name="RecentGames" xml:space="preserve">
+    <value>Games recently played</value>
+  </data>
+  <data name="GameList" xml:space="preserve">
+    <value>List vue</value>
+  </data>
+  <data name="GameCard" xml:space="preserve">
+    <value>Card vue</value>
+  </data>
 </root>

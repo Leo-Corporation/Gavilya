@@ -97,12 +97,20 @@
                                 <TextBlock Margin="0 0 10 0" Foreground="White" Text="&#xe9ea;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <TextBlock Foreground="White" Text="{x:Static lang:Resources.Install}" FontSize="13" FontWeight="Bold"/>
                             </StackPanel>
+
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Install}" Background="#FF323248" Foreground="White"/>
+                            </Button.ToolTip>
                         </Button>
                         <Button Name="CancelBtn" Click="CancelBtn_Click" Style="{StaticResource RegularButton}" Background="#FF46465C" Padding="5">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0 0 10 0" Foreground="White" Text="&#xe9d8;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <TextBlock Foreground="White" Text="{x:Static lang:Resources.Cancel}" FontSize="13" FontWeight="Bold"/>
                             </StackPanel>
+
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#FF323248" Foreground="White"/>
+                            </Button.ToolTip>
                         </Button>
                     </StackPanel>
                     

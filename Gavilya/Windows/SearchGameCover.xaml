@@ -114,7 +114,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Fill="#FF3C3C52" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+                <Rectangle Fill="#FF28283E" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0"/>
                     </Rectangle.Effect>
@@ -181,7 +181,7 @@
                     </Grid.ColumnDefinitions>
                     
                     <StackPanel Margin="5" Orientation="Horizontal">
-                        <TextBox FontSize="14" FontWeight="Bold" x:Name="GameSearchName" BorderThickness="2" Width="200" Style="{StaticResource RegularTextBox}" Background="#FF323248" BorderBrush="#FF64647A" Foreground="White" SelectionBrush="#FF505066"/>
+                        <TextBox FontSize="14" FontWeight="Bold" x:Name="GameSearchName" BorderThickness="2" Width="240" Style="{StaticResource RegularTextBox}" Background="#FF323248" BorderBrush="#FF64647A" Foreground="White" SelectionBrush="#FF505066"/>
                         <Button Click="Button_Click" Padding="5" Width="30" FontSize="13" Margin="10 0 0 0" Style="{StaticResource RegularButton}" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xead9;" Background="#FF46465C" Foreground="White">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.Search}" Background="#FF323248" Foreground="White"/>

@@ -229,9 +229,21 @@
 							<DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.595"/>
 						</Border.Effect>
 						<StackPanel VerticalAlignment="Center" Orientation="Vertical">
-							<Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xea17;" Background="#FF5A5A70" FontSize="19" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons"/>
-							<Button Name="RecentButton" Click="RecentButton_Click" Content="&#xea2c;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons"/>
-							<Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons"/>
+                            <Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xea17;" Background="#FF5A5A70" FontSize="19" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.GameCard}" Background="#FF323248" Foreground="White"/>
+                                </Button.ToolTip>
+                            </Button>
+                            <Button Name="RecentButton" Click="RecentButton_Click" Content="&#xea2c;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#FF323248" Foreground="White"/>
+                                </Button.ToolTip>
+                            </Button>
+                            <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.GameList}" Background="#FF323248" Foreground="White"/>
+                                </Button.ToolTip>
+                            </Button>
 						</StackPanel>
 					</Border>
 					<Grid Grid.Column="2">

@@ -231,4 +231,13 @@
   <data name="SelectGames" xml:space="preserve">
     <value>Sélectionner des jeux</value>
   </data>
+  <data name="RecentGames" xml:space="preserve">
+    <value>Jeux récemment joués</value>
+  </data>
+  <data name="GameList" xml:space="preserve">
+    <value>Mode liste</value>
+  </data>
+  <data name="GameCard" xml:space="preserve">
+    <value>Mode carte</value>
+  </data>
 </root>
