@@ -146,10 +146,22 @@
 						</TextBlock.Style>
 					</TextBlock>
 
-					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="2" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
-                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"/>
+                    <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="2" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#FF323248" Foreground="White"/>
+                        </Button.ToolTip>
+                    </Button>
+                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.Delete}" Background="#FF323248" Foreground="White"/>
+                        </Button.ToolTip>
+                    </Button>
                     <StackPanel Grid.Column="4" Orientation="Horizontal">
-                        <Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent"></Button>
+                        <Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.More}" Background="#FF323248" Foreground="White"/>
+                            </Button.ToolTip>
+                        </Button>
                         <Button Content="&#xe9db;" FontSize="20" Grid.Column="4" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
                     </StackPanel>
                     <Button

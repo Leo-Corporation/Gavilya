@@ -47,7 +47,8 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class EditGame : Window
     {
-        string fileLocation, iconLocation; // File (icon) location
+        string fileLocation; // File location
+        public string iconLocation; // Icon location
         GameCard GameCard; // The game card
         /// <summary>
         /// Window where the user can edit a game
@@ -184,7 +185,7 @@ namespace Gavilya.Windows
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            new SearchGameCover().Show(); // Show the window
+            new SearchGameCover(this).Show(); // Show the window
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)

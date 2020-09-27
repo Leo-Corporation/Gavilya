@@ -47,7 +47,7 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class AddGame : Window
     {
-        string GameIconLocation = string.Empty;
+        public string GameIconLocation = string.Empty;
         public AddGame()
         {
             InitializeComponent();
@@ -175,7 +175,7 @@ namespace Gavilya.Windows
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            new SearchGameCover().Show(); // Show the window
+            new SearchGameCover(this).Show(); // Show the window
         }
     }
 }

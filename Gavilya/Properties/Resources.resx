@@ -211,4 +211,31 @@
   <data name="CoverSearch" xml:space="preserve">
     <value>Search for a game cover</value>
   </data>
+  <data name="SelectGame" xml:space="preserve">
+    <value>Select a game</value>
+  </data>
+  <data name="RAWGPowered" xml:space="preserve">
+    <value>Powered by RAWG.io</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="PlayTo" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="PlayLowerCase" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="FavoriteButton" xml:space="preserve">
+    <value>Favorite/Unfavorite</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete selected game(s)</value>
+  </data>
+  <data name="SelectGames" xml:space="preserve">
+    <value>Select games</value>
+  </data>
 </root>

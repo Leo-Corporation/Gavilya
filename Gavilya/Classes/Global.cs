@@ -96,5 +96,40 @@ namespace Gavilya.Classes
                 return string.Empty; // Empty means that Gavilya will use the executable icon
             }
         }
+
+        /// <summary>
+        /// Gets the game's image.
+        /// </summary>
+        /// <param name="id">The game's Id.</param>
+        /// <returns>A <see cref="Task{string}"/> value.</returns>
+        public static async Task<string> GetCoverImageAsync(int id)
+        {
+            var client = new RestClient(); // Create a REST Client
+            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+            var request = new RestRequest(Method.GET); // Create a request
+            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+            if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+            {
+                Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
+            }
+
+            if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{id}")) // If the directory doesn't exist
+            {
+                Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}"); // Create the game directory
+            }
+            else
+            {
+                return Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img.jpg";
+            }
+
+            WebClient webClient = new WebClient(); // Create a web client
+            await webClient.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"); // Download the "background_image"
+            webClient.Dispose(); // Release all used ressources
+
+            return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"; // Return the result
+        }
     }
 }

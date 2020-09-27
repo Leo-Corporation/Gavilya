@@ -21,11 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
 using Gavilya.SDK.RAWG;
 using Gavilya.UserControls;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Windows;
@@ -44,9 +46,18 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class SearchGameCover : Window
     {
-        public SearchGameCover()
+        AddGame addGame1 = null;
+        EditGame editGame1 = null;
+        public SearchGameCover(AddGame addGame)
         {
             InitializeComponent();
+            addGame1 = addGame;
+        }
+
+        public SearchGameCover(EditGame editGame)
+        {
+            InitializeComponent();
+            editGame1 = editGame;
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -74,6 +85,71 @@ namespace Gavilya.Windows
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             Close(); // Close the window
+        }
+
+        private async void SelectGame_Click(object sender, RoutedEventArgs e)
+        {
+            List<GameResult> gameResults = new List<GameResult>(); // Results
+            List<GameResult> selectedGameResults = new List<GameResult>(); // Results
+            GameResult selectedGame; // The selected GameResult
+
+            foreach (UIElement uIElement in ResultPresenter.Children) // For each result
+            {
+                if (uIElement is GameResult) // Check if the element is a GameResult
+                {
+                    gameResults.Add((GameResult)uIElement); // Add the result
+                }
+            }
+
+            foreach (GameResult gameResult in gameResults)
+            {
+                if (gameResult.GameCheck.IsChecked ?? true) // If the game is selected
+                {
+                    selectedGameResults.Add(gameResult); // Add the game
+                }
+            }
+
+            if (selectedGameResults.Count > 0)
+            {
+                selectedGame = selectedGameResults[0]; // Define the selected game
+                string bgImage = await Global.GetCoverImageAsync(selectedGame.Id); // File name
+                LoadImageInWindow(bgImage); // Load the image
+                Close();
+            }
+        }
+
+        private void LoadImageInWindow(string fileName)
+        {
+            if (addGame1 != null) // If is from AddGame
+            {
+                var bitmap = new BitmapImage(); // Create a bitmapo
+                var stream = File.OpenRead(fileName); // Open the image
+
+                bitmap.BeginInit(); // Init bitmap
+                bitmap.CacheOption = BitmapCacheOption.OnLoad; // Config bitmap
+                bitmap.StreamSource = stream; // Define the data
+                bitmap.EndInit(); // End init
+                stream.Close(); // Close streame
+                stream.Dispose(); // Releasen stream's used ressources
+                bitmap.Freeze(); // Freeze the bitmap
+                addGame1.GameImg.Source = bitmap; // Set the image source
+                addGame1.GameIconLocation = fileName; // Set the icon location
+            }
+            else // If is from EditGame
+            {
+                var bitmap = new BitmapImage(); // Create a bitmapo
+                var stream = File.OpenRead(fileName); // Open the image
+
+                bitmap.BeginInit(); // Init bitmap
+                bitmap.CacheOption = BitmapCacheOption.OnLoad; // Config bitmap
+                bitmap.StreamSource = stream; // Define the data
+                bitmap.EndInit(); // End init
+                stream.Close(); // Close streame
+                stream.Dispose(); // Releasen stream's used ressources
+                bitmap.Freeze(); // Freeze the bitmap
+                editGame1.GameImg.Source = bitmap; // Set the image source
+                editGame1.iconLocation = fileName; // Set the icon location
+            }
         }
     }
 }

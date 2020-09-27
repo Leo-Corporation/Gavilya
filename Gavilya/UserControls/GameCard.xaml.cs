@@ -67,6 +67,10 @@ namespace Gavilya.UserControls
         /// <param name="isFromEdit"><see cref="true"/> if is called from the <see cref="Windows.EditGame"/> window.</param>
         internal void InitializeUI(GameInfo gameInfo, bool isFromEdit = false)
         {
+            // Tooltip
+            PlayToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name;
+            GameToolTipName.Content = gameInfo.Name;
+
             // Border thickness
             GameCardBorder.BorderThickness = new Thickness { Bottom = 0, Top = 0, Left = 0, Right = 0 }; // Set the border thickness
 

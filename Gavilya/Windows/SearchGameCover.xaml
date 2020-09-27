@@ -171,18 +171,44 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Margin="10" Grid.Row="0" Orientation="Horizontal">
-                    <TextBox FontSize="14" FontWeight="Bold" x:Name="GameSearchName" BorderThickness="2" Width="200" Style="{StaticResource RegularTextBox}" Background="#FF323248" BorderBrush="#FF64647A" Foreground="White" SelectionBrush="#FF505066"/>
-                    <Button Click="Button_Click" Padding="5" Width="30" FontSize="13" Margin="10 0 0 0" Style="{StaticResource RegularButton}" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xead9;" Background="#FF46465C" Foreground="White"/>
-                </StackPanel>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <StackPanel Margin="5" Orientation="Horizontal">
+                        <TextBox FontSize="14" FontWeight="Bold" x:Name="GameSearchName" BorderThickness="2" Width="200" Style="{StaticResource RegularTextBox}" Background="#FF323248" BorderBrush="#FF64647A" Foreground="White" SelectionBrush="#FF505066"/>
+                        <Button Click="Button_Click" Padding="5" Width="30" FontSize="13" Margin="10 0 0 0" Style="{StaticResource RegularButton}" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xead9;" Background="#FF46465C" Foreground="White">
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Search}" Background="#FF323248" Foreground="White"/>
+                            </Button.ToolTip>
+                        </Button>
+                    </StackPanel>
+
+                    <TextBlock Margin="0 0 10 0" Padding="5" FontStyle="Italic" FontSize="13" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{x:Static lang:Resources.RAWGPowered}" Foreground="White" Grid.Column="1"/>
+                </Grid>
 
                 <ScrollViewer Template="{DynamicResource ScrollViewerTemplate1}" Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
-                    <StackPanel Name="ResultPresenter" Grid.Row="1">
-
-                    </StackPanel>
+                    <StackPanel Name="ResultPresenter" Grid.Row="1"></StackPanel>
                 </ScrollViewer>
+
+                <StackPanel Margin="5" Grid.Row="2">
+                    <Button Name="SelectGame" Click="SelectGame_Click" HorizontalAlignment="Center" Padding="5" Style="{StaticResource RegularButton}" Foreground="White" Background="#FF46465C" FontWeight="Bold" FontSize="14">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="0 0 5 0" FontWeight="Regular" Text="&#xea72;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.SelectGame}" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.SelectGame}" Background="#FF323248" Foreground="White"/>
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+                
             </Grid>
         </Grid>
     </Border>

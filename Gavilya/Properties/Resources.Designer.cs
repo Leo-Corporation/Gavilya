@@ -151,6 +151,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Delete selected game(s).
+        /// </summary>
+        public static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Edit.
         /// </summary>
         public static string Edit {
@@ -165,6 +174,15 @@ namespace Gavilya.Properties {
         public static string EditGame {
             get {
                 return ResourceManager.GetString("EditGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Favorite/Unfavorite.
+        /// </summary>
+        public static string FavoriteButton {
+            get {
+                return ResourceManager.GetString("FavoriteButton", resourceCulture);
             }
         }
         
@@ -243,6 +261,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à More.
+        /// </summary>
+        public static string More {
+            get {
+                return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Name.
         /// </summary>
         public static string Name {
@@ -257,6 +284,60 @@ namespace Gavilya.Properties {
         public static string Play {
             get {
                 return ResourceManager.GetString("Play", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Play.
+        /// </summary>
+        public static string PlayLowerCase {
+            get {
+                return ResourceManager.GetString("PlayLowerCase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à  .
+        /// </summary>
+        public static string PlayTo {
+            get {
+                return ResourceManager.GetString("PlayTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Powered by RAWG.io.
+        /// </summary>
+        public static string RAWGPowered {
+            get {
+                return ResourceManager.GetString("RAWGPowered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Search.
+        /// </summary>
+        public static string Search {
+            get {
+                return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Select a game.
+        /// </summary>
+        public static string SelectGame {
+            get {
+                return ResourceManager.GetString("SelectGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Select games.
+        /// </summary>
+        public static string SelectGames {
+            get {
+                return ResourceManager.GetString("SelectGames", resourceCulture);
             }
         }
         

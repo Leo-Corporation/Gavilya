@@ -17,7 +17,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <CheckBox Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="#FF46465C" Cursor="Hand"/>
+                    <CheckBox x:FieldModifier="public"  Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="#FF46465C" Cursor="Hand"/>
                 </Grid>
                 <TextBlock Margin="10 0 0 0" x:Name="GameName" FontSize="20" FontWeight="Bold" Text="" Foreground="White"/>
             </StackPanel>

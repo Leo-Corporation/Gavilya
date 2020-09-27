@@ -60,6 +60,10 @@ namespace Gavilya.UserControls
         /// <param name="gameInfo"></param>
         private void InitUI(GameInfo gameInfo)
         {
+            // Tooltip
+            GameNameToolTip.Content = gameInfo.Name;
+            ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name;
+
             if (gameInfo.IconFileLocation != string.Empty) // If there is an image
             {
                 GameIcon.Source = new BitmapImage(new Uri(gameInfo.IconFileLocation)); // Put the icon of the game

@@ -32,6 +32,10 @@
                             <TextBlock Grid.Column="0" Margin="0 0 10 0" FontSize="13" Foreground="White" Text="&#xea38;" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="1" FontWeight="Bold" FontSize="13" Foreground="White" Text="{x:Static lang:Resources.About}" HorizontalAlignment="Left"/>
                         </Grid>
+
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.About}" Background="#FF323248" Foreground="White"/>
+                        </Button.ToolTip>
                     </Button>
 
                     <Button x:Name="SettingsBtn" Click="SettingsBtn_Click" Style="{StaticResource RegularButton}" BorderThickness="0" Background="Transparent" Padding="3">
@@ -43,6 +47,10 @@
                             <TextBlock Grid.Column="0" Margin="0 0 10 0" FontSize="13" Foreground="White" Text="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock Grid.Column="1" FontWeight="Bold" FontSize="13" Foreground="White" Text="{x:Static lang:Resources.Settings}" HorizontalAlignment="Left"/>
                         </Grid>
+
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#FF323248" Foreground="White"/>
+                        </Button.ToolTip>
                     </Button>
                 </StackPanel>
             </Grid>
