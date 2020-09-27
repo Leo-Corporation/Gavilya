@@ -53,14 +53,25 @@ namespace Gavilya
         public MainWindow()
         {
             InitializeComponent();
+
             Title = Properties.Resources.MainWindowTitle;
             Global.SetWindowIcon(this); // Set the icon of the window
+
             GamesCardsPages gamesCardsPages = new GamesCardsPages(); // GamesCardsPage
             Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
             PageContent.Content = gamesCardsPages; // Show the page
+
+            RecentGamesPage recentGamesPage = new RecentGamesPage(); // RecentGamesPage
+            Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
+
+            GamesListPage gamesListPage = new GamesListPage(); // GamesListPage
+            Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
+
             Definitions.MainWindow = this; // Define the Main Window
+
             LoadPage(); // Load the button on the button corresponding to the active page
             new GameSaver().Load(); // Load the .gav file in the Definitions class
+
             LoadGames();
         }
 
@@ -145,6 +156,8 @@ namespace Gavilya
             ShadowElement(AppCardButton); // Put a shadow under the button
 
             ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
+
+            PageContent.Content = Definitions.GamesCardsPages; // Show the page
         }
 
         /// <summary>
@@ -206,6 +219,8 @@ namespace Gavilya
             ShadowElement(RecentButton); // Put a shadow under the control
 
             ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
+
+            PageContent.Content = Definitions.RecentGamesPage; // Show the page
         }
 
         private void AppListButton_Click(object sender, RoutedEventArgs e)
@@ -219,6 +234,8 @@ namespace Gavilya
             ShadowElement(AppListButton); // Put a shadow under the control
 
             ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
+
+            PageContent.Content = Definitions.GamesListPage; // Show the page
         }
 
         private void SelectBtn_Click(object sender, RoutedEventArgs e)

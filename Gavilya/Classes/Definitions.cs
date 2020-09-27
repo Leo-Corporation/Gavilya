@@ -69,7 +69,7 @@ namespace Gavilya.Classes
         /// <summary>
         /// Version of the software (Gavilya).
         /// </summary>
-        public static string Version { get => "0.1.0.2009"; }
+        public static string Version { get => "0.2.0.2010"; }
 
         /// <summary>
         /// The Main <see cref="System.Windows.Window"/> of the App.
@@ -80,6 +80,16 @@ namespace Gavilya.Classes
         /// The <see cref="Pages.GamesCardsPages"/> of the <see cref="MainWindow"/>.
         /// </summary>
         public static GamesCardsPages GamesCardsPages { get; set; }
+
+        /// <summary>
+        /// The <see cref="Pages.GamesListPage"/> of the <see cref="MainWindow"/>.
+        /// </summary>
+        public static GamesListPage GamesListPage { get; set; }
+
+        /// <summary>
+        /// The <see cref="Pages.RecentGamesPage"/> of the <see cref="MainWindow"/>.
+        /// </summary>
+        public static RecentGamesPage RecentGamesPage { get; set; }
 
         /// <summary>
         /// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.
