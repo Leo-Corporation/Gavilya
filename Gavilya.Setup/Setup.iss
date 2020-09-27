@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Gavilya"
-#define MyAppVersion "0.1.0.2009"
+#define MyAppVersion "0.2.0.2010"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://www.leocorp.fr/"
 #define MyAppExeName "Gavilya.exe"
@@ -25,7 +25,7 @@ DisableProgramGroupPage=yes
 UsedUserAreasWarning=no
 LicenseFile=C:\Users\Léo Peyronnet\source\repos\Gavilya\LICENSE
 ; Uncomment the following line to run in non administrative install mode (install for current user only.)
-PrivilegesRequired=admin
+;PrivilegesRequired=admin
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Output
 OutputBaseFilename=GavilyaSetup
