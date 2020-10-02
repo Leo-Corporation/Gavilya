@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Pages;
 using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
@@ -158,6 +159,11 @@ namespace Gavilya.UserControls
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             new EditGame(this).Show(); // Show the EditGame window
+        }
+
+        private void GameCardBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Definitions.MainWindow.PageContent.Content = new GameInfoPage(GameInfo);
         }
     }
 }

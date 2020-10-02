@@ -261,6 +261,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Last time played:.
+        /// </summary>
+        public static string LastTimePlayed {
+            get {
+                return ResourceManager.GetString("LastTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Location.
         /// </summary>
         public static string Location {

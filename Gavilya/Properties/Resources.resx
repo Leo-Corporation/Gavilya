@@ -247,4 +247,7 @@
   <data name="GameCard" xml:space="preserve">
     <value>Card vue</value>
   </data>
+  <data name="LastTimePlayed" xml:space="preserve">
+    <value>Last time played:</value>
+  </data>
 </root>
