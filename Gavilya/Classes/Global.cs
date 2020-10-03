@@ -131,5 +131,22 @@ namespace Gavilya.Classes
 
             return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"; // Return the result
         }
+
+        /// <summary>
+        /// Gets the descirption of a game from it's ID.
+        /// </summary>
+        /// <param name="id">The id of the game.</param>
+        /// <returns></returns>
+        public static async Task<string> GetGameDescriptionAsync(int id)
+        {
+            var client = new RestClient(); // Create a REST Client
+            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+            var request = new RestRequest(Method.GET); // Create a request
+            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+            return game.description;
+        }
     }
 }

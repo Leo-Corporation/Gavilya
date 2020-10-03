@@ -54,6 +54,8 @@ namespace Gavilya
         {
             InitializeComponent();
 
+            Definitions.GameInfoPage = new GameInfoPage(); // Create the page
+
             Title = Properties.Resources.MainWindowTitle;
             Global.SetWindowIcon(this); // Set the icon of the window
 

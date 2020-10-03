@@ -48,6 +48,8 @@ namespace Gavilya.Windows
     public partial class AddGame : Window
     {
         public string GameIconLocation = string.Empty;
+        public string GameDescription = string.Empty; // The description of the game
+        public int RAWGID = -1;
         public AddGame()
         {
             InitializeComponent();
@@ -156,6 +158,8 @@ namespace Gavilya.Windows
                 gameInfo.Version = versionTxt.Text; // The version of the game
                 gameInfo.IconFileLocation = GameIconLocation; // The location of the icon of the game
                 gameInfo.IsFavorite = false; // The game is not a favorite by default
+                gameInfo.RAWGID = RAWGID; // The RAWG Id of the game
+                gameInfo.Description = GameDescription; // The description of the game
 
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
                 Definitions.Games.Add(gameInfo);

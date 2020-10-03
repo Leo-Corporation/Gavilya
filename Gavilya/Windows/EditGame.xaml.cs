@@ -49,6 +49,8 @@ namespace Gavilya.Windows
     {
         string fileLocation; // File location
         public string iconLocation; // Icon location
+        public int RAWGID = -1; // The Game RAWG Id
+        public string GameDescription = string.Empty; // The description of the game
         GameCard GameCard; // The game card
         /// <summary>
         /// Window where the user can edit a game
@@ -91,7 +93,9 @@ namespace Gavilya.Windows
                 IconFileLocation = iconLocation,
                 IsFavorite = GameCard.GameInfo.IsFavorite,
                 LastTimePlayed = GameCard.GameInfo.LastTimePlayed,
-                TotalTimePlayed = GameCard.GameInfo.TotalTimePlayed
+                TotalTimePlayed = GameCard.GameInfo.TotalTimePlayed,
+                RAWGID = RAWGID,
+                Description = GameDescription
             };
 
             foreach (GameInfo gameInfo in Definitions.Games.ToList()) // For each game

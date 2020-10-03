@@ -110,5 +110,10 @@ namespace Gavilya.Classes
         /// True if the menu is shown
         /// </summary>
         public static bool IsMenuShown { get; set; }
+
+        /// <summary>
+        /// The <see cref="Pages.GameInfoPage"/> of any games.
+        /// </summary>
+        public static GameInfoPage GameInfoPage { get; set; }
     }
 }

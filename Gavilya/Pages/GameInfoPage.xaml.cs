@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using System.Windows;
@@ -43,17 +44,31 @@ namespace Gavilya.Pages
     /// </summary>
     public partial class GameInfoPage : Page
     {
+        GameInfo GameInfo { get; set; }
+
         public GameInfoPage(GameInfo gameInfo)
         {
             InitializeComponent();
+            GameInfo = gameInfo;
             InitializeUI(gameInfo); // Initialize the UI
         }
 
-        private void InitializeUI(GameInfo gameInfo)
+        public GameInfoPage()
         {
+            InitializeComponent();
+        }
+
+        /// <summary>
+        /// Initialize the User Interface of the page.
+        /// </summary>
+        /// <param name="gameInfo">The game to load informations.</param>
+        public void InitializeUI(GameInfo gameInfo)
+        {
+            // Text
             PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
             GameNameTxt.Text = gameInfo.Name; // Set the name of the game
             LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {gameInfo.LastTimePlayed}"; // Last time played
+            DescriptionTxt.Text = gameInfo.Description;
 
             // Icon
             if (gameInfo.IconFileLocation != string.Empty) // If a custom image is used
@@ -75,6 +90,11 @@ namespace Gavilya.Pages
                 System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
                 BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
             }
+        }
+
+        private void PlayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(GameInfo.FileLocation);
         }
     }
 }

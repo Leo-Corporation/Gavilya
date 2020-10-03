@@ -34,6 +34,11 @@ namespace Gavilya.Classes
     public class GameInfo
     {
         /// <summary>
+        /// Description of the game.
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
         /// Name of the game.
         /// </summary>
         public string Name { get; set; }
@@ -54,9 +59,10 @@ namespace Gavilya.Classes
         public string IconFileLocation { get; set; }
 
         /// <summary>
-        /// The icon of the game.
+        /// <para>The RAWG id of the game.</para>
+        /// <para>If the Id is <c>-1</c>, then there is no RAWG id associated.</para>
         /// </summary>
-        //public Image Icon;
+        public int RAWGID { get; set; }
 
         /// <summary>
         /// The last time the game was launched.

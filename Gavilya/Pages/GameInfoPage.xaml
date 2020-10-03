@@ -11,31 +11,44 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
-            <Grid.Background>
-                <ImageBrush x:Name="BackgroundImage" Stretch="UniformToFill" Opacity="0.9"></ImageBrush>
-            </Grid.Background>
-
-            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
                 <Grid.Background>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="#FF3C3C52" Offset="1"/>
-                        <GradientStop Color="#33C8C8C8" Offset="0"/>
-                    </LinearGradientBrush>
+                    <ImageBrush x:Name="BackgroundImage" Stretch="UniformToFill" Opacity="0.9"></ImageBrush>
                 </Grid.Background>
 
-                <StackPanel Margin="0 100 0 0">
-                    <TextBlock Margin="10 10 10 0" Name="GameNameTxt" Foreground="White" FontSize="25" FontWeight="Bold"/>
-                    <TextBlock Margin="10 0 10 10" Name="LastTimePlayedTxt" Foreground="White" FontSize="15"/>
-                    <Button Cursor="Hand" Margin="10 0 0 0" Padding="5" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xeab5;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Center"/>
-                            <TextBlock Margin="10 0 0 0" Text="{x:Static lang:Resources.Play}" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
-                        </StackPanel>
+                <Grid>
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF3C3C52" Offset="0.95"/>
+                            <GradientStop Color="#33C8C8C8" Offset="0"/>
+                        </LinearGradientBrush>
+                    </Grid.Background>
 
-                        <Button.ToolTip>
-                            <ToolTip Name="PlayBtnToolTip" Background="#FF323248" Foreground="White"/>
-                        </Button.ToolTip>
-                    </Button>
+                    <StackPanel Margin="0 100 0 0">
+                        <TextBlock Margin="10 10 10 0" Name="GameNameTxt" Foreground="White" FontSize="25" FontWeight="Bold"/>
+                        <TextBlock Margin="10 0 10 10" Name="LastTimePlayedTxt" Foreground="White" FontSize="15"/>
+                        <Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 0 0" Padding="5" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xeab5;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Center"/>
+                                <TextBlock Margin="10 0 0 0" Text="{x:Static lang:Resources.Play}" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+                            </StackPanel>
+
+                            <Button.ToolTip>
+                                <ToolTip Name="PlayBtnToolTip" Background="#FF323248" Foreground="White"/>
+                            </Button.ToolTip>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <Grid Margin="0 0 0 20" Background="#FF3C3C52" Grid.Row="1">
+                <StackPanel Margin="10">
+                    <TextBlock Margin="1" Text="{x:Static lang:Resources.About}" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                    <TextBlock Name="DescriptionTxt" Foreground="White" TextWrapping="Wrap"/>
                 </StackPanel>
             </Grid>
         </Grid>

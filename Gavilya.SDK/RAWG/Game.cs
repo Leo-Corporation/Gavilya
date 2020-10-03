@@ -40,6 +40,7 @@ namespace Gavilya.SDK.RAWG
     {
         public string slug { get; set; }
         public string name { get; set; }
+        public string description { get; set; }
         public int playtime { get; set; }
         public List<ReturnedPlatforms> platforms { get; set; }
         public List<Store> stores { get; set; }

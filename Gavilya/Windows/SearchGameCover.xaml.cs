@@ -113,12 +113,12 @@ namespace Gavilya.Windows
             {
                 selectedGame = selectedGameResults[0]; // Define the selected game
                 string bgImage = await Global.GetCoverImageAsync(selectedGame.Id); // File name
-                LoadImageInWindow(bgImage); // Load the image
+                LoadImageInWindow(bgImage, selectedGame.Id); // Load the image
                 Close();
             }
         }
 
-        private void LoadImageInWindow(string fileName)
+        private async void LoadImageInWindow(string fileName, int id = -1)
         {
             if (addGame1 != null) // If is from AddGame
             {
@@ -134,6 +134,8 @@ namespace Gavilya.Windows
                 bitmap.Freeze(); // Freeze the bitmap
                 addGame1.GameImg.Source = bitmap; // Set the image source
                 addGame1.GameIconLocation = fileName; // Set the icon location
+                addGame1.RAWGID = id; // Set the game id
+                addGame1.GameDescription = await Global.GetGameDescriptionAsync(id); // Get the game's description
             }
             else // If is from EditGame
             {
@@ -149,6 +151,8 @@ namespace Gavilya.Windows
                 bitmap.Freeze(); // Freeze the bitmap
                 editGame1.GameImg.Source = bitmap; // Set the image source
                 editGame1.iconLocation = fileName; // Set the icon location
+                editGame1.RAWGID = id; // Set the game id
+                editGame1.GameDescription = await Global.GetGameDescriptionAsync(id); // Get the game's description
             }
         }
     }
