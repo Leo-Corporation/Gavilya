@@ -45,10 +45,12 @@ namespace Gavilya.Pages
     public partial class GameInfoPage : Page
     {
         GameInfo GameInfo { get; set; }
+        string gameLocation;
 
         public GameInfoPage(GameInfo gameInfo)
         {
             InitializeComponent();
+
             GameInfo = gameInfo;
             InitializeUI(gameInfo); // Initialize the UI
         }
@@ -64,6 +66,9 @@ namespace Gavilya.Pages
         /// <param name="gameInfo">The game to load informations.</param>
         public void InitializeUI(GameInfo gameInfo)
         {
+            // Var
+            gameLocation = gameInfo.FileLocation;
+
             // Text
             PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
             GameNameTxt.Text = gameInfo.Name; // Set the name of the game
@@ -94,7 +99,10 @@ namespace Gavilya.Pages
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
-            Process.Start(GameInfo.FileLocation);
+            if (File.Exists(gameLocation)) // If the file exist
+            {
+                Process.Start(gameLocation); // Start the game
+            }
         }
     }
 }
