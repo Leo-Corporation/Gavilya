@@ -146,7 +146,7 @@ namespace Gavilya.Classes
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
-            return game.description;
+            return game.description_raw;
         }
     }
 }
