@@ -148,5 +148,23 @@ namespace Gavilya.Classes
 
             return game.description_raw;
         }
+
+        /// <summary>
+        /// Gets the game id from it's name.
+        /// </summary>
+        /// <param name="gameName">The name of the game.</param>
+        /// <returns></returns>
+        public static async Task<int> GetGameId(string gameName)
+        {
+            var client = new RestClient(); // Create a REST Client
+            client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
+            var request = new RestRequest(Method.GET); // Create a request
+            request.AddQueryParameter("search", gameName); // Config the request
+            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
+
+            return gameResults.results[0].id;
+        }
     }
 }
