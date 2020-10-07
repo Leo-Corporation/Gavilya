@@ -77,6 +77,7 @@ namespace Gavilya.Pages
                 for (int i = 0; i < executables.Count; i++) // For each executables (or games)
                 {
                     FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(executables[i]);
+                    int id = await Global.GetGameId(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName);
                     GameInfo gameInfo = new GameInfo // Create a new GameInfo class/object
                     {
                         FileLocation = executables[i],
@@ -85,6 +86,8 @@ namespace Gavilya.Pages
                         LastTimePlayed = 0,
                         TotalTimePlayed = 0,
                         IconFileLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName),
+                        RAWGID = id,
+                        Description = await Global.GetGameDescriptionAsync(id),
                         Version = fileVersionInfo.FileVersion // Get the version
                     };
                     Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
