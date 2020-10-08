@@ -306,6 +306,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Platforms.
+        /// </summary>
+        public static string Platforms {
+            get {
+                return ResourceManager.GetString("Platforms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à PLAY.
         /// </summary>
         public static string Play {

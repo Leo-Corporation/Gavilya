@@ -46,9 +46,19 @@
             </Grid>
 
             <Grid Margin="0 0 0 20" Background="#FF3C3C52" Grid.Row="1">
-                <StackPanel Margin="10">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <StackPanel Grid.Column="0" Margin="10">
                     <TextBlock Margin="1" Text="{x:Static lang:Resources.About}" FontSize="20" FontWeight="Bold" Foreground="White"/>
                     <TextBlock Name="DescriptionTxt" Foreground="White" TextWrapping="Wrap"/>
+                </StackPanel>
+
+                <StackPanel Name="PlatformDisplayer" Grid.Column="1" Margin="10">
+                    <TextBlock Margin="1" Text="{x:Static lang:Resources.Platforms}" FontSize="20" FontWeight="Bold" Foreground="White"/>
                 </StackPanel>
             </Grid>
         </Grid>

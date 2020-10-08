@@ -243,4 +243,7 @@
   <data name="LastTimePlayed" xml:space="preserve">
     <value>Dernière fois joué :</value>
   </data>
+  <data name="Platforms" xml:space="preserve">
+    <value>Platformes</value>
+  </data>
 </root>

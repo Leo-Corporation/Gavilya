@@ -82,9 +82,16 @@ namespace Gavilya.Windows
             }
         }
 
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        private async void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             GameInfo oldGameInfo = GameCard.GameInfo; // Old game info
+            List<SDK.RAWG.Platform> platforms = new List<SDK.RAWG.Platform>(); // Create a new list of platforms
+
+            if (RAWGID != -1 && RAWGID != 0)
+            {
+                platforms = await Global.GetGamePlatformsAsync(RAWGID); // Get the platforms
+            }
+
             GameCard.GameInfo = new GameInfo // Create a game info and set it
             {
                 Name = nameTxt.Text,
@@ -95,7 +102,8 @@ namespace Gavilya.Windows
                 LastTimePlayed = GameCard.GameInfo.LastTimePlayed,
                 TotalTimePlayed = GameCard.GameInfo.TotalTimePlayed,
                 RAWGID = RAWGID,
-                Description = GameDescription
+                Description = GameDescription,
+                Platforms = platforms
             };
 
             foreach (GameInfo gameInfo in Definitions.Games.ToList()) // For each game

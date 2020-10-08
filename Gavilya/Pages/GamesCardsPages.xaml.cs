@@ -34,6 +34,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Gavilya.Classes;
@@ -86,8 +87,9 @@ namespace Gavilya.Pages
                         LastTimePlayed = 0,
                         TotalTimePlayed = 0,
                         IconFileLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName),
-                        RAWGID = id,
-                        Description = await Global.GetGameDescriptionAsync(id),
+                        RAWGID = id, // Set the id
+                        Description = await Global.GetGameDescriptionAsync(id), // Get the description
+                        Platforms = await Global.GetGamePlatformsAsync(id), // Get platforms
                         Version = fileVersionInfo.FileVersion // Get the version
                     };
                     Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>

@@ -250,4 +250,7 @@
   <data name="LastTimePlayed" xml:space="preserve">
     <value>Last time played:</value>
   </data>
+  <data name="Platforms" xml:space="preserve">
+    <value>Platforms</value>
+  </data>
 </root>

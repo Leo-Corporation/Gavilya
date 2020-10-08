@@ -148,7 +148,7 @@ namespace Gavilya.Windows
             }
         }
 
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        private async void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!(string.IsNullOrEmpty(nameTxt.Text) || string.IsNullOrEmpty(locationTxt.Text))) /// If the fields are filled
             {
@@ -160,6 +160,10 @@ namespace Gavilya.Windows
                 gameInfo.IsFavorite = false; // The game is not a favorite by default
                 gameInfo.RAWGID = RAWGID; // The RAWG Id of the game
                 gameInfo.Description = GameDescription; // The description of the game
+                if (RAWGID != -1 && RAWGID != 0)
+                {
+                    gameInfo.Platforms = await Global.GetGamePlatformsAsync(RAWGID); // Get the platforms
+                }
 
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
                 Definitions.Games.Add(gameInfo);

@@ -166,5 +166,24 @@ namespace Gavilya.Classes
 
             return gameResults.results[0].id;
         }
+
+        public static async Task<List<Platform>> GetGamePlatformsAsync(int id)
+        {
+            var client = new RestClient(); // Create a REST Client
+            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+            var request = new RestRequest(Method.GET); // Create a request
+            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+            List<Platform> platforms = new List<Platform>(); // Create a new list of platform
+
+            for (int i = 0; i < game.platforms.Count; i++) // For each platforms
+            {
+                platforms.Add(game.platforms[i].platform); // Add the platform
+            }
+
+            return platforms; // Return the result
+        }
     }
 }

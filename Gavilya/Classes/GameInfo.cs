@@ -78,5 +78,10 @@ namespace Gavilya.Classes
         /// <see cref="true"/> if the game is a favorite, <see cref="false"/> if not.
         /// </summary>
         public bool IsFavorite { get; set; }
+
+        /// <summary>
+        /// The game available platforms.
+        /// </summary>
+        public List<SDK.RAWG.Platform> Platforms { get; set; }
     }
 }

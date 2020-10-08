@@ -95,6 +95,24 @@ namespace Gavilya.Pages
                 System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
                 BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
             }
+
+            // Platforms
+            PlatformDisplayer.Children.Clear();
+            PlatformDisplayer.Children.Add(
+                new TextBlock
+                {
+                    Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
+                    Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
+                    FontSize = 20, // Set the font size
+                    FontWeight = FontWeights.Bold, // Set the font weight
+                    Text = Properties.Resources.Platforms // Set the text
+                }
+            ); // Add the textblock
+
+            foreach (SDK.RAWG.Platform platform in gameInfo.Platforms)
+            {
+                PlatformDisplayer.Children.Add(new TextBlock { Foreground = new SolidColorBrush { Color = Colors.White }, Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, Text = platform.name }); // New textblock
+            }
         }
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
