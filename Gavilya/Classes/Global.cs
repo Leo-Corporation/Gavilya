@@ -167,6 +167,11 @@ namespace Gavilya.Classes
             return gameResults.results[0].id;
         }
 
+        /// <summary>
+        /// Gets the platforms of the game.
+        /// </summary>
+        /// <param name="id">The id of the game.</param>
+        /// <returns></returns>
         public static async Task<List<Platform>> GetGamePlatformsAsync(int id)
         {
             var client = new RestClient(); // Create a REST Client
