@@ -51,6 +51,7 @@ namespace Gavilya.Windows
         public string iconLocation; // Icon location
         public int RAWGID = -1; // The Game RAWG Id
         public string GameDescription = string.Empty; // The description of the game
+        public List<SDK.RAWG.Platform> Platforms = new List<SDK.RAWG.Platform>(); // Create a new list
         GameCard GameCard; // The game card
         /// <summary>
         /// Window where the user can edit a game
@@ -73,6 +74,7 @@ namespace Gavilya.Windows
 
             RAWGID = gameInfo.RAWGID; // Set the id
             GameDescription = gameInfo.Description; // Set the description
+            descriptionTxt.Text = gameInfo.Description; // Set the description (UI)
 
             if (gameInfo.IconFileLocation != string.Empty) // If a custom image is used
             {
@@ -90,9 +92,13 @@ namespace Gavilya.Windows
             GameInfo oldGameInfo = GameCard.GameInfo; // Old game info
             List<SDK.RAWG.Platform> platforms = new List<SDK.RAWG.Platform>(); // Create a new list of platforms
 
-            if (RAWGID != -1 && RAWGID != 0)
+            if (RAWGID != -1 && RAWGID != 0 && Platforms.Count <= 0)
             {
                 platforms = await Global.GetGamePlatformsAsync(RAWGID); // Get the platforms
+            }
+            else if (RAWGID != -1 && RAWGID != 0 && Platforms.Count > 0)
+            {
+                platforms = Platforms; // Set the platforms
             }
 
             GameCard.GameInfo = new GameInfo // Create a game info and set it
@@ -200,12 +206,17 @@ namespace Gavilya.Windows
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            new SearchGameCover(this).Show(); // Show the window
+            new SearchGameCover(this, GameAssociationActions.Search).Show(); // Show the window
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
             Close(); // Close the Window
+        }
+
+        private void AssociateGameLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new SearchGameCover(this, GameAssociationActions.Associate).Show(); // Show the window
         }
     }
 }

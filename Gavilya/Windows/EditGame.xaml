@@ -213,7 +213,18 @@
                         </Button>
                     </StackPanel>
 
-                    <StackPanel HorizontalAlignment="Center" Margin="0 80 0 0" Orientation="Horizontal">
+                    <StackPanel Margin="0 0 0 3" Orientation="Horizontal">
+                        <TextBlock Text="{x:Static lang:Resources.Description}" Foreground="White" FontSize="15"/>
+                        <TextBox FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="White" Background="#FF3C3C52" Style="{DynamicResource RegularTextBox}" Margin="10 0 10 0" Width="304" BorderBrush="#FF64647A" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <TextBlock Margin="10 5 360 5" x:Name="AssociateGameLink" Text="{x:Static lang:Resources.AssociateGame}" Foreground="#FFB589E0" FontWeight="Bold" Cursor="Hand" MouseLeftButtonUp="AssociateGameLink_MouseLeftButtonUp">
+                        <TextBlock.TextDecorations>
+                            <TextDecoration/>
+                        </TextBlock.TextDecorations>
+                    </TextBlock>
+
+                    <StackPanel HorizontalAlignment="Center" Margin="0 20 0 0" Orientation="Horizontal">
                         <Button FontSize="15" Cursor="Hand" Name="AddBtn" Click="AddBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="5" Content="{x:Static lang:Resources.Edit}" FontWeight="Bold">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.EditGame}" Background="#FF323248" Foreground="White"/>

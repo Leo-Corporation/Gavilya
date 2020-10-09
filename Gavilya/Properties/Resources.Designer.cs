@@ -97,6 +97,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Associate a game.
+        /// </summary>
+        public static string AssociateGame {
+            get {
+                return ResourceManager.GetString("AssociateGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Browse.
         /// </summary>
         public static string Browse {
@@ -156,6 +165,15 @@ namespace Gavilya.Properties {
         public static string Delete {
             get {
                 return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
             }
         }
         

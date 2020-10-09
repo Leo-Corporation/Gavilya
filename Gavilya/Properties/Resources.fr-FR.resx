@@ -246,4 +246,10 @@
   <data name="Platforms" xml:space="preserve">
     <value>Platformes</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="AssociateGame" xml:space="preserve">
+    <value>Associer un jeu</value>
+  </data>
 </root>

@@ -50,6 +50,7 @@ namespace Gavilya.Windows
         public string GameIconLocation = string.Empty;
         public string GameDescription = string.Empty; // The description of the game
         public int RAWGID = -1;
+        public List<SDK.RAWG.Platform> Platforms = new List<SDK.RAWG.Platform>(); // List of platforms
         public AddGame()
         {
             InitializeComponent();
@@ -160,9 +161,13 @@ namespace Gavilya.Windows
                 gameInfo.IsFavorite = false; // The game is not a favorite by default
                 gameInfo.RAWGID = RAWGID; // The RAWG Id of the game
                 gameInfo.Description = GameDescription; // The description of the game
-                if (RAWGID != -1 && RAWGID != 0)
+                if (RAWGID != -1 && RAWGID != 0 && Platforms.Count <= 0)
                 {
                     gameInfo.Platforms = await Global.GetGamePlatformsAsync(RAWGID); // Get the platforms
+                }
+                else if (RAWGID != -1 && RAWGID != 0 && Platforms.Count > 0)
+                {
+                    gameInfo.Platforms = Platforms; // Define the platforms
                 }
 
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
@@ -183,7 +188,12 @@ namespace Gavilya.Windows
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            new SearchGameCover(this).Show(); // Show the window
+            new SearchGameCover(this, GameAssociationActions.Search).Show(); // Show the window
+        }
+
+        private void AssociateGameLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new SearchGameCover(this, GameAssociationActions.Associate).Show(); // Show the window
         }
     }
 }
