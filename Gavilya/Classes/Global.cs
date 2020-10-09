@@ -190,5 +190,50 @@ namespace Gavilya.Classes
 
             return platforms; // Return the result
         }
+
+        /// <summary>
+        /// Convert a unix time to a <see cref="DateTime"/>.
+        /// </summary>
+        /// <param name="unixTime">The unix time to convert.</param>
+        /// <returns></returns>
+        public static DateTime UnixTimeToDateTime(double unixTime)
+        {
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // Create a date
+            dtDateTime = dtDateTime.AddSeconds(unixTime).ToLocalTime(); // Add the seconds
+            return dtDateTime; // Return the result
+        }
+
+        public static string NumberToMonth(int number)
+        {
+            switch (number)
+            {
+                case 1: // If January
+                    return "January"; // Return correct value
+                case 2: // If Febuary
+                    return "Febuary"; // Return correct value
+                case 3: // If March
+                    return "March"; // Return correct value
+                case 4: // If April
+                    return "April"; // Return correct value
+                case 5: // If May
+                    return "May"; // Return correct value
+                case 6: // If June
+                    return "June"; // Return correct value
+                case 7: // If July
+                    return "July"; // Return correct value
+                case 8: // If August
+                    return "August"; // Return correct value
+                case 9: // If September
+                    return "September"; // Return correct value
+                case 10: // If October
+                    return "October"; // Return correct value
+                case 11: // If November
+                    return "November"; // Return correct value
+                case 12: // If December
+                    return "December"; // Return correct value
+                default: // If the number doesn't match
+                    return "Unknown month"; // Return
+            }
+        }
     }
 }

@@ -72,7 +72,8 @@ namespace Gavilya.Pages
             // Text
             PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
             GameNameTxt.Text = gameInfo.Name; // Set the name of the game
-            LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {gameInfo.LastTimePlayed}"; // Last time played
+            DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
+            LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
             DescriptionTxt.Text = gameInfo.Description;
 
             // Icon
