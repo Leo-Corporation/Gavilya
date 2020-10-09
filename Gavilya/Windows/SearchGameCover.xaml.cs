@@ -48,16 +48,19 @@ namespace Gavilya.Windows
     {
         AddGame addGame1 = null;
         EditGame editGame1 = null;
-        public SearchGameCover(AddGame addGame)
+        GameAssociationActions associationActions;
+        public SearchGameCover(AddGame addGame, GameAssociationActions gameAssociationActions)
         {
             InitializeComponent();
             addGame1 = addGame;
+            associationActions = gameAssociationActions; // Define the var
         }
 
-        public SearchGameCover(EditGame editGame)
+        public SearchGameCover(EditGame editGame, GameAssociationActions gameAssociationActions)
         {
             InitializeComponent();
             editGame1 = editGame;
+            associationActions = gameAssociationActions; // Define the var
         }
 
         private async void Button_Click(object sender, RoutedEventArgs e)
@@ -112,9 +115,31 @@ namespace Gavilya.Windows
             if (selectedGameResults.Count > 0)
             {
                 selectedGame = selectedGameResults[0]; // Define the selected game
-                string bgImage = await Global.GetCoverImageAsync(selectedGame.Id); // File name
-                LoadImageInWindow(bgImage, selectedGame.Id); // Load the image
-                Close();
+                switch (associationActions)
+                {
+                    case GameAssociationActions.Associate: // If the action is to associate
+                        Associate(selectedGame.Id); // Associate the game
+                        break;
+                    case GameAssociationActions.Search: // If the action is to get the cover (search)
+                        string bgImage = await Global.GetCoverImageAsync(selectedGame.Id); // File name
+                        LoadImageInWindow(bgImage, selectedGame.Id); // Load the image
+                        break;
+                }
+                Close(); // Close the window
+            }
+        }
+
+        private async void Associate(int id)
+        {
+            if (addGame1 != null) // If is from AddGame
+            {
+                addGame1.descriptionTxt.Text = await Global.GetGameDescriptionAsync(id); // Get the description
+                addGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
+            }
+            else // If is from EditGame
+            {
+                editGame1.descriptionTxt.Text = await Global.GetGameDescriptionAsync(id); // Get the description
+                editGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
             }
         }
 
