@@ -71,6 +71,9 @@ namespace Gavilya.Windows
             fileLocation = gameInfo.FileLocation; // File Location
             iconLocation = gameInfo.IconFileLocation; // Icon
 
+            RAWGID = gameInfo.RAWGID; // Set the id
+            GameDescription = gameInfo.Description; // Set the description
+
             if (gameInfo.IconFileLocation != string.Empty) // If a custom image is used
             {
                 GameImg.Source = new BitmapImage(new Uri(gameInfo.IconFileLocation)); // Show the image
