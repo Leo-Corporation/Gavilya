@@ -116,4 +116,20 @@ namespace Gavilya.Classes
         /// </summary>
         public static GameInfoPage GameInfoPage { get; set; }
     }
+
+    /// <summary>
+    /// The actions when a <see cref="Windows.SearchGameCover"/> window is opened.
+    /// </summary>
+    public enum GameAssociationActions
+    {
+        /// <summary>
+        /// Search for a game.
+        /// </summary>
+        Search,
+
+        /// <summary>
+        /// Associate a game.
+        /// </summary>
+        Associate
+    }
 }
