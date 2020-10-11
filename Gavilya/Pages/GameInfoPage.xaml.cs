@@ -22,6 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.UserControls;
+using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -45,6 +47,7 @@ namespace Gavilya.Pages
     public partial class GameInfoPage : Page
     {
         GameInfo GameInfo { get; set; }
+        UIElement parentUIElement = new UIElement();
         string gameLocation;
 
         public GameInfoPage(GameInfo gameInfo)
@@ -64,16 +67,28 @@ namespace Gavilya.Pages
         /// Initialize the User Interface of the page.
         /// </summary>
         /// <param name="gameInfo">The game to load informations.</param>
-        public void InitializeUI(GameInfo gameInfo)
+        /// <param name="parent">The parent element.</param>
+        public void InitializeUI(GameInfo gameInfo, UIElement parent = null)
         {
             // Var
             gameLocation = gameInfo.FileLocation;
+            GameInfo = gameInfo; // Define the game info
+            parentUIElement = parent; // Define the parent element
 
             // Text
             PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
             GameNameTxt.Text = gameInfo.Name; // Set the name of the game
-            DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
-            LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+
+            if (gameInfo.LastTimePlayed != 0) // If the game was played
+            {
+                DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
+                LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+            }
+            else
+            {
+                LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {Properties.Resources.Never}"; // Set the text
+            }
+
             DescriptionTxt.Text = gameInfo.Description;
 
             // Icon
@@ -121,6 +136,16 @@ namespace Gavilya.Pages
             if (File.Exists(gameLocation)) // If the file exist
             {
                 Process.Start(gameLocation); // Start the game
+                
+                if (parentUIElement is GameCard) // If the parent element is a game card
+                {
+                    GameCard gameCard = (GameCard)parentUIElement; // Create a game card
+                    gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+                    new GameSaver().Save(Definitions.Games); // Save the changes
+
+                    DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+                    LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+                }
             }
         }
     }

@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -47,10 +48,15 @@ namespace Gavilya.UserControls
     {
         public GameInfo GameInfo { get; set; }
         string GamePath = ""; // Location of the game
-        public FavoriteGameCard(GameInfo gameInfo)
+
+        UIElement parentElement;
+
+        public FavoriteGameCard(GameInfo gameInfo, UIElement parent = null)
         {
             InitializeComponent();
             GameInfo = gameInfo;
+            parentElement = parent; // Define the parent element
+
             InitUI(gameInfo); // Load the UI
         }
 
@@ -83,6 +89,13 @@ namespace Gavilya.UserControls
             if (File.Exists(GamePath)) // If the game location file exist
             {
                 Process.Start(GamePath); // Start the game
+
+                if (parentElement is GameCard)
+                {
+                    GameCard gameCard = (GameCard)parentElement; // Create a game card
+                    gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
+                    new GameSaver().Save(Definitions.Games); // Save the changes
+                }
             }
         }
     }

@@ -259,4 +259,10 @@
   <data name="AssociateGame" xml:space="preserve">
     <value>Associate a game</value>
   </data>
+  <data name="Never" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>January,Febuary,March,April,May,June,July,August,September,October,November,December</value>
+  </data>
 </root>

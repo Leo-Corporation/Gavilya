@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Pages;
 using Gavilya.Windows;
+using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -102,7 +103,7 @@ namespace Gavilya.UserControls
             // Favorite
             if (gameInfo.IsFavorite && !isFromEdit) // If the game is a favorite
             {
-                FavoriteGameCard = new FavoriteGameCard(gameInfo);
+                FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
                 Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
                 FavBtn.Content = ""; // Change icon
             }
@@ -123,6 +124,8 @@ namespace Gavilya.UserControls
             if (File.Exists(location)) // If the file exist
             {
                 Process.Start(location); // Start the game
+                GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+                new GameSaver().Save(Definitions.Games); // Save the changes
             }
         }
 
@@ -149,7 +152,7 @@ namespace Gavilya.UserControls
             else
             {
                 GameInfo.IsFavorite = true; // Set the game to be a favorite
-                FavoriteGameCard = new FavoriteGameCard(GameInfo);
+                FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
                 Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
                 FavBtn.Content = ""; // Change icon
             }
@@ -163,7 +166,7 @@ namespace Gavilya.UserControls
 
         private void GameCardBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Definitions.GameInfoPage.InitializeUI(GameInfo);
+            Definitions.GameInfoPage.InitializeUI(GameInfo, this);
             Definitions.MainWindow.PageContent.Content = Definitions.GameInfoPage;
         }
     }

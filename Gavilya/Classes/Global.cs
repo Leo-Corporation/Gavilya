@@ -205,32 +205,33 @@ namespace Gavilya.Classes
 
         public static string NumberToMonth(int number)
         {
+            string[] months = Properties.Resources.Months.Split(new string[] { "," }, StringSplitOptions.None); // Get all the months
             switch (number)
             {
                 case 1: // If January
-                    return "January"; // Return correct value
+                    return months[0]; // Return correct value
                 case 2: // If Febuary
-                    return "Febuary"; // Return correct value
+                    return months[1]; // Return correct value
                 case 3: // If March
-                    return "March"; // Return correct value
+                    return months[2]; // Return correct value
                 case 4: // If April
-                    return "April"; // Return correct value
+                    return months[3]; // Return correct value
                 case 5: // If May
-                    return "May"; // Return correct value
+                    return months[4]; // Return correct value
                 case 6: // If June
-                    return "June"; // Return correct value
+                    return months[5]; // Return correct value
                 case 7: // If July
-                    return "July"; // Return correct value
+                    return months[6]; // Return correct value
                 case 8: // If August
-                    return "August"; // Return correct value
+                    return months[7]; // Return correct value
                 case 9: // If September
-                    return "September"; // Return correct value
+                    return months[8]; // Return correct value
                 case 10: // If October
-                    return "October"; // Return correct value
+                    return months[9]; // Return correct value
                 case 11: // If November
-                    return "November"; // Return correct value
+                    return months[10]; // Return correct value
                 case 12: // If December
-                    return "December"; // Return correct value
+                    return months[11]; // Return correct value
                 default: // If the number doesn't match
                     return "Unknown month"; // Return
             }
