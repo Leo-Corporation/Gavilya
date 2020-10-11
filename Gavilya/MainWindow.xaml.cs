@@ -65,6 +65,7 @@ namespace Gavilya
 
             RecentGamesPage recentGamesPage = new RecentGamesPage(); // RecentGamesPage
             Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
+            Definitions.RecentGamesPage.LoadGames(); // Load the games
 
             GamesListPage gamesListPage = new GamesListPage(); // GamesListPage
             Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
@@ -83,6 +84,8 @@ namespace Gavilya
             {
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
             }
+
+            Definitions.RecentGamesPage.LoadGames(); // Load the games
         }
 
         private void LoadPage()

@@ -55,11 +55,11 @@ namespace Gavilya.UserControls
         /// </summary>
         public GameInfo GameInfo { get; set; }
 
-        public GameCard(GameInfo gameInfo)
+        public GameCard(GameInfo gameInfo, bool isFromEdit = false)
         {
             InitializeComponent();
             GameInfo = gameInfo; // Define the info
-            InitializeUI(gameInfo); // Load the UI
+            InitializeUI(gameInfo, isFromEdit); // Load the UI
         }
 
         /// <summary>
@@ -125,6 +125,7 @@ namespace Gavilya.UserControls
             {
                 Process.Start(location); // Start the game
                 GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+                Definitions.RecentGamesPage.LoadGames(); // Reload the games
                 new GameSaver().Save(Definitions.Games); // Save the changes
             }
         }

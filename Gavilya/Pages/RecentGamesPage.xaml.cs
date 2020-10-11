@@ -21,8 +21,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
+using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,6 +47,26 @@ namespace Gavilya.Pages
         public RecentGamesPage()
         {
             InitializeComponent();
+            LoadGames();
+        }
+
+        public void LoadGames()
+        {
+            GamePresenter.Children.Clear(); // Clear the games
+
+            Dictionary<GameInfo, int> keyValuePairs = new Dictionary<GameInfo, int>(); // Create a dictionnary
+
+            foreach (GameInfo gameInfo in Definitions.Games) // For each games
+            {
+                keyValuePairs.Add(gameInfo, gameInfo.LastTimePlayed); // Add the game and the last time played to the dictionnary
+            }
+
+            var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
+
+            foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
+            {
+                GamePresenter.Children.Add(new GameCard(pair1.Key, true)); // Add the game
+            }
         }
     }
 }

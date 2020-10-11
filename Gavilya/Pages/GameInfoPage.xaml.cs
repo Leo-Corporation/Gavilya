@@ -146,6 +146,8 @@ namespace Gavilya.Pages
                     DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
                     LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
                 }
+
+                Definitions.RecentGamesPage.LoadGames(); // Reload the games
             }
         }
     }
