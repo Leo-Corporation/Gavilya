@@ -13,7 +13,7 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <Grid.Background>
@@ -29,11 +29,12 @@
                     </Grid.Background>
 
                     <StackPanel Margin="0 100 0 0">
-                        <TextBlock Margin="10 10 10 0" Name="GameNameTxt" Foreground="White" FontSize="25" FontWeight="Bold"/>
-                        <TextBlock Margin="10 0 10 10" Name="LastTimePlayedTxt" Foreground="White" FontSize="15"/>
-                        <Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 0 0" Padding="5" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left">
+                        <TextBlock Margin="10 10 10 10" d:Text="Title" Name="GameNameTxt" Foreground="White" FontSize="25" FontWeight="Bold"/>
+                        <TextBlock Margin="10 0 10 0" d:Text="Subtitle" Name="LastTimePlayedTxt" Foreground="White" FontSize="15"/>
+                        <TextBlock Margin="10 0 10 10" d:Text="Subtitle" Name="TotalTimePlayedTxt" Foreground="White" FontSize="15"/>
+                        <Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 0 0" Padding="18 8 18 8" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xeab5;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Center"/>
+                                <TextBlock Text="&#xeab5;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Center" FontWeight="Normal"/>
                                 <TextBlock Margin="10 0 0 0" Text="{x:Static lang:Resources.Play}" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
                             </StackPanel>
 
