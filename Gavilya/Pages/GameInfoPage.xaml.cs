@@ -78,6 +78,15 @@ namespace Gavilya.Pages
             // Text
             PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
             GameNameTxt.Text = gameInfo.Name; // Set the name of the game
+            
+            if (gameInfo.TotalTimePlayed != 0) // If the game was played
+            {
+                TotalTimePlayedTxt.Text = $"{Properties.Resources.TotalTimePlayed} {gameInfo.TotalTimePlayed}"; // Set the text
+            }
+            else
+            {
+                TotalTimePlayedTxt.Text = $"{Properties.Resources.TotalTimePlayed} {Properties.Resources.Never}"; // Set the text
+            }
 
             if (gameInfo.LastTimePlayed != 0) // If the game was played
             {

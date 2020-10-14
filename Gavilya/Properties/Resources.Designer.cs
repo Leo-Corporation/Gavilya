@@ -432,6 +432,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Time played:.
+        /// </summary>
+        public static string TotalTimePlayed {
+            get {
+                return ResourceManager.GetString("TotalTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Updates available.
         /// </summary>
         public static string UpdateAv {

@@ -258,4 +258,7 @@
   <data name="Months" xml:space="preserve">
     <value>Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre</value>
   </data>
+  <data name="TotalTimePlayed" xml:space="preserve">
+    <value>Temps joué :</value>
+  </data>
 </root>
