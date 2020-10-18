@@ -261,6 +261,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Hour.
+        /// </summary>
+        public static string Hour {
+            get {
+                return ResourceManager.GetString("Hour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à hour.
+        /// </summary>
+        public static string HourMin {
+            get {
+                return ResourceManager.GetString("HourMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Image.
         /// </summary>
         public static string Image {
@@ -302,6 +320,24 @@ namespace Gavilya.Properties {
         public static string MainWindowTitle {
             get {
                 return ResourceManager.GetString("MainWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Minute.
+        /// </summary>
+        public static string Minute {
+            get {
+                return ResourceManager.GetString("Minute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à minute.
+        /// </summary>
+        public static string MinuteMin {
+            get {
+                return ResourceManager.GetString("MinuteMin", resourceCulture);
             }
         }
         
@@ -401,6 +437,24 @@ namespace Gavilya.Properties {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Second.
+        /// </summary>
+        public static string Second {
+            get {
+                return ResourceManager.GetString("Second", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à second.
+        /// </summary>
+        public static string SecondMin {
+            get {
+                return ResourceManager.GetString("SecondMin", resourceCulture);
             }
         }
         

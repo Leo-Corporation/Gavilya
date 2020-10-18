@@ -40,6 +40,7 @@ using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Gavilya.UserControls
 {
@@ -119,14 +120,40 @@ namespace Gavilya.UserControls
             }
         }
 
+        DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Create a timer
+        bool gameStarted = false;
+        
         private void Button_Click(object sender, RoutedEventArgs e) // Play button
         {
             if (File.Exists(location)) // If the file exist
             {
                 Process.Start(location); // Start the game
                 GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+
+                timer.Tick += Timer_Tick; // Define the tick event
+                timer.Start(); // Start the timer
+
                 Definitions.RecentGamesPage.LoadGames(); // Reload the games
                 new GameSaver().Save(Definitions.Games); // Save the changes
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            string processName = System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+
+            if (Global.IsProcessRunning(processName)) // If the game is running
+            {
+                gameStarted = true; // The game has started
+                GameInfo.TotalTimePlayed += 1; // Increment the time played
+            }
+            else
+            {
+                if (gameStarted) // If the game has been started
+                {
+                    new GameSaver().Save(Definitions.Games); // Save
+                    timer.Stop(); // Stop
+                }
             }
         }
 

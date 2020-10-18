@@ -268,4 +268,22 @@
   <data name="TotalTimePlayed" xml:space="preserve">
     <value>Time played:</value>
   </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="Second" xml:space="preserve">
+    <value>Second</value>
+  </data>
+  <data name="HourMin" xml:space="preserve">
+    <value>hour</value>
+  </data>
+  <data name="MinuteMin" xml:space="preserve">
+    <value>minute</value>
+  </data>
+  <data name="SecondMin" xml:space="preserve">
+    <value>second</value>
+  </data>
 </root>

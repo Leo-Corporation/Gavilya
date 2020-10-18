@@ -38,6 +38,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Gavilya.Pages
 {
@@ -81,7 +82,7 @@ namespace Gavilya.Pages
             
             if (gameInfo.TotalTimePlayed != 0) // If the game was played
             {
-                TotalTimePlayedTxt.Text = $"{Properties.Resources.TotalTimePlayed} {gameInfo.TotalTimePlayed}"; // Set the text
+                DisplayTotalTimePlayed(gameInfo.TotalTimePlayed); // Set the text
             }
             else
             {
@@ -140,6 +141,9 @@ namespace Gavilya.Pages
             }
         }
 
+        DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Create a timer
+        bool gameStarted = false;
+
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
             if (File.Exists(gameLocation)) // If the file exist
@@ -152,12 +156,59 @@ namespace Gavilya.Pages
                     gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
                     new GameSaver().Save(Definitions.Games); // Save the changes
 
+                    timer.Tick += Timer_Tick; // Define the tick event
+                    timer.Start(); // Start the timer
+
                     DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
                     LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
                 }
 
                 Definitions.RecentGamesPage.LoadGames(); // Reload the games
             }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            string processName = System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+
+            if (Global.IsProcessRunning(processName)) // If the game is running
+            {
+                gameStarted = true; // The game has started
+                GameInfo.TotalTimePlayed += 1; // Increment the time played
+            }
+            else
+            {
+                if (gameStarted) // If the game has been started
+                {
+                    new GameSaver().Save(Definitions.Games); // Save
+                    DisplayTotalTimePlayed(GameInfo.TotalTimePlayed); // Update the text
+                    timer.Stop(); // Stop
+                }
+            }
+        }
+
+        private void DisplayTotalTimePlayed(int timePlayed)
+        {
+            GameTimePlayed gameTimePlayed = GameTimePlayed.GetTimePlayed(timePlayed); // Create a GameTimePlayed
+            string finalString = $"{Properties.Resources.TotalTimePlayed} "; // The final message
+
+            string hoursPlurial = (gameTimePlayed.Hours > 1) ? "s" : ""; // Determine if a plurial is necessary
+            string minutesPlurial = (gameTimePlayed.Minutes > 1) ? "s" : ""; // Determine if a plurial is necessary
+            string secondsPlurial = (gameTimePlayed.Seconds > 1) ? "s" : ""; // Determine if a plurial is necessary
+
+            if (gameTimePlayed.Hours != 0) // If the game was played more than an hour
+            {
+                finalString += $"{gameTimePlayed.Hours} {Properties.Resources.HourMin + hoursPlurial} "; // Add the hours
+            }
+
+            finalString += $"{gameTimePlayed.Minutes} {Properties.Resources.MinuteMin + minutesPlurial} "; // Add the minutes
+
+            if (gameTimePlayed.Seconds != 0)
+            {
+                finalString += $"{gameTimePlayed.Seconds} {Properties.Resources.SecondMin + secondsPlurial}"; // Add the hours
+            }
+
+            TotalTimePlayedTxt.Text = finalString; // Set the text
         }
     }
 }
