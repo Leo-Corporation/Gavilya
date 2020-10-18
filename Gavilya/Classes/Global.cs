@@ -26,6 +26,7 @@ using LeoCorpLibrary;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Text;
@@ -234,6 +235,25 @@ namespace Gavilya.Classes
                     return months[11]; // Return correct value
                 default: // If the number doesn't match
                     return "Unknown month"; // Return
+            }
+        }
+
+        /// <summary>
+        /// Gets if a specified process is running.
+        /// </summary>
+        /// <param name="processName">The name of the process to search.</param>
+        /// <returns>A <see cref="bool"/> value.</returns>
+        public static bool IsProcessRunning(string processName)
+        {
+            Process[] processes = Process.GetProcessesByName(processName); // Get the process(es) that match the name
+
+            if (processes.Length == 0) // If the process is not running
+            {
+                return false; // Return false
+            }
+            else // If the process is running
+            {
+                return true; // Return true
             }
         }
     }
