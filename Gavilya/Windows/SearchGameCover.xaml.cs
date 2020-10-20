@@ -138,7 +138,9 @@ namespace Gavilya.Windows
             }
             else // If is from EditGame
             {
-                editGame1.descriptionTxt.Text = await Global.GetGameDescriptionAsync(id); // Get the description
+                string description = await Global.GetGameDescriptionAsync(id); // Get the description
+                editGame1.GameDescription = description;
+                editGame1.descriptionTxt.Text = description;
                 editGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
             }
         }

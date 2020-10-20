@@ -111,7 +111,7 @@ namespace Gavilya.Windows
                 LastTimePlayed = GameCard.GameInfo.LastTimePlayed,
                 TotalTimePlayed = GameCard.GameInfo.TotalTimePlayed,
                 RAWGID = RAWGID,
-                Description = GameDescription,
+                Description = descriptionTxt.Text,
                 Platforms = platforms
             };
 
