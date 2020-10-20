@@ -88,8 +88,8 @@ namespace Gavilya.Pages
                         TotalTimePlayed = 0,
                         IconFileLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName),
                         RAWGID = id, // Set the id
-                        Description = await Global.GetGameDescriptionAsync(id), // Get the description
-                        Platforms = await Global.GetGamePlatformsAsync(id), // Get platforms
+                        Description = (id != -1) ? await Global.GetGameDescriptionAsync(id) : "", // Get the description
+                        Platforms = (id != -1) ? await Global.GetGamePlatformsAsync(id) : new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform }, // Get platforms
                         Version = fileVersionInfo.FileVersion // Get the version
                     };
                     Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>

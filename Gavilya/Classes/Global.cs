@@ -69,6 +69,11 @@ namespace Gavilya.Classes
 
             if (gameResults.results.Count > 0) // If there is results
             {
+                if (gameResults.results[0].background_image == null)
+                {
+                    return string.Empty;
+                }
+
                 int gameID = gameResults.results[0].id; // Get the firts result's id
 
                 if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
@@ -82,7 +87,18 @@ namespace Gavilya.Classes
                 }
                 else
                 {
-                    return Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg";
+                    if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg")) // If the image exist
+                    {
+                        return Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg";
+                    }
+                    else
+                    {
+                        WebClient webClient1 = new WebClient(); // Create a web client
+                        await webClient1.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
+                        webClient1.Dispose(); // Release all used ressources
+
+                        return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the result
+                    }
                 }
 
 
@@ -112,6 +128,11 @@ namespace Gavilya.Classes
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
+            if (game.background_image == null)
+            {
+                return string.Empty;
+            }
+
             if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
             {
                 Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
@@ -123,7 +144,18 @@ namespace Gavilya.Classes
             }
             else
             {
-                return Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img.jpg";
+                if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img.jpg")) // If the image exist
+                {
+                    return Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img.jpg";
+                }
+                else
+                {
+                    WebClient webClient1 = new WebClient(); // Create a web client
+                    await webClient1.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"); // Download the "background_image"
+                    webClient1.Dispose(); // Release all used ressources
+
+                    return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"; // Return the result
+                }
             }
 
             WebClient webClient = new WebClient(); // Create a web client
@@ -165,7 +197,14 @@ namespace Gavilya.Classes
 
             var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
 
-            return gameResults.results[0].id;
+            if (gameResults.count > 0) // If there is results
+            {
+                return gameResults.results[0].id; // Return the id
+            }
+            else
+            {
+                return -1; // Return -1 which means that no results has been found
+            }
         }
 
         /// <summary>

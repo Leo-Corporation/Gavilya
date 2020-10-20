@@ -67,6 +67,11 @@ namespace Gavilya.Classes
         }
 
         /// <summary>
+        /// The default platform of a game.
+        /// </summary>
+        public static SDK.RAWG.Platform DefaultPlatform { get => new SDK.RAWG.Platform { id = 4, name = "PC", slug = "pc" }; }
+
+        /// <summary>
         /// Version of the software (Gavilya).
         /// </summary>
         public static string Version { get => "0.3.0.2010"; }
