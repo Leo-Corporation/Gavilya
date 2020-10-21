@@ -38,6 +38,7 @@ using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.UserControls;
 using Gavilya.Windows;
 using LeoCorpLibrary;
@@ -58,6 +59,16 @@ namespace Gavilya.Pages
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             new AddGame().Show(); // Open the "Add Game" dialog
+        }
+
+        public void LoadGames()
+        {
+            Definitions.MainWindow.FavoriteBar.Children.Clear();
+            GamePresenter.Children.Clear(); // Remove all the games
+            foreach (GameInfo gameInfo in Definitions.Games) // For each game
+            {
+                GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
+            }
         }
 
         private async void GamePresenter_Drop(object sender, DragEventArgs e)
@@ -93,8 +104,9 @@ namespace Gavilya.Pages
                         Version = fileVersionInfo.FileVersion // Get the version
                     };
                     Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
-                    Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the games to the GamePresenter
+                    Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the games to the GamePresenter
                     new GameSaver().Save(Definitions.Games); // Save the added games
+                    Definitions.RecentGamesPage.LoadGames(); // Reload the page
                 }
             }
         }

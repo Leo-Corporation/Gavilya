@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.Pages;
 using Gavilya.Windows;
 using LeoCorpLibrary;
@@ -56,11 +57,11 @@ namespace Gavilya.UserControls
         /// </summary>
         public GameInfo GameInfo { get; set; }
 
-        public GameCard(GameInfo gameInfo, bool isFromEdit = false)
+        public GameCard(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false)
         {
             InitializeComponent();
             GameInfo = gameInfo; // Define the info
-            InitializeUI(gameInfo, isFromEdit); // Load the UI
+            InitializeUI(gameInfo, gavilyaPages, isFromEdit); // Load the UI
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Gavilya.UserControls
         /// </summary>
         /// <param name="gameInfo"><see cref="Classes.GameInfo"/></param>
         /// <param name="isFromEdit"><see cref="true"/> if is called from the <see cref="Windows.EditGame"/> window.</param>
-        internal void InitializeUI(GameInfo gameInfo, bool isFromEdit = false)
+        internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false)
         {
             // Tooltip
             PlayToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name;
@@ -107,6 +108,16 @@ namespace Gavilya.UserControls
                 FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
                 Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
                 FavBtn.Content = ""; // Change icon
+            }
+
+            switch (gavilyaPages)
+            {
+                case GavilyaPages.Recent: // If the page is recent
+                    FavBtn.Visibility = Visibility.Hidden; // Hide the favorite button
+                    break;
+                case GavilyaPages.Cards: // If the page is card
+                    FavBtn.Visibility = Visibility.Visible; // Show the favorite button
+                    break;
             }
 
             // Checkbox visibility

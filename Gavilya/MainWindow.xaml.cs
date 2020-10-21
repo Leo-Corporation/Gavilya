@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.Pages;
 using Gavilya.UserControls;
 using Gavilya.Windows;
@@ -82,7 +83,7 @@ namespace Gavilya
         {
             foreach (GameInfo gameInfo in Definitions.Games) // For each games
             {
-                Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo)); // Add the game
+                Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
             }
 
             Definitions.RecentGamesPage.LoadGames(); // Load the games
@@ -309,6 +310,7 @@ namespace Gavilya
                     Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
                     Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
                     new GameSaver().Save(Definitions.Games); // Update the save file
+                    Definitions.RecentGamesPage.LoadGames(); // Reload the games
                 }
             } 
         }

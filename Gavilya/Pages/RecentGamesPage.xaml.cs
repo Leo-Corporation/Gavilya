@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
@@ -65,7 +66,7 @@ namespace Gavilya.Pages
 
             foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
             {
-                GamePresenter.Children.Add(new GameCard(pair1.Key, true)); // Add the game
+                GamePresenter.Children.Add(new GameCard(pair1.Key, GavilyaPages.Recent, true)); // Add the game
             }
         }
     }

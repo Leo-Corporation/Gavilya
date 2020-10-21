@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.UserControls;
 using Microsoft.Win32;
 using System;
@@ -123,9 +124,11 @@ namespace Gavilya.Windows
                 }
             }
 
-            GameCard.InitializeUI(GameCard.GameInfo, true); // Update the UI
+            GameCard.InitializeUI(GameCard.GameInfo, GavilyaPages.Underteminated, true); // Update the UI
 
             new GameSaver().Save(Definitions.Games);
+            Definitions.RecentGamesPage.LoadGames(); // Reload the games
+            Definitions.GamesCardsPages.LoadGames();
             Close(); // Close the window
         }
 
