@@ -91,26 +91,10 @@ namespace Gavilya
 
         private void DefineMaximumSize()
         {
-            // The form that has the same properties
-            int winLeft = int.Parse(Left.ToString());
-            int winTop = int.Parse(Top.ToString());
-            System.Windows.Forms.Form form = new System.Windows.Forms.Form();
-            form.Left = winLeft;
-            form.Top = winTop;
+            System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(this).Handle); // The current screen
 
-            System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.PrimaryScreen; // The current screen
-
-            // Determine the current screen
-            foreach (System.Windows.Forms.Screen screen in System.Windows.Forms.Screen.AllScreens)
-            {
-                if (screen.DeviceName == System.Windows.Forms.Screen.FromControl(form).DeviceName)
-                {
-                    currentScreen = screen;
-                }
-            }
-
-            MaxHeight = currentScreen.Bounds.Height;
-            MaxWidth = currentScreen.Bounds.Width;
+            MaxHeight = currentScreen.WorkingArea.Height;
+            MaxWidth = currentScreen.WorkingArea.Width;
         }
 
         private void LoadPage()
@@ -359,6 +343,11 @@ namespace Gavilya
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            DefineMaximumSize(); // Define the maximum size of the window
+        }
+
+        private void Window_LocationChanged(object sender, EventArgs e)
         {
             DefineMaximumSize(); // Define the maximum size of the window
         }
