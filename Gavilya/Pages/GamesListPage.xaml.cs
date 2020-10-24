@@ -19,8 +19,10 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE. 
+SOFTWARE.
 */
+using Gavilya.Classes;
+using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -44,6 +46,19 @@ namespace Gavilya.Pages
         public GamesListPage()
         {
             InitializeComponent();
+            LoadGames(); // Load the games
+        }
+
+        /// <summary>
+        /// Loads the games.
+        /// </summary>
+        public void LoadGames()
+        {
+            GameList.Children.Clear();
+            foreach (GameInfo gameInfo in Definitions.Games) // For each game
+            {
+                GameList.Children.Add(new GameItem(gameInfo)); // Add a game
+            }
         }
     }
 }

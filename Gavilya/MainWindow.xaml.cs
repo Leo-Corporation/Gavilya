@@ -56,6 +56,7 @@ namespace Gavilya
             InitializeComponent();
 
             Definitions.GameInfoPage = new GameInfoPage(); // Create the page
+            Definitions.GameInfoPage2 = new GameInfoPage(); // Create the page
 
             Title = Properties.Resources.MainWindowTitle;
             Global.SetWindowIcon(this); // Set the icon of the window
@@ -70,6 +71,7 @@ namespace Gavilya
 
             GamesListPage gamesListPage = new GamesListPage(); // GamesListPage
             Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
+            Definitions.GamesListPage.LoadGames(); // Load the games
 
             Definitions.MainWindow = this; // Define the Main Window
 
@@ -87,6 +89,7 @@ namespace Gavilya
             }
 
             Definitions.RecentGamesPage.LoadGames(); // Load the games
+            Definitions.GamesListPage.LoadGames(); // Load the games
         }
 
         private void DefineMaximumSize()

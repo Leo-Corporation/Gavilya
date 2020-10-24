@@ -162,6 +162,19 @@ namespace Gavilya.Pages
                     DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
                     LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
                 }
+                else if (parentUIElement is GameItem)
+                {
+                    GameItem gameItem = (GameItem)parentUIElement; // Create a game item
+                    gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+                    Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
+                    new GameSaver().Save(Definitions.Games); // Save the changes
+
+                    timer.Tick += Timer_Tick; // Define the tick event
+                    timer.Start(); // Start the timer
+
+                    DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+                    LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+                }
 
                 Definitions.RecentGamesPage.LoadGames(); // Reload the games
             }

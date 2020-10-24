@@ -120,6 +120,8 @@ namespace Gavilya.Classes
         /// The <see cref="Pages.GameInfoPage"/> of any games.
         /// </summary>
         public static GameInfoPage GameInfoPage { get; set; }
+
+        public static GameInfoPage GameInfoPage2 { get; set; }
     }
 
     /// <summary>
