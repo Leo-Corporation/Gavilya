@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="Gavilya.UserControls.GameItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gavilya.UserControls"
+             mc:Ignorable="d" 
+             Height="22" Width="200">
+    <Grid>
+        <Button x:Name="GameBtn" Click="GameBtn_Click" Style="{DynamicResource RegularButton}" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <TextBlock Width="200" Name="GameName" Grid.Row="0" d:Text="Game Name" FontSize="15" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </Button>
+    </Grid>
+</UserControl>
