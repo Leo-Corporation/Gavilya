@@ -121,7 +121,15 @@ namespace Gavilya.Classes
         /// </summary>
         public static GameInfoPage GameInfoPage { get; set; }
 
+        /// <summary>
+        /// The <see cref="Pages.GameInfoPage"/> of any games.
+        /// </summary>
         public static GameInfoPage GameInfoPage2 { get; set; }
+
+        /// <summary>
+        /// The transparent color.
+        /// </summary>
+        public static SolidColorBrush TransparentColor { get => new SolidColorBrush { Color = Colors.Transparent }; }
     }
 
     /// <summary>

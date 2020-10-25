@@ -61,6 +61,21 @@ namespace Gavilya.UserControls
         {
             Definitions.GameInfoPage2.InitializeUI(GameInfo, this);
             Definitions.GamesListPage.GamePage.Navigate(Definitions.GameInfoPage2);
+            CheckedChanged();
+        }
+
+        private void CheckedChanged()
+        {
+            foreach (UIElement uIElement in Definitions.GamesListPage.GameList.Children) // For each UIElement in the list
+            {
+                if (uIElement is GameItem) // If the UIElement is a GameItem
+                {
+                    GameItem gameItem = (GameItem)uIElement; // Create a GameItem
+                    gameItem.GameBtn.Background = Definitions.TransparentColor; // Change the background color
+                }
+            }
+            
+            GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(90, 90, 112) }; // Change the background color
         }
     }
 }
