@@ -107,6 +107,7 @@ namespace Gavilya.Pages
                     Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the games to the GamePresenter
                     new GameSaver().Save(Definitions.Games); // Save the added games
                     Definitions.RecentGamesPage.LoadGames(); // Reload the page
+                    Definitions.GamesListPage.LoadGames(); // Reload the page
                 }
             }
         }

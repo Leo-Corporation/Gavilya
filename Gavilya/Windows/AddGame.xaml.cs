@@ -50,8 +50,8 @@ namespace Gavilya.Windows
     {
         public string GameIconLocation = string.Empty;
         public string GameDescription = string.Empty; // The description of the game
+        public List<SDK.RAWG.Platform> Platforms;
         public int RAWGID = -1;
-        public List<SDK.RAWG.Platform> Platforms = new List<SDK.RAWG.Platform>(); // List of platforms
         public AddGame()
         {
             InitializeComponent();
@@ -161,20 +161,16 @@ namespace Gavilya.Windows
                 gameInfo.IconFileLocation = GameIconLocation; // The location of the icon of the game
                 gameInfo.IsFavorite = false; // The game is not a favorite by default
                 gameInfo.RAWGID = RAWGID; // The RAWG Id of the game
-                gameInfo.Description = GameDescription; // The description of the game
-                if (RAWGID != -1 && RAWGID != 0 && Platforms.Count <= 0)
-                {
-                    gameInfo.Platforms = await Global.GetGamePlatformsAsync(RAWGID); // Get the platforms
-                }
-                else if (RAWGID != -1 && RAWGID != 0 && Platforms.Count > 0)
-                {
-                    gameInfo.Platforms = Platforms; // Define the platforms
-                }
+                gameInfo.Description = descriptionTxt.Text; // The description of the game
+                gameInfo.Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms; // Get platforms
+                gameInfo.LastTimePlayed = 0; // Never played
+                gameInfo.TotalTimePlayed = 0; // Never played
 
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
                 Definitions.Games.Add(gameInfo);
                 new GameSaver().Save(Definitions.Games);
                 Definitions.RecentGamesPage.LoadGames(); // Reload the games
+                Definitions.GamesListPage.LoadGames(); // Reload the page
                 Close(); // Close the Window
             }
             else
