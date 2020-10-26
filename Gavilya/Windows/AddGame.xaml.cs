@@ -50,7 +50,7 @@ namespace Gavilya.Windows
     {
         public string GameIconLocation = string.Empty;
         public string GameDescription = string.Empty; // The description of the game
-        public List<SDK.RAWG.Platform> Platforms;
+        public List<SDK.RAWG.Platform> Platforms = new List<SDK.RAWG.Platform>();
         public int RAWGID = -1;
         public AddGame()
         {
@@ -150,7 +150,7 @@ namespace Gavilya.Windows
             }
         }
 
-        private async void AddBtn_Click(object sender, RoutedEventArgs e)
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             if (!(string.IsNullOrEmpty(nameTxt.Text) || string.IsNullOrEmpty(locationTxt.Text))) /// If the fields are filled
             {
@@ -161,7 +161,7 @@ namespace Gavilya.Windows
                 gameInfo.IconFileLocation = GameIconLocation; // The location of the icon of the game
                 gameInfo.IsFavorite = false; // The game is not a favorite by default
                 gameInfo.RAWGID = RAWGID; // The RAWG Id of the game
-                gameInfo.Description = descriptionTxt.Text; // The description of the game
+                gameInfo.Description = string.IsNullOrEmpty(descriptionTxt.Text) ? "" : descriptionTxt.Text; // The description of the game
                 gameInfo.Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms; // Get platforms
                 gameInfo.LastTimePlayed = 0; // Never played
                 gameInfo.TotalTimePlayed = 0; // Never played

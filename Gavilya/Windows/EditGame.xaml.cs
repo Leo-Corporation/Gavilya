@@ -113,7 +113,7 @@ namespace Gavilya.Windows
                 TotalTimePlayed = GameCard.GameInfo.TotalTimePlayed,
                 RAWGID = RAWGID,
                 Description = descriptionTxt.Text,
-                Platforms = platforms
+                Platforms = (platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : platforms, // Get platforms
             };
 
             foreach (GameInfo gameInfo in Definitions.Games.ToList()) // For each game
@@ -129,6 +129,7 @@ namespace Gavilya.Windows
             new GameSaver().Save(Definitions.Games);
             Definitions.RecentGamesPage.LoadGames(); // Reload the games
             Definitions.GamesCardsPages.LoadGames();
+            Definitions.GamesListPage.LoadGames(); // Reload the page
             Close(); // Close the window
         }
 
