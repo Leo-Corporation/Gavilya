@@ -110,16 +110,6 @@ namespace Gavilya.UserControls
                 FavBtn.Content = ""; // Change icon
             }
 
-            switch (gavilyaPages)
-            {
-                case GavilyaPages.Recent: // If the page is recent
-                    FavBtn.Visibility = Visibility.Hidden; // Hide the favorite button
-                    break;
-                case GavilyaPages.Cards: // If the page is card
-                    FavBtn.Visibility = Visibility.Visible; // Show the favorite button
-                    break;
-            }
-
             // Checkbox visibility
             if (Definitions.IsGamesCardsPagesCheckBoxesVisible) // If the checkboxes are visibles
             {
@@ -128,6 +118,18 @@ namespace Gavilya.UserControls
             else
             {
                 CheckBox.Visibility = Visibility.Hidden; // Hiddent
+            }
+
+            // Page
+            switch (gavilyaPages)
+            {
+                case GavilyaPages.Recent: // If the page is recent
+                    FavBtn.Visibility = Visibility.Hidden; // Hide the favorite button
+                    CheckBox.Visibility = Visibility.Hidden; // Hide the checkbox
+                    break;
+                case GavilyaPages.Cards: // If the page is card
+                    FavBtn.Visibility = Visibility.Visible; // Show the favorite button
+                    break;
             }
         }
 
