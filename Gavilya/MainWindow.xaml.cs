@@ -323,6 +323,7 @@ namespace Gavilya
                     Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
                     new GameSaver().Save(Definitions.Games); // Update the save file
                     Definitions.RecentGamesPage.LoadGames(); // Reload the games
+                    Definitions.GamesListPage.LoadGames(); // Reload the page
                 }
             } 
         }
