@@ -55,6 +55,7 @@ namespace Gavilya.UserControls
         private void LoadInformations()
         {
             GameName.Text = GameInfo.Name; // Set the name
+            GameNameToolTip.Content = GameInfo.Name;
         }
 
         private void GameBtn_Click(object sender, RoutedEventArgs e)
