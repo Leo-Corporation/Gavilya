@@ -32,16 +32,24 @@
                         <TextBlock Margin="10 10 10 10" d:Text="Title" Name="GameNameTxt" Foreground="White" FontSize="25" FontWeight="Bold"/>
                         <TextBlock Margin="10 0 10 0" d:Text="Subtitle" Name="LastTimePlayedTxt" Foreground="White" FontSize="15"/>
                         <TextBlock Margin="10 0 10 10" d:Text="Subtitle" Name="TotalTimePlayedTxt" Foreground="White" FontSize="15"/>
-                        <Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 0 0" Padding="18 8 18 8" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xeab5;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Center" FontWeight="Normal"/>
-                                <TextBlock Margin="10 0 0 0" Text="{x:Static lang:Resources.Play}" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
-                            </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 10 0" Padding="18 8 18 8" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="&#xeab5;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Center" FontWeight="Normal"/>
+                                    <TextBlock Margin="10 0 0 0" Text="{x:Static lang:Resources.Play}" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+                                </StackPanel>
 
-                            <Button.ToolTip>
-                                <ToolTip Name="PlayBtnToolTip" Background="#FF323248" Foreground="White"/>
-                            </Button.ToolTip>
-                        </Button>
+                                <Button.ToolTip>
+                                    <ToolTip Name="PlayBtnToolTip" Background="#FF323248" Foreground="White"/>
+                                </Button.ToolTip>
+                            </Button>
+
+                            <Button Margin="0" HorizontalAlignment="Left" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Stretch" FontWeight="Normal" Background="#FF505066" Foreground="White">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#FF323248" Foreground="White"/>
+                                </Button.ToolTip>
+                            </Button>
+                        </StackPanel>
                     </StackPanel>
                 </Grid>
             </Grid>
