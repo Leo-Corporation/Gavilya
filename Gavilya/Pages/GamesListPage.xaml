@@ -28,6 +28,6 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Frame Grid.Row="1" Grid.Column="1" Name="GamePage"/>
+        <Frame Grid.Row="1" Grid.Column="1" Name="GamePage"></Frame>
     </Grid>
 </Page>

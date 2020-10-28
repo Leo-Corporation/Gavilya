@@ -477,6 +477,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Select a game to begin.
+        /// </summary>
+        public static string SelectGameStart {
+            get {
+                return ResourceManager.GetString("SelectGameStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Settings.
         /// </summary>
         public static string Settings {

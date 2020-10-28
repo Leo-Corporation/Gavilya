@@ -279,4 +279,7 @@
   <data name="SecondMin" xml:space="preserve">
     <value>seconde</value>
   </data>
+  <data name="SelectGameStart" xml:space="preserve">
+    <value>Sélectionnez un jeu pour commencer</value>
+  </data>
 </root>

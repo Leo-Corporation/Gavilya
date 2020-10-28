@@ -46,6 +46,7 @@ namespace Gavilya.Pages
         public GamesListPage()
         {
             InitializeComponent();
+            GamePage.Navigate(new SelectGame());
             LoadGames(); // Load the games
         }
 
