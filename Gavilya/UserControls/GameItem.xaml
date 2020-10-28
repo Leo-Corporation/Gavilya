@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              Height="22" Width="200">
     <Grid>
-        <Button x:Name="GameBtn" Click="GameBtn_Click" Style="{DynamicResource RegularButton}" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
+        <Button Padding="5 0 0 0" x:Name="GameBtn" Click="GameBtn_Click" Style="{DynamicResource RegularButton}" Background="Transparent" VerticalAlignment="Center" HorizontalAlignment="Left">
             <TextBlock Width="200" Name="GameName" Grid.Row="0" d:Text="Game Name" FontSize="15" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
         </Button>
     </Grid>
