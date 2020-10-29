@@ -282,4 +282,13 @@
   <data name="SelectGameStart" xml:space="preserve">
     <value>Sélectionnez un jeu pour commencer</value>
   </data>
+  <data name="Save" xml:space="preserve">
+    <value>Sauvegarder</value>
+  </data>
+  <data name="SaveOptions" xml:space="preserve">
+    <value>Enregistrement</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
 </root>

@@ -297,6 +297,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Language.
+        /// </summary>
+        public static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Last time played:.
         /// </summary>
         public static string LastTimePlayed {
@@ -428,6 +437,24 @@ namespace Gavilya.Properties {
         public static string RecentGames {
             get {
                 return ResourceManager.GetString("RecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Save.
+        /// </summary>
+        public static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Save Options.
+        /// </summary>
+        public static string SaveOptions {
+            get {
+                return ResourceManager.GetString("SaveOptions", resourceCulture);
             }
         }
         
