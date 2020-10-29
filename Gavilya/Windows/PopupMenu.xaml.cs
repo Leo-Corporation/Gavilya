@@ -57,7 +57,8 @@ namespace Gavilya.Windows
 
         private void SettingsBtn_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
+            Settings settings = new Settings(); // Settings window
+            settings.Show(); // Show the Settings window
         }
 
         private void AboutBtn_Click(object sender, RoutedEventArgs e)
