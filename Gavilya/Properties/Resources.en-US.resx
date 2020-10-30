@@ -291,4 +291,31 @@
   <data name="Language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="ExportGames" xml:space="preserve">
+    <value>Export your games</value>
+  </data>
+  <data name="ImportGames" xml:space="preserve">
+    <value>Import your games</value>
+  </data>
+  <data name="ExportGamesDescription" xml:space="preserve">
+    <value>Export your games in Gavilya to .gav save file.</value>
+  </data>
+  <data name="ImportGamesDescription" xml:space="preserve">
+    <value>Import a .gav save file in Gavilya. The current save file is going to be replaced by the new one.</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>An error has occurred</value>
+  </data>
+  <data name="ExportSuccess" xml:space="preserve">
+    <value>Your games have been successfully exported.</value>
+  </data>
 </root>

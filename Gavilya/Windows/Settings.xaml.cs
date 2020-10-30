@@ -21,6 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Enums;
+using Gavilya.Pages.SettingsPages;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -40,6 +42,7 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class Settings : Window
     {
+        SaveOptionsPage saveOptionsPage = new SaveOptionsPage(); // Create a page
         public Settings()
         {
             InitializeComponent();
@@ -53,6 +56,37 @@ namespace Gavilya.Windows
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Close(); // Close the window
+        }
+
+        private void HideAllPages()
+        {
+            saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
+        }
+
+        private void NavigateToPage(SettingsPages settingsPage)
+        {
+            HideAllPages(); // Hide all the pages
+
+            switch (settingsPage)
+            {
+                case SettingsPages.Languages:
+                    //TODO
+                    break;
+                case SettingsPages.SaveOptions:
+                    saveOptionsPage.Visibility = Visibility.Visible; // Show the page
+                    OptionsDisplayer.Navigate(saveOptionsPage); // Navigate
+                    break;
+            }
+        }
+
+        private void SaveOptions_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(SettingsPages.SaveOptions); // Show the "SaveOptions" page
+        }
+
+        private void LanguageOptions_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(SettingsPages.Languages); // Show the "Languages" page
         }
     }
 }

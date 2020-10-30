@@ -196,6 +196,60 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à An error has occurred.
+        /// </summary>
+        public static string ErrorOccurred {
+            get {
+                return ResourceManager.GetString("ErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Export.
+        /// </summary>
+        public static string Export {
+            get {
+                return ResourceManager.GetString("Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Export your games.
+        /// </summary>
+        public static string ExportGames {
+            get {
+                return ResourceManager.GetString("ExportGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Export your games in Gavilya to .gav save file..
+        /// </summary>
+        public static string ExportGamesDescription {
+            get {
+                return ResourceManager.GetString("ExportGamesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your games have been successfully exported..
+        /// </summary>
+        public static string ExportSuccess {
+            get {
+                return ResourceManager.GetString("ExportSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Favorite/Unfavorite.
         /// </summary>
         public static string FavoriteButton {
@@ -284,6 +338,33 @@ namespace Gavilya.Properties {
         public static string Image {
             get {
                 return ResourceManager.GetString("Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Import.
+        /// </summary>
+        public static string Import {
+            get {
+                return ResourceManager.GetString("Import", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Import your games.
+        /// </summary>
+        public static string ImportGames {
+            get {
+                return ResourceManager.GetString("ImportGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Import a .gav save file in Gavilya. The current save file is going to be replaced by the new one..
+        /// </summary>
+        public static string ImportGamesDescription {
+            get {
+                return ResourceManager.GetString("ImportGamesDescription", resourceCulture);
             }
         }
         
