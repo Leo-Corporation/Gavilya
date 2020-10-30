@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows;
 using System.Xml.Serialization;
 
 namespace Gavilya.Classes
@@ -48,6 +49,23 @@ namespace Gavilya.Classes
             StreamWriter streamWriter = new StreamWriter(AppDataPath + @"\Gavilya\Games.gav"); // The place where the file is gonna be writen
             xmlSerializer.Serialize(streamWriter, games); // Create the file
             streamWriter.Dispose();
+        }
+
+        internal void Export(List<GameInfo> games, string path)
+        {
+            try
+            {
+                List<GameInfo> gameInfos = games;
+                XmlSerializer xmlSerializer = new XmlSerializer(gameInfos.GetType()); // XML Serializer
+                StreamWriter streamWriter = new StreamWriter(path); // The place where the file is going to be exported
+                xmlSerializer.Serialize(streamWriter, gameInfos); // Create the file
+                streamWriter.Dispose();
+                MessageBox.Show(Properties.Resources.ExportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+            }
         }
 
         /// <summary>
