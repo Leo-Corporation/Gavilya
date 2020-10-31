@@ -74,6 +74,33 @@ namespace Gavilya.Classes
         }
 
         /// <summary>
+        /// Imports games.
+        /// </summary>
+        /// <param name="path">The path of the <c>.gav</c> file.</param>
+        internal void Import(string path)
+        {
+            try
+            {
+                if (File.Exists(path))
+                {
+                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<GameInfo>)); // XML Serializer
+                    StreamReader streamReader = new StreamReader(path); // The path of the file
+
+                    Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each GameInfo
+                    streamReader.Dispose();
+
+                    Save(Definitions.Games); // Save the games
+                    Global.ReloadAllPages(); // Reload all the pages
+                    MessageBox.Show(Properties.Resources.ImportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+            }
+        }
+
+        /// <summary>
         /// Load the saved games into a <see cref="List{GameInfo}"/>.
         /// </summary>
         internal void Load()

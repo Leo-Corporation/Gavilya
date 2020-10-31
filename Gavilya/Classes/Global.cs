@@ -295,5 +295,15 @@ namespace Gavilya.Classes
                 return true; // Return true
             }
         }
+
+        /// <summary>
+        /// Reloads all the pages.
+        /// </summary>
+        internal static void ReloadAllPages()
+        {
+            Definitions.GamesCardsPages.LoadGames(); // Reload the page
+            Definitions.GamesListPage.LoadGames(); // Reload the page
+            Definitions.RecentGamesPage.LoadGames(); // Reload the page
+        }
     }
 }

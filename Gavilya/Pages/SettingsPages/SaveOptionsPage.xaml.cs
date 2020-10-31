@@ -50,14 +50,25 @@ namespace Gavilya.Pages.SettingsPages
 
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFileDialog = new OpenFileDialog(); // Create an OpenFileDialog
+            openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
+            openFileDialog.Title = Properties.Resources.ImportGames; // Title
 
+            if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
+            {
+                if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+                {
+                    new GameSaver().Import(openFileDialog.FileName); // Import
+                }
+            }
         }
 
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog(); // Create a SaveFileDialog
             saveFileDialog.FileName = "GavilyaGames.gav"; // File name
-            saveFileDialog.Filter = "GAV Files|*.gav"; // Extension
+            saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
+            saveFileDialog.Title = Properties.Resources.ExportGames; // Title
 
             if (saveFileDialog.ShowDialog() ?? true)
             {

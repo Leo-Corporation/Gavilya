@@ -318,4 +318,13 @@
   <data name="ExportSuccess" xml:space="preserve">
     <value>Vos jeux ont été exportés avec succès.</value>
   </data>
+  <data name="GavFiles" xml:space="preserve">
+    <value>Fichiers GAV</value>
+  </data>
+  <data name="ImportConfirmMsg" xml:space="preserve">
+    <value>Les jeux actuels vont êtres remplacés par les nouveaux, vous ne pouvez pas annuler cette opération. Voulez-vous continuer ?</value>
+  </data>
+  <data name="ImportSuccess" xml:space="preserve">
+    <value>Vos jeux ont été importés avec succès.</value>
+  </data>
 </root>

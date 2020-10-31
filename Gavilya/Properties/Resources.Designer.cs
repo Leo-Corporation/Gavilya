@@ -295,6 +295,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à GAV Files.
+        /// </summary>
+        public static string GavFiles {
+            get {
+                return ResourceManager.GetString("GavFiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une ressource localisée de type System.Byte[].
         /// </summary>
         public static byte[] Gavilya {
@@ -351,6 +360,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à The current games are going to be replaced by the new ones, you cannot revert this operation. Do you wanna continue?.
+        /// </summary>
+        public static string ImportConfirmMsg {
+            get {
+                return ResourceManager.GetString("ImportConfirmMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Import your games.
         /// </summary>
         public static string ImportGames {
@@ -365,6 +383,15 @@ namespace Gavilya.Properties {
         public static string ImportGamesDescription {
             get {
                 return ResourceManager.GetString("ImportGamesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your games have been successfully imported..
+        /// </summary>
+        public static string ImportSuccess {
+            get {
+                return ResourceManager.GetString("ImportSuccess", resourceCulture);
             }
         }
         
