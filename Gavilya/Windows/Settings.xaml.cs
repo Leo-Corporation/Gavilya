@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.Pages.SettingsPages;
 using System;
@@ -46,6 +47,7 @@ namespace Gavilya.Windows
         public Settings()
         {
             InitializeComponent();
+            NavigateToPage(SettingsPages.SaveOptions); // Change the page
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -70,13 +72,22 @@ namespace Gavilya.Windows
             switch (settingsPage)
             {
                 case SettingsPages.Languages:
-                    //TODO
+                    UnCheckAll(); // Uncheck all buttons
+                    LanguageOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
                     break;
                 case SettingsPages.SaveOptions:
+                    UnCheckAll(); // Uncheck all buttons
+                    SaveOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
                     saveOptionsPage.Visibility = Visibility.Visible; // Show the page
                     OptionsDisplayer.Navigate(saveOptionsPage); // Navigate
                     break;
             }
+        }
+
+        private void UnCheckAll()
+        {
+            SaveOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+            LanguageOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
         }
 
         private void SaveOptions_Click(object sender, RoutedEventArgs e)
