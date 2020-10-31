@@ -19,12 +19,12 @@
 		<Style x:Key="WindowMainPanelStyle" TargetType="{x:Type Border}">
 			<Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}" />
 			<Setter Property="BorderThickness" Value="1" />
-			<Style.Triggers>
-				<DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Maximized">
+            <Style.Triggers>
+                <!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Maximized">
 					<Setter Property="Margin" Value="6 0 6 0" />
-				</DataTrigger>
-			</Style.Triggers>
-		</Style>
+				</DataTrigger>-->
+            </Style.Triggers>
+        </Style>
 		<Style x:Key="TitleBarButtonStyle" TargetType="Button">
 			<Setter Property="Foreground" Value="White" />
 			<Setter Property="Padding" Value="0" />
