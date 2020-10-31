@@ -51,6 +51,11 @@ namespace Gavilya.Classes
             streamWriter.Dispose();
         }
 
+        /// <summary>
+        /// Exports the games.
+        /// </summary>
+        /// <param name="games">The games to export.</param>
+        /// <param name="path">The path where the games are going to be exported.</param>
         internal void Export(List<GameInfo> games, string path)
         {
             try
