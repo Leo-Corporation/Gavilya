@@ -25,6 +25,7 @@ using Gavilya.Classes;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -44,6 +45,10 @@ namespace Gavilya.Windows
         public PopupMenu()
         {
             InitializeComponent();
+            if (Properties.Settings.Default.Language != "_default")
+            {
+                Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Properties.Settings.Default.Language); // Change 
+            }
         }
 
         private void Window_Deactivated(object sender, EventArgs e)
