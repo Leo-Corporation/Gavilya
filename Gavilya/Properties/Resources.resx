@@ -334,4 +334,19 @@
   <data name="ImportSuccess" xml:space="preserve">
     <value>Your games have been successfully imported.</value>
   </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Change language</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Languages</value>
+  </data>
+  <data name="ChangeLanguageDescription" xml:space="preserve">
+    <value>Change Gavilya's current language.</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Save changes</value>
+  </data>
 </root>
