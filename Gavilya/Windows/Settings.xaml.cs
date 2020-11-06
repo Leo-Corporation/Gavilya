@@ -44,6 +44,7 @@ namespace Gavilya.Windows
     public partial class Settings : Window
     {
         SaveOptionsPage saveOptionsPage = new SaveOptionsPage(); // Create a page
+        LanguagePage languagePage = new LanguagePage(); // Create a page
         public Settings()
         {
             InitializeComponent();
@@ -73,10 +74,18 @@ namespace Gavilya.Windows
             {
                 case SettingsPages.Languages:
                     UnCheckAll(); // Uncheck all buttons
+
+                    saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
+
                     LanguageOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+                    languagePage.Visibility = Visibility.Visible; // Show the page
+                    OptionsDisplayer.Navigate(languagePage); // Navigate
                     break;
                 case SettingsPages.SaveOptions:
                     UnCheckAll(); // Uncheck all buttons
+
+                    languagePage.Visibility = Visibility.Hidden; // Hide the page
+
                     SaveOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
                     saveOptionsPage.Visibility = Visibility.Visible; // Show the page
                     OptionsDisplayer.Navigate(saveOptionsPage); // Navigate

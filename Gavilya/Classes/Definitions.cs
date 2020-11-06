@@ -130,6 +130,16 @@ namespace Gavilya.Classes
         /// The transparent color.
         /// </summary>
         public static SolidColorBrush TransparentColor { get => new SolidColorBrush { Color = Colors.Transparent }; }
+
+        /// <summary>
+        /// The languages that are available in Gavilya.
+        /// </summary>
+        public static List<string> Languages { get => new List<string> { "English (United States)", "Français (France)" }; }
+
+        /// <summary>
+        /// The languages codes based on the languages that are available in Gavilya.
+        /// </summary>
+        public static List<string> LanguagesCodes { get => new List<string> { "en-US", "fr-FR" }; }
     }
 
     /// <summary>
