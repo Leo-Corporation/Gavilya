@@ -84,6 +84,7 @@ namespace Gavilya
 
         private void ChangeLanguage()
         {
+            MessageBox.Show(Properties.Settings.Default.Language);
             switch (Properties.Settings.Default.Language) // For each case
             {
                 case "_default": // No language
