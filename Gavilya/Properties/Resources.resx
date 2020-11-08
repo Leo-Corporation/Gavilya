@@ -242,10 +242,10 @@
     <value>Games recently played</value>
   </data>
   <data name="GameList" xml:space="preserve">
-    <value>List vue</value>
+    <value>List view</value>
   </data>
   <data name="GameCard" xml:space="preserve">
-    <value>Card vue</value>
+    <value>Card view</value>
   </data>
   <data name="LastTimePlayed" xml:space="preserve">
     <value>Last time played:</value>

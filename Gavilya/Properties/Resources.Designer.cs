@@ -295,7 +295,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Card vue.
+        ///   Recherche une chaîne localisée semblable à Card view.
         /// </summary>
         public static string GameCard {
             get {
@@ -313,7 +313,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à List vue.
+        ///   Recherche une chaîne localisée semblable à List view.
         /// </summary>
         public static string GameList {
             get {
