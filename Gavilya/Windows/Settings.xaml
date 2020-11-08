@@ -174,14 +174,14 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Margin="5" Grid.Column="0" HorizontalAlignment="Left">
-                    <Button Click="SaveOptions_Click" Padding="10" x:Name="SaveOptions" Cursor="Hand" FontSize="15" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalAlignment="Left" HorizontalContentAlignment="Left">
+                    <Button Click="SaveOptions_Click" Padding="10" x:Name="SaveOptions" Cursor="Hand" FontSize="15" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="0,0,0,5">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xead3;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
                             <TextBlock Text="{x:Static lang:Resources.SaveOptions}"/>
                         </StackPanel>
                     </Button>
 
-                    <Button Click="LanguageOptions_Click" Padding="10" x:Name="LanguageOptions" Cursor="Hand" FontSize="15" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" >
+                    <Button Click="LanguageOptions_Click" Padding="10" x:Name="LanguageOptions" Cursor="Hand" FontSize="15" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5" >
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xea50;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
                             <TextBlock Text="{x:Static lang:Resources.Language}"/>
