@@ -57,9 +57,9 @@ namespace Gavilya.Pages.SettingsPages
                 Languages.Items.Add(Definitions.Languages[i]); // Add an item
             }
 
-            if (Properties.Settings.Default.Language != "_default") // If the language is not default
+            if (Definitions.Settings.Language != "_default") // If the language is not default
             {
-                Languages.SelectedIndex = Definitions.LanguagesCodes.IndexOf(Properties.Settings.Default.Language) + 1; // Set the selected index
+                Languages.SelectedIndex = Definitions.LanguagesCodes.IndexOf(Definitions.Settings.Language) + 1; // Set the selected index
             }
             else
             {
@@ -71,12 +71,13 @@ namespace Gavilya.Pages.SettingsPages
         {
             if ((string)Languages.SelectedItem != Properties.Resources.Default) // If the language is not default
             {
-                Properties.Settings.Default.Language = Definitions.LanguagesCodes[Definitions.Languages.IndexOf((string)Languages.SelectedItem)];
+                Definitions.Settings.Language = Definitions.LanguagesCodes[Definitions.Languages.IndexOf((string)Languages.SelectedItem)];
             }
             else
             {
-                Properties.Settings.Default.Language = "_default"; // Set the language to default
+               Definitions.Settings.Language = "_default"; // Set the language to default
             }
+            SettingsSaver.Save();
         }
     }
 }

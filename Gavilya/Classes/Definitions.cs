@@ -140,6 +140,8 @@ namespace Gavilya.Classes
         /// The languages codes based on the languages that are available in Gavilya.
         /// </summary>
         public static List<string> LanguagesCodes { get => new List<string> { "en-US", "fr-FR" }; }
+
+        public static Settings Settings { get; set; }
     }
 
     /// <summary>

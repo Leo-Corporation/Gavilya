@@ -54,7 +54,8 @@ namespace Gavilya
         public MainWindow()
         {
             InitializeComponent();
-            ChangeLanguage();
+            SettingsSaver.Load(); // Load the settings
+            ChangeLanguage(); // Change the language
 
             Definitions.GameInfoPage = new GameInfoPage(); // Create the page
             Definitions.GameInfoPage2 = new GameInfoPage(); // Create the page
@@ -84,8 +85,7 @@ namespace Gavilya
 
         private void ChangeLanguage()
         {
-            MessageBox.Show(Properties.Settings.Default.Language);
-            switch (Properties.Settings.Default.Language) // For each case
+            switch (Definitions.Settings.Language) // For each case
             {
                 case "_default": // No language
                     break;
