@@ -3,11 +3,11 @@
 Gavilya is a basic and simple game launcher written in C# .NET Core 3.1, using WPF. It is still under construction. 
 ## Contribute
 To contribute to the project, you'll need:
-- Visual Studio 2019
+- Visual Studio 2019 v16.8 or higher
   - .NET Desktop Developpement
-  - Microsoft Visual Studio Installer Project
-- Git
-- .NET Core 3.1
+  - Git
+- .NET 5
+- Inno Setup (*optionnal*)
 
 [Click here](https://github.com/Leo-Corporation/Gavilya/blob/master/CONTRIBUTING.md) to see the full guidelines.
 ## License
