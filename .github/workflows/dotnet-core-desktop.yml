@@ -24,7 +24,7 @@ jobs:
 
     # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
     - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@1.0.2
+      uses: microsoft/setup-msbuild@0e477eda777a6587a64c4fd7dd54af60bd75f192
       
     - name: Build App
       run: dotnet build Gavilya\Gavilya.csproj -c Release
