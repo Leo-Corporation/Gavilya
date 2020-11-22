@@ -17,6 +17,7 @@
   <ItemGroup>
     <None Remove="Fonts\FluentlyIcons.ttf" />
     <None Remove="Resources\Gavilya.png" />
+    <None Remove="SplashScreen.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,10 +33,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Fonts\FluentlyIcons.ttf" />
+    <Resource Include="Fonts\FluentlyIcons.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resources\Gavilya.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <SplashScreen Include="SplashScreen.png" />
   </ItemGroup>
 
   <ItemGroup>
