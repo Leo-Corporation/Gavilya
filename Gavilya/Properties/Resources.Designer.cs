@@ -322,6 +322,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Game Properties.
+        /// </summary>
+        public static string GameProperties {
+            get {
+                return ResourceManager.GetString("GameProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à GAV Files.
         /// </summary>
         public static string GavFiles {
@@ -423,6 +432,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Infos.
+        /// </summary>
+        public static string Infos {
+            get {
+                return ResourceManager.GetString("Infos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Install.
         /// </summary>
         public static string Install {
@@ -495,6 +513,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Misc.
+        /// </summary>
+        public static string Misc {
+            get {
+                return ResourceManager.GetString("Misc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à January,Febuary,March,April,May,June,July,August,September,October,November,December.
         /// </summary>
         public static string Months {
@@ -531,6 +558,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à OK.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Other.
+        /// </summary>
+        public static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Platforms.
         /// </summary>
         public static string Platforms {
@@ -563,6 +608,15 @@ namespace Gavilya.Properties {
         public static string PlayTo {
             get {
                 return ResourceManager.GetString("PlayTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Properties.
+        /// </summary>
+        public static string Properties {
+            get {
+                return ResourceManager.GetString("Properties", resourceCulture);
             }
         }
         

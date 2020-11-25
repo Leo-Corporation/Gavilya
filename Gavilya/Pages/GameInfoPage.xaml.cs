@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using Gavilya.UserControls;
+using Gavilya.Windows;
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
@@ -222,6 +223,12 @@ namespace Gavilya.Pages
             }
 
             TotalTimePlayedTxt.Text = finalString; // Set the text
+        }
+
+        private GameProperties GameProperties { get => new GameProperties(GameInfo); }
+        private void PropertiesBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GameProperties.Show();
         }
     }
 }

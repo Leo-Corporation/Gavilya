@@ -44,7 +44,7 @@
                                 </Button.ToolTip>
                             </Button>
 
-                            <Button Margin="0" HorizontalAlignment="Left" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Stretch" FontWeight="Normal" Background="#FF505066" Foreground="White">
+                            <Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0" HorizontalAlignment="Left" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Stretch" FontWeight="Normal" Background="#FF505066" Foreground="White">
                                 <Button.ToolTip>
                                     <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#FF323248" Foreground="White"/>
                                 </Button.ToolTip>

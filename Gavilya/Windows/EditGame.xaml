@@ -32,7 +32,7 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border
 					x:Name="border"
-					Background="Transparent"
+					Background="Transparent" CornerRadius="5"
 					BorderThickness="0"
 					SnapsToDevicePixels="true">
                             <ContentPresenter
@@ -67,7 +67,7 @@
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Border
 					x:Name="border"
-					Background="Transparent"
+					Background="Transparent" CornerRadius="5"
 					BorderThickness="0"
 					SnapsToDevicePixels="true">
                             <ContentPresenter
