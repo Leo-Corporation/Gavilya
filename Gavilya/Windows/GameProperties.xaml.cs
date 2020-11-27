@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,16 @@ namespace Gavilya.Windows
         public GameProperties(GameInfo gameInfo)
         {
             InitializeComponent();
-            GameInfo = gameInfo;
+            GameInfo = gameInfo; // Pass the argument
+            LoadUI();
+        }
+
+        private void LoadUI()
+        {
+            GameNameTxt.Text = GameInfo.Name; // Display the name
+            GameVersionTxt.Text = GameInfo.Version; // Display the version
+            GameLocationTxt.Text = GameInfo.FileLocation.Substring(0, 22) + "..."; // Display the location
+            PathToolTip.Content = GameInfo.FileLocation; // Set the tooltip content
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -74,6 +84,11 @@ namespace Gavilya.Windows
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
             Close(); // Close the window
+        }
+
+        private void BrowseBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo("explorer.exe", System.IO.Path.GetDirectoryName(GameInfo.FileLocation)));
         }
     }
 }
