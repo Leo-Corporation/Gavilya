@@ -59,6 +59,11 @@ namespace Gavilya.Classes
         public string IconFileLocation { get; set; }
 
         /// <summary>
+        /// The name of the process to look for when the game is started. Empty by default.
+        /// </summary>
+        public string ProcessName { get; set; }
+
+        /// <summary>
         /// <para>The RAWG id of the game.</para>
         /// <para>If the Id is <c>-1</c>, then there is no RAWG id associated.</para>
         /// </summary>
