@@ -62,6 +62,7 @@ namespace Gavilya.Windows
             GameNameTxt.Text = GameInfo.Name; // Display the name
             GameVersionTxt.Text = GameInfo.Version; // Display the version
             GameLocationTxt.Text = GameInfo.FileLocation.Substring(0, 22) + "..."; // Display the location
+            GameProcessName.Text = GameInfo.ProcessName; // Display the ProcessName
             PathToolTip.Content = GameInfo.FileLocation; // Set the tooltip content
         }
 
@@ -77,8 +78,17 @@ namespace Gavilya.Windows
 
         private void OKBtn_Click(object sender, RoutedEventArgs e)
         {
-            //TODO
-            Close(); // Close the windows
+            SaveChanges(); // Save the changes
+            Close(); // Close the window
+        }
+
+        private void SaveChanges()
+        {
+            if (GameInfo.ProcessName != GameProcessName.Text) // If different
+            {
+                Definitions.Games[Definitions.Games.IndexOf(GameInfo)].ProcessName = GameProcessName.Text; // Set the new value
+                new GameSaver().Save(Definitions.Games); // Save the changes
+            }
         }
 
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
