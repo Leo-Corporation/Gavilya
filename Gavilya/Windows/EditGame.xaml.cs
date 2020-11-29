@@ -113,6 +113,7 @@ namespace Gavilya.Windows
                 TotalTimePlayed = GameCard.GameInfo.TotalTimePlayed,
                 RAWGID = RAWGID,
                 Description = descriptionTxt.Text,
+                ProcessName = GameCard.GameInfo.ProcessName,
                 Platforms = (platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : platforms, // Get platforms
             };
 

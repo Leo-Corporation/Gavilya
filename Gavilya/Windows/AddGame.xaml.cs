@@ -165,6 +165,7 @@ namespace Gavilya.Windows
                 gameInfo.Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms; // Get platforms
                 gameInfo.LastTimePlayed = 0; // Never played
                 gameInfo.TotalTimePlayed = 0; // Never played
+                gameInfo.ProcessName = string.Empty; // Default
 
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
                 Definitions.Games.Add(gameInfo);
