@@ -370,4 +370,13 @@
   <data name="Open" xml:space="preserve">
     <value>Open</value>
   </data>
+  <data name="GameProcess" xml:space="preserve">
+    <value>Game Process</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="ProcessNameHelp" xml:space="preserve">
+    <value>The process to look for when the game is running. It allows the possibility to count the time you played the game. Keep the field empty to use the default executable.</value>
+  </data>
 </root>

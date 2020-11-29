@@ -363,4 +363,13 @@
   <data name="Open" xml:space="preserve">
     <value>Ouvrir</value>
   </data>
+  <data name="GameProcess" xml:space="preserve">
+    <value>Processus du jeu</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="ProcessNameHelp" xml:space="preserve">
+    <value>Le processus à rechercher lorsque le jeu est en cours d'exécution. Il permet de compter le temps que vous avez joué au jeu. Laissez le champ vide pour utiliser le nom de l'exécutable par défaut.</value>
+  </data>
 </root>

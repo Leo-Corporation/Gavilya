@@ -322,6 +322,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Game Process.
+        /// </summary>
+        public static string GameProcess {
+            get {
+                return ResourceManager.GetString("GameProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Game Properties.
         /// </summary>
         public static string GameProperties {
@@ -356,6 +365,15 @@ namespace Gavilya.Properties {
             get {
                 object obj = ResourceManager.GetObject("Gavilya1", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Help.
+        /// </summary>
+        public static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
             }
         }
         
@@ -617,6 +635,15 @@ namespace Gavilya.Properties {
         public static string PlayTo {
             get {
                 return ResourceManager.GetString("PlayTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à The process to look for when the game is running. It allows the possibility to count the time you played the game. Keep the field empty to use the default executable..
+        /// </summary>
+        public static string ProcessNameHelp {
+            get {
+                return ResourceManager.GetString("ProcessNameHelp", resourceCulture);
             }
         }
         
