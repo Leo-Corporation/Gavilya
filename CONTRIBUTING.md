@@ -6,7 +6,7 @@
 ## Knowledge
 To contribute to this project, you will need to have some prerequisites:
 
-- A basic knowledge of C# (this project is written in C# 8.0)
+- A basic knowledge of C# (this project is written in C# 9)
 - A basic knowledge of XAML
 - A basic knowledge of Visual Studio and Blend
 
@@ -16,7 +16,7 @@ You will also need to have the following tools:
 - Microsoft Visual Studio 2019
   - .NET Desktop Developpement
   - Microsoft Blend
-  - Visual Studio Installer Projects
+- Inno Setup
 - Git
 - (*optionnal*) Microsoft Visual Studio Code
 
