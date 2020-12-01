@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Gavilya.Windows"
         xmlns:lang="clr-namespace:Gavilya.Properties"
         mc:Ignorable="d"
-        Title="Settings" AllowsTransparency="True" Background="Transparent" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="{x:Static lang:Resources.Settings}" AllowsTransparency="True" Background="Transparent" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="50" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />

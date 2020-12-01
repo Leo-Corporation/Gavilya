@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Gavilya.Windows"
         xmlns:lang="clr-namespace:Gavilya.Properties"
         mc:Ignorable="d"
-        Title="EditGame" Height="286" Width="716" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="Transparent" ResizeMode="NoResize" WindowStyle="None">
+        Title="{x:Static lang:Resources.EditGame}" Height="286" Width="716" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="Transparent" ResizeMode="NoResize" WindowStyle="None">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="50" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
     </WindowChrome.WindowChrome>
