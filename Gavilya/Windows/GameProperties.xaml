@@ -144,7 +144,7 @@
                         </TextBlock>
                         <Button x:Name="BrowseBtn" Click="BrowseBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF46465C">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xea09;" FontSize="12" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" Foreground="White" VerticalAlignment="Center"/>
+                                <TextBlock Text="&#xea0e;" FontSize="12" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" Foreground="White" VerticalAlignment="Center"/>
                                 <TextBlock FontWeight="Bold" Text="{x:Static lang:Resources.Open}" Foreground="White" VerticalAlignment="Center"/>
                             </StackPanel>
 
