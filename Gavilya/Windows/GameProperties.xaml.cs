@@ -100,5 +100,10 @@ namespace Gavilya.Windows
         {
             Process.Start(new ProcessStartInfo("explorer.exe", System.IO.Path.GetDirectoryName(GameInfo.FileLocation)));
         }
+
+        private void ProcessHelpBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Properties.Resources.ProcessNameHelp, Properties.Resources.Help, MessageBoxButton.OK, MessageBoxImage.Question); // Show a message
+        }
     }
 }

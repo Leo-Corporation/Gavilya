@@ -156,7 +156,7 @@
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{x:Static lang:Resources.GameProcess}" Foreground="White" FontWeight="Bold" FontSize="14" Margin="10 5 10 5" VerticalAlignment="Center"/>
-                        <Button x:Name="ProcessHelpBtn" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xea29;" Click="BrowseBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF46465C" Foreground="White" VerticalAlignment="Center">
+                        <Button x:Name="ProcessHelpBtn" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xea29;" Click="ProcessHelpBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF46465C" Foreground="White" VerticalAlignment="Center">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.Help}" Background="#FF323248" Foreground="White"/>
                             </Button.ToolTip>
