@@ -153,7 +153,7 @@ namespace Gavilya.UserControls
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            string processName = (GameInfo.ProcessName != string.Empty) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+            string processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
 
             if (Global.IsProcessRunning(processName)) // If the game is running
             {
