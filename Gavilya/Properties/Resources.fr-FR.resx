@@ -372,4 +372,10 @@
   <data name="ProcessNameHelp" xml:space="preserve">
     <value>Le processus à rechercher lorsque le jeu est en cours d'exécution. Il permet de compter le temps que vous avez joué au jeu. Laissez le champ vide pour utiliser le nom de l'exécutable par défaut.</value>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Bienvenue dans Gavilya</value>
+  </data>
+  <data name="GameGathered" xml:space="preserve">
+    <value>Là où vos jeux sont rassemblés.</value>
+  </data>
 </root>

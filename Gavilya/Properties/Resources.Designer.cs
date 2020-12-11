@@ -313,6 +313,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Where all your games are gathered..
+        /// </summary>
+        public static string GameGathered {
+            get {
+                return ResourceManager.GetString("GameGathered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à List view.
         /// </summary>
         public static string GameList {
@@ -824,6 +833,15 @@ namespace Gavilya.Properties {
         public static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Welcome to Gavilya.
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
         

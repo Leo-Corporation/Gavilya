@@ -372,4 +372,10 @@
   <data name="ProcessNameHelp" xml:space="preserve">
     <value>The process to look for when the game is running. It allows the possibility to count the time you played the game. Keep the field empty to use the default executable.</value>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome to Gavilya</value>
+  </data>
+  <data name="GameGathered" xml:space="preserve">
+    <value>Where all your games are gathered.</value>
+  </data>
 </root>
