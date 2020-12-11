@@ -15,6 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\computer-rocket.png" />
     <None Remove="Fonts\FluentlyIcons.ttf" />
     <None Remove="Resources\Gavilya.png" />
     <None Remove="SplashScreen.png" />
@@ -33,6 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\computer-rocket.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Fonts\FluentlyIcons.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
