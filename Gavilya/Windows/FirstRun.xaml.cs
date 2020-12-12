@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Pages.FirstRunPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,9 +43,17 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class FirstRun : Window
     {
+        private Welcome welcome = new Welcome(); // The "Welcome" page
+
         public FirstRun()
         {
             InitializeComponent();
+            LoadUI(); // Load the UI
+        }
+
+        private void LoadUI()
+        {
+            PageViewer.Content = welcome; // Navigate to the welcome page
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
