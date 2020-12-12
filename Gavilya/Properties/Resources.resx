@@ -385,4 +385,10 @@
   <data name="GameGathered" xml:space="preserve">
     <value>Where all your games are gathered.</value>
   </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Get started</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
 </root>
