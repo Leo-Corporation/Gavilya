@@ -391,4 +391,13 @@
   <data name="Continue" xml:space="preserve">
     <value>Continue</value>
   </data>
+  <data name="FirstRunAddGamesDescription" xml:space="preserve">
+    <value>You can add a game by clicking on the "Add" button on the home page or by draging in an executable file in the main page.</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Skip</value>
+  </data>
+  <data name="SkipStep" xml:space="preserve">
+    <value>Skip this step</value>
+  </data>
 </root>

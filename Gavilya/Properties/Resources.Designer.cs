@@ -304,6 +304,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à You can add a game by clicking on the &quot;Add&quot; button on the home page or by draging in an executable file in the main page..
+        /// </summary>
+        public static string FirstRunAddGamesDescription {
+            get {
+                return ResourceManager.GetString("FirstRunAddGamesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Card view.
         /// </summary>
         public static string GameCard {
@@ -788,6 +797,24 @@ namespace Gavilya.Properties {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Skip.
+        /// </summary>
+        public static string Skip {
+            get {
+                return ResourceManager.GetString("Skip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Skip this step.
+        /// </summary>
+        public static string SkipStep {
+            get {
+                return ResourceManager.GetString("SkipStep", resourceCulture);
             }
         }
         
