@@ -43,7 +43,7 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class FirstRun : Window
     {
-        private Welcome welcome = new Welcome(); // The "Welcome" page
+        private Welcome welcome; // The "Welcome" page
 
         public FirstRun()
         {
@@ -53,6 +53,7 @@ namespace Gavilya.Windows
 
         private void LoadUI()
         {
+            welcome = new Welcome(this); // Define "Welcome"
             PageViewer.Content = welcome; // Navigate to the welcome page
         }
 
@@ -63,7 +64,7 @@ namespace Gavilya.Windows
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            Environment.Exit(0); // Close the app
+            Close();
         }
     }
 }
