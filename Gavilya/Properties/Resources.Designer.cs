@@ -693,6 +693,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Gavilya is integrated with the RAWG.io database, wich means that Gavilya can automatically find covers, descriptions, and other informations about a game..
+        /// </summary>
+        public static string RAWGDescriptionFirstRun {
+            get {
+                return ResourceManager.GetString("RAWGDescriptionFirstRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à RAWG Database integration.
+        /// </summary>
+        public static string RAWGIntegration {
+            get {
+                return ResourceManager.GetString("RAWGIntegration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Powered by RAWG.io.
         /// </summary>
         public static string RAWGPowered {

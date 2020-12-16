@@ -400,4 +400,10 @@
   <data name="SkipStep" xml:space="preserve">
     <value>Skip this step</value>
   </data>
+  <data name="RAWGIntegration" xml:space="preserve">
+    <value>RAWG Database integration</value>
+  </data>
+  <data name="RAWGDescriptionFirstRun" xml:space="preserve">
+    <value>Gavilya is integrated with the RAWG.io database, wich means that Gavilya can automatically find covers, descriptions, and other informations about a game.</value>
+  </data>
 </root>

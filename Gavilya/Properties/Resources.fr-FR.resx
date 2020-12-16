@@ -393,4 +393,10 @@
   <data name="SkipStep" xml:space="preserve">
     <value>Passer cette étape</value>
   </data>
+  <data name="RAWGIntegration" xml:space="preserve">
+    <value>Intégration de la base de données de RAWG</value>
+  </data>
+  <data name="RAWGDescriptionFirstRun" xml:space="preserve">
+    <value>Gavilya est intégré avec la base de données de RAWG.io, ce qui signifie que Gavilya peut automatiquement trouver des couvertures, des descriptions et d'autres informations à propos d'un jeu.</value>
+  </data>
 </root>
