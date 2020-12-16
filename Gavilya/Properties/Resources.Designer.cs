@@ -214,6 +214,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Done!.
+        /// </summary>
+        public static string Done {
+            get {
+                return ResourceManager.GetString("Done", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Edit.
         /// </summary>
         public static string Edit {
@@ -477,6 +486,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à If you were a previous user, you may wanna import an existing &quot;.gav&quot; save file..
+        /// </summary>
+        public static string ImportGamesFirstRunDescription {
+            get {
+                return ResourceManager.GetString("ImportGamesFirstRunDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Your games have been successfully imported..
         /// </summary>
         public static string ImportSuccess {
@@ -527,6 +545,15 @@ namespace Gavilya.Properties {
         public static string LastTimePlayed {
             get {
                 return ResourceManager.GetString("LastTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Let&apos;s go!.
+        /// </summary>
+        public static string LetsGo {
+            get {
+                return ResourceManager.GetString("LetsGo", resourceCulture);
             }
         }
         
@@ -716,6 +743,15 @@ namespace Gavilya.Properties {
         public static string RAWGPowered {
             get {
                 return ResourceManager.GetString("RAWGPowered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à You are now ready to use Gavilya..
+        /// </summary>
+        public static string ReadyFirstRun {
+            get {
+                return ResourceManager.GetString("ReadyFirstRun", resourceCulture);
             }
         }
         

@@ -399,4 +399,16 @@
   <data name="RAWGDescriptionFirstRun" xml:space="preserve">
     <value>Gavilya est intégré avec la base de données de RAWG.io, ce qui signifie que Gavilya peut automatiquement trouver des couvertures, des descriptions et d'autres informations à propos d'un jeu.</value>
   </data>
+  <data name="ImportGamesFirstRunDescription" xml:space="preserve">
+    <value>Si vous étiez un ancien utilisateur, vous voulez peut-être importer un fichier de sauvegarder ".gav".</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Terminé !</value>
+  </data>
+  <data name="ReadyFirstRun" xml:space="preserve">
+    <value>Vous êtes prêt pour utiliser Gavilya.</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+    <value>C'est parti !</value>
+  </data>
 </root>
