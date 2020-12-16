@@ -16,7 +16,9 @@
 
   <ItemGroup>
     <None Remove="Assets\addGame.png" />
+    <None Remove="Assets\check.png" />
     <None Remove="Assets\computer-rocket.png" />
+    <None Remove="Assets\importGames.png" />
     <None Remove="Assets\searchRAWG.png" />
     <None Remove="Fonts\FluentlyIcons.ttf" />
     <None Remove="Resources\Gavilya.png" />
@@ -39,7 +41,13 @@
     <Resource Include="Assets\addGame.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\check.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\computer-rocket.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\importGames.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\searchRAWG.png">

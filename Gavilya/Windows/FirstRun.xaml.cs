@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Pages.FirstRunPages;
+using Gavilya.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,10 @@ namespace Gavilya.Windows
     public partial class FirstRun : Window
     {
         private Welcome welcome; // The "Welcome" page
+        private AddGamesPage addGamesPage; // The "AddGamesPage"
+        private FinishPage finishPage; // The "FinishPage"
+        private ImportGamesPage importGamesPage; // The "ImportGamesPage"
+        private SearchRAWGPage searchRAWGPage; // The "SearchRAWGPage"
 
         public FirstRun()
         {
@@ -54,7 +59,37 @@ namespace Gavilya.Windows
         private void LoadUI()
         {
             welcome = new Welcome(this); // Define "Welcome"
-            PageViewer.Content = welcome; // Navigate to the welcome page
+            addGamesPage = new AddGamesPage(this); // Define
+            finishPage = new FinishPage(this); // Define
+            importGamesPage = new ImportGamesPage(this); // Define
+            searchRAWGPage = new SearchRAWGPage(this); // Define
+            ChangePage(FirstRunPages.Welcome); // Change page
+        }
+
+        /// <summary>
+        /// Change page.
+        /// </summary>
+        /// <param name="firstRunPage">The page to change.</param>
+        internal void ChangePage(FirstRunPages firstRunPage)
+        {
+            switch (firstRunPage)
+            {
+                case FirstRunPages.AddGames:
+                    PageViewer.Content = addGamesPage; // Change page
+                    break;
+                case FirstRunPages.Finish:
+                    PageViewer.Content = finishPage; // Change page
+                    break;
+                case FirstRunPages.ImportGames:
+                    PageViewer.Content = importGamesPage; // Change page
+                    break;
+                case FirstRunPages.SearchRawgGames:
+                    PageViewer.Content = searchRAWGPage; // Change page
+                    break;
+                case FirstRunPages.Welcome:
+                    PageViewer.Content = welcome; // Change page
+                    break;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

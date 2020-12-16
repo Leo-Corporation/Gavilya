@@ -44,15 +44,21 @@ namespace Gavilya.Pages.FirstRunPages
     /// </summary>
     public partial class Welcome : Page
     {
+        FirstRun FirstRun;
         public Welcome(FirstRun firstRun)
         {
             InitializeComponent();
-            NextPage(firstRun); // Change page
+            FirstRun = firstRun; // Define
         }
 
-        private void NextPage(FirstRun firstRun)
+        private void NextPage()
         {
-            //TODO
+            FirstRun.ChangePage(Enums.FirstRunPages.AddGames); // Change page
+        }
+
+        private void GetStartedBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NextPage(); // Change page
         }
     }
 }

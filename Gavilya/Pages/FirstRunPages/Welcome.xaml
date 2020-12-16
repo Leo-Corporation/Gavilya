@@ -14,7 +14,7 @@
             <Image Source="..\..\Assets\computer-rocket.png" Width="250"/>
             <TextBlock FontWeight="Bold" FontSize="24" Text="{x:Static lang:Resources.Welcome}" Foreground="White" HorizontalAlignment="Center"/>
             <TextBlock FontSize="14" Text="{x:Static lang:Resources.GameGathered}" Foreground="White" HorizontalAlignment="Center"/>
-            <Button x:Name="GetStartedBtn" Padding="7" Margin="0 20 0 0" Cursor="Hand" Style="{StaticResource RegularButton}" HorizontalAlignment="Center">
+            <Button x:Name="GetStartedBtn" Click="GetStartedBtn_Click" Padding="7" Margin="0 20 0 0" Cursor="Hand" Style="{StaticResource RegularButton}" HorizontalAlignment="Center">
                 <Button.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#B589E0"/>
