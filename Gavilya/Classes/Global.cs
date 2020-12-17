@@ -31,6 +31,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 using System.Text.Json;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -304,6 +305,27 @@ namespace Gavilya.Classes
             Definitions.GamesCardsPages.LoadGames(); // Reload the page
             Definitions.GamesListPage.LoadGames(); // Reload the page
             Definitions.RecentGamesPage.LoadGames(); // Reload the page
+        }
+
+        /// <summary>
+        /// Changes the language of Gavilya
+        /// </summary>
+        internal static void ChangeLanguage()
+        {
+            switch (Definitions.Settings.Language) // For each case
+            {
+                case "_default": // No language
+                    break;
+                case "en-US": // English (US)
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US"); // Change
+                    break;
+
+                case "fr-FR": // French (FR)
+                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
+                    break;
+                default: // No language
+                    break;
+            }
         }
     }
 }

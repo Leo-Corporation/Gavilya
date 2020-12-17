@@ -54,8 +54,6 @@ namespace Gavilya
         public MainWindow()
         {
             InitializeComponent();
-            SettingsSaver.Load(); // Load the settings
-            ChangeLanguage(); // Change the language
 
             Definitions.GameInfoPage = new GameInfoPage(); // Create the page
             Definitions.GameInfoPage2 = new GameInfoPage(); // Create the page
@@ -81,24 +79,6 @@ namespace Gavilya
             new GameSaver().Load(); // Load the .gav file in the Definitions class
 
             LoadGames();
-        }
-
-        private void ChangeLanguage()
-        {
-            switch (Definitions.Settings.Language) // For each case
-            {
-                case "_default": // No language
-                    break;
-                case "en-US": // English (US)
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en-US"); // Change
-                    break;
-
-                case "fr-FR": // French (FR)
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
-                    break;
-                default: // No language
-                    break;
-            }
         }
 
         private void LoadGames()
