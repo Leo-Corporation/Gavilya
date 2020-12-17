@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
 using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
@@ -53,8 +54,10 @@ namespace Gavilya.Pages.FirstRunPages
 
         private void NextPage()
         {
+            new MainWindow().Show(); // Show the main window
             FirstRun.Close(); // Close the window
-            //TODO: open main window
+            Definitions.Settings.IsFirstRun = false; // Set the FirstRun Settings to false
+            SettingsSaver.Save();
         }
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)

@@ -21,6 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
+using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -36,5 +38,19 @@ namespace Gavilya
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            SettingsSaver.Load(); // Load the settings
+            Global.ChangeLanguage(); // Change the language
+
+            if (Definitions.Settings.IsFirstRun) // If it is the app first run
+            {
+                new FirstRun().Show(); // Show the first run experience
+            }
+            else
+            {
+                new MainWindow().Show(); // Show the regular main window
+            }
+        }
     }
 }

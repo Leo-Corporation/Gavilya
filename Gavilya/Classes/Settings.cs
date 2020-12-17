@@ -39,6 +39,11 @@ namespace Gavilya.Classes
         /// The language of Gavilya.
         /// </summary>
         public string Language { get; set; }
+
+        /// <summary>
+        /// Indicates if it is the first run of Gavilya.
+        /// </summary>
+        public bool IsFirstRun { get; set; }
     }
 
     public static class SettingsSaver
@@ -60,7 +65,7 @@ namespace Gavilya.Classes
             }
             else
             {
-                Definitions.Settings = new Settings { Language = "_default" };
+                Definitions.Settings = new Settings { Language = "_default", IsFirstRun = true };
                 Save();
             }
         }
