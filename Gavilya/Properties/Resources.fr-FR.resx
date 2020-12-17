@@ -411,4 +411,10 @@
   <data name="LetsGo" xml:space="preserve">
     <value>C'est parti !</value>
   </data>
+  <data name="StartAddGame" xml:space="preserve">
+    <value>Commencez par ajouter un jeu</value>
+  </data>
+  <data name="AddGameWelcome" xml:space="preserve">
+    <value>Ajoutez un jeu en cliquant sur le bouton "Ajouter" ou en glissant un fichier exécutable ici.</value>
+  </data>
 </root>

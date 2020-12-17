@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <None Remove="Assets\addGame.png" />
+    <None Remove="Assets\addGamesWelcome.png" />
     <None Remove="Assets\check.png" />
     <None Remove="Assets\computer-rocket.png" />
     <None Remove="Assets\importGames.png" />
@@ -39,6 +40,9 @@
 
   <ItemGroup>
     <Resource Include="Assets\addGame.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\addGamesWelcome.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\check.png">

@@ -88,6 +88,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Add a game by clicking on the &quot;Add&quot; button or drag and drop an executable file here..
+        /// </summary>
+        public static string AddGameWelcome {
+            get {
+                return ResourceManager.GetString("AddGameWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Gavilya.
         /// </summary>
         public static string AppName {
@@ -869,6 +878,15 @@ namespace Gavilya.Properties {
         public static string SkipStep {
             get {
                 return ResourceManager.GetString("SkipStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Start by adding a game.
+        /// </summary>
+        public static string StartAddGame {
+            get {
+                return ResourceManager.GetString("StartAddGame", resourceCulture);
             }
         }
         

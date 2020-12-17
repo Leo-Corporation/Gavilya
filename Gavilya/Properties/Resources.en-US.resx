@@ -411,4 +411,10 @@
   <data name="LetsGo" xml:space="preserve">
     <value>Let's go!</value>
   </data>
+  <data name="StartAddGame" xml:space="preserve">
+    <value>Start by adding a game</value>
+  </data>
+  <data name="AddGameWelcome" xml:space="preserve">
+    <value>Add a game by clicking on the "Add" button or drag and drop an executable file here.</value>
+  </data>
 </root>
