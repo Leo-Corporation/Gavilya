@@ -77,7 +77,8 @@ namespace Gavilya.Classes
         /// Imports games.
         /// </summary>
         /// <param name="path">The path of the <c>.gav</c> file.</param>
-        internal void Import(string path)
+        /// <param name="isFirstRun">Indicates if it is the first run of the program.</param>
+        internal void Import(string path, bool isFirstRun = false)
         {
             try
             {
@@ -90,7 +91,12 @@ namespace Gavilya.Classes
                     streamReader.Dispose();
 
                     Save(Definitions.Games); // Save the games
-                    Global.ReloadAllPages(); // Reload all the pages
+
+                    if (!isFirstRun)
+                    {
+                        Global.ReloadAllPages(); // Reload all the pages
+                    }
+
                     MessageBox.Show(Properties.Resources.ImportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
                 }
             }

@@ -68,7 +68,7 @@ namespace Gavilya.Pages.FirstRunPages
             {
                 if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
                 {
-                    new GameSaver().Import(openFileDialog.FileName); // Import
+                    new GameSaver().Import(openFileDialog.FileName, true); // Import
                 }
             }
         }
