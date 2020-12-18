@@ -48,7 +48,7 @@ namespace Gavilya.Pages
     /// </summary>
     public partial class GameInfoPage : Page
     {
-        GameInfo GameInfo { get; set; }
+        internal GameInfo GameInfo { get; set; }
         UIElement parentUIElement = new UIElement();
         string gameLocation;
 

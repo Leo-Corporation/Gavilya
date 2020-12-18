@@ -60,6 +60,8 @@ namespace Gavilya.Pages
             {
                 GameList.Children.Add(new GameItem(gameInfo)); // Add a game
             }
+
+            GamePage.Navigate(new SelectGame()); // Default message
         }
     }
 }

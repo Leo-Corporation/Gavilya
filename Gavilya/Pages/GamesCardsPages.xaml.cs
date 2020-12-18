@@ -89,9 +89,13 @@ namespace Gavilya.Pages
 
         private async void GamePresenter_Drop(object sender, DragEventArgs e)
         {
+            if (Definitions.Games.Count <= 0)
+            {
+                Global.RemoveWelcomeScreen(); // Remove the "Welcome" screen
+            }
+
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
-                Global.RemoveWelcomeScreen(); // Remove
                 string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop); // Get all the files droped
                 List<string> executables = new List<string>(); // The execuables files
 
