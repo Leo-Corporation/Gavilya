@@ -22,6 +22,7 @@
     <None Remove="Assets\importGames.png" />
     <None Remove="Assets\recentGames.png" />
     <None Remove="Assets\searchRAWG.png" />
+    <None Remove="Assets\selectGames.png" />
     <None Remove="Fonts\FluentlyIcons.ttf" />
     <None Remove="Resources\Gavilya.png" />
     <None Remove="SplashScreen.png" />
@@ -59,6 +60,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\searchRAWG.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\selectGames.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\FluentlyIcons.ttf">
