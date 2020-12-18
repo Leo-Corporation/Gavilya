@@ -327,5 +327,22 @@ namespace Gavilya.Classes
                     break;
             }
         }
+
+        /// <summary>
+        /// Removes the Welcome Screen.
+        /// </summary>
+        internal static void RemoveWelcomeScreen()
+        {
+            for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each item
+            {
+                if (Definitions.GamesCardsPages.WelcomeHost.Children[i] is UserControls.WelcomeAddGames) // If the item is the "Welcome" screen
+                {
+                    Definitions.GamesCardsPages.WelcomeHost.Children.RemoveAt(i); // Remove the "Welcome" screen
+                }
+            }
+
+            Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hide
+            Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
+        }
     }
 }
