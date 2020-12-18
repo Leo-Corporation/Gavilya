@@ -99,7 +99,7 @@ namespace Gavilya.Windows
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            Environment.Exit(0); // Close the app
         }
     }
 }
