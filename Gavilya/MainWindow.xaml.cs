@@ -83,11 +83,7 @@ namespace Gavilya
 
         private void LoadGames()
         {
-            foreach (GameInfo gameInfo in Definitions.Games) // For each games
-            {
-                Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
-            }
-
+            Definitions.GamesCardsPages.LoadGames(); // Load the games
             Definitions.RecentGamesPage.LoadGames(); // Load the games
             Definitions.GamesListPage.LoadGames(); // Load the games
         }
@@ -287,6 +283,8 @@ namespace Gavilya
         {
             if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0)
             {
+                Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
+                Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
                 List<GameCard> games = new List<GameCard>(); // List of all the games
 
                 foreach (UIElement uIElement in Definitions.GamesCardsPages.GamePresenter.Children) // Foreach elements
@@ -325,7 +323,17 @@ namespace Gavilya
                     Definitions.RecentGamesPage.LoadGames(); // Reload the games
                     Definitions.GamesListPage.LoadGames(); // Reload the page
                 }
-            } 
+            }
+
+            if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
+            {
+                WelcomeAddGames welcomeAddGames = new WelcomeAddGames(); // New WelcomeAddGames
+                welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
+                welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+                Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
+                Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
+                Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
+            }
         }
 
         PopupMenu PopupMenu = new PopupMenu(); // The menu

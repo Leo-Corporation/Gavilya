@@ -170,6 +170,7 @@ namespace Gavilya.Windows
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
                 Definitions.Games.Add(gameInfo);
                 new GameSaver().Save(Definitions.Games);
+                Global.RemoveWelcomeScreen(); // Remove
                 Definitions.RecentGamesPage.LoadGames(); // Reload the games
                 Definitions.GamesListPage.LoadGames(); // Reload the page
                 Close(); // Close the Window

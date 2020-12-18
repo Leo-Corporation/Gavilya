@@ -65,16 +65,33 @@ namespace Gavilya.Pages
         {
             Definitions.MainWindow.FavoriteBar.Children.Clear();
             GamePresenter.Children.Clear(); // Remove all the games
-            foreach (GameInfo gameInfo in Definitions.Games) // For each game
+
+            if (Definitions.Games.Count > 0)
             {
-                GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
+                GamePresenter.Visibility = Visibility.Visible; // Visible
+                WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
+                foreach (GameInfo gameInfo in Definitions.Games) // For each game
+                {
+                    GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
+                }
             }
+            else
+            {
+                WelcomeAddGames welcomeAddGames = new WelcomeAddGames(); // New WelcomeAddGames
+                welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
+                welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+                WelcomeHost.Children.Add(welcomeAddGames); // Add a welcome add games
+                WelcomeHost.Visibility = Visibility.Visible; // Visible
+                GamePresenter.Visibility = Visibility.Collapsed; // Hidden
+            }
+            
         }
 
         private async void GamePresenter_Drop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
+                Global.RemoveWelcomeScreen(); // Remove
                 string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop); // Get all the files droped
                 List<string> executables = new List<string>(); // The execuables files
 

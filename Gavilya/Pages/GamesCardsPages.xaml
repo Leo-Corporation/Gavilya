@@ -31,5 +31,6 @@
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
             <WrapPanel x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Name="GamePresenter" Grid.Row="1" AllowDrop="True" Drop="GamePresenter_Drop"></WrapPanel>
         </ScrollViewer>
+        <Grid x:FieldModifier="public" Name="WelcomeHost" Grid.Row="2" Visibility="Collapsed" AllowDrop="False"></Grid>
     </Grid>
 </Page>
