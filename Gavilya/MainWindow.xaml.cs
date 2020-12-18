@@ -277,6 +277,11 @@ namespace Gavilya
                     }
                 }
             }
+            else
+            {
+                Definitions.IsGamesCardsPagesCheckBoxesVisible = false; // Hide all checkboxes
+                ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
+            }
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
