@@ -424,4 +424,7 @@
   <data name="AddGameWelcome" xml:space="preserve">
     <value>Add a game by clicking on the "Add" button or drag and drop an executable file here.</value>
   </data>
+  <data name="WelcomeRecentGames" xml:space="preserve">
+    <value>When you will start playing games, they will show up here.</value>
+  </data>
 </root>

@@ -963,6 +963,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à When you will start playing games, they will show up here..
+        /// </summary>
+        public static string WelcomeRecentGames {
+            get {
+                return ResourceManager.GetString("WelcomeRecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Xalyus Updater doesn&apos;t exist, please reinstall Gavilya..
         /// </summary>
         public static string XUDoesNotExist {

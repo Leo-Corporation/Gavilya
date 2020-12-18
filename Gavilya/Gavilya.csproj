@@ -20,6 +20,7 @@
     <None Remove="Assets\check.png" />
     <None Remove="Assets\computer-rocket.png" />
     <None Remove="Assets\importGames.png" />
+    <None Remove="Assets\recentGames.png" />
     <None Remove="Assets\searchRAWG.png" />
     <None Remove="Fonts\FluentlyIcons.ttf" />
     <None Remove="Resources\Gavilya.png" />
@@ -52,6 +53,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\importGames.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\recentGames.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\searchRAWG.png">

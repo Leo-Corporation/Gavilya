@@ -55,18 +55,31 @@ namespace Gavilya.Pages
         {
             GamePresenter.Children.Clear(); // Clear the games
 
-            Dictionary<GameInfo, int> keyValuePairs = new Dictionary<GameInfo, int>(); // Create a dictionnary
-
-            foreach (GameInfo gameInfo in Definitions.Games) // For each games
+            if (Definitions.Games.Count > 0) // If there is games
             {
-                keyValuePairs.Add(gameInfo, gameInfo.LastTimePlayed); // Add the game and the last time played to the dictionnary
+                GamePresenter.Visibility = Visibility.Visible; // Visible
+                WelcomeHost.Visibility = Visibility.Collapsed; // Hide
+
+                Dictionary<GameInfo, int> keyValuePairs = new Dictionary<GameInfo, int>(); // Create a dictionnary
+
+                foreach (GameInfo gameInfo in Definitions.Games) // For each games
+                {
+                    keyValuePairs.Add(gameInfo, gameInfo.LastTimePlayed); // Add the game and the last time played to the dictionnary
+                }
+
+                var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
+
+                foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
+                {
+                    GamePresenter.Children.Add(new GameCard(pair1.Key, GavilyaPages.Recent, true)); // Add the game
+                }
             }
-
-            var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
-
-            foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
+            else
             {
-                GamePresenter.Children.Add(new GameCard(pair1.Key, GavilyaPages.Recent, true)); // Add the game
+                GamePresenter.Visibility = Visibility.Collapsed; // Hide
+                WelcomeHost.Visibility = Visibility.Visible; // Visible
+
+                WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
             }
         }
     }
