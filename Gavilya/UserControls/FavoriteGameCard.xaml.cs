@@ -68,7 +68,7 @@ namespace Gavilya.UserControls
         {
             // Tooltip
             GameNameToolTip.Content = gameInfo.Name;
-            ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name;
+            ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
 
             if (gameInfo.IconFileLocation != string.Empty) // If there is an image
             {

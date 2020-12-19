@@ -81,7 +81,7 @@ namespace Gavilya.UserControls
         internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false)
         {
             // Tooltip
-            PlayToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name;
+            PlayToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
             GameToolTipName.Content = gameInfo.Name;
 
             // Border thickness

@@ -95,6 +95,7 @@ namespace Gavilya.Classes
                     if (!isFirstRun)
                     {
                         Global.ReloadAllPages(); // Reload all the pages
+                        Definitions.MainWindow.PageContent.Content = Definitions.GamesCardsPages; // Change page
                     }
 
                     MessageBox.Show(Properties.Resources.ImportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
