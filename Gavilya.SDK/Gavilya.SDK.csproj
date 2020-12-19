@@ -2,7 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.0.2009</Version>
+    <Version>1.0.0.2012</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description />
   </PropertyGroup>
 
 </Project>
