@@ -36,6 +36,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Gavilya.UserControls
 {
@@ -45,11 +46,38 @@ namespace Gavilya.UserControls
     public partial class GameItem : UserControl
     {
         public GameInfo GameInfo { get; set; }
+        public DispatcherTimer Timer { get; set; }
         public GameItem(GameInfo gameInfo)
         {
             InitializeComponent();
             GameInfo = gameInfo;
             LoadInformations(); // Load the game's info
+
+            Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
+            Timer.Tick += Timer_Tick; // Add the event
+        }
+
+        bool gameStarted = false;
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            string processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+
+            Definitions.GameInfoPage.DisplayTotalTimePlayed((Definitions.GameInfoPage.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage.GameInfo.TotalTimePlayed); // Refresh
+            Definitions.GameInfoPage2.DisplayTotalTimePlayed((Definitions.GameInfoPage2.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage2.GameInfo.TotalTimePlayed); // Refresh
+
+            if (Global.IsProcessRunning(processName)) // If the game is running
+            {
+                gameStarted = true; // The game has started
+                GameInfo.TotalTimePlayed += 1; // Increment the time played
+            }
+            else
+            {
+                if (gameStarted) // If the game has been started
+                {
+                    new GameSaver().Save(Definitions.Games); // Save
+                    Timer.Stop();
+                }
+            }
         }
 
         private void LoadInformations()

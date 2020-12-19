@@ -49,7 +49,8 @@ namespace Gavilya.Pages
     public partial class GameInfoPage : Page
     {
         internal GameInfo GameInfo { get; set; }
-        UIElement parentUIElement = new UIElement();
+        UIElement parentUIElement = new();
+        DispatcherTimer timer; // Create a timer
         string gameLocation;
 
         public GameInfoPage(GameInfo gameInfo)
@@ -63,6 +64,7 @@ namespace Gavilya.Pages
         public GameInfoPage()
         {
             InitializeComponent();
+            timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
         }
 
         /// <summary>
@@ -76,6 +78,7 @@ namespace Gavilya.Pages
             gameLocation = gameInfo.FileLocation;
             GameInfo = gameInfo; // Define the game info
             parentUIElement = parent; // Define the parent element
+            timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
 
             // Text
             PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
@@ -142,7 +145,6 @@ namespace Gavilya.Pages
             }
         }
 
-        DispatcherTimer timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Create a timer
         bool gameStarted = false;
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
@@ -157,8 +159,7 @@ namespace Gavilya.Pages
                     gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
                     new GameSaver().Save(Definitions.Games); // Save the changes
 
-                    timer.Tick += Timer_Tick; // Define the tick event
-                    timer.Start(); // Start the timer
+                    gameCard.Timer.Start(); // Start the timer
 
                     DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
                     LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
@@ -170,8 +171,7 @@ namespace Gavilya.Pages
                     Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
                     new GameSaver().Save(Definitions.Games); // Save the changes
 
-                    timer.Tick += Timer_Tick; // Define the tick event
-                    timer.Start(); // Start the timer
+                    gameItem.Timer.Start();
 
                     DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
                     LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
@@ -189,6 +189,7 @@ namespace Gavilya.Pages
             {
                 gameStarted = true; // The game has started
                 GameInfo.TotalTimePlayed += 1; // Increment the time played
+                MessageBox.Show(GameInfo.TotalTimePlayed.ToString());
             }
             else
             {
@@ -196,12 +197,12 @@ namespace Gavilya.Pages
                 {
                     new GameSaver().Save(Definitions.Games); // Save
                     DisplayTotalTimePlayed(GameInfo.TotalTimePlayed); // Update the text
-                    timer.Stop(); // Stop
+                    
                 }
             }
         }
 
-        private void DisplayTotalTimePlayed(int timePlayed)
+        internal void DisplayTotalTimePlayed(int timePlayed)
         {
             GameTimePlayed gameTimePlayed = GameTimePlayed.GetTimePlayed(timePlayed); // Create a GameTimePlayed
             string finalString = $"{Properties.Resources.TotalTimePlayed} "; // The final message
