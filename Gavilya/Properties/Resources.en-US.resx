@@ -213,9 +213,6 @@
   <data name="Search" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="PlayTo" xml:space="preserve">
-    <value>  </value>
-  </data>
   <data name="PlayLowerCase" xml:space="preserve">
     <value>Play</value>
   </data>

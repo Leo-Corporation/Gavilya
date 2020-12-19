@@ -221,7 +221,7 @@
     <value>Search</value>
   </data>
   <data name="PlayTo" xml:space="preserve">
-    <value>  </value>
+    <value></value>
   </data>
   <data name="PlayLowerCase" xml:space="preserve">
     <value>Play</value>

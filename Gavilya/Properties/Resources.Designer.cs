@@ -702,7 +702,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à   .
+        ///   Recherche une chaîne localisée semblable à .
         /// </summary>
         public static string PlayTo {
             get {
