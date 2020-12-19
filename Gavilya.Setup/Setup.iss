@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Gavilya"
-#define MyAppVersion "0.4.0.2011"
+#define MyAppVersion "1.0.0.2012-rc1"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://www.leocorp.fr/"
 #define MyAppExeName "Gavilya.exe"
@@ -10,7 +10,7 @@
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
-AppId={{082C0850-C47C-4A75-9513-BE082FE3FA61}
+AppId={{FA9C7428-D331-4A00-B3CF-D7F07D7D8661}
 AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
@@ -24,8 +24,8 @@ DisableProgramGroupPage=yes
 ; The [Icons] "quicklaunchicon" entry uses {userappdata} but its [Tasks] entry has a proper IsAdminInstallMode Check.
 UsedUserAreasWarning=no
 LicenseFile=C:\Users\Léo Peyronnet\source\repos\Gavilya\LICENSE
-; Uncomment the following line to run in non administrative install mode (install for current user only.)
-;PrivilegesRequired=admin
+; Remove the following line to run in administrative install mode (install for all users.)
+PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Output
 OutputBaseFilename=GavilyaSetup
@@ -43,24 +43,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 6.1; Check: not IsAdminInstallMode
 
 [Files]
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Gavilya.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Gavilya.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Gavilya.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\gavilya.ico"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Gavilya.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Gavilya.runtimeconfig.dev.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Gavilya.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Gavilya.SDK.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\LeoCorpLibrary.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\RestSharp.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Xalyus Updater.deps.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Xalyus Updater.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Xalyus Updater.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Xalyus Updater.pdb"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Xalyus Updater.runtimeconfig.dev.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\Xalyus Updater.runtimeconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\en-US\*"; DestDir: "{app}\en-US"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Files\fr-FR\*"; DestDir: "{app}\fr-FR"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya\bin\Release\net5.0-windows\Gavilya.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya\bin\Release\net5.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]
