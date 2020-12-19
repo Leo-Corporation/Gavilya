@@ -55,23 +55,12 @@ namespace Gavilya
         {
             InitializeComponent();
 
-            Definitions.GameInfoPage = new GameInfoPage(); // Create the page
-            Definitions.GameInfoPage2 = new GameInfoPage(); // Create the page
-
             Title = Properties.Resources.MainWindowTitle;
             Global.SetWindowIcon(this); // Set the icon of the window
 
             GamesCardsPages gamesCardsPages = new GamesCardsPages(); // GamesCardsPage
             Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
             PageContent.Content = gamesCardsPages; // Show the page
-
-            RecentGamesPage recentGamesPage = new RecentGamesPage(); // RecentGamesPage
-            Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
-            Definitions.RecentGamesPage.LoadGames(); // Load the games
-
-            GamesListPage gamesListPage = new GamesListPage(); // GamesListPage
-            Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
-            Definitions.GamesListPage.LoadGames(); // Load the games
 
             Definitions.MainWindow = this; // Define the Main Window
 

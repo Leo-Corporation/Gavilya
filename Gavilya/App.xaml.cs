@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Pages;
 using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,17 @@ namespace Gavilya
         {
             SettingsSaver.Load(); // Load the settings
             Global.ChangeLanguage(); // Change the language
+
+            Definitions.GameInfoPage = new(); // Create the page
+            Definitions.GameInfoPage2 = new(); // Create the page
+
+            RecentGamesPage recentGamesPage = new(); // RecentGamesPage
+            Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
+            Definitions.RecentGamesPage.LoadGames(); // Load the games
+
+            GamesListPage gamesListPage = new(); // GamesListPage
+            Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
+            Definitions.GamesListPage.LoadGames(); // Load the games
 
             if (Definitions.Settings.IsFirstRun) // If it is the app first run
             {
