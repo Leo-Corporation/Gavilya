@@ -64,6 +64,8 @@ namespace Gavilya
 
             Definitions.MainWindow = this; // Define the Main Window
 
+            WindowState = Definitions.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal; // Set the window state
+
             LoadPage(); // Load the button on the button corresponding to the active page
             new GameSaver().Load(); // Load the .gav file in the Definitions class
 
@@ -102,6 +104,13 @@ namespace Gavilya
         {
             RefreshMaximizeRestoreButton(); // Refresh
             DefineMaximumSize();
+            Definitions.Settings.IsMaximized = WindowState switch
+            {
+                WindowState.Maximized => true,
+                WindowState.Normal    => false,
+                WindowState.Minimized => false,
+                _                     => false
+            };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -126,6 +135,7 @@ namespace Gavilya
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            SettingsSaver.Save(); // Save settings
             Environment.Exit(0); // Quit the app
         }
 
