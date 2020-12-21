@@ -95,6 +95,8 @@ namespace Gavilya.UserControls
                     GameCard gameCard = (GameCard)parentElement; // Create a game card
                     gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
                     new GameSaver().Save(Definitions.Games); // Save the changes
+
+                    gameCard.Timer.Start(); // Start the timer
                 }
 
                 Definitions.RecentGamesPage.LoadGames(); // Reload the games
