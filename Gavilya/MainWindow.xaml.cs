@@ -64,12 +64,12 @@ namespace Gavilya
 
             Definitions.MainWindow = this; // Define the Main Window
 
-            WindowState = Definitions.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal; // Set the window state
-
             LoadPage(); // Load the button on the button corresponding to the active page
             new GameSaver().Load(); // Load the .gav file in the Definitions class
 
             LoadGames();
+            WindowState = Definitions.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal; // Set the window state
+            RefreshMaximizeRestoreButton();
         }
 
         private void LoadGames()
