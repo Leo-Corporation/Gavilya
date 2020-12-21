@@ -1,6 +1,10 @@
-# Gavilya, a simple game launcher
+# Gavilya, a simple game launcher ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Leo-Corporation/Gavilya)
 ## Introduction
-Gavilya is a basic and simple game launcher written in C# .NET 5, using WPF. It is still under construction. 
+Gavilya is a basic and simple game launcher written in C# .NET 5, using WPF. Gavilya allows you to put your games in one place and launch them easily. [Click here](https://leo-corporation.github.io/Gavilya-Web/) to visit Gavilya's website.
+
+## Download
+[Click here](https://bit.ly/Gavilya) to download Gavilya.
+
 ## Contribute
 To contribute to the project, you'll need:
 - Visual Studio 2019 v16.8 or higher
