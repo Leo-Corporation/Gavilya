@@ -112,6 +112,7 @@
 				<Grid Height="50" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
@@ -127,8 +128,20 @@
 						</Rectangle.Effect>
 					</Rectangle>
 
-					<TextBlock
-		Grid.Column="1"
+                    <Button Name="BackBtn" Click="BackBtn_Click"  Style="{StaticResource TitleBarButtonStyle}" Content="&#xe993;" FontSize="14" Grid.Column="0" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.GoBack}" Background="#FF323248" Foreground="White"/>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <Button Name="ForwardBtn" Click="ForwardBtn_Click"  Style="{StaticResource TitleBarButtonStyle}" Content="&#xe994;" FontSize="14" Grid.Column="1" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.GoForward}" Background="#FF323248" Foreground="White"/>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <TextBlock
+		Grid.Column="2"
 		Margin="10 0 0 0"
 		VerticalAlignment="Center"
 		FontSize="19"
@@ -146,26 +159,26 @@
 						</TextBlock.Style>
 					</TextBlock>
 
-                    <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="2" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                    <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                         <Button.ToolTip>
                             <ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#FF323248" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
-                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                         <Button.ToolTip>
                             <ToolTip Content="{x:Static lang:Resources.Delete}" Background="#FF323248" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
-                    <StackPanel Grid.Column="4" Orientation="Horizontal">
-                        <Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                    <StackPanel Grid.Column="5" Orientation="Horizontal">
+                        <Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="5" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.More}" Background="#FF323248" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
-                        <Button Content="&#xe9db;" FontSize="20" Grid.Column="4" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
+                        <Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
                     </StackPanel>
                     <Button
-		Grid.Column="5"
+		Grid.Column="6"
 		Click="Button_Click"
 		RenderOptions.EdgeMode="Aliased"
 		Style="{StaticResource TitleBarButtonStyle}" Background="Transparent">
@@ -179,7 +192,7 @@
 					</Button>
 					<Button
 		Name="maximizeButton"
-		Grid.Column="6"
+		Grid.Column="7"
 		Click="maximizeButton_Click" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}">
 						<Path
@@ -192,7 +205,7 @@
 					</Button>
 					<Button
 		Name="restoreButton"
-		Grid.Column="6"
+		Grid.Column="7"
 		Click="restoreButton_Click"
 		Visibility="Collapsed" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}">
@@ -205,7 +218,7 @@
 			StrokeThickness="1" />
 					</Button>
 					<Button
-		Grid.Column="7"
+		Grid.Column="9"
 		Click="Button_Click_2"
 		Style="{StaticResource TitleBarCloseButtonStyle}">
 						<Path
@@ -259,7 +272,7 @@
 								<WrapPanel Name="FavoriteBar" Orientation="Horizontal" Height="60"></WrapPanel>
 							</ScrollViewer>
 						</StackPanel>
-						<Frame Margin="8 0 0 0" Height="Auto" Name="PageContent" Grid.Row="1" NavigationUIVisibility="Hidden"></Frame>
+						<Frame Margin="8 0 0 0" Height="Auto" Name="PageContent" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
 					</Grid>
 				</Grid>
 			</Border>
