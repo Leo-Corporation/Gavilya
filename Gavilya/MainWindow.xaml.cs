@@ -69,7 +69,18 @@ namespace Gavilya
 
             LoadGames();
             WindowState = Definitions.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal; // Set the window state
-            RefreshMaximizeRestoreButton();
+            RefreshMaximizeRestoreButton(); // Refresh
+
+            RefreshNavigationsButton(); // Refresh the navigations button state
+        }
+
+        /// <summary>
+        /// Refresh the navigations button state.
+        /// </summary>
+        private void RefreshNavigationsButton()
+        {
+            BackBtn.IsEnabled = PageContent.CanGoBack; // Enable or not the button
+            ForwardBtn.IsEnabled = PageContent.CanGoForward; // Enable or not the button
         }
 
         private void LoadGames()
@@ -366,6 +377,21 @@ namespace Gavilya
         private void Window_LocationChanged(object sender, EventArgs e)
         {
             DefineMaximumSize(); // Define the maximum size of the window
+        }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PageContent.GoBack(); // Go back
+        }
+
+        private void ForwardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            PageContent.GoForward(); // Go forward
+        }
+
+        private void PageContent_Navigated(object sender, NavigationEventArgs e)
+        {
+            RefreshNavigationsButton(); // Refresh the navigations button state
         }
     }
 }
