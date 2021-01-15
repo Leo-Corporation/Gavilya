@@ -427,4 +427,10 @@
   <data name="WelcomeRecentGames" xml:space="preserve">
     <value>When you will start playing games, they will show up here.</value>
   </data>
+  <data name="GoBack" xml:space="preserve">
+    <value>Go Back</value>
+  </data>
+  <data name="GoForward" xml:space="preserve">
+    <value>Go Forward</value>
+  </data>
 </root>
