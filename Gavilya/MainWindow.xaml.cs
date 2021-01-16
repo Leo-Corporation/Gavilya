@@ -81,6 +81,9 @@ namespace Gavilya
         {
             BackBtn.IsEnabled = PageContent.CanGoBack; // Enable or not the button
             ForwardBtn.IsEnabled = PageContent.CanGoForward; // Enable or not the button
+
+            BackBtn.Foreground = BackBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
+            ForwardBtn.Foreground = ForwardBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
         }
 
         private void LoadGames()
