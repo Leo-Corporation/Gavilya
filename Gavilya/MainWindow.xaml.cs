@@ -60,7 +60,13 @@ namespace Gavilya
 
             GamesCardsPages gamesCardsPages = new GamesCardsPages(); // GamesCardsPage
             Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
-            PageContent.Content = gamesCardsPages; // Show the page
+            PageContent.Content = Definitions.Settings.PageId switch
+                {
+                    0 => gamesCardsPages,
+                    1 => Definitions.RecentGamesPage,
+                    2 => Definitions.GamesListPage,
+                    _ => gamesCardsPages
+                }; // Show the page
 
             Definitions.MainWindow = this; // Define the Main Window
 
@@ -105,13 +111,30 @@ namespace Gavilya
         {
             RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
             RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
+            RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
 
             ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
             ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
 
-            ShadowElement(AppCardButton); // Put a shadow under the button
+            switch (Definitions.Settings.PageId)
+            {
+                case 0: // App Card
+                    ShadowElement(AppCardButton); // Put a shadow under the button
 
-            ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
+                    ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
+                    break;
+                case 1: // Recent
+                    ShadowElement(RecentButton); // Put a shadow under the button
+
+                    ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
+                    break;
+                case 2: // App List
+                    ShadowElement(AppListButton); // Put a shadow under the button
+
+                    ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
+                    break;
+            }
         }
 
         private void Window_StateChanged(object sender, EventArgs e)
