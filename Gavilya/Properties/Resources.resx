@@ -433,4 +433,16 @@
   <data name="GoForward" xml:space="preserve">
     <value>Go Forward</value>
   </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Startup</value>
+  </data>
+  <data name="OnStartup" xml:space="preserve">
+    <value>On startup</value>
+  </data>
+  <data name="StartupPage" xml:space="preserve">
+    <value>Choose the startup page on startup.</value>
+  </data>
+  <data name="PagesNames" xml:space="preserve">
+    <value>Your Games;Recent Games;List view</value>
+  </data>
 </root>

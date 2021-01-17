@@ -426,4 +426,16 @@
   <data name="GoForward" xml:space="preserve">
     <value>Aller en avant</value>
   </data>
+  <data name="Startup" xml:space="preserve">
+    <value>Démarrage</value>
+  </data>
+  <data name="OnStartup" xml:space="preserve">
+    <value>Lors du démarrage</value>
+  </data>
+  <data name="StartupPage" xml:space="preserve">
+    <value>Choisissez la page de démarrage.</value>
+  </data>
+  <data name="PagesNames" xml:space="preserve">
+    <value>Vos jeux;Jeux récemment joués;Mode liste</value>
+  </data>
 </root>

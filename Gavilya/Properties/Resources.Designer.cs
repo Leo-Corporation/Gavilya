@@ -675,6 +675,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à On startup.
+        /// </summary>
+        public static string OnStartup {
+            get {
+                return ResourceManager.GetString("OnStartup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Open.
         /// </summary>
         public static string Open {
@@ -689,6 +698,15 @@ namespace Gavilya.Properties {
         public static string Other {
             get {
                 return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Your Games;Recent Games;List view.
+        /// </summary>
+        public static string PagesNames {
+            get {
+                return ResourceManager.GetString("PagesNames", resourceCulture);
             }
         }
         
@@ -905,6 +923,24 @@ namespace Gavilya.Properties {
         public static string StartAddGame {
             get {
                 return ResourceManager.GetString("StartAddGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Startup.
+        /// </summary>
+        public static string Startup {
+            get {
+                return ResourceManager.GetString("Startup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Choose the startup page on startup..
+        /// </summary>
+        public static string StartupPage {
+            get {
+                return ResourceManager.GetString("StartupPage", resourceCulture);
             }
         }
         
