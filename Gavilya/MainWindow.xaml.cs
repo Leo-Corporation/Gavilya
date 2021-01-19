@@ -72,6 +72,7 @@ namespace Gavilya
 
             LoadPage(); // Load the button on the button corresponding to the active page
             new GameSaver().Load(); // Load the .gav file in the Definitions class
+            Global.SortGames();
 
             LoadGames();
             WindowState = Definitions.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal; // Set the window state
