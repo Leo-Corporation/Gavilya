@@ -154,23 +154,26 @@ namespace Gavilya.Windows
         {
             if (!(string.IsNullOrEmpty(nameTxt.Text) || string.IsNullOrEmpty(locationTxt.Text))) /// If the fields are filled
             {
-                GameInfo gameInfo = new GameInfo(); // Create a GameInfo class
-                gameInfo.FileLocation = locationTxt.Text; // The file location of the game
-                gameInfo.Name = nameTxt.Text; // The name of the game
-                gameInfo.Version = versionTxt.Text; // The version of the game
-                gameInfo.IconFileLocation = GameIconLocation; // The location of the icon of the game
-                gameInfo.IsFavorite = false; // The game is not a favorite by default
-                gameInfo.RAWGID = RAWGID; // The RAWG Id of the game
-                gameInfo.Description = string.IsNullOrEmpty(descriptionTxt.Text) ? "" : descriptionTxt.Text; // The description of the game
-                gameInfo.Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms; // Get platforms
-                gameInfo.LastTimePlayed = 0; // Never played
-                gameInfo.TotalTimePlayed = 0; // Never played
-                gameInfo.ProcessName = string.Empty; // Default
+                GameInfo gameInfo = new GameInfo
+                {
+                    FileLocation = locationTxt.Text, // The file location of the game
+                    Name = nameTxt.Text, // The name of the game
+                    Version = versionTxt.Text, // The version of the game
+                    IconFileLocation = GameIconLocation, // The location of the icon of the game
+                    IsFavorite = false, // The game is not a favorite by default
+                    RAWGID = RAWGID, // The RAWG Id of the game
+                    Description = string.IsNullOrEmpty(descriptionTxt.Text) ? "" : descriptionTxt.Text, // The description of the game
+                    Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
+                    LastTimePlayed = 0, // Never played
+                    TotalTimePlayed = 0, // Never played
+                    ProcessName = string.Empty // Default
+                }; // Create a GameInfo class
 
                 Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
                 Definitions.Games.Add(gameInfo);
                 new GameSaver().Save(Definitions.Games);
                 Global.RemoveWelcomeScreen(); // Remove
+                Global.SortGames(); // Sort
                 Definitions.RecentGamesPage.LoadGames(); // Reload the games
                 Definitions.GamesListPage.LoadGames(); // Reload the page
                 Close(); // Close the Window

@@ -128,6 +128,7 @@ namespace Gavilya.Windows
             GameCard.InitializeUI(GameCard.GameInfo, GavilyaPages.Underteminated, true); // Update the UI
 
             new GameSaver().Save(Definitions.Games);
+            Global.SortGames(); // Sort games
             Definitions.RecentGamesPage.LoadGames(); // Reload the games
             Definitions.GamesCardsPages.LoadGames();
             Definitions.GamesListPage.LoadGames(); // Reload the page
