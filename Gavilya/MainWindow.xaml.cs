@@ -91,6 +91,47 @@ namespace Gavilya
 
             BackBtn.Foreground = BackBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
             ForwardBtn.Foreground = ForwardBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
+
+            UpdateSidebar(); // Update the sidebar
+        }
+
+        /// <summary>
+        /// Updates the sidebar.
+        /// </summary>
+        private void UpdateSidebar()
+        {
+            ResetSidebar(); // Resets the sidebar
+
+            if (PageContent.Content is GamesCardsPages) // If the selected page is GamesCardsPages
+            {
+                ShadowElement(AppCardButton); // Put a shadow under the button
+                ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
+            }
+            else if (PageContent.Content is RecentGamesPage) // If the selected page is RecentGamesPage
+            {
+                ShadowElement(RecentButton); // Put a shadow under the button
+                ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
+            }
+            else if (PageContent.Content is GamesListPage) // If the selected page is GamesListPage
+            {
+                ShadowElement(AppListButton); // Put a shadow under the button
+                ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
+            }
+        }
+
+        /// <summary>
+        /// Resets the sidebar.
+        /// </summary>
+        private void ResetSidebar()
+        {
+            RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
+            RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
+            RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
+
+            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+
         }
 
         private void LoadGames()
@@ -110,13 +151,7 @@ namespace Gavilya
 
         private void LoadPage()
         {
-            RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
-            RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
-            RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
-
-            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
-            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
-            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ResetSidebar(); // Reset the sidebar
 
             switch (Definitions.Settings.PageId)
             {
@@ -408,12 +443,18 @@ namespace Gavilya
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            PageContent.GoBack(); // Go back
+            if (PageContent.CanGoBack) // If can go back
+            {
+                PageContent.GoBack(); // Go back
+            }
         }
 
         private void ForwardBtn_Click(object sender, RoutedEventArgs e)
         {
-            PageContent.GoForward(); // Go forward
+            if (PageContent.CanGoForward) // If can go forward
+            {
+                PageContent.GoForward(); // Go forward
+            }
         }
 
         private void PageContent_Navigated(object sender, NavigationEventArgs e)
