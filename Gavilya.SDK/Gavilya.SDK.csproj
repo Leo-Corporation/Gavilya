@@ -8,6 +8,7 @@
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description />
+    <Copyright>© 2021</Copyright>
   </PropertyGroup>
 
 </Project>

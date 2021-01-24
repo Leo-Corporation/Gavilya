@@ -12,6 +12,7 @@
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
+    <Copyright>© 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>

@@ -15,6 +15,7 @@
     <Description>Where all your games are gathered.</Description>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
+    <Copyright>© 2021</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
