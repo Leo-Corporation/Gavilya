@@ -9,6 +9,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
 		xmlns:uc="clr-namespace:Gavilya.UserControls"
         mc:Ignorable="d"
+        FontFamily="/Fonts/#Montserrat"
 		Title="Gavilya" Height="610" Width="960" WindowStartupLocation="CenterScreen" LocationChanged="Window_LocationChanged" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded" >
 	
 	<WindowChrome.WindowChrome>

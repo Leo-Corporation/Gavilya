@@ -6,6 +6,7 @@
       xmlns:lang="clr-namespace:Gavilya.Properties"
       xmlns:local="clr-namespace:Gavilya.Pages"
       mc:Ignorable="d" 
+      FontFamily="../Fonts/#Montserrat"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="SelectGame">
 

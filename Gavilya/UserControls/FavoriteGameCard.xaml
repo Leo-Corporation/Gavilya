@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:Gavilya.UserControls"
              xmlns:lang="clr-namespace:Gavilya.Properties"
              mc:Ignorable="d" 
+             FontFamily="../Fonts/#Montserrat"
              Height="85" Width="150" Margin="5">
     <Border CornerRadius="10">
         <Border.ToolTip>

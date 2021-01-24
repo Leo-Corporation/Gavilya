@@ -28,6 +28,8 @@
     <None Remove="Assets\searchRAWG.png" />
     <None Remove="Assets\selectGames.png" />
     <None Remove="Fonts\FluentlyIcons.ttf" />
+    <None Remove="Fonts\Montserrat-Bold.ttf" />
+    <None Remove="Fonts\Montserrat-Regular.ttf" />
     <None Remove="Resources\Gavilya.png" />
     <None Remove="SplashScreen.png" />
   </ItemGroup>
@@ -70,6 +72,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\FluentlyIcons.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Montserrat-Bold.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\Montserrat-Regular.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\Gavilya.png">

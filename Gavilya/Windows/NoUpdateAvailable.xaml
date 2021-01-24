@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Gavilya.Windows"
         xmlns:lang="clr-namespace:Gavilya.Properties"
         mc:Ignorable="d"
+        FontFamily="../Fonts/#Montserrat"
         Title="{x:Static lang:Resources.UpdateUn}" Height="140" Width="320" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="Transparent">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="45"></WindowChrome>
@@ -68,7 +69,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="15" Text="{x:Static lang:Resources.UpdateUn}" FontWeight="Bold" Foreground="White">
+            <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="13" Text="{x:Static lang:Resources.UpdateUn}" FontWeight="Bold" Foreground="White">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Style.Triggers>
@@ -86,7 +87,7 @@
             <Grid Grid.Row="1" Grid.ColumnSpan="3">
                 <StackPanel>
 
-                    <TextBlock Text="{x:Static lang:Resources.UpdateUnMessage}" Foreground="White" FontWeight="SemiBold" Margin="10 0 0 10" FontSize="14" TextWrapping="Wrap"/>
+                    <TextBlock Text="{x:Static lang:Resources.UpdateUnMessage}" Foreground="White" FontWeight="SemiBold" Margin="10 0 0 10" FontSize="11" TextWrapping="Wrap"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                         <Button Name="CancelBtn" Click="CloseBtn_Click" Style="{StaticResource RegularButton}" Background="#FF46465C" Padding="5">

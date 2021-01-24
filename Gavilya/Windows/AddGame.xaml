@@ -6,7 +6,8 @@
         xmlns:lang="clr-namespace:Gavilya.Properties"
         xmlns:local="clr-namespace:Gavilya.Windows"
         mc:Ignorable="d"
-        Title="Add a game" Loaded="Window_Loaded" Background="Transparent" ResizeMode="NoResize" AllowsTransparency="True" Height="286" Width="716" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        FontFamily="../Fonts/#Montserrat"
+        Title="Add a game" Loaded="Window_Loaded" Background="Transparent" ResizeMode="NoResize" AllowsTransparency="True" Height="286" Width="720" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="50" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
@@ -187,7 +188,7 @@
                                 <ToolTip Content="{x:Static lang:Resources.Browse}" Background="#FF323248" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
-                        <Button Padding="5" Style="{DynamicResource RegularButton}" Click="Button_Click_3" Content="{x:Static lang:Resources.CoverSearch}" FontWeight="Bold" Foreground="White" Width="Auto" Height="30" Margin="5" Background="#FF5A5A70">
+                        <Button Padding="5" Style="{DynamicResource RegularButton}" Click="Button_Click_3" Content="{x:Static lang:Resources.CoverSearch}" FontWeight="Bold" Foreground="White" Width="Auto" Height="30" Margin="5" Background="#FF5A5A70" FontSize="10">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.CoverSearch}" Background="#FF323248" Foreground="White"/>
                             </Button.ToolTip>
@@ -228,12 +229,12 @@
                     </TextBlock>
 
                     <StackPanel HorizontalAlignment="Center" Margin="0 20 0 0" Orientation="Horizontal">
-                        <Button FontSize="15" Cursor="Hand" Name="AddBtn" Click="AddBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="5" Content="{x:Static lang:Resources.Add}" FontWeight="Bold">
+                        <Button FontSize="13" Cursor="Hand" Name="AddBtn" Click="AddBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Add}" FontWeight="Bold">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.AddGame}" Background="#FF323248" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
-                        <Button FontSize="15" Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF5A5A70" Margin="0" Foreground="White" Padding="5" Content="{x:Static lang:Resources.Cancel}" FontWeight="Bold">
+                        <Button FontSize="13" Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF5A5A70" Margin="0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="Bold">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#FF323248" Foreground="White"/>
                             </Button.ToolTip>

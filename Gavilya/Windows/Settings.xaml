@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Gavilya.Windows"
         xmlns:lang="clr-namespace:Gavilya.Properties"
         mc:Ignorable="d"
+        FontFamily="../Fonts/#Montserrat"
         Title="{x:Static lang:Resources.Settings}" AllowsTransparency="True" Background="Transparent" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     
     <WindowChrome.WindowChrome>
@@ -174,7 +175,7 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Margin="5" Grid.Column="0" HorizontalAlignment="Left">
-                    <Button Click="SaveOptions_Click" Padding="10" x:Name="SaveOptions" Cursor="Hand" FontSize="15" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+                    <Button Click="SaveOptions_Click" Padding="13" x:Name="SaveOptions" Cursor="Hand" FontSize="13" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="0,0,0,5">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                             <TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xead3;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
                             <TextBlock Text="{x:Static lang:Resources.SaveOptions}"/>
@@ -186,7 +187,7 @@
 
                     </Button>
 
-                    <Button Click="LanguageOptions_Click" Padding="10" x:Name="LanguageOptions" Cursor="Hand" FontSize="15" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5" >
+                    <Button Click="LanguageOptions_Click" Padding="13" x:Name="LanguageOptions" Cursor="Hand" FontSize="13" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5" >
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xea50;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
                             <TextBlock Text="{x:Static lang:Resources.Languages}"/>
@@ -198,7 +199,7 @@
 
                     </Button>
 
-                    <Button Click="StartupOptions_Click" Padding="10" x:Name="StartupOptions" Cursor="Hand" FontSize="15" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5" >
+                    <Button Click="StartupOptions_Click" Padding="13" x:Name="StartupOptions" Cursor="Hand" FontSize="13" FontWeight="Bold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5" >
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xeab9;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
                             <TextBlock Text="{x:Static lang:Resources.Startup}"/>
