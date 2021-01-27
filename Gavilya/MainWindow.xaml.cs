@@ -358,58 +358,61 @@ namespace Gavilya
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0)
+            if (MessageBox.Show(Properties.Resources.DeleteConfirmMessage, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
-                Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
-                List<GameCard> games = new List<GameCard>(); // List of all the games
-
-                foreach (UIElement uIElement in Definitions.GamesCardsPages.GamePresenter.Children) // Foreach elements
+                if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0)
                 {
-                    if (uIElement is GameCard) // If the element is a GameCard
-                    {
-                        GameCard gameCard = (GameCard)uIElement; // Convert the element to a GameCard
-                        if ((gameCard.CheckBox.IsChecked ?? true) && (gameCard.CheckBox.Visibility == Visibility.Visible)) // If the element is checked
-                        {
-                            games.Add(gameCard); // Add to the list the GameCard
-                        }
-                    }
-                }
+                    Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
+                    Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
+                    List<GameCard> games = new List<GameCard>(); // List of all the games
 
-                foreach (GameCard gameCard1 in games) // For each games in the list
-                {
-                    if (gameCard1.GameInfo.IsFavorite) // If the game is a favorite
+                    foreach (UIElement uIElement in Definitions.GamesCardsPages.GamePresenter.Children) // Foreach elements
                     {
-                        List<FavoriteGameCard> favoriteGameCards = new List<FavoriteGameCard>();
-                        foreach (FavoriteGameCard favoriteGameCard in FavoriteBar.Children) // Foreach favorite
+                        if (uIElement is GameCard) // If the element is a GameCard
                         {
-                            favoriteGameCards.Add(favoriteGameCard); // Add to the list
-                        }
-
-                        foreach (FavoriteGameCard favoriteGameCard1 in favoriteGameCards)
-                        {
-                            if (favoriteGameCard1.GameInfo == gameCard1.GameInfo) // If the favorite is corresponding to the game
+                            GameCard gameCard = (GameCard)uIElement; // Convert the element to a GameCard
+                            if ((gameCard.CheckBox.IsChecked ?? true) && (gameCard.CheckBox.Visibility == Visibility.Visible)) // If the element is checked
                             {
-                                FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
+                                games.Add(gameCard); // Add to the list the GameCard
                             }
                         }
                     }
-                    Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
-                    Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
-                    new GameSaver().Save(Definitions.Games); // Update the save file
-                    Definitions.RecentGamesPage.LoadGames(); // Reload the games
-                    Definitions.GamesListPage.LoadGames(); // Reload the page
-                }
-            }
 
-            if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
-            {
-                WelcomeAddGames welcomeAddGames = new WelcomeAddGames(); // New WelcomeAddGames
-                welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
-                welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
-                Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
-                Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
-                Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
+                    foreach (GameCard gameCard1 in games) // For each games in the list
+                    {
+                        if (gameCard1.GameInfo.IsFavorite) // If the game is a favorite
+                        {
+                            List<FavoriteGameCard> favoriteGameCards = new List<FavoriteGameCard>();
+                            foreach (FavoriteGameCard favoriteGameCard in FavoriteBar.Children) // Foreach favorite
+                            {
+                                favoriteGameCards.Add(favoriteGameCard); // Add to the list
+                            }
+
+                            foreach (FavoriteGameCard favoriteGameCard1 in favoriteGameCards)
+                            {
+                                if (favoriteGameCard1.GameInfo == gameCard1.GameInfo) // If the favorite is corresponding to the game
+                                {
+                                    FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
+                                }
+                            }
+                        }
+                        Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
+                        Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
+                        new GameSaver().Save(Definitions.Games); // Update the save file
+                        Definitions.RecentGamesPage.LoadGames(); // Reload the games
+                        Definitions.GamesListPage.LoadGames(); // Reload the page
+                    }
+                }
+
+                if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
+                {
+                    WelcomeAddGames welcomeAddGames = new WelcomeAddGames(); // New WelcomeAddGames
+                    welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
+                    welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+                    Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
+                    Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
+                    Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
+                }
             }
         }
 
