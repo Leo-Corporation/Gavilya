@@ -438,4 +438,7 @@
   <data name="PagesNames" xml:space="preserve">
     <value>Vos jeux;Jeux récemment joués;Mode liste</value>
   </data>
+  <data name="DeleteConfirmMessage" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer ces jeux ? Cette opération est irréversible.</value>
+  </data>
 </root>

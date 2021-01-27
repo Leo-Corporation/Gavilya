@@ -435,4 +435,7 @@
   <data name="PagesNames" xml:space="preserve">
     <value>Your Games;Recent Games;List view</value>
   </data>
+  <data name="DeleteConfirmMessage" xml:space="preserve">
+    <value>Are you sure you wanna delete these games? This operation can't be cancelled.</value>
+  </data>
 </root>
