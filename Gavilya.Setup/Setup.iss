@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Gavilya"
-#define MyAppVersion "1.1.0.2101-rc1"
+#define MyAppVersion "1.1.0.2101"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://www.leocorp.fr/"
 #define MyAppExeName "Gavilya.exe"
@@ -27,7 +27,7 @@ LicenseFile=H:\Gavilya\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=H:\Gavilya\Gavilya\Gavilya.Setup\Output
+OutputDir=H:\Gavilya\Gavilya.Setup\Output
 OutputBaseFilename=GavilyaSetup
 SetupIconFile=H:\Gavilya\Gavilya\Gavilya.ico
 Compression=lzma
