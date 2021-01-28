@@ -27,9 +27,24 @@ using System.Text;
 
 namespace Gavilya.Enums
 {
+    /// <summary>
+    /// The settings pages.
+    /// </summary>
     public enum SettingsPages
     {
+        /// <summary>
+        /// The <see cref="SaveOptions"/> page.
+        /// </summary>
         SaveOptions,
-        Languages
+
+        /// <summary>
+        /// The <see cref="Languages"/> page.
+        /// </summary>
+        Languages,
+
+        /// <summary>
+        /// The <see cref="Startup"/> page.
+        /// </summary>
+        Startup
     }
 }

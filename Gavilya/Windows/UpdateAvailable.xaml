@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Gavilya.Windows"
         xmlns:lang="clr-namespace:Gavilya.Properties"
         mc:Ignorable="d"
+        FontFamily="../Fonts/#Montserrat"
         Title="{x:Static lang:Resources.UpdateAv}" Height="175" Width="400" WindowStartupLocation="CenterScreen" AllowsTransparency="True" ResizeMode="NoResize" Background="Transparent" WindowStyle="None">
 
     <WindowChrome.WindowChrome>
@@ -87,12 +88,12 @@
             <Grid Grid.Row="1" Grid.ColumnSpan="3">
                 <StackPanel>
                     
-                    <TextBlock Text="{x:Static lang:Resources.UpdateAvMessage}" Foreground="White" FontWeight="SemiBold" Margin="10 0 0 10" FontSize="14"/>
-                    <TextBlock Name="VersionTxt" Text="{x:Static lang:Resources.UpdateVersion}" Foreground="White" FontWeight="SemiBold" Margin="10 0 0 0" FontSize="14"/>
-                    <TextBlock Text="{x:Static lang:Resources.ContinueInstall}" Foreground="White" FontWeight="SemiBold" Margin="10 0 0 0" FontSize="14"/>
+                    <TextBlock Text="{x:Static lang:Resources.UpdateAvMessage}" Foreground="White" FontWeight="SemiBold" Margin="10 0 0 10" FontSize="13"/>
+                    <TextBlock Name="VersionTxt" Text="{x:Static lang:Resources.UpdateVersion}" Foreground="White" FontWeight="SemiBold" Margin="10 0 0 0" FontSize="13"/>
+                    <TextBlock Text="{x:Static lang:Resources.ContinueInstall}" Foreground="White" FontWeight="SemiBold" Margin="10 0 0 0" FontSize="13"/>
 
                     <StackPanel Orientation="Horizontal" Margin="0,15,0,0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                        <Button Cursor="Hand" Name="InstallBtn" Click="InstallBtn_Click" Margin="0 0 10 0" Style="{StaticResource PlayButton}" Padding="5">
+                        <Button Cursor="Hand" Name="InstallBtn" Click="InstallBtn_Click" Margin="0 0 10 0" Style="{StaticResource PlayButton}" Padding="7">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0 0 10 0" Foreground="White" Text="&#xe9ea;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="14" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <TextBlock Foreground="White" Text="{x:Static lang:Resources.Install}" FontSize="13" FontWeight="Bold"/>
@@ -102,7 +103,7 @@
                                 <ToolTip Content="{x:Static lang:Resources.Install}" Background="#FF323248" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
-                        <Button Name="CancelBtn" Click="CancelBtn_Click" Style="{StaticResource RegularButton}" Background="#FF46465C" Padding="5">
+                        <Button Name="CancelBtn" Click="CancelBtn_Click" Style="{StaticResource RegularButton}" Background="#FF46465C" Padding="7">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0 0 10 0" Foreground="White" Text="&#xe9d8;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <TextBlock Foreground="White" Text="{x:Static lang:Resources.Cancel}" FontSize="13" FontWeight="Bold"/>

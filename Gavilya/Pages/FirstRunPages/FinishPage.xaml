@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:Gavilya.Pages.FirstRunPages"
       xmlns:lang="clr-namespace:Gavilya.Properties"
       mc:Ignorable="d" 
+      FontFamily="../../Fonts/#Montserrat"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="FinishPage">
 

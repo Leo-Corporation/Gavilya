@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Gavilya.Windows"
         xmlns:lang="clr-namespace:Gavilya.Properties"
         mc:Ignorable="d"
+        FontFamily="../Fonts/#Montserrat"
         Title="PopupMenu" Height="80" Width="159" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None" Deactivated="Window_Deactivated">
     <Grid>
         <Grid.RowDefinitions>

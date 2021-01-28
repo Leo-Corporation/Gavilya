@@ -6,6 +6,7 @@
         xmlns:lang="clr-namespace:Gavilya.Properties"
         xmlns:local="clr-namespace:Gavilya.Windows"
         mc:Ignorable="d"
+        FontFamily="../Fonts/#Montserrat"
         Title="{x:Static lang:Resources.Welcome}" Height="450" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Window.Resources>
         <Style x:Key="TitleBarButtonStyle" TargetType="Button">

@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gavilya.UserControls"
              mc:Ignorable="d" 
+             FontFamily="../Fonts/#Montserrat"
              Height="25" Width="200" Margin="0,0,5,0">
     <Grid>
-        <Button Padding="5 0 5 0" x:Name="GameBtn" Click="GameBtn_Click" Style="{DynamicResource RegularButton}" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="0,0,5,0">
-            <TextBlock Width="200" Name="GameName" Grid.Row="0" d:Text="Game Name" FontSize="15" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <Button Padding="5 0 5 0" x:Name="GameBtn" Click="GameBtn_Click" Style="{DynamicResource RegularButton}" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="0,0,5,0" FontSize="11">
+            <TextBlock Width="200" Name="GameName" Grid.Row="0" d:Text="Game Name" FontSize="14" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
             <Button.ToolTip>
                 <ToolTip Name="GameNameToolTip" Background="#FF323248" Foreground="White"/>
             </Button.ToolTip>

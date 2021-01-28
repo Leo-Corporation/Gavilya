@@ -45,6 +45,8 @@ namespace Gavilya.Windows
     {
         SaveOptionsPage saveOptionsPage = new SaveOptionsPage(); // Create a page
         LanguagePage languagePage = new LanguagePage(); // Create a page
+        StartupPage startupPage = new StartupPage(); // Create a page
+
         public Settings()
         {
             InitializeComponent();
@@ -64,6 +66,8 @@ namespace Gavilya.Windows
         private void HideAllPages()
         {
             saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
+            languagePage.Visibility = Visibility.Hidden; // Hide the page
+            startupPage.Visibility = Visibility.Hidden; // Hide the page
         }
 
         private void NavigateToPage(SettingsPages settingsPage)
@@ -75,8 +79,6 @@ namespace Gavilya.Windows
                 case SettingsPages.Languages:
                     UnCheckAll(); // Uncheck all buttons
 
-                    saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-
                     LanguageOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
                     languagePage.Visibility = Visibility.Visible; // Show the page
                     OptionsDisplayer.Navigate(languagePage); // Navigate
@@ -84,11 +86,16 @@ namespace Gavilya.Windows
                 case SettingsPages.SaveOptions:
                     UnCheckAll(); // Uncheck all buttons
 
-                    languagePage.Visibility = Visibility.Hidden; // Hide the page
-
                     SaveOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
                     saveOptionsPage.Visibility = Visibility.Visible; // Show the page
                     OptionsDisplayer.Navigate(saveOptionsPage); // Navigate
+                    break;
+                case SettingsPages.Startup:
+                    UnCheckAll(); // Uncheck all buttons
+
+                    StartupOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+                    startupPage.Visibility = Visibility.Visible; // Show the page
+                    OptionsDisplayer.Navigate(startupPage); // Navigate
                     break;
             }
         }
@@ -97,6 +104,7 @@ namespace Gavilya.Windows
         {
             SaveOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
             LanguageOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+            StartupOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
         }
 
         private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -107,6 +115,11 @@ namespace Gavilya.Windows
         private void LanguageOptions_Click(object sender, RoutedEventArgs e)
         {
             NavigateToPage(SettingsPages.Languages); // Show the "Languages" page
+        }
+
+        private void StartupOptions_Click(object sender, RoutedEventArgs e)
+        {
+            NavigateToPage(SettingsPages.Startup); // Show the "Startup" page
         }
     }
 }

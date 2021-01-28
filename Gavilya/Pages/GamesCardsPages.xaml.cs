@@ -128,6 +128,8 @@ namespace Gavilya.Pages
                     Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
                     Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the games to the GamePresenter
                     new GameSaver().Save(Definitions.Games); // Save the added games
+                    Global.SortGames(); // Sort
+                    Definitions.GamesCardsPages.LoadGames(); // Reload the page
                     Definitions.RecentGamesPage.LoadGames(); // Reload the page
                     Definitions.GamesListPage.LoadGames(); // Reload the page
                 }

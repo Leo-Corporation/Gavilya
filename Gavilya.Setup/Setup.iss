@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Gavilya"
-#define MyAppVersion "1.0.0.2012"
+#define MyAppVersion "1.1.0.2101"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://www.leocorp.fr/"
 #define MyAppExeName "Gavilya.exe"
@@ -23,13 +23,13 @@ DefaultGroupName=Léo Corp
 DisableProgramGroupPage=yes
 ; The [Icons] "quicklaunchicon" entry uses {userappdata} but its [Tasks] entry has a proper IsAdminInstallMode Check.
 UsedUserAreasWarning=no
-LicenseFile=C:\Users\Léo Peyronnet\source\repos\Gavilya\LICENSE
+LicenseFile=H:\Gavilya\LICENSE
 ; Remove the following line to run in administrative install mode (install for all users.)
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
-OutputDir=C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya.Setup\Output
+OutputDir=H:\Gavilya\Gavilya.Setup\Output
 OutputBaseFilename=GavilyaSetup
-SetupIconFile=C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya\Gavilya.ico
+SetupIconFile=H:\Gavilya\Gavilya\Gavilya.ico
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -43,8 +43,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 6.1; Check: not IsAdminInstallMode
 
 [Files]
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya\bin\Release\net5.0-windows\Gavilya.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\Léo Peyronnet\source\repos\Gavilya\Gavilya\bin\Release\net5.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "H:\Gavilya\Gavilya\bin\Release\net5.0-windows\Gavilya.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "H:\Gavilya\Gavilya\bin\Release\net5.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

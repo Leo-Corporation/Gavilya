@@ -333,16 +333,37 @@ namespace Gavilya.Classes
         /// </summary>
         internal static void RemoveWelcomeScreen()
         {
-            for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each item
-            {
-                if (Definitions.GamesCardsPages.WelcomeHost.Children[i] is UserControls.WelcomeAddGames) // If the item is the "Welcome" screen
-                {
-                    Definitions.GamesCardsPages.WelcomeHost.Children.RemoveAt(i); // Remove the "Welcome" screen
-                }
-            }
-
             Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hide
             Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
+        }
+
+        /// <summary>
+        /// Sorts the games: A-Z.
+        /// </summary>
+        internal static void SortGames()
+        {
+            List<string> gamesNames = new(); // New list
+
+            for (int i = 0; i < Definitions.Games.Count; i++)
+            {
+                gamesNames.Add(Definitions.Games[i].Name);
+            }
+
+            List<string> sortedGames = new(); // New list
+            sortedGames.AddRange(gamesNames); // Create the list
+
+            sortedGames.Sort(); // Sort the games
+
+            List<GameInfo> sortedFinal = new(); // Create a new list
+            sortedFinal.AddRange(Definitions.Games); // Assign the list
+
+            for (int i = 0; i < sortedGames.Count; i++)
+            {
+                sortedFinal[i] = Definitions.Games[gamesNames.IndexOf(sortedGames[i])]; // Add the game
+            }
+
+            Definitions.Games = sortedFinal; // Save the changes
+            new GameSaver().Save(Definitions.Games); // Save in file
         }
     }
 }

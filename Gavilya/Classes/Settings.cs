@@ -49,6 +49,11 @@ namespace Gavilya.Classes
         /// Indicates if the <see cref="MainWindow"/> is maximized or not.
         /// </summary>
         public bool IsMaximized { get; set; }
+
+        /// <summary>
+        /// The page id to check on startup.
+        /// </summary>
+        public int PageId { get; set; }
     }
 
     public static class SettingsSaver
@@ -70,7 +75,7 @@ namespace Gavilya.Classes
             }
             else
             {
-                Definitions.Settings = new Settings { Language = "_default", IsFirstRun = true, IsMaximized = false };
+                Definitions.Settings = new Settings { Language = "_default", IsFirstRun = true, IsMaximized = false, PageId = 0 };
                 Save();
             }
         }

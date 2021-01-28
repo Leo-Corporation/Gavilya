@@ -72,13 +72,13 @@ namespace Gavilya.UserControls
 
             if (gameInfo.IconFileLocation != string.Empty) // If there is an image
             {
-                GameIcon.Source = new BitmapImage(new Uri(gameInfo.IconFileLocation)); // Put the icon of the game
+                GameIcon.ImageSource = new BitmapImage(new Uri(gameInfo.IconFileLocation)); // Put the icon of the game
                 GamePath = gameInfo.FileLocation; // Set the location of the game
             }
             else // If the image is the app icon
             {
                 Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
-                GameIcon.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+                GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
                 GamePath = gameInfo.FileLocation; // Set the location of the game
             }
 
