@@ -58,7 +58,7 @@
 
 
   <!-- Activer les thèmes pour les contrôles et boîtes de dialogue communes de Windows (Windows XP et version ultérieure) -->
-  <!--
+  
   <dependency>
     <dependentAssembly>
       <assemblyIdentity
@@ -71,6 +71,6 @@
         />
     </dependentAssembly>
   </dependency>
-  -->
+  
 
 </assembly>
