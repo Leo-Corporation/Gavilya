@@ -144,9 +144,30 @@ namespace Gavilya
         private void DefineMaximumSize()
         {
             System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(this).Handle); // The current screen
+            
+            float dpiX, dpiY;
+            double scaling = 100; // Default scaling = 100%
 
-            MaxHeight = currentScreen.WorkingArea.Height;
-            MaxWidth = currentScreen.WorkingArea.Width;
+            using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromHwnd(IntPtr.Zero))
+            {
+                dpiX = graphics.DpiX; // Get the DPI
+                dpiY = graphics.DpiY; // Get the DPI
+
+                scaling = dpiX switch
+                {
+                    96  => 100, // Get the %
+                    120 => 125, // Get the %
+                    144 => 150, // Get the %
+                    168 => 175, // Get the %
+                    192 => 200, // Get the % 
+                    _   => 100
+                };
+            }
+            
+            double factor = scaling / 100d; // Calculate factor
+
+            MaxHeight = currentScreen.WorkingArea.Height / factor; // Set max size
+            MaxWidth = currentScreen.WorkingArea.Width / factor; // Set max size
         }
 
         private void LoadPage()
@@ -426,9 +447,12 @@ namespace Gavilya
             }
             else
             {
+                double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
+
+
                 PopupMenu.WindowStartupLocation = WindowStartupLocation.Manual; // Set the startup position to manual
-                PopupMenu.Left = PointToScreen(Mouse.GetPosition(this)).X - PopupMenu.Width / 2; // Calculate the X position
-                PopupMenu.Top = PointToScreen(Mouse.GetPosition(this)).Y + 5; // Calculate the Y position
+                PopupMenu.Left = (PointToScreen(Mouse.GetPosition(this)).X - PopupMenu.Width / 2) / factor; // Calculate the X position
+                PopupMenu.Top = PointToScreen(Mouse.GetPosition(this)).Y / factor + 5; // Calculate the Y position
                 PopupMenu.Show(); // Show
                 Definitions.IsMenuShown = true; // Is shown
             }
