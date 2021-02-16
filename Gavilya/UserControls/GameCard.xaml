@@ -20,7 +20,7 @@
             </ImageBrush>
         </Border.Background>
         <Border.ToolTip>
-            <ToolTip Name="GameToolTipName" Background="#FF323248" Foreground="White"/>
+            <ToolTip Name="GameToolTipName" Background="#000014" Foreground="White"/>
         </Border.ToolTip>
         <Grid>
             <Grid.RowDefinitions>
@@ -38,12 +38,12 @@
             <CheckBox Cursor="Hand" x:Name="CheckBox" Style="{DynamicResource CheckBoxStyle1}" Background="Transparent" Grid.Column="0" x:FieldModifier="public" Visibility="Hidden" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             <Button Name="FavBtn" Click="FavBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xeb01;" Foreground="White" FontFamily="..\Fonts\#FluentlyIcons" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Grid.Row="0">
                 <Button.ToolTip>
-                    <ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#FF323248" Foreground="White"/>
+                    <ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="White"/>
                 </Button.ToolTip>
             </Button>
             <Button Name="EditBtn" Click="EditBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xe9ef;" Foreground="White" FontFamily="..\Fonts\#FluentlyIcons" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Grid.Row="0">
                 <Button.ToolTip>
-                    <ToolTip Content="{x:Static lang:Resources.EditGame}" Background="#FF323248" Foreground="White"/>
+                    <ToolTip Content="{x:Static lang:Resources.EditGame}" Background="#000014" Foreground="White"/>
                 </Button.ToolTip>
             </Button>
 
@@ -56,7 +56,7 @@
                     </StackPanel>
 
                     <Button.ToolTip>
-                        <ToolTip Name="PlayToolTip" Background="#FF323248" Foreground="White"/>
+                        <ToolTip Name="PlayToolTip" Background="#000014" Foreground="White"/>
                     </Button.ToolTip>
                 </Button>
             </StackPanel>

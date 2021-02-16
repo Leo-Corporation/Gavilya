@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Gavilya.UserControls"
              FontFamily="../Fonts/#Montserrat"
              mc:Ignorable="d" Height="48" Width="561" Margin="5">
-    <Border CornerRadius="10" Background="#FF46465C">
+    <Border CornerRadius="10" Background="#000014">
         <Grid>
             <StackPanel Margin="10" Orientation="Horizontal" VerticalAlignment="Center">
                 <Grid RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
@@ -18,7 +18,7 @@
                             <TranslateTransform/>
                         </TransformGroup>
                     </Grid.RenderTransform>
-                    <CheckBox x:FieldModifier="public"  Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="#FF46465C" Cursor="Hand"/>
+                    <CheckBox x:FieldModifier="public"  Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="#000014" Cursor="Hand"/>
                 </Grid>
                 <TextBlock d:Text="GameName" Margin="10 0 0 0" x:Name="GameName" FontSize="20" FontWeight="Bold" Text="" Foreground="White" VerticalAlignment="Center">
                     <TextBlock.ToolTip>

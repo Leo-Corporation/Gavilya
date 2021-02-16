@@ -24,7 +24,7 @@
                 <Grid>
                     <Grid.Background>
                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                            <GradientStop Color="#FF3C3C52" Offset="0.95"/>
+                            <GradientStop Color="#0A0A1E" Offset="0.95"/>
                             <GradientStop Color="#33C8C8C8" Offset="0"/>
                         </LinearGradientBrush>
                     </Grid.Background>
@@ -41,13 +41,13 @@
                                 </StackPanel>
 
                                 <Button.ToolTip>
-                                    <ToolTip Name="PlayBtnToolTip" Background="#FF323248" Foreground="White"/>
+                                    <ToolTip Name="PlayBtnToolTip" Background="#000014" Foreground="White"/>
                                 </Button.ToolTip>
                             </Button>
 
-                            <Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0" HorizontalAlignment="Left" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Stretch" FontWeight="Normal" Background="#FF505066" Foreground="White">
+                            <Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0" HorizontalAlignment="Left" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White">
                                 <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#FF323248" Foreground="White"/>
+                                    <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="White"/>
                                 </Button.ToolTip>
                             </Button>
                         </StackPanel>
@@ -55,7 +55,7 @@
                 </Grid>
             </Grid>
 
-            <Grid Margin="0 0 0 20" Background="#FF3C3C52" Grid.Row="1">
+            <Grid Margin="0 0 0 20" Background="#0A0A1E" Grid.Row="1">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

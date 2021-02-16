@@ -53,9 +53,9 @@
             </Style>
             <SolidColorBrush x:Key="Button.Static.Background4" Color="#FFDDDDDD"/>
             <SolidColorBrush x:Key="Button.Static.Border4" Color="#FF707070"/>
-            <SolidColorBrush x:Key="Button.MouseOver.Background4" Color="#64647a"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background4" Color="#28283C"/>
             <SolidColorBrush x:Key="Button.MouseOver.Border4" Color="#FF3C7FB1"/>
-            <SolidColorBrush x:Key="Button.Pressed.Background4" Color="#5f5f7a"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background4" Color="#28283C"/>
             <SolidColorBrush x:Key="Button.Pressed.Border4" Color="#FF2C628B"/>
             <SolidColorBrush x:Key="Button.Disabled.Background4" Color="#FF323248"/>
             <SolidColorBrush x:Key="Button.Disabled.Border4" Color="#FFADB2B5"/>
@@ -198,9 +198,9 @@
                                     <ColumnDefinition Width="4" />
                                     <ColumnDefinition Width="4" />
                                 </Grid.ColumnDefinitions>
-                                <Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="#FF505066" />
-                                <Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="#FF505066" />
-                                <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="#FF505066" />
+                                <Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="#28283C" />
+                                <Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="#28283C" />
+                                <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="#28283C" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -218,9 +218,9 @@
                                     <RowDefinition Height="4" />
                                     <RowDefinition Height="4" />
                                 </Grid.RowDefinitions>
-                                <Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="#FF505066" />
-                                <Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="#FF505066" />
-                                <Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="#FF505066" />
+                                <Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="#28283C" />
+                                <Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="#28283C" />
+                                <Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="#28283C" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -774,7 +774,7 @@
                                     <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="#FF505066"/>
+                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="#28283C"/>
                                     <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#B589E0"/>
                                     <Setter Property="Fill" TargetName="optionMark" Value="LightGray"/>
                                     <Setter Property="Fill" TargetName="indeterminateMark" Value="LightGray"/>
@@ -849,9 +849,9 @@
                 </Setter>
             </Style>
             <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
-            <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#505066"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#28283C"/>
             <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1"/>
-            <SolidColorBrush x:Key="Button.Pressed.Background1" Color="#505066"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background1" Color="#28283C"/>
             <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B"/>
             <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
             <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>

@@ -128,9 +128,9 @@ namespace Gavilya
             RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
             RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
 
-            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
-            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
-            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
+            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
+            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
 
         }
 
@@ -257,8 +257,8 @@ namespace Gavilya
             RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
             RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
 
-            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
-            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
+            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
 
             ShadowElement(AppCardButton); // Put a shadow under the button
 
@@ -320,8 +320,8 @@ namespace Gavilya
             RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
             RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
 
-            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
-            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
+            ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
 
             ShadowElement(RecentButton); // Put a shadow under the control
 
@@ -335,8 +335,8 @@ namespace Gavilya
             RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
             RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
 
-            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
-            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(90, 90, 112))); // Change the backcolor
+            ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
+            ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
 
             ShadowElement(AppListButton); // Put a shadow under the control
 

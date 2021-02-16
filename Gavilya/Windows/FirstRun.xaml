@@ -33,10 +33,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#505066" />
+                                <Setter TargetName="border" Property="Background" Value="#28283C" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#5a5a70" />
+                                <Setter TargetName="border" Property="Background" Value="#28283C" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -86,7 +86,7 @@
     </WindowChrome.WindowChrome>
 
 
-    <Border Margin="10" CornerRadius="10" Background="#FF28283E">
+    <Border Margin="10" CornerRadius="10" Background="#FF000014">
         <Border.Effect>
             <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="15" Opacity="0.5"/>
         </Border.Effect>

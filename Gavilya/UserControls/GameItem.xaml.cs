@@ -104,7 +104,7 @@ namespace Gavilya.UserControls
                 }
             }
             
-            GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(90, 90, 112) }; // Change the background color
+            GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change the background color
         }
     }
 }

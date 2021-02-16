@@ -10,7 +10,7 @@
              Height="85" Width="150" Margin="5">
     <Border CornerRadius="10">
         <Border.ToolTip>
-            <ToolTip Name="GameNameToolTip" Background="#FF323248" Foreground="White"/>
+            <ToolTip Name="GameNameToolTip" Background="#000014" Foreground="White"/>
         </Border.ToolTip>
 
         <Border.Background>
@@ -21,7 +21,7 @@
         <Grid>
             <Button Cursor="Hand" Name="PlayBtn" Click="PlayBtn_Click" Content="&#xeab5;" Height="35" Width="35" Style="{StaticResource PlayButton}" Foreground="#fff" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom">
                 <Button.ToolTip>
-                    <ToolTip Name="ToolTipGamePlay" Content="{x:Static lang:Resources.PlayLowerCase}" Background="#FF323248" Foreground="White"/>
+                    <ToolTip Name="ToolTipGamePlay" Content="{x:Static lang:Resources.PlayLowerCase}" Background="#000014" Foreground="White"/>
                 </Button.ToolTip>
             </Button>
         </Grid>    

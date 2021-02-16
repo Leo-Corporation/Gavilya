@@ -50,10 +50,10 @@
 						</Border>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="true">
-								<Setter TargetName="border" Property="Background" Value="#505066" />
+								<Setter TargetName="border" Property="Background" Value="#28283C" />
 							</Trigger>
 							<Trigger Property="IsPressed" Value="true">
-								<Setter TargetName="border" Property="Background" Value="#5a5a70" />
+								<Setter TargetName="border" Property="Background" Value="#28283C" />
 							</Trigger>
 						</ControlTemplate.Triggers>
 					</ControlTemplate>
@@ -123,7 +123,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <Rectangle Fill="#323248" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+                    <Rectangle Fill="#FF000014" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
 						<Rectangle.Effect>
 							<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0"/>
 						</Rectangle.Effect>
@@ -131,13 +131,13 @@
 
                     <Button Name="BackBtn" Click="BackBtn_Click"  Style="{StaticResource TitleBarButtonStyle}" Content="&#xe993;" FontSize="14" Grid.Column="0" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.GoBack}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.GoBack}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
 
                     <Button Name="ForwardBtn" Click="ForwardBtn_Click"  Style="{StaticResource TitleBarButtonStyle}" Content="&#xe994;" FontSize="14" Grid.Column="1" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.GoForward}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.GoForward}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
 
@@ -162,21 +162,21 @@
 
                     <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
                     <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Delete}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
                     <StackPanel Grid.Column="5" Orientation="Horizontal">
                         <Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="5" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.More}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.More}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
-                        <Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF505066" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
+                        <Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF28283C" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
                     </StackPanel>
                     <Button
 		Grid.Column="6"
@@ -232,30 +232,30 @@
 					</Button>
 				</Grid>
 			</Border>
-			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}">
+            <Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#0A0A1E">
 				<Grid Grid.Row="1">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="60"/>
 						<ColumnDefinition/>
 					</Grid.ColumnDefinitions>
-					<Border Margin="5" Height="160" Background="#505066" BorderBrush="AliceBlue" BorderThickness="0" CornerRadius="10">
+					<Border Margin="5" Height="160" Background="#FF1E1E32" BorderBrush="AliceBlue" BorderThickness="0" CornerRadius="10">
 						<Border.Effect>
 							<DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.595"/>
 						</Border.Effect>
 						<StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                            <Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xea17;" Background="#FF5A5A70" FontSize="19" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
+                            <Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xea17;" Background="#FF28283C" FontSize="19" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
                                 <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.GameCard}" Background="#FF323248" Foreground="White"/>
+                                    <ToolTip Content="{x:Static lang:Resources.GameCard}" Background="#000014" Foreground="White"/>
                                 </Button.ToolTip>
                             </Button>
-                            <Button Name="RecentButton" Click="RecentButton_Click" Content="&#xea2c;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
+                            <Button Name="RecentButton" Click="RecentButton_Click" Content="&#xea2c;" Background="#FF28283C" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
                                 <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#FF323248" Foreground="White"/>
+                                    <ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#000014" Foreground="White"/>
                                 </Button.ToolTip>
                             </Button>
-                            <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF5A5A70" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
+                            <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF28283C" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
                                 <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.GameList}" Background="#FF323248" Foreground="White"/>
+                                    <ToolTip Content="{x:Static lang:Resources.GameList}" Background="#000014" Foreground="White"/>
                                 </Button.ToolTip>
                             </Button>
 						</StackPanel>

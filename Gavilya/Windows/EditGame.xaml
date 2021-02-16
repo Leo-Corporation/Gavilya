@@ -46,10 +46,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#505066" />
+                                <Setter TargetName="border" Property="Background" Value="#28283C" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#5a5a70" />
+                                <Setter TargetName="border" Property="Background" Value="#28283C" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -95,7 +95,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Margin="10" CornerRadius="10" Background="#FF46465C">
+    <Border Margin="10" CornerRadius="10" Background="#FF0A0A1E">
         <Border.Effect>
             <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality"/>
         </Border.Effect>
@@ -113,7 +113,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Fill="#FF3C3C52" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+                <Rectangle Fill="#FF000014" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0"/>
                     </Rectangle.Effect>
@@ -177,17 +177,17 @@
                         <TextBlock Text="{x:Static lang:Resources.Image}" Margin="10 10 0 0" FontSize="15" Foreground="White"/>
                         <Image Name="GameImg" Height="100" Width="178" Margin="0 10 0 10">
                             <Image.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Image}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.Image}" Background="#000014" Foreground="White"/>
                             </Image.ToolTip>
                         </Image>
-                        <Button Padding="5" Style="{DynamicResource RegularButton}" Click="Button_Click_2" Content="{x:Static lang:Resources.Browse}" FontWeight="Bold" Foreground="White" Height="30" Margin="5" Background="#FF5A5A70">
+                        <Button Padding="5" Style="{DynamicResource RegularButton}" Click="Button_Click_2" Content="{x:Static lang:Resources.Browse}" FontWeight="Bold" Foreground="White" Height="30" Margin="5" Background="#FF1E1E32">
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Browse}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
-                        <Button Padding="5" Style="{DynamicResource RegularButton}" Click="Button_Click_3" Content="{x:Static lang:Resources.CoverSearch}" FontWeight="Bold" Foreground="White" Width="Auto" Height="30" Margin="5" Background="#FF5A5A70" FontSize="10">
+                        <Button Padding="5" Style="{DynamicResource RegularButton}" Click="Button_Click_3" Content="{x:Static lang:Resources.CoverSearch}" FontWeight="Bold" Foreground="White" Width="Auto" Height="30" Margin="5" Background="#FF1E1E32" FontSize="10">
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.CoverSearch}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.CoverSearch}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>
@@ -196,27 +196,27 @@
                 <StackPanel Margin="0 10 0 00" Grid.Column="1">
                     <StackPanel Margin="0 0 0 3" Orientation="Horizontal">
                         <TextBlock Text="{x:Static lang:Resources.Name}" Foreground="White" FontSize="15"/>
-                        <TextBox FontSize="15" Name="nameTxt" BorderThickness="2" Foreground="White" Background="#FF3C3C52" Style="{DynamicResource RegularTextBox}" Margin="10 0 0 0" Width="350" BorderBrush="#FF64647A"/>
+                        <TextBox FontSize="15" Name="nameTxt" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}" Margin="10 0 0 0" Width="350" BorderBrush="#FF1E1E32"/>
                     </StackPanel>
 
                     <StackPanel Margin="0 0 0 3" Orientation="Horizontal">
                         <TextBlock Foreground="White" Text="{x:Static lang:Resources.Version}" FontSize="15"/>
-                        <TextBox FontSize="15" Name="versionTxt" BorderThickness="2" Foreground="White" Background="#FF3C3C52" Style="{DynamicResource RegularTextBox}" Margin="10 0 0 0" Width="350" BorderBrush="#FF64647A"/>
+                        <TextBox FontSize="15" Name="versionTxt" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}" Margin="10 0 0 0" Width="350" BorderBrush="#FF1E1E32"/>
                     </StackPanel>
 
                     <StackPanel Margin="0 0 0 3" Orientation="Horizontal">
                         <TextBlock Text="{x:Static lang:Resources.Location}" Foreground="White" FontSize="15"/>
-                        <TextBox FontSize="15" Name="locationTxt" IsReadOnly="True" BorderThickness="2" Foreground="White" Background="#FF3C3C52" Style="{DynamicResource RegularTextBox}" Margin="10 0 10 0" Width="260" BorderBrush="#FF64647A"/>
-                        <Button Click="BrowseBtn_Click" x:Name="BrowseBtn" Width="80" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="Bold" Foreground="White" Background="#FF5A5A70">
+                        <TextBox FontSize="15" Name="locationTxt" IsReadOnly="True" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}" Margin="10 0 10 0" Width="260" BorderBrush="#FF1E1E32"/>
+                        <Button Click="BrowseBtn_Click" x:Name="BrowseBtn" Width="80" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="Bold" Foreground="White" Background="#FF1E1E32">
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Browse}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>
 
                     <StackPanel Margin="0 0 0 3" Orientation="Horizontal">
                         <TextBlock Text="{x:Static lang:Resources.Description}" Foreground="White" FontSize="15"/>
-                        <TextBox FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="White" Background="#FF3C3C52" Style="{DynamicResource RegularTextBox}" Margin="10 0 10 0" Width="304" BorderBrush="#FF64647A" TextWrapping="Wrap"/>
+                        <TextBox FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}" Margin="10 0 10 0" Width="304" BorderBrush="#FF1E1E32" TextWrapping="Wrap"/>
                     </StackPanel>
 
                     <TextBlock Margin="10 5 360 5" x:Name="AssociateGameLink" Text="{x:Static lang:Resources.AssociateGame}" Foreground="#FFB589E0" FontWeight="Bold" Cursor="Hand" MouseLeftButtonUp="AssociateGameLink_MouseLeftButtonUp">
@@ -228,12 +228,12 @@
                     <StackPanel HorizontalAlignment="Center" Margin="0 20 0 0" Orientation="Horizontal">
                         <Button FontSize="13" Cursor="Hand" Name="AddBtn" Click="AddBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Edit}" FontWeight="Bold">
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.EditGame}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.EditGame}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
-                        <Button FontSize="13" Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF5A5A70" Margin="0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="Bold">
+                        <Button FontSize="13" Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="Bold">
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>

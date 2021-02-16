@@ -52,7 +52,7 @@
         </Style>
     </Window.Resources>
 
-    <Border CornerRadius="10" Margin="10" Background="#FF323248">
+    <Border CornerRadius="10" Margin="10" Background="#FF000014">
 
         <Border.Effect>
             <DropShadowEffect Color="DarkGray" ShadowDepth="0" BlurRadius="15" Opacity="0.5" RenderingBias="Quality"/>
@@ -100,17 +100,17 @@
                             </StackPanel>
 
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Install}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.Install}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
-                        <Button Name="CancelBtn" Click="CancelBtn_Click" Style="{StaticResource RegularButton}" Background="#FF46465C" Padding="7">
+                        <Button Name="CancelBtn" Click="CancelBtn_Click" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Padding="7">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0 0 10 0" Foreground="White" Text="&#xe9d8;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                                 <TextBlock Foreground="White" Text="{x:Static lang:Resources.Cancel}" FontSize="13" FontWeight="Bold"/>
                             </StackPanel>
 
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>
