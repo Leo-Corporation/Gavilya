@@ -13,7 +13,7 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="225"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
@@ -71,7 +71,7 @@
                         <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Bottom">
                             <Button x:Name="FavBtn" Click="FavBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xEB01;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Height="40" Width="40">
                                 <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="White"/>
+                                    <ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="White"/>
                                 </Button.ToolTip>
                             </Button>
 
