@@ -81,26 +81,28 @@ namespace Gavilya.Pages
             timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
 
             // Text
-            PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
+            PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
             GameNameTxt.Text = gameInfo.Name; // Set the name of the game
-            
+            FavBtn.Content = gameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
+
+
             if (gameInfo.TotalTimePlayed != 0) // If the game was played
             {
                 DisplayTotalTimePlayed(gameInfo.TotalTimePlayed); // Set the text
             }
             else
             {
-                TotalTimePlayedTxt.Text = $"{Properties.Resources.TotalTimePlayed} {Properties.Resources.Never}"; // Set the text
+                TotalTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
             }
 
             if (gameInfo.LastTimePlayed != 0) // If the game was played
             {
                 DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
-                LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+                LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
             }
             else
             {
-                LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {Properties.Resources.Never}"; // Set the text
+                LastTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
             }
 
             DescriptionTxt.Text = gameInfo.Description;
@@ -205,7 +207,7 @@ namespace Gavilya.Pages
         internal void DisplayTotalTimePlayed(int timePlayed)
         {
             GameTimePlayed gameTimePlayed = GameTimePlayed.GetTimePlayed(timePlayed); // Create a GameTimePlayed
-            string finalString = $"{Properties.Resources.TotalTimePlayed} "; // The final message
+            string finalString = ""; // The final message
 
             string hoursPlurial = (gameTimePlayed.Hours > 1) ? "s" : ""; // Determine if a plurial is necessary
             string minutesPlurial = (gameTimePlayed.Minutes > 1) ? "s" : ""; // Determine if a plurial is necessary
@@ -230,6 +232,17 @@ namespace Gavilya.Pages
         private void PropertiesBtn_Click(object sender, RoutedEventArgs e)
         {
             GameProperties.Show();
+        }
+
+        private void FavBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GameInfo.IsFavorite = !GameInfo.IsFavorite;
+            Definitions.Games[Definitions.Games.IndexOf(GameInfo)] = GameInfo;
+
+            FavBtn.Content = GameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
+
+            new GameSaver().Save(Definitions.Games); // Save changes
+            Definitions.GamesCardsPages.LoadGames();
         }
     }
 }
