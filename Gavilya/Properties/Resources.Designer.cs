@@ -576,7 +576,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Last time played:.
+        ///   Recherche une chaîne localisée semblable à Last use.
         /// </summary>
         public static string LastTimePlayed {
             get {
@@ -954,7 +954,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Time played:.
+        ///   Recherche une chaîne localisée semblable à Time played.
         /// </summary>
         public static string TotalTimePlayed {
             get {

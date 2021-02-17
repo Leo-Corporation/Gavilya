@@ -248,7 +248,7 @@
     <value>Card view</value>
   </data>
   <data name="LastTimePlayed" xml:space="preserve">
-    <value>Last time played:</value>
+    <value>Last use</value>
   </data>
   <data name="Platforms" xml:space="preserve">
     <value>Platforms</value>
@@ -266,7 +266,7 @@
     <value>January,Febuary,March,April,May,June,July,August,September,October,November,December</value>
   </data>
   <data name="TotalTimePlayed" xml:space="preserve">
-    <value>Time played:</value>
+    <value>Time played</value>
   </data>
   <data name="Hour" xml:space="preserve">
     <value>Hour</value>

@@ -241,7 +241,7 @@
     <value>Mode carte</value>
   </data>
   <data name="LastTimePlayed" xml:space="preserve">
-    <value>Dernière fois joué :</value>
+    <value>Dernière utilisation</value>
   </data>
   <data name="Platforms" xml:space="preserve">
     <value>Platformes</value>
@@ -259,7 +259,7 @@
     <value>Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre</value>
   </data>
   <data name="TotalTimePlayed" xml:space="preserve">
-    <value>Temps joué :</value>
+    <value>Temps joué</value>
   </data>
   <data name="Hour" xml:space="preserve">
     <value>Heure</value>
