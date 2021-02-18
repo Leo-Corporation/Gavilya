@@ -53,15 +53,17 @@
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="&#xEA2C;" FontSize="30" FontFamily="..\Fonts\#FluentlyIcons" Foreground="White" VerticalAlignment="Center"/>
                                     <StackPanel VerticalAlignment="Center">
-                                        <TextBlock FontWeight="Bold" Margin="10 0 10 0" Text="{x:Static lang:Resources.LastTimePlayed}" Foreground="White" FontSize="20"/>
+                                        <TextBlock FontWeight="Bold" Margin="10 0 10 0" Text="{x:Static lang:Resources.LastTimePlayed}" Foreground="White" FontSize="18"/>
                                         <TextBlock Margin="10 0 10 0" d:Text="LastTimePlayedTxt" Name="LastTimePlayedTxt" Foreground="White" FontSize="15"/>
                                     </StackPanel>
                                 </StackPanel>
 
+                                <TextBlock Text="&#xE9DA;" FontSize="30" FontFamily="..\Fonts\#FluentlyIcons" Foreground="#FFC8C8DC" VerticalAlignment="Center" Margin="10,0,20,0"/>
+
                                 <StackPanel Orientation="Horizontal">
                                     <TextBlock Text="&#xe99f;" FontSize="30" FontFamily="..\Fonts\#FluentlyIcons" Foreground="White" VerticalAlignment="Center"/>
                                     <StackPanel VerticalAlignment="Center">
-                                        <TextBlock FontWeight="Bold" Margin="10 0 10 0" Text="{x:Static lang:Resources.TotalTimePlayed}" Foreground="White" FontSize="20"/>
+                                        <TextBlock FontWeight="Bold" Margin="10 0 10 0" Text="{x:Static lang:Resources.TotalTimePlayed}" Foreground="White" FontSize="18"/>
                                         <TextBlock Margin="10 0 10 0" d:Text="TotalTimePlayedTxt" Name="TotalTimePlayedTxt" Foreground="White" FontSize="15"/>
                                     </StackPanel>
                                 </StackPanel>
