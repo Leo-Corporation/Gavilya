@@ -74,7 +74,7 @@ namespace Gavilya.Classes
         /// <summary>
         /// Version of the software (Gavilya).
         /// </summary>
-        public static string Version { get => "1.1.0.2101"; }
+        public static string Version { get => "1.2.0.2102-pre1"; }
 
         /// <summary>
         /// The Main <see cref="System.Windows.Window"/> of the App.
