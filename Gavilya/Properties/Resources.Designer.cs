@@ -675,6 +675,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à There is no ratings for this game because either it&apos;s not connected to RAWG.io, or because no one has rated the game..
+        /// </summary>
+        public static string NoRatingsAv {
+            get {
+                return ResourceManager.GetString("NoRatingsAv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à OK.
         /// </summary>
         public static string OK {
@@ -770,6 +779,15 @@ namespace Gavilya.Properties {
         public static string Properties {
             get {
                 return ResourceManager.GetString("Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ratings.
+        /// </summary>
+        public static string Ratings {
+            get {
+                return ResourceManager.GetString("Ratings", resourceCulture);
             }
         }
         
