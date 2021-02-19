@@ -100,6 +100,10 @@
                             <TextBlock Text="&#xEA38;" FontSize="15" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center"/>
                             <TextBlock Text="{x:Static lang:Resources.About}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
                         </StackPanel>
+
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.About}" Background="#000014" Foreground="White"/>
+                        </Button.ToolTip>
                     </Button>
 
                     <Button x:Name="RatingsTabBtn" Style="{StaticResource TabButtonBorder}" Click="RatingsTabBtn_Click" MouseEnter="AboutTabBtn_MouseEnter" MouseLeave="AboutTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="{x:Null}">
@@ -107,6 +111,10 @@
                             <TextBlock Text="&#xEA2F;" FontSize="15" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center"/>
                             <TextBlock Text="{x:Static lang:Resources.Ratings}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
                         </StackPanel>
+
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.Ratings}" Background="#000014" Foreground="White"/>
+                        </Button.ToolTip>
                     </Button>
                 </StackPanel>
 
@@ -163,6 +171,10 @@
                                                     <GradientStop Color="#FFACE64D" Offset="1"/>
                                                 </LinearGradientBrush>
                                             </ProgressBar.Foreground>
+
+                                            <ProgressBar.ToolTip>
+                                                <ToolTip x:Name="Pgr4ToolTip" Background="#000014" Foreground="White"/>
+                                            </ProgressBar.ToolTip>
                                         </ProgressBar>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
@@ -182,6 +194,10 @@
                                                     <GradientStop Color="#649aff" Offset="1"/>
                                                 </LinearGradientBrush>
                                             </ProgressBar.Foreground>
+
+                                            <ProgressBar.ToolTip>
+                                                <ToolTip x:Name="Pgr3ToolTip" Background="#000014" Foreground="White"/>
+                                            </ProgressBar.ToolTip>
                                         </ProgressBar>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
@@ -201,6 +217,10 @@
                                                     <GradientStop Color="#facd5a" Offset="1"/>
                                                 </LinearGradientBrush>
                                             </ProgressBar.Foreground>
+
+                                            <ProgressBar.ToolTip>
+                                                <ToolTip x:Name="Pgr2ToolTip" Background="#000014" Foreground="White"/>
+                                            </ProgressBar.ToolTip>
                                         </ProgressBar>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal">
@@ -220,6 +240,10 @@
                                                     <GradientStop Color="#fd4f5d" Offset="1"/>
                                                 </LinearGradientBrush>
                                             </ProgressBar.Foreground>
+
+                                            <ProgressBar.ToolTip>
+                                                <ToolTip x:Name="Pgr1ToolTip" Background="#000014" Foreground="White"/>
+                                            </ProgressBar.ToolTip>
                                         </ProgressBar>
                                     </StackPanel>
                                 </StackPanel>
