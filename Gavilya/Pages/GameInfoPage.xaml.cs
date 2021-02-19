@@ -48,6 +48,7 @@ namespace Gavilya.Pages
     /// </summary>
     public partial class GameInfoPage : Page
     {
+        int tabCheckedID = 0;
         internal GameInfo GameInfo { get; set; }
         UIElement parentUIElement = new();
         DispatcherTimer timer; // Create a timer
@@ -145,6 +146,9 @@ namespace Gavilya.Pages
             {
                 PlatformDisplayer.Children.Add(new TextBlock { Foreground = new SolidColorBrush { Color = Colors.White }, Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, Text = platform.name }); // New textblock
             }
+
+            // Ratings
+            LoadRatings();
         }
 
         bool gameStarted = false;
@@ -243,6 +247,92 @@ namespace Gavilya.Pages
 
             new GameSaver().Save(Definitions.Games); // Save changes
             Definitions.GamesCardsPages.LoadGames();
+        }
+
+        private void AboutTabBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender; // Create button
+
+            button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+        }
+
+        private void AboutTabBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender; // Create button
+
+            if (button.Name == "RatingsTabBtn" && tabCheckedID != 1)
+            {
+                button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+                button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+            }
+            else if (button.Name == "AboutTabBtn" && tabCheckedID != 0)
+            {
+                button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+                button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+            }
+        }
+
+        
+        private void AboutTabBtn_Click(object sender, RoutedEventArgs e)
+        {
+            tabCheckedID = 0; // ID
+
+            AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+
+            RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+            RatingsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+
+            AboutPage.Visibility = Visibility.Visible; // Change visibility
+            RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
+        }
+
+        private async void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID);
+            if (GameInfo.RAWGID != -1 && GameInfo.RAWGID != 0 && ratings.Count > 0)
+            {
+                tabCheckedID = 1; // ID
+
+                RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+
+                AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+                AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+
+                AboutPage.Visibility = Visibility.Collapsed; // Change visibility
+                RatingsPage.Visibility = Visibility.Visible; // Change visibility 
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.NoRatingsAv, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        /// <summary>
+        /// Loads the ratings page.
+        /// </summary>
+        private async void LoadRatings()
+        {
+            if (GameInfo.RAWGID != -1 && GameInfo.RAWGID != 0) // Check if the game is connected to RAWG.io
+            {
+                List<SDK.RAWG.Rating> ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID); // Get ratings
+
+                if (ratings.Count > 0) // If there is ratings
+                {
+                    for (int i = 0; i < ratings.Count; i++) // For each "rating"
+                    {
+                        switch (ratings[i].id) // Depending of the ID
+                        {
+                            case 5: Pgr4.Value = ratings[i].percent; break; // 4*
+                            case 4: Pgr3.Value = ratings[i].percent; break; // 3*
+                            case 3: Pgr2.Value = ratings[i].percent; break; // 2*
+                            case 1: Pgr1.Value = ratings[i].percent; break; // 1*
+                        }
+                    }
+
+                    float r = await Global.GetGameRatingAsync(GameInfo.RAWGID); // Get the average rating
+                    RatingTxt.Text = r.ToString(); // Set text
+                }
+            }
         }
     }
 }
