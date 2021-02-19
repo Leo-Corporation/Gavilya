@@ -233,6 +233,40 @@ namespace Gavilya.Classes
         }
 
         /// <summary>
+        /// Gets the game ratings from it's id.
+        /// </summary>
+        /// <param name="id">The id of the game.</param>
+        /// <returns></returns>
+        public static async Task<List<Rating>> GetGameRatingsAsync(int id)
+        {
+            var client = new RestClient(); // Create a REST Client
+            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+            var request = new RestRequest(RestSharp.Method.GET); // Create a request
+            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+            return game.ratings;
+        }
+
+        /// <summary>
+        /// Gets the game rating from it's id.
+        /// </summary>
+        /// <param name="id">The id of the game.</param>
+        /// <returns></returns>
+        public static async Task<float> GetGameRatingAsync(int id)
+        {
+            var client = new RestClient(); // Create a REST Client
+            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+            var request = new RestRequest(RestSharp.Method.GET); // Create a request
+            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+            return game.rating;
+        }
+
+        /// <summary>
         /// Convert a unix time to a <see cref="DateTime"/>.
         /// </summary>
         /// <param name="unixTime">The unix time to convert.</param>
