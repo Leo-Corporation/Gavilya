@@ -576,7 +576,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Last time played:.
+        ///   Recherche une chaîne localisée semblable à Last use.
         /// </summary>
         public static string LastTimePlayed {
             get {
@@ -671,6 +671,15 @@ namespace Gavilya.Properties {
         public static string Never {
             get {
                 return ResourceManager.GetString("Never", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à There is no ratings for this game because either it&apos;s not connected to RAWG.io, or because no one has rated the game..
+        /// </summary>
+        public static string NoRatingsAv {
+            get {
+                return ResourceManager.GetString("NoRatingsAv", resourceCulture);
             }
         }
         
@@ -770,6 +779,15 @@ namespace Gavilya.Properties {
         public static string Properties {
             get {
                 return ResourceManager.GetString("Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ratings.
+        /// </summary>
+        public static string Ratings {
+            get {
+                return ResourceManager.GetString("Ratings", resourceCulture);
             }
         }
         
@@ -954,7 +972,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Time played:.
+        ///   Recherche une chaîne localisée semblable à Time played.
         /// </summary>
         public static string TotalTimePlayed {
             get {

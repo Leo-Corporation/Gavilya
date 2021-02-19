@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       FontFamily="../Fonts/#Montserrat"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="GamesCardsPages" Background="#FF3C3C52" AllowDrop="True">
+      Title="GamesCardsPages" Background="#0A0A1E" AllowDrop="True">
 
     <Grid AllowDrop="True" Drop="GamePresenter_Drop">
         <Grid.RowDefinitions>
@@ -19,14 +19,14 @@
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
-        <Button Click="AddBtn_Click" Margin="5" Grid.Row="1" x:Name="AddBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF505066" Foreground="White">
+        <Button Click="AddBtn_Click" Margin="5" Grid.Row="1" x:Name="AddBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="0 0 5 0" Text="&#xe901;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
                 <TextBlock Text="{x:Static lang:Resources.Add}" VerticalAlignment="Center"/>
             </StackPanel>
 
             <Button.ToolTip>
-                <ToolTip Content="{x:Static lang:Resources.AddGame}" Background="#FF323248" Foreground="White"/>
+                <ToolTip Content="{x:Static lang:Resources.AddGame}" Background="#000014" Foreground="White"/>
             </Button.ToolTip>
         </Button>
         <ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">

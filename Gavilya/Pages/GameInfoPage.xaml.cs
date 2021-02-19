@@ -48,6 +48,7 @@ namespace Gavilya.Pages
     /// </summary>
     public partial class GameInfoPage : Page
     {
+        int tabCheckedID = 0;
         internal GameInfo GameInfo { get; set; }
         UIElement parentUIElement = new();
         DispatcherTimer timer; // Create a timer
@@ -81,26 +82,28 @@ namespace Gavilya.Pages
             timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
 
             // Text
-            PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
+            PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
             GameNameTxt.Text = gameInfo.Name; // Set the name of the game
-            
+            FavBtn.Content = gameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
+
+
             if (gameInfo.TotalTimePlayed != 0) // If the game was played
             {
                 DisplayTotalTimePlayed(gameInfo.TotalTimePlayed); // Set the text
             }
             else
             {
-                TotalTimePlayedTxt.Text = $"{Properties.Resources.TotalTimePlayed} {Properties.Resources.Never}"; // Set the text
+                TotalTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
             }
 
             if (gameInfo.LastTimePlayed != 0) // If the game was played
             {
                 DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
-                LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+                LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
             }
             else
             {
-                LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {Properties.Resources.Never}"; // Set the text
+                LastTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
             }
 
             DescriptionTxt.Text = gameInfo.Description;
@@ -143,6 +146,9 @@ namespace Gavilya.Pages
             {
                 PlatformDisplayer.Children.Add(new TextBlock { Foreground = new SolidColorBrush { Color = Colors.White }, Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, Text = platform.name }); // New textblock
             }
+
+            // Ratings
+            LoadRatings();
         }
 
         bool gameStarted = false;
@@ -205,7 +211,7 @@ namespace Gavilya.Pages
         internal void DisplayTotalTimePlayed(int timePlayed)
         {
             GameTimePlayed gameTimePlayed = GameTimePlayed.GetTimePlayed(timePlayed); // Create a GameTimePlayed
-            string finalString = $"{Properties.Resources.TotalTimePlayed} "; // The final message
+            string finalString = ""; // The final message
 
             string hoursPlurial = (gameTimePlayed.Hours > 1) ? "s" : ""; // Determine if a plurial is necessary
             string minutesPlurial = (gameTimePlayed.Minutes > 1) ? "s" : ""; // Determine if a plurial is necessary
@@ -230,6 +236,103 @@ namespace Gavilya.Pages
         private void PropertiesBtn_Click(object sender, RoutedEventArgs e)
         {
             GameProperties.Show();
+        }
+
+        private void FavBtn_Click(object sender, RoutedEventArgs e)
+        {
+            GameInfo.IsFavorite = !GameInfo.IsFavorite;
+            Definitions.Games[Definitions.Games.IndexOf(GameInfo)] = GameInfo;
+
+            FavBtn.Content = GameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
+
+            new GameSaver().Save(Definitions.Games); // Save changes
+            Definitions.GamesCardsPages.LoadGames();
+        }
+
+        private void AboutTabBtn_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender; // Create button
+
+            button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+        }
+
+        private void AboutTabBtn_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Button button = (Button)sender; // Create button
+
+            if (button.Name == "RatingsTabBtn" && tabCheckedID != 1)
+            {
+                button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+                button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+            }
+            else if (button.Name == "AboutTabBtn" && tabCheckedID != 0)
+            {
+                button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+                button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+            }
+        }
+
+        
+        private void AboutTabBtn_Click(object sender, RoutedEventArgs e)
+        {
+            tabCheckedID = 0; // ID
+
+            AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+
+            RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+            RatingsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+
+            AboutPage.Visibility = Visibility.Visible; // Change visibility
+            RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
+        }
+
+        private async void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID);
+            if (GameInfo.RAWGID != -1 && GameInfo.RAWGID != 0 && ratings.Count > 0)
+            {
+                tabCheckedID = 1; // ID
+
+                RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+
+                AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+                AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+
+                AboutPage.Visibility = Visibility.Collapsed; // Change visibility
+                RatingsPage.Visibility = Visibility.Visible; // Change visibility 
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.NoRatingsAv, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        /// <summary>
+        /// Loads the ratings page.
+        /// </summary>
+        private async void LoadRatings()
+        {
+            if (GameInfo.RAWGID != -1 && GameInfo.RAWGID != 0) // Check if the game is connected to RAWG.io
+            {
+                List<SDK.RAWG.Rating> ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID); // Get ratings
+
+                if (ratings.Count > 0) // If there is ratings
+                {
+                    for (int i = 0; i < ratings.Count; i++) // For each "rating"
+                    {
+                        switch (ratings[i].id) // Depending of the ID
+                        {
+                            case 5: Pgr4.Value = ratings[i].percent; Pgr4ToolTip.Content = ratings[i].count; break; // 4*
+                            case 4: Pgr3.Value = ratings[i].percent; Pgr3ToolTip.Content = ratings[i].count; break; // 3*
+                            case 3: Pgr2.Value = ratings[i].percent; Pgr2ToolTip.Content = ratings[i].count; break; // 2*
+                            case 1: Pgr1.Value = ratings[i].percent; Pgr1ToolTip.Content = ratings[i].count; break; // 1*
+                        }
+                    }
+
+                    float r = await Global.GetGameRatingAsync(GameInfo.RAWGID); // Get the average rating
+                    RatingTxt.Text = r.ToString(); // Set text
+                }
+            }
         }
     }
 }

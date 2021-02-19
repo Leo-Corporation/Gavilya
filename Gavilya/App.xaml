@@ -53,9 +53,9 @@
             </Style>
             <SolidColorBrush x:Key="Button.Static.Background4" Color="#FFDDDDDD"/>
             <SolidColorBrush x:Key="Button.Static.Border4" Color="#FF707070"/>
-            <SolidColorBrush x:Key="Button.MouseOver.Background4" Color="#64647a"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background4" Color="#28283C"/>
             <SolidColorBrush x:Key="Button.MouseOver.Border4" Color="#FF3C7FB1"/>
-            <SolidColorBrush x:Key="Button.Pressed.Background4" Color="#5f5f7a"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background4" Color="#28283C"/>
             <SolidColorBrush x:Key="Button.Pressed.Border4" Color="#FF2C628B"/>
             <SolidColorBrush x:Key="Button.Disabled.Background4" Color="#FF323248"/>
             <SolidColorBrush x:Key="Button.Disabled.Border4" Color="#FFADB2B5"/>
@@ -106,6 +106,69 @@
             <SolidColorBrush x:Key="Button.Disabled.Background5" Color="#FFF4F4F4"/>
             <SolidColorBrush x:Key="Button.Disabled.Border5" Color="#FFADB2B5"/>
             <SolidColorBrush x:Key="Button.Disabled.Foreground5" Color="#FF838383"/>
+            <SolidColorBrush x:Key="ProgressBar.Progress" Color="#FF06B025"/>
+            <SolidColorBrush x:Key="ProgressBar.Background" Color="#FFE6E6E6"/>
+            <SolidColorBrush x:Key="ProgressBar.Border" Color="#FFBCBCBC"/>
+            <Style x:Key="ProgressBarStyle1" TargetType="{x:Type ProgressBar}">
+                <Setter Property="Foreground" Value="{StaticResource ProgressBar.Progress}"/>
+                <Setter Property="Background" Value="{StaticResource ProgressBar.Background}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource ProgressBar.Border}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ProgressBar}">
+                            <Grid x:Name="TemplateRoot">
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroup x:Name="CommonStates">
+                                        <VisualState x:Name="Determinate"/>
+                                        <VisualState x:Name="Indeterminate">
+                                            <Storyboard RepeatBehavior="Forever">
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0.25"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.25"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.25"/>
+                                                </DoubleAnimationUsingKeyFrames>
+                                                <PointAnimationUsingKeyFrames Storyboard.TargetName="Animation" Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                                    <EasingPointKeyFrame KeyTime="0" Value="-0.5,0.5"/>
+                                                    <EasingPointKeyFrame KeyTime="0:0:1" Value="0.5,0.5"/>
+                                                    <EasingPointKeyFrame KeyTime="0:0:2" Value="1.5,0.5"/>
+                                                </PointAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateManager.VisualStateGroups>
+                                <Border Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="5,5,5,5"/>
+                                <Rectangle x:Name="PART_Track" RadiusY="5" RadiusX="5"/>
+                                <Grid x:Name="PART_Indicator" ClipToBounds="true" HorizontalAlignment="Left">
+                                    <Rectangle x:Name="Indicator" Fill="{TemplateBinding Foreground}" RadiusY="5" RadiusX="5"/>
+                                    <Rectangle x:Name="Animation" Fill="{TemplateBinding Foreground}" RenderTransformOrigin="0.5,0.5" RadiusX="5" RadiusY="5">
+                                        <Rectangle.RenderTransform>
+                                            <TransformGroup>
+                                                <ScaleTransform/>
+                                                <SkewTransform/>
+                                                <RotateTransform/>
+                                                <TranslateTransform/>
+                                            </TransformGroup>
+                                        </Rectangle.RenderTransform>
+                                    </Rectangle>
+                                </Grid>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="Orientation" Value="Vertical">
+                                    <Setter Property="LayoutTransform" TargetName="TemplateRoot">
+                                        <Setter.Value>
+                                            <RotateTransform Angle="-90"/>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Trigger>
+                                <Trigger Property="IsIndeterminate" Value="true">
+                                    <Setter Property="Visibility" TargetName="Indicator" Value="Collapsed"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
             <Style x:Key="SettingsButton" TargetType="{x:Type Button}">
                 <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual6}"/>
                 <Setter Property="Background" Value="{StaticResource Button.Static.Background5}"/>
@@ -198,9 +261,9 @@
                                     <ColumnDefinition Width="4" />
                                     <ColumnDefinition Width="4" />
                                 </Grid.ColumnDefinitions>
-                                <Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="#FF505066" />
-                                <Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="#FF505066" />
-                                <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="#FF505066" />
+                                <Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="#28283C" />
+                                <Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="#28283C" />
+                                <Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="#28283C" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -218,9 +281,9 @@
                                     <RowDefinition Height="4" />
                                     <RowDefinition Height="4" />
                                 </Grid.RowDefinitions>
-                                <Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="#FF505066" />
-                                <Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="#FF505066" />
-                                <Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="#FF505066" />
+                                <Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="#28283C" />
+                                <Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="#28283C" />
+                                <Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="#28283C" />
                             </Grid>
                         </ControlTemplate>
                     </Setter.Value>
@@ -774,7 +837,7 @@
                                     <Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}"/>
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="#FF505066"/>
+                                    <Setter Property="Background" TargetName="checkBoxBorder" Value="#28283C"/>
                                     <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#B589E0"/>
                                     <Setter Property="Fill" TargetName="optionMark" Value="LightGray"/>
                                     <Setter Property="Fill" TargetName="indeterminateMark" Value="LightGray"/>
@@ -849,9 +912,9 @@
                 </Setter>
             </Style>
             <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070"/>
-            <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#505066"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#28283C"/>
             <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1"/>
-            <SolidColorBrush x:Key="Button.Pressed.Background1" Color="#505066"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background1" Color="#28283C"/>
             <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B"/>
             <SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4"/>
             <SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5"/>
@@ -973,6 +1036,61 @@
                                     <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
                                     <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
                                     <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="FocusVisual7">
+                <Setter Property="Control.Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Rectangle Margin="2" StrokeDashArray="1 2" SnapsToDevicePixels="true" StrokeThickness="1" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <SolidColorBrush x:Key="Button.Static.Background6" Color="#FFDDDDDD"/>
+            <SolidColorBrush x:Key="Button.Static.Border6" Color="#FF707070"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background6" Color="#FF0A0A1E"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Border6" Color="#FF8561C5"/>
+            <SolidColorBrush x:Key="Button.Pressed.Background6" Color="#FF0A0A1E"/>
+            <SolidColorBrush x:Key="Button.Pressed.Border6" Color="#FF8561C5"/>
+            <SolidColorBrush x:Key="Button.Disabled.Background6" Color="#FFF4F4F4"/>
+            <SolidColorBrush x:Key="Button.Disabled.Border6" Color="#FFADB2B5"/>
+            <SolidColorBrush x:Key="Button.Disabled.Foreground6" Color="#FF838383"/>
+            <Style x:Key="TabButtonBorder" TargetType="{x:Type Button}">
+                <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual7}"/>
+                <Setter Property="Background" Value="{StaticResource Button.Static.Background6}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border6}"/>
+                <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Padding" Value="1"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsDefaulted" Value="true">
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                </Trigger>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background6}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border6}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background6}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border6}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background6}"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border6}"/>
+                                    <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground6}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

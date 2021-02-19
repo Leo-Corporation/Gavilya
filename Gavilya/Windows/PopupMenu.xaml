@@ -13,12 +13,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Path Panel.ZIndex="10" Data="M6 0L12 12L0 12L6 0Z" Fill="#FF3C3C52" HorizontalAlignment="Center">
+        <Path Panel.ZIndex="10" Data="M6 0L12 12L0 12L6 0Z" Fill="#FF000014" HorizontalAlignment="Center">
             <Path.Effect>
                 <DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
             </Path.Effect>
         </Path>
-        <Border Grid.Row="1" CornerRadius="10" Margin="10 0 10 10" Background="#FF3C3C52">
+        <Border Grid.Row="1" CornerRadius="10" Margin="10 0 10 10" Background="#FF000014">
             <Border.Effect>
                 <DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
             </Border.Effect>
@@ -35,7 +35,7 @@
                         </Grid>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.About}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.About}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
 
@@ -50,7 +50,7 @@
                         </Grid>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
                 </StackPanel>

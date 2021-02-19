@@ -114,7 +114,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Margin="10" CornerRadius="10" Background="#FF323248">
+    <Border Margin="10" CornerRadius="10" Background="#FF000014">
         <Border.Effect>
             <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="15" Opacity="0.5"/>
         </Border.Effect>
@@ -169,7 +169,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Border Margin="10 5 10 5" Grid.Row="0" Height="103" Width="508" Background="#FF46465C" CornerRadius="10">
+                <Border Margin="10 5 10 5" Grid.Row="0" Height="103" Width="508" Background="#FF0A0A1E" CornerRadius="10">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -184,12 +184,12 @@
                     </Grid>
                 </Border>
 
-                <Border Margin="0" Grid.Row="1" Height="118" Width="508" Background="#FF46465C" CornerRadius="10">
+                <Border Margin="0" Grid.Row="1" Height="118" Width="508" Background="#FF0A0A1E" CornerRadius="10">
                     <Grid>
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10 15 0 0" Grid.Column="1">
                             <TextBlock x:Name="DownloadTxt" TextAlignment="Center" FontWeight="Bold" FontSize="15" Foreground="White" Text="Download in progress"/>
                             <TextBlock x:Name="ProgressTxt" Margin="0 0 0 10" TextAlignment="Center" FontSize="15" Foreground="White" Text="0%"/>
-                            <ProgressBar x:Name="Pgb" Style="{DynamicResource RoundedProgressBar}" BorderThickness="0" Height="10" Width="452" Background="#FF414157">
+                            <ProgressBar x:Name="Pgb" Style="{DynamicResource RoundedProgressBar}" BorderThickness="0" Height="10" Width="452" Background="#FF141428">
                                     <ProgressBar.Foreground>
                                         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                             <LinearGradientBrush.RelativeTransform>

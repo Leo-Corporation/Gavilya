@@ -47,10 +47,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#505066" />
+                                <Setter TargetName="border" Property="Background" Value="#28283C" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#5a5a70" />
+                                <Setter TargetName="border" Property="Background" Value="#28283C" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -96,7 +96,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Background="#FF323248" BorderThickness="0" CornerRadius="10" Margin="15">
+    <Border Background="#0A0A1E" BorderThickness="0" CornerRadius="10" Margin="15">
         <Border.Effect>
             <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality"/>
         </Border.Effect>
@@ -115,7 +115,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Fill="#FF28283E" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+                <Rectangle Fill="#FF000014" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0"/>
                     </Rectangle.Effect>
@@ -182,7 +182,7 @@
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.SaveOptions}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.SaveOptions}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
 
                     </Button>
@@ -194,7 +194,7 @@
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Languages}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.Languages}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
 
                     </Button>
@@ -206,7 +206,7 @@
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Startup}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.Startup}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
 
                     </Button>

@@ -47,10 +47,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#505066" />
+                                <Setter TargetName="border" Property="Background" Value="#28283C" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#5a5a70" />
+                                <Setter TargetName="border" Property="Background" Value="#28283C" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -96,7 +96,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Background="#FF323248" BorderThickness="0" CornerRadius="10" Margin="15">
+    <Border Background="#FF0A0A1E" BorderThickness="0" CornerRadius="10" Margin="15">
         <Border.Effect>
             <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality"/>
         </Border.Effect>
@@ -115,7 +115,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Fill="#FF28283E" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+                <Rectangle Fill="#FF000014" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0"/>
                     </Rectangle.Effect>
@@ -182,10 +182,10 @@
                     </Grid.ColumnDefinitions>
                     
                     <StackPanel Margin="5" Orientation="Horizontal">
-                        <TextBox FontSize="14" FontWeight="Bold" x:Name="GameSearchName" BorderThickness="2" Width="240" Style="{StaticResource RegularTextBox}" Background="#FF323248" BorderBrush="#FF64647A" Foreground="White" SelectionBrush="#FF505066"/>
-                        <Button Click="Button_Click" Padding="5" Width="30" FontSize="13" Margin="10 0 0 0" Style="{StaticResource RegularButton}" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xead9;" Background="#FF46465C" Foreground="White">
+                        <TextBox FontSize="14" FontWeight="Bold" x:Name="GameSearchName" BorderThickness="2" Width="240" Style="{StaticResource RegularTextBox}" Background="#FF000014" BorderBrush="#FF1E1E32" Foreground="White" SelectionBrush="#FF505066"/>
+                        <Button Click="Button_Click" Padding="5" Width="30" FontSize="13" Margin="10 0 0 0" Style="{StaticResource RegularButton}" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xead9;" Background="#FF1E1E32" Foreground="White">
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Search}" Background="#FF323248" Foreground="White"/>
+                                <ToolTip Content="{x:Static lang:Resources.Search}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>
@@ -198,14 +198,14 @@
                 </ScrollViewer>
 
                 <StackPanel Margin="5" Grid.Row="2">
-                    <Button Name="SelectGame" Click="SelectGame_Click" HorizontalAlignment="Center" Padding="7" Style="{StaticResource RegularButton}" Foreground="White" Background="#FF46465C" FontWeight="Bold" FontSize="14">
+                    <Button Name="SelectGame" Click="SelectGame_Click" HorizontalAlignment="Center" Padding="7" Style="{StaticResource RegularButton}" Foreground="White" Background="#FF1E1E32" FontWeight="Bold" FontSize="14">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="0 0 5 0" FontWeight="Regular" Text="&#xea72;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
                             <TextBlock Text="{x:Static lang:Resources.SelectGame}" VerticalAlignment="Center"/>
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.SelectGame}" Background="#FF323248" Foreground="White"/>
+                            <ToolTip Content="{x:Static lang:Resources.SelectGame}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
                 </StackPanel>

@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Gavilya"
-#define MyAppVersion "1.1.0.2101"
+#define MyAppVersion "1.2.0.2102"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://www.leocorp.fr/"
 #define MyAppExeName "Gavilya.exe"
@@ -45,6 +45,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 [Files]
 Source: "H:\Gavilya\Gavilya\bin\Release\net5.0-windows\Gavilya.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "H:\Gavilya\Gavilya\bin\Release\net5.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "H:\Gavilya\Xalyus Updater\bin\Release\netcoreapp3.1\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
 [Icons]

@@ -241,7 +241,7 @@
     <value>Mode carte</value>
   </data>
   <data name="LastTimePlayed" xml:space="preserve">
-    <value>Dernière fois joué :</value>
+    <value>Dernière utilisation</value>
   </data>
   <data name="Platforms" xml:space="preserve">
     <value>Platformes</value>
@@ -259,7 +259,7 @@
     <value>Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre</value>
   </data>
   <data name="TotalTimePlayed" xml:space="preserve">
-    <value>Temps joué :</value>
+    <value>Temps joué</value>
   </data>
   <data name="Hour" xml:space="preserve">
     <value>Heure</value>
@@ -440,5 +440,11 @@
   </data>
   <data name="DeleteConfirmMessage" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir supprimer ces jeux ? Cette opération est irréversible.</value>
+  </data>
+  <data name="Ratings" xml:space="preserve">
+    <value>Avis</value>
+  </data>
+  <data name="NoRatingsAv" xml:space="preserve">
+    <value>Il n’y a pas d’avis pour ce jeu parce que soit il n’est pas connecté à RAWG.io, ou parce que personne n’a évalué le jeu.</value>
   </data>
 </root>

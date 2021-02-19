@@ -51,7 +51,7 @@
         <WindowChrome CaptionHeight="45"></WindowChrome>
     </WindowChrome.WindowChrome>
     
-	<Border Margin="10" CornerRadius="10" Background="#FF323248">
+	<Border Margin="10" CornerRadius="10" Background="#FF000011">
 		<Border.Effect>
 			<DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="15" Opacity="0.5"/>
 		</Border.Effect>
@@ -87,7 +87,7 @@
 					<Image Source="..\Resources\Gavilya.png" Name="Logo" Width="100"/>
 					<TextBlock TextAlignment="Center" Text="{x:Static lang:Resources.AppName}" Foreground="White" FontWeight="Bold" FontSize="17"/>
 					<TextBlock Margin="0 0 0 10" x:Name="VersionTxt" TextAlignment="Center" Text="" Foreground="White" FontSize="12"/>
-					<Button Name="UpdateBtn" Click="UpdateBtn_Click" Cursor="Hand" Padding="5" FontSize="14" Style="{StaticResource RegularButton}" FontWeight="Bold" Background="#FF46465C" Foreground="White">
+                    <Button Name="UpdateBtn" Click="UpdateBtn_Click" Cursor="Hand" Padding="5" FontSize="14" Style="{StaticResource RegularButton}" FontWeight="Bold" Background="#1E1E32" Foreground="White">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock FontWeight="Regular" Margin="0 0 10 0" Text="&#xe92a;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 							<TextBlock Text="{x:Static lang:Resources.CheckForUpdates}"/>

@@ -238,7 +238,7 @@
     <value>Card view</value>
   </data>
   <data name="LastTimePlayed" xml:space="preserve">
-    <value>Last time played:</value>
+    <value>Last use</value>
   </data>
   <data name="Platforms" xml:space="preserve">
     <value>Platforms</value>
@@ -256,7 +256,7 @@
     <value>January,Febuary,March,April,May,June,July,August,September,October,November,December</value>
   </data>
   <data name="TotalTimePlayed" xml:space="preserve">
-    <value>Time played:</value>
+    <value>Time played</value>
   </data>
   <data name="Hour" xml:space="preserve">
     <value>Hour</value>
@@ -437,5 +437,11 @@
   </data>
   <data name="DeleteConfirmMessage" xml:space="preserve">
     <value>Are you sure you wanna delete these games? This operation can't be cancelled.</value>
+  </data>
+  <data name="Ratings" xml:space="preserve">
+    <value>Ratings</value>
+  </data>
+  <data name="NoRatingsAv" xml:space="preserve">
+    <value>There is no ratings for this game because either it's not connected to RAWG.io, or because no one has rated the game.</value>
   </data>
 </root>
