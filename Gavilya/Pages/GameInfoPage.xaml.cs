@@ -232,7 +232,7 @@ namespace Gavilya.Pages
             TotalTimePlayedTxt.Text = finalString; // Set the text
         }
 
-        private GameProperties GameProperties { get => new GameProperties(GameInfo); }
+        private GameProperties GameProperties => new(GameInfo);
         private void PropertiesBtn_Click(object sender, RoutedEventArgs e)
         {
             GameProperties.Show();

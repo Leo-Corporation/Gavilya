@@ -77,7 +77,7 @@ namespace Gavilya.Pages
             }
             else
             {
-                WelcomeAddGames welcomeAddGames = new WelcomeAddGames(); // New WelcomeAddGames
+                WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
                 welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
                 welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
                 WelcomeHost.Children.Add(welcomeAddGames); // Add a welcome add games
@@ -97,7 +97,7 @@ namespace Gavilya.Pages
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
             {
                 string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop); // Get all the files droped
-                List<string> executables = new List<string>(); // The execuables files
+                List<string> executables = new(); // The execuables files
 
                 for (int i = 0; i < files.Length; i++) // For each file
                 {
@@ -111,7 +111,7 @@ namespace Gavilya.Pages
                 {
                     FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(executables[i]);
                     int id = await Global.GetGameId(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName);
-                    GameInfo gameInfo = new GameInfo // Create a new GameInfo class/object
+                    GameInfo gameInfo = new()
                     {
                         FileLocation = executables[i],
                         IsFavorite = false,

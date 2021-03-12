@@ -49,7 +49,7 @@ namespace Gavilya.Classes
         /// <param name="window"><see cref="Window"/> to set the icon to.</param>
         public static void SetWindowIcon(Window window)
         {
-            Uri icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.ico"); // Define the path to the icon
+            Uri icon = new(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.ico"); // Define the path to the icon
             window.Icon = BitmapFrame.Create(icon); // Set the icon
         }
 
@@ -94,7 +94,7 @@ namespace Gavilya.Classes
                     }
                     else
                     {
-                        WebClient webClient1 = new WebClient(); // Create a web client
+                        WebClient webClient1 = new(); // Create a web client
                         await webClient1.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
                         webClient1.Dispose(); // Release all used ressources
 
@@ -103,7 +103,7 @@ namespace Gavilya.Classes
                 }
 
 
-                WebClient webClient = new WebClient(); // Create a WebClient
+                WebClient webClient = new(); // Create a WebClient
                 await webClient.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
                 webClient.Dispose(); // Release used ressources
 
@@ -151,7 +151,7 @@ namespace Gavilya.Classes
                 }
                 else
                 {
-                    WebClient webClient1 = new WebClient(); // Create a web client
+                    WebClient webClient1 = new(); // Create a web client
                     await webClient1.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"); // Download the "background_image"
                     webClient1.Dispose(); // Release all used ressources
 
@@ -159,7 +159,7 @@ namespace Gavilya.Classes
                 }
             }
 
-            WebClient webClient = new WebClient(); // Create a web client
+            WebClient webClient = new(); // Create a web client
             await webClient.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"); // Download the "background_image"
             webClient.Dispose(); // Release all used ressources
 
@@ -222,7 +222,7 @@ namespace Gavilya.Classes
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
-            List<Platform> platforms = new List<Platform>(); // Create a new list of platform
+            List<Platform> platforms = new(); // Create a new list of platform
 
             for (int i = 0; i < game.platforms.Count; i++) // For each platforms
             {
@@ -273,7 +273,7 @@ namespace Gavilya.Classes
         /// <returns></returns>
         public static DateTime UnixTimeToDateTime(double unixTime)
         {
-            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // Create a date
+            DateTime dtDateTime = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // Create a date
             dtDateTime = dtDateTime.AddSeconds(unixTime).ToLocalTime(); // Add the seconds
             return dtDateTime; // Return the result
         }

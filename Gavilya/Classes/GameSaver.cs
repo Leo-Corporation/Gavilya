@@ -39,14 +39,14 @@ namespace Gavilya.Classes
         internal void Save(List<GameInfo> games)
         {
             List<GameInfo> gameInfos = games;
-            XmlSerializer xmlSerializer = new XmlSerializer(gameInfos.GetType()); // XML Serializer
+            XmlSerializer xmlSerializer = new(gameInfos.GetType()); // XML Serializer
 
             if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
             {
                 Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
             }
 
-            StreamWriter streamWriter = new StreamWriter(AppDataPath + @"\Gavilya\Games.gav"); // The place where the file is gonna be writen
+            StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Games.gav"); // The place where the file is gonna be writen
             xmlSerializer.Serialize(streamWriter, games); // Create the file
             streamWriter.Dispose();
         }
@@ -61,8 +61,8 @@ namespace Gavilya.Classes
             try
             {
                 List<GameInfo> gameInfos = games;
-                XmlSerializer xmlSerializer = new XmlSerializer(gameInfos.GetType()); // XML Serializer
-                StreamWriter streamWriter = new StreamWriter(path); // The place where the file is going to be exported
+                XmlSerializer xmlSerializer = new(gameInfos.GetType()); // XML Serializer
+                StreamWriter streamWriter = new(path); // The place where the file is going to be exported
                 xmlSerializer.Serialize(streamWriter, gameInfos); // Create the file
                 streamWriter.Dispose();
                 MessageBox.Show(Properties.Resources.ExportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
@@ -84,8 +84,8 @@ namespace Gavilya.Classes
             {
                 if (File.Exists(path))
                 {
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<GameInfo>)); // XML Serializer
-                    StreamReader streamReader = new StreamReader(path); // The path of the file
+                    XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
+                    StreamReader streamReader = new(path); // The path of the file
 
                     Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each GameInfo
                     streamReader.Dispose();
@@ -114,8 +114,8 @@ namespace Gavilya.Classes
         {
             if (File.Exists(AppDataPath + @"\Gavilya\Games.gav")) // If there is a save file
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<GameInfo>)); // XML Serializer
-                StreamReader streamReader = new StreamReader(AppDataPath + @"\Gavilya\Games.gav"); // The place where the file is gonna be read
+                XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
+                StreamReader streamReader = new(AppDataPath + @"\Gavilya\Games.gav"); // The place where the file is gonna be read
 
                 Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
                 streamReader.Dispose();

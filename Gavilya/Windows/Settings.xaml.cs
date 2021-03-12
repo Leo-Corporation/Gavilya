@@ -43,9 +43,9 @@ namespace Gavilya.Windows
     /// </summary>
     public partial class Settings : Window
     {
-        SaveOptionsPage saveOptionsPage = new SaveOptionsPage(); // Create a page
-        LanguagePage languagePage = new LanguagePage(); // Create a page
-        StartupPage startupPage = new StartupPage(); // Create a page
+        SaveOptionsPage saveOptionsPage = new(); // Create a page
+        LanguagePage languagePage = new(); // Create a page
+        StartupPage startupPage = new(); // Create a page
 
         public Settings()
         {

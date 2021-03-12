@@ -60,7 +60,7 @@ namespace Gavilya.Pages
                 GamePresenter.Visibility = Visibility.Visible; // Visible
                 WelcomeHost.Visibility = Visibility.Collapsed; // Hide
 
-                Dictionary<GameInfo, int> keyValuePairs = new Dictionary<GameInfo, int>(); // Create a dictionnary
+                Dictionary<GameInfo, int> keyValuePairs = new(); // Create a dictionnary
 
                 foreach (GameInfo gameInfo in Definitions.Games) // For each games
                 {

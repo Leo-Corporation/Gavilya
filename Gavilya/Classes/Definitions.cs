@@ -45,10 +45,10 @@ namespace Gavilya.Classes
                 Color color1 = Color.FromRgb(181, 137, 224); // First color
                 Color color2 = Color.FromRgb(133, 97, 197); // Second color
 
-                GradientStopCollection gradientStops = new GradientStopCollection(); // A collection of GradientStop
+                GradientStopCollection gradientStops = new(); // A collection of GradientStop
 
-                GradientStop gradientStop = new GradientStop(); // First GradientStop
-                GradientStop gradientStop1 = new GradientStop(); // Second GradientStop
+                GradientStop gradientStop = new(); // First GradientStop
+                GradientStop gradientStop1 = new(); // Second GradientStop
 
                 gradientStop.Color = color1; // Color of the first GradientStop
                 gradientStop.Offset = 0; // Offset of the first GradientStop
@@ -59,7 +59,7 @@ namespace Gavilya.Classes
                 gradientStops.Add(gradientStop); // Add the first GradientStop
                 gradientStops.Add(gradientStop1); // Add the second GradientStop
 
-                LinearGradientBrush linearGradientBrush = new LinearGradientBrush(); // Gradient to return
+                LinearGradientBrush linearGradientBrush = new(); // Gradient to return
                 linearGradientBrush.GradientStops = gradientStops;// Add the GradientStops to the corresponding property
 
                 return linearGradientBrush; // Return the gradient
@@ -69,12 +69,12 @@ namespace Gavilya.Classes
         /// <summary>
         /// The default platform of a game.
         /// </summary>
-        public static SDK.RAWG.Platform DefaultPlatform { get => new SDK.RAWG.Platform { id = 4, name = "PC", slug = "pc" }; }
+        public static SDK.RAWG.Platform DefaultPlatform => new() { id = 4, name = "PC", slug = "pc" };
 
         /// <summary>
         /// Version of the software (Gavilya).
         /// </summary>
-        public static string Version { get => "1.2.0.2102"; }
+        public static string Version => "1.2.0.2102";
 
         /// <summary>
         /// The Main <see cref="System.Windows.Window"/> of the App.
@@ -104,12 +104,12 @@ namespace Gavilya.Classes
         /// <summary>
         /// The games that are added to the <see cref="MainWindow"/>.
         /// </summary>
-        public static List<GameInfo> Games = new List<GameInfo>();
+        public static List<GameInfo> Games = new();
 
         /// <summary>
         /// The link of the last version <see cref="string"/>.
         /// </summary>
-        public static string LastVersionLink { get => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Version.txt"; }
+        public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Version.txt";
 
         /// <summary>
         /// True if the menu is shown
@@ -129,17 +129,17 @@ namespace Gavilya.Classes
         /// <summary>
         /// The transparent color.
         /// </summary>
-        public static SolidColorBrush TransparentColor { get => new SolidColorBrush { Color = Colors.Transparent }; }
+        public static SolidColorBrush TransparentColor => new() { Color = Colors.Transparent };
 
         /// <summary>
         /// The languages that are available in Gavilya.
         /// </summary>
-        public static List<string> Languages { get => new List<string> { "English (United States)", "Français (France)" }; }
+        public static List<string> Languages => new() { "English (United States)", "Français (France)" };
 
         /// <summary>
         /// The languages codes based on the languages that are available in Gavilya.
         /// </summary>
-        public static List<string> LanguagesCodes { get => new List<string> { "en-US", "fr-FR" }; }
+        public static List<string> LanguagesCodes => new() { "en-US", "fr-FR" };
 
         public static Settings Settings { get; set; }
     }

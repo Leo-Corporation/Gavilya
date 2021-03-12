@@ -60,7 +60,7 @@ namespace Gavilya.Pages.FirstRunPages
 
         private void ImportBtn_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog(); // Create an OpenFileDialog
+            OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
             openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
             openFileDialog.Title = Properties.Resources.ImportGames; // Title
 

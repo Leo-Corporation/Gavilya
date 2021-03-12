@@ -66,8 +66,8 @@ namespace Gavilya.Classes
             string AppDataPath = Env.GetAppDataPath(); // Get %APPDATA% folder
             if (File.Exists(AppDataPath + @"\Gavilya\Settings.gavsettings"))
             {
-                XmlSerializer xmlSerializer = new XmlSerializer(typeof(Settings)); // XML Serializer
-                StreamReader streamReader = new StreamReader(AppDataPath + @"\Gavilya\Settings.gavsettings"); // Where the file is going to be read
+                XmlSerializer xmlSerializer = new(typeof(Settings)); // XML Serializer
+                StreamReader streamReader = new(AppDataPath + @"\Gavilya\Settings.gavsettings"); // Where the file is going to be read
 
                 Definitions.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
 
@@ -86,14 +86,14 @@ namespace Gavilya.Classes
         public static void Save()
         {
             string AppDataPath = Env.GetAppDataPath(); // Get %APPDATA% folder
-            XmlSerializer xmlSerializer = new XmlSerializer(Definitions.Settings.GetType()); // XML Serializer
+            XmlSerializer xmlSerializer = new(Definitions.Settings.GetType()); // XML Serializer
 
             if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
             {
                 Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
             }
 
-            StreamWriter streamWriter = new StreamWriter(AppDataPath + @"\Gavilya\Settings.gavsettings"); // The place where the file is going to be written
+            StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Settings.gavsettings"); // The place where the file is going to be written
             xmlSerializer.Serialize(streamWriter, Definitions.Settings);
 
             streamWriter.Dispose();

@@ -50,7 +50,7 @@ namespace Gavilya.Windows
     {
         public string GameIconLocation = string.Empty;
         public string GameDescription = string.Empty; // The description of the game
-        public List<SDK.RAWG.Platform> Platforms = new List<SDK.RAWG.Platform>();
+        public List<SDK.RAWG.Platform> Platforms = new();
         public int RAWGID = -1;
         public AddGame()
         {
@@ -85,14 +85,14 @@ namespace Gavilya.Windows
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog(); // OpenFileDialog
+            OpenFileDialog openFileDialog = new(); // OpenFileDialog
             openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
             
             if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
             {
                 try
                 {
-                    BitmapImage image = new BitmapImage(new Uri(openFileDialog.FileName)); // Create the image
+                    BitmapImage image = new(new Uri(openFileDialog.FileName)); // Create the image
                     GameImg.Source = image; // Set the GameImg's source to the image
                     GameIconLocation = openFileDialog.FileName; // Set the path to the image
                 }
@@ -105,7 +105,7 @@ namespace Gavilya.Windows
 
         private async void BrowseBtn_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog(); // OpenFileDialog
+            OpenFileDialog openFileDialog = new(); // OpenFileDialog
             openFileDialog.Filter = "EXE|*.exe"; // Filter
 
             if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
@@ -154,7 +154,7 @@ namespace Gavilya.Windows
         {
             if (!(string.IsNullOrEmpty(nameTxt.Text) || string.IsNullOrEmpty(locationTxt.Text))) /// If the fields are filled
             {
-                GameInfo gameInfo = new GameInfo
+                GameInfo gameInfo = new()
                 {
                     FileLocation = locationTxt.Text, // The file location of the game
                     Name = nameTxt.Text, // The name of the game

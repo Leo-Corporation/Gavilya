@@ -92,8 +92,8 @@ namespace Gavilya.Windows
 
         private async void SelectGame_Click(object sender, RoutedEventArgs e)
         {
-            List<GameResult> gameResults = new List<GameResult>(); // Results
-            List<GameResult> selectedGameResults = new List<GameResult>(); // Results
+            List<GameResult> gameResults = new(); // Results
+            List<GameResult> selectedGameResults = new(); // Results
             GameResult selectedGame; // The selected GameResult
 
             foreach (UIElement uIElement in ResultPresenter.Children) // For each result
