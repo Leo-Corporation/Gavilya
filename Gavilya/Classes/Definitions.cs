@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Pages;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Windows.Media;
@@ -75,6 +76,20 @@ namespace Gavilya.Classes
         /// Version of the software (Gavilya).
         /// </summary>
         public static string Version => "1.2.0.2102";
+
+        public static string BetaVersion 
+        { 
+            get 
+            {
+                FileInfo fileInfo = new FileInfo(Directory.GetCurrentDirectory() + @"\Gavilya.exe");
+                return $"vNext.{fileInfo.LastWriteTimeUtc.Year.ToString()[2..4]}{fileInfo.LastWriteTime:MM}-{fileInfo.LastWriteTime.Day}-{fileInfo.LastWriteTime.Hour}{fileInfo.LastWriteTime.Minute}";
+            } 
+        }
+
+        /// <summary>
+        /// Define if the current build is a preversion of Gavilya, not made for production nor Pre-Release.
+        /// </summary>
+        public static bool IsBeta => true;
 
         /// <summary>
         /// The Main <see cref="System.Windows.Window"/> of the App.

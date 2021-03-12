@@ -45,7 +45,7 @@ namespace Gavilya.Windows
         public About()
         {
             InitializeComponent();
-            VersionTxt.Text = Definitions.Version; // Display the current version
+            VersionTxt.Text = !Definitions.IsBeta ? Definitions.Version : Definitions.BetaVersion; // Display the current version
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
