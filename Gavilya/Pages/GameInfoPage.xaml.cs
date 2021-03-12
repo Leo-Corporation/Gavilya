@@ -253,7 +253,7 @@ namespace Gavilya.Pages
         {
             Button button = (Button)sender; // Create button
 
-            button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+            button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
         }
 
         private void AboutTabBtn_MouseLeave(object sender, MouseEventArgs e)
@@ -277,7 +277,7 @@ namespace Gavilya.Pages
         {
             tabCheckedID = 0; // ID
 
-            AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+            AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
             RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
             RatingsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
@@ -293,7 +293,7 @@ namespace Gavilya.Pages
             {
                 tabCheckedID = 1; // ID
 
-                RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+                RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
                 AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
                 AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color

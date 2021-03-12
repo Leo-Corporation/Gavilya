@@ -42,8 +42,8 @@ namespace Gavilya.Classes
         {
             get
             {
-                Color color1 = Color.FromRgb(181, 137, 224); // First color
-                Color color2 = Color.FromRgb(133, 97, 197); // Second color
+                Color color1 = Color.FromRgb(102, 0, 255); // First color
+                Color color2 = Color.FromRgb(102, 0, 255); // Second color
 
                 GradientStopCollection gradientStops = new(); // A collection of GradientStop
 

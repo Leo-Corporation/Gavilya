@@ -222,7 +222,7 @@
                         <TextBox FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}" Margin="10 0 10 0" Width="304" BorderBrush="#1E1E32" TextWrapping="Wrap"/>
                     </StackPanel>
 
-                    <TextBlock Margin="10 5 360 5" x:Name="AssociateGameLink" Text="{x:Static lang:Resources.AssociateGame}" Foreground="#FFB589E0" FontWeight="Bold" Cursor="Hand" MouseLeftButtonUp="AssociateGameLink_MouseLeftButtonUp">
+                    <TextBlock Margin="10 5 360 5" x:Name="AssociateGameLink" Text="{x:Static lang:Resources.AssociateGame}" Foreground="#FF6600FF" FontWeight="Bold" Cursor="Hand" MouseLeftButtonUp="AssociateGameLink_MouseLeftButtonUp">
                         <TextBlock.TextDecorations>
                             <TextDecoration/>
                         </TextBlock.TextDecorations>

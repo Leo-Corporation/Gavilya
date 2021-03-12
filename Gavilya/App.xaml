@@ -99,7 +99,7 @@
             </Style>
             <SolidColorBrush x:Key="Button.Static.Background5" Color="#FFDDDDDD"/>
             <SolidColorBrush x:Key="Button.Static.Border5" Color="#FF707070"/>
-            <SolidColorBrush x:Key="Button.MouseOver.Background5" Color="#B589E0"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Background5" Color="#6600FF"/>
             <SolidColorBrush x:Key="Button.MouseOver.Border5" Color="#FF3C7FB1"/>
             <SolidColorBrush x:Key="Button.Pressed.Background5" Color="#FFC4E5F6"/>
             <SolidColorBrush x:Key="Button.Pressed.Border5" Color="#FF2C628B"/>
@@ -192,8 +192,8 @@
                                     <Setter Property="Background" TargetName="border">
                                         <Setter.Value>
                                             <LinearGradientBrush>
-                                                <GradientStop Color="#B589E0"/>
-                                                <GradientStop Color="#8561C5" Offset="1"/>
+                                                <GradientStop Color="#6600FF"/>
+                                                <GradientStop Color="#6600FF" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Setter.Value>
                                     </Setter>
@@ -203,8 +203,8 @@
                                     <Setter Property="Background" TargetName="border">
                                         <Setter.Value>
                                             <LinearGradientBrush>
-                                                <GradientStop Color="#B589E0"/>
-                                                <GradientStop Color="#8561C5" Offset="1"/>
+                                                <GradientStop Color="#6600FF"/>
+                                                <GradientStop Color="#6600FF" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Setter.Value>
                                     </Setter>
@@ -652,8 +652,8 @@
                 </Setter>
             </Style>
             <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
-            <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
-            <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+            <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#6600FF"/>
+            <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#6600FF"/>
             <Style x:Key="RegularTextBox" TargetType="{x:Type TextBox}">
                 <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
                 <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
@@ -826,7 +826,7 @@
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="true">
                                     <Setter Property="Background" TargetName="checkBoxBorder" Value="Transparent"/>
-                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#B589E0"/>
+                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#6600FF"/>
                                     <Setter Property="Fill" TargetName="optionMark" Value="White"/>
                                     <Setter Property="Fill" TargetName="indeterminateMark" Value="White"/>
                                 </Trigger>
@@ -838,7 +838,7 @@
                                 </Trigger>
                                 <Trigger Property="IsPressed" Value="true">
                                     <Setter Property="Background" TargetName="checkBoxBorder" Value="#28283C"/>
-                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#B589E0"/>
+                                    <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="#6600FF"/>
                                     <Setter Property="Fill" TargetName="optionMark" Value="LightGray"/>
                                     <Setter Property="Fill" TargetName="indeterminateMark" Value="LightGray"/>
                                 </Trigger>
@@ -1014,8 +1014,8 @@
                                     <Setter Property="Background" TargetName="border">
                                         <Setter.Value>
                                             <LinearGradientBrush>
-                                                <GradientStop Color="#FFB589F4"/>
-                                                <GradientStop Color="#FF8561C5" Offset="1"/>
+                                                <GradientStop Color="#6600FF"/>
+                                                <GradientStop Color="#FF6600FF" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Setter.Value>
                                     </Setter>
@@ -1025,8 +1025,8 @@
                                     <Setter Property="Background" TargetName="border">
                                         <Setter.Value>
                                             <LinearGradientBrush>
-                                                <GradientStop Color="#FFB589F4"/>
-                                                <GradientStop Color="#FF8561C5" Offset="1"/>
+                                                <GradientStop Color="#6600FF"/>
+                                                <GradientStop Color="#FF6600FF" Offset="1"/>
                                             </LinearGradientBrush>
                                         </Setter.Value>
                                     </Setter>
@@ -1054,9 +1054,9 @@
             <SolidColorBrush x:Key="Button.Static.Background6" Color="#FFDDDDDD"/>
             <SolidColorBrush x:Key="Button.Static.Border6" Color="#FF707070"/>
             <SolidColorBrush x:Key="Button.MouseOver.Background6" Color="#FF0A0A1E"/>
-            <SolidColorBrush x:Key="Button.MouseOver.Border6" Color="#FF8561C5"/>
+            <SolidColorBrush x:Key="Button.MouseOver.Border6" Color="#FF6600FF"/>
             <SolidColorBrush x:Key="Button.Pressed.Background6" Color="#FF0A0A1E"/>
-            <SolidColorBrush x:Key="Button.Pressed.Border6" Color="#FF8561C5"/>
+            <SolidColorBrush x:Key="Button.Pressed.Border6" Color="#FF6600FF"/>
             <SolidColorBrush x:Key="Button.Disabled.Background6" Color="#FFF4F4F4"/>
             <SolidColorBrush x:Key="Button.Disabled.Border6" Color="#FFADB2B5"/>
             <SolidColorBrush x:Key="Button.Disabled.Foreground6" Color="#FF838383"/>
