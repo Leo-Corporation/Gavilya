@@ -318,14 +318,20 @@ namespace Gavilya.Pages
 
                 if (ratings.Count > 0) // If there is ratings
                 {
+                    int totalRatings = 0; // Total ratings
+                    for (int i = 0; i < ratings.Count; i++) // For each ratings
+                    {
+                        totalRatings += ratings[i].count; // Add the count of ratings
+                    }
+
                     for (int i = 0; i < ratings.Count; i++) // For each "rating"
                     {
                         switch (ratings[i].id) // Depending of the ID
                         {
-                            case 5: Pgr4.Value = ratings[i].percent; Pgr4ToolTip.Content = ratings[i].count; break; // 4*
-                            case 4: Pgr3.Value = ratings[i].percent; Pgr3ToolTip.Content = ratings[i].count; break; // 3*
-                            case 3: Pgr2.Value = ratings[i].percent; Pgr2ToolTip.Content = ratings[i].count; break; // 2*
-                            case 1: Pgr1.Value = ratings[i].percent; Pgr1ToolTip.Content = ratings[i].count; break; // 1*
+                            case 5: Pgr4.Value = ratings[i].percent; Pgr4ToolTip.Content = $"{ratings[i].count}/{totalRatings} ({ratings[i].percent}%)"; break; // 4*
+                            case 4: Pgr3.Value = ratings[i].percent; Pgr3ToolTip.Content = $"{ratings[i].count}/{totalRatings} ({ratings[i].percent}%)"; break; // 3*
+                            case 3: Pgr2.Value = ratings[i].percent; Pgr2ToolTip.Content = $"{ratings[i].count}/{totalRatings} ({ratings[i].percent}%)"; break; // 2*
+                            case 1: Pgr1.Value = ratings[i].percent; Pgr1ToolTip.Content = $"{ratings[i].count}/{totalRatings} ({ratings[i].percent}%)"; break; // 1*
                         }
                     }
 
