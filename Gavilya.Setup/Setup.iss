@@ -2,7 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Gavilya"
-#define MyAppVersion "1.2.0.2102"
+#define MyAppVersion "1.3.0.2103"
+#define MyAppFullVersion "1.3.0.2103-pre1"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://www.leocorp.fr/"
 #define MyAppExeName "Gavilya.exe"
@@ -12,7 +13,8 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{FA9C7428-D331-4A00-B3CF-D7F07D7D8661}
 AppName={#MyAppName}
-AppVersion={#MyAppVersion}
+AppVersion={#MyAppFullVersion}
+VersionInfoVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppURL}
