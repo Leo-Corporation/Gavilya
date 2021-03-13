@@ -344,3 +344,4 @@ ASALocalRun/
 healthchecksdb
 *.exe
 *.config
+Gavilya/Classes/APIKeysLocal.cs
