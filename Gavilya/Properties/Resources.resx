@@ -454,4 +454,7 @@
   <data name="NoRatingsAv" xml:space="preserve">
     <value>There is no ratings for this game because either it's not connected to RAWG.io, or because no one has rated the game.</value>
   </data>
+  <data name="SeeOnRAWG" xml:space="preserve">
+    <value>See on RAWG</value>
+  </data>
 </root>

@@ -447,4 +447,7 @@
   <data name="NoRatingsAv" xml:space="preserve">
     <value>Il n’y a pas d’avis pour ce jeu parce que soit il n’est pas connecté à RAWG.io, ou parce que personne n’a évalué le jeu.</value>
   </data>
+  <data name="SeeOnRAWG" xml:space="preserve">
+    <value>Voir sur RAWG</value>
+  </data>
 </root>
