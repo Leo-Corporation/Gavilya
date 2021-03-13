@@ -64,6 +64,7 @@ namespace Gavilya.Classes
             client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
             var request = new RestRequest(Method.GET); // Create a request
             request.AddQueryParameter("search", gameName); // Config the request
+            request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
             var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
@@ -125,6 +126,7 @@ namespace Gavilya.Classes
             var client = new RestClient(); // Create a REST Client
             client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
             var request = new RestRequest(Method.GET); // Create a request
+            request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
@@ -176,6 +178,7 @@ namespace Gavilya.Classes
             var client = new RestClient(); // Create a REST Client
             client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
             var request = new RestRequest(Method.GET); // Create a request
+            request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
@@ -194,6 +197,7 @@ namespace Gavilya.Classes
             client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
             var request = new RestRequest(Method.GET); // Create a request
             request.AddQueryParameter("search", gameName); // Config the request
+            request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
             var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
@@ -218,6 +222,7 @@ namespace Gavilya.Classes
             var client = new RestClient(); // Create a REST Client
             client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
             var request = new RestRequest(Method.GET); // Create a request
+            request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
@@ -242,6 +247,7 @@ namespace Gavilya.Classes
             var client = new RestClient(); // Create a REST Client
             client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
             var request = new RestRequest(RestSharp.Method.GET); // Create a request
+            request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
@@ -259,6 +265,7 @@ namespace Gavilya.Classes
             var client = new RestClient(); // Create a REST Client
             client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
             var request = new RestRequest(RestSharp.Method.GET); // Create a request
+            request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
@@ -276,7 +283,10 @@ namespace Gavilya.Classes
             var client = new RestClient(); // Create a REST Client
             client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
             var request = new RestRequest(RestSharp.Method.GET); // Create a request
+            request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            MessageBox.Show(response.Content);
 
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
