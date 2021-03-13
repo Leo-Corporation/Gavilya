@@ -286,8 +286,6 @@ namespace Gavilya.Classes
             request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
             var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
-            MessageBox.Show(response.Content);
-
             var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
             return $"https://rawg.io/games/{game.slug}";
