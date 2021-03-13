@@ -267,6 +267,23 @@ namespace Gavilya.Classes
         }
 
         /// <summary>
+        /// Gets the RAWG.io url to the game from it's id.
+        /// </summary>
+        /// <param name="id">The id of the game.</param>
+        /// <returns></returns>
+        public static async Task<string> GetRAWGUrl(int id)
+        {
+            var client = new RestClient(); // Create a REST Client
+            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+            var request = new RestRequest(RestSharp.Method.GET); // Create a request
+            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+            return $"https://rawg.io/games/{game.slug}";
+        }
+
+        /// <summary>
         /// Convert a unix time to a <see cref="DateTime"/>.
         /// </summary>
         /// <param name="unixTime">The unix time to convert.</param>

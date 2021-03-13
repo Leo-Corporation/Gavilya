@@ -340,5 +340,17 @@ namespace Gavilya.Pages
                 }
             }
         }
+
+        private async void GoToRawg_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("explorer.exe", await Global.GetRAWGUrl(GameInfo.RAWGID)); // Open RAWG.io
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
 }
