@@ -75,7 +75,7 @@ namespace Gavilya.Classes
         /// <summary>
         /// Version of the software (Gavilya).
         /// </summary>
-        public static string Version => "1.2.0.2102";
+        public static string Version => "1.3.0.2103-pre1";
 
         public static string BetaVersion 
         { 
@@ -89,7 +89,7 @@ namespace Gavilya.Classes
         /// <summary>
         /// Define if the current build is a preversion of Gavilya, not made for production nor Pre-Release.
         /// </summary>
-        public static bool IsBeta => true;
+        public static bool IsBeta => false;
 
         /// <summary>
         /// The Main <see cref="System.Windows.Window"/> of the App.
