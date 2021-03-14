@@ -3,6 +3,7 @@
 - [Knowledge](#knowledge)
 - [Tools](#tools)
 - [Writing code](#writing-code)
+- [API keys](#api-keys)
 ## Knowledge
 To contribute to this project, you will need to have some prerequisites:
 
@@ -107,4 +108,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 ~~~
+## API Keys
+Gavilya is using services that require API keys. To avoid leaking your API keys, follow this guidelines:
+
+1. Create a `APIKeysLocal.cs` C# class file in `Gavilya\Classes`
+2. Remove all the code
+3. Paste the following code in this file:
+~~~ cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Gavilya.Classes
+{
+    public static partial class APIKeys
+    {
+        static APIKeys()
+        {
+            RAWGAPIKey = "INSERT_YOUR_API_KEY_HERE";
+        }
+    }
+}
+~~~
+4. Replace `INSERT_YOUR_API_KEY_HERE` by your RAWG.io API key
+5. You're done, Gavilya will now use your API Key, and will be able to use RAWG.io services.
+
+> Note: This section applies from version 1.3.
+
 That's pretty much all you need right now. Keep in mind this document can be updated at any time, so make sure to keep checking these guidelines.
