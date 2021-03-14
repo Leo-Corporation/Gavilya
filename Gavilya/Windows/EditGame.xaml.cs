@@ -75,7 +75,6 @@ namespace Gavilya.Windows
 
             RAWGID = gameInfo.RAWGID; // Set the id
             GameDescription = gameInfo.Description; // Set the description
-            descriptionTxt.Text = gameInfo.Description; // Set the description (UI)
 
             if (gameInfo.IconFileLocation != string.Empty) // If a custom image is used
             {
@@ -112,7 +111,7 @@ namespace Gavilya.Windows
                 LastTimePlayed = GameCard.GameInfo.LastTimePlayed,
                 TotalTimePlayed = GameCard.GameInfo.TotalTimePlayed,
                 RAWGID = RAWGID,
-                Description = descriptionTxt.Text,
+                Description = GameDescription,
                 ProcessName = GameCard.GameInfo.ProcessName,
                 Platforms = (platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : platforms, // Get platforms
             };
@@ -223,6 +222,11 @@ namespace Gavilya.Windows
         private void AssociateGameLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             new SearchGameCover(this, GameAssociationActions.Associate).Show(); // Show the window
+        }
+
+        private void DescriptionLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new DescriptionWindow(GameDescription, this).Show(); // Show the Description window
         }
     }
 }

@@ -134,7 +134,7 @@ namespace Gavilya.Windows
             if (addGame1 != null) // If is from AddGame
             {
                 addGame1.RAWGID = id; // Set the id
-                addGame1.descriptionTxt.Text = await Global.GetGameDescriptionAsync(id); // Get the description
+                addGame1.GameDescription = await Global.GetGameDescriptionAsync(id); // Get the description
                 addGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
             }
             else // If is from EditGame
@@ -142,7 +142,6 @@ namespace Gavilya.Windows
                 string description = await Global.GetGameDescriptionAsync(id); // Get the description
                 editGame1.RAWGID = id; // Set the id
                 editGame1.GameDescription = description;
-                editGame1.descriptionTxt.Text = description;
                 editGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
             }
         }

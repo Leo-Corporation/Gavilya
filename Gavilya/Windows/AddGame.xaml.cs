@@ -162,7 +162,7 @@ namespace Gavilya.Windows
                     IconFileLocation = GameIconLocation, // The location of the icon of the game
                     IsFavorite = false, // The game is not a favorite by default
                     RAWGID = RAWGID, // The RAWG Id of the game
-                    Description = string.IsNullOrEmpty(descriptionTxt.Text) ? "" : descriptionTxt.Text, // The description of the game
+                    Description = GameDescription, // The description of the game
                     Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
                     LastTimePlayed = 0, // Never played
                     TotalTimePlayed = 0, // Never played
@@ -197,6 +197,11 @@ namespace Gavilya.Windows
         private void AssociateGameLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             new SearchGameCover(this, GameAssociationActions.Associate).Show(); // Show the window
+        }
+
+        private void DescriptionLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            new DescriptionWindow(GameDescription, this).Show(); // Show the Description window
         }
     }
 }
