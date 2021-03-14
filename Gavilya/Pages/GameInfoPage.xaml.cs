@@ -232,7 +232,7 @@ namespace Gavilya.Pages
             TotalTimePlayedTxt.Text = finalString; // Set the text
         }
 
-        private GameProperties GameProperties { get => new GameProperties(GameInfo); }
+        private GameProperties GameProperties => new(GameInfo);
         private void PropertiesBtn_Click(object sender, RoutedEventArgs e)
         {
             GameProperties.Show();
@@ -253,7 +253,7 @@ namespace Gavilya.Pages
         {
             Button button = (Button)sender; // Create button
 
-            button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+            button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
         }
 
         private void AboutTabBtn_MouseLeave(object sender, MouseEventArgs e)
@@ -277,7 +277,7 @@ namespace Gavilya.Pages
         {
             tabCheckedID = 0; // ID
 
-            AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+            AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
             RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
             RatingsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
@@ -293,7 +293,7 @@ namespace Gavilya.Pages
             {
                 tabCheckedID = 1; // ID
 
-                RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(133, 97, 197) }; // Change color
+                RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
                 AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
                 AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
@@ -318,20 +318,38 @@ namespace Gavilya.Pages
 
                 if (ratings.Count > 0) // If there is ratings
                 {
+                    int totalRatings = 0; // Total ratings
+                    for (int i = 0; i < ratings.Count; i++) // For each ratings
+                    {
+                        totalRatings += ratings[i].count; // Add the count of ratings
+                    }
+
                     for (int i = 0; i < ratings.Count; i++) // For each "rating"
                     {
                         switch (ratings[i].id) // Depending of the ID
                         {
-                            case 5: Pgr4.Value = ratings[i].percent; Pgr4ToolTip.Content = ratings[i].count; break; // 4*
-                            case 4: Pgr3.Value = ratings[i].percent; Pgr3ToolTip.Content = ratings[i].count; break; // 3*
-                            case 3: Pgr2.Value = ratings[i].percent; Pgr2ToolTip.Content = ratings[i].count; break; // 2*
-                            case 1: Pgr1.Value = ratings[i].percent; Pgr1ToolTip.Content = ratings[i].count; break; // 1*
+                            case 5: Pgr4.Value = ratings[i].percent; Pgr4ToolTip.Content = $"{ratings[i].count}/{totalRatings} ({ratings[i].percent}%)"; break; // 4*
+                            case 4: Pgr3.Value = ratings[i].percent; Pgr3ToolTip.Content = $"{ratings[i].count}/{totalRatings} ({ratings[i].percent}%)"; break; // 3*
+                            case 3: Pgr2.Value = ratings[i].percent; Pgr2ToolTip.Content = $"{ratings[i].count}/{totalRatings} ({ratings[i].percent}%)"; break; // 2*
+                            case 1: Pgr1.Value = ratings[i].percent; Pgr1ToolTip.Content = $"{ratings[i].count}/{totalRatings} ({ratings[i].percent}%)"; break; // 1*
                         }
                     }
 
                     float r = await Global.GetGameRatingAsync(GameInfo.RAWGID); // Get the average rating
                     RatingTxt.Text = r.ToString(); // Set text
                 }
+            }
+        }
+
+        private async void GoToRawg_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start("explorer.exe", await Global.GetRAWGUrl(GameInfo.RAWGID)); // Open RAWG.io
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

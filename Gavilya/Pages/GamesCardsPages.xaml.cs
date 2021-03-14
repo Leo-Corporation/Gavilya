@@ -77,7 +77,7 @@ namespace Gavilya.Pages
             }
             else
             {
-                WelcomeAddGames welcomeAddGames = new WelcomeAddGames(); // New WelcomeAddGames
+                WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
                 welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
                 welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
                 WelcomeHost.Children.Add(welcomeAddGames); // Add a welcome add games
@@ -89,50 +89,57 @@ namespace Gavilya.Pages
 
         private async void GamePresenter_Drop(object sender, DragEventArgs e)
         {
-            if (Definitions.Games.Count <= 0)
+            try
             {
-                Global.RemoveWelcomeScreen(); // Remove the "Welcome" screen
-            }
-
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                string[] files = (string[]) e.Data.GetData(DataFormats.FileDrop); // Get all the files droped
-                List<string> executables = new List<string>(); // The execuables files
-
-                for (int i = 0; i < files.Length; i++) // For each file
+                if (Definitions.Games.Count <= 0)
                 {
-                    if (System.IO.Path.GetExtension(files[i]) == ".exe") // If the file is a .exe
+                    Global.RemoveWelcomeScreen(); // Remove the "Welcome" screen
+                }
+
+                if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                {
+                    string[] files = (string[])e.Data.GetData(DataFormats.FileDrop); // Get all the files droped
+                    List<string> executables = new(); // The execuables files
+
+                    for (int i = 0; i < files.Length; i++) // For each file
                     {
-                        executables.Add(files[i]); // Add the file to the executables
+                        if (System.IO.Path.GetExtension(files[i]) == ".exe") // If the file is a .exe
+                        {
+                            executables.Add(files[i]); // Add the file to the executables
+                        }
+                    }
+
+                    for (int i = 0; i < executables.Count; i++) // For each executables (or games)
+                    {
+                        FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(executables[i]);
+                        int id = await Global.GetGameId(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName);
+                        GameInfo gameInfo = new()
+                        {
+                            FileLocation = executables[i],
+                            IsFavorite = false,
+                            Name = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName,
+                            LastTimePlayed = 0,
+                            TotalTimePlayed = 0,
+                            IconFileLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName),
+                            RAWGID = id, // Set the id
+                            ProcessName = "", // Set the ProcessName: "" => Default
+                            Description = (id != -1) ? await Global.GetGameDescriptionAsync(id) : "", // Get the description
+                            Platforms = (id != -1) ? await Global.GetGamePlatformsAsync(id) : new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform }, // Get platforms
+                            Version = fileVersionInfo.FileVersion // Get the version
+                        };
+                        Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
+                        Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the games to the GamePresenter
+                        new GameSaver().Save(Definitions.Games); // Save the added games
+                        Global.SortGames(); // Sort
+                        Definitions.GamesCardsPages.LoadGames(); // Reload the page
+                        Definitions.RecentGamesPage.LoadGames(); // Reload the page
+                        Definitions.GamesListPage.LoadGames(); // Reload the page
                     }
                 }
-
-                for (int i = 0; i < executables.Count; i++) // For each executables (or games)
-                {
-                    FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(executables[i]);
-                    int id = await Global.GetGameId(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName);
-                    GameInfo gameInfo = new GameInfo // Create a new GameInfo class/object
-                    {
-                        FileLocation = executables[i],
-                        IsFavorite = false,
-                        Name = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName,
-                        LastTimePlayed = 0,
-                        TotalTimePlayed = 0,
-                        IconFileLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(executables[i]) : fileVersionInfo.ProductName),
-                        RAWGID = id, // Set the id
-                        ProcessName = "", // Set the ProcessName: "" => Default
-                        Description = (id != -1) ? await Global.GetGameDescriptionAsync(id) : "", // Get the description
-                        Platforms = (id != -1) ? await Global.GetGamePlatformsAsync(id) : new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform }, // Get platforms
-                        Version = fileVersionInfo.FileVersion // Get the version
-                    };
-                    Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
-                    Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the games to the GamePresenter
-                    new GameSaver().Save(Definitions.Games); // Save the added games
-                    Global.SortGames(); // Sort
-                    Definitions.GamesCardsPages.LoadGames(); // Reload the page
-                    Definitions.RecentGamesPage.LoadGames(); // Reload the page
-                    Definitions.GamesListPage.LoadGames(); // Reload the page
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
             }
         }
     }

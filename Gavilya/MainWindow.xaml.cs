@@ -58,7 +58,7 @@ namespace Gavilya
             Title = Properties.Resources.MainWindowTitle;
             Global.SetWindowIcon(this); // Set the icon of the window
 
-            GamesCardsPages gamesCardsPages = new GamesCardsPages(); // GamesCardsPage
+            GamesCardsPages gamesCardsPages = new(); // GamesCardsPage
             Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
             PageContent.Content = Definitions.Settings.PageId switch
                 {
@@ -273,9 +273,9 @@ namespace Gavilya
         /// <param name="uIElement">The <see cref="UIElement"/> to put a shadow to.</param>
         private void ShadowElement(UIElement uIElement)
         {
-            DropShadowEffect dropShadowEffect = new DropShadowEffect(); // Shadow Effect
+            DropShadowEffect dropShadowEffect = new(); // Shadow Effect
 
-            Color color = new Color(); // Color of the shadow
+            Color color = new(); // Color of the shadow
             color.ScA = 1; // Alpha
             color.ScR = 0; // Red
             color.ScG = 0; // Green
@@ -296,7 +296,7 @@ namespace Gavilya
         /// <param name="uIElement">The <see cref="UIElement"/> to remove the shadow to.</param>
         private void RemoveShadowElement(UIElement uIElement)
         {
-            DropShadowEffect dropShadowEffect = new DropShadowEffect(); // Shadow Effect
+            DropShadowEffect dropShadowEffect = new(); // Shadow Effect
 
             dropShadowEffect.ShadowDepth = 0; // Put the shadow depth to 0
             dropShadowEffect.BlurRadius = 0; // Put the blur radius to 5
@@ -377,15 +377,32 @@ namespace Gavilya
             }
         }
 
+        /// <summary>
+        /// Checks if games are selected or not.
+        /// </summary>
+        /// <returns></returns>
+        private bool IsGameCardsSelected()
+        {
+            for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++)
+            {
+                var game = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
+                if (game.CheckBox.IsChecked.Value)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(Properties.Resources.DeleteConfirmMessage, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0 && IsGameCardsSelected())
             {
-                if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0)
+                if (MessageBox.Show(Properties.Resources.DeleteConfirmMessage, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
                     Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
-                    List<GameCard> games = new List<GameCard>(); // List of all the games
+                    List<GameCard> games = new(); // List of all the games
 
                     foreach (UIElement uIElement in Definitions.GamesCardsPages.GamePresenter.Children) // Foreach elements
                     {
@@ -403,7 +420,7 @@ namespace Gavilya
                     {
                         if (gameCard1.GameInfo.IsFavorite) // If the game is a favorite
                         {
-                            List<FavoriteGameCard> favoriteGameCards = new List<FavoriteGameCard>();
+                            List<FavoriteGameCard> favoriteGameCards = new();
                             foreach (FavoriteGameCard favoriteGameCard in FavoriteBar.Children) // Foreach favorite
                             {
                                 favoriteGameCards.Add(favoriteGameCard); // Add to the list
@@ -423,21 +440,21 @@ namespace Gavilya
                         Definitions.RecentGamesPage.LoadGames(); // Reload the games
                         Definitions.GamesListPage.LoadGames(); // Reload the page
                     }
-                }
 
-                if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
-                {
-                    WelcomeAddGames welcomeAddGames = new WelcomeAddGames(); // New WelcomeAddGames
-                    welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
-                    welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
-                    Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
-                    Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
-                    Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
-                }
+                    if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
+                    {
+                        WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
+                        welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
+                        welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+                        Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
+                        Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
+                        Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
+                    }
+                } 
             }
         }
 
-        PopupMenu PopupMenu = new PopupMenu(); // The menu
+        PopupMenu PopupMenu = new(); // The menu
         private void MoreBtn_Click(object sender, RoutedEventArgs e)
         {
             if (Definitions.IsMenuShown) // If the menu is visible

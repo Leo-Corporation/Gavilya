@@ -343,3 +343,5 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 *.exe
+*.config
+Gavilya/Classes/APIKeysLocal.cs

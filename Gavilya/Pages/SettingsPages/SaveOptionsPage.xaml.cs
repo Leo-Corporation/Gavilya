@@ -50,7 +50,7 @@ namespace Gavilya.Pages.SettingsPages
 
         private void ImportButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog(); // Create an OpenFileDialog
+            OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
             openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
             openFileDialog.Title = Properties.Resources.ImportGames; // Title
 
@@ -65,7 +65,7 @@ namespace Gavilya.Pages.SettingsPages
 
         private void ExportButton_Click(object sender, RoutedEventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog(); // Create a SaveFileDialog
+            SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
             saveFileDialog.FileName = "GavilyaGames.gav"; // File name
             saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
             saveFileDialog.Title = Properties.Resources.ExportGames; // Title

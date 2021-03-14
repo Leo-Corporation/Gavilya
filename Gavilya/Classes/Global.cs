@@ -49,7 +49,7 @@ namespace Gavilya.Classes
         /// <param name="window"><see cref="Window"/> to set the icon to.</param>
         public static void SetWindowIcon(Window window)
         {
-            Uri icon = new Uri(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.ico"); // Define the path to the icon
+            Uri icon = new(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.ico"); // Define the path to the icon
             window.Icon = BitmapFrame.Create(icon); // Set the icon
         }
 
@@ -60,58 +60,67 @@ namespace Gavilya.Classes
         /// <returns>A <seealso cref="Task{string}"/> value.</returns>
         public static async Task<string> GetCoverImageAsync(string gameName)
         {
-            var client = new RestClient(); // Create a REST Client
-            client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
-            var request = new RestRequest(Method.GET); // Create a request
-            request.AddQueryParameter("search", gameName); // Config the request
-            var response = await client.ExecuteAsync(request); // Execute the request and store the result
-
-            var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
-
-            if (gameResults.results.Count > 0) // If there is results
+            try
             {
-                if (gameResults.results[0].background_image == null)
-                {
-                    return string.Empty;
-                }
+                var client = new RestClient(); // Create a REST Client
+                client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
+                var request = new RestRequest(Method.GET); // Create a request
+                request.AddQueryParameter("search", gameName); // Config the request
+                request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
-                int gameID = gameResults.results[0].id; // Get the firts result's id
+                var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
 
-                if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+                if (gameResults.results.Count > 0) // If there is results
                 {
-                    Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
-                }
-
-                if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{gameID}")) // If the directory doesn't exist
-                {
-                    Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}"); // Create the game directory
-                }
-                else
-                {
-                    if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg")) // If the image exist
+                    if (gameResults.results[0].background_image == null)
                     {
-                        return Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg";
+                        return string.Empty;
+                    }
+
+                    int gameID = gameResults.results[0].id; // Get the firts result's id
+
+                    if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+                    {
+                        Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
+                    }
+
+                    if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{gameID}")) // If the directory doesn't exist
+                    {
+                        Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}"); // Create the game directory
                     }
                     else
                     {
-                        WebClient webClient1 = new WebClient(); // Create a web client
-                        await webClient1.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
-                        webClient1.Dispose(); // Release all used ressources
+                        if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg")) // If the image exist
+                        {
+                            return Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg";
+                        }
+                        else
+                        {
+                            WebClient webClient1 = new(); // Create a web client
+                            await webClient1.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
+                            webClient1.Dispose(); // Release all used ressources
 
-                        return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the result
+                            return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the result
+                        }
                     }
+
+
+                    WebClient webClient = new(); // Create a WebClient
+                    await webClient.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
+                    webClient.Dispose(); // Release used ressources
+
+                    return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the path
                 }
-
-
-                WebClient webClient = new WebClient(); // Create a WebClient
-                await webClient.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
-                webClient.Dispose(); // Release used ressources
-
-                return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the path
+                else // If there isn't any results
+                {
+                    return string.Empty; // Empty means that Gavilya will use the executable icon
+                }
             }
-            else // If there isn't any results
+            catch (Exception ex)
             {
-                return string.Empty; // Empty means that Gavilya will use the executable icon
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+                return string.Empty;
             }
         }
 
@@ -122,48 +131,57 @@ namespace Gavilya.Classes
         /// <returns>A <see cref="Task{string}"/> value.</returns>
         public static async Task<string> GetCoverImageAsync(int id)
         {
-            var client = new RestClient(); // Create a REST Client
-            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
-            var request = new RestRequest(Method.GET); // Create a request
-            var response = await client.ExecuteAsync(request); // Execute the request and store the result
-
-            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
-
-            if (game.background_image == null)
+            try
             {
-                return string.Empty;
-            }
+                var client = new RestClient(); // Create a REST Client
+                client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+                var request = new RestRequest(Method.GET); // Create a request
+                request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
-            if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
-            {
-                Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
-            }
+                var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
-            if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{id}")) // If the directory doesn't exist
-            {
-                Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}"); // Create the game directory
-            }
-            else
-            {
-                if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img.jpg")) // If the image exist
+                if (game.background_image == null)
                 {
-                    return Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img.jpg";
+                    return string.Empty;
+                }
+
+                if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+                {
+                    Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
+                }
+
+                if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{id}")) // If the directory doesn't exist
+                {
+                    Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}"); // Create the game directory
                 }
                 else
                 {
-                    WebClient webClient1 = new WebClient(); // Create a web client
-                    await webClient1.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"); // Download the "background_image"
-                    webClient1.Dispose(); // Release all used ressources
+                    if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img.jpg")) // If the image exist
+                    {
+                        return Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img.jpg";
+                    }
+                    else
+                    {
+                        WebClient webClient1 = new(); // Create a web client
+                        await webClient1.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"); // Download the "background_image"
+                        webClient1.Dispose(); // Release all used ressources
 
-                    return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"; // Return the result
+                        return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"; // Return the result
+                    }
                 }
+
+                WebClient webClient = new(); // Create a web client
+                await webClient.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"); // Download the "background_image"
+                webClient.Dispose(); // Release all used ressources
+
+                return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"; // Return the result
             }
-
-            WebClient webClient = new WebClient(); // Create a web client
-            await webClient.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"); // Download the "background_image"
-            webClient.Dispose(); // Release all used ressources
-
-            return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img.jpg"; // Return the result
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+                return string.Empty;
+            }
         }
 
         /// <summary>
@@ -173,14 +191,23 @@ namespace Gavilya.Classes
         /// <returns></returns>
         public static async Task<string> GetGameDescriptionAsync(int id)
         {
-            var client = new RestClient(); // Create a REST Client
-            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
-            var request = new RestRequest(Method.GET); // Create a request
-            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+            try
+            {
+                var client = new RestClient(); // Create a REST Client
+                client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+                var request = new RestRequest(Method.GET); // Create a request
+                request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
-            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+                var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
-            return game.description_raw;
+                return game.description_raw;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+                return string.Empty;
+            }
         }
 
         /// <summary>
@@ -190,21 +217,30 @@ namespace Gavilya.Classes
         /// <returns></returns>
         public static async Task<int> GetGameId(string gameName)
         {
-            var client = new RestClient(); // Create a REST Client
-            client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
-            var request = new RestRequest(Method.GET); // Create a request
-            request.AddQueryParameter("search", gameName); // Config the request
-            var response = await client.ExecuteAsync(request); // Execute the request and store the result
-
-            var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
-
-            if (gameResults.count > 0) // If there is results
+            try
             {
-                return gameResults.results[0].id; // Return the id
+                var client = new RestClient(); // Create a REST Client
+                client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
+                var request = new RestRequest(Method.GET); // Create a request
+                request.AddQueryParameter("search", gameName); // Config the request
+                request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+                var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
+
+                if (gameResults.count > 0) // If there is results
+                {
+                    return gameResults.results[0].id; // Return the id
+                }
+                else
+                {
+                    return -1; // Return -1 which means that no results has been found
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return -1; // Return -1 which means that no results has been found
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+                return -1;
             }
         }
 
@@ -215,21 +251,30 @@ namespace Gavilya.Classes
         /// <returns></returns>
         public static async Task<List<Platform>> GetGamePlatformsAsync(int id)
         {
-            var client = new RestClient(); // Create a REST Client
-            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
-            var request = new RestRequest(Method.GET); // Create a request
-            var response = await client.ExecuteAsync(request); // Execute the request and store the result
-
-            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
-
-            List<Platform> platforms = new List<Platform>(); // Create a new list of platform
-
-            for (int i = 0; i < game.platforms.Count; i++) // For each platforms
+            try
             {
-                platforms.Add(game.platforms[i].platform); // Add the platform
-            }
+                var client = new RestClient(); // Create a REST Client
+                client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+                var request = new RestRequest(Method.GET); // Create a request
+                request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
-            return platforms; // Return the result
+                var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+                List<Platform> platforms = new(); // Create a new list of platform
+
+                for (int i = 0; i < game.platforms.Count; i++) // For each platforms
+                {
+                    platforms.Add(game.platforms[i].platform); // Add the platform
+                }
+
+                return platforms; // Return the result
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+                return new List<Platform>();
+            }
         }
 
         /// <summary>
@@ -239,14 +284,23 @@ namespace Gavilya.Classes
         /// <returns></returns>
         public static async Task<List<Rating>> GetGameRatingsAsync(int id)
         {
-            var client = new RestClient(); // Create a REST Client
-            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
-            var request = new RestRequest(RestSharp.Method.GET); // Create a request
-            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+            try
+            {
+                var client = new RestClient(); // Create a REST Client
+                client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+                var request = new RestRequest(RestSharp.Method.GET); // Create a request
+                request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
-            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+                var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
-            return game.ratings;
+                return game.ratings;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+                return new List<Rating>();
+            }
         }
 
         /// <summary>
@@ -256,14 +310,49 @@ namespace Gavilya.Classes
         /// <returns></returns>
         public static async Task<float> GetGameRatingAsync(int id)
         {
-            var client = new RestClient(); // Create a REST Client
-            client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
-            var request = new RestRequest(RestSharp.Method.GET); // Create a request
-            var response = await client.ExecuteAsync(request); // Execute the request and store the result
+            try
+            {
+                var client = new RestClient(); // Create a REST Client
+                client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+                var request = new RestRequest(RestSharp.Method.GET); // Create a request
+                request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
-            var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+                var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
 
-            return game.rating;
+                return game.rating;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+                return 0f;
+            }
+        }
+
+        /// <summary>
+        /// Gets the RAWG.io url to the game from it's id.
+        /// </summary>
+        /// <param name="id">The id of the game.</param>
+        /// <returns></returns>
+        public static async Task<string> GetRAWGUrl(int id)
+        {
+            try
+            {
+                var client = new RestClient(); // Create a REST Client
+                client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+                var request = new RestRequest(RestSharp.Method.GET); // Create a request
+                request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+                var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+                return $"https://rawg.io/games/{game.slug}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+                return "https://rawg.io";
+            }
         }
 
         /// <summary>
@@ -273,7 +362,7 @@ namespace Gavilya.Classes
         /// <returns></returns>
         public static DateTime UnixTimeToDateTime(double unixTime)
         {
-            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // Create a date
+            DateTime dtDateTime = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc); // Create a date
             dtDateTime = dtDateTime.AddSeconds(unixTime).ToLocalTime(); // Add the seconds
             return dtDateTime; // Return the result
         }
@@ -281,35 +370,35 @@ namespace Gavilya.Classes
         public static string NumberToMonth(int number)
         {
             string[] months = Properties.Resources.Months.Split(new string[] { "," }, StringSplitOptions.None); // Get all the months
-            switch (number)
+            return number switch
             {
-                case 1: // If January
-                    return months[0]; // Return correct value
-                case 2: // If Febuary
-                    return months[1]; // Return correct value
-                case 3: // If March
-                    return months[2]; // Return correct value
-                case 4: // If April
-                    return months[3]; // Return correct value
-                case 5: // If May
-                    return months[4]; // Return correct value
-                case 6: // If June
-                    return months[5]; // Return correct value
-                case 7: // If July
-                    return months[6]; // Return correct value
-                case 8: // If August
-                    return months[7]; // Return correct value
-                case 9: // If September
-                    return months[8]; // Return correct value
-                case 10: // If October
-                    return months[9]; // Return correct value
-                case 11: // If November
-                    return months[10]; // Return correct value
-                case 12: // If December
-                    return months[11]; // Return correct value
-                default: // If the number doesn't match
-                    return "Unknown month"; // Return
-            }
+                // If January
+                1 => months[0],// Return correct value
+                               // If Febuary
+                2 => months[1],// Return correct value
+                               // If March
+                3 => months[2],// Return correct value
+                               // If April
+                4 => months[3],// Return correct value
+                               // If May
+                5 => months[4],// Return correct value
+                               // If June
+                6 => months[5],// Return correct value
+                               // If July
+                7 => months[6],// Return correct value
+                               // If August
+                8 => months[7],// Return correct value
+                               // If September
+                9 => months[8],// Return correct value
+                               // If October
+                10 => months[9],// Return correct value
+                                // If November
+                11 => months[10],// Return correct value
+                                 // If December
+                12 => months[11],// Return correct value
+                                 // If the number doesn't match
+                _ => "Unknown month",// Return
+            };
         }
 
         /// <summary>
@@ -376,28 +465,35 @@ namespace Gavilya.Classes
         /// </summary>
         internal static void SortGames()
         {
-            List<string> gamesNames = new(); // New list
-
-            for (int i = 0; i < Definitions.Games.Count; i++)
+            try
             {
-                gamesNames.Add(Definitions.Games[i].Name);
+                List<string> gamesNames = new(); // New list
+
+                for (int i = 0; i < Definitions.Games.Count; i++)
+                {
+                    gamesNames.Add(Definitions.Games[i].Name);
+                }
+
+                List<string> sortedGames = new(); // New list
+                sortedGames.AddRange(gamesNames); // Create the list
+
+                sortedGames.Sort(); // Sort the games
+
+                List<GameInfo> sortedFinal = new(); // Create a new list
+                sortedFinal.AddRange(Definitions.Games); // Assign the list
+
+                for (int i = 0; i < sortedGames.Count; i++)
+                {
+                    sortedFinal[i] = Definitions.Games[gamesNames.IndexOf(sortedGames[i])]; // Add the game
+                }
+
+                Definitions.Games = sortedFinal; // Save the changes
+                new GameSaver().Save(Definitions.Games); // Save in file
             }
-
-            List<string> sortedGames = new(); // New list
-            sortedGames.AddRange(gamesNames); // Create the list
-
-            sortedGames.Sort(); // Sort the games
-
-            List<GameInfo> sortedFinal = new(); // Create a new list
-            sortedFinal.AddRange(Definitions.Games); // Assign the list
-
-            for (int i = 0; i < sortedGames.Count; i++)
+            catch (Exception ex)
             {
-                sortedFinal[i] = Definitions.Games[gamesNames.IndexOf(sortedGames[i])]; // Add the game
+                MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
             }
-
-            Definitions.Games = sortedFinal; // Save the changes
-            new GameSaver().Save(Definitions.Games); // Save in file
         }
     }
 }

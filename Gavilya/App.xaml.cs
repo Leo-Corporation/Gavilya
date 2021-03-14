@@ -41,6 +41,8 @@ namespace Gavilya
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            
+
             SettingsSaver.Load(); // Load the settings
             Global.ChangeLanguage(); // Change the language
 

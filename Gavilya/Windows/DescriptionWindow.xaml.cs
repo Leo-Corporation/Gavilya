@@ -21,11 +21,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.Classes;
-using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -38,32 +38,55 @@ using System.Windows.Shapes;
 namespace Gavilya.Windows
 {
     /// <summary>
-    /// Logique d'interaction pour About.xaml
+    /// Interaction logic for DescriptionWindow.xaml
     /// </summary>
-    public partial class About : Window
+    public partial class DescriptionWindow : Window
     {
-        public About()
+        bool isFromEdit = false;
+        AddGame AddGame { get; init; }
+        EditGame EditGame { get; init; }
+        public DescriptionWindow(string description, AddGame addGame)
         {
             InitializeComponent();
-            VersionTxt.Text = !Definitions.IsBeta ? Definitions.Version : Definitions.BetaVersion; // Display the current version
+            descriptionTxt.Text = description; // Set description
+            isFromEdit = false; // Is from Add
+            AddGame = addGame; // Define
         }
 
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        public DescriptionWindow(string description, EditGame editGame)
+        {
+            InitializeComponent();
+            descriptionTxt.Text = description; // Set description
+            isFromEdit = true; // Is from edit
+            EditGame = editGame; // Define
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized; // Minimize
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Close(); // Close the window
         }
 
-        private async void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        private void ApplyBtn_Click(object sender, RoutedEventArgs e)
         {
-            string lastVersion = await Update.GetLastVersionAsync(Definitions.LastVersionLink); // Last version of Gavilya
-            if (Update.IsAvailable(Definitions.Version, lastVersion)) // If updates are available
+            if (!isFromEdit) // Is from Add
             {
-                new UpdateAvailable().Show(); // Show the updates available window
+                AddGame.GameDescription = descriptionTxt.Text; // Set to the description text
             }
             else
             {
-                new NoUpdateAvailable().Show(); // Show the no updates available window
+                EditGame.GameDescription = descriptionTxt.Text; // Set to the description text
             }
+            Close(); // Close
+        }
+
+        private void CancelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Close(); // Close
         }
     }
 }
