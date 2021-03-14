@@ -75,7 +75,7 @@ namespace Gavilya.Classes
         /// <summary>
         /// Version of the software (Gavilya).
         /// </summary>
-        public static string Version => "1.3.0.2103-pre1";
+        public static string Version => "1.3.0.2103-rc1";
 
         public static string BetaVersion 
         { 
