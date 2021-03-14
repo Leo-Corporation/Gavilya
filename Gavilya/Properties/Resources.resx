@@ -457,4 +457,10 @@
   <data name="SeeOnRAWG" xml:space="preserve">
     <value>See on RAWG</value>
   </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="EditGameDescription" xml:space="preserve">
+    <value>Add/Edit description</value>
+  </data>
 </root>

@@ -97,6 +97,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Apply.
+        /// </summary>
+        public static string Apply {
+            get {
+                return ResourceManager.GetString("Apply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gavilya.
         /// </summary>
         public static string AppName {
@@ -255,6 +264,15 @@ namespace Gavilya.Properties {
         public static string EditGame {
             get {
                 return ResourceManager.GetString("EditGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add/Edit description.
+        /// </summary>
+        public static string EditGameDescription {
+            get {
+                return ResourceManager.GetString("EditGameDescription", resourceCulture);
             }
         }
         
