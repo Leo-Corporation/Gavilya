@@ -377,11 +377,28 @@ namespace Gavilya
             }
         }
 
+        /// <summary>
+        /// Checks if games are selected or not.
+        /// </summary>
+        /// <returns></returns>
+        private bool IsGameCardsSelected()
+        {
+            for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++)
+            {
+                var game = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
+                if (game.CheckBox.IsChecked.Value)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show(Properties.Resources.DeleteConfirmMessage, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0 && IsGameCardsSelected())
             {
-                if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0)
+                if (MessageBox.Show(Properties.Resources.DeleteConfirmMessage, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
                     Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
@@ -423,17 +440,17 @@ namespace Gavilya
                         Definitions.RecentGamesPage.LoadGames(); // Reload the games
                         Definitions.GamesListPage.LoadGames(); // Reload the page
                     }
-                }
 
-                if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
-                {
-                    WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
-                    welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
-                    welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
-                    Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
-                    Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
-                    Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
-                }
+                    if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
+                    {
+                        WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
+                        welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
+                        welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+                        Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
+                        Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
+                        Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
+                    }
+                } 
             }
         }
 
