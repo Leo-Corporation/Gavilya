@@ -370,35 +370,35 @@ namespace Gavilya.Classes
         public static string NumberToMonth(int number)
         {
             string[] months = Properties.Resources.Months.Split(new string[] { "," }, StringSplitOptions.None); // Get all the months
-            switch (number)
+            return number switch
             {
-                case 1: // If January
-                    return months[0]; // Return correct value
-                case 2: // If Febuary
-                    return months[1]; // Return correct value
-                case 3: // If March
-                    return months[2]; // Return correct value
-                case 4: // If April
-                    return months[3]; // Return correct value
-                case 5: // If May
-                    return months[4]; // Return correct value
-                case 6: // If June
-                    return months[5]; // Return correct value
-                case 7: // If July
-                    return months[6]; // Return correct value
-                case 8: // If August
-                    return months[7]; // Return correct value
-                case 9: // If September
-                    return months[8]; // Return correct value
-                case 10: // If October
-                    return months[9]; // Return correct value
-                case 11: // If November
-                    return months[10]; // Return correct value
-                case 12: // If December
-                    return months[11]; // Return correct value
-                default: // If the number doesn't match
-                    return "Unknown month"; // Return
-            }
+                // If January
+                1 => months[0],// Return correct value
+                               // If Febuary
+                2 => months[1],// Return correct value
+                               // If March
+                3 => months[2],// Return correct value
+                               // If April
+                4 => months[3],// Return correct value
+                               // If May
+                5 => months[4],// Return correct value
+                               // If June
+                6 => months[5],// Return correct value
+                               // If July
+                7 => months[6],// Return correct value
+                               // If August
+                8 => months[7],// Return correct value
+                               // If September
+                9 => months[8],// Return correct value
+                               // If October
+                10 => months[9],// Return correct value
+                                // If November
+                11 => months[10],// Return correct value
+                                 // If December
+                12 => months[11],// Return correct value
+                                 // If the number doesn't match
+                _ => "Unknown month",// Return
+            };
         }
 
         /// <summary>

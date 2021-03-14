@@ -59,18 +59,15 @@ namespace Gavilya.Windows
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            switch (Thread.CurrentThread.CurrentUICulture.ToString()) // Language of the user
+            Title = Thread.CurrentThread.CurrentUICulture.ToString() switch // Language of the user
             {
-                case "fr-FR": // Language: French (France)
-                    Title = "Ajouter un jeu"; // Change the title
-                    break;
-                case "en-US": // Language: English (United States)
-                    Title = "Add a game"; // Change the title
-                    break;
-                default: // Language: English (United States)
-                    Title = "Add a game"; // Change the title
-                    break;
-            }
+                // Language: French (France)
+                "fr-FR" => "Ajouter un jeu",// Change the title
+                                            // Language: English (United States)
+                "en-US" => "Add a game",// Change the title
+                                        // Language: English (United States)
+                _ => "Add a game",// Change the title
+            };
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
