@@ -8,11 +8,11 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+	<Grid x:Name="grid">
 		<StackPanel>
-			<TextBlock Text="Gavilya" FontWeight="Bold" FontSize="14"/>
-			<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-				<StackPanel x:Name="GamePresenter"></StackPanel>
+			<TextBlock Text="Gavilya" Name="TitleTxt" Margin="10" FontWeight="Bold" FontSize="20"/>
+			<ScrollViewer x:Name="ScrollViwr" Height="480" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+				<StackPanel x:Name="GamePresenter" CanBeScrollAnchor="True"/>
 			</ScrollViewer>
 		</StackPanel>
 	</Grid>

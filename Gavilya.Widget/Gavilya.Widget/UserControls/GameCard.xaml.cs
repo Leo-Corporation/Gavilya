@@ -22,14 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Widget.Classes;
-using Gavilya.Widget.UserControls;
-using Microsoft.Gaming.XboxGameBar;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Xml.Serialization;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -40,52 +37,23 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
+// The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace Gavilya.Widget
+namespace Gavilya.Widget.UserControls
 {
-	/// <summary>
-	/// An empty page that can be used on its own or navigated to within a Frame.
-	/// </summary>
-	public sealed partial class Widget1 : Page
+	public sealed partial class GameCard : UserControl
 	{
-		private XboxGameBarWidget widget = null;
-		public Widget1()
+		private GameInfo GameInfo { get; set; }
+		public GameCard(GameInfo gameInfo)
 		{
 			this.InitializeComponent();
+			GameInfo = gameInfo;
 			InitUI();
 		}
 
-		private async void InitUI()
+		private void InitUI()
 		{
-			Windows.Storage.StorageFolder storageFolder = await Windows.Storage.StorageFolder.GetFolderFromPathAsync(Definitions.AppDataPath + @"\Gavilya");
-			Windows.Storage.StorageFile sampleFile = await storageFolder.GetFileAsync("Games.gav");
-			string text = await Windows.Storage.FileIO.ReadTextAsync(sampleFile);
-
-			XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<GameInfo>));
-			using (TextReader reader = new StringReader(text))
-			{
-				Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(reader);
-			}
-
-			if (Definitions.Games.Count > 0)
-			{
-				for (int i = 0; i < Definitions.Games.Count; i++)
-				{
-					GamePresenter.Children.Add(new GameCard(Definitions.Games[i])); // Display games
-				}
-			}
-		}
-
-		protected override void OnNavigatedTo(NavigationEventArgs e)
-		{
-			widget = e.Parameter as XboxGameBarWidget;
-			widget.SettingsClicked += Widget_SettingsClicked;
-		}
-
-		private async void Widget_SettingsClicked(XboxGameBarWidget sender, object args)
-		{
-			await widget.ActivateSettingsAsync();
+			GameNameTxt.Text = GameInfo.Name; // Set name
 		}
 	}
 }

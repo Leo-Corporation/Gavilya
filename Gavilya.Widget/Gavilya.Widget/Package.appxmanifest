@@ -5,7 +5,9 @@
   xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
 	xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
-  IgnorableNamespaces="uap uap3 mp">
+  xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10"
+	xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="uap uap3 mp iot rescap">
 
   <Identity
     Name="0313dc6a-696c-4a5a-a258-4adf89178ccc"
@@ -57,11 +59,11 @@
 								<ActivateAfterInstall>true</ActivateAfterInstall>
 								<Window>
 									<Size>
-										<Height>625</Height>
-										<Width>600</Width>
-										<MinHeight>100</MinHeight>
-										<MinWidth>350</MinWidth>
-										<MaxHeight>1000</MaxHeight>
+										<Height>500</Height>
+										<Width>350</Width>
+										<MinHeight>500</MinHeight>
+										<MinWidth>300</MinWidth>
+										<MaxHeight>500</MaxHeight>
 										<MaxWidth>1000</MaxWidth>
 									</Size>
 									<ResizeSupported>
@@ -123,5 +125,6 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+		<rescap:Capability Name="broadFileSystemAccess"/>
   </Capabilities>
 </Package>
