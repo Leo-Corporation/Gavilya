@@ -16,7 +16,7 @@
 		</Grid.ColumnDefinitions>
 
 		<TextBlock x:Name="GameNameTxt" Grid.Column="0" d:Text="GameName" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
-		<Button x:Name="PlayBtn" Style="{ThemeResource ButtonRevealStyle}" Grid.Column="1" x:Uid="Play" Margin="0,0,10,0" HorizontalAlignment="Right">
+		<Button x:Name="PlayBtn" x:Uid="Play" Style="{ThemeResource ButtonRevealStyle}" Grid.Column="1" Content="Play" Margin="0,0,10,0" HorizontalAlignment="Right">
 			<Button.Background>
 				<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
 					<LinearGradientBrush.RelativeTransform>
@@ -26,10 +26,6 @@
 					<GradientStop Color="#FF3779EE" Offset="1"/>
 				</LinearGradientBrush>
 			</Button.Background>
-
-			<StackPanel Orientation="Horizontal">
-				<TextBlock x:Uid="Play"/>
-			</StackPanel>
 		</Button>
 	</Grid>
 </UserControl>

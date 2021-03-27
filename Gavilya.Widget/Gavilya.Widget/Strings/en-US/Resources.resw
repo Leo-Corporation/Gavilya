@@ -123,7 +123,7 @@
   <data name="GavilyaWidget" xml:space="preserve">
     <value>Gavilya Widget</value>
   </data>
-  <data name="Play.Text" xml:space="preserve">
+  <data name="Play.Content" xml:space="preserve">
     <value>Play</value>
   </data>
 </root>
