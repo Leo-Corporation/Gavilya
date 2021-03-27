@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Gaming.XboxGameBar;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,9 +23,21 @@ namespace Gavilya.Widget
 	/// </summary>
 	public sealed partial class Widget1 : Page
 	{
+		private XboxGameBarWidget widget = null;
 		public Widget1()
 		{
 			this.InitializeComponent();
+		}
+
+		protected override void OnNavigatedTo(NavigationEventArgs e)
+		{
+			widget = e.Parameter as XboxGameBarWidget;
+			widget.SettingsClicked += Widget_SettingsClicked; ;
+		}
+
+		private async void Widget_SettingsClicked(XboxGameBarWidget sender, object args)
+		{
+			await widget.ActivateSettingsAsync();
 		}
 	}
 }

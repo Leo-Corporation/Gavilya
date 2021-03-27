@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Gaming.XboxGameBar;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,6 +8,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,6 +24,8 @@ namespace Gavilya.Widget
     /// </summary>
     sealed partial class App : Application
     {
+        private XboxGameBarWidget widget1 = null;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -32,12 +36,60 @@ namespace Gavilya.Widget
             this.Suspending += OnSuspending;
         }
 
-        /// <summary>
-        /// Invoked when the application is launched normally by the end user.  Other entry points
-        /// will be used such as when the application is launched to open a specific file.
-        /// </summary>
-        /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+		protected override void OnActivated(IActivatedEventArgs args)
+		{
+            XboxGameBarWidgetActivatedEventArgs widgetArgs = null;
+            if (args.Kind == ActivationKind.Protocol)
+            {
+                var protocolArgs = args as IProtocolActivatedEventArgs;
+                string scheme = protocolArgs.Uri.Scheme;
+                if (scheme.Equals("ms-gamebarwidget"))
+                {
+                    widgetArgs = args as XboxGameBarWidgetActivatedEventArgs;
+                }
+            }
+            if (widgetArgs != null)
+            {
+                if (widgetArgs.IsLaunchActivation)
+                {
+                    var rootFrame = new Frame();
+                    rootFrame.NavigationFailed += OnNavigationFailed;
+                    Window.Current.Content = rootFrame;
+
+                    // Navigate to correct view
+                    if (widgetArgs.AppExtensionId == "Widget1")
+                    {
+                        widget1 = new XboxGameBarWidget(
+                            widgetArgs,
+                            Window.Current.CoreWindow,
+                            rootFrame);
+                        rootFrame.Navigate(typeof(Widget1), widget1);
+
+                        Window.Current.Closed += Widget1Window_Closed;
+                    }
+                    else
+                    {
+                        // Unknown - Game Bar should never send you an unknown App Extension Id
+                        return;
+                    }
+
+                    Window.Current.Activate();
+                }
+            }
+        }
+
+		private void Widget1Window_Closed(object sender, CoreWindowEventArgs e)
+		{
+            widget1 = null;
+            Window.Current.Closed -= Widget1Window_Closed;
+        }
+
+		/// <summary>
+		/// Invoked when the application is launched normally by the end user.  Other entry points
+		/// will be used such as when the application is launched to open a specific file.
+		/// </summary>
+		/// <param name="e">Details about the launch request and process.</param>
+		protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
