@@ -9,6 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-		<TextBlock Text="Gavilya Widget" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+		<StackPanel>
+			<TextBlock Text="Gavilya" FontWeight="Bold" FontSize="14"/>
+			<ScrollViewer Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+				<StackPanel x:Name="GamePresenter"></StackPanel>
+			</ScrollViewer>
+		</StackPanel>
 	</Grid>
 </Page>
