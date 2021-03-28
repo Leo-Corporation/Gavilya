@@ -18,6 +18,10 @@
           <source>Play</source>
           <target state="translated">Jouer</target>
         </trans-unit>
+        <trans-unit id="PlayTxt.Text" translate="yes" xml:space="preserve">
+          <source>Play</source>
+          <target state="translated">Jouer</target>
+        </trans-unit>
       </group>
     </body>
   </file>

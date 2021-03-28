@@ -21,4 +21,7 @@
   <data name="Play.Content" xml:space="preserve">
     <value>Jouer</value>
   </data>
+  <data name="PlayTxt.Text" xml:space="preserve">
+    <value>Jouer</value>
+  </data>
 </root>
