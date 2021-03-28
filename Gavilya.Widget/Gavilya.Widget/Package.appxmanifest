@@ -131,5 +131,6 @@
   <Capabilities>
     <Capability Name="internetClient" />
 		<rescap:Capability Name="broadFileSystemAccess"/>
+		<iot:Capability Name="systemManagement" />
   </Capabilities>
 </Package>
