@@ -15,6 +15,7 @@
 		</Grid.RowDefinitions>
 
 		<TextBlock Text="Gavilya" Name="TitleTxt" Margin="10" FontWeight="Bold" FontSize="20"/>
+
 		<ScrollViewer x:Name="ScrollViwr" Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="{Binding ActualHeight, ElementName=ContentRow, Mode=OneWay}">
 			<StackPanel x:Name="GamePresenter" CanBeScrollAnchor="True"/>
 		</ScrollViewer>
