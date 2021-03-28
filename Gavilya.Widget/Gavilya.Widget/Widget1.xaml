@@ -5,15 +5,18 @@
     xmlns:local="using:Gavilya.Widget"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
+    mc:Ignorable="d" SizeChanged="Page_SizeChanged"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
 	<Grid x:Name="grid">
-		<StackPanel>
-			<TextBlock Text="Gavilya" Name="TitleTxt" Margin="10" FontWeight="Bold" FontSize="20"/>
-			<ScrollViewer x:Name="ScrollViwr" Height="480" Grid.Row="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-				<StackPanel x:Name="GamePresenter" CanBeScrollAnchor="True"/>
-			</ScrollViewer>
-		</StackPanel>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition x:Name="ContentRow" Height="*"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Text="Gavilya" Name="TitleTxt" Margin="10" FontWeight="Bold" FontSize="20"/>
+		<ScrollViewer x:Name="ScrollViwr" Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Height="{Binding ActualHeight, ElementName=ContentRow, Mode=OneWay}">
+			<StackPanel x:Name="GamePresenter" CanBeScrollAnchor="True"/>
+		</ScrollViewer>
 	</Grid>
 </Page>

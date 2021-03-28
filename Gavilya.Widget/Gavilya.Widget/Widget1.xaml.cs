@@ -87,5 +87,10 @@ namespace Gavilya.Widget
 		{
 			await widget.ActivateSettingsAsync();
 		}
+
+		private void Page_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			ScrollViwr.Height = ContentRow.ActualHeight;
+		}
 	}
 }

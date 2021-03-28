@@ -61,9 +61,9 @@
 									<Size>
 										<Height>500</Height>
 										<Width>350</Width>
-										<MinHeight>500</MinHeight>
+										<MinHeight>100</MinHeight>
 										<MinWidth>300</MinWidth>
-										<MaxHeight>500</MaxHeight>
+										<MaxHeight>1000</MaxHeight>
 										<MaxWidth>1000</MaxWidth>
 									</Size>
 									<ResizeSupported>
