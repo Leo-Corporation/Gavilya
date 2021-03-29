@@ -7,6 +7,7 @@
 	xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
   xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10"
 	xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+	xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   IgnorableNamespaces="uap uap3 mp iot rescap">
 
   <Identity
@@ -103,6 +104,13 @@
 						</uap3:Properties>
 					</uap3:AppExtension>
 				</uap3:Extension>
+			
+		    <desktop:Extension Category="windows.fullTrustProcess" Executable="fulltrustprocess.exe">
+          <desktop:FullTrustProcess>
+            <desktop:ParameterGroup GroupId="SyncGroup" Parameters="/Sync"/>
+            <desktop:ParameterGroup GroupId="OtherGroup" Parameters="/Other"/>
+          </desktop:FullTrustProcess>
+        </desktop:Extension>
 			</Extensions>
     </Application>
   </Applications>
@@ -131,6 +139,7 @@
   <Capabilities>
     <Capability Name="internetClient" />
 		<rescap:Capability Name="broadFileSystemAccess"/>
+		<rescap:Capability Name="runFullTrust"/>
 		<iot:Capability Name="systemManagement" />
   </Capabilities>
 </Package>
