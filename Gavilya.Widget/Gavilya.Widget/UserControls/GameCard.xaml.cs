@@ -31,6 +31,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.Storage.Streams;
 using Windows.System;
 using Windows.UI.Core;
@@ -41,6 +42,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.ApplicationModel;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -61,23 +63,29 @@ namespace Gavilya.Widget.UserControls
 			GameNameTxt.Text = GameInfo.Name; // Set name
 		}
 
-		private async Task RunProcess(string file, string args)
+		/// <summary>
+		/// Launch a process
+		/// </summary>
+		/// <param name="processName"></param>
+		private async void LaunchProcess(string processName)
 		{
-			var options = new ProcessLauncherOptions();
-			var standardOutput = new InMemoryRandomAccessStream();
-			var standardError = new InMemoryRandomAccessStream();
-			options.StandardOutput = standardOutput;
-			options.StandardError = standardError;
-
-			await CoreWindow.GetForCurrentThread().Dispatcher.RunAsync(CoreDispatcherPriority.Normal, async () =>
+			if (!File.Exists(Definitions.AppDataPath + @"\Gavilya\LatestGameOpened.txt"))
 			{
-				var result = await ProcessLauncher.RunToCompletionAsync(file, args == null ? string.Empty : args, options);
-			});
+				// Create sample file; replace if exists.
+				StorageFolder storageFolder = await StorageFolder.GetFolderFromPathAsync(Definitions.AppDataPath + @"\Gavilya");
+				await storageFolder.CreateFileAsync("LatestGameOpened.txt", CreationCollisionOption.ReplaceExisting); 
+			}
+
+			StorageFolder folder = await StorageFolder.GetFolderFromPathAsync(Definitions.AppDataPath + @"\Gavilya"); // Get the folder
+			StorageFile file = await folder.GetFileAsync("LatestGameOpened.txt"); // Get the file object
+			await FileIO.WriteTextAsync(file, processName); // Write the path to the latest game opened
+
+			await FullTrustProcessLauncher.LaunchFullTrustProcessForCurrentAppAsync(); // Launch Gavilya.AppLauncher.exe
 		}
 
 		private async void PlayBtn_Click(object sender, RoutedEventArgs e)
 		{
-			await RunProcess("explorer.exe", GameInfo.FileLocation);
+			LaunchProcess(GameInfo.FileLocation); // Launch
 		}
 	}
 }

@@ -104,13 +104,12 @@
 						</uap3:Properties>
 					</uap3:AppExtension>
 				</uap3:Extension>
-			
-		    <desktop:Extension Category="windows.fullTrustProcess" Executable="fulltrustprocess.exe">
-          <desktop:FullTrustProcess>
-            <desktop:ParameterGroup GroupId="SyncGroup" Parameters="/Sync"/>
-            <desktop:ParameterGroup GroupId="OtherGroup" Parameters="/Other"/>
-          </desktop:FullTrustProcess>
-        </desktop:Extension>
+
+				<desktop:Extension Category="windows.fullTrustProcess" Executable="Assets\Gavilya.AppLauncher.exe">
+					<desktop:FullTrustProcess>
+						<desktop:ParameterGroup GroupId="SyncGroup" Parameters="/Sync"/>
+					</desktop:FullTrustProcess>
+				</desktop:Extension>
 			</Extensions>
     </Application>
   </Applications>
@@ -140,6 +139,6 @@
     <Capability Name="internetClient" />
 		<rescap:Capability Name="broadFileSystemAccess"/>
 		<rescap:Capability Name="runFullTrust"/>
-		<iot:Capability Name="systemManagement" />
+    <iot:Capability Name="systemManagement"/>
   </Capabilities>
 </Package>
