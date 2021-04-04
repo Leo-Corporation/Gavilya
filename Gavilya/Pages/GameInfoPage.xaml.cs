@@ -168,7 +168,7 @@ namespace Gavilya.Pages
                     gameCard.Timer.Start(); // Start the timer
 
                     DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
-                    LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+                    LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
                 }
                 else if (parentUIElement is GameItem)
                 {
@@ -180,7 +180,7 @@ namespace Gavilya.Pages
                     gameItem.Timer.Start();
 
                     DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
-                    LastTimePlayedTxt.Text = $"{Properties.Resources.LastTimePlayed} {LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+                    LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
                 }
 
                 Definitions.RecentGamesPage.LoadGames(); // Reload the games
