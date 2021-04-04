@@ -96,6 +96,9 @@ namespace Gavilya.UserControls
                     gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
                     new GameSaver().Save(Definitions.Games); // Save the changes
 
+                    Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+                    Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+
                     gameCard.Timer.Start(); // Start the timer
                 }
 

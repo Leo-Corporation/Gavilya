@@ -203,7 +203,6 @@ namespace Gavilya.Pages
                 {
                     new GameSaver().Save(Definitions.Games); // Save
                     DisplayTotalTimePlayed(GameInfo.TotalTimePlayed); // Update the text
-                    
                 }
             }
         }
@@ -230,6 +229,12 @@ namespace Gavilya.Pages
             }
 
             TotalTimePlayedTxt.Text = finalString; // Set the text
+        }
+
+        internal void UpdateLastTimePlayed(int unixTime)
+		{
+            DateTime LastTimePlayed = Global.UnixTimeToDateTime(unixTime); // Get the date time
+            LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
         }
 
         private GameProperties GameProperties => new(GameInfo);
