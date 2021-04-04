@@ -28,15 +28,9 @@
             <TextBlock Text="{x:Static lang:Resources.FirstRunAddGamesDescription}" TextWrapping="Wrap" FontSize="13" Foreground="White" Margin="10 5 10 5"/>
         </StackPanel>
 
-        <Button x:Name="NextBtn" Click="NextBtn_Click" Grid.Column="1" Padding="10 7 10 7" Margin="10" Grid.Row="1" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button.Background>
-                <LinearGradientBrush>
-                    <GradientStop Color="#B589E0"/>
-                    <GradientStop Color="#8561C5" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
+		<Button x:Name="NextBtn" Click="NextBtn_Click" Grid.Column="1" Padding="10 7 10 7" Margin="10" Grid.Row="1" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#6600FF">
 
-            <StackPanel Orientation="Horizontal">
+			<StackPanel Orientation="Horizontal">
                 <TextBlock FontSize="12" FontWeight="Bold" Text="{x:Static lang:Resources.Continue}" Foreground="White" VerticalAlignment="Center"/>
                 <TextBlock FontSize="10" FontFamily="..\..\Fonts\#FluentlyIcons" Text="&#xe919;" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
             </StackPanel>
