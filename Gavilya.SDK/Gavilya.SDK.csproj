@@ -2,13 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.0.2012</Version>
+    <Version>1.1.0.2104</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description />
     <Copyright>© 2021</Copyright>
+    <Company>Léo Corporation</Company>
+    <Authors>Léo Corporation</Authors>
   </PropertyGroup>
 
 </Project>
