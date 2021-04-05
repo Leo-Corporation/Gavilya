@@ -116,7 +116,18 @@
                             <ToolTip Content="{x:Static lang:Resources.Ratings}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
-                </StackPanel>
+
+					<Button x:Name="AchievementsTabBtn" Style="{StaticResource TabButtonBorder}" Click="AchievementsTabBtn_Click" MouseEnter="AboutTabBtn_MouseEnter" MouseLeave="AboutTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="{x:Null}">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="&#xeb52;" FontSize="15" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center"/>
+							<TextBlock Text="{x:Static lang:Resources.Achievements}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+						</StackPanel>
+
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Achievements}" Background="#000014" Foreground="White"/>
+						</Button.ToolTip>
+					</Button>
+				</StackPanel>
 
                 <Grid x:Name="AboutPage" Grid.Row="1">
 
@@ -259,6 +270,17 @@
                         </Button>
                     </StackPanel>
                 </Grid>
+
+				<Grid x:Name="AchievementsPage" Grid.Row="1" Visibility="Collapsed">
+					<StackPanel>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="{x:Static lang:Resources.Achievements}" Foreground="White" FontWeight="Bold" FontSize="20"/>
+							<TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="White" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0"/>
+						</StackPanel>
+
+						<StackPanel x:Name="AchievementsDisplayer"/>
+					</StackPanel>
+				</Grid>
             </Grid>
         </Grid>
     </ScrollViewer>

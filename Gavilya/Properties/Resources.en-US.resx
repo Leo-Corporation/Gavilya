@@ -453,4 +453,10 @@
   <data name="EditGameDescription" xml:space="preserve">
     <value>Add/Edit description</value>
   </data>
+  <data name="Achievements" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="AchievementPlayerUnlocked" xml:space="preserve">
+    <value>of players have unlocked this achievement.</value>
+  </data>
 </root>

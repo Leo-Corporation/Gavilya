@@ -62,6 +62,7 @@ namespace Gavilya.UserControls
 
 			AchievementNameTxt.Text = achievement.name; // Set text
 			AchievementDescriptionTxt.Text = achievement.description; // Set text
+			AchievementPourcentTxt.Text = $"{achievement.percent}% {Properties.Resources.AchievementPlayerUnlocked}"; // Set text
 		}
 	}
 }

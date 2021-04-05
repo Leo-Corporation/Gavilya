@@ -149,6 +149,9 @@ namespace Gavilya.Pages
 
             // Ratings
             LoadRatings();
+
+            // Achievments
+            LoadAchievements();
         }
 
         bool gameStarted = false;
@@ -232,7 +235,7 @@ namespace Gavilya.Pages
         }
 
         internal void UpdateLastTimePlayed(int unixTime)
-		{
+        {
             DateTime LastTimePlayed = Global.UnixTimeToDateTime(unixTime); // Get the date time
             LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
         }
@@ -275,6 +278,11 @@ namespace Gavilya.Pages
                 button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
                 button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
             }
+            else if (button.Name == "AchievementsTabBtn" && tabCheckedID != 2)
+            {
+                button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+                button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+            }
         }
 
         
@@ -287,8 +295,12 @@ namespace Gavilya.Pages
             RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
             RatingsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
 
+            AchievementsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+            AchievementsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+
             AboutPage.Visibility = Visibility.Visible; // Change visibility
             RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
+            AchievementsPage.Visibility = Visibility.Collapsed; // Change visibility
         }
 
         private async void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
@@ -303,8 +315,12 @@ namespace Gavilya.Pages
                 AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
                 AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
 
+                AchievementsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+                AchievementsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+
                 AboutPage.Visibility = Visibility.Collapsed; // Change visibility
                 RatingsPage.Visibility = Visibility.Visible; // Change visibility 
+                AchievementsPage.Visibility = Visibility.Collapsed; // Change visibility
             }
             else
             {
@@ -346,6 +362,21 @@ namespace Gavilya.Pages
             }
         }
 
+        /// <summary>
+        /// Loads the achievements page.
+        /// </summary>
+        private async void LoadAchievements()
+		{
+            AchievementsDisplayer.Children.Clear(); // Clear
+
+            List<SDK.RAWG.Achievement> achievements = await Global.GetAchievementsAsync(GameInfo.RAWGID); // Get achievements
+
+            foreach (SDK.RAWG.Achievement achievement in achievements)
+			{
+                AchievementsDisplayer.Children.Add(new AchievementItem(achievement)); // Add new achievement
+			}
+		}
+
         private async void GoToRawg_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -356,6 +387,23 @@ namespace Gavilya.Pages
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void AchievementsTabBtn_Click(object sender, RoutedEventArgs e)
+        {
+            tabCheckedID = 2; // ID
+
+            AchievementsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+
+            RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+            RatingsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+
+            AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+            AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+
+            AboutPage.Visibility = Visibility.Collapsed; // Change visibility
+            RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
+            AchievementsPage.Visibility = Visibility.Visible; // Change visibility
         }
     }
 }

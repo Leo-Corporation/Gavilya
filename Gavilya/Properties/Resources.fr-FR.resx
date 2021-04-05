@@ -456,4 +456,10 @@
   <data name="EditGameDescription" xml:space="preserve">
     <value>Ajouter/Modifier la description</value>
   </data>
+  <data name="Achievements" xml:space="preserve">
+    <value>Succès</value>
+  </data>
+  <data name="AchievementPlayerUnlocked" xml:space="preserve">
+    <value>de joueurs ont déverrouillé ce succès.</value>
+  </data>
 </root>

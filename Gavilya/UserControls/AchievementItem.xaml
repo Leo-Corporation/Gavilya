@@ -5,19 +5,22 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gavilya.UserControls"
 			 FontFamily="../Fonts/#Montserrat"
-			 Foreground="White"
+			 Foreground="White" Background="#FF141428"
              mc:Ignorable="d" 
-             Height="75" d:DesignWidth="800" Margin="5" MaxWidth="800">
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="Auto"/>
-			<ColumnDefinition/>
-		</Grid.ColumnDefinitions>
+             Height="85" d:DesignWidth="800" Margin="5" MaxWidth="800">
+	<Border CornerRadius="5">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition/>
+			</Grid.ColumnDefinitions>
 
-		<Image x:Name="AchievementImg" Margin="10"/>
-		<StackPanel MaxWidth="800">
-			<TextBlock x:Name="AchievementNameTxt" d:Text="AchievementName" FontSize="18" FontWeight="Bold"/>
-			<TextBlock x:Name="AchievementDescriptionTxt" d:Text="AchievementDescription" FontSize="12" TextWrapping="Wrap"/>
-		</StackPanel>
-	</Grid>
+			<Image x:Name="AchievementImg" Grid.Column="0" Margin="10"/>
+			<StackPanel MaxWidth="800" Grid.Column="1">
+				<TextBlock x:Name="AchievementNameTxt" d:Text="AchievementName" FontSize="18" FontWeight="Bold" Margin="0,10,0,0"/>
+				<TextBlock x:Name="AchievementDescriptionTxt" d:Text="AchievementDescription" FontSize="12" TextWrapping="Wrap"/>
+				<TextBlock x:Name="AchievementPourcentTxt" d:Text="AchievementPourcent" FontSize="12" TextWrapping="Wrap" VerticalAlignment="Bottom" Margin="0,10,0,0"/>
+			</StackPanel>
+		</Grid>
+	</Border>
 </UserControl>
