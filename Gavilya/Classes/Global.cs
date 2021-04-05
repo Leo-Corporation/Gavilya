@@ -371,7 +371,7 @@ namespace Gavilya.Classes
                 var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
                 var achievementsResults = JsonSerializer.Deserialize<AchievementsResults>(response.Content); // Deserialize the content of the reponse
-                return = achievementsResults.results;
+                return achievementsResults.results;
             }
             catch (Exception ex)
 			{
