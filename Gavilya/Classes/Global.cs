@@ -365,9 +365,10 @@ namespace Gavilya.Classes
             try
 			{
                 var client = new RestClient(); // Create a REST Client
-                client.BaseUrl = new Uri("https://api.rawg.io/api/games/22509/achievements?"); // Configure the client
+                client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}/achievements?"); // Configure the client
                 var request = new RestRequest(RestSharp.Method.GET); // Create a request
                 request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+                request.AddQueryParameter("page_size", "20");
                 var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
                 var achievementsResults = JsonSerializer.Deserialize<AchievementsResults>(response.Content); // Deserialize the content of the reponse
