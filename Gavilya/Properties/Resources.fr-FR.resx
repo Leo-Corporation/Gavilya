@@ -460,6 +460,6 @@
     <value>Succès</value>
   </data>
   <data name="AchievementPlayerUnlocked" xml:space="preserve">
-    <value>de joueurs ont déverrouillé ce succès.</value>
+    <value>des joueurs ont déverrouillé ce succès.</value>
   </data>
 </root>
