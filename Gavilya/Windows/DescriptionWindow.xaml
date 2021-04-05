@@ -176,7 +176,7 @@
                 </Grid.RowDefinitions>
 
                 <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto">
-                    <TextBox Grid.Row="0" FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}"  BorderBrush="#1E1E32" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" Width="490"/>
+                    <TextBox d:Text="Content here" Grid.Row="0" FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource MultiLineTextBox}"  BorderBrush="#1E1E32" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="490" VerticalContentAlignment="Top"/>
                 </ScrollViewer>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10" HorizontalAlignment="Center">
