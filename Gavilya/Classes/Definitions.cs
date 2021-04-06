@@ -91,6 +91,12 @@ namespace Gavilya.Classes
         /// </summary>
         public static bool IsBeta => true;
 
+
+        /// <summary>
+        /// Gavilya profiles
+        /// </summary>
+        public static List<Profile> Profiles { get; set; }
+
         /// <summary>
         /// The Main <see cref="System.Windows.Window"/> of the App.
         /// </summary>
