@@ -459,4 +459,16 @@
   <data name="AchievementPlayerUnlocked" xml:space="preserve">
     <value>of players have unlocked this achievement.</value>
   </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="SwitchProfile" xml:space="preserve">
+    <value>Switch profile</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Edit profile</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
 </root>
