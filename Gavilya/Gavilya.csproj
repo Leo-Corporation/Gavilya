@@ -24,6 +24,7 @@
     <None Remove="Assets\addGamesWelcome.png" />
     <None Remove="Assets\check.png" />
     <None Remove="Assets\computer-rocket.png" />
+    <None Remove="Assets\DefaultPP.png" />
     <None Remove="Assets\importGames.png" />
     <None Remove="Assets\recentGames.png" />
     <None Remove="Assets\searchRAWG.png" />
@@ -58,6 +59,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\computer-rocket.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\DefaultPP.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\importGames.png">

@@ -28,6 +28,7 @@ using Gavilya.UserControls;
 using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -93,7 +94,32 @@ namespace Gavilya
             ForwardBtn.Foreground = ForwardBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
 
             UpdateSidebar(); // Update the sidebar
+            LoadProfilesUI(); // Load the profile picture
         }
+
+        private void LoadProfilesUI()
+		{
+            //TODO: Replace Definitions.Profiles[0] by the latest used profile.
+
+            if (Definitions.Profiles[0].PictureFilePath != "_default")
+			{
+                if (File.Exists(Definitions.Profiles[0].PictureFilePath))
+				{
+                    var bitmap = new BitmapImage();
+                    var stream = File.OpenRead(Definitions.Profiles[0].PictureFilePath);
+
+                    bitmap.BeginInit();
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.StreamSource = stream;
+                    bitmap.EndInit();
+                    stream.Close();
+                    stream.Dispose();
+                    bitmap.Freeze();
+
+                    ProfilePicture.ImageSource = bitmap; // Set image
+                }
+			}
+		}
 
         /// <summary>
         /// Updates the sidebar.
@@ -505,5 +531,10 @@ namespace Gavilya
         {
             RefreshNavigationsButton(); // Refresh the navigations button state
         }
-    }
+
+		private void ProfileBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+	}
 }

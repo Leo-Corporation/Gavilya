@@ -52,6 +52,18 @@ namespace Gavilya.Classes
 						SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav" 
 					});
 			}
+			else
+			{
+				Definitions.Profiles = new()
+				{
+					new Profile
+					{
+						Name = "",
+						PictureFilePath = "_default",
+						SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
+					}
+				};
+			}
 		}
 
 		/// <summary>
@@ -90,15 +102,7 @@ namespace Gavilya.Classes
 			}
 			else
 			{
-				Definitions.Profiles = new() 
-				{ 
-					new Profile 
-					{ 
-						Name = "",
-						PictureFilePath = "_default",
-						SaveFilePath = AppDataPath + @"\Gavilya\Profiles.gavprofiles"
-					} 
-				};
+				CreateDefaultProfile();
 				SaveProfiles();
 			}
 		}

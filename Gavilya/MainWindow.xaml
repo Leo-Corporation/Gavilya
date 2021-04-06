@@ -121,6 +121,7 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
                     <Rectangle Fill="#FF000014" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
@@ -160,18 +161,29 @@
 						</TextBlock.Style>
 					</TextBlock>
 
-                    <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+					<Button x:Name="ProfileBtn" Style="{StaticResource TitleBarButtonStyle}" Padding="5" Margin="5" Background="Transparent" Click="ProfileBtn_Click" Height="35" Width="35" Grid.Column="3">
+						<Rectangle RadiusX="15" RadiusY="15" Width="30" Height="30">
+							<Rectangle.Fill>
+								<ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png"/>
+							</Rectangle.Fill>
+						</Rectangle>
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Profiles}" Background="#000014" Foreground="White"/>
+						</Button.ToolTip>
+					</Button>
+
+                    <Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                         <Button.ToolTip>
                             <ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
-                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                    <Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="5" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                         <Button.ToolTip>
                             <ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
-                    <StackPanel Grid.Column="5" Orientation="Horizontal">
-                        <Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="5" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                    <StackPanel Grid.Column="6" Orientation="Horizontal">
+                        <Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="6" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.More}" Background="#000014" Foreground="White"/>
                             </Button.ToolTip>
@@ -179,7 +191,7 @@
                         <Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF28283C" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
                     </StackPanel>
                     <Button
-		Grid.Column="6"
+		Grid.Column="7"
 		Click="Button_Click"
 		RenderOptions.EdgeMode="Aliased"
 		Style="{StaticResource TitleBarButtonStyle}" Background="Transparent">
@@ -193,7 +205,7 @@
 					</Button>
 					<Button
 		Name="maximizeButton"
-		Grid.Column="7"
+		Grid.Column="8"
 		Click="maximizeButton_Click" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}">
 						<Path
@@ -206,7 +218,7 @@
 					</Button>
 					<Button
 		Name="restoreButton"
-		Grid.Column="7"
+		Grid.Column="8"
 		Click="restoreButton_Click"
 		Visibility="Collapsed" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}">
@@ -219,7 +231,7 @@
 			StrokeThickness="1" />
 					</Button>
 					<Button
-		Grid.Column="9"
+		Grid.Column="10"
 		Click="Button_Click_2"
 		Style="{StaticResource TitleBarCloseButtonStyle}">
 						<Path
