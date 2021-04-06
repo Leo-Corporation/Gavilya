@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gavilya.UserControls"
 			 FontFamily="../Fonts/#Montserrat"
-			 Foreground="White" Background="#FF141428"
+			 Foreground="White"
              mc:Ignorable="d" 
              Height="85" d:DesignWidth="800" Margin="5" MaxWidth="800">
-	<Border CornerRadius="5">
+	<Border CornerRadius="10" Background="#FF141428">
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
