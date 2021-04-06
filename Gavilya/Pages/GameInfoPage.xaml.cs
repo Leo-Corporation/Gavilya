@@ -405,5 +405,17 @@ namespace Gavilya.Pages
             RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
             AchievementsPage.Visibility = Visibility.Visible; // Change visibility
         }
-    }
+
+		private async void GoToRawgAchivements_Click(object sender, RoutedEventArgs e)
+		{
+            try
+            {
+                Process.Start("explorer.exe", await Global.GetRAWGUrl(GameInfo.RAWGID) + "/achievements"); // Open RAWG.io
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+	}
 }
