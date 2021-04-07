@@ -24,8 +24,8 @@
 			</Rectangle>
 			<TextBlock d:Text="ProfileName" Grid.Column="1" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontWeight="Normal" FontSize="14"/>
 
-			<Button Style="{StaticResource RegularButton}" Padding="10" Height="40" Width="40" Grid.Column="2" Content="&#xe9ef;" FontFamily="..\Fonts\#FluentlyIcons" Margin="5,0,0,0" Background="Transparent" Foreground="White" FontSize="15"/>
-			<Button Style="{StaticResource RegularButton}" Padding="10" Height="40" Width="40" Grid.Column="3" Content="&#xe9cf;" FontFamily="..\Fonts\#FluentlyIcons" Margin="5,0,5,0" Background="Transparent" Foreground="White" FontSize="15"/>
+			<Button x:Name="EditBtn" Click="EditBtn_Click" Style="{StaticResource RegularButton}" Padding="10" Height="40" Width="40" Grid.Column="2" Content="&#xe9ef;" FontFamily="..\Fonts\#FluentlyIcons" Margin="5,0,0,0" Background="Transparent" Foreground="White" FontSize="15"/>
+			<Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource RegularButton}" Padding="10" Height="40" Width="40" Grid.Column="3" Content="&#xe9cf;" FontFamily="..\Fonts\#FluentlyIcons" Margin="5,0,5,0" Background="Transparent" Foreground="White" FontSize="15"/>
 		</Grid>
 	</Button>
 </UserControl>

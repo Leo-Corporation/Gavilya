@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
@@ -93,6 +94,16 @@ namespace Gavilya.Windows
 				Hide(); // Close
 				Definitions.IsProfileMenuVisible = false; // Define
 			}
+		}
+
+		private void AddProfileBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddEditProfileWindow(EditMode.Add).Show(); // Add
+		}
+
+		private void EditProfileBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
 		}
 	}
 }

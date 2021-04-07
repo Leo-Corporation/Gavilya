@@ -474,4 +474,10 @@
   <data name="OtherProfiles" xml:space="preserve">
     <value>Other profiles</value>
   </data>
+  <data name="AddEditProfile" xml:space="preserve">
+    <value>Add/Edit profile</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>Avatar</value>
+  </data>
 </root>

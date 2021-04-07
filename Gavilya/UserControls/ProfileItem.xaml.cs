@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -81,6 +82,18 @@ namespace Gavilya.UserControls
 		private void ProfileItemBtn_Click(object sender, RoutedEventArgs e)
 		{
 			//TODO: Switch profile
+		}
+
+		private void EditBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddEditProfileWindow(Enums.EditMode.Edit, CurrentProfile).Show(); // Edit
+		}
+
+		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Definitions.Profiles.Remove(CurrentProfile); // Remove
+			ProfileManager.SaveProfiles(); // Save changes
+			//TODO
 		}
 	}
 }
