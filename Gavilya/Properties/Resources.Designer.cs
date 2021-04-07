@@ -765,6 +765,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other profiles.
+        /// </summary>
+        public static string OtherProfiles {
+            get {
+                return ResourceManager.GetString("OtherProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your Games;Recent Games;List view.
         /// </summary>
         public static string PagesNames {

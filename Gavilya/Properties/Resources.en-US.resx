@@ -471,4 +471,7 @@
   <data name="Profiles" xml:space="preserve">
     <value>Profiles</value>
   </data>
+  <data name="OtherProfiles" xml:space="preserve">
+    <value>Other profiles</value>
+  </data>
 </root>

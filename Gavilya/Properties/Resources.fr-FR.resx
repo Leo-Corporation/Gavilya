@@ -463,7 +463,7 @@
     <value>des joueurs ont déverrouillé ce succès.</value>
   </data>
   <data name="Profile" xml:space="preserve">
-    <value>Profile</value>
+    <value>Profil</value>
   </data>
   <data name="SwitchProfile" xml:space="preserve">
     <value>Changer de profile</value>
@@ -472,6 +472,9 @@
     <value>Modifier le profil</value>
   </data>
   <data name="Profiles" xml:space="preserve">
-    <value>Profiles</value>
+    <value>Profils</value>
+  </data>
+  <data name="OtherProfiles" xml:space="preserve">
+    <value>Autres profils</value>
   </data>
 </root>
