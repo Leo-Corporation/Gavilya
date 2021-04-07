@@ -47,7 +47,7 @@ namespace Gavilya.Classes
 				Definitions.Profiles.Add(
 					new Profile 
 					{ 
-						Name = "", 
+						Name = Global.UserName, 
 						PictureFilePath = "_default", 
 						SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav" 
 					});
@@ -58,7 +58,7 @@ namespace Gavilya.Classes
 				{
 					new Profile
 					{
-						Name = "",
+						Name = Global.UserName,
 						PictureFilePath = "_default",
 						SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
 					}

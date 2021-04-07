@@ -77,6 +77,11 @@ namespace Gavilya.Classes
         /// </summary>
         public static string Version => "1.4.0.2104-pre1";
 
+        /// <summary>
+        /// True if the menu is shown.
+        /// </summary>
+        public static bool IsProfileMenuVisible { get; set; }
+
         public static string BetaVersion 
         { 
             get 

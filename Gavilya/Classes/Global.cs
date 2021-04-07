@@ -521,5 +521,7 @@ namespace Gavilya.Classes
                 MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
             }
         }
+
+        public static string UserName => Environment.UserName;
     }
 }
