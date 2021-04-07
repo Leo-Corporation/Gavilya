@@ -93,7 +93,7 @@ namespace Gavilya.UserControls
 		{
 			Definitions.Profiles.Remove(CurrentProfile); // Remove
 			ProfileManager.SaveProfiles(); // Save changes
-			//TODO
+			Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh
 		}
 	}
 }

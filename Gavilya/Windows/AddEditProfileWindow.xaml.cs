@@ -90,16 +90,20 @@ namespace Gavilya.Windows
 			{
 				if (EditMode == EditMode.Edit) // If edit
 				{
+					EditProfile.Name = nameTxt.Text; // Set name
 					Definitions.Profiles[Definitions.Profiles.IndexOf(BaseProfile)] = EditProfile; // Edit profile
 				}
 				else
 				{
 					Random random = new();
 					CurrentProfile.Name = nameTxt.Text;
-					CurrentProfile.SaveFilePath = $@"{Env.AppDataPath}\Gavilya\Games-{CurrentProfile.Name}-{random.Next(0, 9999999)}";
+					CurrentProfile.SaveFilePath = $@"{Env.AppDataPath}\Gavilya\Games-{CurrentProfile.Name}-{random.Next(0, 9999999)}.gav";
 					Definitions.Profiles.Add(CurrentProfile); // Add profile
 				}
 				ProfileManager.SaveProfiles();
+
+				Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh
+				Definitions.MainWindow.LoadProfilesUI(); // Refresh
 				Close(); // Closes the window 
 			}
 		}

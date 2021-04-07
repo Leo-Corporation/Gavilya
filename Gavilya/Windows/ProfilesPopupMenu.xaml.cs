@@ -55,7 +55,7 @@ namespace Gavilya.Windows
 			InitUI(); // Load the UI
 		}
 
-		private void InitUI()
+		internal void InitUI()
 		{
 			ProfileDisplayer.Children.Clear(); // Clear all profile items
 
