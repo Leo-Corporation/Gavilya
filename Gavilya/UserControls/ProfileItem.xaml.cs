@@ -75,7 +75,7 @@ namespace Gavilya.UserControls
 				}
 			}
 
-			ProfileNameTxt.Text = CurrentProfile.Name; /// Show name
+			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
 		}
 
 		private void ProfileItemBtn_Click(object sender, RoutedEventArgs e)

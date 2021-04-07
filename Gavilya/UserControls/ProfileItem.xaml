@@ -7,9 +7,9 @@
 			 Foreground="White"
 			 FontFamily="../Fonts/#Montserrat"
              mc:Ignorable="d" 
-             Height="70" Width="400">
+             Height="50" Width="350">
 	<Button x:Name="ProfileItemBtn" Background="Transparent" Style="{StaticResource RegularButton}" Click="ProfileItemBtn_Click" HorizontalContentAlignment="Left">
-		<Grid Width="395">
+		<Grid Width="345">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="*"/>
@@ -17,12 +17,12 @@
 				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
 			
-			<Rectangle Grid.Column="0" RadiusX="30" RadiusY="30" Width="60" Height="60">
+			<Rectangle Grid.Column="0" RadiusX="20" RadiusY="20" Width="40" Height="40">
 				<Rectangle.Fill>
 					<ImageBrush x:Name="ProfilePicture" ImageSource="../Assets/DefaultPP.png"/>
 				</Rectangle.Fill>
 			</Rectangle>
-			<TextBlock d:Text="ProfileName" Grid.Column="1" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontWeight="Bold" FontSize="16"/>
+			<TextBlock d:Text="ProfileName" Grid.Column="1" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontWeight="Normal" FontSize="14"/>
 
 			<Button Style="{StaticResource RegularButton}" Padding="10" Height="40" Width="40" Grid.Column="2" Content="&#xe9ef;" FontFamily="..\Fonts\#FluentlyIcons" Margin="5,0,0,0" Background="Transparent" Foreground="White" FontSize="15"/>
 			<Button Style="{StaticResource RegularButton}" Padding="10" Height="40" Width="40" Grid.Column="3" Content="&#xe9cf;" FontFamily="..\Fonts\#FluentlyIcons" Margin="5,0,5,0" Background="Transparent" Foreground="White" FontSize="15"/>

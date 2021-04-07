@@ -532,9 +532,24 @@ namespace Gavilya
             RefreshNavigationsButton(); // Refresh the navigations button state
         }
 
+        ProfilesPopupMenu ProfilesPopupMenu = new();
 		private void ProfileBtn_Click(object sender, RoutedEventArgs e)
 		{
+            if (Definitions.IsProfileMenuVisible) // If the menu is visible
+            {
+                ProfilesPopupMenu.Hide(); // Close
+                Definitions.IsProfileMenuVisible = false; // Is not shown
+            }
+            else
+            {
+                double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
 
-		}
+                ProfilesPopupMenu.WindowStartupLocation = WindowStartupLocation.Manual; // Set the startup position to manual
+                ProfilesPopupMenu.Left = (PointToScreen(Mouse.GetPosition(this)).X - ProfilesPopupMenu.Width / 2) / factor; // Calculate the X position
+                ProfilesPopupMenu.Top = PointToScreen(Mouse.GetPosition(this)).Y / factor + 5; // Calculate the Y position
+                ProfilesPopupMenu.Show(); // Show
+                Definitions.IsProfileMenuVisible = true; // Is shown
+            }
+        }
 	}
 }
