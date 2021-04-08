@@ -91,9 +91,12 @@ namespace Gavilya.UserControls
 
 		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Definitions.Profiles.Remove(CurrentProfile); // Remove
-			ProfileManager.SaveProfiles(); // Save changes
-			Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh
+			if (MessageBox.Show(Properties.Resources.DeleteProfileMsg, Properties.Resources.Profiles, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+			{
+				Definitions.Profiles.Remove(CurrentProfile); // Remove
+				ProfileManager.SaveProfiles(); // Save changes
+				Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh 
+			}
 		}
 	}
 }

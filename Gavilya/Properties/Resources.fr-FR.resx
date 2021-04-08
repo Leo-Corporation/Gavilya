@@ -487,7 +487,7 @@
     <value>Supprimer le profil</value>
   </data>
   <data name="DeleteProfileMsg" xml:space="preserve">
-    <value>Êtes-vous sûr de vouloir supprimer ce profile ?</value>
+    <value>Êtes-vous sûr de vouloir supprimer ce profil ?</value>
   </data>
   <data name="AddProfile" xml:space="preserve">
     <value>Ajouter un nouveau profil</value>
