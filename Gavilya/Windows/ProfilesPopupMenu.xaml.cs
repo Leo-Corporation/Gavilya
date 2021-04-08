@@ -83,7 +83,10 @@ namespace Gavilya.Windows
 			// Load the profile displayer
 			for (int i = 0; i < Definitions.Profiles.Count; i++)
 			{
-				ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile
+				if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
+				{
+					ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
+				}
 			}
 		}
 

@@ -54,6 +54,11 @@ namespace Gavilya.Classes
         /// The page id to check on startup.
         /// </summary>
         public int PageId { get; set; }
+
+        /// <summary>
+        /// The current profile index in <see cref="Definitions.Profiles"/>.
+        /// </summary>
+        public int CurrentProfileIndex { get; set; }
     }
 
     public static class SettingsSaver
@@ -75,7 +80,7 @@ namespace Gavilya.Classes
             }
             else
             {
-                Definitions.Settings = new Settings { Language = "_default", IsFirstRun = true, IsMaximized = false, PageId = 0 };
+                Definitions.Settings = new Settings { Language = "_default", IsFirstRun = true, IsMaximized = false, PageId = 0, CurrentProfileIndex = 0 };
                 Save();
             }
         }
