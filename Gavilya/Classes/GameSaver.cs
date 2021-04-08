@@ -38,6 +38,8 @@ namespace Gavilya.Classes
         /// <param name="games">The games to save.</param>
         internal void Save(List<GameInfo> games)
         {
+            string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
+
             List<GameInfo> gameInfos = games;
             XmlSerializer xmlSerializer = new(gameInfos.GetType()); // XML Serializer
 
@@ -46,7 +48,7 @@ namespace Gavilya.Classes
                 Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
             }
 
-            StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Games.gav"); // The place where the file is gonna be writen
+            StreamWriter streamWriter = new(filePath); // The place where the file is gonna be writen
             xmlSerializer.Serialize(streamWriter, games); // Create the file
             streamWriter.Dispose();
         }
@@ -112,10 +114,11 @@ namespace Gavilya.Classes
         /// </summary>
         internal void Load()
         {
-            if (File.Exists(AppDataPath + @"\Gavilya\Games.gav")) // If there is a save file
+            string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
+            if (File.Exists(filePath)) // If there is a save file
             {
                 XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
-                StreamReader streamReader = new(AppDataPath + @"\Gavilya\Games.gav"); // The place where the file is gonna be read
+                StreamReader streamReader = new(filePath); // The place where the file is gonna be read
 
                 Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
                 streamReader.Dispose();

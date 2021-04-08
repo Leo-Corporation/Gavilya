@@ -50,7 +50,7 @@ namespace Gavilya.Windows
 		public ProfilesPopupMenu()
 		{
 			InitializeComponent();
-			CurrentProfile = Definitions.Profiles[0]; //TODO: Get latest used profile
+			CurrentProfile = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]; // Current profile
 
 			InitUI(); // Load the UI
 		}

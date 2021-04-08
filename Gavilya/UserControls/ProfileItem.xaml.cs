@@ -25,6 +25,7 @@ using Gavilya.Classes;
 using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -81,7 +82,11 @@ namespace Gavilya.UserControls
 
 		private void ProfileItemBtn_Click(object sender, RoutedEventArgs e)
 		{
-			//TODO: Switch profile
+			Definitions.Settings.CurrentProfileIndex = Definitions.Profiles.IndexOf(CurrentProfile); // Set the new profile
+			SettingsSaver.Save(); // Save
+
+			Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe"); // Start Gavilya
+			Environment.Exit(0); // Quit
 		}
 
 		private void EditBtn_Click(object sender, RoutedEventArgs e)

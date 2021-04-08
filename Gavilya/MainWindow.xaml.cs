@@ -80,6 +80,7 @@ namespace Gavilya
 			RefreshMaximizeRestoreButton(); // Refresh
 
 			RefreshNavigationsButton(); // Refresh the navigations button state
+			LoadProfilesUI(); // Load the profile picture
 		}
 
 		/// <summary>
@@ -94,19 +95,16 @@ namespace Gavilya
 			ForwardBtn.Foreground = ForwardBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
 
 			UpdateSidebar(); // Update the sidebar
-			LoadProfilesUI(); // Load the profile picture
 		}
 
 		internal void LoadProfilesUI()
 		{
-			//TODO: Replace Definitions.Profiles[0] by the latest used profile.
-
-			if (Definitions.Profiles[0].PictureFilePath != "_default")
+			if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].PictureFilePath != "_default")
 			{
-				if (File.Exists(Definitions.Profiles[0].PictureFilePath))
+				if (File.Exists(Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].PictureFilePath))
 				{
 					var bitmap = new BitmapImage();
-					var stream = File.OpenRead(Definitions.Profiles[0].PictureFilePath);
+					var stream = File.OpenRead(Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].PictureFilePath);
 
 					bitmap.BeginInit();
 					bitmap.CacheOption = BitmapCacheOption.OnLoad;
