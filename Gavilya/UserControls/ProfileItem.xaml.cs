@@ -80,15 +80,6 @@ namespace Gavilya.UserControls
 			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
 		}
 
-		private void ProfileItemBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Definitions.Settings.CurrentProfileIndex = Definitions.Profiles.IndexOf(CurrentProfile); // Set the new profile
-			SettingsSaver.Save(); // Save
-
-			Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe"); // Start Gavilya
-			Environment.Exit(0); // Quit
-		}
-
 		private void EditBtn_Click(object sender, RoutedEventArgs e)
 		{
 			new AddEditProfileWindow(Enums.EditMode.Edit, CurrentProfile).Show(); // Edit
@@ -102,6 +93,15 @@ namespace Gavilya.UserControls
 				ProfileManager.SaveProfiles(); // Save changes
 				Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh 
 			}
+		}
+
+		private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+		{
+			Definitions.Settings.CurrentProfileIndex = Definitions.Profiles.IndexOf(CurrentProfile); // Set the new profile
+			SettingsSaver.Save(); // Save
+
+			Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe"); // Start Gavilya
+			Environment.Exit(0); // Quit
 		}
 	}
 }

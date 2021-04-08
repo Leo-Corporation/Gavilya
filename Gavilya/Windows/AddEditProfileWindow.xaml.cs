@@ -52,18 +52,25 @@ namespace Gavilya.Windows
 		Profile BaseProfile { get; init; }
 		public AddEditProfileWindow(EditMode editMode, Profile profile = null)
 		{
-			InitializeComponent();
-			EditMode = editMode;
-			BaseProfile = profile;
-			EditProfile = profile;
+			try
+			{
+				InitializeComponent();
+				EditMode = editMode;
+				BaseProfile = profile;
+				EditProfile = profile;
 
-			if (EditMode == EditMode.Edit && profile is not null)
-			{
-				InitUIEdit(); // Launch the UI
+				if (EditMode == EditMode.Edit && profile is not null)
+				{
+					InitUIEdit(); // Launch the UI
+				}
+				else
+				{
+					CurrentProfile = new();
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				CurrentProfile = new();
+				MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Show error
 			}
 		}
 
@@ -95,6 +102,11 @@ namespace Gavilya.Windows
 				}
 				else
 				{
+					if (string.IsNullOrEmpty(CurrentProfile.PictureFilePath) || string.IsNullOrWhiteSpace(CurrentProfile.PictureFilePath))
+					{
+						CurrentProfile.PictureFilePath = "_default"; // Set default value
+					}
+
 					Random random = new();
 					CurrentProfile.Name = nameTxt.Text;
 					CurrentProfile.SaveFilePath = $@"{Env.AppDataPath}\Gavilya\Games-{CurrentProfile.Name}-{random.Next(0, 9999999)}.gav";
