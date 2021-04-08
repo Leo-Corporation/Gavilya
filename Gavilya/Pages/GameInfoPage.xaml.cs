@@ -371,9 +371,16 @@ namespace Gavilya.Pages
 
             List<SDK.RAWG.Achievement> achievements = await Global.GetAchievementsAsync(GameInfo.RAWGID); // Get achievements
 
-            foreach (SDK.RAWG.Achievement achievement in achievements)
+			if (achievements.Count > 0)
 			{
-                AchievementsDisplayer.Children.Add(new AchievementItem(achievement)); // Add new achievement
+				foreach (SDK.RAWG.Achievement achievement in achievements)
+				{
+					AchievementsDisplayer.Children.Add(new AchievementItem(achievement)); // Add new achievement
+				}
+			}
+			else
+			{
+                AchievementsDisplayer.Children.Add(new NoAchievementsItem()); // Add a message
 			}
 		}
 

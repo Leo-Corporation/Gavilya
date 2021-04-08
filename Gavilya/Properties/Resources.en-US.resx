@@ -495,4 +495,10 @@
   <data name="CreateAProfile" xml:space="preserve">
     <value>Create a profile and to get started.</value>
   </data>
+  <data name="GameNoAchievements" xml:space="preserve">
+    <value>This game has no achievements.</value>
+  </data>
+  <data name="NoAchivementsMsg" xml:space="preserve">
+    <value>Gavilya hasn't found any achievements in the RAWG.io database, or this game is not associated with RAWG.</value>
+  </data>
 </root>

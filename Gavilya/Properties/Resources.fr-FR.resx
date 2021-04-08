@@ -498,4 +498,10 @@
   <data name="CreateAProfile" xml:space="preserve">
     <value>Créez un profil pour commencer.</value>
   </data>
+  <data name="GameNoAchievements" xml:space="preserve">
+    <value>Ce jeu n'a pas de succès.</value>
+  </data>
+  <data name="NoAchivementsMsg" xml:space="preserve">
+    <value>Gavilya n'a trouvé aucun succès pour ce jeu dans la base de données RAWG.io, ou ce jeu n'est pas associé à RAWG.</value>
+  </data>
 </root>

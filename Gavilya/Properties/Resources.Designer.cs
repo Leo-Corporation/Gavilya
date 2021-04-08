@@ -475,6 +475,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This game has no achievements..
+        /// </summary>
+        public static string GameNoAchievements {
+            get {
+                return ResourceManager.GetString("GameNoAchievements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game Process.
         /// </summary>
         public static string GameProcess {
@@ -770,6 +779,15 @@ namespace Gavilya.Properties {
         public static string Never {
             get {
                 return ResourceManager.GetString("Never", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gavilya hasn&apos;t found any achievements in the RAWG.io database, or this game is not associated with RAWG..
+        /// </summary>
+        public static string NoAchivementsMsg {
+            get {
+                return ResourceManager.GetString("NoAchivementsMsg", resourceCulture);
             }
         }
         
