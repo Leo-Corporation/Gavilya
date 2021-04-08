@@ -124,6 +124,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a new profile.
+        /// </summary>
+        public static string AddProfile {
+            get {
+                return ResourceManager.GetString("AddProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {
@@ -264,6 +273,24 @@ namespace Gavilya.Properties {
         public static string DeleteConfirmMessage {
             get {
                 return ResourceManager.GetString("DeleteConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete profile.
+        /// </summary>
+        public static string DeleteProfile {
+            get {
+                return ResourceManager.GetString("DeleteProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this profile?.
+        /// </summary>
+        public static string DeleteProfileMsg {
+            get {
+                return ResourceManager.GetString("DeleteProfileMsg", resourceCulture);
             }
         }
         

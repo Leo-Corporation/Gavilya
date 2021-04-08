@@ -480,4 +480,13 @@
   <data name="Avatar" xml:space="preserve">
     <value>Avatar</value>
   </data>
+  <data name="DeleteProfile" xml:space="preserve">
+    <value>Delete profile</value>
+  </data>
+  <data name="DeleteProfileMsg" xml:space="preserve">
+    <value>Are you sure you want to delete this profile?</value>
+  </data>
+  <data name="AddProfile" xml:space="preserve">
+    <value>Add a new profile</value>
+  </data>
 </root>

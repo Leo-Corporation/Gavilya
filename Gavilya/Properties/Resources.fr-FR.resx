@@ -483,4 +483,13 @@
   <data name="Avatar" xml:space="preserve">
     <value>Avatar</value>
   </data>
+  <data name="DeleteProfile" xml:space="preserve">
+    <value>Supprimer le profil</value>
+  </data>
+  <data name="DeleteProfileMsg" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer ce profile ?</value>
+  </data>
+  <data name="AddProfile" xml:space="preserve">
+    <value>Ajouter un nouveau profil</value>
+  </data>
 </root>
