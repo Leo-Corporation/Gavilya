@@ -81,12 +81,19 @@ namespace Gavilya.Windows
 			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
 
 			// Load the profile displayer
-			for (int i = 0; i < Definitions.Profiles.Count; i++)
+			if (Definitions.Profiles.Count > 1) // If there is more than one profile
 			{
-				if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
+				for (int i = 0; i < Definitions.Profiles.Count; i++)
 				{
-					ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
+					if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
+					{
+						ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
+					}
 				}
+			}
+			else
+			{
+				ProfileDisplayer.Children.Add(new NoProfileItem()); // Add a message
 			}
 		}
 

@@ -250,6 +250,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a profile and to get started..
+        /// </summary>
+        public static string CreateAProfile {
+            get {
+                return ResourceManager.GetString("CreateAProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default.
         /// </summary>
         public static string Default {
@@ -761,6 +770,15 @@ namespace Gavilya.Properties {
         public static string Never {
             get {
                 return ResourceManager.GetString("Never", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No profiles have been found..
+        /// </summary>
+        public static string NoProfilesFound {
+            get {
+                return ResourceManager.GetString("NoProfilesFound", resourceCulture);
             }
         }
         

@@ -492,4 +492,10 @@
   <data name="AddProfile" xml:space="preserve">
     <value>Ajouter un nouveau profil</value>
   </data>
+  <data name="NoProfilesFound" xml:space="preserve">
+    <value>Aucun profil n'a été trouvé.</value>
+  </data>
+  <data name="CreateAProfile" xml:space="preserve">
+    <value>Créez un profil pour commencer.</value>
+  </data>
 </root>

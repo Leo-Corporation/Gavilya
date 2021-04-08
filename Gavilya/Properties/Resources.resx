@@ -499,4 +499,10 @@
   <data name="AddProfile" xml:space="preserve">
     <value>Add a new profile</value>
   </data>
+  <data name="NoProfilesFound" xml:space="preserve">
+    <value>No profiles have been found.</value>
+  </data>
+  <data name="CreateAProfile" xml:space="preserve">
+    <value>Create a profile and to get started.</value>
+  </data>
 </root>
