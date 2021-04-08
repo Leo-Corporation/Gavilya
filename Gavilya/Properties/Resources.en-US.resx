@@ -501,4 +501,7 @@
   <data name="NoAchivementsMsg" xml:space="preserve">
     <value>Gavilya hasn't found any achievements in the RAWG.io database, or this game is not associated with RAWG.</value>
   </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
 </root>

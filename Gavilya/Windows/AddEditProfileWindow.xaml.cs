@@ -152,5 +152,19 @@ namespace Gavilya.Windows
 				}
 			}
 		}
+
+		private void ResetProfilePictureBtn_Click(object sender, RoutedEventArgs e)
+		{
+			ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png"));
+
+			if (EditMode == EditMode.Add)
+			{
+				CurrentProfile.PictureFilePath = "_default"; // Set the path to the image 
+			}
+			else
+			{
+				EditProfile.PictureFilePath = "_default"; // Set the path to the image 
+			}
+		}
 	}
 }
