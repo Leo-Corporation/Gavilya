@@ -456,4 +456,55 @@
   <data name="EditGameDescription" xml:space="preserve">
     <value>Ajouter/Modifier la description</value>
   </data>
+  <data name="Achievements" xml:space="preserve">
+    <value>Succès</value>
+  </data>
+  <data name="AchievementPlayerUnlocked" xml:space="preserve">
+    <value>des joueurs ont déverrouillé ce succès.</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profil</value>
+  </data>
+  <data name="SwitchProfile" xml:space="preserve">
+    <value>Changer de profile</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Modifier le profil</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Profils</value>
+  </data>
+  <data name="OtherProfiles" xml:space="preserve">
+    <value>Autres profils</value>
+  </data>
+  <data name="AddEditProfile" xml:space="preserve">
+    <value>Ajouter/Modifier un profil</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>Avatar</value>
+  </data>
+  <data name="DeleteProfile" xml:space="preserve">
+    <value>Supprimer le profil</value>
+  </data>
+  <data name="DeleteProfileMsg" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer ce profil ?</value>
+  </data>
+  <data name="AddProfile" xml:space="preserve">
+    <value>Ajouter un nouveau profil</value>
+  </data>
+  <data name="NoProfilesFound" xml:space="preserve">
+    <value>Aucun profil n'a été trouvé.</value>
+  </data>
+  <data name="CreateAProfile" xml:space="preserve">
+    <value>Créez un profil pour commencer.</value>
+  </data>
+  <data name="GameNoAchievements" xml:space="preserve">
+    <value>Ce jeu n'a pas de succès.</value>
+  </data>
+  <data name="NoAchivementsMsg" xml:space="preserve">
+    <value>Gavilya n'a trouvé aucun succès pour ce jeu dans la base de données RAWG.io, ou ce jeu n'est pas associé à RAWG.</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Réinitialiser</value>
+  </data>
 </root>

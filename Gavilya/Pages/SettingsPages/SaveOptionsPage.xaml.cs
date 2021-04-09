@@ -38,43 +38,43 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Pages.SettingsPages
 {
-    /// <summary>
-    /// Logique d'interaction pour SaveOptionsPage.xaml
-    /// </summary>
-    public partial class SaveOptionsPage : Page
-    {
-        public SaveOptionsPage()
-        {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Logique d'interaction pour SaveOptionsPage.xaml
+	/// </summary>
+	public partial class SaveOptionsPage : Page
+	{
+		public SaveOptionsPage()
+		{
+			InitializeComponent();
+		}
 
-        private void ImportButton_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
-            openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-            openFileDialog.Title = Properties.Resources.ImportGames; // Title
+		private void ImportButton_Click(object sender, RoutedEventArgs e)
+		{
+			OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
+			openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
+			openFileDialog.Title = Properties.Resources.ImportGames; // Title
 
-            if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
-            {
-                if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
-                {
-                    new GameSaver().Import(openFileDialog.FileName); // Import
-                }
-            }
-        }
+			if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
+			{
+				if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
+				{
+					new GameSaver().Import(openFileDialog.FileName); // Import
+				}
+			}
+		}
 
-        private void ExportButton_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
-            saveFileDialog.FileName = "GavilyaGames.gav"; // File name
-            saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-            saveFileDialog.Title = Properties.Resources.ExportGames; // Title
+		private void ExportButton_Click(object sender, RoutedEventArgs e)
+		{
+			SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
+			saveFileDialog.FileName = "GavilyaGames.gav"; // File name
+			saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
+			saveFileDialog.Title = Properties.Resources.ExportGames; // Title
 
-            if (saveFileDialog.ShowDialog() ?? true)
-            {
-                string fileLocation = saveFileDialog.FileName; // Location of the file
-                new GameSaver().Export(Definitions.Games, fileLocation); // Export the games
-            }
-        }
-    }
+			if (saveFileDialog.ShowDialog() ?? true)
+			{
+				string fileLocation = saveFileDialog.FileName; // Location of the file
+				new GameSaver().Export(Definitions.Games, fileLocation); // Export the games
+			}
+		}
+	}
 }

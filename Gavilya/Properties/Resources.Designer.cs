@@ -70,11 +70,38 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to of players have unlocked this achievement..
+        /// </summary>
+        public static string AchievementPlayerUnlocked {
+            get {
+                return ResourceManager.GetString("AchievementPlayerUnlocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Achievements.
+        /// </summary>
+        public static string Achievements {
+            get {
+                return ResourceManager.GetString("Achievements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add.
         /// </summary>
         public static string Add {
             get {
                 return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add/Edit profile.
+        /// </summary>
+        public static string AddEditProfile {
+            get {
+                return ResourceManager.GetString("AddEditProfile", resourceCulture);
             }
         }
         
@@ -93,6 +120,15 @@ namespace Gavilya.Properties {
         public static string AddGameWelcome {
             get {
                 return ResourceManager.GetString("AddGameWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a new profile.
+        /// </summary>
+        public static string AddProfile {
+            get {
+                return ResourceManager.GetString("AddProfile", resourceCulture);
             }
         }
         
@@ -120,6 +156,15 @@ namespace Gavilya.Properties {
         public static string AssociateGame {
             get {
                 return ResourceManager.GetString("AssociateGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Avatar.
+        /// </summary>
+        public static string Avatar {
+            get {
+                return ResourceManager.GetString("Avatar", resourceCulture);
             }
         }
         
@@ -205,6 +250,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create a profile and to get started..
+        /// </summary>
+        public static string CreateAProfile {
+            get {
+                return ResourceManager.GetString("CreateAProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default.
         /// </summary>
         public static string Default {
@@ -228,6 +282,24 @@ namespace Gavilya.Properties {
         public static string DeleteConfirmMessage {
             get {
                 return ResourceManager.GetString("DeleteConfirmMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete profile.
+        /// </summary>
+        public static string DeleteProfile {
+            get {
+                return ResourceManager.GetString("DeleteProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this profile?.
+        /// </summary>
+        public static string DeleteProfileMsg {
+            get {
+                return ResourceManager.GetString("DeleteProfileMsg", resourceCulture);
             }
         }
         
@@ -273,6 +345,15 @@ namespace Gavilya.Properties {
         public static string EditGameDescription {
             get {
                 return ResourceManager.GetString("EditGameDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit profile.
+        /// </summary>
+        public static string EditProfile {
+            get {
+                return ResourceManager.GetString("EditProfile", resourceCulture);
             }
         }
         
@@ -390,6 +471,15 @@ namespace Gavilya.Properties {
         public static string GameList {
             get {
                 return ResourceManager.GetString("GameList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This game has no achievements..
+        /// </summary>
+        public static string GameNoAchievements {
+            get {
+                return ResourceManager.GetString("GameNoAchievements", resourceCulture);
             }
         }
         
@@ -693,6 +783,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gavilya hasn&apos;t found any achievements in the RAWG.io database, or this game is not associated with RAWG..
+        /// </summary>
+        public static string NoAchivementsMsg {
+            get {
+                return ResourceManager.GetString("NoAchivementsMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No profiles have been found..
+        /// </summary>
+        public static string NoProfilesFound {
+            get {
+                return ResourceManager.GetString("NoProfilesFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no ratings for this game because either it&apos;s not connected to RAWG.io, or because no one has rated the game..
         /// </summary>
         public static string NoRatingsAv {
@@ -734,6 +842,15 @@ namespace Gavilya.Properties {
         public static string Other {
             get {
                 return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other profiles.
+        /// </summary>
+        public static string OtherProfiles {
+            get {
+                return ResourceManager.GetString("OtherProfiles", resourceCulture);
             }
         }
         
@@ -788,6 +905,24 @@ namespace Gavilya.Properties {
         public static string ProcessNameHelp {
             get {
                 return ResourceManager.GetString("ProcessNameHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile.
+        /// </summary>
+        public static string Profile {
+            get {
+                return ResourceManager.GetString("Profile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profiles.
+        /// </summary>
+        public static string Profiles {
+            get {
+                return ResourceManager.GetString("Profiles", resourceCulture);
             }
         }
         
@@ -851,6 +986,15 @@ namespace Gavilya.Properties {
         public static string RecentGames {
             get {
                 return ResourceManager.GetString("RecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        public static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
             }
         }
         
@@ -995,6 +1139,15 @@ namespace Gavilya.Properties {
         public static string StartupPage {
             get {
                 return ResourceManager.GetString("StartupPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch profile.
+        /// </summary>
+        public static string SwitchProfile {
+            get {
+                return ResourceManager.GetString("SwitchProfile", resourceCulture);
             }
         }
         

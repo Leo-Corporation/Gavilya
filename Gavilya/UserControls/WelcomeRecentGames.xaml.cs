@@ -38,14 +38,14 @@ using System.Windows.Shapes;
 
 namespace Gavilya.UserControls
 {
-    /// <summary>
-    /// Logique d'interaction pour WelcomeRecentGames.xaml
-    /// </summary>
-    public partial class WelcomeRecentGames : UserControl
-    {
-        public WelcomeRecentGames()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Logique d'interaction pour WelcomeRecentGames.xaml
+	/// </summary>
+	public partial class WelcomeRecentGames : UserControl
+	{
+		public WelcomeRecentGames()
+		{
+			InitializeComponent();
+		}
+	}
 }

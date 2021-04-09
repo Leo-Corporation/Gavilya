@@ -28,65 +28,65 @@ using System.Windows.Controls;
 
 namespace Gavilya.Classes
 {
-    /// <summary>
-    /// Informations that a "Game" contains.
-    /// </summary>
-    public class GameInfo
-    {
-        /// <summary>
-        /// Description of the game.
-        /// </summary>
-        public string Description { get; set; }
+	/// <summary>
+	/// Informations that a "Game" contains.
+	/// </summary>
+	public class GameInfo
+	{
+		/// <summary>
+		/// Description of the game.
+		/// </summary>
+		public string Description { get; set; }
 
-        /// <summary>
-        /// Name of the game.
-        /// </summary>
-        public string Name { get; set; }
+		/// <summary>
+		/// Name of the game.
+		/// </summary>
+		public string Name { get; set; }
 
-        /// <summary>
-        /// The location of the game.
-        /// </summary>
-        public string FileLocation { get; set; }
+		/// <summary>
+		/// The location of the game.
+		/// </summary>
+		public string FileLocation { get; set; }
 
-        /// <summary>
-        /// The version of the game.
-        /// </summary>
-        public string Version { get; set; }
+		/// <summary>
+		/// The version of the game.
+		/// </summary>
+		public string Version { get; set; }
 
-        /// <summary>
-        /// The location of the Icon of the game.
-        /// </summary>
-        public string IconFileLocation { get; set; }
+		/// <summary>
+		/// The location of the Icon of the game.
+		/// </summary>
+		public string IconFileLocation { get; set; }
 
-        /// <summary>
-        /// The name of the process to look for when the game is started. Empty by default.
-        /// </summary>
-        public string ProcessName { get; set; }
+		/// <summary>
+		/// The name of the process to look for when the game is started. Empty by default.
+		/// </summary>
+		public string ProcessName { get; set; }
 
-        /// <summary>
-        /// <para>The RAWG id of the game.</para>
-        /// <para>If the Id is <c>-1</c>, then there is no RAWG id associated.</para>
-        /// </summary>
-        public int RAWGID { get; set; }
+		/// <summary>
+		/// <para>The RAWG id of the game.</para>
+		/// <para>If the Id is <c>-1</c>, then there is no RAWG id associated.</para>
+		/// </summary>
+		public int RAWGID { get; set; }
 
-        /// <summary>
-        /// The last time the game was launched.
-        /// </summary>
-        public int LastTimePlayed { get; set; }
+		/// <summary>
+		/// The last time the game was launched.
+		/// </summary>
+		public int LastTimePlayed { get; set; }
 
-        /// <summary>
-        /// The total time the game was played.
-        /// </summary>
-        public int TotalTimePlayed { get; set; }
+		/// <summary>
+		/// The total time the game was played.
+		/// </summary>
+		public int TotalTimePlayed { get; set; }
 
-        /// <summary>
-        /// <see cref="true"/> if the game is a favorite, <see cref="false"/> if not.
-        /// </summary>
-        public bool IsFavorite { get; set; }
+		/// <summary>
+		/// <see cref="true"/> if the game is a favorite, <see cref="false"/> if not.
+		/// </summary>
+		public bool IsFavorite { get; set; }
 
-        /// <summary>
-        /// The game available platforms.
-        /// </summary>
-        public List<SDK.RAWG.Platform> Platforms { get; set; }
-    }
+		/// <summary>
+		/// The game available platforms.
+		/// </summary>
+		public List<SDK.RAWG.Platform> Platforms { get; set; }
+	}
 }

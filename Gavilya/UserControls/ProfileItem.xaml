@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="Gavilya.UserControls.ProfileItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gavilya.UserControls"
+			 xmlns:lang="clr-namespace:Gavilya.Properties"
+			 Foreground="White"
+			 FontFamily="../Fonts/#Montserrat"
+             mc:Ignorable="d" 
+             Height="50" Width="350">
+	<Button x:Name="ProfileItemBtn" Background="Transparent" Style="{StaticResource RegularButton}" HorizontalContentAlignment="Left">
+		<Grid Width="345">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+			<Grid MouseDown="Grid_MouseDown">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+				
+				<Rectangle Grid.Column="0" RadiusX="20" RadiusY="20" Width="40" Height="40">
+					<Rectangle.Fill>
+						<ImageBrush x:Name="ProfilePicture" ImageSource="../Assets/DefaultPP.png"/>
+					</Rectangle.Fill>
+				</Rectangle>
+				<TextBlock d:Text="ProfileName" Grid.Column="1" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontWeight="Normal" FontSize="14"/>
+			</Grid>
+
+			<Button x:Name="EditBtn" Click="EditBtn_Click" Style="{StaticResource RegularButton}" Padding="10" Height="40" Width="40" Grid.Column="1" Content="&#xe9ef;" FontFamily="..\Fonts\#FluentlyIcons" Margin="5,0,0,0" Background="Transparent" Foreground="White" FontSize="15">
+				<Button.ToolTip>
+					<ToolTip Content="{x:Static lang:Resources.EditProfile}" Background="#000014" Foreground="White"/>
+				</Button.ToolTip>
+			</Button>
+			<Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource RegularButton}" Padding="10" Height="40" Width="40" Grid.Column="2" Content="&#xe9cf;" FontFamily="..\Fonts\#FluentlyIcons" Margin="5,0,5,0" Background="Transparent" Foreground="White" FontSize="15">
+				<Button.ToolTip>
+					<ToolTip Content="{x:Static lang:Resources.DeleteProfile}" Background="#000014" Foreground="White"/>
+				</Button.ToolTip>
+			</Button>
+		</Grid>
+	</Button>
+</UserControl>

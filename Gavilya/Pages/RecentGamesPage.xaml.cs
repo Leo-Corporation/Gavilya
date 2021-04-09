@@ -40,47 +40,47 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Pages
 {
-    /// <summary>
-    /// Logique d'interaction pour RecentGamesPage.xaml
-    /// </summary>
-    public partial class RecentGamesPage : Page
-    {
-        public RecentGamesPage()
-        {
-            InitializeComponent();
-            LoadGames();
-        }
+	/// <summary>
+	/// Logique d'interaction pour RecentGamesPage.xaml
+	/// </summary>
+	public partial class RecentGamesPage : Page
+	{
+		public RecentGamesPage()
+		{
+			InitializeComponent();
+			LoadGames();
+		}
 
-        public void LoadGames()
-        {
-            GamePresenter.Children.Clear(); // Clear the games
+		public void LoadGames()
+		{
+			GamePresenter.Children.Clear(); // Clear the games
 
-            if (Definitions.Games.Count > 0) // If there is games
-            {
-                GamePresenter.Visibility = Visibility.Visible; // Visible
-                WelcomeHost.Visibility = Visibility.Collapsed; // Hide
+			if (Definitions.Games.Count > 0) // If there is games
+			{
+				GamePresenter.Visibility = Visibility.Visible; // Visible
+				WelcomeHost.Visibility = Visibility.Collapsed; // Hide
 
-                Dictionary<GameInfo, int> keyValuePairs = new(); // Create a dictionnary
+				Dictionary<GameInfo, int> keyValuePairs = new(); // Create a dictionnary
 
-                foreach (GameInfo gameInfo in Definitions.Games) // For each games
-                {
-                    keyValuePairs.Add(gameInfo, gameInfo.LastTimePlayed); // Add the game and the last time played to the dictionnary
-                }
+				foreach (GameInfo gameInfo in Definitions.Games) // For each games
+				{
+					keyValuePairs.Add(gameInfo, gameInfo.LastTimePlayed); // Add the game and the last time played to the dictionnary
+				}
 
-                var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
+				var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
 
-                foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
-                {
-                    GamePresenter.Children.Add(new GameCard(pair1.Key, GavilyaPages.Recent, true)); // Add the game
-                }
-            }
-            else
-            {
-                GamePresenter.Visibility = Visibility.Collapsed; // Hide
-                WelcomeHost.Visibility = Visibility.Visible; // Visible
+				foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
+				{
+					GamePresenter.Children.Add(new GameCard(pair1.Key, GavilyaPages.Recent, true)); // Add the game
+				}
+			}
+			else
+			{
+				GamePresenter.Visibility = Visibility.Collapsed; // Hide
+				WelcomeHost.Visibility = Visibility.Visible; // Visible
 
-                WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
-            }
-        }
-    }
+				WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
+			}
+		}
+	}
 }

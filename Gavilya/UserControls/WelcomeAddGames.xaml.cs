@@ -39,19 +39,19 @@ using System.Windows.Shapes;
 
 namespace Gavilya.UserControls
 {
-    /// <summary>
-    /// Logique d'interaction pour WelcomeAddGames.xaml
-    /// </summary>
-    public partial class WelcomeAddGames : UserControl
-    {
-        public WelcomeAddGames()
-        {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Logique d'interaction pour WelcomeAddGames.xaml
+	/// </summary>
+	public partial class WelcomeAddGames : UserControl
+	{
+		public WelcomeAddGames()
+		{
+			InitializeComponent();
+		}
 
-        private void AddGameBtn_Click(object sender, RoutedEventArgs e)
-        {
-            new AddGame().Show();
-        }
-    }
+		private void AddGameBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddGame().Show();
+		}
+	}
 }

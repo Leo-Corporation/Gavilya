@@ -38,30 +38,30 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Pages
 {
-    /// <summary>
-    /// Logique d'interaction pour GamesListPage.xaml
-    /// </summary>
-    public partial class GamesListPage : Page
-    {
-        public GamesListPage()
-        {
-            InitializeComponent();
-            GamePage.Navigate(new SelectGame());
-            LoadGames(); // Load the games
-        }
+	/// <summary>
+	/// Logique d'interaction pour GamesListPage.xaml
+	/// </summary>
+	public partial class GamesListPage : Page
+	{
+		public GamesListPage()
+		{
+			InitializeComponent();
+			GamePage.Navigate(new SelectGame());
+			LoadGames(); // Load the games
+		}
 
-        /// <summary>
-        /// Loads the games.
-        /// </summary>
-        public void LoadGames()
-        {
-            GameList.Children.Clear();
-            foreach (GameInfo gameInfo in Definitions.Games) // For each game
-            {
-                GameList.Children.Add(new GameItem(gameInfo)); // Add a game
-            }
+		/// <summary>
+		/// Loads the games.
+		/// </summary>
+		public void LoadGames()
+		{
+			GameList.Children.Clear();
+			foreach (GameInfo gameInfo in Definitions.Games) // For each game
+			{
+				GameList.Children.Add(new GameItem(gameInfo)); // Add a game
+			}
 
-            GamePage.Navigate(new SelectGame()); // Default message
-        }
-    }
+			GamePage.Navigate(new SelectGame()); // Default message
+		}
+	}
 }

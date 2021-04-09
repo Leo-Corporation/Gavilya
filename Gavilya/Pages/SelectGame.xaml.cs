@@ -36,14 +36,14 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Pages
 {
-    /// <summary>
-    /// Logique d'interaction pour SelectGame.xaml
-    /// </summary>
-    public partial class SelectGame : Page
-    {
-        public SelectGame()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Logique d'interaction pour SelectGame.xaml
+	/// </summary>
+	public partial class SelectGame : Page
+	{
+		public SelectGame()
+		{
+			InitializeComponent();
+		}
+	}
 }

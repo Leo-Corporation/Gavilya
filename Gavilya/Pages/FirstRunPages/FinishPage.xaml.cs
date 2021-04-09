@@ -40,29 +40,29 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Pages.FirstRunPages
 {
-    /// <summary>
-    /// Logique d'interaction pour FinishPage.xaml
-    /// </summary>
-    public partial class FinishPage : Page
-    {
-        FirstRun FirstRun;
-        public FinishPage(FirstRun firstRun)
-        {
-            InitializeComponent();
-            FirstRun = firstRun; // Define
-        }
+	/// <summary>
+	/// Logique d'interaction pour FinishPage.xaml
+	/// </summary>
+	public partial class FinishPage : Page
+	{
+		FirstRun FirstRun;
+		public FinishPage(FirstRun firstRun)
+		{
+			InitializeComponent();
+			FirstRun = firstRun; // Define
+		}
 
-        private void NextPage()
-        {
-            new MainWindow().Show(); // Show the main window
-            FirstRun.Close(); // Close the window
-            Definitions.Settings.IsFirstRun = false; // Set the FirstRun Settings to false
-            SettingsSaver.Save();
-        }
+		private void NextPage()
+		{
+			new MainWindow().Show(); // Show the main window
+			FirstRun.Close(); // Close the window
+			Definitions.Settings.IsFirstRun = false; // Set the FirstRun Settings to false
+			SettingsSaver.Save();
+		}
 
-        private void NextBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NextPage(); // Change page
-        }
-    }
+		private void NextBtn_Click(object sender, RoutedEventArgs e)
+		{
+			NextPage(); // Change page
+		}
+	}
 }

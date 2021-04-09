@@ -39,36 +39,36 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Pages.SettingsPages
 {
-    /// <summary>
-    /// Logique d'interaction pour StartupPage.xaml
-    /// </summary>
-    public partial class StartupPage : Page
-    {
-        public StartupPage()
-        {
-            InitializeComponent();
-            InitComboBox();
-        }
+	/// <summary>
+	/// Logique d'interaction pour StartupPage.xaml
+	/// </summary>
+	public partial class StartupPage : Page
+	{
+		public StartupPage()
+		{
+			InitializeComponent();
+			InitComboBox();
+		}
 
-        /// <summary>
-        /// Add items to the combobox.
-        /// </summary>
-        private void InitComboBox()
-        {
-            string[] pagesNames = Properties.Resources.PagesNames.Split(new string[] { ";" }, StringSplitOptions.None); // Get pages names
+		/// <summary>
+		/// Add items to the combobox.
+		/// </summary>
+		private void InitComboBox()
+		{
+			string[] pagesNames = Properties.Resources.PagesNames.Split(new string[] { ";" }, StringSplitOptions.None); // Get pages names
 
-            for (int i = 0; i < pagesNames.Length; i++) // For each item
-            {
-                PagesComboBox.Items.Add(pagesNames[i]); // Add items
-            }
+			for (int i = 0; i < pagesNames.Length; i++) // For each item
+			{
+				PagesComboBox.Items.Add(pagesNames[i]); // Add items
+			}
 
-            PagesComboBox.SelectedIndex = Definitions.Settings.PageId; // Set the default page
-        }
+			PagesComboBox.SelectedIndex = Definitions.Settings.PageId; // Set the default page
+		}
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            Definitions.Settings.PageId = PagesComboBox.SelectedIndex; // Update settings
-            SettingsSaver.Save(); // Save settings
-        }
-    }
+		private void SaveButton_Click(object sender, RoutedEventArgs e)
+		{
+			Definitions.Settings.PageId = PagesComboBox.SelectedIndex; // Update settings
+			SettingsSaver.Save(); // Save settings
+		}
+	}
 }

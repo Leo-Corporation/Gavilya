@@ -39,26 +39,26 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Pages.FirstRunPages
 {
-    /// <summary>
-    /// Logique d'interaction pour AddGamesPage.xaml
-    /// </summary>
-    public partial class AddGamesPage : Page
-    {
-        FirstRun FirstRun;
-        public AddGamesPage(FirstRun firstRun)
-        {
-            InitializeComponent();
-            FirstRun = firstRun; // Define
-        }
+	/// <summary>
+	/// Logique d'interaction pour AddGamesPage.xaml
+	/// </summary>
+	public partial class AddGamesPage : Page
+	{
+		FirstRun FirstRun;
+		public AddGamesPage(FirstRun firstRun)
+		{
+			InitializeComponent();
+			FirstRun = firstRun; // Define
+		}
 
-        private void NextPage()
-        {
-            FirstRun.ChangePage(Enums.FirstRunPages.SearchRawgGames); // Change page
-        }
+		private void NextPage()
+		{
+			FirstRun.ChangePage(Enums.FirstRunPages.SearchRawgGames); // Change page
+		}
 
-        private void NextBtn_Click(object sender, RoutedEventArgs e)
-        {
-            NextPage(); // Change page
-        }
-    }
+		private void NextBtn_Click(object sender, RoutedEventArgs e)
+		{
+			NextPage(); // Change page
+		}
+	}
 }

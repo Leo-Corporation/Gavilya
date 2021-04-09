@@ -40,71 +40,71 @@ using System.Windows.Threading;
 
 namespace Gavilya.UserControls
 {
-    /// <summary>
-    /// Logique d'interaction pour GameItem.xaml
-    /// </summary>
-    public partial class GameItem : UserControl
-    {
-        public GameInfo GameInfo { get; set; }
-        public DispatcherTimer Timer { get; set; }
-        public GameItem(GameInfo gameInfo)
-        {
-            InitializeComponent();
-            GameInfo = gameInfo;
-            LoadInformations(); // Load the game's info
+	/// <summary>
+	/// Logique d'interaction pour GameItem.xaml
+	/// </summary>
+	public partial class GameItem : UserControl
+	{
+		public GameInfo GameInfo { get; set; }
+		public DispatcherTimer Timer { get; set; }
+		public GameItem(GameInfo gameInfo)
+		{
+			InitializeComponent();
+			GameInfo = gameInfo;
+			LoadInformations(); // Load the game's info
 
-            Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
-            Timer.Tick += Timer_Tick; // Add the event
-        }
+			Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
+			Timer.Tick += Timer_Tick; // Add the event
+		}
 
-        bool gameStarted = false;
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            string processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+		bool gameStarted = false;
+		private void Timer_Tick(object sender, EventArgs e)
+		{
+			string processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
 
-            Definitions.GameInfoPage.DisplayTotalTimePlayed((Definitions.GameInfoPage.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage.GameInfo.TotalTimePlayed); // Refresh
-            Definitions.GameInfoPage2.DisplayTotalTimePlayed((Definitions.GameInfoPage2.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage2.GameInfo.TotalTimePlayed); // Refresh
+			Definitions.GameInfoPage.DisplayTotalTimePlayed((Definitions.GameInfoPage.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage.GameInfo.TotalTimePlayed); // Refresh
+			Definitions.GameInfoPage2.DisplayTotalTimePlayed((Definitions.GameInfoPage2.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage2.GameInfo.TotalTimePlayed); // Refresh
 
-            if (Global.IsProcessRunning(processName)) // If the game is running
-            {
-                gameStarted = true; // The game has started
-                GameInfo.TotalTimePlayed += 1; // Increment the time played
-            }
-            else
-            {
-                if (gameStarted) // If the game has been started
-                {
-                    new GameSaver().Save(Definitions.Games); // Save
-                    Timer.Stop();
-                }
-            }
-        }
+			if (Global.IsProcessRunning(processName)) // If the game is running
+			{
+				gameStarted = true; // The game has started
+				GameInfo.TotalTimePlayed += 1; // Increment the time played
+			}
+			else
+			{
+				if (gameStarted) // If the game has been started
+				{
+					new GameSaver().Save(Definitions.Games); // Save
+					Timer.Stop();
+				}
+			}
+		}
 
-        private void LoadInformations()
-        {
-            GameName.Text = GameInfo.Name; // Set the name
-            GameNameToolTip.Content = GameInfo.Name;
-        }
+		private void LoadInformations()
+		{
+			GameName.Text = GameInfo.Name; // Set the name
+			GameNameToolTip.Content = GameInfo.Name;
+		}
 
-        private void GameBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Definitions.GameInfoPage2.InitializeUI(GameInfo, this);
-            Definitions.GamesListPage.GamePage.Navigate(Definitions.GameInfoPage2);
-            CheckedChanged();
-        }
+		private void GameBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Definitions.GameInfoPage2.InitializeUI(GameInfo, this);
+			Definitions.GamesListPage.GamePage.Navigate(Definitions.GameInfoPage2);
+			CheckedChanged();
+		}
 
-        private void CheckedChanged()
-        {
-            foreach (UIElement uIElement in Definitions.GamesListPage.GameList.Children) // For each UIElement in the list
-            {
-                if (uIElement is GameItem) // If the UIElement is a GameItem
-                {
-                    GameItem gameItem = (GameItem)uIElement; // Create a GameItem
-                    gameItem.GameBtn.Background = Definitions.TransparentColor; // Change the background color
-                }
-            }
-            
-            GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change the background color
-        }
-    }
+		private void CheckedChanged()
+		{
+			foreach (UIElement uIElement in Definitions.GamesListPage.GameList.Children) // For each UIElement in the list
+			{
+				if (uIElement is GameItem) // If the UIElement is a GameItem
+				{
+					GameItem gameItem = (GameItem)uIElement; // Create a GameItem
+					gameItem.GameBtn.Background = Definitions.TransparentColor; // Change the background color
+				}
+			}
+
+			GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change the background color
+		}
+	}
 }

@@ -463,4 +463,55 @@
   <data name="EditGameDescription" xml:space="preserve">
     <value>Add/Edit description</value>
   </data>
+  <data name="Achievements" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="AchievementPlayerUnlocked" xml:space="preserve">
+    <value>of players have unlocked this achievement.</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="SwitchProfile" xml:space="preserve">
+    <value>Switch profile</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Edit profile</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Profiles</value>
+  </data>
+  <data name="OtherProfiles" xml:space="preserve">
+    <value>Other profiles</value>
+  </data>
+  <data name="AddEditProfile" xml:space="preserve">
+    <value>Add/Edit profile</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>Avatar</value>
+  </data>
+  <data name="DeleteProfile" xml:space="preserve">
+    <value>Delete profile</value>
+  </data>
+  <data name="DeleteProfileMsg" xml:space="preserve">
+    <value>Are you sure you want to delete this profile?</value>
+  </data>
+  <data name="AddProfile" xml:space="preserve">
+    <value>Add a new profile</value>
+  </data>
+  <data name="NoProfilesFound" xml:space="preserve">
+    <value>No profiles have been found.</value>
+  </data>
+  <data name="CreateAProfile" xml:space="preserve">
+    <value>Create a profile and to get started.</value>
+  </data>
+  <data name="GameNoAchievements" xml:space="preserve">
+    <value>This game has no achievements.</value>
+  </data>
+  <data name="NoAchivementsMsg" xml:space="preserve">
+    <value>Gavilya hasn't found any achievements in the RAWG.io database, or this game is not associated with RAWG.</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
 </root>
