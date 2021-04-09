@@ -77,6 +77,10 @@ namespace Gavilya.Windows
 					ProfilePicture.ImageSource = bitmap; // Set image
 				}
 			}
+			else
+			{
+				ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png")); // Set image
+			}
 
 			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
 

@@ -80,7 +80,7 @@ namespace Gavilya.Windows
 			nameTxt.Text = EditProfile.Name; // Set text
 
 			if (EditProfile.PictureFilePath != "_default")
-{
+			{
 				BitmapImage image = new(new Uri(EditProfile.PictureFilePath)); // Create the image
 				ProfilePicture.ImageSource = image; // Set the GameImg's source to the image
 			}

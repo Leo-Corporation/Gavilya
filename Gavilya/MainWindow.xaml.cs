@@ -117,6 +117,10 @@ namespace Gavilya
 					ProfilePicture.ImageSource = bitmap; // Set image
 				}
 			}
+			else
+			{
+				ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png")); // Set image
+			}
 		}
 
 		/// <summary>
