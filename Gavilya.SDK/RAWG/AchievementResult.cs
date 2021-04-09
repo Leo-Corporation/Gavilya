@@ -29,22 +29,22 @@ namespace Gavilya.SDK.RAWG
 {
 	public class AchievementsResults
 	{
-        public int count { get; set; }
-        public string next { get; set; }
-        public string previous { get; set; }
-        public List<Achievement> results { get; set; }
+		public int count { get; set; }
+		public string next { get; set; }
+		public string previous { get; set; }
+		public List<Achievement> results { get; set; }
 	}
 
-    public partial class Achievement
-    {
-        public int id { get; set; }
+	public partial class Achievement
+	{
+		public int id { get; set; }
 
-        public string name { get; set; }
+		public string name { get; set; }
 
-        public string description { get; set; }
+		public string description { get; set; }
 
-        public string image { get; set; }
+		public string image { get; set; }
 
-        public string percent { get; set; }
-    }
+		public string percent { get; set; }
+	}
 }

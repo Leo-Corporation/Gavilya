@@ -34,37 +34,37 @@ using System.Windows;
 
 namespace Gavilya
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
-    {
-        protected override void OnStartup(StartupEventArgs e)
-        {
-            SettingsSaver.Load(); // Load the settings
-            Global.ChangeLanguage(); // Change the language
+	/// <summary>
+	/// Interaction logic for App.xaml
+	/// </summary>
+	public partial class App : Application
+	{
+		protected override void OnStartup(StartupEventArgs e)
+		{
+			SettingsSaver.Load(); // Load the settings
+			Global.ChangeLanguage(); // Change the language
 
-            Definitions.GameInfoPage = new(); // Create the page
-            Definitions.GameInfoPage2 = new(); // Create the page
+			Definitions.GameInfoPage = new(); // Create the page
+			Definitions.GameInfoPage2 = new(); // Create the page
 
-            RecentGamesPage recentGamesPage = new(); // RecentGamesPage
-            Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
-            Definitions.RecentGamesPage.LoadGames(); // Load the games
+			RecentGamesPage recentGamesPage = new(); // RecentGamesPage
+			Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
+			Definitions.RecentGamesPage.LoadGames(); // Load the games
 
-            GamesListPage gamesListPage = new(); // GamesListPage
-            Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
-            Definitions.GamesListPage.LoadGames(); // Load the games
+			GamesListPage gamesListPage = new(); // GamesListPage
+			Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
+			Definitions.GamesListPage.LoadGames(); // Load the games
 
-            ProfileManager.LoadProfiles(); // Load profiles
+			ProfileManager.LoadProfiles(); // Load profiles
 
-            if (Definitions.Settings.IsFirstRun) // If it is the app first run
-            {
-                new FirstRun().Show(); // Show the first run experience
-            }
-            else
-            {
-                new MainWindow().Show(); // Show the regular main window
-            }
-        }
-    }
+			if (Definitions.Settings.IsFirstRun) // If it is the app first run
+			{
+				new FirstRun().Show(); // Show the first run experience
+			}
+			else
+			{
+				new MainWindow().Show(); // Show the regular main window
+			}
+		}
+	}
 }

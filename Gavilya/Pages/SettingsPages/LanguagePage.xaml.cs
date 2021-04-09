@@ -37,47 +37,47 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Pages.SettingsPages
 {
-    /// <summary>
-    /// Logique d'interaction pour LanguagePage.xaml
-    /// </summary>
-    public partial class LanguagePage : Page
-    {
-        public LanguagePage()
-        {
-            InitializeComponent();
-            Initialize(); // Load the UI
-        }
+	/// <summary>
+	/// Logique d'interaction pour LanguagePage.xaml
+	/// </summary>
+	public partial class LanguagePage : Page
+	{
+		public LanguagePage()
+		{
+			InitializeComponent();
+			Initialize(); // Load the UI
+		}
 
-        private void Initialize()
-        {
-            Languages.Items.Add(Properties.Resources.Default); // Add the default item
+		private void Initialize()
+		{
+			Languages.Items.Add(Properties.Resources.Default); // Add the default item
 
-            for (int i = 0; i < Definitions.Languages.Count; i++) // For each item
-            {
-                Languages.Items.Add(Definitions.Languages[i]); // Add an item
-            }
+			for (int i = 0; i < Definitions.Languages.Count; i++) // For each item
+			{
+				Languages.Items.Add(Definitions.Languages[i]); // Add an item
+			}
 
-            if (Definitions.Settings.Language != "_default") // If the language is not default
-            {
-                Languages.SelectedIndex = Definitions.LanguagesCodes.IndexOf(Definitions.Settings.Language) + 1; // Set the selected index
-            }
-            else
-            {
-                Languages.SelectedIndex = 0; // Set the selected index
-            }
-        }
+			if (Definitions.Settings.Language != "_default") // If the language is not default
+			{
+				Languages.SelectedIndex = Definitions.LanguagesCodes.IndexOf(Definitions.Settings.Language) + 1; // Set the selected index
+			}
+			else
+			{
+				Languages.SelectedIndex = 0; // Set the selected index
+			}
+		}
 
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            if ((string)Languages.SelectedItem != Properties.Resources.Default) // If the language is not default
-            {
-                Definitions.Settings.Language = Definitions.LanguagesCodes[Definitions.Languages.IndexOf((string)Languages.SelectedItem)];
-            }
-            else
-            {
-               Definitions.Settings.Language = "_default"; // Set the language to default
-            }
-            SettingsSaver.Save();
-        }
-    }
+		private void SaveButton_Click(object sender, RoutedEventArgs e)
+		{
+			if ((string)Languages.SelectedItem != Properties.Resources.Default) // If the language is not default
+			{
+				Definitions.Settings.Language = Definitions.LanguagesCodes[Definitions.Languages.IndexOf((string)Languages.SelectedItem)];
+			}
+			else
+			{
+				Definitions.Settings.Language = "_default"; // Set the language to default
+			}
+			SettingsSaver.Save();
+		}
+	}
 }

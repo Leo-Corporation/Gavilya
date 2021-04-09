@@ -30,78 +30,78 @@ using System.Xml.Serialization;
 
 namespace Gavilya.Classes
 {
-    /// <summary>
-    /// Settings of Gavilya
-    /// </summary>
-    public class Settings
-    {
-        /// <summary>
-        /// The language of Gavilya.
-        /// </summary>
-        public string Language { get; set; }
+	/// <summary>
+	/// Settings of Gavilya
+	/// </summary>
+	public class Settings
+	{
+		/// <summary>
+		/// The language of Gavilya.
+		/// </summary>
+		public string Language { get; set; }
 
-        /// <summary>
-        /// Indicates if it is the first run of Gavilya.
-        /// </summary>
-        public bool IsFirstRun { get; set; }
+		/// <summary>
+		/// Indicates if it is the first run of Gavilya.
+		/// </summary>
+		public bool IsFirstRun { get; set; }
 
-        /// <summary>
-        /// Indicates if the <see cref="MainWindow"/> is maximized or not.
-        /// </summary>
-        public bool IsMaximized { get; set; }
+		/// <summary>
+		/// Indicates if the <see cref="MainWindow"/> is maximized or not.
+		/// </summary>
+		public bool IsMaximized { get; set; }
 
-        /// <summary>
-        /// The page id to check on startup.
-        /// </summary>
-        public int PageId { get; set; }
+		/// <summary>
+		/// The page id to check on startup.
+		/// </summary>
+		public int PageId { get; set; }
 
-        /// <summary>
-        /// The current profile index in <see cref="Definitions.Profiles"/>.
-        /// </summary>
-        public int CurrentProfileIndex { get; set; }
-    }
+		/// <summary>
+		/// The current profile index in <see cref="Definitions.Profiles"/>.
+		/// </summary>
+		public int CurrentProfileIndex { get; set; }
+	}
 
-    public static class SettingsSaver
-    {
-        /// <summary>
-        /// Loads the settings into <see cref="Definitions.Settings"/>.
-        /// </summary>
-        public static void Load()
-        {
-            string AppDataPath = Env.GetAppDataPath(); // Get %APPDATA% folder
-            if (File.Exists(AppDataPath + @"\Gavilya\Settings.gavsettings"))
-            {
-                XmlSerializer xmlSerializer = new(typeof(Settings)); // XML Serializer
-                StreamReader streamReader = new(AppDataPath + @"\Gavilya\Settings.gavsettings"); // Where the file is going to be read
+	public static class SettingsSaver
+	{
+		/// <summary>
+		/// Loads the settings into <see cref="Definitions.Settings"/>.
+		/// </summary>
+		public static void Load()
+		{
+			string AppDataPath = Env.GetAppDataPath(); // Get %APPDATA% folder
+			if (File.Exists(AppDataPath + @"\Gavilya\Settings.gavsettings"))
+			{
+				XmlSerializer xmlSerializer = new(typeof(Settings)); // XML Serializer
+				StreamReader streamReader = new(AppDataPath + @"\Gavilya\Settings.gavsettings"); // Where the file is going to be read
 
-                Definitions.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
+				Definitions.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
 
-                streamReader.Dispose();
-            }
-            else
-            {
-                Definitions.Settings = new Settings { Language = "_default", IsFirstRun = true, IsMaximized = false, PageId = 0, CurrentProfileIndex = 0 };
-                Save();
-            }
-        }
+				streamReader.Dispose();
+			}
+			else
+			{
+				Definitions.Settings = new Settings { Language = "_default", IsFirstRun = true, IsMaximized = false, PageId = 0, CurrentProfileIndex = 0 };
+				Save();
+			}
+		}
 
-        /// <summary>
-        /// Saves the settings into the <c>%APPDATA%</c> folder.
-        /// </summary>
-        public static void Save()
-        {
-            string AppDataPath = Env.GetAppDataPath(); // Get %APPDATA% folder
-            XmlSerializer xmlSerializer = new(Definitions.Settings.GetType()); // XML Serializer
+		/// <summary>
+		/// Saves the settings into the <c>%APPDATA%</c> folder.
+		/// </summary>
+		public static void Save()
+		{
+			string AppDataPath = Env.GetAppDataPath(); // Get %APPDATA% folder
+			XmlSerializer xmlSerializer = new(Definitions.Settings.GetType()); // XML Serializer
 
-            if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
-            {
-                Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
-            }
+			if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
+			{
+				Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
+			}
 
-            StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Settings.gavsettings"); // The place where the file is going to be written
-            xmlSerializer.Serialize(streamWriter, Definitions.Settings);
+			StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Settings.gavsettings"); // The place where the file is going to be written
+			xmlSerializer.Serialize(streamWriter, Definitions.Settings);
 
-            streamWriter.Dispose();
-        }
-    }
+			streamWriter.Dispose();
+		}
+	}
 }

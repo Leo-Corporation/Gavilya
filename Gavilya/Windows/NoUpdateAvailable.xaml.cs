@@ -35,19 +35,19 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Windows
 {
-    /// <summary>
-    /// Logique d'interaction pour NoUpdateAvailable.xaml
-    /// </summary>
-    public partial class NoUpdateAvailable : Window
-    {
-        public NoUpdateAvailable()
-        {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Logique d'interaction pour NoUpdateAvailable.xaml
+	/// </summary>
+	public partial class NoUpdateAvailable : Window
+	{
+		public NoUpdateAvailable()
+		{
+			InitializeComponent();
+		}
 
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Close(); // Close the window
-        }
-    }
+		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Close(); // Close the window
+		}
+	}
 }

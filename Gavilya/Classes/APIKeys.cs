@@ -29,13 +29,13 @@ using System.Threading.Tasks;
 
 namespace Gavilya.Classes
 {
-    public static partial class APIKeys
-    {
-        /// <summary>
-        /// The RAWG.io API key. DO NOT SET A VALUE DIRECTLY IN A FILE THAT MIGHT BE PUBLISHED TO GITHUB. 
-        /// <para>YOUR API KEY IS SECRET!</para>
-        /// <para>Define your API keys in a copy of <see cref="APIKeys"/> called <c>APIKeysLocal.cs</c></para>
-        /// </summary>
-        public static readonly string RAWGAPIKey = "";
-    }
+	public static partial class APIKeys
+	{
+		/// <summary>
+		/// The RAWG.io API key. DO NOT SET A VALUE DIRECTLY IN A FILE THAT MIGHT BE PUBLISHED TO GITHUB. 
+		/// <para>YOUR API KEY IS SECRET!</para>
+		/// <para>Define your API keys in a copy of <see cref="APIKeys"/> called <c>APIKeysLocal.cs</c></para>
+		/// </summary>
+		public static readonly string RAWGAPIKey = "";
+	}
 }

@@ -36,22 +36,22 @@ using System.Windows.Shapes;
 
 namespace Gavilya.UserControls
 {
-    /// <summary>
-    /// Logique d'interaction pour GameResult.xaml
-    /// </summary>
-    public partial class GameResult : UserControl
-    {
-        public GameResult(string gameName, int id)
-        {
-            InitializeComponent();
-            GameName.Text = gameName; // Put the name of the game
-            GameNameToolTip.Content = gameName; // Set the name of the game in the tool tip
-            Id = id; // Define the Game Id
-        }
+	/// <summary>
+	/// Logique d'interaction pour GameResult.xaml
+	/// </summary>
+	public partial class GameResult : UserControl
+	{
+		public GameResult(string gameName, int id)
+		{
+			InitializeComponent();
+			GameName.Text = gameName; // Put the name of the game
+			GameNameToolTip.Content = gameName; // Set the name of the game in the tool tip
+			Id = id; // Define the Game Id
+		}
 
-        /// <summary>
-        /// The game's Id.
-        /// </summary>
-        public int Id { get; set; }
-    }
+		/// <summary>
+		/// The game's Id.
+		/// </summary>
+		public int Id { get; set; }
+	}
 }

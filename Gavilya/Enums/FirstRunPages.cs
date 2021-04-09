@@ -29,34 +29,34 @@ using System.Threading.Tasks;
 
 namespace Gavilya.Enums
 {
-    /// <summary>
-    /// The pages that are used in the <see cref="Windows.FirstRun"/> window.
-    /// </summary>
-    public enum FirstRunPages
-    {
-        /// <summary>
-        /// The <see cref="Pages.FirstRunPages.Welcome"/> page.
-        /// </summary>
-        Welcome,
+	/// <summary>
+	/// The pages that are used in the <see cref="Windows.FirstRun"/> window.
+	/// </summary>
+	public enum FirstRunPages
+	{
+		/// <summary>
+		/// The <see cref="Pages.FirstRunPages.Welcome"/> page.
+		/// </summary>
+		Welcome,
 
-        /// <summary>
-        /// The <see cref="Pages.FirstRunPages.AddGamesPage"/> page.
-        /// </summary>
-        AddGames,
+		/// <summary>
+		/// The <see cref="Pages.FirstRunPages.AddGamesPage"/> page.
+		/// </summary>
+		AddGames,
 
-        /// <summary>
-        /// The <see cref="Pages.FirstRunPages.SearchRAWGPage"/> page.
-        /// </summary>
-        SearchRawgGames,
+		/// <summary>
+		/// The <see cref="Pages.FirstRunPages.SearchRAWGPage"/> page.
+		/// </summary>
+		SearchRawgGames,
 
-        /// <summary>
-        /// The <see cref="Pages.FirstRunPages.ImportGamesPage"/> page.
-        /// </summary>
-        ImportGames,
+		/// <summary>
+		/// The <see cref="Pages.FirstRunPages.ImportGamesPage"/> page.
+		/// </summary>
+		ImportGames,
 
-        /// <summary>
-        /// The <see cref="Pages.FirstRunPages.FinishPage"/> page
-        /// </summary>
-        Finish
-    }
+		/// <summary>
+		/// The <see cref="Pages.FirstRunPages.FinishPage"/> page
+		/// </summary>
+		Finish
+	}
 }

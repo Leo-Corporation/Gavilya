@@ -45,11 +45,11 @@ namespace Gavilya.Classes
 			if (Definitions.Profiles is not null) // If not null
 			{
 				Definitions.Profiles.Add(
-					new Profile 
-					{ 
-						Name = Global.UserName, 
-						PictureFilePath = "_default", 
-						SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav" 
+					new Profile
+					{
+						Name = Global.UserName,
+						PictureFilePath = "_default",
+						SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
 					});
 			}
 			else

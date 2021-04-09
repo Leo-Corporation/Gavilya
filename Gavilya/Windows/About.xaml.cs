@@ -37,33 +37,33 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Windows
 {
-    /// <summary>
-    /// Logique d'interaction pour About.xaml
-    /// </summary>
-    public partial class About : Window
-    {
-        public About()
-        {
-            InitializeComponent();
-            VersionTxt.Text = !Definitions.IsBeta ? Definitions.Version : Definitions.BetaVersion; // Display the current version
-        }
+	/// <summary>
+	/// Logique d'interaction pour About.xaml
+	/// </summary>
+	public partial class About : Window
+	{
+		public About()
+		{
+			InitializeComponent();
+			VersionTxt.Text = !Definitions.IsBeta ? Definitions.Version : Definitions.BetaVersion; // Display the current version
+		}
 
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
-        {
-            Close(); // Close the window
-        }
+		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Close(); // Close the window
+		}
 
-        private async void UpdateBtn_Click(object sender, RoutedEventArgs e)
-        {
-            string lastVersion = await Update.GetLastVersionAsync(Definitions.LastVersionLink); // Last version of Gavilya
-            if (Update.IsAvailable(Definitions.Version, lastVersion)) // If updates are available
-            {
-                new UpdateAvailable().Show(); // Show the updates available window
-            }
-            else
-            {
-                new NoUpdateAvailable().Show(); // Show the no updates available window
-            }
-        }
-    }
+		private async void UpdateBtn_Click(object sender, RoutedEventArgs e)
+		{
+			string lastVersion = await Update.GetLastVersionAsync(Definitions.LastVersionLink); // Last version of Gavilya
+			if (Update.IsAvailable(Definitions.Version, lastVersion)) // If updates are available
+			{
+				new UpdateAvailable().Show(); // Show the updates available window
+			}
+			else
+			{
+				new NoUpdateAvailable().Show(); // Show the no updates available window
+			}
+		}
+	}
 }

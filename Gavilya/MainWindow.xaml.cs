@@ -62,12 +62,12 @@ namespace Gavilya
 			GamesCardsPages gamesCardsPages = new(); // GamesCardsPage
 			Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
 			PageContent.Content = Definitions.Settings.PageId switch
-				{
-					0 => gamesCardsPages,
-					1 => Definitions.RecentGamesPage,
-					2 => Definitions.GamesListPage,
-					_ => gamesCardsPages
-				}; // Show the page
+			{
+				0 => gamesCardsPages,
+				1 => Definitions.RecentGamesPage,
+				2 => Definitions.GamesListPage,
+				_ => gamesCardsPages
+			}; // Show the page
 
 			Definitions.MainWindow = this; // Define the Main Window
 
@@ -172,7 +172,7 @@ namespace Gavilya
 		private void DefineMaximumSize()
 		{
 			System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(this).Handle); // The current screen
-			
+
 			float dpiX, dpiY;
 			double scaling = 100; // Default scaling = 100%
 
@@ -183,15 +183,15 @@ namespace Gavilya
 
 				scaling = dpiX switch
 				{
-					96  => 100, // Get the %
+					96 => 100, // Get the %
 					120 => 125, // Get the %
 					144 => 150, // Get the %
 					168 => 175, // Get the %
 					192 => 200, // Get the % 
-					_   => 100
+					_ => 100
 				};
 			}
-			
+
 			double factor = scaling / 100d; // Calculate factor
 
 			MaxHeight = currentScreen.WorkingArea.Height / factor; // Set max size
@@ -229,9 +229,9 @@ namespace Gavilya
 			Definitions.Settings.IsMaximized = WindowState switch
 			{
 				WindowState.Maximized => true,
-				WindowState.Normal    => false,
+				WindowState.Normal => false,
 				WindowState.Minimized => false,
-				_                     => false
+				_ => false
 			};
 		}
 
@@ -478,7 +478,7 @@ namespace Gavilya
 						Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
 						Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
 					}
-				} 
+				}
 			}
 		}
 

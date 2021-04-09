@@ -41,69 +41,69 @@ using System.Windows.Shapes;
 
 namespace Gavilya.UserControls
 {
-    /// <summary>
-    /// Logique d'interaction pour FavoriteGameCard.xaml
-    /// </summary>
-    public partial class FavoriteGameCard : UserControl
-    {
-        public GameInfo GameInfo { get; set; }
-        string GamePath = ""; // Location of the game
+	/// <summary>
+	/// Logique d'interaction pour FavoriteGameCard.xaml
+	/// </summary>
+	public partial class FavoriteGameCard : UserControl
+	{
+		public GameInfo GameInfo { get; set; }
+		string GamePath = ""; // Location of the game
 
-        UIElement parentElement;
+		UIElement parentElement;
 
-        public FavoriteGameCard(GameInfo gameInfo, UIElement parent = null)
-        {
-            InitializeComponent();
-            GameInfo = gameInfo;
-            parentElement = parent; // Define the parent element
+		public FavoriteGameCard(GameInfo gameInfo, UIElement parent = null)
+		{
+			InitializeComponent();
+			GameInfo = gameInfo;
+			parentElement = parent; // Define the parent element
 
-            InitUI(gameInfo); // Load the UI
-        }
+			InitUI(gameInfo); // Load the UI
+		}
 
-        /// <summary>
-        /// Load the User Interface (UI).
-        /// </summary>
-        /// <param name="gameInfo"></param>
-        private void InitUI(GameInfo gameInfo)
-        {
-            // Tooltip
-            GameNameToolTip.Content = gameInfo.Name;
-            ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
+		/// <summary>
+		/// Load the User Interface (UI).
+		/// </summary>
+		/// <param name="gameInfo"></param>
+		private void InitUI(GameInfo gameInfo)
+		{
+			// Tooltip
+			GameNameToolTip.Content = gameInfo.Name;
+			ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
 
-            if (gameInfo.IconFileLocation != string.Empty) // If there is an image
-            {
-                GameIcon.ImageSource = new BitmapImage(new Uri(gameInfo.IconFileLocation)); // Put the icon of the game
-                GamePath = gameInfo.FileLocation; // Set the location of the game
-            }
-            else // If the image is the app icon
-            {
-                Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
-                GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
-                GamePath = gameInfo.FileLocation; // Set the location of the game
-            }
+			if (gameInfo.IconFileLocation != string.Empty) // If there is an image
+			{
+				GameIcon.ImageSource = new BitmapImage(new Uri(gameInfo.IconFileLocation)); // Put the icon of the game
+				GamePath = gameInfo.FileLocation; // Set the location of the game
+			}
+			else // If the image is the app icon
+			{
+				Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
+				GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+				GamePath = gameInfo.FileLocation; // Set the location of the game
+			}
 
-        }
+		}
 
-        private void PlayBtn_Click(object sender, RoutedEventArgs e)
-        {
-            if (File.Exists(GamePath)) // If the game location file exist
-            {
-                Process.Start(GamePath); // Start the game
+		private void PlayBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (File.Exists(GamePath)) // If the game location file exist
+			{
+				Process.Start(GamePath); // Start the game
 
-                if (parentElement is GameCard)
-                {
-                    GameCard gameCard = (GameCard)parentElement; // Create a game card
-                    gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
-                    new GameSaver().Save(Definitions.Games); // Save the changes
+				if (parentElement is GameCard)
+				{
+					GameCard gameCard = (GameCard)parentElement; // Create a game card
+					gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
+					new GameSaver().Save(Definitions.Games); // Save the changes
 
-                    Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
-                    Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+					Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+					Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
 
-                    gameCard.Timer.Start(); // Start the timer
-                }
+					gameCard.Timer.Start(); // Start the timer
+				}
 
-                Definitions.RecentGamesPage.LoadGames(); // Reload the games
-            }
-        }
-    }
+				Definitions.RecentGamesPage.LoadGames(); // Reload the games
+			}
+		}
+	}
 }
