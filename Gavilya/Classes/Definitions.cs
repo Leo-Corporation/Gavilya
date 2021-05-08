@@ -94,7 +94,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Define if the current build is a preversion of Gavilya, not made for production nor Pre-Release.
 		/// </summary>
-		public static bool IsBeta => false;
+		public static bool IsBeta => true;
 
 
 		/// <summary>
@@ -121,6 +121,11 @@ namespace Gavilya.Classes
 		/// The <see cref="Pages.RecentGamesPage"/> of the <see cref="MainWindow"/>.
 		/// </summary>
 		public static RecentGamesPage RecentGamesPage { get; set; }
+
+		/// <summary>
+		/// The <see cref="Pages.Statistics"/> page.
+		/// </summary>
+		public static Statistics Statistics { get; set; }
 
 		/// <summary>
 		/// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.

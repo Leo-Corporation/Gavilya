@@ -119,5 +119,10 @@ namespace Gavilya.Windows
 		{
 			new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
 		}
+
+		private void StatsBtn_Click(object sender, RoutedEventArgs e)
+		{
+			Definitions.MainWindow.PageContent.Navigate(Definitions.Statistics); // Navigate
+		}
 	}
 }

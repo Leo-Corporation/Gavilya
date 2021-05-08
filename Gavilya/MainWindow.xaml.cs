@@ -72,7 +72,6 @@ namespace Gavilya
 			Definitions.MainWindow = this; // Define the Main Window
 
 			LoadPage(); // Load the button on the button corresponding to the active page
-			new GameSaver().Load(); // Load the .gav file in the Definitions class
 			Global.SortGames();
 
 			LoadGames();
