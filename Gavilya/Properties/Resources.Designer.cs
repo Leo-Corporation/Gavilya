@@ -585,6 +585,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to h.
+        /// </summary>
+        public static string HourShort {
+            get {
+                return ResourceManager.GetString("HourShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string Image {
@@ -1139,6 +1148,24 @@ namespace Gavilya.Properties {
         public static string StartupPage {
             get {
                 return ResourceManager.GetString("StartupPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        public static string Statistics {
+            get {
+                return ResourceManager.GetString("Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOTAL TIME PLAYED.
+        /// </summary>
+        public static string StatsTimePlayed {
+            get {
+                return ResourceManager.GetString("StatsTimePlayed", resourceCulture);
             }
         }
         

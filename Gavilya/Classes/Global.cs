@@ -522,6 +522,28 @@ namespace Gavilya.Classes
 			}
 		}
 
+		/// <summary>
+		/// Returns in seconds the toal time played of all games
+		/// </summary>
+		/// <returns></returns>
+		internal static int GetTotalTimePlayed()
+		{
+			if (Definitions.Games.Count > 0)
+			{
+				int result = 0;
+				for (int i = 0; i < Definitions.Games.Count; i++)
+				{
+					result += Definitions.Games[i].TotalTimePlayed; // Add time played
+				}
+
+				return result; // Return the total
+			}
+			else
+			{
+				return 0;
+			}
+		}
+
 		public static string UserName => Environment.UserName;
 	}
 }
