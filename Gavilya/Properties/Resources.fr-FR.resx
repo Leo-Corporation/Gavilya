@@ -511,9 +511,12 @@
     <value>Statistiques</value>
   </data>
   <data name="StatsTimePlayed" xml:space="preserve">
-    <value>TEMPS TOTAL JOUE</value>
+    <value>TEMPS TOTAL JOUÉ</value>
   </data>
   <data name="HourShort" xml:space="preserve">
     <value>h</value>
+  </data>
+  <data name="Top10MostPlayedGames" xml:space="preserve">
+    <value>TOP 10 DES JEUX LES PLUS JOUÉS</value>
   </data>
 </root>

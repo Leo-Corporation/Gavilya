@@ -523,4 +523,7 @@
   <data name="HourShort" xml:space="preserve">
     <value>h</value>
   </data>
+  <data name="Top10MostPlayedGames" xml:space="preserve">
+    <value>TOP 10 MOST PLAYED GAMES</value>
+  </data>
 </root>

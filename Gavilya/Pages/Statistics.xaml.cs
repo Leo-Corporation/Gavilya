@@ -55,6 +55,7 @@ namespace Gavilya.Pages
 		{
 			// Values
 			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
+			List<GameInfo> mostPlayed = new(); // Create list
 
 			for (int i = 0; i < Definitions.Games.Count; i++)
 			{
@@ -67,9 +68,10 @@ namespace Gavilya.Pages
 			int c = 0; // Counter
 			foreach (KeyValuePair<GameInfo, int> keyValuePair in items)
 			{
-				if (c <= 10)
+				if (c < 10)
 				{
 					GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key)); // Add item
+					mostPlayed.Add(keyValuePair.Key); // Add to the list
 					c++; // Increment counter
 				}
 				else
@@ -80,6 +82,9 @@ namespace Gavilya.Pages
 
 			// Text
 			TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
+
+			// Graph
+			GraphDisplayer.Content = new StatGraph(mostPlayed);
 		}
 	}
 }

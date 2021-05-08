@@ -28,16 +28,32 @@
 					<TextBlock Text="{x:Static lang:Resources.StatsTimePlayed}" FontSize="16" FontWeight="Bold" Foreground="#FF64648C"/>
 					<TextBlock x:Name="TotalTimePlayedTxt" Text="" FontSize="48" FontWeight="Bold" d:Text="150,7h"/>
 				</StackPanel>
+
 				<Grid Margin="0,5,0,0" Grid.Row="2">
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition/>
 						<ColumnDefinition/>
 					</Grid.ColumnDefinitions>
-					<ScrollViewer Template="{StaticResource ScrollViewerTemplate1}">
-						<StackPanel x:Name="GamesInfoDisplayer">
-							<!-- Content loaded on start -->
-						</StackPanel>
-					</ScrollViewer>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<Frame Grid.Row="0" Grid.Column="0" x:Name="GraphDisplayer" NavigationUIVisibility="Hidden" MinHeight="100" x:FieldModifier="public"/>
+
+					<Grid Grid.Row="1" Margin="0,15,0,0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<TextBlock Text="{x:Static lang:Resources.Top10MostPlayedGames}" FontSize="14" FontWeight="Bold" Foreground="#FF64648C"/>
+						<ScrollViewer Template="{StaticResource ScrollViewerTemplate1}" Grid.Row="1">
+							<StackPanel x:Name="GamesInfoDisplayer">
+								<!-- Content loaded on start -->
+							</StackPanel>
+						</ScrollViewer>
+					</Grid>
 				</Grid>
 			</Grid>
 		</Border>

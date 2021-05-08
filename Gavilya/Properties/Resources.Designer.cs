@@ -1179,6 +1179,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to TOP 10 MOST PLAYED GAMES.
+        /// </summary>
+        public static string Top10MostPlayedGames {
+            get {
+                return ResourceManager.GetString("Top10MostPlayedGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Time played.
         /// </summary>
         public static string TotalTimePlayed {

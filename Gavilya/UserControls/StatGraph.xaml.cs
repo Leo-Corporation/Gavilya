@@ -40,27 +40,46 @@ using System.Windows.Shapes;
 namespace Gavilya.UserControls
 {
 	/// <summary>
-	/// Interaction logic for StatInfoCard.xaml
+	/// Interaction logic for StatGraph.xaml
 	/// </summary>
-	public partial class StatInfoCard : UserControl
+	public partial class StatGraph : UserControl
 	{
-		GameInfo GameInfo { get; init; }
-		public StatInfoCard(GameInfo gameInfo)
+		List<GameInfo> Games { get; init; }
+		public StatGraph(List<GameInfo> gameInfos)
 		{
 			InitializeComponent();
-			GameInfo = gameInfo; // Set
+			Games = gameInfos; // Set
 
 			InitUI(); // Load the UI
 		}
 
 		private void InitUI()
 		{
-			// Calc
-			double time = (double)GameInfo.TotalTimePlayed / 3600; // Convert seconds to hours
+			GraphPanel.Children.Clear(); // Clear
+			int longestPlayed = Games[0].TotalTimePlayed;
 
-			// Text
-			GameNameTxt.Text = GameInfo.Name; // Set text
-			GameTimeTxt.Text = $"{string.Format("{0:0.#}", time)}{Properties.Resources.HourShort}"; // Set text
+			for (int i = 0; i < Games.Count; i++)
+			{
+				double h = Games[i].TotalTimePlayed * GraphPanel.Height / longestPlayed;
+
+				Rectangle rectangle = new()
+				{
+					Margin = new(10, 0, 10, 0),
+					Fill = new SolidColorBrush { Color = Color.FromRgb(50, 50, 90) },
+					Height = h,
+					Width = 50,
+					RadiusX = 5,
+					RadiusY = 5,
+					VerticalAlignment = VerticalAlignment.Bottom
+				};
+
+				GraphPanel.Children.Add(rectangle); // Add bar
+			}
+		}
+
+		private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+		{
+			InitUI();
 		}
 	}
 }
