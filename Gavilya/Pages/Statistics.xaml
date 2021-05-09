@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Gavilya.Pages"
 	  xmlns:lang="clr-namespace:Gavilya.Properties"
+	  xmlns:uc="clr-namespace:Gavilya.UserControls"
       mc:Ignorable="d" 
 	  FontFamily="../Fonts/#Montserrat"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -55,7 +56,11 @@
 						</ScrollViewer>
 					</Grid>
 
-					<Frame x:Name="GameInfoDisplayer" Grid.Column="1" Grid.RowSpan="2"/>
+					
+
+					<Grid x:Name="GameInfoDisplayer" Grid.Column="1" Grid.RowSpan="2">
+						<uc:StatGameInfoControl Width="{Binding ActualWidth, ElementName=GameInfoDisplayer, Mode=OneWay}" Margin="10,0,0,0"></uc:StatGameInfoControl>
+					</Grid>
 
 				</Grid>
 			</Grid>

@@ -56,6 +56,9 @@ namespace Gavilya.Pages
 
 		private void InitUI()
 		{
+			// Controls
+			Definitions.StatGameInfoControl = (StatGameInfoControl)GameInfoDisplayer.Children[0]; // Set content
+
 			// Values
 			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
 			List<GameInfo> mostPlayed = new(); // Create list
@@ -87,10 +90,7 @@ namespace Gavilya.Pages
 			TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
 
 			// Graph
-			GraphDisplayer.Content = new StatGraph(mostPlayed);
-
-			// Controls
-			GameInfoDisplayer.Content = Definitions.StatGameInfoControl; // Set content
+			GraphDisplayer.Content = new StatGraph(mostPlayed);			
 		}
 
 		internal void UnCheckAllStatItems()
