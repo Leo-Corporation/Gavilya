@@ -20,7 +20,7 @@
 				<RowDefinition/>
 			</Grid.RowDefinitions>
 
-			<Border Grid.Row="0" Margin="10" CornerRadius="10">
+			<Border Grid.Row="0" Margin="10,10,20,10" CornerRadius="10">
 				<Border.Background>
 					<ImageBrush x:Name="BackgroundImage" Stretch="UniformToFill" Opacity="0.9"></ImageBrush>
 				</Border.Background>
@@ -36,7 +36,7 @@
 				</Grid>
 			</Border>
 
-			<Border Grid.Row="1" CornerRadius="10" Background="#FF28283C" Margin="10" Padding="10">
+			<Border Grid.Row="1" CornerRadius="10" Background="#FF28283C" Margin="10,10,20,10" Padding="10">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
@@ -55,7 +55,7 @@
 				</Grid>
 			</Border>
 
-			<StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
+			<StackPanel Grid.Row="2" Orientation="Vertical" Margin="10,10,20,10">
 				<TextBlock Text="{x:Static lang:Resources.Description}" FontSize="18" FontWeight="Bold"/>
 				<TextBlock x:Name="DescriptionTxt" d:Text="{x:Static lang:Resources.Description}" FontSize="14" FontWeight="Normal" TextWrapping="Wrap"/>
 			</StackPanel>
