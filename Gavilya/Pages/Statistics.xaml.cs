@@ -49,8 +49,6 @@ namespace Gavilya.Pages
 		public Statistics()
 		{
 			InitializeComponent();
-			
-
 			InitUI();
 		}
 
@@ -88,6 +86,7 @@ namespace Gavilya.Pages
 
 			// Text
 			TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
+			SortTxt.Text = isDescending ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed; // Set text
 
 			// Graph
 			GraphDisplayer.Content = new StatGraph(mostPlayed);			
@@ -108,6 +107,62 @@ namespace Gavilya.Pages
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message);
+			}
+		}
+
+		bool isDescending = true;
+		private void SortBtn_Click(object sender, RoutedEventArgs e)
+		{
+			GamesInfoDisplayer.Children.Clear(); // Clear
+			isDescending = !isDescending; // Set
+			SortTxt.Text = isDescending ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed; // Set text
+
+			// Values
+			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
+			List<GameInfo> mostPlayed = new(); // Create list
+
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
+			}
+
+			var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort
+			var items1 = from pair in gameTimes orderby pair.Value ascending select pair; // Sort
+
+			// Top 10 most played games
+			if (isDescending)
+			{
+				int c = 0; // Counter
+				foreach (KeyValuePair<GameInfo, int> keyValuePair in items)
+				{
+					if (c < 10)
+					{
+						GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c + 1)); // Add item
+						mostPlayed.Add(keyValuePair.Key); // Add to the list
+						c++; // Increment counter
+					}
+					else
+					{
+						break;
+					}
+				}
+			}
+			else
+			{
+				int c = gameTimes.Count; // Counter
+				foreach (KeyValuePair<GameInfo, int> keyValuePair in items1)
+				{
+					if (c > 0 && c <= gameTimes.Count + (10 - gameTimes.Count))
+					{
+						GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c)); // Add item
+						mostPlayed.Add(keyValuePair.Key); // Add to the list
+						c--; // Decrement counter
+					}
+					else
+					{
+						c--; // Decrement counter
+					}
+				}
 			}
 		}
 	}

@@ -522,4 +522,10 @@
   <data name="StatsLastTimePlayed" xml:space="preserve">
     <value>DERNIÈRE UTILISATION</value>
   </data>
+  <data name="MostPlayed" xml:space="preserve">
+    <value>Les plus joués</value>
+  </data>
+  <data name="LeastPlayed" xml:space="preserve">
+    <value>Les moins joués</value>
+  </data>
 </root>

@@ -702,6 +702,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Least played.
+        /// </summary>
+        public static string LeastPlayed {
+            get {
+                return ResourceManager.GetString("LeastPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Let&apos;s go!.
         /// </summary>
         public static string LetsGo {
@@ -770,6 +779,15 @@ namespace Gavilya.Properties {
         public static string More {
             get {
                 return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Most played.
+        /// </summary>
+        public static string MostPlayed {
+            get {
+                return ResourceManager.GetString("MostPlayed", resourceCulture);
             }
         }
         
