@@ -54,6 +54,9 @@
 							</StackPanel>
 						</ScrollViewer>
 					</Grid>
+
+					<Frame x:Name="GameInfoDisplayer" Grid.Column="1" Grid.RowSpan="2"/>
+
 				</Grid>
 			</Grid>
 		</Border>

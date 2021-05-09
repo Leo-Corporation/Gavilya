@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Pages;
+using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -66,6 +67,11 @@ namespace Gavilya.Classes
 				return linearGradientBrush; // Return the gradient
 			}
 		}
+
+		/// <summary>
+		/// The <see cref="UserControls.StatGameInfoControl"/> control.
+		/// </summary>
+		internal static StatGameInfoControl StatGameInfoControl { get; set; }
 
 		/// <summary>
 		/// The default platform of a game.

@@ -45,9 +45,12 @@ namespace Gavilya.Pages
 	/// </summary>
 	public partial class Statistics : Page
 	{
+		
 		public Statistics()
 		{
 			InitializeComponent();
+			
+
 			InitUI();
 		}
 
@@ -85,6 +88,9 @@ namespace Gavilya.Pages
 
 			// Graph
 			GraphDisplayer.Content = new StatGraph(mostPlayed);
+
+			// Controls
+			GameInfoDisplayer.Content = Definitions.StatGameInfoControl; // Set content
 		}
 
 		internal void UnCheckAllStatItems()

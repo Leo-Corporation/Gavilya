@@ -519,4 +519,7 @@
   <data name="Top10MostPlayedGames" xml:space="preserve">
     <value>TOP 10 DES JEUX LES PLUS JOUÉS</value>
   </data>
+  <data name="StatsLastTimePlayed" xml:space="preserve">
+    <value>DERNIÈRE UTILISATION</value>
+  </data>
 </root>

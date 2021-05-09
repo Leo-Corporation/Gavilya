@@ -1161,6 +1161,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LAST USAGE.
+        /// </summary>
+        public static string StatsLastTimePlayed {
+            get {
+                return ResourceManager.GetString("StatsLastTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TOTAL TIME PLAYED.
         /// </summary>
         public static string StatsTimePlayed {

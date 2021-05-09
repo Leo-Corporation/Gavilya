@@ -68,6 +68,7 @@ namespace Gavilya.UserControls
 			if (isChecked)
 			{
 				ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color 
+				Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
 			}
 		}
 
@@ -76,6 +77,7 @@ namespace Gavilya.UserControls
 			Definitions.Statistics.UnCheckAllStatItems(); // Clear
 			ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color
 			isChecked = true;
+			Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
 		}
 
 		private void ItemBorder_MouseEnter(object sender, MouseEventArgs e)

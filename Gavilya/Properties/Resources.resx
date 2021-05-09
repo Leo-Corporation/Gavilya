@@ -526,4 +526,7 @@
   <data name="Top10MostPlayedGames" xml:space="preserve">
     <value>TOP 10 MOST PLAYED GAMES</value>
   </data>
+  <data name="StatsLastTimePlayed" xml:space="preserve">
+    <value>LAST USAGE</value>
+  </data>
 </root>
