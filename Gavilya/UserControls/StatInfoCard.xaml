@@ -7,7 +7,7 @@
 			 FontFamily="..\Fonts\#Montserrat"
              mc:Ignorable="d" Foreground="#FFF"
              Height="50" d:DesignWidth="400">
-	<Border CornerRadius="5" Cursor="Hand">
+	<Border x:Name="ItemBorder" CornerRadius="5" Cursor="Hand" MouseLeftButtonUp="Border_MouseLeftButtonUp" MouseEnter="ItemBorder_MouseEnter" MouseLeave="ItemBorder_MouseLeave">
 		<Grid Margin="5">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto"/>

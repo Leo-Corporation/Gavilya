@@ -86,5 +86,23 @@ namespace Gavilya.Pages
 			// Graph
 			GraphDisplayer.Content = new StatGraph(mostPlayed);
 		}
+
+		internal void UnCheckAllStatItems()
+		{
+			try
+			{
+				for (int i = 0; i < GamesInfoDisplayer.Children.Count; i++)
+				{
+					if (GamesInfoDisplayer.Children[i] is StatInfoCard)
+					{
+						((StatInfoCard)GamesInfoDisplayer.Children[i]).UnCheck(); // Uncheck
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+		}
 	}
 }
