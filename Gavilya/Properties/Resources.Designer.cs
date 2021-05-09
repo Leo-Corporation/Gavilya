@@ -160,6 +160,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available on.
+        /// </summary>
+        public static string AvailableOn {
+            get {
+                return ResourceManager.GetString("AvailableOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Avatar.
         /// </summary>
         public static string Avatar {
@@ -354,6 +363,15 @@ namespace Gavilya.Properties {
         public static string EditProfile {
             get {
                 return ResourceManager.GetString("EditProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Epic Games Store.
+        /// </summary>
+        public static string EpicGamesStore {
+            get {
+                return ResourceManager.GetString("EpicGamesStore", resourceCulture);
             }
         }
         
@@ -585,6 +603,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to h.
+        /// </summary>
+        public static string HourShort {
+            get {
+                return ResourceManager.GetString("HourShort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string Image {
@@ -693,6 +720,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Least played.
+        /// </summary>
+        public static string LeastPlayed {
+            get {
+                return ResourceManager.GetString("LeastPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Let&apos;s go!.
         /// </summary>
         public static string LetsGo {
@@ -716,6 +752,15 @@ namespace Gavilya.Properties {
         public static string MainWindowTitle {
             get {
                 return ResourceManager.GetString("MainWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Store.
+        /// </summary>
+        public static string MicrosoftStore {
+            get {
+                return ResourceManager.GetString("MicrosoftStore", resourceCulture);
             }
         }
         
@@ -761,6 +806,15 @@ namespace Gavilya.Properties {
         public static string More {
             get {
                 return ResourceManager.GetString("More", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Most played.
+        /// </summary>
+        public static string MostPlayed {
+            get {
+                return ResourceManager.GetString("MostPlayed", resourceCulture);
             }
         }
         
@@ -1143,11 +1197,65 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        public static string Statistics {
+            get {
+                return ResourceManager.GetString("Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LAST USAGE.
+        /// </summary>
+        public static string StatsLastTimePlayed {
+            get {
+                return ResourceManager.GetString("StatsLastTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOTAL TIME PLAYED.
+        /// </summary>
+        public static string StatsTimePlayed {
+            get {
+                return ResourceManager.GetString("StatsTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Steam.
+        /// </summary>
+        public static string Steam {
+            get {
+                return ResourceManager.GetString("Steam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stores.
+        /// </summary>
+        public static string Stores {
+            get {
+                return ResourceManager.GetString("Stores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Switch profile.
         /// </summary>
         public static string SwitchProfile {
             get {
                 return ResourceManager.GetString("SwitchProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TOP 10 MOST PLAYED GAMES.
+        /// </summary>
+        public static string Top10MostPlayedGames {
+            get {
+                return ResourceManager.GetString("Top10MostPlayedGames", resourceCulture);
             }
         }
         

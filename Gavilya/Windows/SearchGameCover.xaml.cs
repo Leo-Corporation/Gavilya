@@ -65,18 +65,26 @@ namespace Gavilya.Windows
 
 		private async void Button_Click(object sender, RoutedEventArgs e)
 		{
-			ResultPresenter.Children.Clear(); // Remove all the controls
-			var client = new RestClient(); // Create a REST Client
-			client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
-			var request = new RestRequest(Method.GET); // Create a request
-			request.AddQueryParameter("search", GameSearchName.Text); // Config the request
-			var response = await client.ExecuteAsync(request); // Execute the request and store the result
-
-			var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
-
-			foreach (Gavilya.SDK.RAWG.Game game in gameResults.results) // For each result
+			try
 			{
-				ResultPresenter.Children.Add(new GameResult(game.name, game.id)); // Add the game
+				ResultPresenter.Children.Clear(); // Remove all the controls
+				var client = new RestClient(); // Create a REST Client
+				client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
+				var request = new RestRequest(Method.GET); // Create a request
+				request.AddQueryParameter("search", GameSearchName.Text); // Config the request
+				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+				var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+				var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
+
+				foreach (Gavilya.SDK.RAWG.Game game in gameResults.results) // For each result
+				{
+					ResultPresenter.Children.Add(new GameResult(game.name, game.id)); // Add the game
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
@@ -136,6 +144,7 @@ namespace Gavilya.Windows
 				addGame1.RAWGID = id; // Set the id
 				addGame1.GameDescription = await Global.GetGameDescriptionAsync(id); // Get the description
 				addGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
+				addGame1.Stores = await Global.GetStoresAsync(id); // Get stores
 			}
 			else // If is from EditGame
 			{
@@ -143,6 +152,7 @@ namespace Gavilya.Windows
 				editGame1.RAWGID = id; // Set the id
 				editGame1.GameDescription = description;
 				editGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
+				editGame1.Stores = await Global.GetStoresAsync(id); // Get stores
 			}
 		}
 

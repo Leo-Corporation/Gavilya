@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Pages;
+using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -68,6 +69,11 @@ namespace Gavilya.Classes
 		}
 
 		/// <summary>
+		/// The <see cref="UserControls.StatGameInfoControl"/> control.
+		/// </summary>
+		internal static StatGameInfoControl StatGameInfoControl { get; set; }
+
+		/// <summary>
 		/// The default platform of a game.
 		/// </summary>
 		public static SDK.RAWG.Platform DefaultPlatform => new() { id = 4, name = "PC", slug = "pc" };
@@ -75,7 +81,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Version of the software (Gavilya).
 		/// </summary>
-		public static string Version => "1.4.0.2104";
+		public static string Version => "1.5.0.2105";
 
 		/// <summary>
 		/// True if the menu is shown.
@@ -121,6 +127,11 @@ namespace Gavilya.Classes
 		/// The <see cref="Pages.RecentGamesPage"/> of the <see cref="MainWindow"/>.
 		/// </summary>
 		public static RecentGamesPage RecentGamesPage { get; set; }
+
+		/// <summary>
+		/// The <see cref="Pages.Statistics"/> page.
+		/// </summary>
+		public static Statistics Statistics { get; set; }
 
 		/// <summary>
 		/// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.

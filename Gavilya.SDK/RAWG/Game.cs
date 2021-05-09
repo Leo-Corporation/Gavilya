@@ -44,7 +44,7 @@ namespace Gavilya.SDK.RAWG
 		public string description_raw { get; set; }
 		public int playtime { get; set; }
 		public List<ReturnedPlatforms> platforms { get; set; }
-		public List<Store> stores { get; set; }
+		public List<ParentStore> stores { get; set; }
 		public string released { get; set; }
 		public bool tba { get; set; }
 		public string background_image { get; set; }
@@ -131,6 +131,11 @@ namespace Gavilya.SDK.RAWG
 	{
 		public int id { get; set; }
 		public string image { get; set; }
+	}
+
+	public class ParentStore
+	{
+		public Store store { get; set; }
 	}
 
 	public class Store

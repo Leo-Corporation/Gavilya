@@ -73,7 +73,7 @@ namespace Gavilya.Pages
 		/// </summary>
 		/// <param name="gameInfo">The game to load informations.</param>
 		/// <param name="parent">The parent element.</param>
-		public void InitializeUI(GameInfo gameInfo, UIElement parent = null)
+		public async void InitializeUI(GameInfo gameInfo, UIElement parent = null)
 		{
 			// Var
 			gameLocation = gameInfo.FileLocation;
@@ -145,6 +145,30 @@ namespace Gavilya.Pages
 			foreach (SDK.RAWG.Platform platform in gameInfo.Platforms)
 			{
 				PlatformDisplayer.Children.Add(new TextBlock { Foreground = new SolidColorBrush { Color = Colors.White }, Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, Text = platform.name }); // New textblock
+			}
+
+			// Stores
+			StoreDisplayer.Children.Clear(); // Clear
+			StoreDisplayer.Children.Add(
+				new TextBlock
+				{
+					Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
+					Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
+					FontSize = 20, // Set the font size
+					FontWeight = FontWeights.Bold, // Set the font weight
+					Text = Properties.Resources.AvailableOn // Set the text
+				}
+			); // Add the textblock
+
+			if (gameInfo.Stores.Count == 0)
+			{
+				gameInfo.Stores = await Global.GetStoresAsync(gameInfo.RAWGID);
+				new GameSaver().Save(Definitions.Games); // Save
+			}
+
+			for (int i = 0; i < gameInfo.Stores.Count; i++)
+			{
+				StoreDisplayer.Children.Add(new StoreItem(gameInfo.Stores[i])); // Add
 			}
 
 			// Ratings

@@ -507,4 +507,40 @@
   <data name="Reset" xml:space="preserve">
     <value>Réinitialiser</value>
   </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Statistiques</value>
+  </data>
+  <data name="StatsTimePlayed" xml:space="preserve">
+    <value>TEMPS TOTAL JOUÉ</value>
+  </data>
+  <data name="HourShort" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="Top10MostPlayedGames" xml:space="preserve">
+    <value>TOP 10 DES JEUX LES PLUS JOUÉS</value>
+  </data>
+  <data name="StatsLastTimePlayed" xml:space="preserve">
+    <value>DERNIÈRE UTILISATION</value>
+  </data>
+  <data name="MostPlayed" xml:space="preserve">
+    <value>Les plus joués</value>
+  </data>
+  <data name="LeastPlayed" xml:space="preserve">
+    <value>Les moins joués</value>
+  </data>
+  <data name="Stores" xml:space="preserve">
+    <value>Stores</value>
+  </data>
+  <data name="AvailableOn" xml:space="preserve">
+    <value>Disponible sur</value>
+  </data>
+  <data name="Steam" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="EpicGamesStore" xml:space="preserve">
+    <value>Epic Games Store</value>
+  </data>
+  <data name="MicrosoftStore" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
 </root>

@@ -56,6 +56,10 @@ namespace Gavilya
 			Definitions.GamesListPage.LoadGames(); // Load the games
 
 			ProfileManager.LoadProfiles(); // Load profiles
+			new GameSaver().Load(); // Load the .gav file in the Definitions class
+
+			Definitions.StatGameInfoControl = new(); // New control
+			Definitions.Statistics = new(); // New page
 
 			if (Definitions.Settings.IsFirstRun) // If it is the app first run
 			{

@@ -53,6 +53,7 @@ namespace Gavilya.Windows
 		public int RAWGID = -1; // The Game RAWG Id
 		public string GameDescription = string.Empty; // The description of the game
 		public List<SDK.RAWG.Platform> Platforms = new(); // Create a new list
+		public List<SDK.RAWG.Store> Stores = new();
 		GameCard GameCard; // The game card
 		/// <summary>
 		/// Window where the user can edit a game
@@ -114,6 +115,7 @@ namespace Gavilya.Windows
 				Description = GameDescription,
 				ProcessName = GameCard.GameInfo.ProcessName,
 				Platforms = (platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : platforms, // Get platforms
+				Stores = (Stores.Count == 0) ? new List<SDK.RAWG.Store>() : Stores
 			};
 
 			foreach (GameInfo gameInfo in Definitions.Games.ToList()) // For each game

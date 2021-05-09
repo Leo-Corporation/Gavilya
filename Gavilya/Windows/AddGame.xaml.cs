@@ -51,6 +51,7 @@ namespace Gavilya.Windows
 		public string GameIconLocation = string.Empty;
 		public string GameDescription = string.Empty; // The description of the game
 		public List<SDK.RAWG.Platform> Platforms = new();
+		public List<SDK.RAWG.Store> Stores = new();
 		public int RAWGID = -1;
 		public AddGame()
 		{
@@ -163,7 +164,8 @@ namespace Gavilya.Windows
 					Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
 					LastTimePlayed = 0, // Never played
 					TotalTimePlayed = 0, // Never played
-					ProcessName = string.Empty // Default
+					ProcessName = string.Empty, // Default
+					Stores = Stores
 				}; // Create a GameInfo class
 
 				Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game

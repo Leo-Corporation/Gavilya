@@ -31,6 +31,11 @@
 				
 				<StackPanel>
 					<StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+						<Button x:Name="StatsBtn" Click="StatsBtn_Click" Padding="5" Margin="0,0,0,0" Content="&#xE9C4;" Style="{StaticResource RegularButton}" Foreground="#FFF" Background="{x:Null}" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" HorizontalAlignment="Right">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.Statistics}" Background="#000014" Foreground="White"/>
+							</Button.ToolTip>
+						</Button>
 						<Rectangle RadiusX="25" RadiusY="25" Width="50" Height="50" HorizontalAlignment="Center" Margin="10">
 							<Rectangle.Fill>
 								<ImageBrush x:Name="ProfilePicture" ImageSource="../Assets/DefaultPP.png"/>
@@ -44,7 +49,7 @@
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
 						<TextBlock d:Text="ProfileName" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="0,0,0,0" Foreground="White" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
-						<Button x:Name="EditProfileBtn" Click="EditProfileBtn_Click" Padding="5" Margin="5,0,0,0" Content="&#xe9ef;" Style="{StaticResource RegularButton}" Foreground="#FFF" Background="#FF0A0A1E" FontFamily="..\Fonts\#FluentlyIcons">
+						<Button x:Name="EditProfileBtn" Click="EditProfileBtn_Click" Padding="5" Margin="5,0,0,0" Content="&#xe9ef;" Style="{StaticResource RegularButton}" Foreground="#FFF" Background="{x:Null}" FontFamily="..\Fonts\#FluentlyIcons">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.EditProfile}" Background="#000014" Foreground="White"/>
 							</Button.ToolTip>
