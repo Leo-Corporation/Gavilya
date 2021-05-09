@@ -160,6 +160,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available on.
+        /// </summary>
+        public static string AvailableOn {
+            get {
+                return ResourceManager.GetString("AvailableOn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Avatar.
         /// </summary>
         public static string Avatar {
@@ -354,6 +363,15 @@ namespace Gavilya.Properties {
         public static string EditProfile {
             get {
                 return ResourceManager.GetString("EditProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Epic Games Store.
+        /// </summary>
+        public static string EpicGamesStore {
+            get {
+                return ResourceManager.GetString("EpicGamesStore", resourceCulture);
             }
         }
         
@@ -734,6 +752,15 @@ namespace Gavilya.Properties {
         public static string MainWindowTitle {
             get {
                 return ResourceManager.GetString("MainWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Store.
+        /// </summary>
+        public static string MicrosoftStore {
+            get {
+                return ResourceManager.GetString("MicrosoftStore", resourceCulture);
             }
         }
         
@@ -1193,6 +1220,24 @@ namespace Gavilya.Properties {
         public static string StatsTimePlayed {
             get {
                 return ResourceManager.GetString("StatsTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Steam.
+        /// </summary>
+        public static string Steam {
+            get {
+                return ResourceManager.GetString("Steam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stores.
+        /// </summary>
+        public static string Stores {
+            get {
+                return ResourceManager.GetString("Stores", resourceCulture);
             }
         }
         

@@ -544,6 +544,34 @@ namespace Gavilya.Classes
 			}
 		}
 
+		/// <summary>
+		/// Gets a game stores asynchronously.
+		/// </summary>
+		/// <param name="id">The id of the game.</param>
+		/// <returns></returns>
+		public static async Task<List<Store>> GetStoresAsync(int id)
+		{
+			try
+			{
+				var client = new RestClient(); // Create a REST Client
+				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var request = new RestRequest(Method.GET); // Create a request
+				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+				var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+				var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+				List<Store> stores = new();
+
+				game.stores.ForEach(parent => stores.Add(parent.store));
+				return stores;
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+				return new List<Store>();
+			}
+		}
+
 		public static string UserName => Environment.UserName;
 	}
 }

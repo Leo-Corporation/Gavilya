@@ -88,5 +88,10 @@ namespace Gavilya.Classes
 		/// The game available platforms.
 		/// </summary>
 		public List<SDK.RAWG.Platform> Platforms { get; set; }
+
+		/// <summary>
+		/// The stores where the game is available on.
+		/// </summary>
+		public List<SDK.RAWG.Store> Stores { get; set; }
 	}
 }

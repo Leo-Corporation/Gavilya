@@ -22,13 +22,22 @@
   <ItemGroup>
     <None Remove="Assets\addGame.png" />
     <None Remove="Assets\addGamesWelcome.png" />
+    <None Remove="Assets\AppStore.png" />
     <None Remove="Assets\check.png" />
     <None Remove="Assets\computer-rocket.png" />
     <None Remove="Assets\DefaultPP.png" />
+    <None Remove="Assets\EpicGames.png" />
+    <None Remove="Assets\GOG.png" />
+    <None Remove="Assets\GooglePlay.png" />
     <None Remove="Assets\importGames.png" />
+    <None Remove="Assets\Itchio.png" />
+    <None Remove="Assets\Nintendo.png" />
+    <None Remove="Assets\PlayStation.png" />
     <None Remove="Assets\recentGames.png" />
     <None Remove="Assets\searchRAWG.png" />
     <None Remove="Assets\selectGames.png" />
+    <None Remove="Assets\Steam.png" />
+    <None Remove="Assets\Xbox.png" />
     <None Remove="Fonts\FluentlyIcons.ttf" />
     <None Remove="Fonts\Montserrat-Bold.ttf" />
     <None Remove="Fonts\Montserrat-Regular.ttf" />
@@ -55,6 +64,9 @@
     <Resource Include="Assets\addGamesWelcome.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\AppStore.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\check.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -64,7 +76,25 @@
     <Resource Include="Assets\DefaultPP.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\EpicGames.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\GOG.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\GooglePlay.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\importGames.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Itchio.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Nintendo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\PlayStation.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\recentGames.png">
@@ -74,6 +104,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\selectGames.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Steam.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Xbox.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Fonts\FluentlyIcons.ttf">
