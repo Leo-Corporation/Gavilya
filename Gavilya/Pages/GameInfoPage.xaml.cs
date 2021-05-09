@@ -165,7 +165,7 @@ namespace Gavilya.Pages
 				gameInfo.Stores = await Global.GetStoresAsync(gameInfo.RAWGID);
 				new GameSaver().Save(Definitions.Games); // Save
 			}
-			
+
 			for (int i = 0; i < gameInfo.Stores.Count; i++)
 			{
 				StoreDisplayer.Children.Add(new StoreItem(gameInfo.Stores[i])); // Add

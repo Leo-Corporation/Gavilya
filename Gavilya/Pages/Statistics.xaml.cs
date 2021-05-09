@@ -45,7 +45,7 @@ namespace Gavilya.Pages
 	/// </summary>
 	public partial class Statistics : Page
 	{
-		
+
 		public Statistics()
 		{
 			InitializeComponent();
@@ -89,7 +89,7 @@ namespace Gavilya.Pages
 			SortTxt.Text = isDescending ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed; // Set text
 
 			// Graph
-			GraphDisplayer.Content = new StatGraph(mostPlayed);			
+			GraphDisplayer.Content = new StatGraph(mostPlayed);
 		}
 
 		internal void UnCheckAllStatItems()
