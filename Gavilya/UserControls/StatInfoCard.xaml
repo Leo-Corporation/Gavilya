@@ -7,15 +7,17 @@
 			 FontFamily="..\Fonts\#Montserrat"
              mc:Ignorable="d" Foreground="#FFF"
              Height="50" d:DesignWidth="400">
-	<Border CornerRadius="5">
+	<Border CornerRadius="5" Cursor="Hand">
 		<Grid Margin="5">
 			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition/>
 				<ColumnDefinition Width="Auto"/>
 			</Grid.ColumnDefinitions>
 
-			<TextBlock Grid.Column="0" x:Name="GameNameTxt" d:Text="GameNameHere" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="0,0,50,0"/>
-			<TextBlock Grid.Column="1" x:Name="GameTimeTxt" d:Text="72,4h" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="0,0,5,0"/>
+			<TextBlock x:Name="GamePosTxt" d:Text="#1" FontSize="16" FontWeight="Bold" Foreground="#FF64648C" VerticalAlignment="Center" Margin="0,0,10,0"/>
+			<TextBlock Grid.Column="1" x:Name="GameNameTxt" d:Text="GameNameHere" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="0,0,50,0"/>
+			<TextBlock Grid.Column="2" x:Name="GameTimeTxt" d:Text="72,4h" VerticalAlignment="Center" FontWeight="Bold" FontSize="16" Margin="0,0,5,0"/>
 		</Grid>
 	</Border>
 </UserControl>

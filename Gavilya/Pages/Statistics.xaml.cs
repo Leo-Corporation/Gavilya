@@ -70,7 +70,7 @@ namespace Gavilya.Pages
 			{
 				if (c < 10)
 				{
-					GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key)); // Add item
+					GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c + 1)); // Add item
 					mostPlayed.Add(keyValuePair.Key); // Add to the list
 					c++; // Increment counter
 				}

@@ -45,20 +45,21 @@ namespace Gavilya.UserControls
 	public partial class StatInfoCard : UserControl
 	{
 		GameInfo GameInfo { get; init; }
-		public StatInfoCard(GameInfo gameInfo)
+		public StatInfoCard(GameInfo gameInfo, int pos)
 		{
 			InitializeComponent();
 			GameInfo = gameInfo; // Set
 
-			InitUI(); // Load the UI
+			InitUI(pos); // Load the UI
 		}
 
-		private void InitUI()
+		private void InitUI(int pos)
 		{
 			// Calc
 			double time = (double)GameInfo.TotalTimePlayed / 3600; // Convert seconds to hours
 
 			// Text
+			GamePosTxt.Text = $"#{pos}"; // Set text
 			GameNameTxt.Text = GameInfo.Name; // Set text
 			GameTimeTxt.Text = $"{string.Format("{0:0.#}", time)}{Properties.Resources.HourShort}"; // Set text
 		}
