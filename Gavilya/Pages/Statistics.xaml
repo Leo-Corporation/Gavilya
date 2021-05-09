@@ -56,11 +56,13 @@
 						</ScrollViewer>
 					</Grid>
 
-					
 
-					<Grid x:Name="GameInfoDisplayer" Grid.Column="1" Grid.RowSpan="2">
-						<uc:StatGameInfoControl Width="{Binding ActualWidth, ElementName=GameInfoDisplayer, Mode=OneWay}" Margin="10,0,0,0"></uc:StatGameInfoControl>
-					</Grid>
+
+					<ScrollViewer Grid.Column="1" Grid.RowSpan="2" Template="{DynamicResource ScrollViewerTemplate1}" HorizontalScrollBarVisibility="Disabled">
+						<Grid x:Name="GameInfoDisplayer" Grid.Column="1" Grid.RowSpan="2">
+							<uc:StatGameInfoControl Width="{Binding ActualWidth, ElementName=GameInfoDisplayer, Mode=OneWay}" Margin="10,0,0,0"></uc:StatGameInfoControl>
+						</Grid>
+					</ScrollViewer>
 
 				</Grid>
 			</Grid>
