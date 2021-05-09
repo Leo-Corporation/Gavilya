@@ -65,7 +65,7 @@ namespace Gavilya.UserControls
 				Rectangle rectangle = new()
 				{
 					Margin = new(10, 0, 10, 0),
-					Fill = new SolidColorBrush { Color = Color.FromRgb(50, 50, 90) },
+					Fill = new SolidColorBrush { Color = Color.FromRgb(100, 100, 140) },
 					Height = h,
 					Width = 50,
 					RadiusX = 5,
