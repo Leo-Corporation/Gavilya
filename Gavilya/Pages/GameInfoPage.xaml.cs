@@ -75,107 +75,114 @@ namespace Gavilya.Pages
 		/// <param name="parent">The parent element.</param>
 		public async void InitializeUI(GameInfo gameInfo, UIElement parent = null)
 		{
-			// Var
-			gameLocation = gameInfo.FileLocation;
-			GameInfo = gameInfo; // Define the game info
-			parentUIElement = parent; // Define the parent element
-			timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
-
-			// Text
-			PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
-			GameNameTxt.Text = gameInfo.Name; // Set the name of the game
-			FavBtn.Content = gameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
-
-
-			if (gameInfo.TotalTimePlayed != 0) // If the game was played
+			try
 			{
-				DisplayTotalTimePlayed(gameInfo.TotalTimePlayed); // Set the text
-			}
-			else
-			{
-				TotalTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
-			}
+				// Var
+				gameLocation = gameInfo.FileLocation;
+				GameInfo = gameInfo; // Define the game info
+				parentUIElement = parent; // Define the parent element
+				timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
 
-			if (gameInfo.LastTimePlayed != 0) // If the game was played
-			{
-				DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
-				LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
-			}
-			else
-			{
-				LastTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
-			}
+				// Text
+				PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
+				GameNameTxt.Text = gameInfo.Name; // Set the name of the game
+				FavBtn.Content = gameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
 
-			DescriptionTxt.Text = gameInfo.Description;
 
-			// Icon
-			if (gameInfo.IconFileLocation != string.Empty) // If a custom image is used
-			{
-				var bitmap = new BitmapImage();
-				var stream = File.OpenRead(gameInfo.IconFileLocation);
-
-				bitmap.BeginInit();
-				bitmap.CacheOption = BitmapCacheOption.OnLoad;
-				bitmap.StreamSource = stream;
-				bitmap.EndInit();
-				stream.Close();
-				stream.Dispose();
-				bitmap.Freeze();
-				BackgroundImage.ImageSource = bitmap;
-			}
-			else
-			{
-				System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
-				BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
-			}
-
-			// Platforms
-			PlatformDisplayer.Children.Clear();
-			PlatformDisplayer.Children.Add(
-				new TextBlock
+				if (gameInfo.TotalTimePlayed != 0) // If the game was played
 				{
-					Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
-					Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
-					FontSize = 20, // Set the font size
-					FontWeight = FontWeights.Bold, // Set the font weight
-					Text = Properties.Resources.Platforms // Set the text
+					DisplayTotalTimePlayed(gameInfo.TotalTimePlayed); // Set the text
 				}
-			); // Add the textblock
-
-			foreach (SDK.RAWG.Platform platform in gameInfo.Platforms)
-			{
-				PlatformDisplayer.Children.Add(new TextBlock { Foreground = new SolidColorBrush { Color = Colors.White }, Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, Text = platform.name }); // New textblock
-			}
-
-			// Stores
-			StoreDisplayer.Children.Clear(); // Clear
-			StoreDisplayer.Children.Add(
-				new TextBlock
+				else
 				{
-					Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
-					Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
-					FontSize = 20, // Set the font size
-					FontWeight = FontWeights.Bold, // Set the font weight
-					Text = Properties.Resources.AvailableOn // Set the text
+					TotalTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
 				}
-			); // Add the textblock
 
-			if (gameInfo.Stores.Count == 0)
-			{
-				gameInfo.Stores = await Global.GetStoresAsync(gameInfo.RAWGID);
-				new GameSaver().Save(Definitions.Games); // Save
+				if (gameInfo.LastTimePlayed != 0) // If the game was played
+				{
+					DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
+					LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+				}
+				else
+				{
+					LastTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
+				}
+
+				DescriptionTxt.Text = gameInfo.Description;
+
+				// Icon
+				if (gameInfo.IconFileLocation != string.Empty) // If a custom image is used
+				{
+					var bitmap = new BitmapImage();
+					var stream = File.OpenRead(gameInfo.IconFileLocation);
+
+					bitmap.BeginInit();
+					bitmap.CacheOption = BitmapCacheOption.OnLoad;
+					bitmap.StreamSource = stream;
+					bitmap.EndInit();
+					stream.Close();
+					stream.Dispose();
+					bitmap.Freeze();
+					BackgroundImage.ImageSource = bitmap;
+				}
+				else
+				{
+					System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
+					BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+				}
+
+				// Platforms
+				PlatformDisplayer.Children.Clear();
+				PlatformDisplayer.Children.Add(
+					new TextBlock
+					{
+						Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
+						Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
+						FontSize = 20, // Set the font size
+						FontWeight = FontWeights.Bold, // Set the font weight
+						Text = Properties.Resources.Platforms // Set the text
+					}
+				); // Add the textblock
+
+				foreach (SDK.RAWG.Platform platform in gameInfo.Platforms)
+				{
+					PlatformDisplayer.Children.Add(new TextBlock { Foreground = new SolidColorBrush { Color = Colors.White }, Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, Text = platform.name }); // New textblock
+				}
+
+				// Stores
+				StoreDisplayer.Children.Clear(); // Clear
+				StoreDisplayer.Children.Add(
+					new TextBlock
+					{
+						Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
+						Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
+						FontSize = 20, // Set the font size
+						FontWeight = FontWeights.Bold, // Set the font weight
+						Text = Properties.Resources.AvailableOn // Set the text
+					}
+				); // Add the textblock
+
+				if (gameInfo.Stores.Count == 0)
+				{
+					gameInfo.Stores = await Global.GetStoresAsync(gameInfo.RAWGID);
+					new GameSaver().Save(Definitions.Games); // Save
+				}
+
+				for (int i = 0; i < gameInfo.Stores.Count; i++)
+				{
+					StoreDisplayer.Children.Add(new StoreItem(gameInfo.Stores[i])); // Add
+				}
+
+				// Ratings
+				LoadRatings();
+
+				// Achievments
+				LoadAchievements();
 			}
-
-			for (int i = 0; i < gameInfo.Stores.Count; i++)
+			catch (Exception)
 			{
-				StoreDisplayer.Children.Add(new StoreItem(gameInfo.Stores[i])); // Add
+
 			}
-
-			// Ratings
-			LoadRatings();
-
-			// Achievments
-			LoadAchievements();
 		}
 
 		bool gameStarted = false;

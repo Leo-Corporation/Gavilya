@@ -52,44 +52,48 @@ namespace Gavilya.Pages
 			InitUI();
 		}
 
-		private void InitUI()
+		internal void InitUI()
 		{
-			// Controls
-			Definitions.StatGameInfoControl = (StatGameInfoControl)GameInfoDisplayer.Children[0]; // Set content
-
-			// Values
-			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
-			List<GameInfo> mostPlayed = new(); // Create list
-
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			if (Definitions.Games.Count > 0)
 			{
-				gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
-			}
+				// Controls
+				Definitions.StatGameInfoControl = (StatGameInfoControl)GameInfoDisplayer.Children[0]; // Set content
+				GamesInfoDisplayer.Children.Clear();
 
-			var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort
+				// Values
+				Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
+				List<GameInfo> mostPlayed = new(); // Create list
 
-			// Top 10 most played games
-			int c = 0; // Counter
-			foreach (KeyValuePair<GameInfo, int> keyValuePair in items)
-			{
-				if (c < 10)
+				for (int i = 0; i < Definitions.Games.Count; i++)
 				{
-					GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c + 1)); // Add item
-					mostPlayed.Add(keyValuePair.Key); // Add to the list
-					c++; // Increment counter
+					gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
 				}
-				else
+
+				var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort
+
+				// Top 10 most played games
+				int c = 0; // Counter
+				foreach (KeyValuePair<GameInfo, int> keyValuePair in items)
 				{
-					break;
+					if (c < 10)
+					{
+						GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c + 1)); // Add item
+						mostPlayed.Add(keyValuePair.Key); // Add to the list
+						c++; // Increment counter
+					}
+					else
+					{
+						break;
+					}
 				}
+
+				// Text
+				TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
+				SortTxt.Text = isDescending ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed; // Set text
+
+				// Graph
+				GraphDisplayer.Content = new StatGraph(mostPlayed);
 			}
-
-			// Text
-			TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
-			SortTxt.Text = isDescending ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed; // Set text
-
-			// Graph
-			GraphDisplayer.Content = new StatGraph(mostPlayed);
 		}
 
 		internal void UnCheckAllStatItems()
@@ -113,54 +117,57 @@ namespace Gavilya.Pages
 		bool isDescending = true;
 		private void SortBtn_Click(object sender, RoutedEventArgs e)
 		{
-			GamesInfoDisplayer.Children.Clear(); // Clear
-			isDescending = !isDescending; // Set
-			SortTxt.Text = isDescending ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed; // Set text
-
-			// Values
-			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
-			List<GameInfo> mostPlayed = new(); // Create list
-
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			if (Definitions.Games.Count > 0)
 			{
-				gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
-			}
+				GamesInfoDisplayer.Children.Clear(); // Clear
+				isDescending = !isDescending; // Set
+				SortTxt.Text = isDescending ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed; // Set text
 
-			var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort
-			var items1 = from pair in gameTimes orderby pair.Value ascending select pair; // Sort
+				// Values
+				Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
+				List<GameInfo> mostPlayed = new(); // Create list
 
-			// Top 10 most played games
-			if (isDescending)
-			{
-				int c = 0; // Counter
-				foreach (KeyValuePair<GameInfo, int> keyValuePair in items)
+				for (int i = 0; i < Definitions.Games.Count; i++)
 				{
-					if (c < 10)
+					gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
+				}
+
+				var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort
+				var items1 = from pair in gameTimes orderby pair.Value ascending select pair; // Sort
+
+				// Top 10 most played games
+				if (isDescending)
+				{
+					int c = 0; // Counter
+					foreach (KeyValuePair<GameInfo, int> keyValuePair in items)
 					{
-						GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c + 1)); // Add item
-						mostPlayed.Add(keyValuePair.Key); // Add to the list
-						c++; // Increment counter
-					}
-					else
-					{
-						break;
+						if (c < 10)
+						{
+							GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c + 1)); // Add item
+							mostPlayed.Add(keyValuePair.Key); // Add to the list
+							c++; // Increment counter
+						}
+						else
+						{
+							break;
+						}
 					}
 				}
-			}
-			else
-			{
-				int c = gameTimes.Count; // Counter
-				foreach (KeyValuePair<GameInfo, int> keyValuePair in items1)
+				else
 				{
-					if (c > 0 && c <= gameTimes.Count + (10 - gameTimes.Count))
+					int c = gameTimes.Count; // Counter
+					foreach (KeyValuePair<GameInfo, int> keyValuePair in items1)
 					{
-						GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c)); // Add item
-						mostPlayed.Add(keyValuePair.Key); // Add to the list
-						c--; // Decrement counter
-					}
-					else
-					{
-						c--; // Decrement counter
+						if (c > 0 && c <= gameTimes.Count + (10 - gameTimes.Count))
+						{
+							GamesInfoDisplayer.Children.Add(new StatInfoCard(keyValuePair.Key, c)); // Add item
+							mostPlayed.Add(keyValuePair.Key); // Add to the list
+							c--; // Decrement counter
+						}
+						else
+						{
+							c--; // Decrement counter
+						}
 					}
 				}
 			}

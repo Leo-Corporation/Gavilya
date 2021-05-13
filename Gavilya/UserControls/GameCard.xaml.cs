@@ -217,8 +217,15 @@ namespace Gavilya.UserControls
 
 		private void GameCardBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
-			Definitions.GameInfoPage.InitializeUI(GameInfo, this);
-			Definitions.MainWindow.PageContent.Content = Definitions.GameInfoPage;
+			try
+			{
+				Definitions.GameInfoPage.InitializeUI(GameInfo, this);
+				Definitions.MainWindow.PageContent.Content = Definitions.GameInfoPage;
+			}
+			catch (Exception)
+			{
+
+			}
 		}
 	}
 }
