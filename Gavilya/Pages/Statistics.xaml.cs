@@ -92,7 +92,7 @@ namespace Gavilya.Pages
 				SortTxt.Text = isDescending ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed; // Set text
 
 				// Graph
-				GraphDisplayer.Content = new StatGraph(mostPlayed); 
+				GraphDisplayer.Content = new StatGraph(mostPlayed);
 			}
 		}
 
@@ -169,7 +169,7 @@ namespace Gavilya.Pages
 							c--; // Decrement counter
 						}
 					}
-				} 
+				}
 			}
 		}
 	}

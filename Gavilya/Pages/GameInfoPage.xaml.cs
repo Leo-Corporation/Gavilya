@@ -137,11 +137,11 @@ namespace Gavilya.Pages
 					new TextBlock
 					{
 						Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
-					Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
-					FontSize = 20, // Set the font size
-					FontWeight = FontWeights.Bold, // Set the font weight
-					Text = Properties.Resources.Platforms // Set the text
-				}
+						Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
+						FontSize = 20, // Set the font size
+						FontWeight = FontWeights.Bold, // Set the font weight
+						Text = Properties.Resources.Platforms // Set the text
+					}
 				); // Add the textblock
 
 				foreach (SDK.RAWG.Platform platform in gameInfo.Platforms)
@@ -155,11 +155,11 @@ namespace Gavilya.Pages
 					new TextBlock
 					{
 						Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
-					Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
-					FontSize = 20, // Set the font size
-					FontWeight = FontWeights.Bold, // Set the font weight
-					Text = Properties.Resources.AvailableOn // Set the text
-				}
+						Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
+						FontSize = 20, // Set the font size
+						FontWeight = FontWeights.Bold, // Set the font weight
+						Text = Properties.Resources.AvailableOn // Set the text
+					}
 				); // Add the textblock
 
 				if (gameInfo.Stores.Count == 0)
@@ -181,7 +181,7 @@ namespace Gavilya.Pages
 			}
 			catch (Exception)
 			{
-				
+
 			}
 		}
 
