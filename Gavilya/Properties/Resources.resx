@@ -550,4 +550,7 @@
   <data name="MicrosoftStore" xml:space="preserve">
     <value>Microsoft Store</value>
   </data>
+  <data name="NoGames" xml:space="preserve">
+    <value>There is no informations to display.</value>
+  </data>
 </root>

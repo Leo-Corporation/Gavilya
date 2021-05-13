@@ -122,7 +122,15 @@ namespace Gavilya.Windows
 
 		private void StatsBtn_Click(object sender, RoutedEventArgs e)
 		{
-			Definitions.MainWindow.PageContent.Navigate(Definitions.Statistics); // Navigate
+			if (Definitions.Games.Count > 0)
+			{
+				Definitions.Statistics.InitUI();
+				Definitions.MainWindow.PageContent.Navigate(Definitions.Statistics); // Navigate 
+			}
+			else
+			{
+				MessageBox.Show(Properties.Resources.NoGames, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
 		}
 	}
 }

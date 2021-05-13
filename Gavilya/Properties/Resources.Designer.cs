@@ -846,6 +846,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no informations to display..
+        /// </summary>
+        public static string NoGames {
+            get {
+                return ResourceManager.GetString("NoGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No profiles have been found..
         /// </summary>
         public static string NoProfilesFound {

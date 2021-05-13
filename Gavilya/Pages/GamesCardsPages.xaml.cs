@@ -125,6 +125,7 @@ namespace Gavilya.Pages
 							ProcessName = "", // Set the ProcessName: "" => Default
 							Description = (id != -1) ? await Global.GetGameDescriptionAsync(id) : "", // Get the description
 							Platforms = (id != -1) ? await Global.GetGamePlatformsAsync(id) : new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform }, // Get platforms
+							Stores = (id != -1) ? await Global.GetStoresAsync(id) : new(), // Get
 							Version = fileVersionInfo.FileVersion // Get the version
 						};
 						Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
