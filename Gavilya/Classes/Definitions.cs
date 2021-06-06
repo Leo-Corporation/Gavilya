@@ -81,7 +81,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Version of the software (Gavilya).
 		/// </summary>
-		public static string Version => "1.5.1.2105";
+		public static string Version => "1.6.0.2106-pre1";
 
 		/// <summary>
 		/// True if the menu is shown.
@@ -100,7 +100,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Define if the current build is a preversion of Gavilya, not made for production nor Pre-Release.
 		/// </summary>
-		public static bool IsBeta => true;
+		public static bool IsBeta => false;
 
 
 		/// <summary>
