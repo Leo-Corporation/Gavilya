@@ -100,7 +100,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Define if the current build is a preversion of Gavilya, not made for production nor Pre-Release.
 		/// </summary>
-		public static bool IsBeta => false;
+		public static bool IsBeta => true;
 
 
 		/// <summary>
