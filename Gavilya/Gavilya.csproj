@@ -22,6 +22,8 @@
   <ItemGroup>
     <None Remove="Assets\addGame.png" />
     <None Remove="Assets\addGamesWelcome.png" />
+    <None Remove="Assets\Android.png" />
+    <None Remove="Assets\Apple.png" />
     <None Remove="Assets\AppStore.png" />
     <None Remove="Assets\check.png" />
     <None Remove="Assets\computer-rocket.png" />
@@ -31,7 +33,9 @@
     <None Remove="Assets\GooglePlay.png" />
     <None Remove="Assets\importGames.png" />
     <None Remove="Assets\Itchio.png" />
+    <None Remove="Assets\Linux.png" />
     <None Remove="Assets\Nintendo.png" />
+    <None Remove="Assets\PC.png" />
     <None Remove="Assets\PlayStation.png" />
     <None Remove="Assets\recentGames.png" />
     <None Remove="Assets\searchRAWG.png" />
@@ -64,6 +68,12 @@
     <Resource Include="Assets\addGamesWelcome.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Android.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Apple.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\AppStore.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -91,7 +101,13 @@
     <Resource Include="Assets\Itchio.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Linux.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Nintendo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\PC.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\PlayStation.png">
