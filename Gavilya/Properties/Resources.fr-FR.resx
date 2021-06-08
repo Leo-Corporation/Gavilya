@@ -546,4 +546,25 @@
   <data name="NoGames" xml:space="preserve">
     <value>Il n'y a pas d'informations disponibles.</value>
   </data>
+  <data name="AutoSave" xml:space="preserve">
+    <value>Sauvegarde Automatique</value>
+  </data>
+  <data name="SaveLocation" xml:space="preserve">
+    <value>Emplacement du fichier de sauvegarde</value>
+  </data>
+  <data name="MakeBackup" xml:space="preserve">
+    <value>Faire une sauvegarde maintenant</value>
+  </data>
+  <data name="AutoSaveOnDate" xml:space="preserve">
+    <value>Sauvegarder automatiquement le</value>
+  </data>
+  <data name="MakeAutoSaves" xml:space="preserve">
+    <value>Faire des sauvegardes automatiques</value>
+  </data>
+  <data name="SelectADirectory" xml:space="preserve">
+    <value>Sélectionnez un emplacement</value>
+  </data>
+  <data name="OfMonth" xml:space="preserve">
+    <value>du mois.</value>
+  </data>
 </root>

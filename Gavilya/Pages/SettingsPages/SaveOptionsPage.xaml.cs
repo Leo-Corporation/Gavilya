@@ -76,5 +76,25 @@ namespace Gavilya.Pages.SettingsPages
 				new GameSaver().Export(Definitions.Games, fileLocation); // Export the games
 			}
 		}
+
+		private void MakeAutoSavesChk_Checked(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void MakeAutoSavesChk_Unchecked(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void SaveNowBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void Browse_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

@@ -160,6 +160,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Automatic backup.
+        /// </summary>
+        public static string AutoSave {
+            get {
+                return ResourceManager.GetString("AutoSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto save on the.
+        /// </summary>
+        public static string AutoSaveOnDate {
+            get {
+                return ResourceManager.GetString("AutoSaveOnDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available on.
         /// </summary>
         public static string AvailableOn {
@@ -756,6 +774,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Make autosaves.
+        /// </summary>
+        public static string MakeAutoSaves {
+            get {
+                return ResourceManager.GetString("MakeAutoSaves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Make backup now.
+        /// </summary>
+        public static string MakeBackup {
+            get {
+                return ResourceManager.GetString("MakeBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Microsoft Store.
         /// </summary>
         public static string MicrosoftStore {
@@ -869,6 +905,15 @@ namespace Gavilya.Properties {
         public static string NoRatingsAv {
             get {
                 return ResourceManager.GetString("NoRatingsAv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to of the month..
+        /// </summary>
+        public static string OfMonth {
+            get {
+                return ResourceManager.GetString("OfMonth", resourceCulture);
             }
         }
         
@@ -1080,6 +1125,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Save file location.
+        /// </summary>
+        public static string SaveLocation {
+            get {
+                return ResourceManager.GetString("SaveLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save Options.
         /// </summary>
         public static string SaveOptions {
@@ -1121,6 +1175,15 @@ namespace Gavilya.Properties {
         public static string SeeOnRAWG {
             get {
                 return ResourceManager.GetString("SeeOnRAWG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a directory.
+        /// </summary>
+        public static string SelectADirectory {
+            get {
+                return ResourceManager.GetString("SelectADirectory", resourceCulture);
             }
         }
         
