@@ -22,9 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using LeoCorpLibrary;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,6 +48,48 @@ namespace Gavilya.Pages.SettingsPages
 		public SaveOptionsPage()
 		{
 			InitializeComponent();
+			InitUI();
+		}
+
+		private void InitUI()
+		{
+			// Load auto save settings
+			if (Definitions.Settings.MakeAutoSave is null)
+			{
+				Definitions.Settings.MakeAutoSave = true; // Set value
+			}
+
+			if (Definitions.Settings.AutoSaveDay is null)
+			{
+				Definitions.Settings.AutoSaveDay = 1; // Set value
+			}
+
+			if (Definitions.Settings.SavePath is null)
+			{
+				Definitions.Settings.SavePath = $@"{Env.AppDataPath}\Gavilya\Backups"; // Set value
+			}
+
+			SettingsSaver.Save(); // Save changes
+
+			// Combobox
+			SaveTime.Items.Clear(); // Clear
+			for (int i = 1; i <= 31; i++)
+			{
+				SaveTime.Items.Add(i); // Add item
+			}
+
+			MakeAutoSavesChk.IsChecked = Definitions.Settings.MakeAutoSave.Value; // Check/Uncheck
+
+			PathTxt.Text = Definitions.Settings.SavePath is null ? Properties.Resources.SelectADirectory : Definitions.Settings.SavePath; // Set
+			HandleCheckbox();
+		}
+
+		private void HandleCheckbox()
+		{
+			for (int i = 0; i < AutoSaveSection.Children.Count; i++)
+			{
+				AutoSaveSection.Children[i].IsEnabled = MakeAutoSavesChk.IsChecked.Value;
+			}
 		}
 
 		private void ImportButton_Click(object sender, RoutedEventArgs e)
@@ -79,22 +123,47 @@ namespace Gavilya.Pages.SettingsPages
 
 		private void MakeAutoSavesChk_Checked(object sender, RoutedEventArgs e)
 		{
-
+			HandleCheckbox(); // Handle
+			Definitions.Settings.MakeAutoSave = MakeAutoSavesChk.IsChecked.Value; // Set
+			SettingsSaver.Save(); // Save changes
 		}
 
 		private void MakeAutoSavesChk_Unchecked(object sender, RoutedEventArgs e)
 		{
-
+			HandleCheckbox(); // Handle
+			Definitions.Settings.MakeAutoSave = MakeAutoSavesChk.IsChecked.Value; // Set
+			SettingsSaver.Save(); // Save changes
 		}
 
 		private void SaveNowBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			if (Definitions.Games.Count > 0)
+			{
+				string fL = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
+				new GameSaver().Export(Definitions.Games, fL); // Export 
+			}
 		}
 
 		private void Browse_Click(object sender, RoutedEventArgs e)
 		{
+			SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
+			saveFileDialog.FileName = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav"; // File name
+			saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
+			saveFileDialog.Title = Properties.Resources.SaveLocation; // Title
 
+			if (saveFileDialog.ShowDialog() ?? true)
+			{
+				string fileLocation = System.IO.Path.GetDirectoryName(saveFileDialog.FileName); // Location of the file
+				Definitions.Settings.SavePath = fileLocation; // Set
+				SettingsSaver.Save();
+				InitUI();
+			}
+		}
+
+		private void SaveTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			Definitions.Settings.AutoSaveDay = (int)SaveTime.SelectedItem; // Set
+			SettingsSaver.Save();
 		}
 	}
 }

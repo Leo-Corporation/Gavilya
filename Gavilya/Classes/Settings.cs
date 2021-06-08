@@ -59,6 +59,21 @@ namespace Gavilya.Classes
 		/// The current profile index in <see cref="Definitions.Profiles"/>.
 		/// </summary>
 		public int CurrentProfileIndex { get; set; }
+
+		/// <summary>
+		/// True if Gavilya should make an autosave.
+		/// </summary>
+		public bool? MakeAutoSave { get; set; }
+
+		/// <summary>
+		/// The day when Gavilya should make an auto save.
+		/// </summary>
+		public int? AutoSaveDay { get; set; }
+
+		/// <summary>
+		/// The save file path.
+		/// </summary>
+		public string SavePath { get; set; }
 	}
 
 	public static class SettingsSaver
@@ -80,7 +95,17 @@ namespace Gavilya.Classes
 			}
 			else
 			{
-				Definitions.Settings = new Settings { Language = "_default", IsFirstRun = true, IsMaximized = false, PageId = 0, CurrentProfileIndex = 0 };
+				Definitions.Settings = new Settings
+				{
+					Language = "_default",
+					IsFirstRun = true,
+					IsMaximized = false,
+					PageId = 0,
+					CurrentProfileIndex = 0,
+					MakeAutoSave = true,
+					AutoSaveDay = 1,
+					SavePath = $@"{Env.AppDataPath}\Gavilya\Backups"
+				};
 				Save();
 			}
 		}
