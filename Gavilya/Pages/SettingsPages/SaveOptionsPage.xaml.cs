@@ -78,6 +78,8 @@ namespace Gavilya.Pages.SettingsPages
 				SaveTime.Items.Add(i); // Add item
 			}
 
+			SaveTime.SelectedIndex = Definitions.Settings.AutoSaveDay.Value - 1; // Set
+
 			MakeAutoSavesChk.IsChecked = Definitions.Settings.MakeAutoSave.Value; // Check/Uncheck
 
 			PathTxt.Text = Definitions.Settings.SavePath is null ? Properties.Resources.SelectADirectory : Definitions.Settings.SavePath; // Set
