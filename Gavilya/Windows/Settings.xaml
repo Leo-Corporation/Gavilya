@@ -212,9 +212,11 @@
                     </Button>
                 </StackPanel>
 
-                <Frame NavigationUIVisibility="Hidden" Name="OptionsDisplayer" Grid.Column="1"/>
+				<ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerTemplate1}">
+					<Frame NavigationUIVisibility="Hidden" Name="OptionsDisplayer" Grid.Column="1"/>
+				</ScrollViewer>
 
-            </Grid>
+			</Grid>
         </Grid>
     </Border>
 </Window>
