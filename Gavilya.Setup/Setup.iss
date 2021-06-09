@@ -2,10 +2,10 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Gavilya"
-#define MyAppVersion "1.5.1.2105"
-#define MyAppFullVersion "1.5.1.2105"
+#define MyAppVersion "1.6.0.2106"
+#define MyAppFullVersion "1.6.0.2106"
 #define MyAppPublisher "Léo Corporation"
-#define MyAppURL "https://www.leocorp.fr/"
+#define MyAppURL "https://leocorporation.dev/"
 #define MyAppExeName "Gavilya.exe"
 
 [Setup]

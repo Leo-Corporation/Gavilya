@@ -543,4 +543,25 @@
   <data name="NoGames" xml:space="preserve">
     <value>There is no informations to display.</value>
   </data>
+  <data name="AutoSave" xml:space="preserve">
+    <value>Automatic backup</value>
+  </data>
+  <data name="SaveLocation" xml:space="preserve">
+    <value>Save file location</value>
+  </data>
+  <data name="MakeBackup" xml:space="preserve">
+    <value>Make backup now</value>
+  </data>
+  <data name="AutoSaveOnDate" xml:space="preserve">
+    <value>Auto save on the</value>
+  </data>
+  <data name="MakeAutoSaves" xml:space="preserve">
+    <value>Make autosaves</value>
+  </data>
+  <data name="SelectADirectory" xml:space="preserve">
+    <value>Select a directory</value>
+  </data>
+  <data name="OfMonth" xml:space="preserve">
+    <value>of the month.</value>
+  </data>
 </root>

@@ -573,5 +573,43 @@ namespace Gavilya.Classes
 		}
 
 		public static string UserName => Environment.UserName;
+
+		public static void AutoSave()
+		{
+			try
+			{
+				bool autoSaveAlreadyDone = false; // True if the save was already done
+				int dayOfSave = (Definitions.Settings.AutoSaveDay > DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)) ? DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) : Definitions.Settings.AutoSaveDay.Value;
+
+				foreach (string file in Directory.GetFiles(Definitions.Settings.SavePath))
+				{
+					var dC = File.GetCreationTime(file);
+					if (dC.Year == DateTime.Now.Year && dC.Month == DateTime.Now.Month && dC.Day == dayOfSave)
+					{
+						autoSaveAlreadyDone = true;
+					}
+					else
+					{
+						autoSaveAlreadyDone = false;
+					}
+				}
+
+				if (!autoSaveAlreadyDone)
+				{
+					if (dayOfSave == DateTime.Now.Day)
+					{
+						if (Definitions.Games.Count > 0)
+						{
+							string fL = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
+							new GameSaver().Export(Definitions.Games, fL); // Export 
+						}
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, Properties.Resources.ErrorOccurred, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
 	}
 }

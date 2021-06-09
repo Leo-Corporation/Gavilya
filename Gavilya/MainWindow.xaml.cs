@@ -80,6 +80,7 @@ namespace Gavilya
 
 			RefreshNavigationsButton(); // Refresh the navigations button state
 			LoadProfilesUI(); // Load the profile picture
+			Global.AutoSave(); // Run autosave
 		}
 
 		/// <summary>

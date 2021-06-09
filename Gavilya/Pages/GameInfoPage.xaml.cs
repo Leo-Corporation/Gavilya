@@ -133,7 +133,7 @@ namespace Gavilya.Pages
 
 				// Platforms
 				PlatformDisplayer.Children.Clear();
-				PlatformDisplayer.Children.Add(
+				/*PlatformDisplayer.Children.Add(
 					new TextBlock
 					{
 						Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
@@ -142,11 +142,11 @@ namespace Gavilya.Pages
 						FontWeight = FontWeights.Bold, // Set the font weight
 						Text = Properties.Resources.Platforms // Set the text
 					}
-				); // Add the textblock
+				); // Add the textblock*/
 
 				foreach (SDK.RAWG.Platform platform in gameInfo.Platforms)
 				{
-					PlatformDisplayer.Children.Add(new TextBlock { Foreground = new SolidColorBrush { Color = Colors.White }, Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, Text = platform.name }); // New textblock
+					PlatformDisplayer.Children.Add(new PlatformItem(platform)); // New textblock
 				}
 
 				// Stores

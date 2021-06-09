@@ -5,13 +5,13 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Gavilya.ico</ApplicationIcon>
-    <AssemblyVersion>1.5.1.2105</AssemblyVersion>
-    <FileVersion>1.5.0.2105</FileVersion>
+    <AssemblyVersion>1.6.0.2106</AssemblyVersion>
+    <FileVersion>1.6.0.2106</FileVersion>
     <RepositoryType>git</RepositoryType>
     <Authors>Léo Corporation</Authors>
     <Company>Léo Corporation</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.5.1.2105</Version>
+    <Version>1.6.0.2106</Version>
     <Description>Where all your games are gathered.</Description>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
@@ -22,6 +22,8 @@
   <ItemGroup>
     <None Remove="Assets\addGame.png" />
     <None Remove="Assets\addGamesWelcome.png" />
+    <None Remove="Assets\Android.png" />
+    <None Remove="Assets\Apple.png" />
     <None Remove="Assets\AppStore.png" />
     <None Remove="Assets\check.png" />
     <None Remove="Assets\computer-rocket.png" />
@@ -31,7 +33,9 @@
     <None Remove="Assets\GooglePlay.png" />
     <None Remove="Assets\importGames.png" />
     <None Remove="Assets\Itchio.png" />
+    <None Remove="Assets\Linux.png" />
     <None Remove="Assets\Nintendo.png" />
+    <None Remove="Assets\PC.png" />
     <None Remove="Assets\PlayStation.png" />
     <None Remove="Assets\recentGames.png" />
     <None Remove="Assets\searchRAWG.png" />
@@ -46,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LeoCorpLibrary" Version="3.6.0.2105" />
+    <PackageReference Include="LeoCorpLibrary" Version="3.7.0.2106" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>
@@ -62,6 +66,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\addGamesWelcome.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Android.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Apple.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\AppStore.png">
@@ -91,7 +101,13 @@
     <Resource Include="Assets\Itchio.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Linux.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Nintendo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\PC.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\PlayStation.png">
