@@ -112,7 +112,7 @@ namespace Gavilya.Pages.SettingsPages
 		private void ExportButton_Click(object sender, RoutedEventArgs e)
 		{
 			SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
-			saveFileDialog.FileName = "GavilyaGames.gav"; // File name
+			saveFileDialog.FileName = $"GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}.gav"; // File name
 			saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
 			saveFileDialog.Title = Properties.Resources.ExportGames; // Title
 
