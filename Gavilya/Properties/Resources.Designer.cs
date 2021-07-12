@@ -484,6 +484,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Finish.
+        /// </summary>
+        public static string Finish {
+            get {
+                return ResourceManager.GetString("Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can add a game by clicking on the &quot;Add&quot; button on the home page or by draging in an executable file in the main page..
         /// </summary>
         public static string FirstRunAddGamesDescription {

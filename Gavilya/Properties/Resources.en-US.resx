@@ -582,4 +582,7 @@
   <data name="ImageNotExist" xml:space="preserve">
     <value>The specified image doesn't exist.</value>
   </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
 </root>
