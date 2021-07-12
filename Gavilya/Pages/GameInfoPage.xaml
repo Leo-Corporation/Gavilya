@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Gavilya.Pages"
       xmlns:lang="clr-namespace:Gavilya.Properties"
+	  xmlns:uc="clr-namespace:Gavilya.UserControls"
       mc:Ignorable="d" 
       FontFamily="../Fonts/#Montserrat"
       d:DesignHeight="450" d:DesignWidth="800"
@@ -175,121 +176,125 @@
                             <TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="White" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0"/>
                         </StackPanel>
 
-                        <Border CornerRadius="10" Margin="10" Padding="10" Background="#FF141428" Width="650" HorizontalAlignment="Left" VerticalAlignment="Center">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
+						<StackPanel x:Name="RatingsItem">
+							<Border CornerRadius="10" Margin="10" Padding="10" Background="#FF141428" Width="650" HorizontalAlignment="Left" VerticalAlignment="Center">
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto"/>
+										<ColumnDefinition/>
+									</Grid.ColumnDefinitions>
 
-                                <TextBlock x:Name="RatingTxt" d:Text="3.5" Margin="10" FontSize="55" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
+									<TextBlock x:Name="RatingTxt" d:Text="3.5" Margin="10" FontSize="55" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0"/>
 
-                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
+									<StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
 
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="4" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center"/>
-                                        <ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr4" d:Value="28" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
-                                            <ProgressBar.Foreground>
-                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                    <LinearGradientBrush.RelativeTransform>
-                                                        <TransformGroup>
-                                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                            <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                                            <TranslateTransform/>
-                                                        </TransformGroup>
-                                                    </LinearGradientBrush.RelativeTransform>
-                                                    <GradientStop Color="#FF439321"/>
-                                                    <GradientStop Color="#FFACE64D" Offset="1"/>
-                                                </LinearGradientBrush>
-                                            </ProgressBar.Foreground>
+										<StackPanel Orientation="Horizontal">
+											<TextBlock Text="4" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center"/>
+											<ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr4" d:Value="28" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
+												<ProgressBar.Foreground>
+													<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+														<LinearGradientBrush.RelativeTransform>
+															<TransformGroup>
+																<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+																<SkewTransform CenterY="0.5" CenterX="0.5"/>
+																<RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+																<TranslateTransform/>
+															</TransformGroup>
+														</LinearGradientBrush.RelativeTransform>
+														<GradientStop Color="#FF439321"/>
+														<GradientStop Color="#FFACE64D" Offset="1"/>
+													</LinearGradientBrush>
+												</ProgressBar.Foreground>
 
-                                            <ProgressBar.ToolTip>
-                                                <ToolTip x:Name="Pgr4ToolTip" Background="#000014" Foreground="White"/>
-                                            </ProgressBar.ToolTip>
-                                        </ProgressBar>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="3" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center"/>
-                                        <ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr3" d:Value="19" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
-                                            <ProgressBar.Foreground>
-                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                    <LinearGradientBrush.RelativeTransform>
-                                                        <TransformGroup>
-                                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                            <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                                            <TranslateTransform/>
-                                                        </TransformGroup>
-                                                    </LinearGradientBrush.RelativeTransform>
-                                                    <GradientStop Color="#4659be"/>
-                                                    <GradientStop Color="#649aff" Offset="1"/>
-                                                </LinearGradientBrush>
-                                            </ProgressBar.Foreground>
+												<ProgressBar.ToolTip>
+													<ToolTip x:Name="Pgr4ToolTip" Background="#000014" Foreground="White"/>
+												</ProgressBar.ToolTip>
+											</ProgressBar>
+										</StackPanel>
+										<StackPanel Orientation="Horizontal">
+											<TextBlock Text="3" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center"/>
+											<ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr3" d:Value="19" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
+												<ProgressBar.Foreground>
+													<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+														<LinearGradientBrush.RelativeTransform>
+															<TransformGroup>
+																<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+																<SkewTransform CenterY="0.5" CenterX="0.5"/>
+																<RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+																<TranslateTransform/>
+															</TransformGroup>
+														</LinearGradientBrush.RelativeTransform>
+														<GradientStop Color="#4659be"/>
+														<GradientStop Color="#649aff" Offset="1"/>
+													</LinearGradientBrush>
+												</ProgressBar.Foreground>
 
-                                            <ProgressBar.ToolTip>
-                                                <ToolTip x:Name="Pgr3ToolTip" Background="#000014" Foreground="White"/>
-                                            </ProgressBar.ToolTip>
-                                        </ProgressBar>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="2" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center"/>
-                                        <ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr2" d:Value="28" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
-                                            <ProgressBar.Foreground>
-                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                    <LinearGradientBrush.RelativeTransform>
-                                                        <TransformGroup>
-                                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                            <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                                            <TranslateTransform/>
-                                                        </TransformGroup>
-                                                    </LinearGradientBrush.RelativeTransform>
-                                                    <GradientStop Color="#f77321"/>
-                                                    <GradientStop Color="#facd5a" Offset="1"/>
-                                                </LinearGradientBrush>
-                                            </ProgressBar.Foreground>
+												<ProgressBar.ToolTip>
+													<ToolTip x:Name="Pgr3ToolTip" Background="#000014" Foreground="White"/>
+												</ProgressBar.ToolTip>
+											</ProgressBar>
+										</StackPanel>
+										<StackPanel Orientation="Horizontal">
+											<TextBlock Text="2" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center"/>
+											<ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr2" d:Value="28" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
+												<ProgressBar.Foreground>
+													<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+														<LinearGradientBrush.RelativeTransform>
+															<TransformGroup>
+																<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+																<SkewTransform CenterY="0.5" CenterX="0.5"/>
+																<RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+																<TranslateTransform/>
+															</TransformGroup>
+														</LinearGradientBrush.RelativeTransform>
+														<GradientStop Color="#f77321"/>
+														<GradientStop Color="#facd5a" Offset="1"/>
+													</LinearGradientBrush>
+												</ProgressBar.Foreground>
 
-                                            <ProgressBar.ToolTip>
-                                                <ToolTip x:Name="Pgr2ToolTip" Background="#000014" Foreground="White"/>
-                                            </ProgressBar.ToolTip>
-                                        </ProgressBar>
-                                    </StackPanel>
-                                    <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="1" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center"/>
-                                        <ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr1" d:Value="8" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
-                                            <ProgressBar.Foreground>
-                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                                    <LinearGradientBrush.RelativeTransform>
-                                                        <TransformGroup>
-                                                            <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                                                            <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                                                            <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
-                                                            <TranslateTransform/>
-                                                        </TransformGroup>
-                                                    </LinearGradientBrush.RelativeTransform>
-                                                    <GradientStop Color="#f11d2d"/>
-                                                    <GradientStop Color="#fd4f5d" Offset="1"/>
-                                                </LinearGradientBrush>
-                                            </ProgressBar.Foreground>
+												<ProgressBar.ToolTip>
+													<ToolTip x:Name="Pgr2ToolTip" Background="#000014" Foreground="White"/>
+												</ProgressBar.ToolTip>
+											</ProgressBar>
+										</StackPanel>
+										<StackPanel Orientation="Horizontal">
+											<TextBlock Text="1" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center"/>
+											<ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr1" d:Value="8" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
+												<ProgressBar.Foreground>
+													<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+														<LinearGradientBrush.RelativeTransform>
+															<TransformGroup>
+																<ScaleTransform CenterY="0.5" CenterX="0.5"/>
+																<SkewTransform CenterY="0.5" CenterX="0.5"/>
+																<RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+																<TranslateTransform/>
+															</TransformGroup>
+														</LinearGradientBrush.RelativeTransform>
+														<GradientStop Color="#f11d2d"/>
+														<GradientStop Color="#fd4f5d" Offset="1"/>
+													</LinearGradientBrush>
+												</ProgressBar.Foreground>
 
-                                            <ProgressBar.ToolTip>
-                                                <ToolTip x:Name="Pgr1ToolTip" Background="#000014" Foreground="White"/>
-                                            </ProgressBar.ToolTip>
-                                        </ProgressBar>
-                                    </StackPanel>
-                                </StackPanel>
+												<ProgressBar.ToolTip>
+													<ToolTip x:Name="Pgr1ToolTip" Background="#000014" Foreground="White"/>
+												</ProgressBar.ToolTip>
+											</ProgressBar>
+										</StackPanel>
+									</StackPanel>
 
-                            </Grid>
-                        </Border>
+								</Grid>
+							</Border>
 
-                        <Button x:Name="GoToRawg" Click="GoToRawg_Click" Foreground="White" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="#141428" HorizontalAlignment="Left">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="&#xea85;" FontSize="13" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center"/>
-                                <TextBlock Text="{x:Static lang:Resources.SeeOnRAWG}" FontSize="13" FontWeight="Bold" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </Button>
-                    </StackPanel>
+							<Button x:Name="GoToRawg" Click="GoToRawg_Click" Foreground="White" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="#141428" HorizontalAlignment="Left">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Text="&#xea85;" FontSize="13" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center"/>
+									<TextBlock Text="{x:Static lang:Resources.SeeOnRAWG}" FontSize="13" FontWeight="Bold" VerticalAlignment="Center"/>
+								</StackPanel>
+							</Button>
+						</StackPanel>
+
+						<uc:NoRatingsItem x:Name="NoRatings" Visibility="Collapsed"/>
+					</StackPanel>
                 </Grid>
 
 				<Grid x:Name="AchievementsPage" Grid.Row="1" Visibility="Collapsed">
