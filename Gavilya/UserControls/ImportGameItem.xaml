@@ -9,26 +9,40 @@
 	<Border CornerRadius="10" Padding="15" Background="#FF0A0A1E">
 		<StackPanel>
 			<StackPanel Orientation="Horizontal">
+				<CheckBox x:Name="SelectCheckBox" IsChecked="True" BorderThickness="2" Margin="0,5,5,5" Style="{DynamicResource CheckBoxStyle2}" VerticalAlignment="Center" Foreground="White" x:FieldModifier="public"/>
 				<TextBlock x:Name="NameTxt" d:Text="GameName" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
-				<Button Margin="5" Click="DeleteBtn_Click" x:Name="DeleteBtn"  Content="&#xe9cf;" Style="{DynamicResource RegularButton}" FontWeight="Normal" Foreground="White" Background="#FF1E1E32" VerticalAlignment="Center" Padding="3,3,3,3" FontFamily="..\Fonts\#FluentlyIcons">
-					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White"/>
-					</Button.ToolTip>
-				</Button>
 			</StackPanel>
 			<TextBlock Text="{x:Static lang:Resources.Location}" VerticalAlignment="Center" FontWeight="Bold"/>
-			<StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+			<StackPanel Orientation="Horizontal">
 				<TextBlock x:Name="LocationTxt" Text="{x:Static lang:Resources.Location}" VerticalAlignment="Center">
 					<TextBlock.ToolTip>
 						<ToolTip x:Name="LocationToolTip" Content="Location" Background="#000014" Foreground="White"/>
 					</TextBlock.ToolTip>
 				</TextBlock>
-				<Button Margin="5" Click="BrowseBtn_Click" x:Name="BrowseBtn" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="Bold" Foreground="White" Background="#FF1E1E32" VerticalAlignment="Center" Padding="3,3,3,3">
+				<Button Margin="5" Click="BrowseBtn_Click" x:Name="BrowseBtn" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="Bold" Foreground="White" Background="#FF1E1E32" VerticalAlignment="Center" Padding="5">
 					<Button.ToolTip>
 						<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="White"/>
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
+			<TextBlock Text="{x:Static lang:Resources.Image}" VerticalAlignment="Center" FontWeight="Bold"/>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock x:Name="IconLocationTxt" Text="{x:Static lang:Resources.Location}" VerticalAlignment="Center">
+					<TextBlock.ToolTip>
+						<ToolTip x:Name="IconLocationToolTip" Content="Location" Background="#000014" Foreground="White"/>
+					</TextBlock.ToolTip>
+				</TextBlock>
+				<Button Margin="5" Click="IconBrowseBtn_Click" x:Name="IconBrowseBtn" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="Bold" Foreground="White" Background="#FF1E1E32" VerticalAlignment="Center" Padding="5">
+					<Button.ToolTip>
+						<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="White"/>
+					</Button.ToolTip>
+				</Button>
+			</StackPanel>
+			<Button Margin="5" Click="GetRAWGImageBtn_Click" x:Name="GetRAWGImageBtn" Content="{x:Static lang:Resources.GetRAWGImage}" Style="{DynamicResource RegularButton}" FontWeight="Bold" Foreground="White" Background="#FF1E1E32" VerticalAlignment="Center" Padding="5" HorizontalAlignment="Center">
+				<Button.ToolTip>
+					<ToolTip Content="{x:Static lang:Resources.GetRAWGImage}" Background="#000014" Foreground="White"/>
+				</Button.ToolTip>
+			</Button>
 		</StackPanel>	
 	</Border>
 </UserControl>

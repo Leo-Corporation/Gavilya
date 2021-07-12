@@ -1,4 +1,5 @@
 ﻿using Gavilya.Classes;
+using LeoCorpLibrary;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -24,12 +25,10 @@ namespace Gavilya.UserControls
 	{
 		public GameInfo GameInfo { get; set; }
 
-		StackPanel StackPanel { get; init; }
-		public ImportGameItem(GameInfo gameInfo, StackPanel stackPanel)
+		public ImportGameItem(GameInfo gameInfo)
 		{
 			InitializeComponent();
 			GameInfo = gameInfo;
-			StackPanel = stackPanel;
 
 			InitUI(); // Load the UI
 		}
@@ -39,6 +38,10 @@ namespace Gavilya.UserControls
 			NameTxt.Text = GameInfo.Name; // Set text
 			LocationTxt.Text = (GameInfo.FileLocation.Length > 32) ? GameInfo.FileLocation.Substring(0, 32) + "..." : GameInfo.FileLocation; // Set text
 			LocationToolTip.Content = GameInfo.FileLocation; // Set content
+			IconLocationTxt.Text = (GameInfo.IconFileLocation.Length > 32) ? GameInfo.IconFileLocation.Substring(0, 32) + "..." : GameInfo.IconFileLocation; // Set text
+			IconLocationToolTip.Content = GameInfo.IconFileLocation; // Set content
+
+			GetRAWGImageBtn.Visibility = (GameInfo.RAWGID != -1) ? Visibility.Visible : Visibility.Collapsed; // Set
 		}
 
 		private void BrowseBtn_Click(object sender, RoutedEventArgs e)
@@ -49,14 +52,40 @@ namespace Gavilya.UserControls
 			if (openFileDialog.ShowDialog() ?? true)
 			{
 				GameInfo.FileLocation = openFileDialog.FileName; // Set value
-				LocationTxt.Text = (GameInfo.FileLocation.Length > 32) ? GameInfo.FileLocation.Substring(0, 32) + "..." : GameInfo.FileLocation; // Set text
-				LocationToolTip.Content = openFileDialog.FileName; // Set content
+				InitUI();
 			}
 		}
 
-		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+		private void IconBrowseBtn_Click(object sender, RoutedEventArgs e)
 		{
-			StackPanel.Children.Remove(this); // Delete
+			OpenFileDialog openFileDialog = new(); // OpenFileDialog
+			openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
+
+			if (openFileDialog.ShowDialog() ?? true)
+			{
+				try
+				{
+					GameInfo.IconFileLocation = openFileDialog.FileName; // Set
+					InitUI();
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
+				}
+			}
+		}
+
+		private async void GetRAWGImageBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (await NetworkConnection.IsAvailableAsync())
+			{
+				GameInfo.IconFileLocation = await Global.GetCoverImageAsync(GameInfo.RAWGID); // Set path
+				InitUI(); // Refresh the UI 
+			}
+			else
+			{
+				MessageBox.Show(Properties.Resources.FeatureNeedsInternet, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
 		}
 	}
 }

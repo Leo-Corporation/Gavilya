@@ -466,6 +466,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is feature requires an Internet connection..
+        /// </summary>
+        public static string FeatureNeedsInternet {
+            get {
+                return ResourceManager.GetString("FeatureNeedsInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can add a game by clicking on the &quot;Add&quot; button on the home page or by draging in an executable file in the main page..
         /// </summary>
         public static string FirstRunAddGamesDescription {
@@ -563,6 +572,15 @@ namespace Gavilya.Properties {
             get {
                 object obj = ResourceManager.GetObject("Gavilya1", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get RAWG image.
+        /// </summary>
+        public static string GetRAWGImage {
+            get {
+                return ResourceManager.GetString("GetRAWGImage", resourceCulture);
             }
         }
         

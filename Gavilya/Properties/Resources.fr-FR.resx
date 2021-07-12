@@ -573,4 +573,10 @@
   <data name="SelectGamesImport" xml:space="preserve">
     <value>Sélectionnez les jeux à importer.</value>
   </data>
+  <data name="GetRAWGImage" xml:space="preserve">
+    <value>Obtenir l'image RAWG</value>
+  </data>
+  <data name="FeatureNeedsInternet" xml:space="preserve">
+    <value>Cette fonctionnalité a besoin d'une connexion à Internet.</value>
+  </data>
 </root>

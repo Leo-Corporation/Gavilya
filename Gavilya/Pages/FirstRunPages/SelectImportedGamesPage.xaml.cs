@@ -61,7 +61,7 @@ namespace Gavilya.Pages.FirstRunPages
 			{
 				for (int i = 0; i < Definitions.Games.Count; i++)
 				{
-					GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i], GamePresenter)); // Add item
+					GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i])); // Add item
 				}
 			}
 		}
@@ -74,7 +74,11 @@ namespace Gavilya.Pages.FirstRunPages
 
 				for (int i = 0; i < GamePresenter.Children.Count; i++)
 				{
-					gameInfos.Add(((ImportGameItem)GamePresenter.Children[i]).GameInfo); // Add
+					var game = (ImportGameItem)GamePresenter.Children[i];
+					if (game.SelectCheckBox.IsChecked.Value)
+					{
+						gameInfos.Add(game.GameInfo); // Add 
+					}
 				}
 
 				Definitions.Games = gameInfos; // Set
