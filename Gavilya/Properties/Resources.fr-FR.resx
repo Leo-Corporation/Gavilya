@@ -567,4 +567,7 @@
   <data name="OfMonth" xml:space="preserve">
     <value>du mois.</value>
   </data>
+  <data name="NoRatings" xml:space="preserve">
+    <value>Ce jeu n'a pas de notations.</value>
+  </data>
 </root>

@@ -900,6 +900,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This game has no ratings..
+        /// </summary>
+        public static string NoRatings {
+            get {
+                return ResourceManager.GetString("NoRatings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no ratings for this game because either it&apos;s not connected to RAWG.io, or because no one has rated the game..
         /// </summary>
         public static string NoRatingsAv {
