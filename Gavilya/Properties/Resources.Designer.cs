@@ -1215,6 +1215,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select games to import..
+        /// </summary>
+        public static string SelectGamesImport {
+            get {
+                return ResourceManager.GetString("SelectGamesImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a game to begin.
         /// </summary>
         public static string SelectGameStart {

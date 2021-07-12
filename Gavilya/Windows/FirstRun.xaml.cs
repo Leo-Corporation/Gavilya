@@ -49,6 +49,7 @@ namespace Gavilya.Windows
 		private FinishPage finishPage; // The "FinishPage"
 		private ImportGamesPage importGamesPage; // The "ImportGamesPage"
 		private SearchRAWGPage searchRAWGPage; // The "SearchRAWGPage"
+		private SelectImportedGamesPage selectImportedGamesPage; // The "SelectImportedGamesPage"
 
 		public FirstRun()
 		{
@@ -58,11 +59,12 @@ namespace Gavilya.Windows
 
 		private void LoadUI()
 		{
-			welcome = new Welcome(this); // Define "Welcome"
-			addGamesPage = new AddGamesPage(this); // Define
-			finishPage = new FinishPage(this); // Define
-			importGamesPage = new ImportGamesPage(this); // Define
-			searchRAWGPage = new SearchRAWGPage(this); // Define
+			welcome = new(this); // Define "Welcome"
+			addGamesPage = new(this); // Define
+			finishPage = new(this); // Define
+			importGamesPage = new(this); // Define
+			searchRAWGPage = new(this); // Define
+			selectImportedGamesPage = new(this); // Define
 			ChangePage(FirstRunPages.Welcome); // Change page
 		}
 
@@ -88,6 +90,9 @@ namespace Gavilya.Windows
 					break;
 				case FirstRunPages.Welcome:
 					PageViewer.Content = welcome; // Change page
+					break;
+				case FirstRunPages.SelectImportedGames:
+					PageViewer.Content = selectImportedGamesPage; // Change page
 					break;
 			}
 		}

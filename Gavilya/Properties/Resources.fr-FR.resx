@@ -570,4 +570,7 @@
   <data name="NoRatings" xml:space="preserve">
     <value>Ce jeu n'a pas de notations.</value>
   </data>
+  <data name="SelectGamesImport" xml:space="preserve">
+    <value>Sélectionnez les jeux à importer.</value>
+  </data>
 </root>

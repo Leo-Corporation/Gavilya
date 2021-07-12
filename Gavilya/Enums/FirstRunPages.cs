@@ -55,8 +55,13 @@ namespace Gavilya.Enums
 		ImportGames,
 
 		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.FinishPage"/> page
+		/// The <see cref="Pages.FirstRunPages.FinishPage"/> page.
 		/// </summary>
-		Finish
+		Finish,
+
+		/// <summary>
+		/// The <see cref="Pages.FirstRunPages.SelectImportedGamesPage"/> page.
+		/// </summary>
+		SelectImportedGames
 	}
 }
