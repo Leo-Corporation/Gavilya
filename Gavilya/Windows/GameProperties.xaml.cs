@@ -61,7 +61,7 @@ namespace Gavilya.Windows
 		{
 			GameNameTxt.Text = GameInfo.Name; // Display the name
 			GameVersionTxt.Text = GameInfo.Version; // Display the version
-			GameLocationTxt.Text = GameInfo.FileLocation.Substring(0, 22) + "..."; // Display the location
+			GameLocationTxt.Text = (GameInfo.FileLocation.Length > 22) ? GameInfo.FileLocation.Substring(0, 22) + "..." : GameInfo.FileLocation; // Display the location
 			GameProcessName.Text = GameInfo.ProcessName; // Display the ProcessName
 			PathToolTip.Content = GameInfo.FileLocation; // Set the tooltip content
 		}
