@@ -579,4 +579,10 @@
   <data name="FeatureNeedsInternet" xml:space="preserve">
     <value>Cette fonctionnalité a besoin d'une connexion à Internet.</value>
   </data>
+  <data name="FileNotExist" xml:space="preserve">
+    <value>Le fichier spécifié n'existe pas.</value>
+  </data>
+  <data name="ImageNotExist" xml:space="preserve">
+    <value>L'image spécifiée n'existe pas.</value>
+  </data>
 </root>

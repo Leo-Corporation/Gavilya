@@ -12,7 +12,14 @@
 				<CheckBox x:Name="SelectCheckBox" IsChecked="True" BorderThickness="2" Margin="0,5,5,5" Style="{DynamicResource CheckBoxStyle2}" VerticalAlignment="Center" Foreground="White" x:FieldModifier="public"/>
 				<TextBlock x:Name="NameTxt" d:Text="GameName" FontSize="16" FontWeight="Bold" VerticalAlignment="Center"/>
 			</StackPanel>
-			<TextBlock Text="{x:Static lang:Resources.Location}" VerticalAlignment="Center" FontWeight="Bold"/>
+			<StackPanel Orientation="Horizontal">
+				<TextBlock Text="{x:Static lang:Resources.Location}" VerticalAlignment="Center" FontWeight="Bold"/>
+				<TextBlock Text="&#xEB62;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" Foreground="Red" Margin="5,0,0,0" Visibility="Collapsed" x:Name="LocationWarningTxt">
+					<TextBlock.ToolTip>
+						<ToolTip Content="{x:Static lang:Resources.FileNotExist}" Background="#000014" Foreground="White"/>
+					</TextBlock.ToolTip>
+				</TextBlock>
+			</StackPanel>
 			<StackPanel Orientation="Horizontal">
 				<TextBlock x:Name="LocationTxt" Text="{x:Static lang:Resources.Location}" VerticalAlignment="Center">
 					<TextBlock.ToolTip>
@@ -25,7 +32,14 @@
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
-			<TextBlock Text="{x:Static lang:Resources.Image}" VerticalAlignment="Center" FontWeight="Bold"/>
+			<StackPanel	Orientation="Horizontal">
+				<TextBlock Text="{x:Static lang:Resources.Image}" VerticalAlignment="Center" FontWeight="Bold"/>
+				<TextBlock Text="&#xEB62;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" Foreground="Red" Margin="5,0,0,0" Visibility="Collapsed" x:Name="IconLocationWarningTxt">
+					<TextBlock.ToolTip>
+						<ToolTip Content="{x:Static lang:Resources.ImageNotExist}" Background="#000014" Foreground="White"/>
+					</TextBlock.ToolTip>
+				</TextBlock>
+			</StackPanel>
 			<StackPanel Orientation="Horizontal">
 				<TextBlock x:Name="IconLocationTxt" Text="{x:Static lang:Resources.Location}" VerticalAlignment="Center">
 					<TextBlock.ToolTip>

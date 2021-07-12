@@ -3,6 +3,7 @@ using LeoCorpLibrary;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,8 @@ namespace Gavilya.UserControls
 			IconLocationToolTip.Content = GameInfo.IconFileLocation; // Set content
 
 			GetRAWGImageBtn.Visibility = (GameInfo.RAWGID != -1) ? Visibility.Visible : Visibility.Collapsed; // Set
+			LocationWarningTxt.Visibility = File.Exists(GameInfo.FileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set
+			IconLocationWarningTxt.Visibility = File.Exists(GameInfo.IconFileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set
 		}
 
 		private void BrowseBtn_Click(object sender, RoutedEventArgs e)

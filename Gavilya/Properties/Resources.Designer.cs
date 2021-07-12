@@ -475,6 +475,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified file doesn&apos;t exist..
+        /// </summary>
+        public static string FileNotExist {
+            get {
+                return ResourceManager.GetString("FileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can add a game by clicking on the &quot;Add&quot; button on the home page or by draging in an executable file in the main page..
         /// </summary>
         public static string FirstRunAddGamesDescription {
@@ -653,6 +662,15 @@ namespace Gavilya.Properties {
         public static string Image {
             get {
                 return ResourceManager.GetString("Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified image doesn&apos;t exist..
+        /// </summary>
+        public static string ImageNotExist {
+            get {
+                return ResourceManager.GetString("ImageNotExist", resourceCulture);
             }
         }
         
