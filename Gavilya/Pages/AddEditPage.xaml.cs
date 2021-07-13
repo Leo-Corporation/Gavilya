@@ -99,25 +99,32 @@ namespace Gavilya.Pages
 
 		private void NextBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (isFromAdd)
+			if (!string.IsNullOrEmpty(NameTextBox.Text) && !string.IsNullOrEmpty(LocationTxt.Text))
 			{
-				AddGame.RAWGID = RAWGID; // Set
-				AddGame.GameVersion = VersionTextBox.Text; // Set
-				AddGame.GameName = NameTextBox.Text; // Set
-				AddGame.GameLocation = GameLocation; // Set
-				AddGame.GameIconLocation = GameIconLocation; // Set
-				AddGame.ChangePage(1); // Change page
+				if (isFromAdd)
+				{
+					AddGame.RAWGID = RAWGID; // Set
+					AddGame.GameVersion = VersionTextBox.Text; // Set
+					AddGame.GameName = NameTextBox.Text; // Set
+					AddGame.GameLocation = GameLocation; // Set
+					AddGame.GameIconLocation = GameIconLocation; // Set
+					AddGame.ChangePage(1); // Change page
+				}
+				else
+				{
+					GameCard.GameInfo.Name = NameTextBox.Text; // Set
+					GameCard.GameInfo.Version = VersionTextBox.Text; // Set
+					GameCard.GameInfo.IconFileLocation = GameIconLocation; // Set
+					GameCard.GameInfo.FileLocation = LocationTxt.Text; // Set
+
+					EditGame.GameCard = GameCard; // Set
+
+					EditGame.ChangePage(1); // Change page
+				} 
 			}
 			else
 			{
-				GameCard.GameInfo.Name = NameTextBox.Text; // Set
-				GameCard.GameInfo.Version = VersionTextBox.Text; // Set
-				GameCard.GameInfo.IconFileLocation = GameIconLocation; // Set
-				GameCard.GameInfo.FileLocation = LocationTxt.Text; // Set
-
-				EditGame.GameCard = GameCard; // Set
-
-				EditGame.ChangePage(1); // Change page
+				MessageBox.Show(Properties.Resources.GameNeedsName, Properties.Resources.AddGame, MessageBoxButton.OK, MessageBoxImage.Exclamation);
 			}
 		}
 

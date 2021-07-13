@@ -556,6 +556,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A game needs an executable and a name..
+        /// </summary>
+        public static string GameNeedsName {
+            get {
+                return ResourceManager.GetString("GameNeedsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This game has no achievements..
         /// </summary>
         public static string GameNoAchievements {

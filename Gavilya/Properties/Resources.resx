@@ -619,4 +619,7 @@
   <data name="Back" xml:space="preserve">
     <value>Back</value>
   </data>
+  <data name="GameNeedsName" xml:space="preserve">
+    <value>A game needs an executable and a name.</value>
+  </data>
 </root>
