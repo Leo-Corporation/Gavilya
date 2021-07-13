@@ -606,4 +606,7 @@
   <data name="UpdateAvMessageNotify" xml:space="preserve">
     <value>Updates are available for Gavilya.</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
 </root>

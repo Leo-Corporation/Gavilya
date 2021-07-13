@@ -165,5 +165,17 @@ namespace Gavilya.Pages
 		{
 			new SearchGameCover(this, GameAssociationActions.Associate).Show();
 		}
+
+		private void BackBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (isFromAdd)
+			{
+				AddGame.ChangePage(0); // Go back to last page
+			}
+			else
+			{
+				EditGame.ChangePage(0); // Go back to last page
+			}
+		}
 	}
 }

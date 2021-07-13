@@ -609,4 +609,7 @@
   <data name="UpdateAvMessageNotify" xml:space="preserve">
     <value>Des mises à jour sont disponibles pour Gavilya.</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Retour</value>
+  </data>
 </root>
