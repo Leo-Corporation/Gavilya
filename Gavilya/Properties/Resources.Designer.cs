@@ -1476,6 +1476,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Updates are available for Gavilya..
+        /// </summary>
+        public static string UpdateAvMessageNotify {
+            get {
+                return ResourceManager.GetString("UpdateAvMessageNotify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No updates available.
         /// </summary>
         public static string UpdateUn {

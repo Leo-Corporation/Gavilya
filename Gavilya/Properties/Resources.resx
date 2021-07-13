@@ -613,4 +613,7 @@
   <data name="NotAssociated" xml:space="preserve">
     <value>Not associated</value>
   </data>
+  <data name="UpdateAvMessageNotify" xml:space="preserve">
+    <value>Updates are available for Gavilya.</value>
+  </data>
 </root>

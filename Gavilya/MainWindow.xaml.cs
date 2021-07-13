@@ -26,6 +26,7 @@ using Gavilya.Enums;
 using Gavilya.Pages;
 using Gavilya.UserControls;
 using Gavilya.Windows;
+using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -81,6 +82,27 @@ namespace Gavilya
 			RefreshNavigationsButton(); // Refresh the navigations button state
 			LoadProfilesUI(); // Load the profile picture
 			Global.AutoSave(); // Run autosave
+
+			CheckUpdateOnStart(); // Check update on start
+		}
+		System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
+		private async void CheckUpdateOnStart()
+		{
+			if (await NetworkConnection.IsAvailableAsync())
+			{
+				notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe");
+				notifyIcon.BalloonTipClicked += (o, e) =>
+				{
+					new UpdateAvailable().Show();
+				};
+
+				if (Update.IsAvailable(await Update.GetLastVersionAsync(Definitions.LastVersionLink), Definitions.Version))
+				{
+					notifyIcon.Visible = true; // Show
+					notifyIcon.ShowBalloonTip(5000, Properties.Resources.MainWindowTitle, Properties.Resources.UpdateAvMessageNotify, System.Windows.Forms.ToolTipIcon.Info);
+					notifyIcon.Visible = false; // Hide
+				}
+			}
 		}
 
 		/// <summary>

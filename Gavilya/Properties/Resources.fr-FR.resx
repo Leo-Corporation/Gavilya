@@ -606,4 +606,7 @@
   <data name="NotAssociated" xml:space="preserve">
     <value>Pas associé</value>
   </data>
+  <data name="UpdateAvMessageNotify" xml:space="preserve">
+    <value>Des mises à jour sont disponibles pour Gavilya.</value>
+  </data>
 </root>
