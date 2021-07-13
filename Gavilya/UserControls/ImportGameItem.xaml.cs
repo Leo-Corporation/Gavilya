@@ -67,7 +67,11 @@ namespace Gavilya.UserControls
 
 			GetRAWGImageBtn.Visibility = (GameInfo.RAWGID != -1) ? Visibility.Visible : Visibility.Collapsed; // Set
 			LocationWarningTxt.Visibility = File.Exists(GameInfo.FileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set
-			IconLocationWarningTxt.Visibility = File.Exists(GameInfo.IconFileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set
+
+			if (!string.IsNullOrEmpty(GameInfo.IconFileLocation))
+			{
+				IconLocationWarningTxt.Visibility = File.Exists(GameInfo.IconFileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set 
+			}
 		}
 
 		private void BrowseBtn_Click(object sender, RoutedEventArgs e)
