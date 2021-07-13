@@ -151,6 +151,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Associated.
+        /// </summary>
+        public static string Associated {
+            get {
+                return ResourceManager.GetString("Associated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Associate a game.
         /// </summary>
         public static string AssociateGame {
@@ -756,6 +765,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Integrations.
+        /// </summary>
+        public static string Integrations {
+            get {
+                return ResourceManager.GetString("Integrations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
@@ -918,6 +936,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gavilya hasn&apos;t found any achievements in the RAWG.io database, or this game is not associated with RAWG..
         /// </summary>
         public static string NoAchivementsMsg {
@@ -959,6 +986,15 @@ namespace Gavilya.Properties {
         public static string NoRatingsAv {
             get {
                 return ResourceManager.GetString("NoRatingsAv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not associated.
+        /// </summary>
+        public static string NotAssociated {
+            get {
+                return ResourceManager.GetString("NotAssociated", resourceCulture);
             }
         }
         
@@ -1125,6 +1161,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RAWG.io.
+        /// </summary>
+        public static string RAWGio {
+            get {
+                return ResourceManager.GetString("RAWGio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Powered by RAWG.io.
         /// </summary>
         public static string RAWGPowered {
@@ -1238,6 +1283,15 @@ namespace Gavilya.Properties {
         public static string SelectADirectory {
             get {
                 return ResourceManager.GetString("SelectADirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a game or drag and drop it here.
+        /// </summary>
+        public static string SelectDragDropGame {
+            get {
+                return ResourceManager.GetString("SelectDragDropGame", resourceCulture);
             }
         }
         

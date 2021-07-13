@@ -585,4 +585,22 @@
   <data name="Finish" xml:space="preserve">
     <value>Finish</value>
   </data>
+  <data name="SelectDragDropGame" xml:space="preserve">
+    <value>Select a game or drag and drop it here</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="Integrations" xml:space="preserve">
+    <value>Integrations</value>
+  </data>
+  <data name="RAWGio" xml:space="preserve">
+    <value>RAWG.io</value>
+  </data>
+  <data name="Associated" xml:space="preserve">
+    <value>Associated</value>
+  </data>
+  <data name="NotAssociated" xml:space="preserve">
+    <value>Not associated</value>
+  </data>
 </root>
