@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using Gavilya.SDK.RAWG;
+using Gavilya.UserControls;
 using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,9 @@ namespace Gavilya.Pages
 		internal List<Store> Stores { get; set; }
 		internal string GameDescription { get; set; }
 		internal int RAWGID { get; set; }
+		internal GameCard GameCard { get; set; }
 
+		GameInfo old; // Set
 		bool isFromAdd;
 		public AddEditPage2(AddGame addGame)
 		{
@@ -63,64 +66,82 @@ namespace Gavilya.Pages
 			Platforms = new();
 			Stores = new();
 			RAWGID = AddGame.RAWGID;
-			InitUI();
 		}
 
-		public AddEditPage2(EditGame editGame)
+		public AddEditPage2(EditGame editGame, GameCard gameCard)
 		{
 			InitializeComponent();
 			EditGame = editGame; // Set
 			isFromAdd = false;
-			RAWGID = EditGame.RAWGID;
+			GameCard = EditGame.GameCard; // Set
+
+			RAWGID = GameCard.GameInfo.RAWGID; // Set value
+			old = gameCard.GameInfo;
 			InitUI();
 		}
 
 		private void InitUI()
 		{
-			if (RAWGID != -1)
+			DescriptionTextBox.Text = GameCard.GameInfo.Description; // Set text
+			if (RAWGID < 1)
 			{
-				AssociateTxt.Text = Properties.Resources.Associated; // Set
-				AssociateIconTxt.Text = "\uE98E"; // Set
+				Platforms = new(); // Set
+				Stores = new(); // Set
+
+				AssociateTxt.Text = Properties.Resources.NotAssociated; // Set
+				AssociateIconTxt.Text = "\uE9D8"; // Set
 			}
 			else
 			{
-				AssociateTxt.Text = Properties.Resources.NotAssociated; // Set
-				AssociateIconTxt.Text = "\uE9D8"; // Set
+				Platforms = GameCard.GameInfo.Platforms; // Set
+				Stores = GameCard.GameInfo.Stores; // Set
+
+				AssociateTxt.Text = Properties.Resources.Associated; // Set
+				AssociateIconTxt.Text = "\uE98E"; // Set
 			}
 		}
 
 		private void NextBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (isFromAdd)
-			{
-				Definitions.Games.Add(new()
-				{
-					Name = AddGame.GameName, // Set value
-					Version = AddGame.GameVersion, // Set value
-					Description = GameDescription, // Set value
-					FileLocation = AddGame.GameLocation, // Set value
-					IconFileLocation = AddGame.GameIconLocation, // Set value
-					IsFavorite = false, // Set value
-					RAWGID = RAWGID, // Set value
-					LastTimePlayed = 0, // Set value
-					TotalTimePlayed = 0, // Set value
-					ProcessName = "", // Set value
-					Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
-					Stores = Stores
-				});
-
-				new GameSaver().Save(Definitions.Games); // Save
-				Global.ReloadAllPages(); // Refresh UI
-
-				AddGame.Close();
-			}
-			else
-			{
-				EditGame.Close();
-			}
 			try
 			{
-				
+				if (isFromAdd)
+				{
+					Definitions.Games.Add(new()
+					{
+						Name = AddGame.GameName, // Set value
+						Version = AddGame.GameVersion, // Set value
+						Description = DescriptionTextBox.Text, // Set value
+						FileLocation = AddGame.GameLocation, // Set value
+						IconFileLocation = AddGame.GameIconLocation, // Set value
+						IsFavorite = false, // Set value
+						RAWGID = RAWGID, // Set value
+						LastTimePlayed = 0, // Set value
+						TotalTimePlayed = 0, // Set value
+						ProcessName = "", // Set value
+						Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
+						Stores = Stores
+					});
+
+					new GameSaver().Save(Definitions.Games); // Save
+					Global.ReloadAllPages(); // Refresh UI
+
+					AddGame.Close();
+				}
+				else
+				{
+					GameCard.GameInfo.RAWGID = RAWGID; // Set
+					GameCard.GameInfo.Description = DescriptionTextBox.Text; // Set
+					GameCard.GameInfo.Platforms = Platforms; // Set
+					GameCard.GameInfo.Stores = Stores; // Set
+
+					Definitions.Games[Definitions.Games.IndexOf(old)] = GameCard.GameInfo; // Update
+					new GameSaver().Save(Definitions.Games); // Save
+
+					Global.ReloadAllPages(); // Refresh UI
+
+					EditGame.Close();
+				}
 			}
 			catch (Exception ex)
 			{

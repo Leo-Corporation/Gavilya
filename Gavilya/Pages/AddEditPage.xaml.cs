@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.UserControls;
 using Gavilya.Windows;
 using Microsoft.Win32;
 using System;
@@ -56,6 +57,7 @@ namespace Gavilya.Pages
 		internal string GameLocation { get; set; }
 
 		bool isFromAdd;
+		GameCard GameCard { get; set; }
 		public AddEditPage(AddGame addGame)
 		{
 			InitializeComponent();
@@ -64,11 +66,35 @@ namespace Gavilya.Pages
 			RAWGID = -1;
 		}
 
-		public AddEditPage(EditGame editGame)
+		public AddEditPage(EditGame editGame, GameCard gameCard)
 		{
 			InitializeComponent();
 			EditGame = editGame; // Set
 			isFromAdd = false;
+			RAWGID = gameCard.GameInfo.RAWGID; // Set
+			GameCard = EditGame.GameCard; // Set
+			InitUI();
+		}
+
+		private void InitUI()
+		{
+			// Text
+			LocationTxt.Text = GameCard.GameInfo.FileLocation; // Set
+			NameTextBox.Text = GameCard.GameInfo.Name; // Set
+			VersionTextBox.Text = GameCard.GameInfo.Version; // Set
+
+			GameIconLocation = GameCard.GameInfo.IconFileLocation; // Set
+			
+			// Image
+			if (GameCard.GameInfo.IconFileLocation != string.Empty && GameCard.GameInfo.IconFileLocation != null)
+			{
+				Image.ImageSource = new BitmapImage(new Uri(GameCard.GameInfo.IconFileLocation));
+			}
+			else
+			{
+				Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(GameCard.GameInfo.FileLocation); // Grab the icon of the game
+				Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+			}
 		}
 
 		private void NextBtn_Click(object sender, RoutedEventArgs e)
@@ -84,7 +110,14 @@ namespace Gavilya.Pages
 			}
 			else
 			{
-				//EditGame.ChangePage(1); // Change page
+				GameCard.GameInfo.Name = NameTextBox.Text; // Set
+				GameCard.GameInfo.Version = VersionTextBox.Text; // Set
+				GameCard.GameInfo.IconFileLocation = GameIconLocation; // Set
+				GameCard.GameInfo.FileLocation = LocationTxt.Text; // Set
+
+				EditGame.GameCard = GameCard; // Set
+
+				EditGame.ChangePage(1); // Change page
 			}
 		}
 
