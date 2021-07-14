@@ -3,7 +3,7 @@
 
 #define MyAppName "Gavilya"
 #define MyAppVersion "1.7.0.2107"
-#define MyAppFullVersion "1.7.0.2107-rc1"
+#define MyAppFullVersion "1.7.0.2107"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://leocorporation.dev/"
 #define MyAppExeName "Gavilya.exe"
