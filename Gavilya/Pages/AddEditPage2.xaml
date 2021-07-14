@@ -11,6 +11,10 @@
       Title="AddEditPage2">
 
 	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
 		<StackPanel Orientation="Vertical" Margin="10">
 			
 			<TextBlock Text="{x:Static lang:Resources.Description}" FontWeight="Bold" FontSize="13" Margin="2,2,2,5" VerticalAlignment="Center"/>
@@ -41,23 +45,25 @@
 				</Grid>
 			</Border>
 
-			<StackPanel HorizontalAlignment="Center" Margin="0 20 0 0" Orientation="Horizontal">
-				<Button FontSize="13" Cursor="Hand" x:Name="NextBtn" Click="NextBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Finish}" FontWeight="Bold">
-					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Finish}" Background="#000014" Foreground="White"/>
-					</Button.ToolTip>
-				</Button>
-				<Button FontSize="13" x:Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0,0,10,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="Bold">
-					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="White"/>
-					</Button.ToolTip>
-				</Button>
-				<Button FontSize="13" x:Name="BackBtn" Click="BackBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Back}" FontWeight="Bold">
-					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Back}" Background="#000014" Foreground="White"/>
-					</Button.ToolTip>
-				</Button>
-			</StackPanel>
+			
+		</StackPanel>
+
+		<StackPanel HorizontalAlignment="Center" Grid.Row="1" Margin="0 0 0 20" Orientation="Horizontal" VerticalAlignment="Bottom">
+			<Button FontSize="13" x:Name="BackBtn" Click="BackBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Back}" FontWeight="Bold">
+				<Button.ToolTip>
+					<ToolTip Content="{x:Static lang:Resources.Back}" Background="#000014" Foreground="White"/>
+				</Button.ToolTip>
+			</Button>
+			<Button FontSize="13" Cursor="Hand" x:Name="NextBtn" Click="NextBtn_Click" Style="{DynamicResource PlayButton}" Margin="10,0,10,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Finish}" FontWeight="Bold">
+				<Button.ToolTip>
+					<ToolTip Content="{x:Static lang:Resources.Finish}" Background="#000014" Foreground="White"/>
+				</Button.ToolTip>
+			</Button>
+			<Button FontSize="13" x:Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0,0,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="Bold">
+				<Button.ToolTip>
+					<ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="White"/>
+				</Button.ToolTip>
+			</Button>
 		</StackPanel>
 	</Grid>
 </Page>
