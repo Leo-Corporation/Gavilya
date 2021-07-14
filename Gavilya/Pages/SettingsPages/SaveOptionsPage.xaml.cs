@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Windows;
 using LeoCorpLibrary;
 using Microsoft.Win32;
 using System;
@@ -104,7 +105,8 @@ namespace Gavilya.Pages.SettingsPages
 			{
 				if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
 				{
-					new GameSaver().Import(openFileDialog.FileName); // Import
+					new GameSaver().Import(openFileDialog.FileName, true); // Import
+					new SelectImportGamesWindow().Show(); // Show import assistant
 				}
 			}
 		}

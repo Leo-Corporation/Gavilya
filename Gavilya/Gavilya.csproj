@@ -5,13 +5,13 @@
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Gavilya.ico</ApplicationIcon>
-    <AssemblyVersion>1.6.0.2106</AssemblyVersion>
-    <FileVersion>1.6.0.2106</FileVersion>
+    <AssemblyVersion>1.7.0.2107</AssemblyVersion>
+    <FileVersion>1.7.0.2107</FileVersion>
     <RepositoryType>git</RepositoryType>
     <Authors>Léo Corporation</Authors>
     <Company>Léo Corporation</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.6.0.2106</Version>
+    <Version>1.7.0.2107</Version>
     <Description>Where all your games are gathered.</Description>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
@@ -50,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LeoCorpLibrary" Version="3.7.0.2106" />
+    <PackageReference Include="LeoCorpLibrary" Version="3.8.0.2107" />
     <PackageReference Include="RestSharp" Version="106.11.7" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>

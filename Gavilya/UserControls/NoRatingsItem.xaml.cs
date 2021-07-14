@@ -26,42 +26,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace Gavilya.Enums
+namespace Gavilya.UserControls
 {
 	/// <summary>
-	/// The pages that are used in the <see cref="Windows.FirstRun"/> window.
+	/// Interaction logic for NoRatingsItem.xaml
 	/// </summary>
-	public enum FirstRunPages
+	public partial class NoRatingsItem : UserControl
 	{
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.Welcome"/> page.
-		/// </summary>
-		Welcome,
-
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.AddGamesPage"/> page.
-		/// </summary>
-		AddGames,
-
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.SearchRAWGPage"/> page.
-		/// </summary>
-		SearchRawgGames,
-
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.ImportGamesPage"/> page.
-		/// </summary>
-		ImportGames,
-
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.FinishPage"/> page.
-		/// </summary>
-		Finish,
-
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.SelectImportedGamesPage"/> page.
-		/// </summary>
-		SelectImportedGames
+		public NoRatingsItem()
+		{
+			InitializeComponent();
+		}
 	}
 }

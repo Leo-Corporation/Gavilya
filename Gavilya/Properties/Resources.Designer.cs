@@ -151,6 +151,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Associated.
+        /// </summary>
+        public static string Associated {
+            get {
+                return ResourceManager.GetString("Associated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Associate a game.
         /// </summary>
         public static string AssociateGame {
@@ -192,6 +201,15 @@ namespace Gavilya.Properties {
         public static string Avatar {
             get {
                 return ResourceManager.GetString("Avatar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Back.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
             }
         }
         
@@ -466,6 +484,33 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is feature requires an Internet connection..
+        /// </summary>
+        public static string FeatureNeedsInternet {
+            get {
+                return ResourceManager.GetString("FeatureNeedsInternet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified file doesn&apos;t exist..
+        /// </summary>
+        public static string FileNotExist {
+            get {
+                return ResourceManager.GetString("FileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finish.
+        /// </summary>
+        public static string Finish {
+            get {
+                return ResourceManager.GetString("Finish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can add a game by clicking on the &quot;Add&quot; button on the home page or by draging in an executable file in the main page..
         /// </summary>
         public static string FirstRunAddGamesDescription {
@@ -507,6 +552,15 @@ namespace Gavilya.Properties {
         public static string GameList {
             get {
                 return ResourceManager.GetString("GameList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A game needs an executable and a name..
+        /// </summary>
+        public static string GameNeedsName {
+            get {
+                return ResourceManager.GetString("GameNeedsName", resourceCulture);
             }
         }
         
@@ -563,6 +617,15 @@ namespace Gavilya.Properties {
             get {
                 object obj = ResourceManager.GetObject("Gavilya1", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get RAWG image.
+        /// </summary>
+        public static string GetRAWGImage {
+            get {
+                return ResourceManager.GetString("GetRAWGImage", resourceCulture);
             }
         }
         
@@ -639,6 +702,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified image doesn&apos;t exist..
+        /// </summary>
+        public static string ImageNotExist {
+            get {
+                return ResourceManager.GetString("ImageNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import.
         /// </summary>
         public static string Import {
@@ -707,6 +779,15 @@ namespace Gavilya.Properties {
         public static string Install {
             get {
                 return ResourceManager.GetString("Install", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Integrations.
+        /// </summary>
+        public static string Integrations {
+            get {
+                return ResourceManager.GetString("Integrations", resourceCulture);
             }
         }
         
@@ -873,6 +954,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next.
+        /// </summary>
+        public static string Next {
+            get {
+                return ResourceManager.GetString("Next", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gavilya hasn&apos;t found any achievements in the RAWG.io database, or this game is not associated with RAWG..
         /// </summary>
         public static string NoAchivementsMsg {
@@ -900,11 +990,29 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This game has no ratings..
+        /// </summary>
+        public static string NoRatings {
+            get {
+                return ResourceManager.GetString("NoRatings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no ratings for this game because either it&apos;s not connected to RAWG.io, or because no one has rated the game..
         /// </summary>
         public static string NoRatingsAv {
             get {
                 return ResourceManager.GetString("NoRatingsAv", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not associated.
+        /// </summary>
+        public static string NotAssociated {
+            get {
+                return ResourceManager.GetString("NotAssociated", resourceCulture);
             }
         }
         
@@ -1071,6 +1179,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to RAWG.io.
+        /// </summary>
+        public static string RAWGio {
+            get {
+                return ResourceManager.GetString("RAWGio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Powered by RAWG.io.
         /// </summary>
         public static string RAWGPowered {
@@ -1188,6 +1305,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a game or drag and drop it here.
+        /// </summary>
+        public static string SelectDragDropGame {
+            get {
+                return ResourceManager.GetString("SelectDragDropGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a game.
         /// </summary>
         public static string SelectGame {
@@ -1202,6 +1328,15 @@ namespace Gavilya.Properties {
         public static string SelectGames {
             get {
                 return ResourceManager.GetString("SelectGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select games to import..
+        /// </summary>
+        public static string SelectGamesImport {
+            get {
+                return ResourceManager.GetString("SelectGamesImport", resourceCulture);
             }
         }
         
@@ -1355,6 +1490,15 @@ namespace Gavilya.Properties {
         public static string UpdateAvMessage {
             get {
                 return ResourceManager.GetString("UpdateAvMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Updates are available for Gavilya..
+        /// </summary>
+        public static string UpdateAvMessageNotify {
+            get {
+                return ResourceManager.GetString("UpdateAvMessageNotify", resourceCulture);
             }
         }
         

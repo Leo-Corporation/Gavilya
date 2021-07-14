@@ -337,26 +337,19 @@ namespace Gavilya.Pages
 		private async void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			var ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID);
-			if (GameInfo.RAWGID != -1 && GameInfo.RAWGID != 0 && ratings.Count > 0)
-			{
-				tabCheckedID = 1; // ID
+			tabCheckedID = 1; // ID
 
-				RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+			RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
-				AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-				AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+			AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+			AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
 
-				AchievementsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-				AchievementsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+			AchievementsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+			AchievementsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
 
-				AboutPage.Visibility = Visibility.Collapsed; // Change visibility
-				RatingsPage.Visibility = Visibility.Visible; // Change visibility 
-				AchievementsPage.Visibility = Visibility.Collapsed; // Change visibility
-			}
-			else
-			{
-				MessageBox.Show(Properties.Resources.NoRatingsAv, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
-			}
+			AboutPage.Visibility = Visibility.Collapsed; // Change visibility
+			RatingsPage.Visibility = Visibility.Visible; // Change visibility 
+			AchievementsPage.Visibility = Visibility.Collapsed; // Change visibility
 		}
 
 		/// <summary>
@@ -366,6 +359,9 @@ namespace Gavilya.Pages
 		{
 			if (GameInfo.RAWGID != -1 && GameInfo.RAWGID != 0) // Check if the game is connected to RAWG.io
 			{
+				RatingsItem.Visibility = Visibility.Visible; // Show
+				NoRatings.Visibility = Visibility.Collapsed; // Hide
+
 				List<SDK.RAWG.Rating> ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID); // Get ratings
 
 				if (ratings.Count > 0) // If there is ratings
@@ -390,6 +386,11 @@ namespace Gavilya.Pages
 					float r = await Global.GetGameRatingAsync(GameInfo.RAWGID); // Get the average rating
 					RatingTxt.Text = r.ToString(); // Set text
 				}
+			}
+			else
+			{
+				RatingsItem.Visibility = Visibility.Collapsed; // Hide
+				NoRatings.Visibility = Visibility.Visible; // Show
 			}
 		}
 

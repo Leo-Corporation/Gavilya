@@ -567,4 +567,52 @@
   <data name="OfMonth" xml:space="preserve">
     <value>du mois.</value>
   </data>
+  <data name="NoRatings" xml:space="preserve">
+    <value>Ce jeu n'a pas de notations.</value>
+  </data>
+  <data name="SelectGamesImport" xml:space="preserve">
+    <value>Sélectionnez les jeux à importer.</value>
+  </data>
+  <data name="GetRAWGImage" xml:space="preserve">
+    <value>Obtenir l'image RAWG</value>
+  </data>
+  <data name="FeatureNeedsInternet" xml:space="preserve">
+    <value>Cette fonctionnalité a besoin d'une connexion à Internet.</value>
+  </data>
+  <data name="FileNotExist" xml:space="preserve">
+    <value>Le fichier spécifié n'existe pas.</value>
+  </data>
+  <data name="ImageNotExist" xml:space="preserve">
+    <value>L'image spécifiée n'existe pas.</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Terminer</value>
+  </data>
+  <data name="SelectDragDropGame" xml:space="preserve">
+    <value>Sélectionnez un jeu ou glissez-déposer</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Integrations" xml:space="preserve">
+    <value>Intégrations</value>
+  </data>
+  <data name="RAWGio" xml:space="preserve">
+    <value>RAWG.io</value>
+  </data>
+  <data name="Associated" xml:space="preserve">
+    <value>Associé</value>
+  </data>
+  <data name="NotAssociated" xml:space="preserve">
+    <value>Pas associé</value>
+  </data>
+  <data name="UpdateAvMessageNotify" xml:space="preserve">
+    <value>Des mises à jour sont disponibles pour Gavilya.</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Retour</value>
+  </data>
+  <data name="GameNeedsName" xml:space="preserve">
+    <value>Un jeu a besoin d'un exécutable et d'un nom.</value>
+  </data>
 </root>

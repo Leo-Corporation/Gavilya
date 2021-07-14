@@ -22,8 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
-using Gavilya.Windows;
-using Microsoft.Win32;
+using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,45 +35,63 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Gavilya.Pages.FirstRunPages
+namespace Gavilya.Windows
 {
 	/// <summary>
-	/// Logique d'interaction pour ImportGamesPage.xaml
+	/// Interaction logic for SelectImportGamesWindow.xaml
 	/// </summary>
-	public partial class ImportGamesPage : Page
+	public partial class SelectImportGamesWindow : Window
 	{
-		FirstRun FirstRun;
-		public ImportGamesPage(FirstRun firstRun)
+		public SelectImportGamesWindow()
 		{
 			InitializeComponent();
-			FirstRun = firstRun; // Define
+			InitUI(); // Load the UI
 		}
 
-		private void NextPage()
+		private void InitUI()
 		{
-			FirstRun.ChangePage(Enums.FirstRunPages.Finish); // Change page
-		}
-
-		private void ImportBtn_Click(object sender, RoutedEventArgs e)
-		{
-			OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
-			openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-			openFileDialog.Title = Properties.Resources.ImportGames; // Title
-
-			if (openFileDialog.ShowDialog() ?? true) // If the user opend a file
+			if (Definitions.Games.Count > 0)
 			{
-				new GameSaver().Import(openFileDialog.FileName, true); // Import
+				for (int i = 0; i < Definitions.Games.Count; i++)
+				{
+					GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i])); // Add item
+				}
+			}
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			WindowState = WindowState.Minimized; // Set
+		}
+
+		private void Button_Click_1(object sender, RoutedEventArgs e)
+		{
+			Close(); // Close the window
+		}
+
+		private void FinishBtn_Click(object sender, RoutedEventArgs e)
+		{
+			if (GamePresenter.Children.Count > 0)
+			{
+				List<GameInfo> gameInfos = new();
+
+				for (int i = 0; i < GamePresenter.Children.Count; i++)
+				{
+					var game = (ImportGameItem)GamePresenter.Children[i];
+					if (game.SelectCheckBox.IsChecked.Value)
+					{
+						gameInfos.Add(game.GameInfo); // Add 
+					}
+				}
+
+				Definitions.Games = gameInfos; // Set
+				new GameSaver().Save(Definitions.Games); // Save changes
 			}
 
-			FirstRun.ChangePage(Enums.FirstRunPages.SelectImportedGames); // Change page
-		}
-
-		private void SkipBtn_Click(object sender, RoutedEventArgs e)
-		{
-			NextPage(); // Change page
+			Global.ReloadAllPages(); // Refresh
+			Close(); // Close the window
 		}
 	}
 }

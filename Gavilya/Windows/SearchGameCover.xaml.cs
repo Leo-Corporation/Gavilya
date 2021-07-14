@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Pages;
 using Gavilya.SDK.RAWG;
 using Gavilya.UserControls;
 using RestSharp;
@@ -46,21 +47,22 @@ namespace Gavilya.Windows
 	/// </summary>
 	public partial class SearchGameCover : Window
 	{
-		AddGame addGame1 = null;
-		EditGame editGame1 = null;
+		AddEditPage AddEditPage;
+		AddEditPage2 AddEditPage2;
 		GameAssociationActions associationActions;
-		public SearchGameCover(AddGame addGame, GameAssociationActions gameAssociationActions)
-		{
-			InitializeComponent();
-			addGame1 = addGame;
-			associationActions = gameAssociationActions; // Define the var
-		}
 
-		public SearchGameCover(EditGame editGame, GameAssociationActions gameAssociationActions)
+		public SearchGameCover(UIElement parent, GameAssociationActions gameAssociationActions)
 		{
 			InitializeComponent();
-			editGame1 = editGame;
 			associationActions = gameAssociationActions; // Define the var
+			if (parent is AddEditPage)
+			{
+				AddEditPage = (AddEditPage)parent; // Set
+			}
+			else if (parent is AddEditPage2)
+			{
+				AddEditPage2 = (AddEditPage2)parent; // Set
+			}
 		}
 
 		private async void Button_Click(object sender, RoutedEventArgs e)
@@ -139,59 +141,33 @@ namespace Gavilya.Windows
 
 		private async void Associate(int id)
 		{
-			if (addGame1 != null) // If is from AddGame
-			{
-				addGame1.RAWGID = id; // Set the id
-				addGame1.GameDescription = await Global.GetGameDescriptionAsync(id); // Get the description
-				addGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
-				addGame1.Stores = await Global.GetStoresAsync(id); // Get stores
-			}
-			else // If is from EditGame
-			{
-				string description = await Global.GetGameDescriptionAsync(id); // Get the description
-				editGame1.RAWGID = id; // Set the id
-				editGame1.GameDescription = description;
-				editGame1.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
-				editGame1.Stores = await Global.GetStoresAsync(id); // Get stores
-			}
+			AddEditPage2.RAWGID = id; // Set the id
+			AddEditPage2.GameDescription = await Global.GetGameDescriptionAsync(id); // Get the description
+			AddEditPage2.Platforms = await Global.GetGamePlatformsAsync(id); // Get the platforms
+			AddEditPage2.Stores = await Global.GetStoresAsync(id); // Get stores
+
+			// UI
+			AddEditPage2.DescriptionTextBox.Text = AddEditPage2.GameDescription; // Set
+			AddEditPage2.AssociateTxt.Text = Properties.Resources.Associated; // Set
+			AddEditPage2.AssociateIconTxt.Text = "\uE98E"; // Set
 		}
 
-		private async void LoadImageInWindow(string fileName, int id = -1)
+		private void LoadImageInWindow(string fileName, int id = -1)
 		{
-			if (addGame1 != null) // If is from AddGame
-			{
-				var bitmap = new BitmapImage(); // Create a bitmapo
-				var stream = File.OpenRead(fileName); // Open the image
+			var bitmap = new BitmapImage(); // Create a bitmapo
+			var stream = File.OpenRead(fileName); // Open the image
 
-				bitmap.BeginInit(); // Init bitmap
-				bitmap.CacheOption = BitmapCacheOption.OnLoad; // Config bitmap
-				bitmap.StreamSource = stream; // Define the data
-				bitmap.EndInit(); // End init
-				stream.Close(); // Close streame
-				stream.Dispose(); // Releasen stream's used ressources
-				bitmap.Freeze(); // Freeze the bitmap
-				addGame1.GameImg.Source = bitmap; // Set the image source
-				addGame1.GameIconLocation = fileName; // Set the icon location
-				addGame1.RAWGID = id; // Set the game id
-				addGame1.GameDescription = await Global.GetGameDescriptionAsync(id); // Get the game's description
-			}
-			else // If is from EditGame
-			{
-				var bitmap = new BitmapImage(); // Create a bitmapo
-				var stream = File.OpenRead(fileName); // Open the image
-
-				bitmap.BeginInit(); // Init bitmap
-				bitmap.CacheOption = BitmapCacheOption.OnLoad; // Config bitmap
-				bitmap.StreamSource = stream; // Define the data
-				bitmap.EndInit(); // End init
-				stream.Close(); // Close streame
-				stream.Dispose(); // Releasen stream's used ressources
-				bitmap.Freeze(); // Freeze the bitmap
-				editGame1.GameImg.Source = bitmap; // Set the image source
-				editGame1.iconLocation = fileName; // Set the icon location
-				editGame1.RAWGID = id; // Set the game id
-				editGame1.GameDescription = await Global.GetGameDescriptionAsync(id); // Get the game's description
-			}
+			bitmap.BeginInit(); // Init bitmap
+			bitmap.CacheOption = BitmapCacheOption.OnLoad; // Config bitmap
+			bitmap.StreamSource = stream; // Define the data
+			bitmap.EndInit(); // End init
+			stream.Close(); // Close streame
+			stream.Dispose(); // Releasen stream's used ressources
+			bitmap.Freeze(); // Freeze the bitmap
+							 //addGame1.GameImg.Source = bitmap; // Set the image source
+			AddEditPage.GameIconLocation = fileName; // Set the icon location
+			AddEditPage.RAWGID = id; // Set the game id
+			AddEditPage.Image.ImageSource = bitmap; // Set image source
 		}
 	}
 }
