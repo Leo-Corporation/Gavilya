@@ -86,9 +86,30 @@ namespace Gavilya.UserControls
 
 		private void PlayBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (File.Exists(GamePath)) // If the game location file exist
+			if (!GameInfo.IsUWP)
 			{
-				Process.Start(GamePath); // Start the game
+				if (File.Exists(GamePath)) // If the game location file exist
+				{
+					Process.Start(GamePath); // Start the game
+
+					if (parentElement is GameCard)
+					{
+						GameCard gameCard = (GameCard)parentElement; // Create a game card
+						gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
+						new GameSaver().Save(Definitions.Games); // Save the changes
+
+						Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+						Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+
+						gameCard.Timer.Start(); // Start the timer
+					}
+
+					Definitions.RecentGamesPage.LoadGames(); // Reload the games
+				}
+			}
+			else
+			{
+				Process.Start("explorer.exe", GamePath); // Start the game
 
 				if (parentElement is GameCard)
 				{

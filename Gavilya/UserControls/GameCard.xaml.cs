@@ -146,9 +146,22 @@ namespace Gavilya.UserControls
 
 		private void Button_Click(object sender, RoutedEventArgs e) // Play button
 		{
-			if (File.Exists(location)) // If the file exist
+			if (!GameInfo.IsUWP)
 			{
-				Process.Start(location); // Start the game
+				if (File.Exists(location)) // If the file exist
+				{
+					Process.Start(location); // Start the game
+					GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+
+					Timer.Start(); // Start the timer
+
+					Definitions.RecentGamesPage.LoadGames(); // Reload the games
+					new GameSaver().Save(Definitions.Games); // Save the changes
+				}
+			}
+			else
+			{
+				Process.Start("explorer.exe", location); // Start the game
 				GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 
 				Timer.Start(); // Start the timer
@@ -160,7 +173,12 @@ namespace Gavilya.UserControls
 
 		private void Timer_Tick(object sender, EventArgs e)
 		{
-			string processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+			string processName = location;
+
+			if (!GameInfo.IsUWP)
+			{
+				processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+			}
 
 			Definitions.GameInfoPage.DisplayTotalTimePlayed((Definitions.GameInfoPage.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage.GameInfo.TotalTimePlayed); // Refresh
 			Definitions.GameInfoPage2.DisplayTotalTimePlayed((Definitions.GameInfoPage2.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage2.GameInfo.TotalTimePlayed); // Refresh
