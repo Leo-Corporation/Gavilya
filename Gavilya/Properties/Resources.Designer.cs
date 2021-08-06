@@ -133,6 +133,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Always check if the game is currently running.
+        /// </summary>
+        public static string AlwaysCheckIfGameRunning {
+            get {
+                return ResourceManager.GetString("AlwaysCheckIfGameRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Apply.
         /// </summary>
         public static string Apply {

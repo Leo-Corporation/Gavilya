@@ -75,7 +75,10 @@ namespace Gavilya.UserControls
 				if (gameStarted) // If the game has been started
 				{
 					new GameSaver().Save(Definitions.Games); // Save
-					Timer.Stop();
+					if (!GameInfo.AlwaysCheckIfRunning)
+					{
+						Timer.Stop(); 
+					}
 				}
 			}
 		}

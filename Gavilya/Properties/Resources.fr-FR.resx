@@ -615,4 +615,7 @@
   <data name="GameNeedsName" xml:space="preserve">
     <value>Un jeu a besoin d'un exécutable et d'un nom.</value>
   </data>
+  <data name="AlwaysCheckIfGameRunning" xml:space="preserve">
+    <value>Toujours vérifier si le jeu est actuellement lancé</value>
+  </data>
 </root>
