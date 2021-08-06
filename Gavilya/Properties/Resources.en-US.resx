@@ -615,4 +615,13 @@
   <data name="AlwaysCheckIfGameRunning" xml:space="preserve">
     <value>Always check if the game is currently running</value>
   </data>
+  <data name="PackageFamilyName" xml:space="preserve">
+    <value>"PackageFamilyName" property</value>
+  </data>
+  <data name="ApplicationId" xml:space="preserve">
+    <value>"Application Id" property</value>
+  </data>
+  <data name="AddUWPGame" xml:space="preserve">
+    <value>Add UWP game</value>
+  </data>
 </root>

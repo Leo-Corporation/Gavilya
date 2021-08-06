@@ -133,11 +133,29 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add UWP game.
+        /// </summary>
+        public static string AddUWPGame {
+            get {
+                return ResourceManager.GetString("AddUWPGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always check if the game is currently running.
         /// </summary>
         public static string AlwaysCheckIfGameRunning {
             get {
                 return ResourceManager.GetString("AlwaysCheckIfGameRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;Application Id&quot; property.
+        /// </summary>
+        public static string ApplicationId {
+            get {
+                return ResourceManager.GetString("ApplicationId", resourceCulture);
             }
         }
         
@@ -1076,6 +1094,15 @@ namespace Gavilya.Properties {
         public static string OtherProfiles {
             get {
                 return ResourceManager.GetString("OtherProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &quot;PackageFamilyName&quot; property.
+        /// </summary>
+        public static string PackageFamilyName {
+            get {
+                return ResourceManager.GetString("PackageFamilyName", resourceCulture);
             }
         }
         
