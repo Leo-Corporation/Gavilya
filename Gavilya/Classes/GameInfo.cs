@@ -98,5 +98,10 @@ namespace Gavilya.Classes
 		/// True if Gavilya should always check if the game is running.
 		/// </summary>
 		public bool AlwaysCheckIfRunning { get; set; }
+
+		/// <summary>
+		/// True if the Game is a Xbox/UWP game.
+		/// </summary>
+		public bool IsUWP { get; set; }
 	}
 }

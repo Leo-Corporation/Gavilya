@@ -13,13 +13,22 @@
     <Grid>
 		<StackPanel Orientation="Vertical" Margin="10">
 			<TextBlock Text="{x:Static lang:Resources.Location}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
-			<Border CornerRadius="5" Background="#141428" Padding="10" Cursor="Hand" x:Name="LocationBorder" AllowDrop="True" Drop="LocationBorder_Drop" MouseLeftButtonUp="LocationBorder_MouseLeftButtonUp">
-				<StackPanel VerticalAlignment="Center">
-					<TextBlock Text="&#xEA0E;" FontSize="24" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center"/>
-					<TextBlock Text="{x:Static lang:Resources.SelectDragDropGame}" Margin="10" FontWeight="Bold" HorizontalAlignment="Center"/>
-				</StackPanel>
-			</Border>
-			<TextBlock x:Name="LocationTxt" d:Text="C:\Games\Game.exe" Margin="5"/>
+			<StackPanel x:Name="DragWin32Games">
+				<Border CornerRadius="5" Background="#141428" Padding="10" Cursor="Hand" x:Name="LocationBorder" AllowDrop="True" Drop="LocationBorder_Drop" MouseLeftButtonUp="LocationBorder_MouseLeftButtonUp">
+					<StackPanel VerticalAlignment="Center">
+						<TextBlock Text="&#xEA0E;" FontSize="24" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center"/>
+						<TextBlock Text="{x:Static lang:Resources.SelectDragDropGame}" Margin="10" FontWeight="Bold" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</Border>
+				<TextBlock x:Name="LocationTxt" d:Text="C:\Games\Game.exe" Margin="5"/>
+			</StackPanel>
+			<StackPanel x:Name="UWPGames" Visibility="Collapsed">
+				<TextBlock Text="{x:Static lang:Resources.PackageFamilyName}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
+				<TextBox x:Name="PackageFamilyNameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.ApplicationId}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
+				<TextBox x:Name="AppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>
+
+			</StackPanel>
 
 			<TextBlock Text="{x:Static lang:Resources.Name}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
 			<TextBox x:Name="NameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>

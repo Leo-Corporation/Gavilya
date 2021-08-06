@@ -120,7 +120,9 @@ namespace Gavilya.Pages
 						TotalTimePlayed = 0, // Set value
 						ProcessName = "", // Set value
 						Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
-						Stores = Stores
+						Stores = Stores,
+						AlwaysCheckIfRunning = false,
+						IsUWP = AddGame.IsUWP
 					});
 
 					new GameSaver().Save(Definitions.Games); // Save

@@ -57,12 +57,14 @@ namespace Gavilya.Windows
 		public string GameName = string.Empty;
 		public string GameVersion = string.Empty;
 		public string GameLocation = string.Empty;
+		public bool IsUWP { get; set; }
 
 		AddEditPage AddEditPage;
 		AddEditPage2 AddEditPage2;
-		public AddGame()
+		public AddGame(bool isUWP)
 		{
 			InitializeComponent();
+			IsUWP = isUWP; // Set
 			AddEditPage = new(this);
 			AddEditPage2 = new(this);
 
