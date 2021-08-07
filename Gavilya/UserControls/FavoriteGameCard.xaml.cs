@@ -77,9 +77,12 @@ namespace Gavilya.UserControls
 			}
 			else // If the image is the app icon
 			{
-				Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
-				GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
-				GamePath = gameInfo.FileLocation; // Set the location of the game
+				if (!gameInfo.IsUWP) // If the game isn't UWP
+				{
+					Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
+					GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+					GamePath = gameInfo.FileLocation; // Set the location of the game 
+				}
 			}
 
 		}
