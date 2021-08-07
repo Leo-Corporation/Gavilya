@@ -56,23 +56,30 @@ namespace Gavilya.Pages
 		internal int RAWGID { get; set; }
 		internal string GameLocation { get; set; }
 
-		bool isFromAdd;
+		bool isFromAdd, isUWP;
 		GameCard GameCard { get; set; }
 		public AddEditPage(AddGame addGame)
 		{
 			InitializeComponent();
 			AddGame = addGame; // Set
-			isFromAdd = true;
+			isFromAdd = true; // Set
+			isUWP = addGame.IsUWP; // Set
 			RAWGID = -1;
+
+			DragWin32Games.Visibility = isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+			UWPGames.Visibility = !isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 		}
 
 		public AddEditPage(EditGame editGame, GameCard gameCard)
 		{
 			InitializeComponent();
+
 			EditGame = editGame; // Set
 			isFromAdd = false;
 			RAWGID = gameCard.GameInfo.RAWGID; // Set
 			GameCard = EditGame.GameCard; // Set
+			isUWP = GameCard.GameInfo.IsUWP; // Set
+
 			InitUI();
 		}
 
@@ -84,6 +91,14 @@ namespace Gavilya.Pages
 			VersionTextBox.Text = GameCard.GameInfo.Version; // Set
 
 			GameIconLocation = GameCard.GameInfo.IconFileLocation; // Set
+
+			if (isUWP)
+			{
+				string[] filePath = GameCard.GameInfo.FileLocation.Replace(@"shell:appsFolder\", "").Split(new string[] { "!" }, StringSplitOptions.None); // Split
+
+				PackageFamilyNameTextBox.Text = filePath[0]; // Set text
+				AppIdTextBox.Text = filePath[1]; // Set text
+			}
 			
 			// Image
 			if (GameCard.GameInfo.IconFileLocation != string.Empty && GameCard.GameInfo.IconFileLocation != null)
@@ -92,39 +107,59 @@ namespace Gavilya.Pages
 			}
 			else
 			{
-				Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(GameCard.GameInfo.FileLocation); // Grab the icon of the game
-				Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+				if (!isUWP)
+				{
+					Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(GameCard.GameInfo.FileLocation); // Grab the icon of the game
+					Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+				}
 			}
+
+			DragWin32Games.Visibility = isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+			UWPGames.Visibility = !isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 		}
 
 		private void NextBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (!string.IsNullOrEmpty(NameTextBox.Text) && !string.IsNullOrEmpty(LocationTxt.Text))
+			if (isUWP)
 			{
-				if (isFromAdd)
+				if (string.IsNullOrEmpty(PackageFamilyNameTextBox.Text) || string.IsNullOrEmpty(AppIdTextBox.Text))
 				{
-					AddGame.RAWGID = RAWGID; // Set
-					AddGame.GameVersion = VersionTextBox.Text; // Set
-					AddGame.GameName = NameTextBox.Text; // Set
-					AddGame.GameLocation = GameLocation; // Set
-					AddGame.GameIconLocation = GameIconLocation; // Set
-					AddGame.ChangePage(1); // Change page
+					MessageBox.Show(Properties.Resources.GameNeedsName, Properties.Resources.AddGame, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+					return; // Stop
 				}
-				else
-				{
-					GameCard.GameInfo.Name = NameTextBox.Text; // Set
-					GameCard.GameInfo.Version = VersionTextBox.Text; // Set
-					GameCard.GameInfo.IconFileLocation = GameIconLocation; // Set
-					GameCard.GameInfo.FileLocation = LocationTxt.Text; // Set
-
-					EditGame.GameCard = GameCard; // Set
-
-					EditGame.ChangePage(1); // Change page
-				} 
 			}
 			else
 			{
-				MessageBox.Show(Properties.Resources.GameNeedsName, Properties.Resources.AddGame, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+				if (!string.IsNullOrEmpty(NameTextBox.Text) && !string.IsNullOrEmpty(LocationTxt.Text))
+				{
+					// OK
+				}
+				else
+				{
+					MessageBox.Show(Properties.Resources.GameNeedsName, Properties.Resources.AddGame, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+					return; // Stop
+				}
+			}
+
+			if (isFromAdd)
+			{
+				AddGame.RAWGID = RAWGID; // Set
+				AddGame.GameVersion = VersionTextBox.Text; // Set
+				AddGame.GameName = NameTextBox.Text; // Set
+				AddGame.GameLocation = isUWP ? $@"shell:appsFolder\{PackageFamilyNameTextBox.Text}!{AppIdTextBox.Text}" : GameLocation; // Set
+				AddGame.GameIconLocation = GameIconLocation; // Set
+				AddGame.ChangePage(1); // Change page
+			}
+			else
+			{
+				GameCard.GameInfo.Name = NameTextBox.Text; // Set
+				GameCard.GameInfo.Version = VersionTextBox.Text; // Set
+				GameCard.GameInfo.IconFileLocation = GameIconLocation; // Set
+				GameCard.GameInfo.FileLocation = isUWP ? $@"shell:appsFolder\{PackageFamilyNameTextBox.Text}!{AppIdTextBox.Text}" : LocationTxt.Text; // Set
+
+				EditGame.GameCard = GameCard; // Set
+
+				EditGame.ChangePage(1); // Change page
 			}
 		}
 

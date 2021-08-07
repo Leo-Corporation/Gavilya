@@ -164,7 +164,9 @@
                         </Button>
                         <TextBox x:Name="GameProcessName" Width="193" Padding="5 0 0 0" d:Text="GameProcessHere" Style="{StaticResource RegularTextBox}" Background="#FF000014" Foreground="White" Margin="10 5 10 5" BorderBrush="#FF1E1E32"/>
                     </StackPanel>
-                </StackPanel>
+
+					<CheckBox x:Name="AlwaysCheckGameRunningChk" Content="{x:Static lang:Resources.AlwaysCheckIfGameRunning}" Foreground="#FFF" Checked="AlwaysCheckGameRunningChk_Checked" Unchecked="AlwaysCheckGameRunningChk_Checked" BorderThickness="2" Style="{DynamicResource CheckBoxStyle2}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="Bold"/>
+				</StackPanel>
             </Grid>
 
             <StackPanel Grid.Row="2" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Right">

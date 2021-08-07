@@ -61,9 +61,10 @@ namespace Gavilya.Windows
 		{
 			GameNameTxt.Text = GameInfo.Name; // Display the name
 			GameVersionTxt.Text = GameInfo.Version; // Display the version
-			GameLocationTxt.Text = (GameInfo.FileLocation.Length > 22) ? GameInfo.FileLocation.Substring(0, 22) + "..." : GameInfo.FileLocation; // Display the location
+			GameLocationTxt.Text = (GameInfo.FileLocation.Length > 18) ? GameInfo.FileLocation.Substring(0, 18) + "..." : GameInfo.FileLocation; // Display the location
 			GameProcessName.Text = GameInfo.ProcessName; // Display the ProcessName
 			PathToolTip.Content = GameInfo.FileLocation; // Set the tooltip content
+			AlwaysCheckGameRunningChk.IsChecked = GameInfo.AlwaysCheckIfRunning; // Set IsChecked
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -87,8 +88,10 @@ namespace Gavilya.Windows
 			if (GameInfo.ProcessName != GameProcessName.Text) // If different
 			{
 				Definitions.Games[Definitions.Games.IndexOf(GameInfo)].ProcessName = GameProcessName.Text; // Set the new value
-				new GameSaver().Save(Definitions.Games); // Save the changes
 			}
+
+			Definitions.Games[Definitions.Games.IndexOf(GameInfo)].AlwaysCheckIfRunning = AlwaysCheckGameRunningChk.IsChecked.Value; // Set
+			new GameSaver().Save(Definitions.Games); // Save the changes
 		}
 
 		private void CancelBtn_Click(object sender, RoutedEventArgs e)
@@ -104,6 +107,11 @@ namespace Gavilya.Windows
 		private void ProcessHelpBtn_Click(object sender, RoutedEventArgs e)
 		{
 			MessageBox.Show(Properties.Resources.ProcessNameHelp, Properties.Resources.Help, MessageBoxButton.OK, MessageBoxImage.Question); // Show a message
+		}
+
+		private void AlwaysCheckGameRunningChk_Checked(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }

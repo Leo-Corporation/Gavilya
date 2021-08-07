@@ -66,7 +66,7 @@ namespace Gavilya.Windows
 		/// <summary>
 		/// Window where the user can edit a game
 		/// </summary>
-		public EditGame(GameCard gameCard)
+		public EditGame(GameCard gameCard, bool isUWP = false)
 		{
 			InitializeComponent();
 			GameCard = gameCard; // Pass the arg

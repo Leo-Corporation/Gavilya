@@ -58,7 +58,7 @@ namespace Gavilya.Pages
 
 		private void AddBtn_Click(object sender, RoutedEventArgs e)
 		{
-			new AddGame().Show(); // Open the "Add Game" dialog
+			new AddGame(false).Show(); // Open the "Add Game" dialog
 		}
 
 		public void LoadGames()
@@ -142,6 +142,11 @@ namespace Gavilya.Pages
 			{
 				MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
 			}
+		}
+
+		private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddGame(true).Show(); // Add game
 		}
 	}
 }

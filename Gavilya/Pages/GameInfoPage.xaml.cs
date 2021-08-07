@@ -127,8 +127,11 @@ namespace Gavilya.Pages
 				}
 				else
 				{
-					System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
-					BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+					if (!gameInfo.IsUWP) // If the game isn't UWP
+					{
+						System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
+						BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+					}
 				}
 
 				// Platforms
@@ -189,9 +192,42 @@ namespace Gavilya.Pages
 
 		private void PlayBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (File.Exists(gameLocation)) // If the file exist
+			if (!GameInfo.IsUWP)
 			{
-				Process.Start(gameLocation); // Start the game
+				if (File.Exists(gameLocation)) // If the file exist
+				{
+					Process.Start(gameLocation); // Start the game
+
+					if (parentUIElement is GameCard) // If the parent element is a game card
+					{
+						GameCard gameCard = (GameCard)parentUIElement; // Create a game card
+						gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+						new GameSaver().Save(Definitions.Games); // Save the changes
+
+						gameCard.Timer.Start(); // Start the timer
+
+						DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+						LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+					}
+					else if (parentUIElement is GameItem)
+					{
+						GameItem gameItem = (GameItem)parentUIElement; // Create a game item
+						gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+						Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
+						new GameSaver().Save(Definitions.Games); // Save the changes
+
+						gameItem.Timer.Start();
+
+						DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+						LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+					}
+
+					Definitions.RecentGamesPage.LoadGames(); // Reload the games
+				}
+			}
+			else // If is UWP
+			{
+				Process.Start("explorer.exe", gameLocation); // Start the game
 
 				if (parentUIElement is GameCard) // If the parent element is a game card
 				{
