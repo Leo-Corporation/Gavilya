@@ -396,8 +396,8 @@ namespace Gavilya
 		}
 
 		private void SelectBtn_Click(object sender, RoutedEventArgs e)
-		{
-			if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
+		{			
+			if (PageContent.Content is GamesCardsPages && Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
 			{
 				for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
 				{
@@ -423,7 +423,24 @@ namespace Gavilya
 			else
 			{
 				Definitions.IsGamesCardsPagesCheckBoxesVisible = false; // Hide all checkboxes
+				HideAllCheckboxes(); // Hide all checkboxes
 				ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
+			}
+		}
+
+		private void HideAllCheckboxes()
+		{
+			for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
+			{
+				if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard) // If the element is a GameCard
+				{
+					GameCard gameCard = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
+					gameCard.CheckBox.Visibility = Visibility.Hidden; // The checkbox isn't visible
+					ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
+					RemoveShadowElement(SelectBtn); // Remove shadow
+
+					Definitions.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
+				}
 			}
 		}
 
