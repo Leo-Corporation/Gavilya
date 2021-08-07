@@ -632,6 +632,6 @@
     <value>"Application Id" property</value>
   </data>
   <data name="AddUWPGame" xml:space="preserve">
-    <value>Add UWP game</value>
+    <value>Add Microsoft Store game</value>
   </data>
 </root>

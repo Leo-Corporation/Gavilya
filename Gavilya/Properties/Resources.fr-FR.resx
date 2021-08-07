@@ -625,6 +625,6 @@
     <value>Propriété "Application Id"</value>
   </data>
   <data name="AddUWPGame" xml:space="preserve">
-    <value>Ajouter un jeu UWP</value>
+    <value>Ajouter un jeu du Microsoft Store</value>
   </data>
 </root>

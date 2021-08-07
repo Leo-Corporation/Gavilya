@@ -133,7 +133,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add UWP game.
+        ///   Looks up a localized string similar to Add Microsoft Store game.
         /// </summary>
         public static string AddUWPGame {
             get {
