@@ -627,4 +627,10 @@
   <data name="AddUWPGame" xml:space="preserve">
     <value>Ajouter un jeu du Microsoft Store</value>
   </data>
+  <data name="Screenshots" xml:space="preserve">
+    <value>Captures d'écran</value>
+  </data>
+  <data name="ShowScreenshots" xml:space="preserve">
+    <value>Afficher les captures d'écran</value>
+  </data>
 </root>

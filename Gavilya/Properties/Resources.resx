@@ -634,4 +634,10 @@
   <data name="AddUWPGame" xml:space="preserve">
     <value>Add Microsoft Store game</value>
   </data>
+  <data name="Screenshots" xml:space="preserve">
+    <value>Screenshots</value>
+  </data>
+  <data name="ShowScreenshots" xml:space="preserve">
+    <value>Show screenshots</value>
+  </data>
 </root>

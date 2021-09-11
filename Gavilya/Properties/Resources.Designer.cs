@@ -1296,6 +1296,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Screenshots.
+        /// </summary>
+        public static string Screenshots {
+            get {
+                return ResourceManager.GetString("Screenshots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search.
         /// </summary>
         public static string Search {
@@ -1391,6 +1400,15 @@ namespace Gavilya.Properties {
         public static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show screenshots.
+        /// </summary>
+        public static string ShowScreenshots {
+            get {
+                return ResourceManager.GetString("ShowScreenshots", resourceCulture);
             }
         }
         

@@ -184,6 +184,34 @@ namespace Gavilya.Classes
 			}
 		}
 
+		public static async Task<List<string>> GetCoverImageURLsAsync(int id)
+		{
+			try
+			{
+				var client = new RestClient(); // Create a REST Client
+				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var request = new RestRequest(Method.GET); // Create a request
+				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
+				var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+				var game = JsonSerializer.Deserialize<Game>(response.Content); // Deserialize the content of the reponse
+
+				if (game.background_image == null)
+				{
+					return new List<string>();
+				}
+				else
+				{
+					return new List<string>() { game.background_image, game.background_image_additional }; // Return all screenshots
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+				return new List<string>();
+			}
+		}
+
 		/// <summary>
 		/// Gets the descirption of a game from it's ID.
 		/// </summary>

@@ -4,21 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gavilya.UserControls"
+			 xmlns:lang="clr-namespace:Gavilya.Properties"
              FontFamily="../Fonts/#Montserrat"
-             mc:Ignorable="d" Height="48" Width="561" Margin="5">
-    <Border CornerRadius="10" Background="#000014">
+             mc:Ignorable="d" MinHeight="50" Width="600" Margin="5">
+    <Border CornerRadius="10" Background="#FF141428">
         <Grid>
-            <StackPanel Margin="10" Orientation="Horizontal" VerticalAlignment="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+            <StackPanel Margin="10" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
                 <Grid RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top">
                     <Grid.RenderTransform>
                         <TransformGroup>
-                            <ScaleTransform ScaleX="2" ScaleY="2"/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
+							<ScaleTransform ScaleX="2" ScaleY="2"/>
+						</TransformGroup>
                     </Grid.RenderTransform>
-                    <CheckBox x:FieldModifier="public"  Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="#000014" Cursor="Hand"/>
+                    <CheckBox x:FieldModifier="public" x:Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="#FF141428" Cursor="Hand"/>
                 </Grid>
                 <TextBlock d:Text="GameName" Margin="10 0 0 0" x:Name="GameName" FontSize="20" FontWeight="Bold" Text="" Foreground="White" VerticalAlignment="Center">
                     <TextBlock.ToolTip>
@@ -26,6 +28,41 @@
                     </TextBlock.ToolTip>
                 </TextBlock>
             </StackPanel>
+			<StackPanel Margin="10" Grid.Row="1">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Text="{x:Static lang:Resources.Screenshots}" FontWeight="Bold" Foreground="White" FontSize="17" VerticalAlignment="Center"/>
+					<Button Name="ShowBtn" Click="ShowBtn_Click" Cursor="Hand" Padding="5" FontSize="14" Style="{StaticResource RegularButton}" FontWeight="Bold" Background="#1E1E32" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock FontWeight="Regular" Margin="0 0 10 0" Text="&#xEA16;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+							<TextBlock Text="{x:Static lang:Resources.ShowScreenshots}"/>
+						</StackPanel>
+					</Button>
+				</StackPanel>
+				<ScrollViewer x:Name="ScreenshotsViewer" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto">
+					<StackPanel Orientation="Horizontal" Margin="0,15,0,0">
+						<Border x:Name="Screen1Border" CornerRadius="10" Margin="5" BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="Screen1Border_MouseLeftButtonUp">
+							<StackPanel Orientation="Vertical">
+								<Rectangle RadiusX="10" RadiusY="10" Width="178" Height="100" HorizontalAlignment="Center">
+									<Rectangle.Fill>
+										<ImageBrush x:Name="Screen1Img"/>
+									</Rectangle.Fill>
+								</Rectangle>
+								<RadioButton x:Name="Screen1RadioBtn" Checked="Screen1RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="1" Background="Transparent" BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="White"/>
+							</StackPanel>
+						</Border>
+						<Border x:Name="Screen2Border" CornerRadius="10" Margin="5" BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="Screen2Border_MouseLeftButtonUp">
+							<StackPanel Orientation="Vertical">
+								<Rectangle RadiusX="10" RadiusY="10" Width="178" Height="100" HorizontalAlignment="Center">
+									<Rectangle.Fill>
+										<ImageBrush x:Name="Screen2Img"/>
+									</Rectangle.Fill>
+								</Rectangle>
+								<RadioButton x:Name="Screen2RadioBtn" Checked="Screen2RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="2" Background="Transparent" BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="White"/>
+							</StackPanel>
+						</Border>
+					</StackPanel>
+				</ScrollViewer>
+			</StackPanel>
         </Grid>
     </Border>
 </UserControl>

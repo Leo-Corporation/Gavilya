@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -47,11 +48,106 @@ namespace Gavilya.UserControls
 			GameName.Text = gameName; // Put the name of the game
 			GameNameToolTip.Content = gameName; // Set the name of the game in the tool tip
 			Id = id; // Define the Game Id
+
+			Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+			CheckedBorder = Screen1Border; // Set value
+			Screen1RadioBtn.IsChecked = true; // Check
+
+			ScreenshotsViewer.Visibility = Visibility.Collapsed;
+		}
+
+		private async void InitScreenshotsUI()
+		{
+			// Load screenshots
+			List<string> screenshots = await Global.GetCoverImageURLsAsync(Id);
+
+			var image = new BitmapImage();
+			image.BeginInit(); // Init image
+			image.UriSource = new(screenshots[0]); // Get image
+			image.EndInit(); // Stop init image
+
+			Screen1Img.ImageSource = image; // Show image
+
+			if (screenshots.Count > 1)
+			{
+				var image1 = new BitmapImage();
+				image1.BeginInit(); // Init image
+				image1.UriSource = new(screenshots[1]); // Get image
+				image1.EndInit(); // Stop init image 
+
+				Screen2Img.ImageSource = image1; // Show image
+			}
+			else
+			{
+				Screen2Border.Visibility = Visibility.Collapsed; // Hide
+			}
+
+			// Show "viewer"
+			ScreenshotsViewer.Visibility = Visibility.Visible; // Show
 		}
 
 		/// <summary>
 		/// The game's Id.
 		/// </summary>
 		public int Id { get; set; }
+
+		Border CheckedBorder { get; set; }
+
+		private void ResetBorders()
+		{
+			Screen1Border.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Set border brush 
+			Screen2Border.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Set border brush 
+		}
+
+		private void Screen1RadioBtn_Checked(object sender, RoutedEventArgs e)
+		{
+			ResetBorders(); // Reset
+			Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+			CheckedBorder = Screen1Border; // Set value
+		}
+
+		private void Screen2RadioBtn_Checked(object sender, RoutedEventArgs e)
+		{
+			ResetBorders(); // Reset
+			Screen2Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+			CheckedBorder = Screen2Border; // Set value
+		}
+
+		private void Border_MouseEnter(object sender, MouseEventArgs e)
+		{
+			Border border = (Border)sender;
+			border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		}
+
+		private void Border_MouseLeave(object sender, MouseEventArgs e)
+		{
+			Border border = (Border)sender;
+			if (CheckedBorder != border)
+			{
+				border.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Set border brush 
+			}
+		}
+
+		private void Screen1Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			Screen1RadioBtn.IsChecked = true; // Check
+			ResetBorders(); // Reset
+			CheckedBorder = Screen1Border; // Set value
+			Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		}
+
+		private void Screen2Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			Screen2RadioBtn.IsChecked = true; // Check
+			ResetBorders(); // Reset
+			CheckedBorder = Screen2Border; // Set value
+			Screen2Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		}
+
+		private void ShowBtn_Click(object sender, RoutedEventArgs e)
+		{
+			InitScreenshotsUI();
+			ShowBtn.Visibility = Visibility.Collapsed; // Hide
+		}
 	}
 }
