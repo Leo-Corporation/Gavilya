@@ -51,7 +51,6 @@ namespace Gavilya.UserControls
 
 			Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
 			CheckedBorder = Screen1Border; // Set value
-			Screen1RadioBtn.IsChecked = true; // Check
 
 			ScreenshotsViewer.Visibility = Visibility.Collapsed;
 		}
@@ -84,6 +83,8 @@ namespace Gavilya.UserControls
 
 			// Show "viewer"
 			ScreenshotsViewer.Visibility = Visibility.Visible; // Show
+
+			Screen1RadioBtn.IsChecked = true; // Check
 		}
 
 		/// <summary>
