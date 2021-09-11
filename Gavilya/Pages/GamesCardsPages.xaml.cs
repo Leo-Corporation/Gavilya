@@ -54,6 +54,19 @@ namespace Gavilya.Pages
 		{
 			InitializeComponent();
 			Definitions.GamesCardsPages = this; // Define the GamesCardsPages
+			InitUI();
+		}
+
+		private void InitUI()
+		{
+			if (Env.WindowsVersion != WindowsVersion.Windows10)
+			{
+				AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
+			}
+			else
+			{
+				AddUWPBtn.Visibility = Visibility.Visible; // Show
+			}
 		}
 
 		private void AddBtn_Click(object sender, RoutedEventArgs e)
