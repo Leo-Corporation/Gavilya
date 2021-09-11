@@ -42,6 +42,10 @@ namespace Gavilya.UserControls
 	/// </summary>
 	public partial class GameResult : UserControl
 	{
+		/// <summary>
+		/// The selected screenshot index (0 = 1, 1 = 2).
+		/// </summary>
+		public int SelectedScreenshot { get; set; }
 		public GameResult(string gameName, int id)
 		{
 			InitializeComponent();
@@ -85,6 +89,7 @@ namespace Gavilya.UserControls
 			ScreenshotsViewer.Visibility = Visibility.Visible; // Show
 
 			Screen1RadioBtn.IsChecked = true; // Check
+			SelectedScreenshot = 0; // Set
 		}
 
 		/// <summary>
@@ -105,6 +110,7 @@ namespace Gavilya.UserControls
 			ResetBorders(); // Reset
 			Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
 			CheckedBorder = Screen1Border; // Set value
+			SelectedScreenshot = 0; // Set
 		}
 
 		private void Screen2RadioBtn_Checked(object sender, RoutedEventArgs e)
@@ -112,6 +118,7 @@ namespace Gavilya.UserControls
 			ResetBorders(); // Reset
 			Screen2Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
 			CheckedBorder = Screen2Border; // Set value
+			SelectedScreenshot = 1; // Set
 		}
 
 		private void Border_MouseEnter(object sender, MouseEventArgs e)
@@ -132,6 +139,7 @@ namespace Gavilya.UserControls
 		private void Screen1Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			Screen1RadioBtn.IsChecked = true; // Check
+			SelectedScreenshot = 0; // Set
 			ResetBorders(); // Reset
 			CheckedBorder = Screen1Border; // Set value
 			Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
@@ -140,6 +148,7 @@ namespace Gavilya.UserControls
 		private void Screen2Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 		{
 			Screen2RadioBtn.IsChecked = true; // Check
+			SelectedScreenshot = 1; // Set
 			ResetBorders(); // Reset
 			CheckedBorder = Screen2Border; // Set value
 			Screen2Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
