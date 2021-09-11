@@ -198,7 +198,7 @@
                 </ScrollViewer>
 
                 <StackPanel Margin="5" Grid.Row="2">
-                    <Button Name="SelectGame" Click="SelectGame_Click" HorizontalAlignment="Center" Padding="7" Style="{StaticResource RegularButton}" Foreground="White" Background="#FF1E1E32" FontWeight="Bold" FontSize="14">
+                    <Button Name="SelectGame" Click="SelectGame_Click" HorizontalAlignment="Center" Padding="7" Style="{StaticResource PlayButton}" Cursor="Hand" Foreground="White" Background="#FF1E1E32" FontWeight="Bold" FontSize="14">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="0 0 5 0" FontWeight="Regular" Text="&#xea72;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
                             <TextBlock Text="{x:Static lang:Resources.SelectGame}" VerticalAlignment="Center"/>
