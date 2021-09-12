@@ -633,4 +633,10 @@
   <data name="ShowScreenshots" xml:space="preserve">
     <value>Afficher les captures d'écran</value>
   </data>
+  <data name="SteamAppId" xml:space="preserve">
+    <value>ID d'application Steam</value>
+  </data>
+  <data name="AddSteamGame" xml:space="preserve">
+    <value>Ajouter un jeu Steam</value>
+  </data>
 </root>

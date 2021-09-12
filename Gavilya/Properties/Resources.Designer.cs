@@ -133,6 +133,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Steam game.
+        /// </summary>
+        public static string AddSteamGame {
+            get {
+                return ResourceManager.GetString("AddSteamGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Microsoft Store game.
         /// </summary>
         public static string AddUWPGame {
@@ -1490,6 +1499,15 @@ namespace Gavilya.Properties {
         public static string Steam {
             get {
                 return ResourceManager.GetString("Steam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Steam App ID.
+        /// </summary>
+        public static string SteamAppId {
+            get {
+                return ResourceManager.GetString("SteamAppId", resourceCulture);
             }
         }
         
