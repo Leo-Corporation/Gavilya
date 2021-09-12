@@ -65,5 +65,14 @@ namespace Gavilya.Windows
 				new NoUpdateAvailable().Show(); // Show the no updates available window
 			}
 		}
+
+		private void LicenseBtn_Click(object sender, RoutedEventArgs e)
+		{
+			MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
+				"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
+				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
+				"RestSharp - Apache License 2.0 - © RestSharp\n" +
+				"Gavilya - MIT License - © 2020-2021 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+		}
 	}
 }

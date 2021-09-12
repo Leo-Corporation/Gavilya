@@ -639,4 +639,10 @@
   <data name="AddSteamGame" xml:space="preserve">
     <value>Ajouter un jeu Steam</value>
   </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>Licences</value>
+  </data>
+  <data name="SeeLicenses" xml:space="preserve">
+    <value>Voir les licences</value>
+  </data>
 </root>

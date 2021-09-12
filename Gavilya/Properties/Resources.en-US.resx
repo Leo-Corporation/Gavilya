@@ -636,4 +636,10 @@
   <data name="AddSteamGame" xml:space="preserve">
     <value>Add Steam game</value>
   </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>Licenses</value>
+  </data>
+  <data name="SeeLicenses" xml:space="preserve">
+    <value>See licenses</value>
+  </data>
 </root>
