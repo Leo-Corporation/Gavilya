@@ -71,7 +71,7 @@ namespace Gavilya.Pages
 
 		private void AddBtn_Click(object sender, RoutedEventArgs e)
 		{
-			new AddGame(false).Show(); // Open the "Add Game" dialog
+			new AddGame(false, false).Show(); // Open the "Add Game" dialog
 		}
 
 		public void LoadGames()
@@ -159,7 +159,12 @@ namespace Gavilya.Pages
 
 		private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
 		{
-			new AddGame(true).Show(); // Add game
+			new AddGame(true, false).Show(); // Add game
+		}
+
+		private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddGame(false, true).Show(); // Add Steam Game
 		}
 	}
 }

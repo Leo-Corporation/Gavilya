@@ -103,5 +103,10 @@ namespace Gavilya.Classes
 		/// True if the Game is a Xbox/UWP game.
 		/// </summary>
 		public bool IsUWP { get; set; }
+
+		/// <summary>
+		/// True if the game uses Steam URI to launch/or requires Steam.
+		/// </summary>
+		public bool IsSteam { get; set; }
 	}
 }

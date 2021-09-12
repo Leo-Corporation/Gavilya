@@ -51,7 +51,7 @@ namespace Gavilya.UserControls
 
 		private void AddGameBtn_Click(object sender, RoutedEventArgs e)
 		{
-			new AddGame(false).Show();
+			new AddGame(false, false).Show();
 		}
 	}
 }

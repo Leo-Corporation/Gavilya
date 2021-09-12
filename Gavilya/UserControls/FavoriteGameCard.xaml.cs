@@ -77,7 +77,7 @@ namespace Gavilya.UserControls
 			}
 			else // If the image is the app icon
 			{
-				if (!gameInfo.IsUWP) // If the game isn't UWP
+				if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
 				{
 					Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
 					GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
@@ -89,7 +89,7 @@ namespace Gavilya.UserControls
 
 		private void PlayBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (!GameInfo.IsUWP)
+			if (!GameInfo.IsUWP && !GameInfo.IsSteam)
 			{
 				if (File.Exists(GamePath)) // If the game location file exist
 				{
