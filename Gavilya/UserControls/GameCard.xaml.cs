@@ -107,7 +107,7 @@ namespace Gavilya.UserControls
 			}
 			else
 			{
-				if (!gameInfo.IsUWP) // If the game isn't UWP
+				if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
 				{
 					System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
 					GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
@@ -149,7 +149,7 @@ namespace Gavilya.UserControls
 
 		private void Button_Click(object sender, RoutedEventArgs e) // Play button
 		{
-			if (!GameInfo.IsUWP)
+			if (!GameInfo.IsUWP && !GameInfo.IsSteam)
 			{
 				if (File.Exists(location)) // If the file exist
 				{

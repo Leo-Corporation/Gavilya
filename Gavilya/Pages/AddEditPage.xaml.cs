@@ -56,7 +56,7 @@ namespace Gavilya.Pages
 		internal int RAWGID { get; set; }
 		internal string GameLocation { get; set; }
 
-		bool isFromAdd, isUWP;
+		bool isFromAdd, isUWP, isSteam;
 		GameCard GameCard { get; set; }
 		public AddEditPage(AddGame addGame)
 		{
@@ -64,10 +64,12 @@ namespace Gavilya.Pages
 			AddGame = addGame; // Set
 			isFromAdd = true; // Set
 			isUWP = addGame.IsUWP; // Set
-			RAWGID = -1;
+			isSteam = addGame.IsSteam; // Set
+			RAWGID = -1; // -1 => Default value, no assigned RAWG ID.
 
-			DragWin32Games.Visibility = isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+			DragWin32Games.Visibility = isUWP || isSteam ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 			UWPGames.Visibility = !isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+			SteamGameInfo.Visibility = !isSteam ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 		}
 
 		public AddEditPage(EditGame editGame, GameCard gameCard)
@@ -79,6 +81,7 @@ namespace Gavilya.Pages
 			RAWGID = gameCard.GameInfo.RAWGID; // Set
 			GameCard = EditGame.GameCard; // Set
 			isUWP = GameCard.GameInfo.IsUWP; // Set
+			isSteam = GameCard.GameInfo.IsSteam; // Set
 
 			InitUI();
 		}
@@ -99,7 +102,12 @@ namespace Gavilya.Pages
 				PackageFamilyNameTextBox.Text = filePath[0]; // Set text
 				AppIdTextBox.Text = filePath[1]; // Set text
 			}
-			
+
+			if (isSteam)
+			{
+				SteamAppIdTextBox.Text = GameCard.GameInfo.FileLocation.Replace("steam://rungameid/", ""); // Get Steam ID
+			}
+
 			// Image
 			if (GameCard.GameInfo.IconFileLocation != string.Empty && GameCard.GameInfo.IconFileLocation != null)
 			{
@@ -114,8 +122,9 @@ namespace Gavilya.Pages
 				}
 			}
 
-			DragWin32Games.Visibility = isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+			DragWin32Games.Visibility = isUWP || isSteam ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 			UWPGames.Visibility = !isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+			SteamGameInfo.Visibility = !isSteam ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 		}
 
 		private void NextBtn_Click(object sender, RoutedEventArgs e)
@@ -123,6 +132,14 @@ namespace Gavilya.Pages
 			if (isUWP)
 			{
 				if (string.IsNullOrEmpty(PackageFamilyNameTextBox.Text) || string.IsNullOrEmpty(AppIdTextBox.Text))
+				{
+					MessageBox.Show(Properties.Resources.GameNeedsName, Properties.Resources.AddGame, MessageBoxButton.OK, MessageBoxImage.Exclamation);
+					return; // Stop
+				}
+			}
+			else if (isSteam)
+			{
+				if (string.IsNullOrEmpty(NameTextBox.Text) || string.IsNullOrEmpty(SteamAppIdTextBox.Text))
 				{
 					MessageBox.Show(Properties.Resources.GameNeedsName, Properties.Resources.AddGame, MessageBoxButton.OK, MessageBoxImage.Exclamation);
 					return; // Stop
@@ -146,7 +163,20 @@ namespace Gavilya.Pages
 				AddGame.RAWGID = RAWGID; // Set
 				AddGame.GameVersion = VersionTextBox.Text; // Set
 				AddGame.GameName = NameTextBox.Text; // Set
-				AddGame.GameLocation = isUWP ? $@"shell:appsFolder\{PackageFamilyNameTextBox.Text}!{AppIdTextBox.Text}" : GameLocation; // Set
+				if (isUWP)
+				{
+					AddGame.GameLocation = $@"shell:appsFolder\{PackageFamilyNameTextBox.Text}!{AppIdTextBox.Text}"; // Set
+				}
+				else if (isSteam)
+				{
+					AddGame.GameLocation = $"steam://rungameid/{SteamAppIdTextBox.Text}"; // Set
+				}
+				else
+				{
+					AddGame.GameLocation = GameLocation; // Set
+				}
+
+
 				AddGame.GameIconLocation = GameIconLocation; // Set
 				AddGame.ChangePage(1); // Change page
 			}
@@ -155,7 +185,19 @@ namespace Gavilya.Pages
 				GameCard.GameInfo.Name = NameTextBox.Text; // Set
 				GameCard.GameInfo.Version = VersionTextBox.Text; // Set
 				GameCard.GameInfo.IconFileLocation = GameIconLocation; // Set
-				GameCard.GameInfo.FileLocation = isUWP ? $@"shell:appsFolder\{PackageFamilyNameTextBox.Text}!{AppIdTextBox.Text}" : LocationTxt.Text; // Set
+
+				if (isUWP)
+				{
+					GameCard.GameInfo.FileLocation = $@"shell:appsFolder\{PackageFamilyNameTextBox.Text}!{AppIdTextBox.Text}"; // Set
+				}
+				else if (isSteam)
+				{
+					GameCard.GameInfo.FileLocation = $"steam://rungameid/{SteamAppIdTextBox.Text}"; // Set
+				}
+				else
+				{
+					GameCard.GameInfo.FileLocation = LocationTxt.Text; // Set
+				}
 
 				EditGame.GameCard = GameCard; // Set
 
@@ -204,7 +246,7 @@ namespace Gavilya.Pages
 				if (System.IO.Path.GetExtension(files[0]) == ".exe")
 				{
 					FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(files[0]);
-					
+
 					VersionTextBox.Text = fileVersionInfo.FileVersion; // Get the version
 					LocationTxt.Text = files[0];
 					NameTextBox.Text = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(files[0]) : fileVersionInfo.ProductName;

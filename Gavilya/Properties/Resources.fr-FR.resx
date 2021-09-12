@@ -627,4 +627,22 @@
   <data name="AddUWPGame" xml:space="preserve">
     <value>Ajouter un jeu du Microsoft Store</value>
   </data>
+  <data name="Screenshots" xml:space="preserve">
+    <value>Captures d'écran</value>
+  </data>
+  <data name="ShowScreenshots" xml:space="preserve">
+    <value>Afficher les captures d'écran</value>
+  </data>
+  <data name="SteamAppId" xml:space="preserve">
+    <value>ID d'application Steam</value>
+  </data>
+  <data name="AddSteamGame" xml:space="preserve">
+    <value>Ajouter un jeu Steam</value>
+  </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>Licences</value>
+  </data>
+  <data name="SeeLicenses" xml:space="preserve">
+    <value>Voir les licences</value>
+  </data>
 </root>

@@ -634,4 +634,22 @@
   <data name="AddUWPGame" xml:space="preserve">
     <value>Add Microsoft Store game</value>
   </data>
+  <data name="Screenshots" xml:space="preserve">
+    <value>Screenshots</value>
+  </data>
+  <data name="ShowScreenshots" xml:space="preserve">
+    <value>Show screenshots</value>
+  </data>
+  <data name="SteamAppId" xml:space="preserve">
+    <value>Steam App ID</value>
+  </data>
+  <data name="AddSteamGame" xml:space="preserve">
+    <value>Add Steam game</value>
+  </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>Licenses</value>
+  </data>
+  <data name="SeeLicenses" xml:space="preserve">
+    <value>See licenses</value>
+  </data>
 </root>

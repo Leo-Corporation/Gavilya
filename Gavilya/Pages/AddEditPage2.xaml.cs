@@ -122,7 +122,8 @@ namespace Gavilya.Pages
 						Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
 						Stores = Stores,
 						AlwaysCheckIfRunning = false,
-						IsUWP = AddGame.IsUWP
+						IsUWP = AddGame.IsUWP,
+						IsSteam = AddGame.IsSteam
 					});
 
 					new GameSaver().Save(Definitions.Games); // Save

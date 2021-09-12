@@ -131,7 +131,7 @@ namespace Gavilya.Windows
 						Associate(selectedGame.Id); // Associate the game
 						break;
 					case GameAssociationActions.Search: // If the action is to get the cover (search)
-						string bgImage = await Global.GetCoverImageAsync(selectedGame.Id); // File name
+						string bgImage = await Global.GetCoverImageAsync(selectedGame.Id, selectedGame.SelectedScreenshot); // File name
 						LoadImageInWindow(bgImage, selectedGame.Id); // Load the image
 						break;
 				}

@@ -48,6 +48,7 @@ namespace Gavilya.SDK.RAWG
 		public string released { get; set; }
 		public bool tba { get; set; }
 		public string background_image { get; set; }
+		public string background_image_additional { get; set; }
 		public float rating { get; set; }
 		public int rating_top { get; set; }
 		public List<Rating> ratings { get; set; }

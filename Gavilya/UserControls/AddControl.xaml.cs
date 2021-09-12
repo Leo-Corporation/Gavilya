@@ -49,7 +49,7 @@ namespace Gavilya.UserControls
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
-			new AddGame(false).Show(); // Show the window to add a game
+			new AddGame(false, false).Show(); // Show the window to add a game
 		}
 	}
 }

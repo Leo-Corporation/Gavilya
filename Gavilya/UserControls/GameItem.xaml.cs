@@ -77,7 +77,7 @@ namespace Gavilya.UserControls
 					new GameSaver().Save(Definitions.Games); // Save
 					if (!GameInfo.AlwaysCheckIfRunning)
 					{
-						Timer.Stop(); 
+						Timer.Stop();
 					}
 				}
 			}
