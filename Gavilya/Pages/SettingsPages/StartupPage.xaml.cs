@@ -47,28 +47,90 @@ namespace Gavilya.Pages.SettingsPages
 		public StartupPage()
 		{
 			InitializeComponent();
-			InitComboBox();
+			InitUI();
 		}
 
 		/// <summary>
 		/// Add items to the combobox.
 		/// </summary>
-		private void InitComboBox()
+		private void InitUI()
 		{
-			string[] pagesNames = Properties.Resources.PagesNames.Split(new string[] { ";" }, StringSplitOptions.None); // Get pages names
-
-			for (int i = 0; i < pagesNames.Length; i++) // For each item
-			{
-				PagesComboBox.Items.Add(pagesNames[i]); // Add items
-			}
-
-			PagesComboBox.SelectedIndex = Definitions.Settings.PageId; // Set the default page
+			CardsPageRadioBtn.IsChecked = Definitions.Settings.PageId == 0; // Check if the page ID is equal to 0
+			RecentPageRadioBtn.IsChecked = Definitions.Settings.PageId == 1; // Check if the page ID is equal to 1
+			ListPageRadioBtn.IsChecked = Definitions.Settings.PageId == 2; // Check if the page ID is equal to 2
 		}
 
-		private void SaveButton_Click(object sender, RoutedEventArgs e)
+		Border CheckedBorder { get; set; }
+		private void Border_MouseEnter(object sender, MouseEventArgs e)
 		{
-			Definitions.Settings.PageId = PagesComboBox.SelectedIndex; // Update settings
-			SettingsSaver.Save(); // Save settings
+			Border border = (Border)sender;
+			border.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
+		}
+
+		private void Border_MouseLeave(object sender, MouseEventArgs e)
+		{
+			Border border = (Border)sender;
+			if (border != CheckedBorder)
+			{
+				border.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+			}
+		}
+
+		private void CardsPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			CardsPageRadioBtn.IsChecked = true; // Check
+			CheckedBorder = CardsPageBorder; // Set checked border
+			RefreshBorders(); // Refresh
+
+			Definitions.Settings.PageId = 0; // Set the startup page
+			SettingsSaver.Save(); // Save changes
+		}
+
+		private void RecentPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			RecentPageRadioBtn.IsChecked = true; // Check
+			CheckedBorder = RecentPageBorder; // Set checked border
+			RefreshBorders(); // Refresh
+
+			Definitions.Settings.PageId = 1; // Set the startup page
+			SettingsSaver.Save(); // Save changes
+		}
+
+		private void CardsPageRadioBtn_Checked(object sender, RoutedEventArgs e)
+		{
+			CheckedBorder = CardsPageBorder; // Set checked border
+			RefreshBorders(); // Refresh
+		}
+
+		private void RecentPageRadioBtn_Checked(object sender, RoutedEventArgs e)
+		{
+			CheckedBorder = RecentPageBorder; // Set checked border
+			RefreshBorders(); // Refresh
+		}
+
+		private void ListPageRadioBtn_Checked(object sender, RoutedEventArgs e)
+		{
+			CheckedBorder = ListPageBorder; // Set checked border
+			RefreshBorders(); // Refresh
+		}
+
+		private void ListPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ListPageRadioBtn.IsChecked = true; // Check
+			CheckedBorder = ListPageBorder; // Set checked border
+			RefreshBorders(); // Refresh
+
+			Definitions.Settings.PageId = 2; // Set the startup page
+			SettingsSaver.Save(); // Save changes
+		}
+
+		private void RefreshBorders()
+		{
+			CardsPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+			RecentPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+			ListPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+
+			CheckedBorder.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
 		}
 	}
 }
