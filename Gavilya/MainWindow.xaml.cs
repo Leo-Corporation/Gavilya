@@ -396,7 +396,7 @@ namespace Gavilya
 		}
 
 		private void SelectBtn_Click(object sender, RoutedEventArgs e)
-		{			
+		{
 			if (PageContent.Content is GamesCardsPages && Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
 			{
 				for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
