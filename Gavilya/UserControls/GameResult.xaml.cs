@@ -71,7 +71,7 @@ namespace Gavilya.UserControls
 
 			Screen1Img.ImageSource = image; // Show image
 
-			if (screenshots.Count > 1)
+			if (screenshots.Count > 1 && screenshots[1] != null)
 			{
 				var image1 = new BitmapImage();
 				image1.BeginInit(); // Init image
