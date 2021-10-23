@@ -23,11 +23,8 @@ SOFTWARE.
 */
 using Gavilya.Pages;
 using Gavilya.UserControls;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text;
 using System.Windows.Media;
 
 namespace Gavilya.Classes
@@ -81,7 +78,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Version of the software (Gavilya).
 		/// </summary>
-		public static string Version => "1.9.0.2109";
+		public static string Version => "2.0.0.2110-pre1";
 
 		/// <summary>
 		/// True if the menu is shown.
