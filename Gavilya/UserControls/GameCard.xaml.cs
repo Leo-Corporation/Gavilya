@@ -90,6 +90,7 @@ namespace Gavilya.UserControls
 				bitmap.BeginInit();
 				bitmap.CacheOption = BitmapCacheOption.OnLoad;
 				bitmap.StreamSource = stream;
+				bitmap.DecodePixelWidth = 256;
 				bitmap.EndInit();
 				stream.Close();
 				stream.Dispose();
