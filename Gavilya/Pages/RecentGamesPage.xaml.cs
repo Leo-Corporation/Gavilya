@@ -60,9 +60,17 @@ namespace Gavilya.Pages
 
 				var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
 
+				int c = 0;
+				Definitions.HomePage.RecentBar.Children.Clear(); // Clear all items
 				foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
 				{
-					GamePresenter.Children.Add(new GameCard(pair1.Key, GavilyaPages.Recent, true)); // Add the game
+					var gameCard = new GameCard(pair1.Key, GavilyaPages.Recent, true);
+					GamePresenter.Children.Add(gameCard); // Add the game
+					if (c < 4)
+					{
+						Definitions.HomePage.RecentBar.Children.Add(new FavoriteGameCard(pair1.Key, gameCard));
+					}
+					c++;
 				}
 			}
 			else
