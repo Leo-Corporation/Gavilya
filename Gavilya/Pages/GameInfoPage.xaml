@@ -42,7 +42,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 10 0" Padding="18 8 18 8" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left">
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="&#xeab5;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Center" FontWeight="Normal"/>
+										<TextBlock Text="&#xF610;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="15" VerticalAlignment="Center" FontWeight="Normal"/>
                                         <TextBlock Margin="10 0 0 0" Text="{x:Static lang:Resources.Play}" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
                                     </StackPanel>
 
