@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,11 @@ namespace Gavilya.Pages
 
 			// Load "Statistics" page
 			Statistics.Content = Definitions.Statistics; // Set content to Statistics page
+
+			// Place holder
+			RecentPlaceholder.Children.Add(new WelcomeRecentGames() { VerticalAlignment = VerticalAlignment.Center });
+			RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
+			RecentBar.Visibility = Visibility.Visible;
 		}
 	}
 }

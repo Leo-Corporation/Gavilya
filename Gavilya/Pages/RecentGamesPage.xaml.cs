@@ -72,6 +72,8 @@ namespace Gavilya.Pages
 					}
 					c++;
 				}
+				Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
+				Definitions.HomePage.RecentBar.Visibility = Visibility.Visible;
 			}
 			else
 			{
@@ -79,6 +81,8 @@ namespace Gavilya.Pages
 				WelcomeHost.Visibility = Visibility.Visible; // Visible
 
 				WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
+				Definitions.HomePage.RecentBar.Visibility = Visibility.Collapsed; // Hide
+				Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Visible; // Show
 			}
 		}
 	}

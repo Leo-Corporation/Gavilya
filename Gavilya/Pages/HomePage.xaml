@@ -29,6 +29,7 @@
 		<ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
 			<WrapPanel Name="RecentBar" Orientation="Horizontal" Height="Auto" FlowDirection="LeftToRight"></WrapPanel>
 		</ScrollViewer>
+		<Grid x:Name="RecentPlaceholder"/>
 
 		<Frame x:Name="Statistics" NavigationUIVisibility="Hidden"/>
 	</StackPanel>
