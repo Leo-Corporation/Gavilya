@@ -281,9 +281,9 @@
 
 						<StackPanel Margin="8 0 0 0" Height="130">
 							<TextBlock Text="{x:Static lang:Resources.Favorites}" FontWeight="Bold" FontSize="20" Foreground="White"/>
-                            <ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
+                            <!--<ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
 								<WrapPanel Name="FavoriteBar" Orientation="Horizontal" Height="Auto" FlowDirection="LeftToRight"></WrapPanel>
-							</ScrollViewer>
+							</ScrollViewer>-->
 						</StackPanel>
 						<Frame Margin="8 0 0 0" Height="Auto" Name="PageContent" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
 					</Grid>

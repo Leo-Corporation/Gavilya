@@ -110,7 +110,7 @@ namespace Gavilya.UserControls
 			if (gameInfo.IsFavorite && !isFromEdit) // If the game is a favorite
 			{
 				FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
-				Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
+				Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
 				FavBtn.Content = ""; // Change icon
 			}
 
@@ -213,14 +213,14 @@ namespace Gavilya.UserControls
 			if (GameInfo.IsFavorite) // If the game is a favorite
 			{
 				GameInfo.IsFavorite = false; // The game is no longer a favorite
-				Definitions.MainWindow.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
+				Definitions.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
 				FavBtn.Content = ""; // Change icon
 			}
 			else
 			{
 				GameInfo.IsFavorite = true; // Set the game to be a favorite
 				FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
-				Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
+				Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
 				FavBtn.Content = ""; // Change icon
 			}
 			new GameSaver().Save(Definitions.Games); // Save the changes

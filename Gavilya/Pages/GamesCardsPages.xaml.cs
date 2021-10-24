@@ -65,7 +65,7 @@ namespace Gavilya.Pages
 
 		public void LoadGames()
 		{
-			Definitions.MainWindow.FavoriteBar.Children.Clear();
+			Definitions.HomePage.FavoriteBar.Children.Clear();
 			GamePresenter.Children.Clear(); // Remove all the games
 
 			if (Definitions.Games.Count > 0)

@@ -479,7 +479,7 @@ namespace Gavilya
 						if (gameCard1.GameInfo.IsFavorite) // If the game is a favorite
 						{
 							List<FavoriteGameCard> favoriteGameCards = new();
-							foreach (FavoriteGameCard favoriteGameCard in FavoriteBar.Children) // Foreach favorite
+							foreach (FavoriteGameCard favoriteGameCard in Definitions.HomePage.FavoriteBar.Children) // Foreach favorite
 							{
 								favoriteGameCards.Add(favoriteGameCard); // Add to the list
 							}
@@ -488,7 +488,7 @@ namespace Gavilya
 							{
 								if (favoriteGameCard1.GameInfo == gameCard1.GameInfo) // If the favorite is corresponding to the game
 								{
-									FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
+									Definitions.HomePage.FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
 								}
 							}
 						}
