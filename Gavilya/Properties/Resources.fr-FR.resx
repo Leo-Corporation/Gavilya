@@ -645,4 +645,13 @@
   <data name="SeeLicenses" xml:space="preserve">
     <value>Voir les licences</value>
   </data>
+  <data name="WhatGameToPlay" xml:space="preserve">
+    <value>A quel jeu voulez-vous jouer ?</value>
+  </data>
+  <data name="ExclamationMark" xml:space="preserve">
+    <value> !</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Bonjour,</value>
+  </data>
 </root>

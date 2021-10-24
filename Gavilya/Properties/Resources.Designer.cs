@@ -466,6 +466,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to !.
+        /// </summary>
+        public static string ExclamationMark {
+            get {
+                return ResourceManager.GetString("ExclamationMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export.
         /// </summary>
         public static string Export {
@@ -689,6 +698,15 @@ namespace Gavilya.Properties {
         public static string GoForward {
             get {
                 return ResourceManager.GetString("GoForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello,.
+        /// </summary>
+        public static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
             }
         }
         
@@ -1643,6 +1661,15 @@ namespace Gavilya.Properties {
         public static string WelcomeRecentGames {
             get {
                 return ResourceManager.GetString("WelcomeRecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What game do you wanna play?.
+        /// </summary>
+        public static string WhatGameToPlay {
+            get {
+                return ResourceManager.GetString("WhatGameToPlay", resourceCulture);
             }
         }
         
