@@ -53,6 +53,9 @@ namespace Gavilya.Pages
 
 		internal void InitUI()
 		{
+			// Welcome message
+			HelloTxt.Text = $"{Properties.Resources.Hello} {Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}{Properties.Resources.ExclamationMark}"; // Set text
+
 			// Load "Statistics" page
 			Statistics.Content = Definitions.Statistics; // Set content to Statistics page
 		}
