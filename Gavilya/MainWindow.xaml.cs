@@ -591,5 +591,43 @@ namespace Gavilya
 			scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
 			e.Handled = true;
 		}
+
+		Button CheckedTabButton { get; set; }
+		private void HomeTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckedTabButton = HomeTabBtn; // Set the checked button
+			CheckButton(); // Update the UI
+		}
+
+		private void LibraryTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckedTabButton = LibraryTabBtn; // Set the checked button
+			CheckButton(); // Update the UI
+		}
+
+		private void ProfileTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckedTabButton = ProfileTabBtn; // Set the checked button
+			CheckButton(); // Update the UI
+		}
+
+		private void HomeTabBtn_MouseLeave(object sender, MouseEventArgs e)
+		{
+			Button button = (Button)sender; // Get the button
+			if (button == CheckedTabButton)
+			{
+				button.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) };
+			}
+		}
+
+		private void CheckButton()
+		{
+			// Reset
+			HomeTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+			LibraryTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+			ProfileTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+
+			CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
+		}
 	}
 }

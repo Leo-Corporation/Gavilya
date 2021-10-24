@@ -142,24 +142,11 @@
                         </Button.ToolTip>
                     </Button>
 
-                    <TextBlock
-		Grid.Column="2"
-		Margin="10 0 0 0"
-		VerticalAlignment="Center"
-		FontSize="19"
-		Text="{x:Static lang:Resources.MainWindowTitle}"
-		FontWeight="Bold"
-		Foreground="White">
-						<TextBlock.Style>
-							<Style TargetType="TextBlock">
-								<Style.Triggers>
-									<DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
-										<Setter Property="Foreground" Value="{DynamicResource WindowTitleBarInactiveText}" />
-									</DataTrigger>
-								</Style.Triggers>
-							</Style>
-						</TextBlock.Style>
-					</TextBlock>
+					<StackPanel Orientation="Horizontal" Grid.Column="2">
+						<Button x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="{x:Static lang:Resources.Home}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="Bold" FontSize="16" Background="Transparent" Foreground="#FFF" Margin="5 0" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave"/>
+						<Button x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="{x:Static lang:Resources.Library}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="Bold" FontSize="16" Background="Transparent" Foreground="#FFF" Margin="5 0" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave"/>
+						<Button x:Name="ProfileTabBtn" Click="ProfileTabBtn_Click" Content="{x:Static lang:Resources.MyProfile}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="Bold" FontSize="16" Background="Transparent" Foreground="#FFF" Margin="5 0" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave"/>
+					</StackPanel>
 
 					<Button x:Name="ProfileBtn" Style="{StaticResource TitleBarButtonStyle}" Padding="5" Margin="5" Background="Transparent" Click="ProfileBtn_Click" Height="35" Width="35" Grid.Column="3">
 						<Rectangle RadiusX="15" RadiusY="15" Width="30" Height="30">

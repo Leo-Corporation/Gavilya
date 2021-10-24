@@ -654,4 +654,13 @@
   <data name="Hello" xml:space="preserve">
     <value>Bonjour,</value>
   </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="Library" xml:space="preserve">
+    <value>Bibliothèque</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>Mon profile</value>
+  </data>
 </root>
