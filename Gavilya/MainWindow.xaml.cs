@@ -53,6 +53,8 @@ namespace Gavilya
 
 			GamesCardsPages gamesCardsPages = new(); // GamesCardsPage
 			Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
+
+			//TODO: Update default page
 			PageContent.Content = Definitions.Settings.PageId switch
 			{
 				0 => gamesCardsPages,
@@ -75,7 +77,11 @@ namespace Gavilya
 			Global.AutoSave(); // Run autosave
 
 			CheckUpdateOnStart(); // Check update on start
+
+			// Tabs
 			PageContent.Navigate(Definitions.HomePage);
+			CheckedTabButton = HomeTabBtn;
+			CheckButton();
 		}
 		System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
 		private async void CheckUpdateOnStart()
