@@ -597,18 +597,25 @@ namespace Gavilya
 		{
 			CheckedTabButton = HomeTabBtn; // Set the checked button
 			CheckButton(); // Update the UI
+
+			PageContent.Navigate(Definitions.HomePage); // Show the Home page
 		}
 
 		private void LibraryTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedTabButton = LibraryTabBtn; // Set the checked button
 			CheckButton(); // Update the UI
+
+			PageContent.Navigate(Definitions.GamesCardsPages); // Show the Library page
+			//TODO: Change to "Library" page instead of Card view
 		}
 
 		private void ProfileTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedTabButton = ProfileTabBtn; // Set the checked button
 			CheckButton(); // Update the UI
+
+			//TODO: Profile page
 		}
 
 		private void HomeTabBtn_MouseLeave(object sender, MouseEventArgs e)
