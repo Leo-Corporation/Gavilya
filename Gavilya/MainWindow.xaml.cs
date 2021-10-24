@@ -75,6 +75,7 @@ namespace Gavilya
 			Global.AutoSave(); // Run autosave
 
 			CheckUpdateOnStart(); // Check update on start
+			PageContent.Navigate(Definitions.HomePage);
 		}
 		System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
 		private async void CheckUpdateOnStart()
@@ -582,6 +583,13 @@ namespace Gavilya
 				ProfilesPopupMenu.Show(); // Show
 				Definitions.IsProfileMenuVisible = true; // Is shown
 			}
+		}
+
+		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+		{
+			ScrollViewer scv = (ScrollViewer)sender;
+			scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta);
+			e.Handled = true;
 		}
 	}
 }

@@ -20,5 +20,6 @@
 		<ScrollViewer VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Visible">
 			<WrapPanel Name="FavoriteBar" Orientation="Horizontal" Height="Auto" FlowDirection="LeftToRight"></WrapPanel>
 		</ScrollViewer>
+		<Frame x:Name="Statistics" NavigationUIVisibility="Hidden"/>
 	</StackPanel>
 </Page>

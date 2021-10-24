@@ -285,7 +285,9 @@
 								<WrapPanel Name="FavoriteBar" Orientation="Horizontal" Height="Auto" FlowDirection="LeftToRight"></WrapPanel>
 							</ScrollViewer>-->
 						</StackPanel>
-						<Frame Margin="8 0 0 0" Height="Auto" Name="PageContent" Grid.Row="1" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
+						<ScrollViewer Margin="8 0 0 0" Grid.Row="1" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" CanContentScroll="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerTemplate1}">
+							<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
+						</ScrollViewer>
 					</Grid>
 				</Grid>
 			</Border>

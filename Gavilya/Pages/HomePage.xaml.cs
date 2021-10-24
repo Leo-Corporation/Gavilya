@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,6 +48,13 @@ namespace Gavilya.Pages
 		public HomePage()
 		{
 			InitializeComponent();
+			InitUI(); // Load the UI
+		}
+
+		internal void InitUI()
+		{
+			// Load "Statistics" page
+			Statistics.Content = Definitions.Statistics; // Set content to Statistics page
 		}
 	}
 }

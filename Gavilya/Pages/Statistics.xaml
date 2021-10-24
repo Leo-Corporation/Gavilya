@@ -17,8 +17,11 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Text="{x:Static lang:Resources.Statistics}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
-
+		<StackPanel Orientation="Horizontal" Margin="10">
+			<TextBlock Text="&#xF342;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center"/>
+			<TextBlock Text="{x:Static lang:Resources.Statistics}" FontSize="18" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+		</StackPanel>
+		
 		<Border CornerRadius="25" Background="#FF141428" Grid.Row="1" Margin="10" Padding="25">
 			<Grid>
 				<Grid.RowDefinitions>
