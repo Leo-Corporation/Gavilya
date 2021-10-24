@@ -613,7 +613,7 @@ namespace Gavilya
 			CheckButton(); // Update the UI
 
 			PageContent.Navigate(Definitions.GamesCardsPages); // Show the Library page
-			//TODO: Change to "Library" page instead of Card view
+															   //TODO: Change to "Library" page instead of Card view
 		}
 
 		private void ProfileTabBtn_Click(object sender, RoutedEventArgs e)

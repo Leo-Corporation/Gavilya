@@ -23,7 +23,6 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using LeoCorpLibrary;
-using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
