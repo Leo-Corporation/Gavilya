@@ -62,7 +62,7 @@ namespace Gavilya.UserControls
 			GameNameToolTip.Content = gameInfo.Name;
 			ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
 
-			if (gameInfo.IconFileLocation != string.Empty) // If there is an image
+			if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If there is an image
 			{
 				var bitmap = new BitmapImage();
 				var stream = File.OpenRead(gameInfo.IconFileLocation);
