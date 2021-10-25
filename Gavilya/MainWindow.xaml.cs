@@ -56,11 +56,21 @@ namespace Gavilya
 
 			Definitions.LibraryPage.PageDisplayer.Content = Definitions.Settings.PageId switch
 			{
-				0 => gamesCardsPages,
+				0 => Definitions.GamesCardsPages,
 				1 => Definitions.RecentGamesPage,
 				2 => Definitions.GamesListPage,
-				_ => gamesCardsPages
+				_ => Definitions.GamesCardsPages
 			}; // Show the page
+
+			Definitions.LibraryPage.CheckedButton = Definitions.Settings.PageId switch
+			{
+				0 => Definitions.LibraryPage.GameCardTabBtn,
+				1 => Definitions.LibraryPage.RecentTabBtn,
+				2 => Definitions.LibraryPage.GameListTabBtn,
+				_ => Definitions.LibraryPage.GameCardTabBtn
+			}; // Check
+
+			Definitions.LibraryPage.RefreshTabUI();
 
 			Definitions.MainWindow = this; // Define the Main Window
 			Global.SortGames();

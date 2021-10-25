@@ -74,8 +74,8 @@ namespace Gavilya.Pages
 			PageDisplayer.Content = Definitions.GamesListPage; // Set page content
 		}
 
-		Button CheckedButton { get; set; }
-		private void RefreshTabUI()
+		internal Button CheckedButton { get; set; }
+		internal void RefreshTabUI()
 		{
 			GameCardTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
