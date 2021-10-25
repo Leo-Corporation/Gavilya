@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,27 +52,53 @@ namespace Gavilya.Pages
 
 		private void GameCardTabBtn_Click(object sender, RoutedEventArgs e)
 		{
+			CheckedButton = GameCardTabBtn; // Set
+			RefreshTabUI();
 
+			PageDisplayer.Content = Definitions.GamesCardsPages; // Set page content
 		}
 
 		private void RecentTabBtn_Click(object sender, RoutedEventArgs e)
 		{
+			CheckedButton = RecentTabBtn; // Set
+			RefreshTabUI();
 
+			PageDisplayer.Content = Definitions.RecentGamesPage; // Set page content
 		}
 
 		private void GameListTabBtn_Click(object sender, RoutedEventArgs e)
 		{
+			CheckedButton = GameListTabBtn; // Set
+			RefreshTabUI();
 
+			PageDisplayer.Content = Definitions.GamesListPage; // Set page content
+		}
+
+		Button CheckedButton { get; set; }
+		private void RefreshTabUI()
+		{
+			GameCardTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+			RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+			GameListTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+
+			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 		}
 
 		private void GameCardTabBtn_MouseEnter(object sender, MouseEventArgs e)
 		{
+			Button button = (Button)sender; // Create button
 
+			button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 		}
 
 		private void GameCardTabBtn_MouseLeave(object sender, MouseEventArgs e)
 		{
+			Button button = (Button)sender; // Create button
 
+			if (CheckedButton != button)
+			{
+				button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+			}
 		}
 	}
 }

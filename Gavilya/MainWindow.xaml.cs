@@ -54,8 +54,7 @@ namespace Gavilya
 			GamesCardsPages gamesCardsPages = new(); // GamesCardsPage
 			Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
 
-			//TODO: Update default page
-			PageContent.Content = Definitions.Settings.PageId switch
+			Definitions.LibraryPage.PageDisplayer.Content = Definitions.Settings.PageId switch
 			{
 				0 => gamesCardsPages,
 				1 => Definitions.RecentGamesPage,
@@ -459,6 +458,20 @@ namespace Gavilya
 		private void PageContent_Navigated(object sender, NavigationEventArgs e)
 		{
 			RefreshNavigationsButton(); // Refresh the navigations button state
+			RefreshTabUI(); // Refresh the tab UI status
+		}
+
+		private void RefreshTabUI()
+		{
+			if (PageContent.Content is HomePage)
+			{
+				CheckedTabButton = HomeTabBtn; // Check
+			}
+			else if (PageContent.Content is LibraryPage)
+			{
+				CheckedTabButton = LibraryTabBtn; // Check
+			}
+			CheckButton(); // Refresh
 		}
 
 		internal ProfilesPopupMenu ProfilesPopupMenu = new();
@@ -502,8 +515,7 @@ namespace Gavilya
 			CheckedTabButton = LibraryTabBtn; // Set the checked button
 			CheckButton(); // Update the UI
 
-			PageContent.Navigate(Definitions.GamesCardsPages); // Show the Library page
-															   //TODO: Change to "Library" page instead of Card view
+			PageContent.Navigate(Definitions.LibraryPage); // Show the Library page
 		}
 
 		private void ProfileTabBtn_Click(object sender, RoutedEventArgs e)

@@ -57,6 +57,8 @@ namespace Gavilya
 			Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
 			Definitions.GamesListPage.LoadGames(); // Load the games
 
+			Definitions.LibraryPage = new();
+
 			if (Definitions.Settings.IsFirstRun) // If it is the app first run
 			{
 				new FirstRun().Show(); // Show the first run experience
