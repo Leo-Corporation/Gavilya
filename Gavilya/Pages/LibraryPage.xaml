@@ -21,7 +21,7 @@
 				<TextBlock Text="&#xF4DD;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center"/>
 				<TextBlock Text="{x:Static lang:Resources.Library}" FontSize="18" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
 			</StackPanel>
-			<StackPanel	Orientation="Horizontal">
+			<StackPanel	Orientation="Horizontal" Margin="10 5">
 				<Button x:Name="GameCardTabBtn" Style="{StaticResource TabButtonBorder}" Click="GameCardTabBtn_Click" MouseEnter="GameCardTabBtn_MouseEnter" MouseLeave="GameCardTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="#FF6600FF">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF451;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
@@ -57,6 +57,6 @@
 			</StackPanel>
 		</StackPanel>
 
-		<Frame x:Name="PageDisplayer" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+		<Frame x:Name="PageDisplayer" Margin="10 0 0 0" NavigationUIVisibility="Hidden" Grid.Row="1"/>
 	</Grid>
 </Page>
