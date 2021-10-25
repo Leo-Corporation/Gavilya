@@ -26,6 +26,7 @@ using Gavilya.Classes;
 using Gavilya.UserControls;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Gavilya.Pages
 {
@@ -52,6 +53,13 @@ namespace Gavilya.Pages
 			RecentPlaceholder.Children.Add(new WelcomeRecentGames() { VerticalAlignment = VerticalAlignment.Center });
 			RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
 			RecentBar.Visibility = Visibility.Visible;
+		}
+
+		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+		{
+			ScrollViewer scv = (ScrollViewer)sender;
+			scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 2);
+			e.Handled = true;
 		}
 	}
 }

@@ -246,9 +246,7 @@
             <Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#0A0A1E">
 				<Grid Grid.Row="1">
 					<Grid>
-						<ScrollViewer Margin="8 0 0 0" Grid.Row="1" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" CanContentScroll="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerTemplate1}">
-							<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
-						</ScrollViewer>
+						<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
 					</Grid>
 				</Grid>
 			</Border>
