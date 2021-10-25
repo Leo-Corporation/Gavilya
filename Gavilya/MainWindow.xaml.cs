@@ -64,8 +64,6 @@ namespace Gavilya
 			}; // Show the page
 
 			Definitions.MainWindow = this; // Define the Main Window
-
-			LoadPage(); // Load the button on the button corresponding to the active page
 			Global.SortGames();
 
 			LoadGames();
@@ -114,7 +112,6 @@ namespace Gavilya
 			BackBtn.Foreground = BackBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
 			ForwardBtn.Foreground = ForwardBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
 
-			UpdateSidebar(); // Update the sidebar
 		}
 
 		internal void LoadProfilesUI()
@@ -141,45 +138,6 @@ namespace Gavilya
 			{
 				ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png")); // Set image
 			}
-		}
-
-		/// <summary>
-		/// Updates the sidebar.
-		/// </summary>
-		private void UpdateSidebar()
-		{
-			ResetSidebar(); // Resets the sidebar
-
-			if (PageContent.Content is GamesCardsPages) // If the selected page is GamesCardsPages
-			{
-				ShadowElement(AppCardButton); // Put a shadow under the button
-				ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
-			}
-			else if (PageContent.Content is RecentGamesPage) // If the selected page is RecentGamesPage
-			{
-				ShadowElement(RecentButton); // Put a shadow under the button
-				ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
-			}
-			else if (PageContent.Content is GamesListPage) // If the selected page is GamesListPage
-			{
-				ShadowElement(AppListButton); // Put a shadow under the button
-				ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
-			}
-		}
-
-		/// <summary>
-		/// Resets the sidebar.
-		/// </summary>
-		private void ResetSidebar()
-		{
-			RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
-
-			ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-
 		}
 
 		private void LoadGames()
@@ -216,30 +174,6 @@ namespace Gavilya
 
 			MaxHeight = currentScreen.WorkingArea.Height / factor; // Set max size
 			MaxWidth = currentScreen.WorkingArea.Width / factor; // Set max size
-		}
-
-		private void LoadPage()
-		{
-			ResetSidebar(); // Reset the sidebar
-
-			switch (Definitions.Settings.PageId)
-			{
-				case 0: // App Card
-					ShadowElement(AppCardButton); // Put a shadow under the button
-
-					ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
-					break;
-				case 1: // Recent
-					ShadowElement(RecentButton); // Put a shadow under the button
-
-					ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
-					break;
-				case 2: // App List
-					ShadowElement(AppListButton); // Put a shadow under the button
-
-					ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
-					break;
-			}
 		}
 
 		private void Window_StateChanged(object sender, EventArgs e)
@@ -300,21 +234,6 @@ namespace Gavilya
 			}
 		}
 
-		private void AppCardButton_Click(object sender, RoutedEventArgs e)
-		{
-			RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
-
-			ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-
-			ShadowElement(AppCardButton); // Put a shadow under the button
-
-			ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
-
-			PageContent.Content = Definitions.GamesCardsPages; // Show the page
-		}
-
 		/// <summary>
 		/// Put a shadow under an <see cref="UIElement"/>.
 		/// </summary>
@@ -363,35 +282,6 @@ namespace Gavilya
 			button.Background = color;
 		}
 
-		private void RecentButton_Click(object sender, RoutedEventArgs e)
-		{
-			RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
-
-			ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-
-			ShadowElement(RecentButton); // Put a shadow under the control
-
-			ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
-
-			PageContent.Content = Definitions.RecentGamesPage; // Show the page
-		}
-
-		private void AppListButton_Click(object sender, RoutedEventArgs e)
-		{
-			RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
-
-			ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-
-			ShadowElement(AppListButton); // Put a shadow under the control
-
-			ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
-
-			PageContent.Content = Definitions.GamesListPage; // Show the page
-		}
 
 		private void SelectBtn_Click(object sender, RoutedEventArgs e)
 		{

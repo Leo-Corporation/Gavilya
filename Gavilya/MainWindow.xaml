@@ -233,33 +233,7 @@
 			</Border>
             <Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#0A0A1E">
 				<Grid Grid.Row="1">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="60"/>
-						<ColumnDefinition/>
-					</Grid.ColumnDefinitions>
-					<Border Margin="5" Height="160" Background="#FF1E1E32" BorderBrush="AliceBlue" BorderThickness="0" CornerRadius="10">
-						<Border.Effect>
-							<DropShadowEffect BlurRadius="10" ShadowDepth="0" Opacity="0.595"/>
-						</Border.Effect>
-						<StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                            <Button Name="AppCardButton" Click="AppCardButton_Click" Content="&#xea17;" Background="#FF28283C" FontSize="19" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
-                                <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.GameCard}" Background="#000014" Foreground="White"/>
-                                </Button.ToolTip>
-                            </Button>
-                            <Button Name="RecentButton" Click="RecentButton_Click" Content="&#xea2c;" Background="#FF28283C" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
-                                <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#000014" Foreground="White"/>
-                                </Button.ToolTip>
-                            </Button>
-                            <Button Name="AppListButton" Click="AppListButton_Click" Content="&#xe90a;" Background="#FF28283C" FontSize="25" Height="50" Cursor="Hand" Foreground="White" Style="{DynamicResource ButtonMenu}" FontFamily="Fonts\#FluentlyIcons">
-                                <Button.ToolTip>
-                                    <ToolTip Content="{x:Static lang:Resources.GameList}" Background="#000014" Foreground="White"/>
-                                </Button.ToolTip>
-                            </Button>
-						</StackPanel>
-					</Border>
-					<Grid Grid.Column="2">
+					<Grid>
 						<ScrollViewer Margin="8 0 0 0" Grid.Row="1" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel" CanContentScroll="True" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerTemplate1}">
 							<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
 						</ScrollViewer>
