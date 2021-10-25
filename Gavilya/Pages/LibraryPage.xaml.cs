@@ -81,6 +81,18 @@ namespace Gavilya.Pages
 			RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			GameListTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 
+			if (PageDisplayer.Content is GamesCardsPages)
+			{
+				CheckedButton = GameCardTabBtn; // Set
+			}
+			else if (PageDisplayer.Content is RecentGamesPage)
+			{
+				CheckedButton = RecentTabBtn; // Set
+			}
+			else if (PageDisplayer.Content is GamesListPage)
+			{
+				CheckedButton = GameListTabBtn; // Set
+			}
 			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 		}
 
@@ -99,6 +111,11 @@ namespace Gavilya.Pages
 			{
 				button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			}
+		}
+
+		private void PageDisplayer_Navigated(object sender, NavigationEventArgs e)
+		{
+			RefreshTabUI();
 		}
 	}
 }

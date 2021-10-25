@@ -57,6 +57,6 @@
 			</StackPanel>
 		</StackPanel>
 
-		<Frame x:Name="PageDisplayer" Margin="10 0 0 0" NavigationUIVisibility="Hidden" Grid.Row="1"/>
+		<Frame x:Name="PageDisplayer" Margin="10 0 0 0" NavigationUIVisibility="Hidden" Grid.Row="1" Navigated="PageDisplayer_Navigated"/>
 	</Grid>
 </Page>
