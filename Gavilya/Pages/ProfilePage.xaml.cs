@@ -129,6 +129,21 @@ namespace Gavilya.Pages
 			Game1TimeTxt.Text = $"{mostPlayed[0].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
 			Game2TimeTxt.Text = $"{mostPlayed[1].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
 			Game3TimeTxt.Text = $"{mostPlayed[2].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
+
+			// Favorites tab
+			List<GameInfo> favorites = new();
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				if (Definitions.Games[i].IsFavorite)
+				{
+					favorites.Add(Definitions.Games[i]); // Add to favorites
+				}
+			}
+
+			for (int i = 0; i < favorites.Count; i++)
+			{
+				FavoritesTab.Children.Add(new FavoriteListItem(favorites[i]));
+			}
 		}
 
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -139,15 +154,37 @@ namespace Gavilya.Pages
 		}
 
 		internal Button CheckedButton { get; set; }
+		internal void RefreshTabUI()
+		{
+			SpotlightTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+			FavoriteTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+
+			if (SpotlightPage.Visibility == Visibility.Visible)
+			{
+				SpotlightPage.Visibility = Visibility.Collapsed; // Hide
+				FavoritesTab.Visibility = Visibility.Visible; // Show
+			}
+			else
+			{
+				SpotlightPage.Visibility = Visibility.Visible; // Show
+				FavoritesTab.Visibility = Visibility.Collapsed; // Show
+			}
+
+			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		}
 
 		private void SpotlightTabBtn_Click(object sender, RoutedEventArgs e)
 		{
+			CheckedButton = SpotlightTabBtn; // Check
 
+			RefreshTabUI();
 		}
 
 		private void FavoriteTabBtn_Click(object sender, RoutedEventArgs e)
 		{
+			CheckedButton = FavoriteTabBtn; // Check
 
+			RefreshTabUI();
 		}
 
 		private void SpotlightTabBtn_MouseEnter(object sender, MouseEventArgs e)

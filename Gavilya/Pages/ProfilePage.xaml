@@ -90,6 +90,9 @@
 					</StackPanel>
 				</Border>
 			</StackPanel>
+			<StackPanel x:Name="FavoritesTab" Visibility="Collapsed">
+				
+			</StackPanel>
 		</StackPanel>
 	</ScrollViewer>
 </Page>
