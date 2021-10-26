@@ -663,4 +663,7 @@
   <data name="MyProfile" xml:space="preserve">
     <value>Mon profil</value>
   </data>
+  <data name="NoStatistics" xml:space="preserve">
+    <value>Il n'y a actuellement pas de statistiques à montrer.</value>
+  </data>
 </root>

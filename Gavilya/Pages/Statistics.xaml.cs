@@ -47,6 +47,9 @@ namespace Gavilya.Pages
 		{
 			if (Definitions.Games.Count > 0)
 			{
+				BorderContent.Visibility = Visibility.Visible; // Show
+				PlaceholderBorder.Visibility = Visibility.Collapsed; // Hide
+
 				// Controls
 				Definitions.StatGameInfoControl = (StatGameInfoControl)GameInfoDisplayer.Children[0]; // Set content
 				GamesInfoDisplayer.Children.Clear();
@@ -84,6 +87,11 @@ namespace Gavilya.Pages
 
 				// Graph
 				GraphDisplayer.Content = new StatGraph(mostPlayed);
+			}
+			else
+			{
+				BorderContent.Visibility = Visibility.Collapsed; // Hide
+				PlaceholderBorder.Visibility = Visibility.Visible; // Show
 			}
 		}
 

@@ -660,4 +660,7 @@
   <data name="MyProfile" xml:space="preserve">
     <value>My profile</value>
   </data>
+  <data name="NoStatistics" xml:space="preserve">
+    <value>There is currently no statistics to show.</value>
+  </data>
 </root>

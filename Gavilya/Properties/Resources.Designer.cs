@@ -1098,6 +1098,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is currently no statistics to show..
+        /// </summary>
+        public static string NoStatistics {
+            get {
+                return ResourceManager.GetString("NoStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not associated.
         /// </summary>
         public static string NotAssociated {

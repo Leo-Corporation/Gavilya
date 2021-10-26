@@ -60,7 +60,7 @@ namespace Gavilya.UserControls
 			}
 
 			// Icon
-			if (gameInfo.IconFileLocation != string.Empty) // If a custom image is used
+			if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If a custom image is used
 			{
 				var bitmap = new BitmapImage();
 				var stream = File.OpenRead(gameInfo.IconFileLocation);

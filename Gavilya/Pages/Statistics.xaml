@@ -22,7 +22,7 @@
 			<TextBlock Text="{x:Static lang:Resources.Statistics}" FontSize="18" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
 		</StackPanel>
 		
-		<Border CornerRadius="25" Background="#FF141428" Grid.Row="1" Margin="10" Padding="25">
+		<Border x:Name="BorderContent" CornerRadius="25" Background="#FF141428" Grid.Row="1" Margin="10" Padding="25">
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
@@ -78,6 +78,12 @@
 
 				</Grid>
 			</Grid>
+		</Border>
+		<Border x:Name="PlaceholderBorder" CornerRadius="25" Background="#FF141428" Grid.Row="1" Visibility="Collapsed" Margin="10" Padding="25">
+			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+				<TextBlock Text="&#xF342;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="100" HorizontalAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.NoStatistics}" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+			</StackPanel>
 		</Border>
 	</Grid>
 </Page>
