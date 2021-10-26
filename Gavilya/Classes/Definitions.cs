@@ -78,7 +78,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Version of the software (Gavilya).
 		/// </summary>
-		public static string Version => "2.0.0.2110-pre3";
+		public static string Version => "2.0.0.2110-pre4";
 
 		/// <summary>
 		/// True if the menu is shown.
