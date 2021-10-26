@@ -663,4 +663,7 @@
   <data name="NoStatistics" xml:space="preserve">
     <value>There is currently no statistics to show.</value>
   </data>
+  <data name="Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
 </root>

@@ -141,6 +141,11 @@ namespace Gavilya.Classes
 		public static LibraryPage LibraryPage { get; set; }
 
 		/// <summary>
+		/// The <see cref="Pages.ProfilePage"/> page.
+		/// </summary>
+		public static ProfilePage ProfilePage { get; set; }
+
+		/// <summary>
 		/// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.
 		/// </summary>
 		public static bool IsGamesCardsPagesCheckBoxesVisible { get; set; }

@@ -21,34 +21,42 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.Classes;
-using Gavilya.Enums;
-using Gavilya.UserControls;
-using System;
-using System.IO;
-using System.Windows;
-using System.Windows.Media.Imaging;
 
-namespace Gavilya.Windows
+using Gavilya.Classes;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Gavilya.Pages
 {
 	/// <summary>
-	/// Interaction logic for ProfilesPopupMneu.xaml
+	/// Interaction logic for ProfilePage.xaml
 	/// </summary>
-	public partial class ProfilesPopupMenu : Window
+	public partial class ProfilePage : Page
 	{
 		Profile CurrentProfile { get; init; }
-		public ProfilesPopupMenu()
+		public ProfilePage()
 		{
 			InitializeComponent();
 			CurrentProfile = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]; // Current profile
 
-			InitUI(); // Load the UI
+			InitUI();
 		}
 
-		internal void InitUI()
+		private void InitUI()
 		{
-			ProfileDisplayer.Children.Clear(); // Clear all profile items
-
 			if (CurrentProfile.PictureFilePath != "_default")
 			{
 				if (File.Exists(CurrentProfile.PictureFilePath))
@@ -57,7 +65,7 @@ namespace Gavilya.Windows
 					var stream = File.OpenRead(CurrentProfile.PictureFilePath);
 
 					bitmap.BeginInit();
-					bitmap.DecodePixelWidth = 50;
+					bitmap.DecodePixelWidth = 100;
 					bitmap.CacheOption = BitmapCacheOption.OnLoad;
 					bitmap.StreamSource = stream;
 					bitmap.EndInit();
@@ -74,46 +82,42 @@ namespace Gavilya.Windows
 			}
 
 			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
+		}
 
-			// Load the profile displayer
-			if (Definitions.Profiles.Count > 1) // If there is more than one profile
+		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+		{
+			ScrollViewer scv = (ScrollViewer)sender;
+			scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 2);
+			e.Handled = true;
+		}
+
+		internal Button CheckedButton { get; set; }
+
+		private void SpotlightTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void FavoriteTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void SpotlightTabBtn_MouseEnter(object sender, MouseEventArgs e)
+		{
+			Button button = (Button)sender; // Create button
+
+			button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		}
+
+		private void SpotlightTabBtn_MouseLeave(object sender, MouseEventArgs e)
+		{
+			Button button = (Button)sender; // Create button
+
+			if (CheckedButton != button)
 			{
-				for (int i = 0; i < Definitions.Profiles.Count; i++)
-				{
-					if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
-					{
-						ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
-					}
-				}
+				button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			}
-			else
-			{
-				ProfileDisplayer.Children.Add(new NoProfileItem()); // Add a message
-			}
-		}
-
-		private void Window_Deactivated(object sender, EventArgs e)
-		{
-			if (Definitions.IsProfileMenuVisible)
-			{
-				Hide(); // Close
-				Definitions.IsProfileMenuVisible = false; // Define
-			}
-		}
-
-		private void AddProfileBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddEditProfileWindow(EditMode.Add).Show(); // Add
-		}
-
-		private void EditProfileBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
-		}
-
-		private void StatsBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Definitions.MainWindow.PageContent.Content = Definitions.HomePage; // Navigate to home
 		}
 	}
 }

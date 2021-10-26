@@ -134,6 +134,7 @@ namespace Gavilya
 
 					bitmap.BeginInit();
 					bitmap.CacheOption = BitmapCacheOption.OnLoad;
+					bitmap.DecodePixelWidth = 30;
 					bitmap.StreamSource = stream;
 					bitmap.EndInit();
 					stream.Close();
@@ -478,6 +479,10 @@ namespace Gavilya
 			{
 				CheckedTabButton = LibraryTabBtn; // Check
 			}
+			else if (PageContent.Content is ProfilePage)
+			{
+				CheckedTabButton = ProfileTabBtn; // Check
+			}
 			CheckButton(); // Refresh
 		}
 
@@ -524,7 +529,7 @@ namespace Gavilya
 			CheckedTabButton = ProfileTabBtn; // Set the checked button
 			CheckButton(); // Update the UI
 
-			//TODO: Profile page
+			PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
 		}
 
 		private void HomeTabBtn_MouseLeave(object sender, MouseEventArgs e)

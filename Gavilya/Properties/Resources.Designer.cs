@@ -1512,6 +1512,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spotlight.
+        /// </summary>
+        public static string Spotlight {
+            get {
+                return ResourceManager.GetString("Spotlight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start by adding a game.
         /// </summary>
         public static string StartAddGame {
