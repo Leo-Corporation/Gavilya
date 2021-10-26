@@ -203,11 +203,6 @@ namespace Gavilya
 			WindowState = WindowState.Minimized; // Minimize
 		}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e)
-		{
-
-		}
-
 		private void maximizeButton_Click(object sender, RoutedEventArgs e)
 		{
 			WindowState = WindowState.Maximized; // Maximize
@@ -455,6 +450,7 @@ namespace Gavilya
 			{
 				PageContent.GoBack(); // Go back
 			}
+			RefreshNavigationsButton(); // Refresh the navigations button state
 		}
 
 		private void ForwardBtn_Click(object sender, RoutedEventArgs e)
@@ -463,6 +459,7 @@ namespace Gavilya
 			{
 				PageContent.GoForward(); // Go forward
 			}
+			RefreshNavigationsButton(); // Refresh the navigations button state
 		}
 
 		private void PageContent_Navigated(object sender, NavigationEventArgs e)
