@@ -1170,6 +1170,33 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to #1.
+        /// </summary>
+        public static string P1 {
+            get {
+                return ResourceManager.GetString("P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #2.
+        /// </summary>
+        public static string P2 {
+            get {
+                return ResourceManager.GetString("P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #3.
+        /// </summary>
+        public static string P3 {
+            get {
+                return ResourceManager.GetString("P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;PackageFamilyName&quot; property.
         /// </summary>
         public static string PackageFamilyName {

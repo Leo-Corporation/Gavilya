@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using Gavilya.UserControls;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -83,6 +84,51 @@ namespace Gavilya.Pages
 
 			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
 			TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
+
+			// Get top 3 most played games
+			// Values
+			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
+			List<GameInfo> mostPlayed = new(); // Create list
+
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
+			}
+
+			var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort
+
+			// Top 3 most played games
+			int c = 0; // Counter
+			foreach (KeyValuePair<GameInfo, int> keyValuePair in items)
+			{
+				if (c < 3)
+				{
+					mostPlayed.Add(keyValuePair.Key); // Add to the list
+					c++; // Increment counter
+				}
+				else
+				{
+					break;
+				}
+			}
+
+			// Get values
+			int longestPlayed = mostPlayed[0].TotalTimePlayed;
+			double h = mostPlayed[0].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
+			double h1 = mostPlayed[1].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
+			double h2 = mostPlayed[2].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
+
+			Top1Rect.Height = h; // Set height
+			Top2Rect.Height = h1; // Set height
+			Top3Rect.Height = h2; // Set height
+
+			GameName1.Text = mostPlayed[0].Name; // Set text
+			GameName2.Text = mostPlayed[1].Name; // Set text
+			GameName3.Text = mostPlayed[2].Name; // Set text
+
+			Game1TimeTxt.Text = $"{mostPlayed[0].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
+			Game2TimeTxt.Text = $"{mostPlayed[1].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
+			Game3TimeTxt.Text = $"{mostPlayed[2].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
 		}
 
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

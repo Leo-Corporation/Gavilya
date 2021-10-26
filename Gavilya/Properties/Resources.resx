@@ -676,4 +676,13 @@
   <data name="Spotlight" xml:space="preserve">
     <value>Spotlight</value>
   </data>
+  <data name="P1" xml:space="preserve">
+    <value>#1</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>#2</value>
+  </data>
+  <data name="P3" xml:space="preserve">
+    <value>#3</value>
+  </data>
 </root>

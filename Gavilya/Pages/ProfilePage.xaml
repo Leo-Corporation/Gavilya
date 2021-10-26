@@ -52,6 +52,44 @@
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
+
+			<StackPanel x:Name="SpotlightPage">
+				<StackPanel Orientation="Horizontal" Height="200" x:Name="GraphPanel" Grid.Row="0" HorizontalAlignment="Center">
+					<StackPanel VerticalAlignment="Bottom">
+						<Rectangle x:Name="Top2Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C"/>
+						<TextBlock x:Name="P2Txt" Text="{x:Static lang:Resources.P2}" FontSize="16" FontWeight="Bold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+					<StackPanel VerticalAlignment="Bottom">
+						<Rectangle x:Name="Top1Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C"/>
+						<TextBlock x:Name="P1Txt" Text="{x:Static lang:Resources.P1}" FontSize="16" FontWeight="Bold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+					<StackPanel VerticalAlignment="Bottom">
+						<Rectangle x:Name="Top3Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C"/>
+						<TextBlock x:Name="P3Txt" Text="{x:Static lang:Resources.P3}" FontSize="16" FontWeight="Bold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+					</StackPanel>
+				</StackPanel>
+				<Border Margin="10,10,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{x:Static lang:Resources.P1}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478"/>
+						<TextBlock x:Name="GameName1" d:Text="GameName" FontWeight="Bold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center"/>
+						<TextBlock x:Name="Game1TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Bottom" FontStyle="Italic"/>
+					</StackPanel>
+				</Border>
+				<Border Margin="10,5,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{x:Static lang:Resources.P2}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478"/>
+						<TextBlock x:Name="GameName2" d:Text="GameName" FontWeight="Bold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center"/>
+						<TextBlock x:Name="Game2TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Bottom" FontStyle="Italic"/>
+					</StackPanel>
+				</Border>
+				<Border Margin="10,5,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="{x:Static lang:Resources.P3}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478"/>
+						<TextBlock x:Name="GameName3" d:Text="GameName" FontWeight="Bold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center"/>
+						<TextBlock x:Name="Game3TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Bottom" FontStyle="Italic"/>
+					</StackPanel>
+				</Border>
+			</StackPanel>
 		</StackPanel>
 	</ScrollViewer>
 </Page>
