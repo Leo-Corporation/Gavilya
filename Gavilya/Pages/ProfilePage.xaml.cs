@@ -82,6 +82,7 @@ namespace Gavilya.Pages
 			}
 
 			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
+			TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
 		}
 
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
