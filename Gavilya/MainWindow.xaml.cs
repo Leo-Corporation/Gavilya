@@ -289,7 +289,7 @@ namespace Gavilya
 
 		private void SelectBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (PageContent.Content is GamesCardsPages && Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
+			if (PageContent.Content is LibraryPage && Definitions.LibraryPage.PageDisplayer.Content is GamesCardsPages && Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
 			{
 				for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
 				{
@@ -507,6 +507,7 @@ namespace Gavilya
 			CheckedTabButton = HomeTabBtn; // Set the checked button
 			CheckButton(); // Update the UI
 
+			Definitions.Statistics.InitUI(); // Refresh
 			PageContent.Navigate(Definitions.HomePage); // Show the Home page
 		}
 
