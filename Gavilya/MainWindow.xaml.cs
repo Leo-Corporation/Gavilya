@@ -229,14 +229,13 @@ namespace Gavilya
 			{
 				maximizeButton.Visibility = Visibility.Collapsed; // Hide
 				restoreButton.Visibility = Visibility.Visible; // Show
-				WindowBorder.Margin = new Thickness { Bottom = 0, Left = 0, Right = 0, Top = 0 }; // Remove the margin
 			}
 			else
 			{
 				maximizeButton.Visibility = Visibility.Visible; // Show
 				restoreButton.Visibility = Visibility.Collapsed; // Hide
-				WindowBorder.Margin = new Thickness { Bottom = 10, Left = 10, Right = 10, Top = 10 }; // Add the margin
 			}
+			WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
 		}
 
 		/// <summary>
