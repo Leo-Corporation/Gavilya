@@ -122,6 +122,10 @@ namespace Gavilya.Classes
 				Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
 				streamReader.Dispose();
 			}
+			else
+			{
+				Save(Definitions.Games == null ? new() : Definitions.Games);
+			}
 		}
 
 		private string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);

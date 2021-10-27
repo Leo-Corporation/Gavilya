@@ -54,6 +54,8 @@ namespace Gavilya.Pages
 
 		internal void InitUI()
 		{
+			CheckedButton = SpotlightTabBtn;
+
 			if (CurrentProfile.PictureFilePath != "_default")
 			{
 				if (File.Exists(CurrentProfile.PictureFilePath))
@@ -109,38 +111,47 @@ namespace Gavilya.Pages
 			}
 
 			// Get values
-			int longestPlayed = mostPlayed[0].TotalTimePlayed;
-			double h = mostPlayed[0].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
-			double h1 = mostPlayed[1].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
-			double h2 = mostPlayed[2].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
-
-			Top1Rect.Height = h; // Set height
-			Top2Rect.Height = h1; // Set height
-			Top3Rect.Height = h2; // Set height
-
-			GameName1.Text = mostPlayed[0].Name; // Set text
-			GameName2.Text = mostPlayed[1].Name; // Set text
-			GameName3.Text = mostPlayed[2].Name; // Set text
-
-			Game1TimeTxt.Text = $"{mostPlayed[0].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
-			Game2TimeTxt.Text = $"{mostPlayed[1].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
-			Game3TimeTxt.Text = $"{mostPlayed[2].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
-
-			// Favorites tab
-			FavoritesTab.Children.Clear();
-
-			List<GameInfo> favorites = new();
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			if (mostPlayed.Count >= 3)
 			{
-				if (Definitions.Games[i].IsFavorite)
+				int longestPlayed = mostPlayed[0].TotalTimePlayed;
+				double h = mostPlayed[0].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
+				double h1 = mostPlayed[1].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
+				double h2 = mostPlayed[2].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
+
+				Top1Rect.Height = h; // Set height
+				Top2Rect.Height = h1; // Set height
+				Top3Rect.Height = h2; // Set height
+
+				GameName1.Text = mostPlayed[0].Name; // Set text
+				GameName2.Text = mostPlayed[1].Name; // Set text
+				GameName3.Text = mostPlayed[2].Name; // Set text
+
+				Game1TimeTxt.Text = $"{mostPlayed[0].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
+				Game2TimeTxt.Text = $"{mostPlayed[1].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
+				Game3TimeTxt.Text = $"{mostPlayed[2].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
+
+				// Favorites tab
+				FavoritesTab.Children.Clear();
+
+				List<GameInfo> favorites = new();
+				for (int i = 0; i < Definitions.Games.Count; i++)
 				{
-					favorites.Add(Definitions.Games[i]); // Add to favorites
+					if (Definitions.Games[i].IsFavorite)
+					{
+						favorites.Add(Definitions.Games[i]); // Add to favorites
+					}
+				}
+
+				for (int i = 0; i < favorites.Count; i++)
+				{
+					FavoritesTab.Children.Add(new FavoriteListItem(favorites[i]));
 				}
 			}
-
-			for (int i = 0; i < favorites.Count; i++)
+			else
 			{
-				FavoritesTab.Children.Add(new FavoriteListItem(favorites[i]));
+				NothingToShow.Visibility = Visibility.Visible; // Hide
+				SpotlightPage.Visibility = Visibility.Collapsed; // Hide
+				FavoritesTab.Visibility = Visibility.Collapsed; // Hide
 			}
 		}
 
@@ -157,15 +168,18 @@ namespace Gavilya.Pages
 			SpotlightTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			FavoriteTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 
-			if (SpotlightPage.Visibility == Visibility.Visible)
+			if (NothingToShow.Visibility != Visibility.Visible)
 			{
-				SpotlightPage.Visibility = Visibility.Collapsed; // Hide
-				FavoritesTab.Visibility = Visibility.Visible; // Show
-			}
-			else
-			{
-				SpotlightPage.Visibility = Visibility.Visible; // Show
-				FavoritesTab.Visibility = Visibility.Collapsed; // Show
+				if (SpotlightPage.Visibility == Visibility.Visible)
+				{
+					SpotlightPage.Visibility = Visibility.Collapsed; // Hide
+					FavoritesTab.Visibility = Visibility.Visible; // Show
+				}
+				else
+				{
+					SpotlightPage.Visibility = Visibility.Visible; // Show
+					FavoritesTab.Visibility = Visibility.Collapsed; // Show
+				} 
 			}
 
 			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
