@@ -23,7 +23,9 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.UserControls;
+using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,7 +52,7 @@ namespace Gavilya.Pages
 			InitUI();
 		}
 
-		private void InitUI()
+		internal void InitUI()
 		{
 			if (CurrentProfile.PictureFilePath != "_default")
 			{
@@ -125,6 +127,8 @@ namespace Gavilya.Pages
 			Game3TimeTxt.Text = $"{mostPlayed[2].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
 
 			// Favorites tab
+			FavoritesTab.Children.Clear();
+
 			List<GameInfo> favorites = new();
 			for (int i = 0; i < Definitions.Games.Count; i++)
 			{
@@ -196,6 +200,11 @@ namespace Gavilya.Pages
 			{
 				button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			}
+		}
+
+		private void EditBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
 		}
 	}
 }

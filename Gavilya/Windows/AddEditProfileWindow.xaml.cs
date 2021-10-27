@@ -106,6 +106,7 @@ namespace Gavilya.Windows
 
 				Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh
 				Definitions.MainWindow.LoadProfilesUI(); // Refresh
+				Definitions.ProfilePage.InitUI();
 				Close(); // Closes the window 
 			}
 		}
