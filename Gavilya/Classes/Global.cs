@@ -624,6 +624,11 @@ namespace Gavilya.Classes
 		{
 			try
 			{
+				if (!Directory.Exists(Definitions.Settings.SavePath))
+				{
+					Directory.CreateDirectory(Definitions.Settings.SavePath); // Create directory
+				}
+
 				bool autoSaveAlreadyDone = false; // True if the save was already done
 				int dayOfSave = (Definitions.Settings.AutoSaveDay > DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)) ? DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) : Definitions.Settings.AutoSaveDay.Value;
 
@@ -644,7 +649,7 @@ namespace Gavilya.Classes
 				{
 					if (dayOfSave == DateTime.Now.Day)
 					{
-						if (Definitions.Games.Count > 0)
+						if (Definitions.Games.Count > 0 && Directory.Exists(Definitions.Settings.SavePath))
 						{
 							string fL = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
 							new GameSaver().Export(Definitions.Games, fL); // Export 

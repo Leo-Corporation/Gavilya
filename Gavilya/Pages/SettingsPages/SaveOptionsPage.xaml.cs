@@ -26,6 +26,7 @@ using Gavilya.Windows;
 using LeoCorpLibrary;
 using Microsoft.Win32;
 using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -131,7 +132,7 @@ namespace Gavilya.Pages.SettingsPages
 
 		private void SaveNowBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (Definitions.Games.Count > 0)
+			if (Definitions.Games.Count > 0 && Directory.Exists(Definitions.Settings.SavePath))
 			{
 				string fL = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
 				new GameSaver().Export(Definitions.Games, fL); // Export 
