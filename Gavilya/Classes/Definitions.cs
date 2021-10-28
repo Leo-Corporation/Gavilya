@@ -23,11 +23,8 @@ SOFTWARE.
 */
 using Gavilya.Pages;
 using Gavilya.UserControls;
-using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using System.Text;
 using System.Windows.Media;
 
 namespace Gavilya.Classes
@@ -81,7 +78,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Version of the software (Gavilya).
 		/// </summary>
-		public static string Version => "1.9.0.2109";
+		public static string Version => "2.0.0.2110";
 
 		/// <summary>
 		/// True if the menu is shown.
@@ -132,6 +129,21 @@ namespace Gavilya.Classes
 		/// The <see cref="Pages.Statistics"/> page.
 		/// </summary>
 		public static Statistics Statistics { get; set; }
+
+		/// <summary>
+		/// The <see cref="Pages.HomePage"/> page.
+		/// </summary>
+		public static HomePage HomePage { get; set; }
+
+		/// <summary>
+		/// The <see cref="Pages.LibraryPage"/> page.
+		/// </summary>
+		public static LibraryPage LibraryPage { get; set; }
+
+		/// <summary>
+		/// The <see cref="Pages.ProfilePage"/> page.
+		/// </summary>
+		public static ProfilePage ProfilePage { get; set; }
 
 		/// <summary>
 		/// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.

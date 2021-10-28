@@ -81,9 +81,7 @@
                     </Style>
                 </TextBlock.Style>
             </TextBlock>
-            <Button Name="CloseBtn" Click="CloseBtn_Click" Grid.Column="1" Style="{StaticResource TitleBarCloseButtonStyle}">
-                <Path Width="46" Height="32" Data="M 18,11 27,20 M 18,20 27,11" Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" StrokeThickness="1" />
-            </Button>
+			<Button Name="CloseBtn" Click="CloseBtn_Click" Grid.Column="1" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 
             <Grid Grid.Row="1" Grid.ColumnSpan="3">
                 <StackPanel>

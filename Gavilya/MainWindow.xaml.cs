@@ -22,7 +22,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
-using Gavilya.Enums;
 using Gavilya.Pages;
 using Gavilya.UserControls;
 using Gavilya.Windows;
@@ -30,21 +29,13 @@ using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Gavilya
 {
@@ -62,17 +53,26 @@ namespace Gavilya
 
 			GamesCardsPages gamesCardsPages = new(); // GamesCardsPage
 			Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
-			PageContent.Content = Definitions.Settings.PageId switch
+
+			Definitions.LibraryPage.PageDisplayer.Content = Definitions.Settings.PageId switch
 			{
-				0 => gamesCardsPages,
+				0 => Definitions.GamesCardsPages,
 				1 => Definitions.RecentGamesPage,
 				2 => Definitions.GamesListPage,
-				_ => gamesCardsPages
+				_ => Definitions.GamesCardsPages
 			}; // Show the page
 
-			Definitions.MainWindow = this; // Define the Main Window
+			Definitions.LibraryPage.CheckedButton = Definitions.Settings.PageId switch
+			{
+				0 => Definitions.LibraryPage.GameCardTabBtn,
+				1 => Definitions.LibraryPage.RecentTabBtn,
+				2 => Definitions.LibraryPage.GameListTabBtn,
+				_ => Definitions.LibraryPage.GameCardTabBtn
+			}; // Check
 
-			LoadPage(); // Load the button on the button corresponding to the active page
+			Definitions.LibraryPage.RefreshTabUI();
+
+			Definitions.MainWindow = this; // Define the Main Window
 			Global.SortGames();
 
 			LoadGames();
@@ -84,6 +84,11 @@ namespace Gavilya
 			Global.AutoSave(); // Run autosave
 
 			CheckUpdateOnStart(); // Check update on start
+
+			// Tabs
+			PageContent.Navigate(Definitions.HomePage);
+			CheckedTabButton = HomeTabBtn;
+			CheckButton();
 		}
 		System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
 		private async void CheckUpdateOnStart()
@@ -116,7 +121,6 @@ namespace Gavilya
 			BackBtn.Foreground = BackBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
 			ForwardBtn.Foreground = ForwardBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
 
-			UpdateSidebar(); // Update the sidebar
 		}
 
 		internal void LoadProfilesUI()
@@ -130,6 +134,7 @@ namespace Gavilya
 
 					bitmap.BeginInit();
 					bitmap.CacheOption = BitmapCacheOption.OnLoad;
+					bitmap.DecodePixelWidth = 30;
 					bitmap.StreamSource = stream;
 					bitmap.EndInit();
 					stream.Close();
@@ -143,45 +148,6 @@ namespace Gavilya
 			{
 				ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png")); // Set image
 			}
-		}
-
-		/// <summary>
-		/// Updates the sidebar.
-		/// </summary>
-		private void UpdateSidebar()
-		{
-			ResetSidebar(); // Resets the sidebar
-
-			if (PageContent.Content is GamesCardsPages) // If the selected page is GamesCardsPages
-			{
-				ShadowElement(AppCardButton); // Put a shadow under the button
-				ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
-			}
-			else if (PageContent.Content is RecentGamesPage) // If the selected page is RecentGamesPage
-			{
-				ShadowElement(RecentButton); // Put a shadow under the button
-				ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
-			}
-			else if (PageContent.Content is GamesListPage) // If the selected page is GamesListPage
-			{
-				ShadowElement(AppListButton); // Put a shadow under the button
-				ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
-			}
-		}
-
-		/// <summary>
-		/// Resets the sidebar.
-		/// </summary>
-		private void ResetSidebar()
-		{
-			RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
-
-			ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-
 		}
 
 		private void LoadGames()
@@ -220,30 +186,6 @@ namespace Gavilya
 			MaxWidth = currentScreen.WorkingArea.Width / factor; // Set max size
 		}
 
-		private void LoadPage()
-		{
-			ResetSidebar(); // Reset the sidebar
-
-			switch (Definitions.Settings.PageId)
-			{
-				case 0: // App Card
-					ShadowElement(AppCardButton); // Put a shadow under the button
-
-					ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
-					break;
-				case 1: // Recent
-					ShadowElement(RecentButton); // Put a shadow under the button
-
-					ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
-					break;
-				case 2: // App List
-					ShadowElement(AppListButton); // Put a shadow under the button
-
-					ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
-					break;
-			}
-		}
-
 		private void Window_StateChanged(object sender, EventArgs e)
 		{
 			RefreshMaximizeRestoreButton(); // Refresh
@@ -260,11 +202,6 @@ namespace Gavilya
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
 			WindowState = WindowState.Minimized; // Minimize
-		}
-
-		private void Button_Click_1(object sender, RoutedEventArgs e)
-		{
-
 		}
 
 		private void maximizeButton_Click(object sender, RoutedEventArgs e)
@@ -292,29 +229,13 @@ namespace Gavilya
 			{
 				maximizeButton.Visibility = Visibility.Collapsed; // Hide
 				restoreButton.Visibility = Visibility.Visible; // Show
-				WindowBorder.Margin = new Thickness { Bottom = 0, Left = 0, Right = 0, Top = 0 }; // Remove the margin
 			}
 			else
 			{
 				maximizeButton.Visibility = Visibility.Visible; // Show
 				restoreButton.Visibility = Visibility.Collapsed; // Hide
-				WindowBorder.Margin = new Thickness { Bottom = 10, Left = 10, Right = 10, Top = 10 }; // Add the margin
 			}
-		}
-
-		private void AppCardButton_Click(object sender, RoutedEventArgs e)
-		{
-			RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
-
-			ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-
-			ShadowElement(AppCardButton); // Put a shadow under the button
-
-			ColorElement(AppCardButton, Definitions.HomeButtonBackColor); // Change the background
-
-			PageContent.Content = Definitions.GamesCardsPages; // Show the page
+			WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
 		}
 
 		/// <summary>
@@ -365,39 +286,10 @@ namespace Gavilya
 			button.Background = color;
 		}
 
-		private void RecentButton_Click(object sender, RoutedEventArgs e)
-		{
-			RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(AppListButton); // Remove the shadow effect from other buttons
-
-			ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(AppListButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-
-			ShadowElement(RecentButton); // Put a shadow under the control
-
-			ColorElement(RecentButton, Definitions.HomeButtonBackColor); // Change the background
-
-			PageContent.Content = Definitions.RecentGamesPage; // Show the page
-		}
-
-		private void AppListButton_Click(object sender, RoutedEventArgs e)
-		{
-			RemoveShadowElement(AppCardButton); // Remove the shadow effect from other buttons
-			RemoveShadowElement(RecentButton); // Remove the shadow effect from other buttons
-
-			ColorElement(AppCardButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-			ColorElement(RecentButton, new SolidColorBrush(Color.FromRgb(40, 40, 60))); // Change the backcolor
-
-			ShadowElement(AppListButton); // Put a shadow under the control
-
-			ColorElement(AppListButton, Definitions.HomeButtonBackColor); // Change the background
-
-			PageContent.Content = Definitions.GamesListPage; // Show the page
-		}
 
 		private void SelectBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (PageContent.Content is GamesCardsPages && Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
+			if (PageContent.Content is LibraryPage && Definitions.LibraryPage.PageDisplayer.Content is GamesCardsPages && Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
 			{
 				for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
 				{
@@ -488,7 +380,7 @@ namespace Gavilya
 						if (gameCard1.GameInfo.IsFavorite) // If the game is a favorite
 						{
 							List<FavoriteGameCard> favoriteGameCards = new();
-							foreach (FavoriteGameCard favoriteGameCard in FavoriteBar.Children) // Foreach favorite
+							foreach (FavoriteGameCard favoriteGameCard in Definitions.HomePage.FavoriteBar.Children) // Foreach favorite
 							{
 								favoriteGameCards.Add(favoriteGameCard); // Add to the list
 							}
@@ -497,7 +389,7 @@ namespace Gavilya
 							{
 								if (favoriteGameCard1.GameInfo == gameCard1.GameInfo) // If the favorite is corresponding to the game
 								{
-									FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
+									Definitions.HomePage.FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
 								}
 							}
 						}
@@ -558,6 +450,7 @@ namespace Gavilya
 			{
 				PageContent.GoBack(); // Go back
 			}
+			RefreshNavigationsButton(); // Refresh the navigations button state
 		}
 
 		private void ForwardBtn_Click(object sender, RoutedEventArgs e)
@@ -566,11 +459,30 @@ namespace Gavilya
 			{
 				PageContent.GoForward(); // Go forward
 			}
+			RefreshNavigationsButton(); // Refresh the navigations button state
 		}
 
 		private void PageContent_Navigated(object sender, NavigationEventArgs e)
 		{
 			RefreshNavigationsButton(); // Refresh the navigations button state
+			RefreshTabUI(); // Refresh the tab UI status
+		}
+
+		private void RefreshTabUI()
+		{
+			if (PageContent.Content is HomePage)
+			{
+				CheckedTabButton = HomeTabBtn; // Check
+			}
+			else if (PageContent.Content is LibraryPage)
+			{
+				CheckedTabButton = LibraryTabBtn; // Check
+			}
+			else if (PageContent.Content is ProfilePage)
+			{
+				CheckedTabButton = ProfileTabBtn; // Check
+			}
+			CheckButton(); // Refresh
 		}
 
 		internal ProfilesPopupMenu ProfilesPopupMenu = new();
@@ -591,6 +503,51 @@ namespace Gavilya
 				ProfilesPopupMenu.Show(); // Show
 				Definitions.IsProfileMenuVisible = true; // Is shown
 			}
+		}
+
+		Button CheckedTabButton { get; set; }
+		private void HomeTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckedTabButton = HomeTabBtn; // Set the checked button
+			CheckButton(); // Update the UI
+
+			Definitions.Statistics.InitUI(); // Refresh
+			PageContent.Navigate(Definitions.HomePage); // Show the Home page
+		}
+
+		private void LibraryTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckedTabButton = LibraryTabBtn; // Set the checked button
+			CheckButton(); // Update the UI
+
+			PageContent.Navigate(Definitions.LibraryPage); // Show the Library page
+		}
+
+		private void ProfileTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckedTabButton = ProfileTabBtn; // Set the checked button
+			CheckButton(); // Update the UI
+
+			PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
+		}
+
+		private void HomeTabBtn_MouseLeave(object sender, MouseEventArgs e)
+		{
+			Button button = (Button)sender; // Get the button
+			if (button == CheckedTabButton)
+			{
+				button.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) };
+			}
+		}
+
+		private void CheckButton()
+		{
+			// Reset
+			HomeTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+			LibraryTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+			ProfileTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+
+			CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
 		}
 	}
 }

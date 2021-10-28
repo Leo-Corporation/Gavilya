@@ -24,7 +24,6 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Xml.Serialization;
 
@@ -122,6 +121,10 @@ namespace Gavilya.Classes
 
 				Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
 				streamReader.Dispose();
+			}
+			else
+			{
+				Save(Definitions.Games == null ? new() : Definitions.Games);
 			}
 		}
 

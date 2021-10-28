@@ -21,56 +21,58 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using Gavilya.Classes;
-using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+using System.Windows.Media.Imaging;
 
 namespace Gavilya.UserControls
 {
 	/// <summary>
-	/// Interaction logic for StatGraph.xaml
+	/// Interaction logic for FavoriteListItem.xaml
 	/// </summary>
-	public partial class StatGraph : UserControl
+	public partial class FavoriteListItem : UserControl
 	{
-		List<GameInfo> Games { get; init; }
-		public StatGraph(List<GameInfo> gameInfos)
+		GameInfo GameInfo { get; init; }
+		public FavoriteListItem(GameInfo gameInfo)
 		{
 			InitializeComponent();
-			Games = gameInfos; // Set
+			GameInfo = gameInfo;
 
-			InitUI(); // Load the UI
+			InitUI();
 		}
 
 		private void InitUI()
 		{
-			GraphPanel.Children.Clear(); // Clear
-			int longestPlayed = Games[0].TotalTimePlayed;
+			GameNameTxt.Text = GameInfo.Name;
 
-			for (int i = 0; i < Games.Count; i++)
+			if (!string.IsNullOrEmpty(GameInfo.IconFileLocation)) // If there is an image
 			{
-				double h = Games[i].TotalTimePlayed * GraphPanel.Height / longestPlayed;
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(GameInfo.IconFileLocation);
 
-				Rectangle rectangle = new()
-				{
-					Margin = new(10, 0, 10, 0),
-					Fill = new SolidColorBrush { Color = Color.FromRgb(100, 100, 140) },
-					Height = h,
-					Width = 50,
-					RadiusX = 5,
-					RadiusY = 5,
-					VerticalAlignment = VerticalAlignment.Bottom
-				};
-
-				GraphPanel.Children.Add(rectangle); // Add bar
+				bitmap.BeginInit();
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.DecodePixelWidth = 249;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
+				Image.ImageSource = bitmap; // Put the icon of the game
 			}
-		}
+			else // If the image is the app icon
+			{
+				if (!GameInfo.IsUWP && !GameInfo.IsSteam) // If the game isn't UWP
+				{
+					Icon icon = Icon.ExtractAssociatedIcon(GameInfo.FileLocation); // Grab the icon of the game
+					Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
 
-		private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
-		{
-			InitUI();
+				}
+			}
 		}
 	}
 }

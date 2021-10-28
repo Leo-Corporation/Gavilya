@@ -17,9 +17,12 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Text="{x:Static lang:Resources.Statistics}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
-
-		<Border CornerRadius="25" Background="#FF141428" Grid.Row="1" Margin="10" Padding="25">
+		<StackPanel Orientation="Horizontal" Margin="10">
+			<TextBlock Text="&#xF342;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center"/>
+			<TextBlock Text="{x:Static lang:Resources.Statistics}" FontSize="18" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+		</StackPanel>
+		
+		<Border x:Name="BorderContent" CornerRadius="25" Background="#FF141428" Grid.Row="1" Margin="10" Padding="25">
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto"/>
@@ -41,8 +44,9 @@
 						<RowDefinition/>
 					</Grid.RowDefinitions>
 
-					<Frame Grid.Row="0" Grid.Column="0" x:Name="GraphDisplayer" NavigationUIVisibility="Hidden" MinHeight="100" x:FieldModifier="public"/>
-
+					<ScrollViewer Grid.Row="0" Grid.Column="0" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerTemplate1}">
+						<Frame Grid.Row="0" Grid.Column="0" x:Name="GraphDisplayer" NavigationUIVisibility="Hidden" MinHeight="100" x:FieldModifier="public" Margin="0,0,0,15"/>
+					</ScrollViewer>
 					<Grid Grid.Row="1" Margin="0,15,0,0">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto"/>
@@ -74,6 +78,12 @@
 
 				</Grid>
 			</Grid>
+		</Border>
+		<Border x:Name="PlaceholderBorder" CornerRadius="25" Background="#FF141428" Grid.Row="1" Visibility="Collapsed" Margin="10" Padding="25">
+			<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+				<TextBlock Text="&#xF342;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="100" HorizontalAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.NoStatistics}" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+			</StackPanel>
 		</Border>
 	</Grid>
 </Page>

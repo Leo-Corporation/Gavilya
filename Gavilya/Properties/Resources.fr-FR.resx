@@ -645,4 +645,40 @@
   <data name="SeeLicenses" xml:space="preserve">
     <value>Voir les licences</value>
   </data>
+  <data name="WhatGameToPlay" xml:space="preserve">
+    <value>A quel jeu voulez-vous jouer ?</value>
+  </data>
+  <data name="ExclamationMark" xml:space="preserve">
+    <value> !</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Bonjour,</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="Library" xml:space="preserve">
+    <value>Bibliothèque</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>Mon profil</value>
+  </data>
+  <data name="NoStatistics" xml:space="preserve">
+    <value>Il n'y a actuellement pas de statistiques à montrer.</value>
+  </data>
+  <data name="Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="P1" xml:space="preserve">
+    <value>#1</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>#2</value>
+  </data>
+  <data name="P3" xml:space="preserve">
+    <value>#3</value>
+  </data>
+  <data name="DefaultViewMode" xml:space="preserve">
+    <value>Mode d’affichage par défaut dans la Bibliothèque</value>
+  </data>
 </root>

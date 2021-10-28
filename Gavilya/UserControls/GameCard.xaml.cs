@@ -23,24 +23,15 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using Gavilya.Enums;
-using Gavilya.Pages;
 using Gavilya.Windows;
 using LeoCorpLibrary;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Gavilya.UserControls
@@ -99,6 +90,7 @@ namespace Gavilya.UserControls
 				bitmap.BeginInit();
 				bitmap.CacheOption = BitmapCacheOption.OnLoad;
 				bitmap.StreamSource = stream;
+				bitmap.DecodePixelWidth = 256;
 				bitmap.EndInit();
 				stream.Close();
 				stream.Dispose();
@@ -118,7 +110,7 @@ namespace Gavilya.UserControls
 			if (gameInfo.IsFavorite && !isFromEdit) // If the game is a favorite
 			{
 				FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
-				Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
+				Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
 				FavBtn.Content = ""; // Change icon
 			}
 
@@ -221,14 +213,14 @@ namespace Gavilya.UserControls
 			if (GameInfo.IsFavorite) // If the game is a favorite
 			{
 				GameInfo.IsFavorite = false; // The game is no longer a favorite
-				Definitions.MainWindow.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
+				Definitions.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
 				FavBtn.Content = ""; // Change icon
 			}
 			else
 			{
 				GameInfo.IsFavorite = true; // Set the game to be a favorite
 				FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
-				Definitions.MainWindow.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
+				Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
 				FavBtn.Content = ""; // Change icon
 			}
 			new GameSaver().Save(Definitions.Games); // Save the changes

@@ -23,21 +23,12 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using LeoCorpLibrary;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Gavilya.UserControls
 {
@@ -70,9 +61,20 @@ namespace Gavilya.UserControls
 			GameNameToolTip.Content = gameInfo.Name;
 			ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
 
-			if (gameInfo.IconFileLocation != string.Empty) // If there is an image
+			if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If there is an image
 			{
-				GameIcon.ImageSource = new BitmapImage(new Uri(gameInfo.IconFileLocation)); // Put the icon of the game
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(gameInfo.IconFileLocation);
+
+				bitmap.BeginInit();
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.DecodePixelWidth = 170;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
+				GameIcon.ImageSource = bitmap; // Put the icon of the game
 				GamePath = gameInfo.FileLocation; // Set the location of the game
 			}
 			else // If the image is the app icon

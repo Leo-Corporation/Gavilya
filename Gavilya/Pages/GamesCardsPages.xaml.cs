@@ -21,27 +21,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
-using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Media.Media3D;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.UserControls;
 using Gavilya.Windows;
 using LeoCorpLibrary;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace Gavilya.Pages
 {
@@ -76,7 +65,7 @@ namespace Gavilya.Pages
 
 		public void LoadGames()
 		{
-			Definitions.MainWindow.FavoriteBar.Children.Clear();
+			Definitions.HomePage.FavoriteBar.Children.Clear();
 			GamePresenter.Children.Clear(); // Remove all the games
 
 			if (Definitions.Games.Count > 0)

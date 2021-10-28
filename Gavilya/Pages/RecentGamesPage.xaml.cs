@@ -24,19 +24,10 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.UserControls;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Gavilya.Pages
 {
@@ -69,10 +60,20 @@ namespace Gavilya.Pages
 
 				var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
 
+				int c = 0;
+				Definitions.HomePage.RecentBar.Children.Clear(); // Clear all items
 				foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
 				{
-					GamePresenter.Children.Add(new GameCard(pair1.Key, GavilyaPages.Recent, true)); // Add the game
+					var gameCard = new GameCard(pair1.Key, GavilyaPages.Recent, true);
+					GamePresenter.Children.Add(gameCard); // Add the game
+					if (c < 4)
+					{
+						Definitions.HomePage.RecentBar.Children.Add(new FavoriteGameCard(pair1.Key, gameCard));
+					}
+					c++;
 				}
+				Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
+				Definitions.HomePage.RecentBar.Visibility = Visibility.Visible;
 			}
 			else
 			{
@@ -80,6 +81,8 @@ namespace Gavilya.Pages
 				WelcomeHost.Visibility = Visibility.Visible; // Visible
 
 				WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
+				Definitions.HomePage.RecentBar.Visibility = Visibility.Collapsed; // Hide
+				Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Visible; // Show
 			}
 		}
 	}

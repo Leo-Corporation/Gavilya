@@ -652,4 +652,40 @@
   <data name="SeeLicenses" xml:space="preserve">
     <value>See licenses</value>
   </data>
+  <data name="WhatGameToPlay" xml:space="preserve">
+    <value>What game do you wanna play?</value>
+  </data>
+  <data name="ExclamationMark" xml:space="preserve">
+    <value>!</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Hello,</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="Library" xml:space="preserve">
+    <value>Library</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>My profile</value>
+  </data>
+  <data name="NoStatistics" xml:space="preserve">
+    <value>There is currently no statistics to show.</value>
+  </data>
+  <data name="Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="P1" xml:space="preserve">
+    <value>#1</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>#2</value>
+  </data>
+  <data name="P3" xml:space="preserve">
+    <value>#3</value>
+  </data>
+  <data name="DefaultViewMode" xml:space="preserve">
+    <value>Default view mode in Library</value>
+  </data>
 </root>

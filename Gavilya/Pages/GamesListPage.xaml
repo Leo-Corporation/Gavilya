@@ -21,7 +21,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
+		<TextBlock Visibility="Collapsed" Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
 
         <ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
             <StackPanel Name="GameList">

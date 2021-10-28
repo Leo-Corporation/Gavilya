@@ -25,19 +25,9 @@ using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.UserControls;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Gavilya.Windows
 {
@@ -67,6 +57,7 @@ namespace Gavilya.Windows
 					var stream = File.OpenRead(CurrentProfile.PictureFilePath);
 
 					bitmap.BeginInit();
+					bitmap.DecodePixelWidth = 50;
 					bitmap.CacheOption = BitmapCacheOption.OnLoad;
 					bitmap.StreamSource = stream;
 					bitmap.EndInit();
@@ -122,15 +113,7 @@ namespace Gavilya.Windows
 
 		private void StatsBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if (Definitions.Games.Count > 0)
-			{
-				Definitions.Statistics.InitUI();
-				Definitions.MainWindow.PageContent.Navigate(Definitions.Statistics); // Navigate 
-			}
-			else
-			{
-				MessageBox.Show(Properties.Resources.NoGames, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
-			}
+			Definitions.MainWindow.PageContent.Content = Definitions.HomePage; // Navigate to home
 		}
 	}
 }

@@ -13,12 +13,12 @@
 
     <Grid AllowDrop="True" Drop="GamePresenter_Drop">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="40"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
+        <TextBlock Visibility="Collapsed" Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
 		<StackPanel Orientation="Horizontal" Grid.Row="1">
 			<Button Click="AddBtn_Click" Margin="5" Grid.Row="1" x:Name="AddBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White">
 				<StackPanel Orientation="Horizontal">

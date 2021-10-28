@@ -349,6 +349,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default view mode in Library.
+        /// </summary>
+        public static string DefaultViewMode {
+            get {
+                return ResourceManager.GetString("DefaultViewMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete selected game(s).
         /// </summary>
         public static string Delete {
@@ -462,6 +471,15 @@ namespace Gavilya.Properties {
         public static string ErrorOccurred {
             get {
                 return ResourceManager.GetString("ErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to !.
+        /// </summary>
+        public static string ExclamationMark {
+            get {
+                return ResourceManager.GetString("ExclamationMark", resourceCulture);
             }
         }
         
@@ -693,11 +711,29 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hello,.
+        /// </summary>
+        public static string Hello {
+            get {
+                return ResourceManager.GetString("Hello", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string Help {
             get {
                 return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home.
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -873,6 +909,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Library.
+        /// </summary>
+        public static string Library {
+            get {
+                return ResourceManager.GetString("Library", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Licenses.
         /// </summary>
         public static string Licenses {
@@ -981,6 +1026,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My profile.
+        /// </summary>
+        public static string MyProfile {
+            get {
+                return ResourceManager.GetString("MyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -1053,6 +1107,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is currently no statistics to show..
+        /// </summary>
+        public static string NoStatistics {
+            get {
+                return ResourceManager.GetString("NoStatistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Not associated.
         /// </summary>
         public static string NotAssociated {
@@ -1112,6 +1175,33 @@ namespace Gavilya.Properties {
         public static string OtherProfiles {
             get {
                 return ResourceManager.GetString("OtherProfiles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #1.
+        /// </summary>
+        public static string P1 {
+            get {
+                return ResourceManager.GetString("P1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #2.
+        /// </summary>
+        public static string P2 {
+            get {
+                return ResourceManager.GetString("P2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to #3.
+        /// </summary>
+        public static string P3 {
+            get {
+                return ResourceManager.GetString("P3", resourceCulture);
             }
         }
         
@@ -1458,6 +1548,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spotlight.
+        /// </summary>
+        public static string Spotlight {
+            get {
+                return ResourceManager.GetString("Spotlight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Start by adding a game.
         /// </summary>
         public static string StartAddGame {
@@ -1643,6 +1742,15 @@ namespace Gavilya.Properties {
         public static string WelcomeRecentGames {
             get {
                 return ResourceManager.GetString("WelcomeRecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to What game do you wanna play?.
+        /// </summary>
+        public static string WhatGameToPlay {
+            get {
+                return ResourceManager.GetString("WhatGameToPlay", resourceCulture);
             }
         }
         

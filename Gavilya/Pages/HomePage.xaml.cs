@@ -21,15 +21,45 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using System.Windows;
 
-namespace Xalyus_Updater
+using Gavilya.Classes;
+using Gavilya.UserControls;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+
+namespace Gavilya.Pages
 {
 	/// <summary>
-	/// Interaction logic for App.xaml
+	/// Interaction logic for HomePage.xaml
 	/// </summary>
-	public partial class App : Application
+	public partial class HomePage : Page
 	{
+		public HomePage()
+		{
+			InitializeComponent();
+			InitUI(); // Load the UI
+		}
 
+		internal void InitUI()
+		{
+			// Welcome message
+			HelloTxt.Text = $"{Properties.Resources.Hello} {Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}{Properties.Resources.ExclamationMark}"; // Set text
+
+			// Load "Statistics" page
+			Statistics.Content = Definitions.Statistics; // Set content to Statistics page
+
+			// Place holder
+			RecentPlaceholder.Children.Add(new WelcomeRecentGames() { VerticalAlignment = VerticalAlignment.Center });
+			RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
+			RecentBar.Visibility = Visibility.Visible;
+		}
+
+		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+		{
+			ScrollViewer scv = (ScrollViewer)sender;
+			scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 2);
+			e.Handled = true;
+		}
 	}
 }

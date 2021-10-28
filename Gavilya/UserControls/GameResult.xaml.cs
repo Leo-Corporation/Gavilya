@@ -22,18 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Gavilya.UserControls
 {
@@ -71,7 +65,7 @@ namespace Gavilya.UserControls
 
 			Screen1Img.ImageSource = image; // Show image
 
-			if (screenshots.Count > 1)
+			if (screenshots.Count > 1 && screenshots[1] != null)
 			{
 				var image1 = new BitmapImage();
 				image1.BeginInit(); // Init image

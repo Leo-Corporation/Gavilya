@@ -24,12 +24,6 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Pages;
 using Gavilya.Windows;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Gavilya
@@ -47,6 +41,14 @@ namespace Gavilya
 			Definitions.GameInfoPage = new(); // Create the page
 			Definitions.GameInfoPage2 = new(); // Create the page
 
+			ProfileManager.LoadProfiles(); // Load profiles
+			new GameSaver().Load(); // Load the .gav file in the Definitions class
+
+			Definitions.StatGameInfoControl = new(); // New control
+			Definitions.Statistics = new(); // New page
+
+			Definitions.HomePage = new();
+
 			RecentGamesPage recentGamesPage = new(); // RecentGamesPage
 			Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
 			Definitions.RecentGamesPage.LoadGames(); // Load the games
@@ -55,11 +57,8 @@ namespace Gavilya
 			Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
 			Definitions.GamesListPage.LoadGames(); // Load the games
 
-			ProfileManager.LoadProfiles(); // Load profiles
-			new GameSaver().Load(); // Load the .gav file in the Definitions class
-
-			Definitions.StatGameInfoControl = new(); // New control
-			Definitions.Statistics = new(); // New page
+			Definitions.LibraryPage = new();
+			Definitions.ProfilePage = new();
 
 			if (Definitions.Settings.IsFirstRun) // If it is the app first run
 			{

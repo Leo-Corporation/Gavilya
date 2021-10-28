@@ -19,7 +19,7 @@
         </Border.Background>
 
         <Grid>
-            <Button Cursor="Hand" Name="PlayBtn" Click="PlayBtn_Click" Content="&#xeab5;" Height="35" Width="35" Style="{StaticResource PlayButton}" Foreground="#fff" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom">
+			<Button Cursor="Hand" Name="PlayBtn" Click="PlayBtn_Click" Content="&#xF610;" Height="35" Width="35" Style="{StaticResource PlayButton}" Foreground="#fff" FontFamily="..\Fonts\#FluentSystemIcons-Filled" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom">
                 <Button.ToolTip>
                     <ToolTip Name="ToolTipGamePlay" Content="{x:Static lang:Resources.PlayLowerCase}" Background="#000014" Foreground="White"/>
                 </Button.ToolTip>

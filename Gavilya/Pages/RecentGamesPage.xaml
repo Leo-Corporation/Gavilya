@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="{x:Static lang:Resources.RecentGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
+		<TextBlock Visibility="Collapsed" Grid.Row="0" Text="{x:Static lang:Resources.RecentGames}" FontWeight="Bold" FontSize="20" Foreground="White" VerticalAlignment="Center"/>
         <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
             <WrapPanel x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Name="GamePresenter" Grid.Row="1" AllowDrop="True"></WrapPanel>
         </ScrollViewer>
