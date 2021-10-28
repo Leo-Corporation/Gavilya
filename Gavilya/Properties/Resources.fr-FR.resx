@@ -678,4 +678,7 @@
   <data name="P3" xml:space="preserve">
     <value>#3</value>
   </data>
+  <data name="DefaultViewMode" xml:space="preserve">
+    <value>Mode d’affichage par défaut dans la Bibliothèque</value>
+  </data>
 </root>

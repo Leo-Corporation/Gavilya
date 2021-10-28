@@ -20,23 +20,23 @@
 
         <StackPanel Grid.Row="1">
             <TextBlock Text="{x:Static lang:Resources.OnStartup}" FontWeight="Bold" FontSize="14" Margin="10 0 0 0" Foreground="White"/>
-			<TextBlock Text="{x:Static lang:Resources.StartupPage}" Margin="10 0 0 0" Foreground="White" FontSize="12"/>
+			<TextBlock Text="{x:Static lang:Resources.DefaultViewMode}" Margin="10 0 0 0" Foreground="White" FontSize="12"/>
 			<StackPanel Orientation="Horizontal">
 				<Border x:Name="CardsPageBorder" CornerRadius="10" Margin="5"  BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="CardsPageBorder_MouseLeftButtonUp">
 					<StackPanel	Orientation="Vertical">
-						<TextBlock Text="&#xea17;" Margin="20" FontSize="44" FontFamily="..\..\Fonts\#FluentlyIcons" HorizontalAlignment="Center"/>
-						<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="CardsPageRadioBtn" Checked="CardsPageRadioBtn_Checked" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.YourGames}"  BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Foreground="White" Background="Transparent"/>
+						<TextBlock Text="&#xea17;" Padding="20" FontSize="44" FontFamily="..\..\Fonts\#FluentlyIcons" HorizontalAlignment="Stretch" TextAlignment="Center"/>
+						<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="CardsPageRadioBtn" Checked="CardsPageRadioBtn_Checked" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.GameCard}"  BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Foreground="White" Background="Transparent"/>
 					</StackPanel>
 				</Border>
 				<Border x:Name="RecentPageBorder" CornerRadius="10" Margin="5"  BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="RecentPageBorder_MouseLeftButtonUp">
 					<StackPanel	Orientation="Vertical">
-						<TextBlock Text="&#xea2c;" Margin="20" FontSize="44" FontFamily="..\..\Fonts\#FluentlyIcons" HorizontalAlignment="Center"/>
+						<TextBlock Text="&#xea2c;" Padding="20" FontSize="44" FontFamily="..\..\Fonts\#FluentlyIcons" HorizontalAlignment="Stretch" TextAlignment="Center"/>
 						<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="RecentPageRadioBtn" Checked="RecentPageRadioBtn_Checked" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.RecentGames}" BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Foreground="White" Background="Transparent"/>
 					</StackPanel>
 				</Border>
 				<Border x:Name="ListPageBorder" CornerRadius="10" Margin="5"  BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="ListPageBorder_MouseLeftButtonUp">
 					<StackPanel	Orientation="Vertical">
-						<TextBlock Text="&#xe90a;" Margin="20" FontSize="44" FontFamily="..\..\Fonts\#FluentlyIcons" HorizontalAlignment="Center"/>
+						<TextBlock Text="&#xe90a;" Padding="20" FontSize="44" FontFamily="..\..\Fonts\#FluentlyIcons" HorizontalAlignment="Stretch" TextAlignment="Center"/>
 						<RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="ListPageRadioBtn" Checked="ListPageRadioBtn_Checked" GroupName="StartupPageRadioGroup" Content="{x:Static lang:Resources.GameList}" BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Foreground="White" Background="Transparent"/>
 					</StackPanel>
 				</Border>

@@ -675,4 +675,7 @@
   <data name="P3" xml:space="preserve">
     <value>#3</value>
   </data>
+  <data name="DefaultViewMode" xml:space="preserve">
+    <value>Default view mode in Library</value>
+  </data>
 </root>

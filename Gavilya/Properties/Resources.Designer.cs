@@ -349,6 +349,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default view mode in Library.
+        /// </summary>
+        public static string DefaultViewMode {
+            get {
+                return ResourceManager.GetString("DefaultViewMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete selected game(s).
         /// </summary>
         public static string Delete {
