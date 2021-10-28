@@ -179,7 +179,7 @@ namespace Gavilya.Pages
 				{
 					SpotlightPage.Visibility = Visibility.Visible; // Show
 					FavoritesTab.Visibility = Visibility.Collapsed; // Show
-				} 
+				}
 			}
 
 			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
