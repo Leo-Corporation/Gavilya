@@ -678,4 +678,7 @@
   <data name="DefaultViewMode" xml:space="preserve">
     <value>Default view mode in Library</value>
   </data>
+  <data name="PopupMenu" xml:space="preserve">
+    <value>Gavilya - Menu</value>
+  </data>
 </root>

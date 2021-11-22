@@ -681,4 +681,7 @@
   <data name="DefaultViewMode" xml:space="preserve">
     <value>Mode d’affichage par défaut dans la Bibliothèque</value>
   </data>
+  <data name="PopupMenu" xml:space="preserve">
+    <value>Gavilya - Menu</value>
+  </data>
 </root>
