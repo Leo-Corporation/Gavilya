@@ -40,6 +40,7 @@ namespace Gavilya.UserControls
 	{
 		public GameInfo GameInfo { get; set; }
 		public DispatcherTimer Timer { get; set; }
+		public bool IsChecked { get; set; }
 		public GameItem(GameInfo gameInfo)
 		{
 			InitializeComponent();
@@ -93,14 +94,17 @@ namespace Gavilya.UserControls
 		{
 			foreach (UIElement uIElement in Definitions.GamesListPage.GameList.Children) // For each UIElement in the list
 			{
-				if (uIElement is GameItem) // If the UIElement is a GameItem
+				if (uIElement is GameItem gameItem) // If the UIElement is a GameItem
 				{
-					GameItem gameItem = (GameItem)uIElement; // Create a GameItem
 					gameItem.GameBtn.Background = Definitions.TransparentColor; // Change the background color
+					gameItem.PlayBtn.Visibility = Visibility.Hidden;
+					gameItem.IsChecked = false;
 				}
 			}
 
 			GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change the background color
+			PlayBtn.Visibility = Visibility.Visible; // Show
+			IsChecked = true;
 		}
 
 		private void PlayBtn_Click(object sender, RoutedEventArgs e)
@@ -118,6 +122,19 @@ namespace Gavilya.UserControls
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		private void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			PlayBtn.Visibility = Visibility.Visible; // Show
+		}
+
+		private void Grid_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			if (!IsChecked)
+			{
+				PlayBtn.Visibility = Visibility.Hidden; // Hide 
 			}
 		}
 	}
