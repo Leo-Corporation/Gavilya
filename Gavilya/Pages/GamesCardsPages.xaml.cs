@@ -24,8 +24,6 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.UserControls;
-using Gavilya.Windows;
-using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
