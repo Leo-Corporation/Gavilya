@@ -23,7 +23,9 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using LeoCorpLibrary;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -99,6 +101,24 @@ namespace Gavilya.UserControls
 			}
 
 			GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change the background color
+		}
+
+		private void PlayBtn_Click(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				Process.Start(GameInfo.FileLocation); // Start the game
+
+				GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+				Definitions.Games[Definitions.Games.IndexOf(GameInfo)].LastTimePlayed = GameInfo.LastTimePlayed; // Update the games
+				new GameSaver().Save(Definitions.Games); // Save the changes
+
+				Timer.Start();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
 		}
 	}
 }
