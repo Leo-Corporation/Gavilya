@@ -61,8 +61,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri("https://api.rawg.io/api/games?") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(Method.GET); // Create a request
 				request.AddQueryParameter("search", gameName); // Config the request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
@@ -133,8 +135,10 @@ namespace Gavilya.Classes
 			try
 			{
 				string strId = "";
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				var response = await client.ExecuteAsync(request); // Execute the request and store the result
@@ -206,8 +210,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				var response = await client.ExecuteAsync(request); // Execute the request and store the result
@@ -239,8 +245,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				var response = await client.ExecuteAsync(request); // Execute the request and store the result
@@ -265,8 +273,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri("https://api.rawg.io/api/games?") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(Method.GET); // Create a request
 				request.AddQueryParameter("search", gameName); // Config the request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
@@ -299,8 +309,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				var response = await client.ExecuteAsync(request); // Execute the request and store the result
@@ -332,8 +344,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(RestSharp.Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				var response = await client.ExecuteAsync(request); // Execute the request and store the result
@@ -358,8 +372,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(RestSharp.Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				var response = await client.ExecuteAsync(request); // Execute the request and store the result
@@ -384,8 +400,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(RestSharp.Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				var response = await client.ExecuteAsync(request); // Execute the request and store the result
@@ -410,8 +428,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}/achievements?"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}/achievements?") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(RestSharp.Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				request.AddQueryParameter("page_size", "20");
@@ -599,8 +619,10 @@ namespace Gavilya.Classes
 		{
 			try
 			{
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri($"https://api.rawg.io/api/games/{id}") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(Method.GET); // Create a request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
 				var response = await client.ExecuteAsync(request); // Execute the request and store the result

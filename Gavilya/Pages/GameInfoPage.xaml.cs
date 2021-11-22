@@ -192,10 +192,10 @@ namespace Gavilya.Pages
 				if (File.Exists(gameLocation)) // If the file exist
 				{
 					Process.Start(gameLocation); // Start the game
+												 // Create a game card
 
-					if (parentUIElement is GameCard) // If the parent element is a game card
+					if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 					{
-						GameCard gameCard = (GameCard)parentUIElement; // Create a game card
 						gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 						new GameSaver().Save(Definitions.Games); // Save the changes
 
@@ -204,9 +204,8 @@ namespace Gavilya.Pages
 						DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
 						LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
 					}
-					else if (parentUIElement is GameItem)
+					else if (parentUIElement is GameItem gameItem) // Create a game item
 					{
-						GameItem gameItem = (GameItem)parentUIElement; // Create a game item
 						gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 						Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
 						new GameSaver().Save(Definitions.Games); // Save the changes
@@ -223,10 +222,10 @@ namespace Gavilya.Pages
 			else // If is UWP
 			{
 				Process.Start("explorer.exe", gameLocation); // Start the game
+															 // Create a game card
 
-				if (parentUIElement is GameCard) // If the parent element is a game card
+				if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 				{
-					GameCard gameCard = (GameCard)parentUIElement; // Create a game card
 					gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 					new GameSaver().Save(Definitions.Games); // Save the changes
 
@@ -235,9 +234,8 @@ namespace Gavilya.Pages
 					DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
 					LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
 				}
-				else if (parentUIElement is GameItem)
+				else if (parentUIElement is GameItem gameItem) // Create a game item
 				{
-					GameItem gameItem = (GameItem)parentUIElement; // Create a game item
 					gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 					Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
 					new GameSaver().Save(Definitions.Games); // Save the changes

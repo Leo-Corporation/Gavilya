@@ -40,21 +40,21 @@ namespace Gavilya.Windows
 	/// </summary>
 	public partial class SearchGameCover : Window
 	{
-		AddEditPage AddEditPage;
-		AddEditPage2 AddEditPage2;
-		GameAssociationActions associationActions;
+		readonly AddEditPage AddEditPage;
+		readonly AddEditPage2 AddEditPage2;
+		readonly GameAssociationActions associationActions;
 
 		public SearchGameCover(UIElement parent, GameAssociationActions gameAssociationActions)
 		{
 			InitializeComponent();
 			associationActions = gameAssociationActions; // Define the var
-			if (parent is AddEditPage)
+			if (parent is AddEditPage page)
 			{
-				AddEditPage = (AddEditPage)parent; // Set
+				AddEditPage = page; // Set
 			}
-			else if (parent is AddEditPage2)
+			else if (parent is AddEditPage2 page1)
 			{
-				AddEditPage2 = (AddEditPage2)parent; // Set
+				AddEditPage2 = page1; // Set
 			}
 		}
 
@@ -63,8 +63,10 @@ namespace Gavilya.Windows
 			try
 			{
 				ResultPresenter.Children.Clear(); // Remove all the controls
-				var client = new RestClient(); // Create a REST Client
-				client.BaseUrl = new Uri("https://api.rawg.io/api/games?"); // Configure the client
+				var client = new RestClient
+				{
+					BaseUrl = new Uri("https://api.rawg.io/api/games?") // Configure the client
+				}; // Create a REST Client
 				var request = new RestRequest(Method.GET); // Create a request
 				request.AddQueryParameter("search", GameSearchName.Text); // Config the request
 				request.AddQueryParameter("key", APIKeys.RAWGAPIKey);
@@ -101,9 +103,9 @@ namespace Gavilya.Windows
 
 			foreach (UIElement uIElement in ResultPresenter.Children) // For each result
 			{
-				if (uIElement is GameResult) // Check if the element is a GameResult
+				if (uIElement is GameResult result) // Check if the element is a GameResult
 				{
-					gameResults.Add((GameResult)uIElement); // Add the result
+					gameResults.Add(result); // Add the result
 				}
 			}
 
