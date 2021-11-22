@@ -23,6 +23,8 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using Gavilya.Windows;
+using LeoCorpLibrary;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -39,6 +41,19 @@ namespace Gavilya.Pages
 		public LibraryPage()
 		{
 			InitializeComponent();
+			InitUI();
+		}
+
+		private void InitUI()
+		{
+			if (Env.WindowsVersion != WindowsVersion.Windows10)
+			{
+				AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
+			}
+			else
+			{
+				AddUWPBtn.Visibility = Visibility.Visible; // Show
+			}
 		}
 
 		private void GameCardTabBtn_Click(object sender, RoutedEventArgs e)
@@ -107,6 +122,21 @@ namespace Gavilya.Pages
 		private void PageDisplayer_Navigated(object sender, NavigationEventArgs e)
 		{
 			RefreshTabUI();
+		}
+
+		private void AddBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddGame(false, false).Show(); // Open the "Add Game" dialog
+		}
+
+		private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddGame(true, false).Show(); // Add game
+		}
+
+		private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
+		{
+			new AddGame(false, true).Show(); // Add Steam Game
 		}
 	}
 }

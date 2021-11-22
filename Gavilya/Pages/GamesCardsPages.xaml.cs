@@ -43,24 +43,6 @@ namespace Gavilya.Pages
 		{
 			InitializeComponent();
 			Definitions.GamesCardsPages = this; // Define the GamesCardsPages
-			InitUI();
-		}
-
-		private void InitUI()
-		{
-			if (Env.WindowsVersion != WindowsVersion.Windows10)
-			{
-				AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
-			}
-			else
-			{
-				AddUWPBtn.Visibility = Visibility.Visible; // Show
-			}
-		}
-
-		private void AddBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(false, false).Show(); // Open the "Add Game" dialog
 		}
 
 		public void LoadGames()
@@ -144,16 +126,6 @@ namespace Gavilya.Pages
 			{
 				MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
 			}
-		}
-
-		private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(true, false).Show(); // Add game
-		}
-
-		private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(false, true).Show(); // Add Steam Game
 		}
 	}
 }
