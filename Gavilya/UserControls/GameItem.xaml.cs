@@ -111,7 +111,14 @@ namespace Gavilya.UserControls
 		{
 			try
 			{
-				Process.Start(GameInfo.FileLocation); // Start the game
+				if (!GameInfo.IsUWP && !GameInfo.IsSteam) // If EXE/Win32 game
+				{
+					Process.Start(GameInfo.FileLocation); // Start the game 
+				}
+				else
+				{
+					Process.Start("explorer.exe", GameInfo.FileLocation); // Start the game
+				}
 
 				GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 				Definitions.Games[Definitions.Games.IndexOf(GameInfo)].LastTimePlayed = GameInfo.LastTimePlayed; // Update the games
