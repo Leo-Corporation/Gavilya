@@ -7,7 +7,7 @@
 			 mc:Ignorable="d"
 			 FontFamily="..\Fonts\#Montserrat" Foreground="#FFF"
 			Height="200" Width="800">
-	<Border Margin="10" Padding="10" Background="#FF141428">
+	<Border Margin="10" Padding="10" CornerRadius="10" Background="#FF141428">
 		<StackPanel Orientation="Horizontal">
 			<Rectangle Margin="10" RadiusX="20" RadiusY="20" Width="249" Height="140">
 				<Rectangle.Fill>
