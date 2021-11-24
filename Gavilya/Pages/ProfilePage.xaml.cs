@@ -203,16 +203,22 @@ namespace Gavilya.Pages
 		private void SpotlightTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedButton = SpotlightTabBtn; // Check
-			SpotlightPage.Visibility = Visibility.Visible; // Show
-			FavoritesTab.Visibility = Visibility.Collapsed; // Show
+			if (NothingToShow.Visibility != Visibility.Visible)
+			{
+				SpotlightPage.Visibility = Visibility.Visible; // Show
+				FavoritesTab.Visibility = Visibility.Collapsed; // Show 
+			}
 			RefreshTabUI();
 		}
 
 		private void FavoriteTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedButton = FavoriteTabBtn; // Check
-			SpotlightPage.Visibility = Visibility.Collapsed; // Show
-			FavoritesTab.Visibility = Visibility.Visible; // Show
+			if (NothingToShow.Visibility != Visibility.Visible)
+			{
+				SpotlightPage.Visibility = Visibility.Collapsed; // Show
+				FavoritesTab.Visibility = Visibility.Visible; // Show 
+			}
 			RefreshTabUI();
 		}
 
