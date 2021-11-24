@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows;
@@ -47,7 +48,11 @@ namespace Gavilya.UserControls
 
 		private void InitUI()
 		{
+			DateTime lastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+
 			GameNameTxt.Text = GameInfo.Name;
+			TimePlayedTxt.Text = $"{Math.Round(GameInfo.TotalTimePlayed / 3600d)}{Properties.Resources.HourShort} \u00B7 {lastTimePlayed.Day} {Global.NumberToMonth(lastTimePlayed.Month)} {lastTimePlayed.Year}";
+			DescTxt.Text = GameInfo.Description[0..120].Replace("\n\n", "\n") + "...";
 
 			if (!string.IsNullOrEmpty(GameInfo.IconFileLocation)) // If there is an image
 			{
