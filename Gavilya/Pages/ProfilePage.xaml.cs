@@ -130,6 +130,35 @@ namespace Gavilya.Pages
 				Game2TimeTxt.Text = $"{mostPlayed[1].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
 				Game3TimeTxt.Text = $"{mostPlayed[2].TotalTimePlayed / 3600}{Properties.Resources.HourShort}";
 
+				List<ImageBrush> imgs = new() { GameImg1, GameImg2, GameImg3 };
+
+				for (int i = 0; i < mostPlayed.Count; i++)
+				{
+					if (mostPlayed[i].IconFileLocation != string.Empty && mostPlayed[i].IconFileLocation != null) // If a custom image is used
+					{
+						var bitmap = new BitmapImage();
+						var stream = File.OpenRead(mostPlayed[i].IconFileLocation);
+
+						bitmap.BeginInit();
+						bitmap.CacheOption = BitmapCacheOption.OnLoad;
+						bitmap.StreamSource = stream;
+						bitmap.DecodePixelWidth = 256;
+						bitmap.EndInit();
+						stream.Close();
+						stream.Dispose();
+						bitmap.Freeze();
+						imgs[i].ImageSource = bitmap;
+					}
+					else
+					{
+						if (!mostPlayed[i].IsUWP && !mostPlayed[i].IsSteam) // If the game isn't UWP
+						{
+							System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(mostPlayed[i].FileLocation);
+							imgs[i].ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+						}
+					}
+				}
+
 				// Favorites tab
 				FavoritesTab.Children.Clear();
 
@@ -168,34 +197,22 @@ namespace Gavilya.Pages
 			SpotlightTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			FavoriteTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 
-			if (NothingToShow.Visibility != Visibility.Visible)
-			{
-				if (SpotlightPage.Visibility == Visibility.Visible)
-				{
-					SpotlightPage.Visibility = Visibility.Collapsed; // Hide
-					FavoritesTab.Visibility = Visibility.Visible; // Show
-				}
-				else
-				{
-					SpotlightPage.Visibility = Visibility.Visible; // Show
-					FavoritesTab.Visibility = Visibility.Collapsed; // Show
-				}
-			}
-
 			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 		}
 
 		private void SpotlightTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedButton = SpotlightTabBtn; // Check
-
+			SpotlightPage.Visibility = Visibility.Visible; // Show
+			FavoritesTab.Visibility = Visibility.Collapsed; // Show
 			RefreshTabUI();
 		}
 
 		private void FavoriteTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedButton = FavoriteTabBtn; // Check
-
+			SpotlightPage.Visibility = Visibility.Collapsed; // Show
+			FavoritesTab.Visibility = Visibility.Visible; // Show
 			RefreshTabUI();
 		}
 
