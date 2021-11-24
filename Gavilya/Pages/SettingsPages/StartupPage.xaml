@@ -41,6 +41,28 @@
 					</StackPanel>
 				</Border>
 			</StackPanel>
-		</StackPanel>
+            <TextBlock Text="{x:Static lang:Resources.DefaultPage}" FontWeight="Bold" FontSize="14" Margin="10,10,0,0" Foreground="White"/>
+            <TextBlock Text="{x:Static lang:Resources.DefaultPageOnStart}" Margin="10 0 0 0" Foreground="White" FontSize="12"/>
+            <StackPanel Orientation="Horizontal">
+                <Border x:Name="HomePageBorder" CornerRadius="10" Margin="5"  BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" Cursor="Hand" MouseLeftButtonUp="HomePageBorder_MouseLeftButtonUp">
+                    <StackPanel	Orientation="Vertical">
+                        <TextBlock Text="&#xF481;" Padding="20" FontSize="44" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                        <RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="HomePageRadioBtn" Checked="HomePageRadioBtn_Checked" GroupName="DefaultStartPageRadioGroup" Content="{x:Static lang:Resources.Home}"  BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Foreground="White" Background="Transparent"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="LibraryPageBorder" CornerRadius="10" Margin="5"  BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" Cursor="Hand" MouseLeftButtonUp="LibraryPageBorder_MouseLeftButtonUp">
+                    <StackPanel	Orientation="Vertical">
+                        <TextBlock Text="&#xF4D3;" Padding="20" FontSize="44" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                        <RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="LibraryPageRadioBtn" Checked="LibraryPageRadioBtn_Checked" GroupName="DefaultStartPageRadioGroup" Content="{x:Static lang:Resources.Library}" BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Foreground="White" Background="Transparent"/>
+                    </StackPanel>
+                </Border>
+                <Border x:Name="ProfilePageBorder" CornerRadius="10" Margin="5"  BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter_1" MouseLeave="Border_MouseLeave_1" Cursor="Hand" MouseLeftButtonUp="ProfilePageBorder_MouseLeftButtonUp">
+                    <StackPanel	Orientation="Vertical">
+                        <TextBlock Text="&#xF5BE;" Padding="20" FontSize="44" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Stretch" TextAlignment="Center"/>
+                        <RadioButton Style="{DynamicResource RadioButtonStyle1}" x:Name="ProfilePageRadioBtn" Checked="ProfilePageRadioBtn_Checked" GroupName="DefaultStartPageRadioGroup" Content="{x:Static lang:Resources.Profile}" BorderBrush="#6600FF" FontWeight="Bold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Foreground="White" Background="Transparent"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

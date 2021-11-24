@@ -60,6 +60,12 @@ namespace Gavilya
 			Definitions.LibraryPage = new();
 			Definitions.ProfilePage = new();
 
+			if (Definitions.Settings.DefaultGavilyaHomePage is null)
+			{
+				Definitions.Settings.DefaultGavilyaHomePage = Enums.GavilyaWindowPages.Home; // Set default value
+				SettingsSaver.Save(); // Save changes
+			}
+
 			if (Definitions.Settings.IsFirstRun) // If it is the app first run
 			{
 				new FirstRun().Show(); // Show the first run experience

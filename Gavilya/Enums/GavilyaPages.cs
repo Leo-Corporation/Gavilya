@@ -49,4 +49,22 @@ namespace Gavilya.Enums
 		/// </summary>
 		Underteminated
 	}
+
+	public enum GavilyaWindowPages
+	{
+		/// <summary>
+		/// The <see cref="Pages.HomePage"/>.
+		/// </summary>
+		Home,
+
+		/// <summary>
+		/// The <see cref="Pages.LibraryPage"/>.
+		/// </summary>
+		Library,
+
+		/// <summary>
+		/// The <see cref="Pages.ProfilePage"/>.
+		/// </summary>
+		Profile
+	}
 }

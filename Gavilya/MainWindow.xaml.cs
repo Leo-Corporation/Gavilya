@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.Pages;
 using Gavilya.UserControls;
 using Gavilya.Windows;
@@ -86,8 +87,21 @@ namespace Gavilya
 			CheckUpdateOnStart(); // Check update on start
 
 			// Tabs
-			PageContent.Navigate(Definitions.HomePage);
-			CheckedTabButton = HomeTabBtn;
+
+			PageContent.Navigate(Definitions.Settings.DefaultGavilyaHomePage switch
+			{
+				GavilyaWindowPages.Home => Definitions.HomePage,
+				GavilyaWindowPages.Library => Definitions.LibraryPage,
+				GavilyaWindowPages.Profile => Definitions.ProfilePage,
+				_ => Definitions.HomePage
+			});
+			CheckedTabButton = Definitions.Settings.DefaultGavilyaHomePage switch
+			{
+				GavilyaWindowPages.Home => HomeTabBtn,
+				GavilyaWindowPages.Library => LibraryTabBtn,
+				GavilyaWindowPages.Profile => ProfileTabBtn,
+				_ => HomeTabBtn
+			};
 			CheckButton();
 		}
 		System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
