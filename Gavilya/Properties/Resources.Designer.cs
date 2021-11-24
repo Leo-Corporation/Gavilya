@@ -349,6 +349,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default page.
+        /// </summary>
+        public static string DefaultPage {
+            get {
+                return ResourceManager.GetString("DefaultPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default page on startup.
+        /// </summary>
+        public static string DefaultPageOnStart {
+            get {
+                return ResourceManager.GetString("DefaultPageOnStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default view mode in Library.
         /// </summary>
         public static string DefaultViewMode {

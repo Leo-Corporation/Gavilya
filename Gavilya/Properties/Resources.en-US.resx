@@ -681,4 +681,10 @@
   <data name="PopupMenu" xml:space="preserve">
     <value>Gavilya - Menu</value>
   </data>
+  <data name="DefaultPage" xml:space="preserve">
+    <value>Default page</value>
+  </data>
+  <data name="DefaultPageOnStart" xml:space="preserve">
+    <value>Default page on startup</value>
+  </data>
 </root>
