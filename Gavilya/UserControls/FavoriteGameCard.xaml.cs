@@ -40,7 +40,7 @@ namespace Gavilya.UserControls
 		public GameInfo GameInfo { get; set; }
 		string GamePath = ""; // Location of the game
 
-		UIElement parentElement;
+		readonly UIElement parentElement;
 
 		public FavoriteGameCard(GameInfo gameInfo, UIElement parent = null)
 		{
@@ -96,12 +96,12 @@ namespace Gavilya.UserControls
 				if (File.Exists(GamePath)) // If the game location file exist
 				{
 					Process.Start(GamePath); // Start the game
+											 // Create a game card
 
-					if (parentElement is GameCard)
+					if (parentElement is GameCard gameCard)
 					{
-						GameCard gameCard = (GameCard)parentElement; // Create a game card
 						gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
-						new GameSaver().Save(Definitions.Games); // Save the changes
+						GameSaver.Save(Definitions.Games); // Save the changes
 
 						Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
 						Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
@@ -115,12 +115,12 @@ namespace Gavilya.UserControls
 			else
 			{
 				Process.Start("explorer.exe", GamePath); // Start the game
+														 // Create a game card
 
-				if (parentElement is GameCard)
+				if (parentElement is GameCard gameCard)
 				{
-					GameCard gameCard = (GameCard)parentElement; // Create a game card
 					gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
-					new GameSaver().Save(Definitions.Games); // Save the changes
+					GameSaver.Save(Definitions.Games); // Save the changes
 
 					Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
 					Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations

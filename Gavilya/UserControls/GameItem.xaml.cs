@@ -68,7 +68,7 @@ namespace Gavilya.UserControls
 			{
 				if (gameStarted) // If the game has been started
 				{
-					new GameSaver().Save(Definitions.Games); // Save
+					GameSaver.Save(Definitions.Games); // Save
 					if (!GameInfo.AlwaysCheckIfRunning)
 					{
 						Timer.Stop();
@@ -122,7 +122,7 @@ namespace Gavilya.UserControls
 
 				GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 				Definitions.Games[Definitions.Games.IndexOf(GameInfo)].LastTimePlayed = GameInfo.LastTimePlayed; // Update the games
-				new GameSaver().Save(Definitions.Games); // Save the changes
+				GameSaver.Save(Definitions.Games); // Save the changes
 
 				Timer.Start();
 			}

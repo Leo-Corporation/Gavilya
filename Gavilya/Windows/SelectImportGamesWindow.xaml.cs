@@ -76,7 +76,7 @@ namespace Gavilya.Windows
 				}
 
 				Definitions.Games = gameInfos; // Set
-				new GameSaver().Save(Definitions.Games); // Save changes
+				GameSaver.Save(Definitions.Games); // Save changes
 			}
 
 			Global.ReloadAllPages(); // Refresh

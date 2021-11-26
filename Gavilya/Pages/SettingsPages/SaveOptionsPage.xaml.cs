@@ -96,7 +96,7 @@ namespace Gavilya.Pages.SettingsPages
 			{
 				if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
 				{
-					new GameSaver().Import(openFileDialog.FileName, true); // Import
+					GameSaver.Import(openFileDialog.FileName, true); // Import
 					new SelectImportGamesWindow().Show(); // Show import assistant
 				}
 			}
@@ -112,7 +112,7 @@ namespace Gavilya.Pages.SettingsPages
 			if (saveFileDialog.ShowDialog() ?? true)
 			{
 				string fileLocation = saveFileDialog.FileName; // Location of the file
-				new GameSaver().Export(Definitions.Games, fileLocation); // Export the games
+				GameSaver.Export(Definitions.Games, fileLocation); // Export the games
 			}
 		}
 
@@ -135,7 +135,7 @@ namespace Gavilya.Pages.SettingsPages
 			if (Definitions.Games.Count > 0 && Directory.Exists(Definitions.Settings.SavePath))
 			{
 				string fL = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
-				new GameSaver().Export(Definitions.Games, fL); // Export 
+				GameSaver.Export(Definitions.Games, fL); // Export 
 			}
 		}
 

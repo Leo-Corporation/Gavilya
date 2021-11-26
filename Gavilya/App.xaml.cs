@@ -42,7 +42,7 @@ namespace Gavilya
 			Definitions.GameInfoPage2 = new(); // Create the page
 
 			ProfileManager.LoadProfiles(); // Load profiles
-			new GameSaver().Load(); // Load the .gav file in the Definitions class
+			GameSaver.Load(); // Load the .gav file in the Definitions class
 
 			Definitions.StatGameInfoControl = new(); // New control
 			Definitions.Statistics = new(); // New page

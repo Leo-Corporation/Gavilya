@@ -49,7 +49,7 @@ namespace Gavilya.Windows
 		{
 			GameNameTxt.Text = GameInfo.Name; // Display the name
 			GameVersionTxt.Text = GameInfo.Version; // Display the version
-			GameLocationTxt.Text = (GameInfo.FileLocation.Length > 18) ? GameInfo.FileLocation.Substring(0, 18) + "..." : GameInfo.FileLocation; // Display the location
+			GameLocationTxt.Text = (GameInfo.FileLocation.Length > 18) ? GameInfo.FileLocation[..18] + "..." : GameInfo.FileLocation; // Display the location
 			GameProcessName.Text = GameInfo.ProcessName; // Display the ProcessName
 			PathToolTip.Content = GameInfo.FileLocation; // Set the tooltip content
 			AlwaysCheckGameRunningChk.IsChecked = GameInfo.AlwaysCheckIfRunning; // Set IsChecked
@@ -79,7 +79,7 @@ namespace Gavilya.Windows
 			}
 
 			Definitions.Games[Definitions.Games.IndexOf(GameInfo)].AlwaysCheckIfRunning = AlwaysCheckGameRunningChk.IsChecked.Value; // Set
-			new GameSaver().Save(Definitions.Games); // Save the changes
+			GameSaver.Save(Definitions.Games); // Save the changes
 		}
 
 		private void CancelBtn_Click(object sender, RoutedEventArgs e)

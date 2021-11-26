@@ -35,7 +35,7 @@ namespace Gavilya.Pages.FirstRunPages
 	/// </summary>
 	public partial class SelectImportedGamesPage : Page
 	{
-		FirstRun FirstRun;
+		readonly FirstRun FirstRun;
 		public SelectImportedGamesPage(FirstRun firstRun)
 		{
 			InitializeComponent();
@@ -71,7 +71,7 @@ namespace Gavilya.Pages.FirstRunPages
 				}
 
 				Definitions.Games = gameInfos; // Set
-				new GameSaver().Save(Definitions.Games); // Save changes
+				GameSaver.Save(Definitions.Games); // Save changes
 			}
 
 			FirstRun.ChangePage(Enums.FirstRunPages.Finish); // Change page

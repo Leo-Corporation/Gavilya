@@ -32,7 +32,7 @@ namespace Gavilya.Pages.FirstRunPages
 	/// </summary>
 	public partial class SearchRAWGPage : Page
 	{
-		FirstRun FirstRun;
+		readonly FirstRun FirstRun;
 		public SearchRAWGPage(FirstRun firstRun)
 		{
 			InitializeComponent();

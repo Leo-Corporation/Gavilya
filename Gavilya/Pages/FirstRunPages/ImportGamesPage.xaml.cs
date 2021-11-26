@@ -34,7 +34,7 @@ namespace Gavilya.Pages.FirstRunPages
 	/// </summary>
 	public partial class ImportGamesPage : Page
 	{
-		FirstRun FirstRun;
+		readonly FirstRun FirstRun;
 		public ImportGamesPage(FirstRun firstRun)
 		{
 			InitializeComponent();
@@ -54,7 +54,7 @@ namespace Gavilya.Pages.FirstRunPages
 
 			if (openFileDialog.ShowDialog() ?? true) // If the user opend a file
 			{
-				new GameSaver().Import(openFileDialog.FileName, true); // Import
+				GameSaver.Import(openFileDialog.FileName, true); // Import
 			}
 
 			FirstRun.ChangePage(Enums.FirstRunPages.SelectImportedGames); // Change page

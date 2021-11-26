@@ -580,7 +580,7 @@ namespace Gavilya.Classes
 				}
 
 				Definitions.Games = sortedFinal; // Save the changes
-				new GameSaver().Save(Definitions.Games); // Save in file
+				GameSaver.Save(Definitions.Games); // Save in file
 			}
 			catch (Exception ex)
 			{
@@ -674,7 +674,7 @@ namespace Gavilya.Classes
 						if (Definitions.Games.Count > 0 && Directory.Exists(Definitions.Settings.SavePath))
 						{
 							string fL = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
-							new GameSaver().Export(Definitions.Games, fL); // Export 
+							GameSaver.Export(Definitions.Games, fL); // Export 
 						}
 					}
 				}
