@@ -55,7 +55,7 @@ namespace Gavilya.Classes
 				hours = time / 3600; // Get the number of hours the game was played.
 			}
 
-			time = time - hours * 3600; // Get the remaining the time
+			time -= hours * 3600; // Get the remaining the time
 
 			if (time / 60 < 1) // If the game was played less than a minute
 			{
@@ -66,7 +66,7 @@ namespace Gavilya.Classes
 				minutes = time / 60; // Get the number of minutes the game was played
 			}
 
-			time = time - minutes * 60; // Get the remaining time
+			time -= minutes * 60; // Get the remaining time
 			seconds = time; // The remaining time is seconds
 
 			return new GameTimePlayed { Hours = hours, Minutes = minutes, Seconds = seconds }; // Return

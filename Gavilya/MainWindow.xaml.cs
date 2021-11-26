@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.Pages;
 using Gavilya.UserControls;
 using Gavilya.Windows;
@@ -86,11 +87,25 @@ namespace Gavilya
 			CheckUpdateOnStart(); // Check update on start
 
 			// Tabs
-			PageContent.Navigate(Definitions.HomePage);
-			CheckedTabButton = HomeTabBtn;
+
+			PageContent.Navigate(Definitions.Settings.DefaultGavilyaHomePage switch
+			{
+				GavilyaWindowPages.Home => Definitions.HomePage,
+				GavilyaWindowPages.Library => Definitions.LibraryPage,
+				GavilyaWindowPages.Profile => Definitions.ProfilePage,
+				_ => Definitions.HomePage
+			});
+			CheckedTabButton = Definitions.Settings.DefaultGavilyaHomePage switch
+			{
+				GavilyaWindowPages.Home => HomeTabBtn,
+				GavilyaWindowPages.Library => LibraryTabBtn,
+				GavilyaWindowPages.Profile => ProfileTabBtn,
+				_ => HomeTabBtn
+			};
 			CheckButton();
 		}
-		System.Windows.Forms.NotifyIcon notifyIcon = new System.Windows.Forms.NotifyIcon();
+
+		readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
 		private async void CheckUpdateOnStart()
 		{
 			if (await NetworkConnection.IsAvailableAsync())
@@ -150,7 +165,7 @@ namespace Gavilya
 			}
 		}
 
-		private void LoadGames()
+		private static void LoadGames()
 		{
 			Definitions.GamesCardsPages.LoadGames(); // Load the games
 			Definitions.RecentGamesPage.LoadGames(); // Load the games
@@ -204,12 +219,12 @@ namespace Gavilya
 			WindowState = WindowState.Minimized; // Minimize
 		}
 
-		private void maximizeButton_Click(object sender, RoutedEventArgs e)
+		private void MaximizeButton_Click(object sender, RoutedEventArgs e)
 		{
 			WindowState = WindowState.Maximized; // Maximize
 		}
 
-		private void restoreButton_Click(object sender, RoutedEventArgs e)
+		private void RestoreButton_Click(object sender, RoutedEventArgs e)
 		{
 			WindowState = WindowState.Normal; // Restore
 		}
@@ -227,13 +242,13 @@ namespace Gavilya
 		{
 			if (WindowState == WindowState.Maximized) // If Maximized
 			{
-				maximizeButton.Visibility = Visibility.Collapsed; // Hide
-				restoreButton.Visibility = Visibility.Visible; // Show
+				MaximizeButton.Visibility = Visibility.Collapsed; // Hide
+				RestoreButton.Visibility = Visibility.Visible; // Show
 			}
 			else
 			{
-				maximizeButton.Visibility = Visibility.Visible; // Show
-				restoreButton.Visibility = Visibility.Collapsed; // Hide
+				MaximizeButton.Visibility = Visibility.Visible; // Show
+				RestoreButton.Visibility = Visibility.Collapsed; // Hide
 			}
 			WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
 		}
@@ -242,7 +257,7 @@ namespace Gavilya
 		/// Put a shadow under an <see cref="UIElement"/>.
 		/// </summary>
 		/// <param name="uIElement">The <see cref="UIElement"/> to put a shadow to.</param>
-		private void ShadowElement(UIElement uIElement)
+		private static void ShadowElement(UIElement uIElement)
 		{
 			DropShadowEffect dropShadowEffect = new(); // Shadow Effect
 
@@ -265,7 +280,7 @@ namespace Gavilya
 		/// Remove the shadow effect of a <see cref="UIElement"/>.
 		/// </summary>
 		/// <param name="uIElement">The <see cref="UIElement"/> to remove the shadow to.</param>
-		private void RemoveShadowElement(UIElement uIElement)
+		private static void RemoveShadowElement(UIElement uIElement)
 		{
 			DropShadowEffect dropShadowEffect = new(); // Shadow Effect
 
@@ -281,7 +296,7 @@ namespace Gavilya
 		/// </summary>
 		/// <param name="button">The <see cref="Button"/> to change the backcolor to.</param>
 		/// <param name="linearGradientBrush">The new background.</param>
-		private void ColorElement(Button button, Brush color)
+		private static void ColorElement(Button button, Brush color)
 		{
 			button.Background = color;
 		}
@@ -293,9 +308,8 @@ namespace Gavilya
 			{
 				for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
 				{
-					if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard) // If the element is a GameCard
+					if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard gameCard) // If the element is a GameCard
 					{
-						GameCard gameCard = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
 						if (gameCard.CheckBox.IsVisible) // If the check box is visible
 						{
 							gameCard.CheckBox.Visibility = Visibility.Hidden; // The checkbox isn't visible
@@ -324,9 +338,8 @@ namespace Gavilya
 		{
 			for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
 			{
-				if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard) // If the element is a GameCard
+				if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard gameCard) // If the element is a GameCard
 				{
-					GameCard gameCard = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
 					gameCard.CheckBox.Visibility = Visibility.Hidden; // The checkbox isn't visible
 					ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
 					RemoveShadowElement(SelectBtn); // Remove shadow
@@ -340,7 +353,7 @@ namespace Gavilya
 		/// Checks if games are selected or not.
 		/// </summary>
 		/// <returns></returns>
-		private bool IsGameCardsSelected()
+		private static bool IsGameCardsSelected()
 		{
 			for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++)
 			{
@@ -365,9 +378,9 @@ namespace Gavilya
 
 					foreach (UIElement uIElement in Definitions.GamesCardsPages.GamePresenter.Children) // Foreach elements
 					{
-						if (uIElement is GameCard) // If the element is a GameCard
+						// Convert the element to a GameCard
+						if (uIElement is GameCard gameCard) // If the element is a GameCard
 						{
-							GameCard gameCard = (GameCard)uIElement; // Convert the element to a GameCard
 							if ((gameCard.CheckBox.IsChecked ?? true) && (gameCard.CheckBox.Visibility == Visibility.Visible)) // If the element is checked
 							{
 								games.Add(gameCard); // Add to the list the GameCard
@@ -395,7 +408,7 @@ namespace Gavilya
 						}
 						Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
 						Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
-						new GameSaver().Save(Definitions.Games); // Update the save file
+						GameSaver.Save(Definitions.Games); // Update the save file
 						Definitions.RecentGamesPage.LoadGames(); // Reload the games
 						Definitions.GamesListPage.LoadGames(); // Reload the page
 					}
@@ -413,7 +426,7 @@ namespace Gavilya
 			}
 		}
 
-		PopupMenu PopupMenu = new(); // The menu
+		readonly PopupMenu PopupMenu = new(); // The menu
 		private void MoreBtn_Click(object sender, RoutedEventArgs e)
 		{
 			if (Definitions.IsMenuShown) // If the menu is visible

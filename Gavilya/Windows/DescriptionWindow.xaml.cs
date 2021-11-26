@@ -30,7 +30,7 @@ namespace Gavilya.Windows
 	/// </summary>
 	public partial class DescriptionWindow : Window
 	{
-		bool isFromEdit = false;
+		readonly bool isFromEdit = false;
 		AddGame AddGame { get; init; }
 		EditGame EditGame { get; init; }
 		public DescriptionWindow(string description, AddGame addGame)

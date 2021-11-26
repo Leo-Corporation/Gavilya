@@ -32,7 +32,7 @@ namespace Gavilya.Pages.FirstRunPages
 	/// </summary>
 	public partial class AddGamesPage : Page
 	{
-		FirstRun FirstRun;
+		readonly FirstRun FirstRun;
 		public AddGamesPage(FirstRun firstRun)
 		{
 			InitializeComponent();

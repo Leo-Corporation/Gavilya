@@ -47,7 +47,7 @@ namespace Gavilya.Pages
 		internal int RAWGID { get; set; }
 		internal string GameLocation { get; set; }
 
-		bool isFromAdd, isUWP, isSteam;
+		readonly bool isFromAdd, isUWP, isSteam;
 		GameCard GameCard { get; set; }
 		public AddEditPage(AddGame addGame)
 		{

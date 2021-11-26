@@ -46,7 +46,7 @@ namespace Gavilya.Pages
 		int tabCheckedID = 0;
 		internal GameInfo GameInfo { get; set; }
 		UIElement parentUIElement = new();
-		DispatcherTimer timer; // Create a timer
+		private DispatcherTimer timer; // Create a timer
 		string gameLocation;
 
 		public GameInfoPage(GameInfo gameInfo)
@@ -163,7 +163,7 @@ namespace Gavilya.Pages
 				if (gameInfo.Stores.Count == 0)
 				{
 					gameInfo.Stores = await Global.GetStoresAsync(gameInfo.RAWGID);
-					new GameSaver().Save(Definitions.Games); // Save
+					GameSaver.Save(Definitions.Games); // Save
 				}
 
 				for (int i = 0; i < gameInfo.Stores.Count; i++)
@@ -192,24 +192,23 @@ namespace Gavilya.Pages
 				if (File.Exists(gameLocation)) // If the file exist
 				{
 					Process.Start(gameLocation); // Start the game
+												 // Create a game card
 
-					if (parentUIElement is GameCard) // If the parent element is a game card
+					if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 					{
-						GameCard gameCard = (GameCard)parentUIElement; // Create a game card
 						gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
-						new GameSaver().Save(Definitions.Games); // Save the changes
+						GameSaver.Save(Definitions.Games); // Save the changes
 
 						gameCard.Timer.Start(); // Start the timer
 
 						DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
 						LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
 					}
-					else if (parentUIElement is GameItem)
+					else if (parentUIElement is GameItem gameItem) // Create a game item
 					{
-						GameItem gameItem = (GameItem)parentUIElement; // Create a game item
 						gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 						Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
-						new GameSaver().Save(Definitions.Games); // Save the changes
+						GameSaver.Save(Definitions.Games); // Save the changes
 
 						gameItem.Timer.Start();
 
@@ -223,24 +222,23 @@ namespace Gavilya.Pages
 			else // If is UWP
 			{
 				Process.Start("explorer.exe", gameLocation); // Start the game
+															 // Create a game card
 
-				if (parentUIElement is GameCard) // If the parent element is a game card
+				if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 				{
-					GameCard gameCard = (GameCard)parentUIElement; // Create a game card
 					gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
-					new GameSaver().Save(Definitions.Games); // Save the changes
+					GameSaver.Save(Definitions.Games); // Save the changes
 
 					gameCard.Timer.Start(); // Start the timer
 
 					DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
 					LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
 				}
-				else if (parentUIElement is GameItem)
+				else if (parentUIElement is GameItem gameItem) // Create a game item
 				{
-					GameItem gameItem = (GameItem)parentUIElement; // Create a game item
 					gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 					Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
-					new GameSaver().Save(Definitions.Games); // Save the changes
+					GameSaver.Save(Definitions.Games); // Save the changes
 
 					gameItem.Timer.Start();
 
@@ -266,7 +264,7 @@ namespace Gavilya.Pages
 			{
 				if (gameStarted) // If the game has been started
 				{
-					new GameSaver().Save(Definitions.Games); // Save
+					GameSaver.Save(Definitions.Games); // Save
 					DisplayTotalTimePlayed(GameInfo.TotalTimePlayed); // Update the text
 				}
 			}
@@ -315,7 +313,7 @@ namespace Gavilya.Pages
 
 			FavBtn.Content = GameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
 
-			new GameSaver().Save(Definitions.Games); // Save changes
+			GameSaver.Save(Definitions.Games); // Save changes
 			Definitions.GamesCardsPages.LoadGames();
 		}
 
@@ -367,7 +365,7 @@ namespace Gavilya.Pages
 
 		private async void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
 		{
-			var ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID);
+			List<SDK.RAWG.Rating> ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID);
 			tabCheckedID = 1; // ID
 
 			RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color

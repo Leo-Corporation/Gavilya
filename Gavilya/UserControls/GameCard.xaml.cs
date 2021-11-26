@@ -151,7 +151,7 @@ namespace Gavilya.UserControls
 					Timer.Start(); // Start the timer
 
 					Definitions.RecentGamesPage.LoadGames(); // Reload the games
-					new GameSaver().Save(Definitions.Games); // Save the changes
+					GameSaver.Save(Definitions.Games); // Save the changes
 				}
 			}
 			else
@@ -162,7 +162,7 @@ namespace Gavilya.UserControls
 				Timer.Start(); // Start the timer
 
 				Definitions.RecentGamesPage.LoadGames(); // Reload the games
-				new GameSaver().Save(Definitions.Games); // Save the changes
+				GameSaver.Save(Definitions.Games); // Save the changes
 			}
 		}
 
@@ -173,6 +173,10 @@ namespace Gavilya.UserControls
 			if (!GameInfo.IsUWP)
 			{
 				processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+			}
+			else
+			{
+				processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : location;
 			}
 
 			Definitions.GameInfoPage.DisplayTotalTimePlayed((Definitions.GameInfoPage.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage.GameInfo.TotalTimePlayed); // Refresh
@@ -187,7 +191,7 @@ namespace Gavilya.UserControls
 			{
 				if (gameStarted) // If the game has been started
 				{
-					new GameSaver().Save(Definitions.Games); // Save
+					GameSaver.Save(Definitions.Games); // Save
 					if (!GameInfo.AlwaysCheckIfRunning)
 					{
 						Timer.Stop(); // Stop 
@@ -223,7 +227,7 @@ namespace Gavilya.UserControls
 				Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
 				FavBtn.Content = ""; // Change icon
 			}
-			new GameSaver().Save(Definitions.Games); // Save the changes
+			GameSaver.Save(Definitions.Games); // Save the changes
 		}
 
 		private void EditBtn_Click(object sender, RoutedEventArgs e)

@@ -24,8 +24,6 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.UserControls;
-using Gavilya.Windows;
-using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -43,24 +41,6 @@ namespace Gavilya.Pages
 		{
 			InitializeComponent();
 			Definitions.GamesCardsPages = this; // Define the GamesCardsPages
-			InitUI();
-		}
-
-		private void InitUI()
-		{
-			if (Env.WindowsVersion != WindowsVersion.Windows10)
-			{
-				AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
-			}
-			else
-			{
-				AddUWPBtn.Visibility = Visibility.Visible; // Show
-			}
-		}
-
-		private void AddBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(false, false).Show(); // Open the "Add Game" dialog
 		}
 
 		public void LoadGames()
@@ -132,7 +112,7 @@ namespace Gavilya.Pages
 						};
 						Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
 						Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the games to the GamePresenter
-						new GameSaver().Save(Definitions.Games); // Save the added games
+						GameSaver.Save(Definitions.Games); // Save the added games
 						Global.SortGames(); // Sort
 						Definitions.GamesCardsPages.LoadGames(); // Reload the page
 						Definitions.RecentGamesPage.LoadGames(); // Reload the page
@@ -144,16 +124,6 @@ namespace Gavilya.Pages
 			{
 				MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
 			}
-		}
-
-		private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(true, false).Show(); // Add game
-		}
-
-		private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(false, true).Show(); // Add Steam Game
 		}
 	}
 }

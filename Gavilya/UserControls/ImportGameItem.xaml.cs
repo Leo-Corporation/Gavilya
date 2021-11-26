@@ -49,9 +49,9 @@ namespace Gavilya.UserControls
 		private void InitUI()
 		{
 			NameTxt.Text = GameInfo.Name; // Set text
-			LocationTxt.Text = (GameInfo.FileLocation.Length > 32) ? GameInfo.FileLocation.Substring(0, 32) + "..." : GameInfo.FileLocation; // Set text
+			LocationTxt.Text = (GameInfo.FileLocation.Length > 32) ? GameInfo.FileLocation[..32] + "..." : GameInfo.FileLocation; // Set text
 			LocationToolTip.Content = GameInfo.FileLocation; // Set content
-			IconLocationTxt.Text = (GameInfo.IconFileLocation.Length > 32) ? GameInfo.IconFileLocation.Substring(0, 32) + "..." : GameInfo.IconFileLocation; // Set text
+			IconLocationTxt.Text = (GameInfo.IconFileLocation.Length > 32) ? GameInfo.IconFileLocation[..32] + "..." : GameInfo.IconFileLocation; // Set text
 			IconLocationToolTip.Content = GameInfo.IconFileLocation; // Set content
 
 			GetRAWGImageBtn.Visibility = (GameInfo.RAWGID != -1) ? Visibility.Visible : Visibility.Collapsed; // Set

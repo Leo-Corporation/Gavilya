@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Enums;
 using LeoCorpLibrary;
 using System.IO;
 using System.Xml.Serialization;
@@ -71,6 +72,11 @@ namespace Gavilya.Classes
 		/// The save file path.
 		/// </summary>
 		public string SavePath { get; set; }
+
+		/// <summary>
+		/// The default startup home page of Gavilya.
+		/// </summary>
+		public GavilyaWindowPages? DefaultGavilyaHomePage { get; set; }
 	}
 
 	public static class SettingsSaver
@@ -101,7 +107,8 @@ namespace Gavilya.Classes
 					CurrentProfileIndex = 0,
 					MakeAutoSave = true,
 					AutoSaveDay = 1,
-					SavePath = $@"{Env.AppDataPath}\Gavilya\Backups"
+					SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
+					DefaultGavilyaHomePage = GavilyaWindowPages.Home
 				};
 				Save();
 			}

@@ -23,7 +23,9 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using LeoCorpLibrary;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -38,6 +40,7 @@ namespace Gavilya.UserControls
 	{
 		public GameInfo GameInfo { get; set; }
 		public DispatcherTimer Timer { get; set; }
+		public bool IsChecked { get; set; }
 		public GameItem(GameInfo gameInfo)
 		{
 			InitializeComponent();
@@ -65,7 +68,7 @@ namespace Gavilya.UserControls
 			{
 				if (gameStarted) // If the game has been started
 				{
-					new GameSaver().Save(Definitions.Games); // Save
+					GameSaver.Save(Definitions.Games); // Save
 					if (!GameInfo.AlwaysCheckIfRunning)
 					{
 						Timer.Stop();
@@ -91,14 +94,55 @@ namespace Gavilya.UserControls
 		{
 			foreach (UIElement uIElement in Definitions.GamesListPage.GameList.Children) // For each UIElement in the list
 			{
-				if (uIElement is GameItem) // If the UIElement is a GameItem
+				if (uIElement is GameItem gameItem) // If the UIElement is a GameItem
 				{
-					GameItem gameItem = (GameItem)uIElement; // Create a GameItem
 					gameItem.GameBtn.Background = Definitions.TransparentColor; // Change the background color
+					gameItem.PlayBtn.Visibility = Visibility.Hidden;
+					gameItem.IsChecked = false;
 				}
 			}
 
 			GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change the background color
+			PlayBtn.Visibility = Visibility.Visible; // Show
+			IsChecked = true;
+		}
+
+		private void PlayBtn_Click(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				if (!GameInfo.IsUWP && !GameInfo.IsSteam) // If EXE/Win32 game
+				{
+					Process.Start(GameInfo.FileLocation); // Start the game 
+				}
+				else
+				{
+					Process.Start("explorer.exe", GameInfo.FileLocation); // Start the game
+				}
+
+				GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+				Definitions.Games[Definitions.Games.IndexOf(GameInfo)].LastTimePlayed = GameInfo.LastTimePlayed; // Update the games
+				GameSaver.Save(Definitions.Games); // Save the changes
+
+				Timer.Start();
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+			}
+		}
+
+		private void Grid_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			PlayBtn.Visibility = Visibility.Visible; // Show
+		}
+
+		private void Grid_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
+		{
+			if (!IsChecked)
+			{
+				PlayBtn.Visibility = Visibility.Hidden; // Hide 
+			}
 		}
 	}
 }

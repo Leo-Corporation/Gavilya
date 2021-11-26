@@ -195,14 +195,14 @@
 		RenderOptions.EdgeMode="Aliased"
 		Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button
-		Name="maximizeButton"
+		x:Name="MaximizeButton"
 		Grid.Column="8"
-		Click="maximizeButton_Click" Background="Transparent"
+		Click="MaximizeButton_Click" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}" Width="46"	Height="32" Content="&#xFA40;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button
-		Name="restoreButton"
+		x:Name="RestoreButton"
 		Grid.Column="8"
-		Click="restoreButton_Click"
+		Click="RestoreButton_Click"
 		Visibility="Collapsed" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}" Width="46"	Height="32" Content="&#xF670;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="16"></Button>
 					<Button

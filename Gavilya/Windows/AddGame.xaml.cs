@@ -44,8 +44,8 @@ namespace Gavilya.Windows
 		public bool IsUWP { get; set; }
 		public bool IsSteam { get; set; }
 
-		AddEditPage AddEditPage;
-		AddEditPage2 AddEditPage2;
+		readonly AddEditPage AddEditPage;
+		readonly AddEditPage2 AddEditPage2;
 		public AddGame(bool isUWP, bool isSteam)
 		{
 			InitializeComponent();

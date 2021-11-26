@@ -53,7 +53,7 @@ namespace Gavilya.UserControls
 			GameNameTxt.Text = GameInfo.Name; // Set text
 			GameTimeTxt.Text = $"{string.Format("{0:0.#}", time)}{Properties.Resources.HourShort}"; // Set text
 
-			isChecked = (pos == 1) ? true : false; // Set
+			isChecked = pos == 1; // Set
 			if (isChecked)
 			{
 				ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color 

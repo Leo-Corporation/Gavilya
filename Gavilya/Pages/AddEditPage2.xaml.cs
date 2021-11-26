@@ -46,8 +46,8 @@ namespace Gavilya.Pages
 		internal int RAWGID { get; set; }
 		internal GameCard GameCard { get; set; }
 
-		GameInfo old; // Set
-		bool isFromAdd;
+		readonly GameInfo old; // Set
+		readonly bool isFromAdd;
 		public AddEditPage2(AddGame addGame)
 		{
 			InitializeComponent();
@@ -116,7 +116,7 @@ namespace Gavilya.Pages
 						IsSteam = AddGame.IsSteam
 					});
 
-					new GameSaver().Save(Definitions.Games); // Save
+					GameSaver.Save(Definitions.Games); // Save
 					Global.ReloadAllPages(); // Refresh UI
 
 					AddGame.Close();
@@ -129,7 +129,7 @@ namespace Gavilya.Pages
 					GameCard.GameInfo.Stores = Stores; // Set
 
 					Definitions.Games[Definitions.Games.IndexOf(old)] = GameCard.GameInfo; // Update
-					new GameSaver().Save(Definitions.Games); // Save
+					GameSaver.Save(Definitions.Games); // Save
 
 					Global.ReloadAllPages(); // Refresh UI
 

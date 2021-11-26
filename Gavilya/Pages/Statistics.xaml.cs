@@ -101,9 +101,9 @@ namespace Gavilya.Pages
 			{
 				for (int i = 0; i < GamesInfoDisplayer.Children.Count; i++)
 				{
-					if (GamesInfoDisplayer.Children[i] is StatInfoCard)
+					if (GamesInfoDisplayer.Children[i] is StatInfoCard card)
 					{
-						((StatInfoCard)GamesInfoDisplayer.Children[i]).UnCheck(); // Uncheck
+						card.UnCheck(); // Uncheck
 					}
 				}
 			}

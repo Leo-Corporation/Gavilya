@@ -29,13 +29,13 @@ using System.Xml.Serialization;
 
 namespace Gavilya.Classes
 {
-	internal class GameSaver
+	internal static class GameSaver
 	{
 		/// <summary>
 		/// Save a list of games.
 		/// </summary>
 		/// <param name="games">The games to save.</param>
-		internal void Save(List<GameInfo> games)
+		internal static void Save(List<GameInfo> games)
 		{
 			string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
 
@@ -57,7 +57,7 @@ namespace Gavilya.Classes
 		/// </summary>
 		/// <param name="games">The games to export.</param>
 		/// <param name="path">The path where the games are going to be exported.</param>
-		internal void Export(List<GameInfo> games, string path)
+		internal static void Export(List<GameInfo> games, string path)
 		{
 			try
 			{
@@ -79,7 +79,7 @@ namespace Gavilya.Classes
 		/// </summary>
 		/// <param name="path">The path of the <c>.gav</c> file.</param>
 		/// <param name="isFirstRun">Indicates if it is the first run of the program.</param>
-		internal void Import(string path, bool isFirstRun = false)
+		internal static void Import(string path, bool isFirstRun = false)
 		{
 			try
 			{
@@ -111,7 +111,7 @@ namespace Gavilya.Classes
 		/// <summary>
 		/// Load the saved games into a <see cref="List{GameInfo}"/>.
 		/// </summary>
-		internal void Load()
+		internal static void Load()
 		{
 			string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
 			if (File.Exists(filePath)) // If there is a save file
@@ -124,10 +124,10 @@ namespace Gavilya.Classes
 			}
 			else
 			{
-				Save(Definitions.Games == null ? new() : Definitions.Games);
+				Save(Definitions.Games ?? (new()));
 			}
 		}
 
-		private string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+		private static readonly string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 	}
 }

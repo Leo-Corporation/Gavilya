@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -48,9 +49,14 @@ namespace Gavilya.Pages.SettingsPages
 			CardsPageRadioBtn.IsChecked = Definitions.Settings.PageId == 0; // Check if the page ID is equal to 0
 			RecentPageRadioBtn.IsChecked = Definitions.Settings.PageId == 1; // Check if the page ID is equal to 1
 			ListPageRadioBtn.IsChecked = Definitions.Settings.PageId == 2; // Check if the page ID is equal to 2
+
+			HomePageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Home; // Check
+			LibraryPageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Library; // Check
+			ProfilePageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Profile; // Check
 		}
 
 		Border CheckedBorder { get; set; }
+		Border PageCheckedBorder { get; set; }
 		private void Border_MouseEnter(object sender, MouseEventArgs e)
 		{
 			Border border = (Border)sender;
@@ -121,6 +127,78 @@ namespace Gavilya.Pages.SettingsPages
 			ListPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 
 			CheckedBorder.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
+		}
+
+		private void RefreshPageBorders()
+		{
+			HomePageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+			LibraryPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+			ProfilePageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+
+			PageCheckedBorder.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
+		}
+
+		private void HomePageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			HomePageRadioBtn.IsChecked = true; // Check
+			PageCheckedBorder = HomePageBorder; // Set checked border
+			RefreshPageBorders(); // Refresh
+
+			Definitions.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Home;
+			SettingsSaver.Save(); // Save changes
+		}
+
+		private void LibraryPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			LibraryPageRadioBtn.IsChecked = true; // Check
+			PageCheckedBorder = LibraryPageBorder; // Set checked border
+			RefreshPageBorders(); // Refresh
+
+			Definitions.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Library;
+			SettingsSaver.Save(); // Save changes
+		}
+
+		private void ProfilePageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+		{
+			ProfilePageRadioBtn.IsChecked = true; // Check
+			PageCheckedBorder = ProfilePageBorder; // Set checked border
+			RefreshPageBorders(); // Refresh
+
+			Definitions.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Profile;
+			SettingsSaver.Save(); // Save changes
+		}
+
+		private void HomePageRadioBtn_Checked(object sender, RoutedEventArgs e)
+		{
+			PageCheckedBorder = HomePageBorder; // Set checked border
+			RefreshPageBorders(); // Refresh
+		}
+
+		private void LibraryPageRadioBtn_Checked(object sender, RoutedEventArgs e)
+		{
+			PageCheckedBorder = LibraryPageBorder; // Set checked border
+			RefreshPageBorders(); // Refresh
+		}
+
+		private void ProfilePageRadioBtn_Checked(object sender, RoutedEventArgs e)
+		{
+			PageCheckedBorder = ProfilePageBorder; // Set checked border
+			RefreshPageBorders(); // Refresh
+		}
+
+		private void Border_MouseEnter_1(object sender, MouseEventArgs e)
+		{
+			Border border = (Border)sender;
+			border.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
+		}
+
+		private void Border_MouseLeave_1(object sender, MouseEventArgs e)
+		{
+			Border border = (Border)sender;
+			if (border != PageCheckedBorder)
+			{
+				border.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+			}
 		}
 	}
 }

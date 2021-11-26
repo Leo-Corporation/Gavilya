@@ -33,7 +33,7 @@ namespace Gavilya.Pages.FirstRunPages
 	/// </summary>
 	public partial class FinishPage : Page
 	{
-		FirstRun FirstRun;
+		readonly FirstRun FirstRun;
 		public FinishPage(FirstRun firstRun)
 		{
 			InitializeComponent();
