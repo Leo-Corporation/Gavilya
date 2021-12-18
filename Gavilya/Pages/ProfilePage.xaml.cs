@@ -212,7 +212,6 @@ namespace Gavilya.Pages
 
 		private void FavoriteTabBtn_Click(object sender, RoutedEventArgs e)
 		{
-			InitUI();
 			CheckedButton = FavoriteTabBtn; // Check
 			if (NothingToShow.Visibility != Visibility.Visible)
 			{

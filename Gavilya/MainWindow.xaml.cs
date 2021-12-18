@@ -541,6 +541,7 @@ namespace Gavilya
 			CheckedTabButton = ProfileTabBtn; // Set the checked button
 			CheckButton(); // Update the UI
 
+			Definitions.ProfilePage.InitUI(); // Refresh the content
 			PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
 		}
 
