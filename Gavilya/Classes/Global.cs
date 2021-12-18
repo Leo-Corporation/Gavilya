@@ -29,11 +29,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Windows.Shell;
 
 namespace Gavilya.Classes
 {
@@ -683,6 +685,34 @@ namespace Gavilya.Classes
 			{
 				MessageBox.Show(ex.Message, Properties.Resources.ErrorOccurred, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
+		}
+
+		internal static void CreateJumpLists()
+		{
+			JumpList jumpList = new JumpList();
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				if (Definitions.Games[i].IsFavorite)
+				{
+					JumpTask task = new JumpTask
+					{
+						Title = Definitions.Games[i].Name,
+						Arguments = $"{Definitions.Games[i].FileLocation}",
+						Description = Definitions.Games[i].Description[0..120].Replace("\n\n", "\n") + "...",
+						CustomCategory = Gavilya.Properties.Resources.Favorites,
+						IconResourcePath = Assembly.GetEntryAssembly().CodeBase,
+						ApplicationPath = "explorer.exe"
+					};
+
+					jumpList.JumpItems.Add(task);
+				}
+			}
+
+
+			jumpList.ShowFrequentCategory = false;
+			jumpList.ShowRecentCategory = false;
+
+			JumpList.SetJumpList(Application.Current, jumpList);
 		}
 	}
 }

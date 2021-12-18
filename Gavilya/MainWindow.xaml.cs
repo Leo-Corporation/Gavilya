@@ -232,6 +232,8 @@ namespace Gavilya
 		private void Button_Click_2(object sender, RoutedEventArgs e)
 		{
 			SettingsSaver.Save(); // Save settings
+
+			Global.CreateJumpLists();
 			Environment.Exit(0); // Quit the app
 		}
 
