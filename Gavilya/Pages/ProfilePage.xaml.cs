@@ -49,13 +49,12 @@ namespace Gavilya.Pages
 			InitializeComponent();
 			CurrentProfile = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]; // Current profile
 
+			CheckedButton = SpotlightTabBtn;
 			InitUI();
 		}
 
 		internal void InitUI()
 		{
-			CheckedButton = SpotlightTabBtn;
-
 			if (CurrentProfile.PictureFilePath != "_default")
 			{
 				if (File.Exists(CurrentProfile.PictureFilePath))
@@ -213,6 +212,7 @@ namespace Gavilya.Pages
 
 		private void FavoriteTabBtn_Click(object sender, RoutedEventArgs e)
 		{
+			InitUI();
 			CheckedButton = FavoriteTabBtn; // Check
 			if (NothingToShow.Visibility != Visibility.Visible)
 			{
