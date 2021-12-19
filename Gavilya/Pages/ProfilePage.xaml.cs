@@ -224,7 +224,7 @@ namespace Gavilya.Pages
 		{
 			CheckedButton = SpotlightTabBtn; // Check
 			HideAll();
-			
+
 			SpotlightPage.Visibility = Visibility.Visible; // Show
 			RefreshTabUI();
 		}
