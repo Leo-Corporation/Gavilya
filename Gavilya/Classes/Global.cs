@@ -710,6 +710,33 @@ namespace Gavilya.Classes
 				}
 			}
 
+			jumpList.JumpItems.Add(new JumpTask()
+			{
+				Title = Properties.Resources.Home,
+				Arguments = "/page 0",
+				Description = Properties.Resources.Home,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			});
+
+			jumpList.JumpItems.Add(new JumpTask()
+			{
+				Title = Properties.Resources.Library,
+				Arguments = "/page 1",
+				Description = Properties.Resources.Library,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			});
+
+			jumpList.JumpItems.Add(new JumpTask()
+			{
+				Title = Properties.Resources.MyProfile,
+				Arguments = "/page 2",
+				Description = Properties.Resources.MyProfile,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			});
+
 
 			jumpList.ShowFrequentCategory = false;
 			jumpList.ShowRecentCategory = false;
