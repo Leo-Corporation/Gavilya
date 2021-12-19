@@ -705,4 +705,52 @@
   <data name="GavilyaNeedsRestartChanges" xml:space="preserve">
     <value>Gavilya needs to restart to apply changes.</value>
   </data>
+  <data name="TheStart" xml:space="preserve">
+    <value>The Start</value>
+  </data>
+  <data name="CrazyAboutIt" xml:space="preserve">
+    <value>Crazy About It</value>
+  </data>
+  <data name="NeedSpaceOnTheShelves" xml:space="preserve">
+    <value>Need Space On The Shelves</value>
+  </data>
+  <data name="NoobPlayer" xml:space="preserve">
+    <value>Noob Player</value>
+  </data>
+  <data name="StarterGamer" xml:space="preserve">
+    <value>Starter Gamer</value>
+  </data>
+  <data name="AdvancedGamer" xml:space="preserve">
+    <value>Advanced Gamer</value>
+  </data>
+  <data name="TrueGamer" xml:space="preserve">
+    <value>True Gamer</value>
+  </data>
+  <data name="LegendaryGamer" xml:space="preserve">
+    <value>Legendary Gamer</value>
+  </data>
+  <data name="TheStartDesc" xml:space="preserve">
+    <value>Add a game.</value>
+  </data>
+  <data name="CrazyAboutItDesc" xml:space="preserve">
+    <value>Mark a game as favorite.</value>
+  </data>
+  <data name="NeedSpaceOnTheShelvesDesc" xml:space="preserve">
+    <value>Have more than 50 games in your Library.</value>
+  </data>
+  <data name="NoobPlayerDesc" xml:space="preserve">
+    <value>Play at least one hour, no matter which game.</value>
+  </data>
+  <data name="StarterGamerDesc" xml:space="preserve">
+    <value>Play at least 10 hours, no matter which game.</value>
+  </data>
+  <data name="AdvancedGamerDesc" xml:space="preserve">
+    <value>Play at least 100 hours, no matter which game.</value>
+  </data>
+  <data name="TrueGamerDesc" xml:space="preserve">
+    <value>Play at least 1000 hours, no matter which game.</value>
+  </data>
+  <data name="LegendaryGamerDesc" xml:space="preserve">
+    <value>Play at least 5000 hours, no matter which game.</value>
+  </data>
 </root>
