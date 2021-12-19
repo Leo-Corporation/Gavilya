@@ -22,31 +22,36 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace Gavilya.Pages.SettingsPages
 {
 	/// <summary>
-	/// The settings pages.
+	/// Interaction logic for DataOptionsPage.xaml
 	/// </summary>
-	public enum SettingsPages
+	public partial class DataOptionsPage : Page
 	{
-		/// <summary>
-		/// The <see cref="Pages.SettingsPages.SaveOptionsPage"/> page.
-		/// </summary>
-		SaveOptions,
+		public DataOptionsPage()
+		{
+			InitializeComponent();
+		}
 
-		/// <summary>
-		/// The <see cref="Pages.SettingsPages.LanguagePage"/> page.
-		/// </summary>
-		Languages,
+		private void ResetSettingsBtn_Click(object sender, RoutedEventArgs e)
+		{
 
-		/// <summary>
-		/// The <see cref="Pages.SettingsPages.StartupPage"/> page.
-		/// </summary>
-		Startup,
-
-		/// <summary>
-		/// The <see cref="Pages.SettingsPages.DataOptionsPage"/> page.
-		/// </summary>
-		Data
+		}
 	}
 }
