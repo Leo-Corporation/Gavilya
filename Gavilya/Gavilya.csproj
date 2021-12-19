@@ -22,25 +22,33 @@
   <ItemGroup>
     <None Remove="Assets\addGame.png" />
     <None Remove="Assets\addGamesWelcome.png" />
+    <None Remove="Assets\AdvancedGamer.png" />
     <None Remove="Assets\Android.png" />
     <None Remove="Assets\Apple.png" />
     <None Remove="Assets\AppStore.png" />
     <None Remove="Assets\check.png" />
     <None Remove="Assets\computer-rocket.png" />
+    <None Remove="Assets\CrazyAbout.png" />
     <None Remove="Assets\DefaultPP.png" />
     <None Remove="Assets\EpicGames.png" />
     <None Remove="Assets\GOG.png" />
     <None Remove="Assets\GooglePlay.png" />
     <None Remove="Assets\importGames.png" />
     <None Remove="Assets\Itchio.png" />
+    <None Remove="Assets\LegendaryGamer.png" />
     <None Remove="Assets\Linux.png" />
+    <None Remove="Assets\NeedSpaceShelves.png" />
     <None Remove="Assets\Nintendo.png" />
+    <None Remove="Assets\NoobPlayer.png" />
     <None Remove="Assets\PC.png" />
     <None Remove="Assets\PlayStation.png" />
     <None Remove="Assets\recentGames.png" />
     <None Remove="Assets\searchRAWG.png" />
     <None Remove="Assets\selectGames.png" />
+    <None Remove="Assets\StarterGamer.png" />
     <None Remove="Assets\Steam.png" />
+    <None Remove="Assets\TheStart.png" />
+    <None Remove="Assets\TrueGamer.png" />
     <None Remove="Assets\Xbox.png" />
     <None Remove="Fonts\FluentlyIcons.ttf" />
     <None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
@@ -70,6 +78,9 @@
     <Resource Include="Assets\addGamesWelcome.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\AdvancedGamer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Android.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -83,6 +94,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\computer-rocket.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\CrazyAbout.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\DefaultPP.png">
@@ -103,10 +117,19 @@
     <Resource Include="Assets\Itchio.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\LegendaryGamer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Linux.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\NeedSpaceShelves.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Nintendo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\NoobPlayer.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\PC.png">
@@ -124,7 +147,16 @@
     <Resource Include="Assets\selectGames.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\StarterGamer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\Steam.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\TheStart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\TrueGamer.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Xbox.png">
