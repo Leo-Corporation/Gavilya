@@ -340,6 +340,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data.
+        /// </summary>
+        public static string Data {
+            get {
+                return ResourceManager.GetString("Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default.
         /// </summary>
         public static string Default {
@@ -1391,6 +1400,33 @@ namespace Gavilya.Properties {
         public static string Reset {
             get {
                 return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset settings.
+        /// </summary>
+        public static string ResetSettings {
+            get {
+                return ResourceManager.GetString("ResetSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset settings to their default values..
+        /// </summary>
+        public static string ResetSettingsDesc {
+            get {
+                return ResourceManager.GetString("ResetSettingsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to reset ALL settings? This operation is irreversible..
+        /// </summary>
+        public static string ResetSettingsMsg {
+            get {
+                return ResourceManager.GetString("ResetSettingsMsg", resourceCulture);
             }
         }
         

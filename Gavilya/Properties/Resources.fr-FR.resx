@@ -693,4 +693,16 @@
   <data name="Tasks" xml:space="preserve">
     <value>Tâches</value>
   </data>
+  <data name="Data" xml:space="preserve">
+    <value>Données</value>
+  </data>
+  <data name="ResetSettings" xml:space="preserve">
+    <value>Réinitialiser les paramètres</value>
+  </data>
+  <data name="ResetSettingsDesc" xml:space="preserve">
+    <value>Réinitialiser les paramètres à leurs valeurs initiales.</value>
+  </data>
+  <data name="ResetSettingsMsg" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir réinitialiser TOUS les paramètres? Cette opération est irréversible.</value>
+  </data>
 </root>

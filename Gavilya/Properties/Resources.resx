@@ -700,4 +700,16 @@
   <data name="Tasks" xml:space="preserve">
     <value>Tasks</value>
   </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="ResetSettings" xml:space="preserve">
+    <value>Reset settings</value>
+  </data>
+  <data name="ResetSettingsDesc" xml:space="preserve">
+    <value>Reset settings to their default values.</value>
+  </data>
+  <data name="ResetSettingsMsg" xml:space="preserve">
+    <value>Are you sure you want to reset ALL settings? This operation is irreversible.</value>
+  </data>
 </root>
