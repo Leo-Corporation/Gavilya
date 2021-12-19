@@ -690,4 +690,7 @@
   <data name="DefaultPageOnStart" xml:space="preserve">
     <value>Page par défaut au démarrage</value>
   </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tâches</value>
+  </data>
 </root>
