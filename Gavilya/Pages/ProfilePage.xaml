@@ -164,38 +164,70 @@
 				<TextBlock Text="{x:Static lang:Resources.MyBadges}" FontSize="20" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
 				<WrapPanel x:Name="MyBadgesPart">
 					<StackPanel x:Name="TheStartImg" Visibility="Collapsed" Margin="5">
+						<StackPanel.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.TheStartDesc}" Background="#000014" Foreground="White"/>
+						</StackPanel.ToolTip>
+						
 						<Image Height="150" Width="150" Source="..\Assets\TheStart.png" HorizontalAlignment="Center"/>
 						<TextBlock Text="{x:Static lang:Resources.TheStart}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
 					<StackPanel x:Name="CrazyAboutImg" Visibility="Collapsed" Margin="5">
+						<StackPanel.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.CrazyAboutItDesc}" Background="#000014" Foreground="White"/>
+						</StackPanel.ToolTip>
 						<Image Height="150" Width="150" Source="..\Assets\CrazyAbout.png" HorizontalAlignment="Center"/>
 						<TextBlock Text="{x:Static lang:Resources.CrazyAboutIt}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
 					<StackPanel x:Name="NoobPlayerImg" Visibility="Collapsed" Margin="5">
+						<StackPanel.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.NoobPlayerDesc}" Background="#000014" Foreground="White"/>
+						</StackPanel.ToolTip>
+						
 						<Image Height="150" Width="150" Source="..\Assets\NoobPlayer.png" HorizontalAlignment="Center"/>
 						<TextBlock Text="{x:Static lang:Resources.NoobPlayer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
 					<StackPanel x:Name="StarterGamerImg" Visibility="Collapsed" Margin="5">
+						<StackPanel.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.StarterGamerDesc}" Background="#000014" Foreground="White"/>
+						</StackPanel.ToolTip>
+                        
 						<Image Height="150" Width="150" Source="..\Assets\StarterGamer.png" HorizontalAlignment="Center"/>
 						<TextBlock Text="{x:Static lang:Resources.StarterGamer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
 					<StackPanel x:Name="AdvancedGamerImg" Visibility="Collapsed" Margin="5">
+						<StackPanel.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.AdvancedGamerDesc}" Background="#000014" Foreground="White"/>
+						</StackPanel.ToolTip>
+                        
 						<Image Height="150" Width="150" Source="..\Assets\AdvancedGamer.png" HorizontalAlignment="Center"/>
 						<TextBlock Text="{x:Static lang:Resources.AdvancedGamer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
 					<StackPanel x:Name="TrueGamerImg" Visibility="Collapsed" Margin="5">
+						<StackPanel.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.TrueGamerDesc}" Background="#000014" Foreground="White"/>
+						</StackPanel.ToolTip>
+                        
 						<Image Height="150" Width="150" Source="..\Assets\TrueGamer.png" HorizontalAlignment="Center"/>
 						<TextBlock Text="{x:Static lang:Resources.TrueGamer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
-                    <StackPanel x:Name="LegendaryImg" Visibility="Collapsed" Margin="5">
+					<StackPanel x:Name="LegendaryImg" Visibility="Collapsed" Margin="5">
+						<StackPanel.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.LegendaryGamerDesc}" Background="#000014" Foreground="White"/>
+						</StackPanel.ToolTip>
+                        
 						<Image Height="150" Width="150" Source="..\Assets\LegendaryGamer.png" HorizontalAlignment="Center"/>
 						<TextBlock Text="{x:Static lang:Resources.LegendaryGamer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
 					<StackPanel x:Name="NeedSpaceOnTheShelvesImg" Visibility="Collapsed" Margin="5">
+						<StackPanel.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" Background="#000014" Foreground="White"/>
+						</StackPanel.ToolTip>
+                        
 						<Image Height="150" Width="150" Source="..\Assets\NeedSpaceShelves.png" HorizontalAlignment="Center"/>
 						<TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelves}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
 				</WrapPanel>
+                
 			</StackPanel>
 			
 			<StackPanel x:Name="NothingToShow" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center">
