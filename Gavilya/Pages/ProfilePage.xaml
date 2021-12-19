@@ -227,8 +227,129 @@
 						<TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelves}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
 					</StackPanel>
 				</WrapPanel>
-                
-			</StackPanel>
+                <TextBlock Text="{x:Static lang:Resources.AllBadges}" FontSize="20" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+
+                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Image Height="150" Width="150" Source="..\Assets\TheStart.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Static lang:Resources.TheStart}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.TheStartDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Height="150" Width="150" Source="..\Assets\CrazyAbout.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Static lang:Resources.CrazyAboutIt}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.CrazyAboutItDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Height="150" Width="150" Source="..\Assets\NoobPlayer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Static lang:Resources.NoobPlayer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.NoobPlayerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Height="150" Width="150" Source="..\Assets\StarterGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Static lang:Resources.StarterGamer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.StarterGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Height="150" Width="150" Source="..\Assets\AdvancedGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Static lang:Resources.AdvancedGamer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.AdvancedGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Height="150" Width="150" Source="..\Assets\TrueGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Static lang:Resources.TrueGamer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.TrueGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+
+                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Height="150" Width="150" Source="..\Assets\LegendaryGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Static lang:Resources.LegendaryGamer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.LegendaryGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Height="150" Width="150" Source="..\Assets\NeedSpaceShelves.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelves}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                            <TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
 			
 			<StackPanel x:Name="NothingToShow" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center">
 				<TextBlock Text="&#xF3EA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="96" HorizontalAlignment="Center"/>
