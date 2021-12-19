@@ -169,6 +169,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All Badges.
+        /// </summary>
+        public static string AllBadges {
+            get {
+                return ResourceManager.GetString("AllBadges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always check if the game is currently running.
         /// </summary>
         public static string AlwaysCheckIfGameRunning {
@@ -264,6 +273,15 @@ namespace Gavilya.Properties {
         public static string Back {
             get {
                 return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Badges.
+        /// </summary>
+        public static string Badges {
+            get {
+                return ResourceManager.GetString("Badges", resourceCulture);
             }
         }
         
@@ -1112,6 +1130,15 @@ namespace Gavilya.Properties {
         public static string MostPlayed {
             get {
                 return ResourceManager.GetString("MostPlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to My Badges.
+        /// </summary>
+        public static string MyBadges {
+            get {
+                return ResourceManager.GetString("MyBadges", resourceCulture);
             }
         }
         

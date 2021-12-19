@@ -753,4 +753,13 @@
   <data name="LegendaryGamerDesc" xml:space="preserve">
     <value>Play at least 5000 hours, no matter which game.</value>
   </data>
+  <data name="Badges" xml:space="preserve">
+    <value>Badges</value>
+  </data>
+  <data name="MyBadges" xml:space="preserve">
+    <value>My Badges</value>
+  </data>
+  <data name="AllBadges" xml:space="preserve">
+    <value>All Badges</value>
+  </data>
 </root>

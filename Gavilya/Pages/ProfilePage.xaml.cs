@@ -181,6 +181,7 @@ namespace Gavilya.Pages
 				SpotlightPage.Visibility = Visibility.Collapsed; // Hide
 				FavoritesTab.Visibility = Visibility.Collapsed; // Hide
 			}
+			LoadBadges();
 		}
 
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -195,29 +196,45 @@ namespace Gavilya.Pages
 		{
 			SpotlightTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			FavoriteTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+			BadgesTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 
 			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		}
+
+		private void HideAll()
+		{
+			SpotlightPage.Visibility = Visibility.Collapsed; // Show 
+			FavoritesTab.Visibility = Visibility.Collapsed; // Show 
+			BadgesTab.Visibility = Visibility.Collapsed; // Show 
+		}
+
+		private void LoadBadges()
+		{
+			if (Definitions.Games.Count > 0) TheStartImg.Visibility = Visibility.Visible; // Show
+			if (Global.GetFavoriteCount() >= 1) CrazyAboutImg.Visibility = Visibility.Visible; // Show
+			if (Global.GetTotalTimePlayed() / 3600 >= 1) NoobPlayerImg.Visibility = Visibility.Visible; // Show
+			if (Global.GetTotalTimePlayed() / 3600 >= 10) StarterGamerImg.Visibility = Visibility.Visible; // Show
+			if (Global.GetTotalTimePlayed() / 3600 >= 100) AdvancedGamerImg.Visibility = Visibility.Visible; // Show
+			if (Global.GetTotalTimePlayed() / 3600 >= 1000) TrueGamerImg.Visibility = Visibility.Visible; // Show
+			if (Global.GetTotalTimePlayed() / 3600 >= 5000) LegendaryImg.Visibility = Visibility.Visible; // Show
+			if (Definitions.Games.Count >= 50) NeedSpaceOnTheShelvesImg.Visibility = Visibility.Visible; // Show
 		}
 
 		private void SpotlightTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedButton = SpotlightTabBtn; // Check
-			if (NothingToShow.Visibility != Visibility.Visible)
-			{
-				SpotlightPage.Visibility = Visibility.Visible; // Show
-				FavoritesTab.Visibility = Visibility.Collapsed; // Show 
-			}
+			HideAll();
+			
+			SpotlightPage.Visibility = Visibility.Visible; // Show
 			RefreshTabUI();
 		}
 
 		private void FavoriteTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedButton = FavoriteTabBtn; // Check
-			if (NothingToShow.Visibility != Visibility.Visible)
-			{
-				SpotlightPage.Visibility = Visibility.Collapsed; // Show
-				FavoritesTab.Visibility = Visibility.Visible; // Show 
-			}
+			HideAll();
+
+			FavoritesTab.Visibility = Visibility.Visible; // Show
 			RefreshTabUI();
 		}
 
@@ -241,6 +258,15 @@ namespace Gavilya.Pages
 		private void EditBtn_Click(object sender, RoutedEventArgs e)
 		{
 			new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
+		}
+
+		private void BadgesTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckedButton = BadgesTabBtn; // Check
+			HideAll();
+
+			BadgesTab.Visibility = Visibility.Visible;
+			RefreshTabUI();
 		}
 	}
 }

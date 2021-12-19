@@ -743,5 +743,25 @@ namespace Gavilya.Classes
 
 			JumpList.SetJumpList(Application.Current, jumpList);
 		}
+
+
+		/// <summary>
+		/// Gets the number of games that are favorites.
+		/// </summary>
+		/// <returns></returns>
+		public static int GetFavoriteCount()
+		{
+			int favorites = 0;
+
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				if (Definitions.Games[i].IsFavorite)
+				{
+					favorites++;
+				}
+			}
+
+			return favorites; // Return final count
+		}
 	}
 }
