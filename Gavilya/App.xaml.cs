@@ -24,11 +24,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Pages;
 using Gavilya.Windows;
-using System.Diagnostics;
-using System.IO;
-using System.Reflection;
 using System.Windows;
-using System.Windows.Shell;
 
 namespace Gavilya
 {

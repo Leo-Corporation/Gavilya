@@ -169,7 +169,7 @@ namespace Gavilya.Pages.SettingsPages
 				Definitions.Settings.AutoSaveDay = (int)SaveTime.SelectedItem; // Set
 				SettingsSaver.Save();
 			}
-			catch {	}
+			catch { }
 		}
 	}
 }
