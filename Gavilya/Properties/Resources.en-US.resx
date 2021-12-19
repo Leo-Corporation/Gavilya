@@ -702,4 +702,7 @@
   <data name="ResetSettingsMsg" xml:space="preserve">
     <value>Are you sure you want to reset ALL settings? This operation is irreversible.</value>
   </data>
+  <data name="GavilyaNeedsRestartChanges" xml:space="preserve">
+    <value>Gavilya needs to restart to apply changes.</value>
+  </data>
 </root>

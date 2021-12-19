@@ -22,8 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Classes;
+using Gavilya.Enums;
+using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +56,27 @@ namespace Gavilya.Pages.SettingsPages
 
 		private void ResetSettingsBtn_Click(object sender, RoutedEventArgs e)
 		{
+			if (MessageBox.Show(Properties.Resources.ResetSettingsMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+			{
+				Definitions.Settings = new()
+				{
+					Language = "_default",
+					IsFirstRun = false, // Default is true but there is no need to show the "Welcome" prompt to the user again.
+					IsMaximized = false,
+					PageId = 0,
+					CurrentProfileIndex = 0,
+					MakeAutoSave = true,
+					AutoSaveDay = 1,
+					SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
+					DefaultGavilyaHomePage = GavilyaWindowPages.Home
+				};
 
+				SettingsSaver.Save(); // Save changes
+
+				MessageBox.Show(Properties.Resources.GavilyaNeedsRestartChanges, Properties.Resources.ResetSettings, MessageBoxButton.OK, MessageBoxImage.Information);
+				Process.Start(Directory.GetCurrentDirectory() + @"\Gavilya.exe");
+				Environment.Exit(0); // Quit
+			}
 		}
 	}
 }

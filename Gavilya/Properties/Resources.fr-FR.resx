@@ -705,4 +705,7 @@
   <data name="ResetSettingsMsg" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir réinitialiser TOUS les paramètres? Cette opération est irréversible.</value>
   </data>
+  <data name="GavilyaNeedsRestartChanges" xml:space="preserve">
+    <value>Gavilya doit redémarrer pour appliquer les changements.</value>
+  </data>
 </root>

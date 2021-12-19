@@ -702,6 +702,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gavilya needs to restart to apply changes..
+        /// </summary>
+        public static string GavilyaNeedsRestartChanges {
+            get {
+                return ResourceManager.GetString("GavilyaNeedsRestartChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get RAWG image.
         /// </summary>
         public static string GetRAWGImage {

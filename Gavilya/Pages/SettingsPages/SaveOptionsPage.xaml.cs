@@ -141,24 +141,35 @@ namespace Gavilya.Pages.SettingsPages
 
 		private void Browse_Click(object sender, RoutedEventArgs e)
 		{
-			SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
-			saveFileDialog.FileName = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav"; // File name
-			saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-			saveFileDialog.Title = Properties.Resources.SaveLocation; // Title
-
-			if (saveFileDialog.ShowDialog() ?? true)
+			try
 			{
-				string fileLocation = System.IO.Path.GetDirectoryName(saveFileDialog.FileName); // Location of the file
-				Definitions.Settings.SavePath = fileLocation; // Set
-				SettingsSaver.Save();
-				InitUI();
+				SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
+				saveFileDialog.FileName = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav"; // File name
+				saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
+				saveFileDialog.Title = Properties.Resources.SaveLocation; // Title
+
+				if (saveFileDialog.ShowDialog() ?? true)
+				{
+					string fileLocation = System.IO.Path.GetDirectoryName(saveFileDialog.FileName); // Location of the file
+					Definitions.Settings.SavePath = fileLocation; // Set
+					SettingsSaver.Save();
+					InitUI();
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
 		}
 
 		private void SaveTime_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			Definitions.Settings.AutoSaveDay = (int)SaveTime.SelectedItem; // Set
-			SettingsSaver.Save();
+			try
+			{
+				Definitions.Settings.AutoSaveDay = (int)SaveTime.SelectedItem; // Set
+				SettingsSaver.Save();
+			}
+			catch {	}
 		}
 	}
 }
