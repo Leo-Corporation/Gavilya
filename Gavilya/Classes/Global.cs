@@ -694,13 +694,15 @@ namespace Gavilya.Classes
 			{
 				if (Definitions.Games[i].IsFavorite)
 				{
+					bool isExe = !Definitions.Games[i].IsSteam && !Definitions.Games[i].IsUWP;
+
 					JumpTask task = new JumpTask
 					{
 						Title = Definitions.Games[i].Name,
 						Arguments = $"{Definitions.Games[i].FileLocation}",
 						Description = Definitions.Games[i].Description[0..120].Replace("\n\n", "\n") + "...",
-						CustomCategory = Gavilya.Properties.Resources.Favorites,
-						IconResourcePath = Assembly.GetEntryAssembly().CodeBase,
+						CustomCategory = Properties.Resources.Favorites,
+						IconResourcePath = isExe ? Definitions.Games[i].FileLocation : Assembly.GetEntryAssembly().Location,
 						ApplicationPath = "explorer.exe"
 					};
 
