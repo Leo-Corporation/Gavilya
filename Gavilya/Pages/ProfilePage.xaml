@@ -77,7 +77,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Favorites}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.Badges}" Background="#000014" Foreground="White"/>
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
