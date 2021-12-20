@@ -55,10 +55,12 @@ namespace Gavilya.Pages
 			InitUI();
 		}
 
-		List<GameInfo> mostPlayed = new(); // Create list
-		List<GameInfo> favorites = new();
+		List<GameInfo> mostPlayed, favorites;
 		internal void InitUI()
 		{
+			mostPlayed = new(); // Create new list
+			favorites = new(); // Create new list
+
 			if (CurrentProfile.PictureFilePath != "_default")
 			{
 				if (File.Exists(CurrentProfile.PictureFilePath))
