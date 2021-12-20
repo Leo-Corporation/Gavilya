@@ -161,7 +161,7 @@
 			</StackPanel>
 
 			<StackPanel x:Name="BadgesTab" Visibility="Collapsed" Margin="5">
-				<TextBlock Text="{x:Static lang:Resources.MyBadges}" FontSize="20" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+				<TextBlock x:Name="MyBadgesTxt" Text="{x:Static lang:Resources.MyBadges}" FontSize="20" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
 				<WrapPanel x:Name="MyBadgesPart">
 					<StackPanel x:Name="TheStartImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>

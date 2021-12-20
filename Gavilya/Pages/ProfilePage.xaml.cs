@@ -44,6 +44,8 @@ namespace Gavilya.Pages
 	public partial class ProfilePage : Page
 	{
 		Profile CurrentProfile { get; init; }
+		int VisibleBadges { get; set; }
+
 		public ProfilePage()
 		{
 			InitializeComponent();
@@ -53,6 +55,8 @@ namespace Gavilya.Pages
 			InitUI();
 		}
 
+		List<GameInfo> mostPlayed = new(); // Create list
+		List<GameInfo> favorites = new();
 		internal void InitUI()
 		{
 			if (CurrentProfile.PictureFilePath != "_default")
@@ -85,7 +89,6 @@ namespace Gavilya.Pages
 			// Get top 3 most played games
 			// Values
 			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
-			List<GameInfo> mostPlayed = new(); // Create list
 
 			for (int i = 0; i < Definitions.Games.Count; i++)
 			{
@@ -161,7 +164,6 @@ namespace Gavilya.Pages
 				// Favorites tab
 				FavoritesTab.Children.Clear();
 
-				List<GameInfo> favorites = new();
 				for (int i = 0; i < Definitions.Games.Count; i++)
 				{
 					if (Definitions.Games[i].IsFavorite)
@@ -203,13 +205,16 @@ namespace Gavilya.Pages
 
 		private void HideAll()
 		{
-			SpotlightPage.Visibility = Visibility.Collapsed; // Show 
-			FavoritesTab.Visibility = Visibility.Collapsed; // Show 
-			BadgesTab.Visibility = Visibility.Collapsed; // Show 
+			SpotlightPage.Visibility = Visibility.Collapsed; // Hide 
+			FavoritesTab.Visibility = Visibility.Collapsed; // Hide 
+			BadgesTab.Visibility = Visibility.Collapsed; // Hide 
+			NothingToShow.Visibility = Visibility.Collapsed; // Hide
 		}
 
 		private void HideAllBadges()
 		{
+			VisibleBadges = 0;
+
 			TheStartImg.Visibility = Visibility.Collapsed; // Hide
 			CrazyAboutImg.Visibility = Visibility.Collapsed; // Hide
 			NoobPlayerImg.Visibility = Visibility.Collapsed; // Hide
@@ -224,14 +229,55 @@ namespace Gavilya.Pages
 		{
 			HideAllBadges(); // Reset badges
 
-			if (Definitions.Games.Count > 0) TheStartImg.Visibility = Visibility.Visible; // Show
-			if (Global.GetFavoriteCount() >= 1) CrazyAboutImg.Visibility = Visibility.Visible; // Show
-			if (Global.GetTotalTimePlayed() / 3600 >= 1) NoobPlayerImg.Visibility = Visibility.Visible; // Show
-			if (Global.GetTotalTimePlayed() / 3600 >= 10) StarterGamerImg.Visibility = Visibility.Visible; // Show
-			if (Global.GetTotalTimePlayed() / 3600 >= 100) AdvancedGamerImg.Visibility = Visibility.Visible; // Show
-			if (Global.GetTotalTimePlayed() / 3600 >= 1000) TrueGamerImg.Visibility = Visibility.Visible; // Show
-			if (Global.GetTotalTimePlayed() / 3600 >= 5000) LegendaryImg.Visibility = Visibility.Visible; // Show
-			if (Definitions.Games.Count >= 50) NeedSpaceOnTheShelvesImg.Visibility = Visibility.Visible; // Show
+			if (Definitions.Games.Count > 0)
+			{
+				TheStartImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetFavoriteCount() >= 1)
+			{
+				CrazyAboutImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 1)
+			{
+				NoobPlayerImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 10)
+			{
+				StarterGamerImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 100)
+			{
+				AdvancedGamerImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 1000)
+			{
+				TrueGamerImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 5000)
+			{
+				LegendaryImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Definitions.Games.Count >= 50)
+			{
+				NeedSpaceOnTheShelvesImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			MyBadgesTxt.Visibility = (VisibleBadges == 0) ? Visibility.Collapsed : Visibility.Visible;
 		}
 
 		private void SpotlightTabBtn_Click(object sender, RoutedEventArgs e)
@@ -239,7 +285,14 @@ namespace Gavilya.Pages
 			CheckedButton = SpotlightTabBtn; // Check
 			HideAll();
 
-			SpotlightPage.Visibility = Visibility.Visible; // Show
+			if (mostPlayed.Count >= 3)
+			{
+				SpotlightPage.Visibility = Visibility.Visible; // Show 
+			}
+			else
+			{
+				NothingToShow.Visibility = Visibility.Visible;
+			}
 			RefreshTabUI();
 		}
 
@@ -248,7 +301,14 @@ namespace Gavilya.Pages
 			CheckedButton = FavoriteTabBtn; // Check
 			HideAll();
 
-			FavoritesTab.Visibility = Visibility.Visible; // Show
+			if (favorites.Count > 0)
+			{
+				FavoritesTab.Visibility = Visibility.Visible; // Show 
+			}
+			else
+			{
+				NothingToShow.Visibility = Visibility.Visible;
+			}
 			RefreshTabUI();
 		}
 
