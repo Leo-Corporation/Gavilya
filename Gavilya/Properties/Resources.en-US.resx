@@ -687,4 +687,79 @@
   <data name="DefaultPageOnStart" xml:space="preserve">
     <value>Default page on startup</value>
   </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tasks</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="ResetSettings" xml:space="preserve">
+    <value>Reset settings</value>
+  </data>
+  <data name="ResetSettingsDesc" xml:space="preserve">
+    <value>Reset settings to their default values.</value>
+  </data>
+  <data name="ResetSettingsMsg" xml:space="preserve">
+    <value>Are you sure you want to reset ALL settings? This operation is irreversible.</value>
+  </data>
+  <data name="GavilyaNeedsRestartChanges" xml:space="preserve">
+    <value>Gavilya needs to restart to apply changes.</value>
+  </data>
+  <data name="TheStart" xml:space="preserve">
+    <value>The Start</value>
+  </data>
+  <data name="CrazyAboutIt" xml:space="preserve">
+    <value>Crazy About It</value>
+  </data>
+  <data name="NeedSpaceOnTheShelves" xml:space="preserve">
+    <value>Need Space On The Shelves</value>
+  </data>
+  <data name="NoobPlayer" xml:space="preserve">
+    <value>Noob Player</value>
+  </data>
+  <data name="StarterGamer" xml:space="preserve">
+    <value>Starter Gamer</value>
+  </data>
+  <data name="AdvancedGamer" xml:space="preserve">
+    <value>Advanced Gamer</value>
+  </data>
+  <data name="TrueGamer" xml:space="preserve">
+    <value>True Gamer</value>
+  </data>
+  <data name="LegendaryGamer" xml:space="preserve">
+    <value>Legendary Gamer</value>
+  </data>
+  <data name="TheStartDesc" xml:space="preserve">
+    <value>Add a game.</value>
+  </data>
+  <data name="CrazyAboutItDesc" xml:space="preserve">
+    <value>Mark a game as favorite.</value>
+  </data>
+  <data name="NeedSpaceOnTheShelvesDesc" xml:space="preserve">
+    <value>Have more than 50 games in your Library.</value>
+  </data>
+  <data name="NoobPlayerDesc" xml:space="preserve">
+    <value>Play at least one hour, no matter which game.</value>
+  </data>
+  <data name="StarterGamerDesc" xml:space="preserve">
+    <value>Play at least 10 hours, no matter which game.</value>
+  </data>
+  <data name="AdvancedGamerDesc" xml:space="preserve">
+    <value>Play at least 100 hours, no matter which game.</value>
+  </data>
+  <data name="TrueGamerDesc" xml:space="preserve">
+    <value>Play at least 1000 hours, no matter which game.</value>
+  </data>
+  <data name="LegendaryGamerDesc" xml:space="preserve">
+    <value>Play at least 5000 hours, no matter which game.</value>
+  </data>
+  <data name="Badges" xml:space="preserve">
+    <value>Badges</value>
+  </data>
+  <data name="MyBadges" xml:space="preserve">
+    <value>My Badges</value>
+  </data>
+  <data name="AllBadges" xml:space="preserve">
+    <value>All Badges</value>
+  </data>
 </root>

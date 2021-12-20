@@ -690,4 +690,79 @@
   <data name="DefaultPageOnStart" xml:space="preserve">
     <value>Page par défaut au démarrage</value>
   </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Tâches</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Données</value>
+  </data>
+  <data name="ResetSettings" xml:space="preserve">
+    <value>Réinitialiser les paramètres</value>
+  </data>
+  <data name="ResetSettingsDesc" xml:space="preserve">
+    <value>Réinitialiser les paramètres à leurs valeurs initiales.</value>
+  </data>
+  <data name="ResetSettingsMsg" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir réinitialiser TOUS les paramètres? Cette opération est irréversible.</value>
+  </data>
+  <data name="GavilyaNeedsRestartChanges" xml:space="preserve">
+    <value>Gavilya doit redémarrer pour appliquer les changements.</value>
+  </data>
+  <data name="TheStart" xml:space="preserve">
+    <value>Le Commencement</value>
+  </data>
+  <data name="CrazyAboutIt" xml:space="preserve">
+    <value>Fou De Lui</value>
+  </data>
+  <data name="NeedSpaceOnTheShelves" xml:space="preserve">
+    <value>Besoin d'Espace Sur Les Etagères</value>
+  </data>
+  <data name="NoobPlayer" xml:space="preserve">
+    <value>Joueur Noob</value>
+  </data>
+  <data name="StarterGamer" xml:space="preserve">
+    <value>Gamer Débutant</value>
+  </data>
+  <data name="AdvancedGamer" xml:space="preserve">
+    <value>Gamer Avancé</value>
+  </data>
+  <data name="TrueGamer" xml:space="preserve">
+    <value>Vrai Gamer</value>
+  </data>
+  <data name="LegendaryGamer" xml:space="preserve">
+    <value>Gamer Légendaire</value>
+  </data>
+  <data name="TheStartDesc" xml:space="preserve">
+    <value>Ajoutez un jeu.</value>
+  </data>
+  <data name="CrazyAboutItDesc" xml:space="preserve">
+    <value>Marquez un jeu comme favori.</value>
+  </data>
+  <data name="NeedSpaceOnTheShelvesDesc" xml:space="preserve">
+    <value>Possédez plus de 50 jeux dans votre Bibliothèque.</value>
+  </data>
+  <data name="NoobPlayerDesc" xml:space="preserve">
+    <value>Jouez au moins une heure, quel que soit le jeu.</value>
+  </data>
+  <data name="StarterGamerDesc" xml:space="preserve">
+    <value>Jouez au moins 10 heures, quel que soit le jeu.</value>
+  </data>
+  <data name="AdvancedGamerDesc" xml:space="preserve">
+    <value>Jouez au moins 100 heures, quel que soit le jeu.</value>
+  </data>
+  <data name="TrueGamerDesc" xml:space="preserve">
+    <value>Jouez au moins 1000 heures, quel que soit le jeu.</value>
+  </data>
+  <data name="LegendaryGamerDesc" xml:space="preserve">
+    <value>Jouez au moins 5000 heures, quel que soit le jeu.</value>
+  </data>
+  <data name="Badges" xml:space="preserve">
+    <value>Badges</value>
+  </data>
+  <data name="MyBadges" xml:space="preserve">
+    <value>Mes Badges</value>
+  </data>
+  <data name="AllBadges" xml:space="preserve">
+    <value>Tous les Badges</value>
+  </data>
 </root>

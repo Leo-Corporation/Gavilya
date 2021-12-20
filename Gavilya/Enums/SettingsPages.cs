@@ -30,18 +30,23 @@ namespace Gavilya.Enums
 	public enum SettingsPages
 	{
 		/// <summary>
-		/// The <see cref="SaveOptions"/> page.
+		/// The <see cref="Pages.SettingsPages.SaveOptionsPage"/> page.
 		/// </summary>
 		SaveOptions,
 
 		/// <summary>
-		/// The <see cref="Languages"/> page.
+		/// The <see cref="Pages.SettingsPages.LanguagePage"/> page.
 		/// </summary>
 		Languages,
 
 		/// <summary>
-		/// The <see cref="Startup"/> page.
+		/// The <see cref="Pages.SettingsPages.StartupPage"/> page.
 		/// </summary>
-		Startup
+		Startup,
+
+		/// <summary>
+		/// The <see cref="Pages.SettingsPages.DataOptionsPage"/> page.
+		/// </summary>
+		Data
 	}
 }

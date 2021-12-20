@@ -44,17 +44,22 @@ namespace Gavilya.Pages
 	public partial class ProfilePage : Page
 	{
 		Profile CurrentProfile { get; init; }
+		int VisibleBadges { get; set; }
+
 		public ProfilePage()
 		{
 			InitializeComponent();
 			CurrentProfile = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]; // Current profile
 
+			CheckedButton = SpotlightTabBtn;
 			InitUI();
 		}
 
+		List<GameInfo> mostPlayed, favorites;
 		internal void InitUI()
 		{
-			CheckedButton = SpotlightTabBtn;
+			mostPlayed = new(); // Create new list
+			favorites = new(); // Create new list
 
 			if (CurrentProfile.PictureFilePath != "_default")
 			{
@@ -86,7 +91,6 @@ namespace Gavilya.Pages
 			// Get top 3 most played games
 			// Values
 			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
-			List<GameInfo> mostPlayed = new(); // Create list
 
 			for (int i = 0; i < Definitions.Games.Count; i++)
 			{
@@ -162,7 +166,6 @@ namespace Gavilya.Pages
 				// Favorites tab
 				FavoritesTab.Children.Clear();
 
-				List<GameInfo> favorites = new();
 				for (int i = 0; i < Definitions.Games.Count; i++)
 				{
 					if (Definitions.Games[i].IsFavorite)
@@ -182,6 +185,7 @@ namespace Gavilya.Pages
 				SpotlightPage.Visibility = Visibility.Collapsed; // Hide
 				FavoritesTab.Visibility = Visibility.Collapsed; // Hide
 			}
+			LoadBadges();
 		}
 
 		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -196,17 +200,100 @@ namespace Gavilya.Pages
 		{
 			SpotlightTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 			FavoriteTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+			BadgesTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 
 			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		}
+
+		private void HideAll()
+		{
+			SpotlightPage.Visibility = Visibility.Collapsed; // Hide 
+			FavoritesTab.Visibility = Visibility.Collapsed; // Hide 
+			BadgesTab.Visibility = Visibility.Collapsed; // Hide 
+			NothingToShow.Visibility = Visibility.Collapsed; // Hide
+		}
+
+		private void HideAllBadges()
+		{
+			VisibleBadges = 0;
+
+			TheStartImg.Visibility = Visibility.Collapsed; // Hide
+			CrazyAboutImg.Visibility = Visibility.Collapsed; // Hide
+			NoobPlayerImg.Visibility = Visibility.Collapsed; // Hide
+			StarterGamerImg.Visibility = Visibility.Collapsed; // Hide
+			AdvancedGamerImg.Visibility = Visibility.Collapsed; // Hide
+			TrueGamerImg.Visibility = Visibility.Collapsed; // Hide
+			LegendaryImg.Visibility = Visibility.Collapsed; // Hide
+			NeedSpaceOnTheShelvesImg.Visibility = Visibility.Collapsed; // Hide
+		}
+
+		private void LoadBadges()
+		{
+			HideAllBadges(); // Reset badges
+
+			if (Definitions.Games.Count > 0)
+			{
+				TheStartImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetFavoriteCount() >= 1)
+			{
+				CrazyAboutImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 1)
+			{
+				NoobPlayerImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 10)
+			{
+				StarterGamerImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 100)
+			{
+				AdvancedGamerImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 1000)
+			{
+				TrueGamerImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Global.GetTotalTimePlayed() / 3600 >= 5000)
+			{
+				LegendaryImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			if (Definitions.Games.Count >= 50)
+			{
+				NeedSpaceOnTheShelvesImg.Visibility = Visibility.Visible; // Show
+				VisibleBadges++; // Increment by 1
+			}
+
+			MyBadgesTxt.Visibility = (VisibleBadges == 0) ? Visibility.Collapsed : Visibility.Visible;
 		}
 
 		private void SpotlightTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedButton = SpotlightTabBtn; // Check
-			if (NothingToShow.Visibility != Visibility.Visible)
+			HideAll();
+
+			if (mostPlayed.Count >= 3)
 			{
-				SpotlightPage.Visibility = Visibility.Visible; // Show
-				FavoritesTab.Visibility = Visibility.Collapsed; // Show 
+				SpotlightPage.Visibility = Visibility.Visible; // Show 
+			}
+			else
+			{
+				NothingToShow.Visibility = Visibility.Visible;
 			}
 			RefreshTabUI();
 		}
@@ -214,10 +301,15 @@ namespace Gavilya.Pages
 		private void FavoriteTabBtn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckedButton = FavoriteTabBtn; // Check
-			if (NothingToShow.Visibility != Visibility.Visible)
+			HideAll();
+
+			if (favorites.Count > 0)
 			{
-				SpotlightPage.Visibility = Visibility.Collapsed; // Show
 				FavoritesTab.Visibility = Visibility.Visible; // Show 
+			}
+			else
+			{
+				NothingToShow.Visibility = Visibility.Visible;
 			}
 			RefreshTabUI();
 		}
@@ -242,6 +334,15 @@ namespace Gavilya.Pages
 		private void EditBtn_Click(object sender, RoutedEventArgs e)
 		{
 			new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
+		}
+
+		private void BadgesTabBtn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckedButton = BadgesTabBtn; // Check
+			HideAll();
+
+			BadgesTab.Visibility = Visibility.Visible;
+			RefreshTabUI();
 		}
 	}
 }

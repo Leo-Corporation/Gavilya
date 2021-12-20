@@ -151,6 +151,33 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Advanced Gamer.
+        /// </summary>
+        public static string AdvancedGamer {
+            get {
+                return ResourceManager.GetString("AdvancedGamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play at least 100 hours, no matter which game..
+        /// </summary>
+        public static string AdvancedGamerDesc {
+            get {
+                return ResourceManager.GetString("AdvancedGamerDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All Badges.
+        /// </summary>
+        public static string AllBadges {
+            get {
+                return ResourceManager.GetString("AllBadges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always check if the game is currently running.
         /// </summary>
         public static string AlwaysCheckIfGameRunning {
@@ -250,6 +277,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Badges.
+        /// </summary>
+        public static string Badges {
+            get {
+                return ResourceManager.GetString("Badges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Browse.
         /// </summary>
         public static string Browse {
@@ -331,11 +367,38 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Crazy About It.
+        /// </summary>
+        public static string CrazyAboutIt {
+            get {
+                return ResourceManager.GetString("CrazyAboutIt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark a game as favorite..
+        /// </summary>
+        public static string CrazyAboutItDesc {
+            get {
+                return ResourceManager.GetString("CrazyAboutItDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a profile and to get started..
         /// </summary>
         public static string CreateAProfile {
             get {
                 return ResourceManager.GetString("CreateAProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data.
+        /// </summary>
+        public static string Data {
+            get {
+                return ResourceManager.GetString("Data", resourceCulture);
             }
         }
         
@@ -693,6 +756,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gavilya needs to restart to apply changes..
+        /// </summary>
+        public static string GavilyaNeedsRestartChanges {
+            get {
+                return ResourceManager.GetString("GavilyaNeedsRestartChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Get RAWG image.
         /// </summary>
         public static string GetRAWGImage {
@@ -918,6 +990,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Legendary Gamer.
+        /// </summary>
+        public static string LegendaryGamer {
+            get {
+                return ResourceManager.GetString("LegendaryGamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play at least 5000 hours, no matter which game..
+        /// </summary>
+        public static string LegendaryGamerDesc {
+            get {
+                return ResourceManager.GetString("LegendaryGamerDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Let&apos;s go!.
         /// </summary>
         public static string LetsGo {
@@ -1044,6 +1134,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Badges.
+        /// </summary>
+        public static string MyBadges {
+            get {
+                return ResourceManager.GetString("MyBadges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to My profile.
         /// </summary>
         public static string MyProfile {
@@ -1058,6 +1157,24 @@ namespace Gavilya.Properties {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Need Space On The Shelves.
+        /// </summary>
+        public static string NeedSpaceOnTheShelves {
+            get {
+                return ResourceManager.GetString("NeedSpaceOnTheShelves", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Have more than 50 games in your Library..
+        /// </summary>
+        public static string NeedSpaceOnTheShelvesDesc {
+            get {
+                return ResourceManager.GetString("NeedSpaceOnTheShelvesDesc", resourceCulture);
             }
         }
         
@@ -1094,6 +1211,24 @@ namespace Gavilya.Properties {
         public static string NoGames {
             get {
                 return ResourceManager.GetString("NoGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Noob Player.
+        /// </summary>
+        public static string NoobPlayer {
+            get {
+                return ResourceManager.GetString("NoobPlayer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play at least one hour, no matter which game..
+        /// </summary>
+        public static string NoobPlayerDesc {
+            get {
+                return ResourceManager.GetString("NoobPlayerDesc", resourceCulture);
             }
         }
         
@@ -1395,6 +1530,33 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset settings.
+        /// </summary>
+        public static string ResetSettings {
+            get {
+                return ResourceManager.GetString("ResetSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset settings to their default values..
+        /// </summary>
+        public static string ResetSettingsDesc {
+            get {
+                return ResourceManager.GetString("ResetSettingsDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to reset ALL settings? This operation is irreversible..
+        /// </summary>
+        public static string ResetSettingsMsg {
+            get {
+                return ResourceManager.GetString("ResetSettingsMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -1593,6 +1755,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starter Gamer.
+        /// </summary>
+        public static string StarterGamer {
+            get {
+                return ResourceManager.GetString("StarterGamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play at least 10 hours, no matter which game..
+        /// </summary>
+        public static string StarterGamerDesc {
+            get {
+                return ResourceManager.GetString("StarterGamerDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Startup.
         /// </summary>
         public static string Startup {
@@ -1674,6 +1854,33 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tasks.
+        /// </summary>
+        public static string Tasks {
+            get {
+                return ResourceManager.GetString("Tasks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Start.
+        /// </summary>
+        public static string TheStart {
+            get {
+                return ResourceManager.GetString("TheStart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a game..
+        /// </summary>
+        public static string TheStartDesc {
+            get {
+                return ResourceManager.GetString("TheStartDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TOP 10 MOST PLAYED GAMES.
         /// </summary>
         public static string Top10MostPlayedGames {
@@ -1688,6 +1895,24 @@ namespace Gavilya.Properties {
         public static string TotalTimePlayed {
             get {
                 return ResourceManager.GetString("TotalTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True Gamer.
+        /// </summary>
+        public static string TrueGamer {
+            get {
+                return ResourceManager.GetString("TrueGamer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Play at least 1000 hours, no matter which game..
+        /// </summary>
+        public static string TrueGamerDesc {
+            get {
+                return ResourceManager.GetString("TrueGamerDesc", resourceCulture);
             }
         }
         

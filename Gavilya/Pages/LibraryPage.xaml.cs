@@ -46,7 +46,7 @@ namespace Gavilya.Pages
 
 		private void InitUI()
 		{
-			if (Env.WindowsVersion != WindowsVersion.Windows10)
+			if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
 			{
 				AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
 			}

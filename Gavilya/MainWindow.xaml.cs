@@ -45,7 +45,7 @@ namespace Gavilya
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public MainWindow()
+		public MainWindow(GavilyaWindowPages? startupPage = null)
 		{
 			InitializeComponent();
 
@@ -88,14 +88,14 @@ namespace Gavilya
 
 			// Tabs
 
-			PageContent.Navigate(Definitions.Settings.DefaultGavilyaHomePage switch
+			PageContent.Navigate((startupPage ?? Definitions.Settings.DefaultGavilyaHomePage) switch
 			{
 				GavilyaWindowPages.Home => Definitions.HomePage,
 				GavilyaWindowPages.Library => Definitions.LibraryPage,
 				GavilyaWindowPages.Profile => Definitions.ProfilePage,
 				_ => Definitions.HomePage
 			});
-			CheckedTabButton = Definitions.Settings.DefaultGavilyaHomePage switch
+			CheckedTabButton = (startupPage ?? Definitions.Settings.DefaultGavilyaHomePage) switch
 			{
 				GavilyaWindowPages.Home => HomeTabBtn,
 				GavilyaWindowPages.Library => LibraryTabBtn,
@@ -232,6 +232,8 @@ namespace Gavilya
 		private void Button_Click_2(object sender, RoutedEventArgs e)
 		{
 			SettingsSaver.Save(); // Save settings
+
+			Global.CreateJumpLists();
 			Environment.Exit(0); // Quit the app
 		}
 
@@ -541,6 +543,7 @@ namespace Gavilya
 			CheckedTabButton = ProfileTabBtn; // Set the checked button
 			CheckButton(); // Update the UI
 
+			Definitions.ProfilePage.InitUI(); // Refresh the content
 			PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
 		}
 

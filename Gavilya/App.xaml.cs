@@ -72,7 +72,10 @@ namespace Gavilya
 			}
 			else
 			{
-				new MainWindow().Show(); // Show the regular main window
+				int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
+
+				new MainWindow(pageID == null ? null : (Enums.GavilyaWindowPages)pageID).Show(); // Show the regular main window
+				Global.CreateJumpLists();
 			}
 		}
 	}

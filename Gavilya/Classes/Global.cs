@@ -29,11 +29,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media.Imaging;
+using System.Windows.Shell;
 
 namespace Gavilya.Classes
 {
@@ -683,6 +685,83 @@ namespace Gavilya.Classes
 			{
 				MessageBox.Show(ex.Message, Properties.Resources.ErrorOccurred, MessageBoxButton.OK, MessageBoxImage.Error);
 			}
+		}
+
+		internal static void CreateJumpLists()
+		{
+			JumpList jumpList = new();
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				if (Definitions.Games[i].IsFavorite)
+				{
+					bool isExe = !Definitions.Games[i].IsSteam && !Definitions.Games[i].IsUWP;
+
+					JumpTask task = new()
+					{
+						Title = Definitions.Games[i].Name,
+						Arguments = $"{Definitions.Games[i].FileLocation}",
+						Description = Definitions.Games[i].Description[0..120].Replace("\n\n", "\n") + "...",
+						CustomCategory = Properties.Resources.Favorites,
+						IconResourcePath = isExe ? Definitions.Games[i].FileLocation : Assembly.GetEntryAssembly().Location,
+						ApplicationPath = "explorer.exe"
+					};
+
+					jumpList.JumpItems.Add(task);
+				}
+			}
+
+			jumpList.JumpItems.Add(new JumpTask()
+			{
+				Title = Properties.Resources.Home,
+				Arguments = "/page 0",
+				Description = Properties.Resources.Home,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			});
+
+			jumpList.JumpItems.Add(new JumpTask()
+			{
+				Title = Properties.Resources.Library,
+				Arguments = "/page 1",
+				Description = Properties.Resources.Library,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			});
+
+			jumpList.JumpItems.Add(new JumpTask()
+			{
+				Title = Properties.Resources.MyProfile,
+				Arguments = "/page 2",
+				Description = Properties.Resources.MyProfile,
+				CustomCategory = Properties.Resources.Tasks,
+				IconResourcePath = Assembly.GetEntryAssembly().Location
+			});
+
+
+			jumpList.ShowFrequentCategory = false;
+			jumpList.ShowRecentCategory = false;
+
+			JumpList.SetJumpList(Application.Current, jumpList);
+		}
+
+
+		/// <summary>
+		/// Gets the number of games that are favorites.
+		/// </summary>
+		/// <returns></returns>
+		public static int GetFavoriteCount()
+		{
+			int favorites = 0;
+
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				if (Definitions.Games[i].IsFavorite)
+				{
+					favorites++;
+				}
+			}
+
+			return favorites; // Return final count
 		}
 	}
 }

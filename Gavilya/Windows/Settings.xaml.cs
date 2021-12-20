@@ -37,6 +37,7 @@ namespace Gavilya.Windows
 		readonly SaveOptionsPage saveOptionsPage = new(); // Create a page
 		readonly LanguagePage languagePage = new(); // Create a page
 		readonly StartupPage startupPage = new(); // Create a page
+		readonly DataOptionsPage dataOptionsPage = new(); // Create a page
 
 		public Settings()
 		{
@@ -59,6 +60,7 @@ namespace Gavilya.Windows
 			saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
 			languagePage.Visibility = Visibility.Hidden; // Hide the page
 			startupPage.Visibility = Visibility.Hidden; // Hide the page
+			dataOptionsPage.Visibility = Visibility.Hidden; // Hide the page
 		}
 
 		private void NavigateToPage(SettingsPages settingsPage)
@@ -88,6 +90,13 @@ namespace Gavilya.Windows
 					startupPage.Visibility = Visibility.Visible; // Show the page
 					OptionsDisplayer.Navigate(startupPage); // Navigate
 					break;
+				case SettingsPages.Data:
+					UnCheckAll(); // Uncheck all buttons
+
+					DataOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+					dataOptionsPage.Visibility = Visibility.Visible; // Show the page
+					OptionsDisplayer.Navigate(dataOptionsPage); // Navigate
+					break;
 			}
 		}
 
@@ -96,6 +105,7 @@ namespace Gavilya.Windows
 			SaveOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 			LanguageOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 			StartupOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+			DataOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		}
 
 		private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -111,6 +121,11 @@ namespace Gavilya.Windows
 		private void StartupOptions_Click(object sender, RoutedEventArgs e)
 		{
 			NavigateToPage(SettingsPages.Startup); // Show the "Startup" page
+		}
+
+		private void DataOptions_Click(object sender, RoutedEventArgs e)
+		{
+			NavigateToPage(SettingsPages.Data); // Show the "Data" page
 		}
 	}
 }
