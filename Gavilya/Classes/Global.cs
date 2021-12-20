@@ -689,14 +689,14 @@ namespace Gavilya.Classes
 
 		internal static void CreateJumpLists()
 		{
-			JumpList jumpList = new JumpList();
+			JumpList jumpList = new();
 			for (int i = 0; i < Definitions.Games.Count; i++)
 			{
 				if (Definitions.Games[i].IsFavorite)
 				{
 					bool isExe = !Definitions.Games[i].IsSteam && !Definitions.Games[i].IsUWP;
 
-					JumpTask task = new JumpTask
+					JumpTask task = new()
 					{
 						Title = Definitions.Games[i].Name,
 						Arguments = $"{Definitions.Games[i].FileLocation}",
