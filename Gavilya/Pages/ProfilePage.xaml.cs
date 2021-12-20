@@ -208,8 +208,22 @@ namespace Gavilya.Pages
 			BadgesTab.Visibility = Visibility.Collapsed; // Show 
 		}
 
+		private void HideAllBadges()
+		{
+			TheStartImg.Visibility = Visibility.Collapsed; // Hide
+			CrazyAboutImg.Visibility = Visibility.Collapsed; // Hide
+			NoobPlayerImg.Visibility = Visibility.Collapsed; // Hide
+			StarterGamerImg.Visibility = Visibility.Collapsed; // Hide
+			AdvancedGamerImg.Visibility = Visibility.Collapsed; // Hide
+			TrueGamerImg.Visibility = Visibility.Collapsed; // Hide
+			LegendaryImg.Visibility = Visibility.Collapsed; // Hide
+			NeedSpaceOnTheShelvesImg.Visibility = Visibility.Collapsed; // Hide
+		}
+
 		private void LoadBadges()
 		{
+			HideAllBadges(); // Reset badges
+
 			if (Definitions.Games.Count > 0) TheStartImg.Visibility = Visibility.Visible; // Show
 			if (Global.GetFavoriteCount() >= 1) CrazyAboutImg.Visibility = Visibility.Visible; // Show
 			if (Global.GetTotalTimePlayed() / 3600 >= 1) NoobPlayerImg.Visibility = Visibility.Visible; // Show
