@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Gavilya"
-#define MyAppVersion "2.2.0.2112"
-#define MyAppFullVersion "2.2.0.2112"
+#define MyAppVersion "2.3.0.2201"
+#define MyAppFullVersion "2.3.0.2201-pre1"
 #define MyAppPublisher "Léo Corporation"
 #define MyAppURL "https://leocorporation.dev/"
 #define MyAppExeName "Gavilya.exe"
@@ -46,8 +46,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked; OnlyBelowVersion: 6.1; Check: not IsAdminInstallMode
 
 [Files]
-Source: "H:\Gavilya\Gavilya\bin\Release\net5.0-windows\Gavilya.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "H:\Gavilya\Gavilya\bin\Release\net5.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "H:\Gavilya\Gavilya\bin\Release\net6.0-windows\Gavilya.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "H:\Gavilya\Gavilya\bin\Release\net6.0-windows\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "H:\Gavilya\Xalyus Updater\bin\Release\netcoreapp3.1\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 
