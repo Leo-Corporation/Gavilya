@@ -36,19 +36,22 @@ public partial class EditGame : Window
 	public string iconLocation; // Icon location
 	public int RAWGID = -1; // The Game RAWG Id
 	public string GameDescription = string.Empty; // The description of the game
+
 	public List<SDK.RAWG.Platform> Platforms = new(); // Create a new list
 	public List<SDK.RAWG.Store> Stores = new();
 	internal GameCard GameCard; // The game card
+
 	public string GameName = string.Empty;
 	public string GameVersion = string.Empty;
 	public string GameLocation = string.Empty;
+
 	readonly AddEditPage AddEditPage;
 	readonly AddEditPage2 AddEditPage2;
 
 	/// <summary>
 	/// Window where the user can edit a game
 	/// </summary>
-	public EditGame(GameCard gameCard, bool isUWP = false)
+	public EditGame(GameCard gameCard)
 	{
 		InitializeComponent();
 		GameCard = gameCard; // Pass the arg
@@ -78,44 +81,4 @@ public partial class EditGame : Window
 	{
 		Close(); // Close the window
 	}
-
-	//private void Button_Click_2(object sender, RoutedEventArgs e)
-	//{
-	//	OpenFileDialog openFileDialog = new(); // OpenFileDialog
-	//	openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
-
-	//	if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
-	//	{
-	//		try
-	//		{
-	//			BitmapImage image = new(new Uri(openFileDialog.FileName)); // Create the image
-	//			GameImg.Source = image; // Set the GameImg's source to the image
-	//			iconLocation = openFileDialog.FileName; // Set the path to the image
-	//		}
-	//		catch (Exception ex)
-	//		{
-	//			MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
-	//		}
-	//	}
-	//}
-
-	//private void Button_Click_3(object sender, RoutedEventArgs e)
-	//{
-	//	new SearchGameCover(this, GameAssociationActions.Search).Show(); // Show the window
-	//}
-
-	//private void CancelBtn_Click(object sender, RoutedEventArgs e)
-	//{
-	//	Close(); // Close the Window
-	//}
-
-	//private void AssociateGameLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	//{
-	//	new SearchGameCover(this, GameAssociationActions.Associate).Show(); // Show the window
-	//}
-
-	//private void DescriptionLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	//{
-	//	new DescriptionWindow(GameDescription, this).Show(); // Show the Description window
-	//}
 }
