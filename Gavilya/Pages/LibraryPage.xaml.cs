@@ -31,112 +31,111 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 
-namespace Gavilya.Pages
+namespace Gavilya.Pages;
+
+/// <summary>
+/// Interaction logic for LibraryPage.xaml
+/// </summary>
+public partial class LibraryPage : Page
 {
-	/// <summary>
-	/// Interaction logic for LibraryPage.xaml
-	/// </summary>
-	public partial class LibraryPage : Page
+	public LibraryPage()
 	{
-		public LibraryPage()
-		{
-			InitializeComponent();
-			InitUI();
-		}
+		InitializeComponent();
+		InitUI();
+	}
 
-		private void InitUI()
+	private void InitUI()
+	{
+		if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
 		{
-			if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
-			{
-				AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
-			}
-			else
-			{
-				AddUWPBtn.Visibility = Visibility.Visible; // Show
-			}
+			AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
 		}
+		else
+		{
+			AddUWPBtn.Visibility = Visibility.Visible; // Show
+		}
+	}
 
-		private void GameCardTabBtn_Click(object sender, RoutedEventArgs e)
+	private void GameCardTabBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CheckedButton = GameCardTabBtn; // Set
+		RefreshTabUI();
+
+		PageDisplayer.Content = Definitions.GamesCardsPages; // Set page content
+	}
+
+	private void RecentTabBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CheckedButton = RecentTabBtn; // Set
+		RefreshTabUI();
+
+		PageDisplayer.Content = Definitions.RecentGamesPage; // Set page content
+	}
+
+	private void GameListTabBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CheckedButton = GameListTabBtn; // Set
+		RefreshTabUI();
+
+		PageDisplayer.Content = Definitions.GamesListPage; // Set page content
+	}
+
+	internal Button CheckedButton { get; set; }
+	internal void RefreshTabUI()
+	{
+		GameCardTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+		RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+		GameListTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+
+		if (PageDisplayer.Content is GamesCardsPages)
 		{
 			CheckedButton = GameCardTabBtn; // Set
-			RefreshTabUI();
-
-			PageDisplayer.Content = Definitions.GamesCardsPages; // Set page content
 		}
-
-		private void RecentTabBtn_Click(object sender, RoutedEventArgs e)
+		else if (PageDisplayer.Content is RecentGamesPage)
 		{
 			CheckedButton = RecentTabBtn; // Set
-			RefreshTabUI();
-
-			PageDisplayer.Content = Definitions.RecentGamesPage; // Set page content
 		}
-
-		private void GameListTabBtn_Click(object sender, RoutedEventArgs e)
+		else if (PageDisplayer.Content is GamesListPage)
 		{
 			CheckedButton = GameListTabBtn; // Set
-			RefreshTabUI();
-
-			PageDisplayer.Content = Definitions.GamesListPage; // Set page content
 		}
+		CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+	}
 
-		internal Button CheckedButton { get; set; }
-		internal void RefreshTabUI()
+	private void GameCardTabBtn_MouseEnter(object sender, MouseEventArgs e)
+	{
+		Button button = (Button)sender; // Create button
+
+		button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+	}
+
+	private void GameCardTabBtn_MouseLeave(object sender, MouseEventArgs e)
+	{
+		Button button = (Button)sender; // Create button
+
+		if (CheckedButton != button)
 		{
-			GameCardTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-			RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-			GameListTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-
-			if (PageDisplayer.Content is GamesCardsPages)
-			{
-				CheckedButton = GameCardTabBtn; // Set
-			}
-			else if (PageDisplayer.Content is RecentGamesPage)
-			{
-				CheckedButton = RecentTabBtn; // Set
-			}
-			else if (PageDisplayer.Content is GamesListPage)
-			{
-				CheckedButton = GameListTabBtn; // Set
-			}
-			CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+			button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 		}
+	}
 
-		private void GameCardTabBtn_MouseEnter(object sender, MouseEventArgs e)
-		{
-			Button button = (Button)sender; // Create button
+	private void PageDisplayer_Navigated(object sender, NavigationEventArgs e)
+	{
+		RefreshTabUI();
+	}
 
-			button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
-		}
+	private void AddBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(false, false).Show(); // Open the "Add Game" dialog
+	}
 
-		private void GameCardTabBtn_MouseLeave(object sender, MouseEventArgs e)
-		{
-			Button button = (Button)sender; // Create button
+	private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(true, false).Show(); // Add game
+	}
 
-			if (CheckedButton != button)
-			{
-				button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-			}
-		}
-
-		private void PageDisplayer_Navigated(object sender, NavigationEventArgs e)
-		{
-			RefreshTabUI();
-		}
-
-		private void AddBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(false, false).Show(); // Open the "Add Game" dialog
-		}
-
-		private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(true, false).Show(); // Add game
-		}
-
-		private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(false, true).Show(); // Add Steam Game
-		}
+	private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(false, true).Show(); // Add Steam Game
 	}
 }

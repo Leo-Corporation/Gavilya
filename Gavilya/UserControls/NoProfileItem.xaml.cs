@@ -25,21 +25,20 @@ using Gavilya.Windows;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gavilya.UserControls
-{
-	/// <summary>
-	/// Interaction logic for NoProfileItem.xaml
-	/// </summary>
-	public partial class NoProfileItem : UserControl
-	{
-		public NoProfileItem()
-		{
-			InitializeComponent();
-		}
+namespace Gavilya.UserControls;
 
-		private void CreateProfileBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddEditProfileWindow(Enums.EditMode.Add).Show(); // Add a new profile
-		}
+/// <summary>
+/// Interaction logic for NoProfileItem.xaml
+/// </summary>
+public partial class NoProfileItem : UserControl
+{
+	public NoProfileItem()
+	{
+		InitializeComponent();
+	}
+
+	private void CreateProfileBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddEditProfileWindow(Enums.EditMode.Add).Show(); // Add a new profile
 	}
 }

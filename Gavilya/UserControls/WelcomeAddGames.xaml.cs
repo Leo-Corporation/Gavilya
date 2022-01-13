@@ -25,21 +25,20 @@ using Gavilya.Windows;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gavilya.UserControls
-{
-	/// <summary>
-	/// Logique d'interaction pour WelcomeAddGames.xaml
-	/// </summary>
-	public partial class WelcomeAddGames : UserControl
-	{
-		public WelcomeAddGames()
-		{
-			InitializeComponent();
-		}
+namespace Gavilya.UserControls;
 
-		private void AddGameBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddGame(false, false).Show();
-		}
+/// <summary>
+/// Logique d'interaction pour WelcomeAddGames.xaml
+/// </summary>
+public partial class WelcomeAddGames : UserControl
+{
+	public WelcomeAddGames()
+	{
+		InitializeComponent();
+	}
+
+	private void AddGameBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(false, false).Show();
 	}
 }

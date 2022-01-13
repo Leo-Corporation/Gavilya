@@ -26,32 +26,31 @@ using System;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for AchievementItem.xaml
+/// </summary>
+public partial class AchievementItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for AchievementItem.xaml
-	/// </summary>
-	public partial class AchievementItem : UserControl
+	public AchievementItem(Achievement achievement)
 	{
-		public AchievementItem(Achievement achievement)
-		{
-			InitializeComponent();
-			InitUI(achievement); // Loads the UI
-		}
+		InitializeComponent();
+		InitUI(achievement); // Loads the UI
+	}
 
-		private void InitUI(Achievement achievement)
-		{
-			var image = new BitmapImage();
-			image.BeginInit();
-			image.UriSource = new Uri(achievement.image);
-			image.DecodePixelWidth = 50;
-			image.EndInit();
+	private void InitUI(Achievement achievement)
+	{
+		var image = new BitmapImage();
+		image.BeginInit();
+		image.UriSource = new Uri(achievement.image);
+		image.DecodePixelWidth = 50;
+		image.EndInit();
 
-			AchievementImg.Source = image; // Set the image
+		AchievementImg.Source = image; // Set the image
 
-			AchievementNameTxt.Text = achievement.name; // Set text
-			AchievementDescriptionTxt.Text = achievement.description; // Set text
-			AchievementPourcentTxt.Text = $"{achievement.percent}% {Properties.Resources.AchievementPlayerUnlocked}"; // Set text
-		}
+		AchievementNameTxt.Text = achievement.name; // Set text
+		AchievementDescriptionTxt.Text = achievement.description; // Set text
+		AchievementPourcentTxt.Text = $"{achievement.percent}% {Properties.Resources.AchievementPlayerUnlocked}"; // Set text
 	}
 }

@@ -25,32 +25,31 @@ using Gavilya.Classes;
 using Gavilya.UserControls;
 using System.Windows.Controls;
 
-namespace Gavilya.Pages
+namespace Gavilya.Pages;
+
+/// <summary>
+/// Logique d'interaction pour GamesListPage.xaml
+/// </summary>
+public partial class GamesListPage : Page
 {
-	/// <summary>
-	/// Logique d'interaction pour GamesListPage.xaml
-	/// </summary>
-	public partial class GamesListPage : Page
+	public GamesListPage()
 	{
-		public GamesListPage()
+		InitializeComponent();
+		GamePage.Navigate(new SelectGame());
+		LoadGames(); // Load the games
+	}
+
+	/// <summary>
+	/// Loads the games.
+	/// </summary>
+	public void LoadGames()
+	{
+		GameList.Children.Clear();
+		foreach (GameInfo gameInfo in Definitions.Games) // For each game
 		{
-			InitializeComponent();
-			GamePage.Navigate(new SelectGame());
-			LoadGames(); // Load the games
+			GameList.Children.Add(new GameItem(gameInfo)); // Add a game
 		}
 
-		/// <summary>
-		/// Loads the games.
-		/// </summary>
-		public void LoadGames()
-		{
-			GameList.Children.Clear();
-			foreach (GameInfo gameInfo in Definitions.Games) // For each game
-			{
-				GameList.Children.Add(new GameItem(gameInfo)); // Add a game
-			}
-
-			GamePage.Navigate(new SelectGame()); // Default message
-		}
+		GamePage.Navigate(new SelectGame()); // Default message
 	}
 }

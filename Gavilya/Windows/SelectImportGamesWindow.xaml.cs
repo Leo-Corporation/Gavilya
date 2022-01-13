@@ -26,61 +26,60 @@ using Gavilya.UserControls;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Interaction logic for SelectImportGamesWindow.xaml
+/// </summary>
+public partial class SelectImportGamesWindow : Window
 {
-	/// <summary>
-	/// Interaction logic for SelectImportGamesWindow.xaml
-	/// </summary>
-	public partial class SelectImportGamesWindow : Window
+	public SelectImportGamesWindow()
 	{
-		public SelectImportGamesWindow()
-		{
-			InitializeComponent();
-			InitUI(); // Load the UI
-		}
+		InitializeComponent();
+		InitUI(); // Load the UI
+	}
 
-		private void InitUI()
+	private void InitUI()
+	{
+		if (Definitions.Games.Count > 0)
 		{
-			if (Definitions.Games.Count > 0)
+			for (int i = 0; i < Definitions.Games.Count; i++)
 			{
-				for (int i = 0; i < Definitions.Games.Count; i++)
-				{
-					GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i])); // Add item
-				}
+				GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i])); // Add item
 			}
 		}
+	}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			WindowState = WindowState.Minimized; // Set
-		}
+	private void Button_Click(object sender, RoutedEventArgs e)
+	{
+		WindowState = WindowState.Minimized; // Set
+	}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
+	private void Button_Click_1(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
 
-		private void FinishBtn_Click(object sender, RoutedEventArgs e)
+	private void FinishBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (GamePresenter.Children.Count > 0)
 		{
-			if (GamePresenter.Children.Count > 0)
+			List<GameInfo> gameInfos = new();
+
+			for (int i = 0; i < GamePresenter.Children.Count; i++)
 			{
-				List<GameInfo> gameInfos = new();
-
-				for (int i = 0; i < GamePresenter.Children.Count; i++)
+				var game = (ImportGameItem)GamePresenter.Children[i];
+				if (game.SelectCheckBox.IsChecked.Value)
 				{
-					var game = (ImportGameItem)GamePresenter.Children[i];
-					if (game.SelectCheckBox.IsChecked.Value)
-					{
-						gameInfos.Add(game.GameInfo); // Add 
-					}
+					gameInfos.Add(game.GameInfo); // Add 
 				}
-
-				Definitions.Games = gameInfos; // Set
-				GameSaver.Save(Definitions.Games); // Save changes
 			}
 
-			Global.ReloadAllPages(); // Refresh
-			Close(); // Close the window
+			Definitions.Games = gameInfos; // Set
+			GameSaver.Save(Definitions.Games); // Save changes
 		}
+
+		Global.ReloadAllPages(); // Refresh
+		Close(); // Close the window
 	}
 }

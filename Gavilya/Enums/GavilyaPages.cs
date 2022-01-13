@@ -22,49 +22,48 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums
+namespace Gavilya.Enums;
+
+/// <summary>
+/// The pages f the <see cref="MainWindow"/>.
+/// </summary>
+public enum GavilyaPages
 {
 	/// <summary>
-	/// The pages f the <see cref="MainWindow"/>.
+	/// The <see cref="Pages.GamesCardsPages"/>.
 	/// </summary>
-	public enum GavilyaPages
-	{
-		/// <summary>
-		/// The <see cref="Pages.GamesCardsPages"/>.
-		/// </summary>
-		Cards,
+	Cards,
 
-		/// <summary>
-		/// The <see cref="Pages.RecentGamesPage"/>.
-		/// </summary>
-		Recent,
+	/// <summary>
+	/// The <see cref="Pages.RecentGamesPage"/>.
+	/// </summary>
+	Recent,
 
-		/// <summary>
-		/// The <see cref="Pages.GamesListPage"/>.
-		/// </summary>
-		List,
+	/// <summary>
+	/// The <see cref="Pages.GamesListPage"/>.
+	/// </summary>
+	List,
 
-		/// <summary>
-		/// The page is unknown.
-		/// </summary>
-		Underteminated
-	}
+	/// <summary>
+	/// The page is unknown.
+	/// </summary>
+	Underteminated
+}
 
-	public enum GavilyaWindowPages
-	{
-		/// <summary>
-		/// The <see cref="Pages.HomePage"/>.
-		/// </summary>
-		Home,
+public enum GavilyaWindowPages
+{
+	/// <summary>
+	/// The <see cref="Pages.HomePage"/>.
+	/// </summary>
+	Home,
 
-		/// <summary>
-		/// The <see cref="Pages.LibraryPage"/>.
-		/// </summary>
-		Library,
+	/// <summary>
+	/// The <see cref="Pages.LibraryPage"/>.
+	/// </summary>
+	Library,
 
-		/// <summary>
-		/// The <see cref="Pages.ProfilePage"/>.
-		/// </summary>
-		Profile
-	}
+	/// <summary>
+	/// The <see cref="Pages.ProfilePage"/>.
+	/// </summary>
+	Profile
 }

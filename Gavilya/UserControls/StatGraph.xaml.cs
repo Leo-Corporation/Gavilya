@@ -28,49 +28,48 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for StatGraph.xaml
+/// </summary>
+public partial class StatGraph : UserControl
 {
-	/// <summary>
-	/// Interaction logic for StatGraph.xaml
-	/// </summary>
-	public partial class StatGraph : UserControl
+	List<GameInfo> Games { get; init; }
+	public StatGraph(List<GameInfo> gameInfos)
 	{
-		List<GameInfo> Games { get; init; }
-		public StatGraph(List<GameInfo> gameInfos)
+		InitializeComponent();
+		Games = gameInfos; // Set
+
+		InitUI(); // Load the UI
+	}
+
+	private void InitUI()
+	{
+		GraphPanel.Children.Clear(); // Clear
+		int longestPlayed = Games[0].TotalTimePlayed;
+
+		for (int i = 0; i < Games.Count; i++)
 		{
-			InitializeComponent();
-			Games = gameInfos; // Set
+			double h = Games[i].TotalTimePlayed * GraphPanel.Height / longestPlayed;
 
-			InitUI(); // Load the UI
-		}
-
-		private void InitUI()
-		{
-			GraphPanel.Children.Clear(); // Clear
-			int longestPlayed = Games[0].TotalTimePlayed;
-
-			for (int i = 0; i < Games.Count; i++)
+			Rectangle rectangle = new()
 			{
-				double h = Games[i].TotalTimePlayed * GraphPanel.Height / longestPlayed;
+				Margin = new(10, 0, 10, 0),
+				Fill = new SolidColorBrush { Color = Color.FromRgb(100, 100, 140) },
+				Height = h,
+				Width = 50,
+				RadiusX = 5,
+				RadiusY = 5,
+				VerticalAlignment = VerticalAlignment.Bottom
+			};
 
-				Rectangle rectangle = new()
-				{
-					Margin = new(10, 0, 10, 0),
-					Fill = new SolidColorBrush { Color = Color.FromRgb(100, 100, 140) },
-					Height = h,
-					Width = 50,
-					RadiusX = 5,
-					RadiusY = 5,
-					VerticalAlignment = VerticalAlignment.Bottom
-				};
-
-				GraphPanel.Children.Add(rectangle); // Add bar
-			}
+			GraphPanel.Children.Add(rectangle); // Add bar
 		}
+	}
 
-		private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
-		{
-			InitUI();
-		}
+	private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+	{
+		InitUI();
 	}
 }

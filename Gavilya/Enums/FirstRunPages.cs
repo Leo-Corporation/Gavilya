@@ -22,41 +22,40 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums
+namespace Gavilya.Enums;
+
+/// <summary>
+/// The pages that are used in the <see cref="Windows.FirstRun"/> window.
+/// </summary>
+public enum FirstRunPages
 {
 	/// <summary>
-	/// The pages that are used in the <see cref="Windows.FirstRun"/> window.
+	/// The <see cref="Pages.FirstRunPages.Welcome"/> page.
 	/// </summary>
-	public enum FirstRunPages
-	{
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.Welcome"/> page.
-		/// </summary>
-		Welcome,
+	Welcome,
 
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.AddGamesPage"/> page.
-		/// </summary>
-		AddGames,
+	/// <summary>
+	/// The <see cref="Pages.FirstRunPages.AddGamesPage"/> page.
+	/// </summary>
+	AddGames,
 
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.SearchRAWGPage"/> page.
-		/// </summary>
-		SearchRawgGames,
+	/// <summary>
+	/// The <see cref="Pages.FirstRunPages.SearchRAWGPage"/> page.
+	/// </summary>
+	SearchRawgGames,
 
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.ImportGamesPage"/> page.
-		/// </summary>
-		ImportGames,
+	/// <summary>
+	/// The <see cref="Pages.FirstRunPages.ImportGamesPage"/> page.
+	/// </summary>
+	ImportGames,
 
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.FinishPage"/> page.
-		/// </summary>
-		Finish,
+	/// <summary>
+	/// The <see cref="Pages.FirstRunPages.FinishPage"/> page.
+	/// </summary>
+	Finish,
 
-		/// <summary>
-		/// The <see cref="Pages.FirstRunPages.SelectImportedGamesPage"/> page.
-		/// </summary>
-		SelectImportedGames
-	}
+	/// <summary>
+	/// The <see cref="Pages.FirstRunPages.SelectImportedGamesPage"/> page.
+	/// </summary>
+	SelectImportedGames
 }

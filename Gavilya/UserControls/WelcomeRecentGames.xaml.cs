@@ -23,16 +23,15 @@ SOFTWARE.
 */
 using System.Windows.Controls;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Logique d'interaction pour WelcomeRecentGames.xaml
+/// </summary>
+public partial class WelcomeRecentGames : UserControl
 {
-	/// <summary>
-	/// Logique d'interaction pour WelcomeRecentGames.xaml
-	/// </summary>
-	public partial class WelcomeRecentGames : UserControl
+	public WelcomeRecentGames()
 	{
-		public WelcomeRecentGames()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

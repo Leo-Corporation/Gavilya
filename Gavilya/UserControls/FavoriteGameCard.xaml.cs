@@ -30,92 +30,73 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Logique d'interaction pour FavoriteGameCard.xaml
+/// </summary>
+public partial class FavoriteGameCard : UserControl
 {
-	/// <summary>
-	/// Logique d'interaction pour FavoriteGameCard.xaml
-	/// </summary>
-	public partial class FavoriteGameCard : UserControl
+	public GameInfo GameInfo { get; set; }
+	string GamePath = ""; // Location of the game
+
+	readonly UIElement parentElement;
+
+	public FavoriteGameCard(GameInfo gameInfo, UIElement parent = null)
 	{
-		public GameInfo GameInfo { get; set; }
-		string GamePath = ""; // Location of the game
+		InitializeComponent();
+		GameInfo = gameInfo;
+		parentElement = parent; // Define the parent element
 
-		readonly UIElement parentElement;
+		InitUI(gameInfo); // Load the UI
+	}
 
-		public FavoriteGameCard(GameInfo gameInfo, UIElement parent = null)
+	/// <summary>
+	/// Load the User Interface (UI).
+	/// </summary>
+	/// <param name="gameInfo"></param>
+	private void InitUI(GameInfo gameInfo)
+	{
+		// Tooltip
+		GameNameToolTip.Content = gameInfo.Name;
+		ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
+
+		if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If there is an image
 		{
-			InitializeComponent();
-			GameInfo = gameInfo;
-			parentElement = parent; // Define the parent element
+			var bitmap = new BitmapImage();
+			var stream = File.OpenRead(gameInfo.IconFileLocation);
 
-			InitUI(gameInfo); // Load the UI
+			bitmap.BeginInit();
+			bitmap.CacheOption = BitmapCacheOption.OnLoad;
+			bitmap.StreamSource = stream;
+			bitmap.DecodePixelWidth = 170;
+			bitmap.EndInit();
+			stream.Close();
+			stream.Dispose();
+			bitmap.Freeze();
+			GameIcon.ImageSource = bitmap; // Put the icon of the game
+			GamePath = gameInfo.FileLocation; // Set the location of the game
+		}
+		else // If the image is the app icon
+		{
+			if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
+			{
+				Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
+				GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+				GamePath = gameInfo.FileLocation; // Set the location of the game 
+			}
 		}
 
-		/// <summary>
-		/// Load the User Interface (UI).
-		/// </summary>
-		/// <param name="gameInfo"></param>
-		private void InitUI(GameInfo gameInfo)
+	}
+
+	private void PlayBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (!GameInfo.IsUWP && !GameInfo.IsSteam)
 		{
-			// Tooltip
-			GameNameToolTip.Content = gameInfo.Name;
-			ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
-
-			if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If there is an image
+			if (File.Exists(GamePath)) // If the game location file exist
 			{
-				var bitmap = new BitmapImage();
-				var stream = File.OpenRead(gameInfo.IconFileLocation);
-
-				bitmap.BeginInit();
-				bitmap.CacheOption = BitmapCacheOption.OnLoad;
-				bitmap.StreamSource = stream;
-				bitmap.DecodePixelWidth = 170;
-				bitmap.EndInit();
-				stream.Close();
-				stream.Dispose();
-				bitmap.Freeze();
-				GameIcon.ImageSource = bitmap; // Put the icon of the game
-				GamePath = gameInfo.FileLocation; // Set the location of the game
-			}
-			else // If the image is the app icon
-			{
-				if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
-				{
-					Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
-					GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
-					GamePath = gameInfo.FileLocation; // Set the location of the game 
-				}
-			}
-
-		}
-
-		private void PlayBtn_Click(object sender, RoutedEventArgs e)
-		{
-			if (!GameInfo.IsUWP && !GameInfo.IsSteam)
-			{
-				if (File.Exists(GamePath)) // If the game location file exist
-				{
-					Process.Start(GamePath); // Start the game
-											 // Create a game card
-
-					if (parentElement is GameCard gameCard)
-					{
-						gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
-						GameSaver.Save(Definitions.Games); // Save the changes
-
-						Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
-						Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
-
-						gameCard.Timer.Start(); // Start the timer
-					}
-
-					Definitions.RecentGamesPage.LoadGames(); // Reload the games
-				}
-			}
-			else
-			{
-				Process.Start("explorer.exe", GamePath); // Start the game
-														 // Create a game card
+				Process.Start(GamePath); // Start the game
+										 // Create a game card
 
 				if (parentElement is GameCard gameCard)
 				{
@@ -130,6 +111,24 @@ namespace Gavilya.UserControls
 
 				Definitions.RecentGamesPage.LoadGames(); // Reload the games
 			}
+		}
+		else
+		{
+			Process.Start("explorer.exe", GamePath); // Start the game
+													 // Create a game card
+
+			if (parentElement is GameCard gameCard)
+			{
+				gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
+				GameSaver.Save(Definitions.Games); // Save the changes
+
+				Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+				Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+
+				gameCard.Timer.Start(); // Start the timer
+			}
+
+			Definitions.RecentGamesPage.LoadGames(); // Reload the games
 		}
 	}
 }

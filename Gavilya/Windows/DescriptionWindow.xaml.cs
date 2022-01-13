@@ -23,58 +23,57 @@ SOFTWARE.
 */
 using System.Windows;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Interaction logic for DescriptionWindow.xaml
+/// </summary>
+public partial class DescriptionWindow : Window
 {
-	/// <summary>
-	/// Interaction logic for DescriptionWindow.xaml
-	/// </summary>
-	public partial class DescriptionWindow : Window
+	readonly bool isFromEdit = false;
+	AddGame AddGame { get; init; }
+	EditGame EditGame { get; init; }
+	public DescriptionWindow(string description, AddGame addGame)
 	{
-		readonly bool isFromEdit = false;
-		AddGame AddGame { get; init; }
-		EditGame EditGame { get; init; }
-		public DescriptionWindow(string description, AddGame addGame)
-		{
-			InitializeComponent();
-			descriptionTxt.Text = description; // Set description
-			isFromEdit = false; // Is from Add
-			AddGame = addGame; // Define
-		}
+		InitializeComponent();
+		descriptionTxt.Text = description; // Set description
+		isFromEdit = false; // Is from Add
+		AddGame = addGame; // Define
+	}
 
-		public DescriptionWindow(string description, EditGame editGame)
-		{
-			InitializeComponent();
-			descriptionTxt.Text = description; // Set description
-			isFromEdit = true; // Is from edit
-			EditGame = editGame; // Define
-		}
+	public DescriptionWindow(string description, EditGame editGame)
+	{
+		InitializeComponent();
+		descriptionTxt.Text = description; // Set description
+		isFromEdit = true; // Is from edit
+		EditGame = editGame; // Define
+	}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			WindowState = WindowState.Minimized; // Minimize
-		}
+	private void Button_Click(object sender, RoutedEventArgs e)
+	{
+		WindowState = WindowState.Minimized; // Minimize
+	}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
+	private void Button_Click_1(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
 
-		private void ApplyBtn_Click(object sender, RoutedEventArgs e)
+	private void ApplyBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (!isFromEdit) // Is from Add
 		{
-			if (!isFromEdit) // Is from Add
-			{
-				AddGame.GameDescription = descriptionTxt.Text; // Set to the description text
-			}
-			else
-			{
-				EditGame.GameDescription = descriptionTxt.Text; // Set to the description text
-			}
-			Close(); // Close
+			AddGame.GameDescription = descriptionTxt.Text; // Set to the description text
 		}
+		else
+		{
+			EditGame.GameDescription = descriptionTxt.Text; // Set to the description text
+		}
+		Close(); // Close
+	}
 
-		private void CancelBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close
-		}
+	private void CancelBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close
 	}
 }

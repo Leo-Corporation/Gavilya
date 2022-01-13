@@ -29,133 +29,132 @@ using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Interaction logic for AddEditProfileWindow.xaml
+/// </summary>
+public partial class AddEditProfileWindow : Window
 {
-	/// <summary>
-	/// Interaction logic for AddEditProfileWindow.xaml
-	/// </summary>
-	public partial class AddEditProfileWindow : Window
+	EditMode EditMode { get; init; }
+	Profile CurrentProfile { get; set; }
+	Profile EditProfile { get; init; }
+	Profile BaseProfile { get; init; }
+	public AddEditProfileWindow(EditMode editMode, Profile profile = null)
 	{
-		EditMode EditMode { get; init; }
-		Profile CurrentProfile { get; set; }
-		Profile EditProfile { get; init; }
-		Profile BaseProfile { get; init; }
-		public AddEditProfileWindow(EditMode editMode, Profile profile = null)
+		try
+		{
+			InitializeComponent();
+			EditMode = editMode;
+			BaseProfile = profile;
+			EditProfile = profile;
+
+			if (EditMode == EditMode.Edit && profile is not null)
+			{
+				InitUIEdit(); // Launch the UI
+			}
+			else
+			{
+				CurrentProfile = new();
+			}
+		}
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Show error
+		}
+	}
+
+	private void InitUIEdit()
+	{
+		OKBtn.Content = Properties.Resources.Edit; // Change the text
+		nameTxt.Text = EditProfile.Name; // Set text
+
+		if (EditProfile.PictureFilePath != "_default")
+		{
+			BitmapImage image = new(new Uri(EditProfile.PictureFilePath)); // Create the image
+			ProfilePicture.ImageSource = image; // Set the GameImg's source to the image
+		}
+	}
+
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Closes the window
+	}
+
+	private void OKBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (!string.IsNullOrEmpty(nameTxt.Text) || !string.IsNullOrWhiteSpace(nameTxt.Text))
+		{
+			if (EditMode == EditMode.Edit) // If edit
+			{
+				EditProfile.Name = nameTxt.Text; // Set name
+				Definitions.Profiles[Definitions.Profiles.IndexOf(BaseProfile)] = EditProfile; // Edit profile
+			}
+			else
+			{
+				if (string.IsNullOrEmpty(CurrentProfile.PictureFilePath) || string.IsNullOrWhiteSpace(CurrentProfile.PictureFilePath))
+				{
+					CurrentProfile.PictureFilePath = "_default"; // Set default value
+				}
+
+				Random random = new();
+				CurrentProfile.Name = nameTxt.Text;
+				CurrentProfile.SaveFilePath = $@"{Env.AppDataPath}\Gavilya\Games-{CurrentProfile.Name}-{random.Next(0, 9999999)}.gav";
+				Definitions.Profiles.Add(CurrentProfile); // Add profile
+			}
+			ProfileManager.SaveProfiles();
+
+			Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh
+			Definitions.MainWindow.LoadProfilesUI(); // Refresh
+			Definitions.ProfilePage.InitUI();
+			Close(); // Closes the window 
+		}
+	}
+
+	private void CancelBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Closes the window
+	}
+
+	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		OpenFileDialog openFileDialog = new(); // OpenFileDialog
+		openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
+
+		if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
 		{
 			try
 			{
-				InitializeComponent();
-				EditMode = editMode;
-				BaseProfile = profile;
-				EditProfile = profile;
+				BitmapImage image = new(new Uri(openFileDialog.FileName)); // Create the image
+				ProfilePicture.ImageSource = image; // Set the GameImg's source to the image
 
-				if (EditMode == EditMode.Edit && profile is not null)
+				if (EditMode == EditMode.Add)
 				{
-					InitUIEdit(); // Launch the UI
+					CurrentProfile.PictureFilePath = openFileDialog.FileName; // Set the path to the image 
 				}
 				else
 				{
-					CurrentProfile = new();
+					EditProfile.PictureFilePath = openFileDialog.FileName; // Set the path to the image 
 				}
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.Message, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Show error
+				MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
 			}
 		}
+	}
 
-		private void InitUIEdit()
+	private void ResetProfilePictureBtn_Click(object sender, RoutedEventArgs e)
+	{
+		ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png"));
+
+		if (EditMode == EditMode.Add)
 		{
-			OKBtn.Content = Properties.Resources.Edit; // Change the text
-			nameTxt.Text = EditProfile.Name; // Set text
-
-			if (EditProfile.PictureFilePath != "_default")
-			{
-				BitmapImage image = new(new Uri(EditProfile.PictureFilePath)); // Create the image
-				ProfilePicture.ImageSource = image; // Set the GameImg's source to the image
-			}
+			CurrentProfile.PictureFilePath = "_default"; // Set the path to the image 
 		}
-
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
+		else
 		{
-			Close(); // Closes the window
-		}
-
-		private void OKBtn_Click(object sender, RoutedEventArgs e)
-		{
-			if (!string.IsNullOrEmpty(nameTxt.Text) || !string.IsNullOrWhiteSpace(nameTxt.Text))
-			{
-				if (EditMode == EditMode.Edit) // If edit
-				{
-					EditProfile.Name = nameTxt.Text; // Set name
-					Definitions.Profiles[Definitions.Profiles.IndexOf(BaseProfile)] = EditProfile; // Edit profile
-				}
-				else
-				{
-					if (string.IsNullOrEmpty(CurrentProfile.PictureFilePath) || string.IsNullOrWhiteSpace(CurrentProfile.PictureFilePath))
-					{
-						CurrentProfile.PictureFilePath = "_default"; // Set default value
-					}
-
-					Random random = new();
-					CurrentProfile.Name = nameTxt.Text;
-					CurrentProfile.SaveFilePath = $@"{Env.AppDataPath}\Gavilya\Games-{CurrentProfile.Name}-{random.Next(0, 9999999)}.gav";
-					Definitions.Profiles.Add(CurrentProfile); // Add profile
-				}
-				ProfileManager.SaveProfiles();
-
-				Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh
-				Definitions.MainWindow.LoadProfilesUI(); // Refresh
-				Definitions.ProfilePage.InitUI();
-				Close(); // Closes the window 
-			}
-		}
-
-		private void CancelBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Closes the window
-		}
-
-		private void BrowseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			OpenFileDialog openFileDialog = new(); // OpenFileDialog
-			openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
-
-			if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
-			{
-				try
-				{
-					BitmapImage image = new(new Uri(openFileDialog.FileName)); // Create the image
-					ProfilePicture.ImageSource = image; // Set the GameImg's source to the image
-
-					if (EditMode == EditMode.Add)
-					{
-						CurrentProfile.PictureFilePath = openFileDialog.FileName; // Set the path to the image 
-					}
-					else
-					{
-						EditProfile.PictureFilePath = openFileDialog.FileName; // Set the path to the image 
-					}
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
-				}
-			}
-		}
-
-		private void ResetProfilePictureBtn_Click(object sender, RoutedEventArgs e)
-		{
-			ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png"));
-
-			if (EditMode == EditMode.Add)
-			{
-				CurrentProfile.PictureFilePath = "_default"; // Set the path to the image 
-			}
-			else
-			{
-				EditProfile.PictureFilePath = "_default"; // Set the path to the image 
-			}
+			EditProfile.PictureFilePath = "_default"; // Set the path to the image 
 		}
 	}
 }

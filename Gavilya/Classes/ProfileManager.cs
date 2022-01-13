@@ -26,81 +26,80 @@ using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
-namespace Gavilya.Classes
+namespace Gavilya.Classes;
+
+/// <summary>
+/// Methods for managing profiles.
+/// </summary>
+public static class ProfileManager
 {
 	/// <summary>
-	/// Methods for managing profiles.
+	/// Create the default profile.
 	/// </summary>
-	public static class ProfileManager
+	public static void CreateDefaultProfile()
 	{
-		/// <summary>
-		/// Create the default profile.
-		/// </summary>
-		public static void CreateDefaultProfile()
+		if (Definitions.Profiles is not null) // If not null
 		{
-			if (Definitions.Profiles is not null) // If not null
-			{
-				Definitions.Profiles.Add(
-					new Profile
-					{
-						Name = Global.UserName,
-						PictureFilePath = "_default",
-						SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
-					});
-			}
-			else
-			{
-				Definitions.Profiles = new()
+			Definitions.Profiles.Add(
+				new Profile
 				{
-					new Profile
-					{
-						Name = Global.UserName,
-						PictureFilePath = "_default",
-						SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
-					}
-				};
-			}
+					Name = Global.UserName,
+					PictureFilePath = "_default",
+					SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
+				});
+		}
+		else
+		{
+			Definitions.Profiles = new()
+			{
+				new Profile
+				{
+					Name = Global.UserName,
+					PictureFilePath = "_default",
+					SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
+				}
+			};
+		}
+	}
+
+	/// <summary>
+	/// Saves profiles data in a XML .GAVPROFILES file.
+	/// </summary>
+	public static void SaveProfiles()
+	{
+		string AppDataPath = Env.AppDataPath; // Get %APPDATA% folder
+		XmlSerializer xmlSerializer = new(Definitions.Profiles.GetType()); // XML Serializer
+
+		if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
+		{
+			Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
 		}
 
-		/// <summary>
-		/// Saves profiles data in a XML .GAVPROFILES file.
-		/// </summary>
-		public static void SaveProfiles()
+		StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Profiles.gavprofiles"); // The place where the file is going to be written
+		xmlSerializer.Serialize(streamWriter, Definitions.Profiles);
+
+		streamWriter.Dispose();
+	}
+
+	/// <summary>
+	/// Loads profiles from a .GAVPROFILES file.
+	/// </summary>
+	public static void LoadProfiles()
+	{
+		string AppDataPath = Env.AppDataPath; // Get %APPDATA% folder
+		if (File.Exists(AppDataPath + @"\Gavilya\Profiles.gavprofiles"))
 		{
-			string AppDataPath = Env.AppDataPath; // Get %APPDATA% folder
-			XmlSerializer xmlSerializer = new(Definitions.Profiles.GetType()); // XML Serializer
+			XmlSerializer xmlSerializer = new(typeof(List<Profile>)); // XML Serializer
+			StreamReader streamReader = new(AppDataPath + @"\Gavilya\Profiles.gavprofiles"); // Where the file is going to be read
 
-			if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
-			{
-				Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
-			}
+			Definitions.Profiles = (List<Profile>)xmlSerializer.Deserialize(streamReader); // Read
 
-			StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Profiles.gavprofiles"); // The place where the file is going to be written
-			xmlSerializer.Serialize(streamWriter, Definitions.Profiles);
-
-			streamWriter.Dispose();
+			streamReader.Dispose();
 		}
-
-		/// <summary>
-		/// Loads profiles from a .GAVPROFILES file.
-		/// </summary>
-		public static void LoadProfiles()
+		else
 		{
-			string AppDataPath = Env.AppDataPath; // Get %APPDATA% folder
-			if (File.Exists(AppDataPath + @"\Gavilya\Profiles.gavprofiles"))
-			{
-				XmlSerializer xmlSerializer = new(typeof(List<Profile>)); // XML Serializer
-				StreamReader streamReader = new(AppDataPath + @"\Gavilya\Profiles.gavprofiles"); // Where the file is going to be read
-
-				Definitions.Profiles = (List<Profile>)xmlSerializer.Deserialize(streamReader); // Read
-
-				streamReader.Dispose();
-			}
-			else
-			{
-				CreateDefaultProfile();
-				SaveProfiles();
-			}
+			CreateDefaultProfile();
+			SaveProfiles();
 		}
 	}
 }

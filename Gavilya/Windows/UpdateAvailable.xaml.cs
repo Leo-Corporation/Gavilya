@@ -27,45 +27,44 @@ using System;
 using System.IO;
 using System.Windows;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Logique d'interaction pour UpdateAvailable.xaml
+/// </summary>
+public partial class UpdateAvailable : Window
 {
-	/// <summary>
-	/// Logique d'interaction pour UpdateAvailable.xaml
-	/// </summary>
-	public partial class UpdateAvailable : Window
+	public UpdateAvailable()
 	{
-		public UpdateAvailable()
-		{
-			InitializeComponent();
-			DisplayLastVersion();
-		}
+		InitializeComponent();
+		DisplayLastVersion();
+	}
 
-		private async void DisplayLastVersion()
-		{
-			VersionTxt.Text = $"{Properties.Resources.UpdateVersion} {await Update.GetLastVersionAsync(Definitions.LastVersionLink)}"; // Show the last version
-		}
+	private async void DisplayLastVersion()
+	{
+		VersionTxt.Text = $"{Properties.Resources.UpdateVersion} {await Update.GetLastVersionAsync(Definitions.LastVersionLink)}"; // Show the last version
+	}
 
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
 
-		private void InstallBtn_Click(object sender, RoutedEventArgs e)
+	private void InstallBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\Xalyus Updater.exe")) // If Xalyus Updater exist
 		{
-			if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\Xalyus Updater.exe")) // If Xalyus Updater exist
-			{
-				Env.ExecuteAsAdmin(AppDomain.CurrentDomain.BaseDirectory + @"\Xalyus Updater.exe"); // Launch the updater
-				Environment.Exit(0); // Close Gavilya
-			}
-			else
-			{
-				MessageBox.Show(Properties.Resources.XUDoesNotExist, "ERROR_FILE_NOT_FOUND (0x2)", MessageBoxButton.OK, MessageBoxImage.Error); // Show error
-			}
+			Env.ExecuteAsAdmin(AppDomain.CurrentDomain.BaseDirectory + @"\Xalyus Updater.exe"); // Launch the updater
+			Environment.Exit(0); // Close Gavilya
 		}
+		else
+		{
+			MessageBox.Show(Properties.Resources.XUDoesNotExist, "ERROR_FILE_NOT_FOUND (0x2)", MessageBoxButton.OK, MessageBoxImage.Error); // Show error
+		}
+	}
 
-		private void CancelBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
+	private void CancelBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
 	}
 }

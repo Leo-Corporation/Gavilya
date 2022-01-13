@@ -26,41 +26,40 @@ using System;
 using System.Threading;
 using System.Windows;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Logique d'interaction pour PopupMenu.xaml
+/// </summary>
+public partial class PopupMenu : Window
 {
-	/// <summary>
-	/// Logique d'interaction pour PopupMenu.xaml
-	/// </summary>
-	public partial class PopupMenu : Window
+	public PopupMenu()
 	{
-		public PopupMenu()
+		InitializeComponent();
+		if (Properties.Settings.Default.Language != "_default")
 		{
-			InitializeComponent();
-			if (Properties.Settings.Default.Language != "_default")
-			{
-				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Properties.Settings.Default.Language); // Change 
-			}
+			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Properties.Settings.Default.Language); // Change 
 		}
+	}
 
-		private void Window_Deactivated(object sender, EventArgs e)
+	private void Window_Deactivated(object sender, EventArgs e)
+	{
+		if (Definitions.IsMenuShown)
 		{
-			if (Definitions.IsMenuShown)
-			{
-				Hide(); // Close
-				Definitions.IsMenuShown = false; // Define
-			}
+			Hide(); // Close
+			Definitions.IsMenuShown = false; // Define
 		}
+	}
 
-		private void SettingsBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Settings settings = new(); // Settings window
-			settings.Show(); // Show the Settings window
-		}
+	private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Settings settings = new(); // Settings window
+		settings.Show(); // Show the Settings window
+	}
 
-		private void AboutBtn_Click(object sender, RoutedEventArgs e)
-		{
-			About about = new(); // About window
-			about.Show(); // Show the About window
-		}
+	private void AboutBtn_Click(object sender, RoutedEventArgs e)
+	{
+		About about = new(); // About window
+		about.Show(); // Show the About window
 	}
 }

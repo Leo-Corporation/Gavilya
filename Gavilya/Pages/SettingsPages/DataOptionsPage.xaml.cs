@@ -31,41 +31,40 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gavilya.Pages.SettingsPages
+namespace Gavilya.Pages.SettingsPages;
+
+/// <summary>
+/// Interaction logic for DataOptionsPage.xaml
+/// </summary>
+public partial class DataOptionsPage : Page
 {
-	/// <summary>
-	/// Interaction logic for DataOptionsPage.xaml
-	/// </summary>
-	public partial class DataOptionsPage : Page
+	public DataOptionsPage()
 	{
-		public DataOptionsPage()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
+	}
 
-		private void ResetSettingsBtn_Click(object sender, RoutedEventArgs e)
+	private void ResetSettingsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (MessageBox.Show(Properties.Resources.ResetSettingsMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
-			if (MessageBox.Show(Properties.Resources.ResetSettingsMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+			Definitions.Settings = new()
 			{
-				Definitions.Settings = new()
-				{
-					Language = "_default",
-					IsFirstRun = false, // Default is true but there is no need to show the "Welcome" prompt to the user again.
-					IsMaximized = false,
-					PageId = 0,
-					CurrentProfileIndex = 0,
-					MakeAutoSave = true,
-					AutoSaveDay = 1,
-					SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
-					DefaultGavilyaHomePage = GavilyaWindowPages.Home
-				};
+				Language = "_default",
+				IsFirstRun = false, // Default is true but there is no need to show the "Welcome" prompt to the user again.
+				IsMaximized = false,
+				PageId = 0,
+				CurrentProfileIndex = 0,
+				MakeAutoSave = true,
+				AutoSaveDay = 1,
+				SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
+				DefaultGavilyaHomePage = GavilyaWindowPages.Home
+			};
 
-				SettingsSaver.Save(); // Save changes
+			SettingsSaver.Save(); // Save changes
 
-				MessageBox.Show(Properties.Resources.GavilyaNeedsRestartChanges, Properties.Resources.ResetSettings, MessageBoxButton.OK, MessageBoxImage.Information);
-				Process.Start(Directory.GetCurrentDirectory() + @"\Gavilya.exe");
-				Environment.Exit(0); // Quit
-			}
+			MessageBox.Show(Properties.Resources.GavilyaNeedsRestartChanges, Properties.Resources.ResetSettings, MessageBoxButton.OK, MessageBoxImage.Information);
+			Process.Start(Directory.GetCurrentDirectory() + @"\Gavilya.exe");
+			Environment.Exit(0); // Quit
 		}
 	}
 }

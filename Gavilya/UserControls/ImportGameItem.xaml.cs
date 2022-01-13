@@ -29,82 +29,81 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for ImportGameItem.xaml
+/// </summary>
+public partial class ImportGameItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for ImportGameItem.xaml
-	/// </summary>
-	public partial class ImportGameItem : UserControl
+	public GameInfo GameInfo { get; set; }
+
+	public ImportGameItem(GameInfo gameInfo)
 	{
-		public GameInfo GameInfo { get; set; }
+		InitializeComponent();
+		GameInfo = gameInfo;
 
-		public ImportGameItem(GameInfo gameInfo)
+		InitUI(); // Load the UI
+	}
+
+	private void InitUI()
+	{
+		NameTxt.Text = GameInfo.Name; // Set text
+		LocationTxt.Text = (GameInfo.FileLocation.Length > 32) ? GameInfo.FileLocation[..32] + "..." : GameInfo.FileLocation; // Set text
+		LocationToolTip.Content = GameInfo.FileLocation; // Set content
+		IconLocationTxt.Text = (GameInfo.IconFileLocation.Length > 32) ? GameInfo.IconFileLocation[..32] + "..." : GameInfo.IconFileLocation; // Set text
+		IconLocationToolTip.Content = GameInfo.IconFileLocation; // Set content
+
+		GetRAWGImageBtn.Visibility = (GameInfo.RAWGID != -1) ? Visibility.Visible : Visibility.Collapsed; // Set
+		LocationWarningTxt.Visibility = File.Exists(GameInfo.FileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set
+
+		if (!string.IsNullOrEmpty(GameInfo.IconFileLocation))
 		{
-			InitializeComponent();
-			GameInfo = gameInfo;
-
-			InitUI(); // Load the UI
+			IconLocationWarningTxt.Visibility = File.Exists(GameInfo.IconFileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set 
 		}
+	}
 
-		private void InitUI()
+	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		OpenFileDialog openFileDialog = new(); // OpenFileDialog
+		openFileDialog.Filter = "EXE|*.exe"; // Filter
+
+		if (openFileDialog.ShowDialog() ?? true)
 		{
-			NameTxt.Text = GameInfo.Name; // Set text
-			LocationTxt.Text = (GameInfo.FileLocation.Length > 32) ? GameInfo.FileLocation[..32] + "..." : GameInfo.FileLocation; // Set text
-			LocationToolTip.Content = GameInfo.FileLocation; // Set content
-			IconLocationTxt.Text = (GameInfo.IconFileLocation.Length > 32) ? GameInfo.IconFileLocation[..32] + "..." : GameInfo.IconFileLocation; // Set text
-			IconLocationToolTip.Content = GameInfo.IconFileLocation; // Set content
-
-			GetRAWGImageBtn.Visibility = (GameInfo.RAWGID != -1) ? Visibility.Visible : Visibility.Collapsed; // Set
-			LocationWarningTxt.Visibility = File.Exists(GameInfo.FileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set
-
-			if (!string.IsNullOrEmpty(GameInfo.IconFileLocation))
-			{
-				IconLocationWarningTxt.Visibility = File.Exists(GameInfo.IconFileLocation) ? Visibility.Collapsed : Visibility.Visible; // Set 
-			}
+			GameInfo.FileLocation = openFileDialog.FileName; // Set value
+			InitUI();
 		}
+	}
 
-		private void BrowseBtn_Click(object sender, RoutedEventArgs e)
+	private void IconBrowseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		OpenFileDialog openFileDialog = new(); // OpenFileDialog
+		openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
+
+		if (openFileDialog.ShowDialog() ?? true)
 		{
-			OpenFileDialog openFileDialog = new(); // OpenFileDialog
-			openFileDialog.Filter = "EXE|*.exe"; // Filter
-
-			if (openFileDialog.ShowDialog() ?? true)
+			try
 			{
-				GameInfo.FileLocation = openFileDialog.FileName; // Set value
+				GameInfo.IconFileLocation = openFileDialog.FileName; // Set
 				InitUI();
 			}
-		}
-
-		private void IconBrowseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			OpenFileDialog openFileDialog = new(); // OpenFileDialog
-			openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
-
-			if (openFileDialog.ShowDialog() ?? true)
+			catch (Exception ex)
 			{
-				try
-				{
-					GameInfo.IconFileLocation = openFileDialog.FileName; // Set
-					InitUI();
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
-				}
+				MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
 			}
 		}
+	}
 
-		private async void GetRAWGImageBtn_Click(object sender, RoutedEventArgs e)
+	private async void GetRAWGImageBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (await NetworkConnection.IsAvailableAsync())
 		{
-			if (await NetworkConnection.IsAvailableAsync())
-			{
-				GameInfo.IconFileLocation = await Global.GetCoverImageAsync(GameInfo.RAWGID); // Set path
-				InitUI(); // Refresh the UI 
-			}
-			else
-			{
-				MessageBox.Show(Properties.Resources.FeatureNeedsInternet, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
-			}
+			GameInfo.IconFileLocation = await Global.GetCoverImageAsync(GameInfo.RAWGID); // Set path
+			InitUI(); // Refresh the UI 
+		}
+		else
+		{
+			MessageBox.Show(Properties.Resources.FeatureNeedsInternet, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
 		}
 	}
 }

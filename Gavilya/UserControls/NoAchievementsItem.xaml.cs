@@ -23,16 +23,15 @@ SOFTWARE.
 */
 using System.Windows.Controls;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for NoAchievementsItem.xaml
+/// </summary>
+public partial class NoAchievementsItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for NoAchievementsItem.xaml
-	/// </summary>
-	public partial class NoAchievementsItem : UserControl
+	public NoAchievementsItem()
 	{
-		public NoAchievementsItem()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

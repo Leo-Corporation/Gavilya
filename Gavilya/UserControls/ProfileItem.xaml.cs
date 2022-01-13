@@ -31,68 +31,67 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for ProfileItem.xaml
+/// </summary>
+public partial class ProfileItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for ProfileItem.xaml
-	/// </summary>
-	public partial class ProfileItem : UserControl
+	Profile CurrentProfile { get; init; }
+	public ProfileItem(Profile profile)
 	{
-		Profile CurrentProfile { get; init; }
-		public ProfileItem(Profile profile)
-		{
-			InitializeComponent();
-			CurrentProfile = profile; // Set current profile
+		InitializeComponent();
+		CurrentProfile = profile; // Set current profile
 
-			InitUI(); // Load UI
-		}
+		InitUI(); // Load UI
+	}
 
-		private void InitUI()
+	private void InitUI()
+	{
+		if (CurrentProfile.PictureFilePath != "_default")
 		{
-			if (CurrentProfile.PictureFilePath != "_default")
+			if (File.Exists(CurrentProfile.PictureFilePath))
 			{
-				if (File.Exists(CurrentProfile.PictureFilePath))
-				{
-					var bitmap = new BitmapImage();
-					var stream = File.OpenRead(CurrentProfile.PictureFilePath);
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(CurrentProfile.PictureFilePath);
 
-					bitmap.BeginInit();
-					bitmap.CacheOption = BitmapCacheOption.OnLoad;
-					bitmap.StreamSource = stream;
-					bitmap.EndInit();
-					stream.Close();
-					stream.Dispose();
-					bitmap.Freeze();
+				bitmap.BeginInit();
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
 
-					ProfilePicture.ImageSource = bitmap; // Set image
-				}
-			}
-
-			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
-		}
-
-		private void EditBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddEditProfileWindow(Enums.EditMode.Edit, CurrentProfile).Show(); // Edit
-		}
-
-		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
-		{
-			if (MessageBox.Show(Properties.Resources.DeleteProfileMsg, Properties.Resources.Profiles, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
-			{
-				Definitions.Profiles.Remove(CurrentProfile); // Remove
-				ProfileManager.SaveProfiles(); // Save changes
-				Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh 
+				ProfilePicture.ImageSource = bitmap; // Set image
 			}
 		}
 
-		private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-		{
-			Definitions.Settings.CurrentProfileIndex = Definitions.Profiles.IndexOf(CurrentProfile); // Set the new profile
-			SettingsSaver.Save(); // Save
+		ProfileNameTxt.Text = CurrentProfile.Name; // Show name
+	}
 
-			Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe"); // Start Gavilya
-			Environment.Exit(0); // Quit
+	private void EditBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddEditProfileWindow(Enums.EditMode.Edit, CurrentProfile).Show(); // Edit
+	}
+
+	private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (MessageBox.Show(Properties.Resources.DeleteProfileMsg, Properties.Resources.Profiles, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+		{
+			Definitions.Profiles.Remove(CurrentProfile); // Remove
+			ProfileManager.SaveProfiles(); // Save changes
+			Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh 
 		}
+	}
+
+	private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+	{
+		Definitions.Settings.CurrentProfileIndex = Definitions.Profiles.IndexOf(CurrentProfile); // Set the new profile
+		SettingsSaver.Save(); // Save
+
+		Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe"); // Start Gavilya
+		Environment.Exit(0); // Quit
 	}
 }

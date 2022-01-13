@@ -28,38 +28,37 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace Gavilya.Pages
+namespace Gavilya.Pages;
+
+/// <summary>
+/// Interaction logic for HomePage.xaml
+/// </summary>
+public partial class HomePage : Page
 {
-	/// <summary>
-	/// Interaction logic for HomePage.xaml
-	/// </summary>
-	public partial class HomePage : Page
+	public HomePage()
 	{
-		public HomePage()
-		{
-			InitializeComponent();
-			InitUI(); // Load the UI
-		}
+		InitializeComponent();
+		InitUI(); // Load the UI
+	}
 
-		internal void InitUI()
-		{
-			// Welcome message
-			HelloTxt.Text = $"{Properties.Resources.Hello} {Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}{Properties.Resources.ExclamationMark}"; // Set text
+	internal void InitUI()
+	{
+		// Welcome message
+		HelloTxt.Text = $"{Properties.Resources.Hello} {Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}{Properties.Resources.ExclamationMark}"; // Set text
 
-			// Load "Statistics" page
-			Statistics.Content = Definitions.Statistics; // Set content to Statistics page
+		// Load "Statistics" page
+		Statistics.Content = Definitions.Statistics; // Set content to Statistics page
 
-			// Place holder
-			RecentPlaceholder.Children.Add(new WelcomeRecentGames() { VerticalAlignment = VerticalAlignment.Center });
-			RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
-			RecentBar.Visibility = Visibility.Visible;
-		}
+		// Place holder
+		RecentPlaceholder.Children.Add(new WelcomeRecentGames() { VerticalAlignment = VerticalAlignment.Center });
+		RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
+		RecentBar.Visibility = Visibility.Visible;
+	}
 
-		private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
-		{
-			ScrollViewer scv = (ScrollViewer)sender;
-			scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 2);
-			e.Handled = true;
-		}
+	private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+	{
+		ScrollViewer scv = (ScrollViewer)sender;
+		scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 2);
+		e.Handled = true;
 	}
 }

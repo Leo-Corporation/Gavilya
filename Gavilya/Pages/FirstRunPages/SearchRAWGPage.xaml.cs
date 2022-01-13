@@ -25,28 +25,27 @@ using Gavilya.Windows;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gavilya.Pages.FirstRunPages
+namespace Gavilya.Pages.FirstRunPages;
+
+/// <summary>
+/// Logique d'interaction pour SearchRAWGPage.xaml
+/// </summary>
+public partial class SearchRAWGPage : Page
 {
-	/// <summary>
-	/// Logique d'interaction pour SearchRAWGPage.xaml
-	/// </summary>
-	public partial class SearchRAWGPage : Page
+	readonly FirstRun FirstRun;
+	public SearchRAWGPage(FirstRun firstRun)
 	{
-		readonly FirstRun FirstRun;
-		public SearchRAWGPage(FirstRun firstRun)
-		{
-			InitializeComponent();
-			FirstRun = firstRun; // Define
-		}
+		InitializeComponent();
+		FirstRun = firstRun; // Define
+	}
 
-		private void NextPage()
-		{
-			FirstRun.ChangePage(Enums.FirstRunPages.ImportGames); // Change page
-		}
+	private void NextPage()
+	{
+		FirstRun.ChangePage(Enums.FirstRunPages.ImportGames); // Change page
+	}
 
-		private void NextBtn_Click(object sender, RoutedEventArgs e)
-		{
-			NextPage(); // Change page
-		}
+	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		NextPage(); // Change page
 	}
 }

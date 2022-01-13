@@ -29,91 +29,90 @@ using System.IO;
 using System.Windows;
 using System.Windows.Media.Imaging;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Interaction logic for ProfilesPopupMneu.xaml
+/// </summary>
+public partial class ProfilesPopupMenu : Window
 {
-	/// <summary>
-	/// Interaction logic for ProfilesPopupMneu.xaml
-	/// </summary>
-	public partial class ProfilesPopupMenu : Window
+	Profile CurrentProfile { get; init; }
+	public ProfilesPopupMenu()
 	{
-		Profile CurrentProfile { get; init; }
-		public ProfilesPopupMenu()
-		{
-			InitializeComponent();
-			CurrentProfile = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]; // Current profile
+		InitializeComponent();
+		CurrentProfile = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]; // Current profile
 
-			InitUI(); // Load the UI
+		InitUI(); // Load the UI
+	}
+
+	internal void InitUI()
+	{
+		ProfileDisplayer.Children.Clear(); // Clear all profile items
+
+		if (CurrentProfile.PictureFilePath != "_default")
+		{
+			if (File.Exists(CurrentProfile.PictureFilePath))
+			{
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(CurrentProfile.PictureFilePath);
+
+				bitmap.BeginInit();
+				bitmap.DecodePixelWidth = 50;
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
+
+				ProfilePicture.ImageSource = bitmap; // Set image
+			}
+		}
+		else
+		{
+			ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png")); // Set image
 		}
 
-		internal void InitUI()
+		ProfileNameTxt.Text = CurrentProfile.Name; // Show name
+
+		// Load the profile displayer
+		if (Definitions.Profiles.Count > 1) // If there is more than one profile
 		{
-			ProfileDisplayer.Children.Clear(); // Clear all profile items
-
-			if (CurrentProfile.PictureFilePath != "_default")
+			for (int i = 0; i < Definitions.Profiles.Count; i++)
 			{
-				if (File.Exists(CurrentProfile.PictureFilePath))
+				if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
 				{
-					var bitmap = new BitmapImage();
-					var stream = File.OpenRead(CurrentProfile.PictureFilePath);
-
-					bitmap.BeginInit();
-					bitmap.DecodePixelWidth = 50;
-					bitmap.CacheOption = BitmapCacheOption.OnLoad;
-					bitmap.StreamSource = stream;
-					bitmap.EndInit();
-					stream.Close();
-					stream.Dispose();
-					bitmap.Freeze();
-
-					ProfilePicture.ImageSource = bitmap; // Set image
+					ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
 				}
 			}
-			else
-			{
-				ProfilePicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Assets/DefaultPP.png")); // Set image
-			}
-
-			ProfileNameTxt.Text = CurrentProfile.Name; // Show name
-
-			// Load the profile displayer
-			if (Definitions.Profiles.Count > 1) // If there is more than one profile
-			{
-				for (int i = 0; i < Definitions.Profiles.Count; i++)
-				{
-					if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
-					{
-						ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
-					}
-				}
-			}
-			else
-			{
-				ProfileDisplayer.Children.Add(new NoProfileItem()); // Add a message
-			}
 		}
-
-		private void Window_Deactivated(object sender, EventArgs e)
+		else
 		{
-			if (Definitions.IsProfileMenuVisible)
-			{
-				Hide(); // Close
-				Definitions.IsProfileMenuVisible = false; // Define
-			}
+			ProfileDisplayer.Children.Add(new NoProfileItem()); // Add a message
 		}
+	}
 
-		private void AddProfileBtn_Click(object sender, RoutedEventArgs e)
+	private void Window_Deactivated(object sender, EventArgs e)
+	{
+		if (Definitions.IsProfileMenuVisible)
 		{
-			new AddEditProfileWindow(EditMode.Add).Show(); // Add
+			Hide(); // Close
+			Definitions.IsProfileMenuVisible = false; // Define
 		}
+	}
 
-		private void EditProfileBtn_Click(object sender, RoutedEventArgs e)
-		{
-			new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
-		}
+	private void AddProfileBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddEditProfileWindow(EditMode.Add).Show(); // Add
+	}
 
-		private void StatsBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Definitions.MainWindow.PageContent.Content = Definitions.HomePage; // Navigate to home
-		}
+	private void EditProfileBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
+	}
+
+	private void StatsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Definitions.MainWindow.PageContent.Content = Definitions.HomePage; // Navigate to home
 	}
 }

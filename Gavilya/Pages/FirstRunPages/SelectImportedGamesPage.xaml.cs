@@ -28,53 +28,52 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gavilya.Pages.FirstRunPages
+namespace Gavilya.Pages.FirstRunPages;
+
+/// <summary>
+/// Interaction logic for SelectImportedGamesPage.xaml
+/// </summary>
+public partial class SelectImportedGamesPage : Page
 {
-	/// <summary>
-	/// Interaction logic for SelectImportedGamesPage.xaml
-	/// </summary>
-	public partial class SelectImportedGamesPage : Page
+	readonly FirstRun FirstRun;
+	public SelectImportedGamesPage(FirstRun firstRun)
 	{
-		readonly FirstRun FirstRun;
-		public SelectImportedGamesPage(FirstRun firstRun)
-		{
-			InitializeComponent();
-			FirstRun = firstRun; // Set
+		InitializeComponent();
+		FirstRun = firstRun; // Set
 
-			InitUI(); // Load the UI
-		}
+		InitUI(); // Load the UI
+	}
 
-		private void InitUI()
+	private void InitUI()
+	{
+		if (Definitions.Games.Count > 0) // If there are games
 		{
-			if (Definitions.Games.Count > 0) // If there are games
+			for (int i = 0; i < Definitions.Games.Count; i++)
 			{
-				for (int i = 0; i < Definitions.Games.Count; i++)
-				{
-					GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i])); // Add item
-				}
+				GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i])); // Add item
 			}
 		}
+	}
 
-		private void NextBtn_Click(object sender, RoutedEventArgs e)
+	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (GamePresenter.Children.Count > 0)
 		{
-			if (GamePresenter.Children.Count > 0)
+			List<GameInfo> gameInfos = new();
+
+			for (int i = 0; i < GamePresenter.Children.Count; i++)
 			{
-				List<GameInfo> gameInfos = new();
-
-				for (int i = 0; i < GamePresenter.Children.Count; i++)
+				var game = (ImportGameItem)GamePresenter.Children[i];
+				if (game.SelectCheckBox.IsChecked.Value)
 				{
-					var game = (ImportGameItem)GamePresenter.Children[i];
-					if (game.SelectCheckBox.IsChecked.Value)
-					{
-						gameInfos.Add(game.GameInfo); // Add 
-					}
+					gameInfos.Add(game.GameInfo); // Add 
 				}
-
-				Definitions.Games = gameInfos; // Set
-				GameSaver.Save(Definitions.Games); // Save changes
 			}
 
-			FirstRun.ChangePage(Enums.FirstRunPages.Finish); // Change page
+			Definitions.Games = gameInfos; // Set
+			GameSaver.Save(Definitions.Games); // Save changes
 		}
+
+		FirstRun.ChangePage(Enums.FirstRunPages.Finish); // Change page
 	}
 }
