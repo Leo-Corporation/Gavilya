@@ -21,28 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using System.Collections.Generic;
 
-namespace Gavilya.SDK.RAWG
+namespace Gavilya.SDK
 {
-	public class AchievementsResults
-	{
-		public int count { get; set; }
-		public string next { get; set; }
-		public string previous { get; set; }
-		public List<Achievement> results { get; set; }
-	}
-
-	public partial class Achievement
-	{
-		public int id { get; set; }
-
-		public string name { get; set; }
-
-		public string description { get; set; }
-
-		public string image { get; set; }
-
-		public string percent { get; set; }
-	}
+	/// <summary>
+	/// Represent a smplified version of an UWP app object.
+	/// </summary>
+	/// <param name="Name">The name of the UWP app.</param>
+	/// <param name="AppID">The App ID in the Package Family Name property.</param>
+	public record UwpApp(string Name, string AppID);
 }
