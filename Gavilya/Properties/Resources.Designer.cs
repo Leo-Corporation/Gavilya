@@ -295,6 +295,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Browse UWP apps.
+        /// </summary>
+        public static string BrowseUWPApps {
+            get {
+                return ResourceManager.GetString("BrowseUWPApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -1670,6 +1679,15 @@ namespace Gavilya.Properties {
         public static string SeeOnRAWG {
             get {
                 return ResourceManager.GetString("SeeOnRAWG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
             }
         }
         

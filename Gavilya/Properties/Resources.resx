@@ -781,4 +781,10 @@
   <data name="Convert" xml:space="preserve">
     <value>Convert</value>
   </data>
+  <data name="BrowseUWPApps" xml:space="preserve">
+    <value>Browse UWP apps</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
 </root>

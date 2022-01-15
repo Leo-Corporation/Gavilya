@@ -285,6 +285,11 @@ public partial class AddEditPage : Page
 		}
 	}
 
+	private void SelectUWPAppBtn_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
+
 	private async void LocationBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		OpenFileDialog openFileDialog = new(); // OpenFileDialog
