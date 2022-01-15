@@ -27,6 +27,7 @@ using Gavilya.UserControls;
 using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -88,6 +89,11 @@ public partial class AddEditPage2 : Page
 
 			AssociateTxt.Text = Properties.Resources.Associated; // Set
 			AssociateIconTxt.Text = "\uE98E"; // Set
+		}
+
+		if (!GameCard.GameInfo.IsSteam && !GameCard.GameInfo.IsUWP) // If is EXE game
+		{
+			SteamBorder.Visibility = Visibility.Visible; // Show the Steam converter only if the game is a Win32 app
 		}
 	}
 
@@ -169,5 +175,49 @@ public partial class AddEditPage2 : Page
 		{
 			EditGame.ChangePage(0); // Go back to last page
 		}
+	}
+
+	private void ConvertSteamBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (ConvertSteamPanel.Visibility == Visibility.Collapsed)
+		{
+			ConvertSteamBtn.Content = Properties.Resources.ConvertToSteam; // Set new text of the button
+			ConvertSteamPanel.Visibility = Visibility.Visible; // Show the panel
+		}
+		else
+		{
+			if (string.IsNullOrEmpty(SteamAppIdTextBox.Text))
+			{
+				MessageBox.Show(Properties.Resources.GameNeedsName, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Exclamation); // Show message
+				return;
+			}
+
+			// Ask a confirmation to the user
+			if (MessageBox.Show(Properties.Resources.ConvertToSteamMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNoCancel, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+			{
+				GameCard.GameInfo.IsSteam = true; // Convert to steam game
+				GameCard.GameInfo.FileLocation = $"steam://rungameid/{SteamAppIdTextBox.Text}";
+				GameCard.GameInfo.ProcessName = !string.IsNullOrEmpty(GameProcessTextBox.Text) ? GameProcessTextBox.Text : GameCard.GameInfo.ProcessName;
+
+				// Save other changes
+				GameCard.GameInfo.RAWGID = RAWGID; // Set
+				GameCard.GameInfo.Description = DescriptionTextBox.Text; // Set
+				GameCard.GameInfo.Platforms = Platforms; // Set
+				GameCard.GameInfo.Stores = Stores; // Set
+
+				Definitions.Games[Definitions.Games.IndexOf(old)] = GameCard.GameInfo; // Update
+				GameSaver.Save(Definitions.Games); // Save
+
+				Global.ReloadAllPages(); // Refresh UI
+
+				EditGame.Close();
+			}
+		}
+	}
+
+	private void SteamAppIdTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
 	}
 }
