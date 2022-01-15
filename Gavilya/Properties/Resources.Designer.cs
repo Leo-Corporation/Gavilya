@@ -358,6 +358,33 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Convert.
+        /// </summary>
+        public static string Convert {
+            get {
+                return ResourceManager.GetString("Convert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to a Steam game.
+        /// </summary>
+        public static string ConvertToSteam {
+            get {
+                return ResourceManager.GetString("ConvertToSteam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Converting a EXE game to a Steam game is irreversible, are you sure you wanna continue?.
+        /// </summary>
+        public static string ConvertToSteamMsg {
+            get {
+                return ResourceManager.GetString("ConvertToSteamMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search for a game cover.
         /// </summary>
         public static string CoverSearch {
