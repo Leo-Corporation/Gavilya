@@ -46,12 +46,14 @@ public partial class BrowseUWPApps : Window
 {
 	internal TextBox PackageFamilyaNameTextBox { get; init; }
 	internal TextBox AppIDTextBox { get; init; }
+	internal TextBox GameNameTextBox { get; init; }
 
-	public BrowseUWPApps(TextBox packageFamilyaNameTextBox, TextBox appIDTextBox)
+	public BrowseUWPApps(TextBox packageFamilyaNameTextBox, TextBox appIDTextBox, TextBox gameNameTextBox)
 	{
 		InitializeComponent();
 		PackageFamilyaNameTextBox = packageFamilyaNameTextBox; // Set property
 		AppIDTextBox = appIDTextBox; // Set property
+		GameNameTextBox = gameNameTextBox; // Set property
 
 		InitUI();
 	}
@@ -82,6 +84,7 @@ public partial class BrowseUWPApps : Window
 				{
 					PackageFamilyaNameTextBox.Text = uwpAppItem.UwpApp.AppID.Split("!")[0]; // Get and set PackageFamilyName text
 					AppIDTextBox.Text = uwpAppItem.UwpApp.AppID.Split("!")[1]; // Get and set AppID text
+					GameNameTextBox.Text = uwpAppItem.UwpApp.Name; // Set text
 
 					Close(); // Close the Window, go back to the parent window.
 				}

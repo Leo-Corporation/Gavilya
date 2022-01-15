@@ -287,7 +287,7 @@ public partial class AddEditPage : Page
 
 	private void SelectUWPAppBtn_Click(object sender, RoutedEventArgs e)
 	{
-		new BrowseUWPApps(PackageFamilyNameTextBox, AppIdTextBox).Show();
+		new BrowseUWPApps(PackageFamilyNameTextBox, AppIdTextBox, NameTextBox).Show();
 	}
 
 	private async void LocationBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
