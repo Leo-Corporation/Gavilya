@@ -27,107 +27,106 @@ using System.IO;
 using System.Windows;
 using System.Xml.Serialization;
 
-namespace Gavilya.Classes
-{
-	internal static class GameSaver
-	{
-		/// <summary>
-		/// Save a list of games.
-		/// </summary>
-		/// <param name="games">The games to save.</param>
-		internal static void Save(List<GameInfo> games)
-		{
-			string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
+namespace Gavilya.Classes;
 
+internal static class GameSaver
+{
+	/// <summary>
+	/// Save a list of games.
+	/// </summary>
+	/// <param name="games">The games to save.</param>
+	internal static void Save(List<GameInfo> games)
+	{
+		string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
+
+		List<GameInfo> gameInfos = games;
+		XmlSerializer xmlSerializer = new(gameInfos.GetType()); // XML Serializer
+
+		if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
+		{
+			Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
+		}
+
+		StreamWriter streamWriter = new(filePath); // The place where the file is gonna be writen
+		xmlSerializer.Serialize(streamWriter, games); // Create the file
+		streamWriter.Dispose();
+	}
+
+	/// <summary>
+	/// Exports the games.
+	/// </summary>
+	/// <param name="games">The games to export.</param>
+	/// <param name="path">The path where the games are going to be exported.</param>
+	internal static void Export(List<GameInfo> games, string path)
+	{
+		try
+		{
 			List<GameInfo> gameInfos = games;
 			XmlSerializer xmlSerializer = new(gameInfos.GetType()); // XML Serializer
-
-			if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
-			{
-				Directory.CreateDirectory(AppDataPath + @"\Gavilya"); // Create the directory
-			}
-
-			StreamWriter streamWriter = new(filePath); // The place where the file is gonna be writen
-			xmlSerializer.Serialize(streamWriter, games); // Create the file
+			StreamWriter streamWriter = new(path); // The place where the file is going to be exported
+			xmlSerializer.Serialize(streamWriter, gameInfos); // Create the file
 			streamWriter.Dispose();
+			MessageBox.Show(Properties.Resources.ExportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
 		}
-
-		/// <summary>
-		/// Exports the games.
-		/// </summary>
-		/// <param name="games">The games to export.</param>
-		/// <param name="path">The path where the games are going to be exported.</param>
-		internal static void Export(List<GameInfo> games, string path)
+		catch (Exception ex)
 		{
-			try
-			{
-				List<GameInfo> gameInfos = games;
-				XmlSerializer xmlSerializer = new(gameInfos.GetType()); // XML Serializer
-				StreamWriter streamWriter = new(path); // The place where the file is going to be exported
-				xmlSerializer.Serialize(streamWriter, gameInfos); // Create the file
-				streamWriter.Dispose();
-				MessageBox.Show(Properties.Resources.ExportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
-			}
+			MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
 		}
+	}
 
-		/// <summary>
-		/// Imports games.
-		/// </summary>
-		/// <param name="path">The path of the <c>.gav</c> file.</param>
-		/// <param name="isFirstRun">Indicates if it is the first run of the program.</param>
-		internal static void Import(string path, bool isFirstRun = false)
+	/// <summary>
+	/// Imports games.
+	/// </summary>
+	/// <param name="path">The path of the <c>.gav</c> file.</param>
+	/// <param name="isFirstRun">Indicates if it is the first run of the program.</param>
+	internal static void Import(string path, bool isFirstRun = false)
+	{
+		try
 		{
-			try
-			{
-				if (File.Exists(path))
-				{
-					XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
-					StreamReader streamReader = new(path); // The path of the file
-
-					Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each GameInfo
-					streamReader.Dispose();
-
-					Save(Definitions.Games); // Save the games
-
-					if (!isFirstRun)
-					{
-						Global.ReloadAllPages(); // Reload all the pages
-						Definitions.MainWindow.PageContent.Content = Definitions.GamesCardsPages; // Change page
-					}
-
-					MessageBox.Show(Properties.Resources.ImportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
-			}
-		}
-
-		/// <summary>
-		/// Load the saved games into a <see cref="List{GameInfo}"/>.
-		/// </summary>
-		internal static void Load()
-		{
-			string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
-			if (File.Exists(filePath)) // If there is a save file
+			if (File.Exists(path))
 			{
 				XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
-				StreamReader streamReader = new(filePath); // The place where the file is gonna be read
+				StreamReader streamReader = new(path); // The path of the file
 
-				Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
+				Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each GameInfo
 				streamReader.Dispose();
-			}
-			else
-			{
-				Save(Definitions.Games ?? (new()));
+
+				Save(Definitions.Games); // Save the games
+
+				if (!isFirstRun)
+				{
+					Global.ReloadAllPages(); // Reload all the pages
+					Definitions.MainWindow.PageContent.Content = Definitions.GamesCardsPages; // Change page
+				}
+
+				MessageBox.Show(Properties.Resources.ImportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
 			}
 		}
-
-		private static readonly string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+		catch (Exception ex)
+		{
+			MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+		}
 	}
+
+	/// <summary>
+	/// Load the saved games into a <see cref="List{GameInfo}"/>.
+	/// </summary>
+	internal static void Load()
+	{
+		string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
+		if (File.Exists(filePath)) // If there is a save file
+		{
+			XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
+			StreamReader streamReader = new(filePath); // The place where the file is gonna be read
+
+			Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
+			streamReader.Dispose();
+		}
+		else
+		{
+			Save(Definitions.Games ?? (new()));
+		}
+	}
+
+	private static readonly string AppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 }

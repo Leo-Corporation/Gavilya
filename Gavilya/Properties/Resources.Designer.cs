@@ -295,6 +295,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Browse UWP apps.
+        /// </summary>
+        public static string BrowseUWPApps {
+            get {
+                return ResourceManager.GetString("BrowseUWPApps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {
@@ -354,6 +363,33 @@ namespace Gavilya.Properties {
         public static string ContinueInstall {
             get {
                 return ResourceManager.GetString("ContinueInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert.
+        /// </summary>
+        public static string Convert {
+            get {
+                return ResourceManager.GetString("Convert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert to a Steam game.
+        /// </summary>
+        public static string ConvertToSteam {
+            get {
+                return ResourceManager.GetString("ConvertToSteam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Converting a EXE game to a Steam game is irreversible, are you sure you wanna continue?.
+        /// </summary>
+        public static string ConvertToSteamMsg {
+            get {
+                return ResourceManager.GetString("ConvertToSteamMsg", resourceCulture);
             }
         }
         
@@ -1643,6 +1679,15 @@ namespace Gavilya.Properties {
         public static string SeeOnRAWG {
             get {
                 return ResourceManager.GetString("SeeOnRAWG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select.
+        /// </summary>
+        public static string Select {
+            get {
+                return ResourceManager.GetString("Select", resourceCulture);
             }
         }
         

@@ -25,81 +25,80 @@ using Gavilya.Classes;
 using System.Diagnostics;
 using System.Windows;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Logique d'interaction pour GameProperties.xaml
+/// </summary>
+public partial class GameProperties : Window
 {
+	private GameInfo GameInfo { get; init; }
+
 	/// <summary>
-	/// Logique d'interaction pour GameProperties.xaml
+	/// The <see cref="GameProperties"/> window.
 	/// </summary>
-	public partial class GameProperties : Window
+	/// <param name="gameInfo">The informations of the game.</param>
+	public GameProperties(GameInfo gameInfo)
 	{
-		private GameInfo GameInfo { get; init; }
+		InitializeComponent();
+		GameInfo = gameInfo; // Pass the argument
+		LoadUI();
+	}
 
-		/// <summary>
-		/// The <see cref="GameProperties"/> window.
-		/// </summary>
-		/// <param name="gameInfo">The informations of the game.</param>
-		public GameProperties(GameInfo gameInfo)
+	private void LoadUI()
+	{
+		GameNameTxt.Text = GameInfo.Name; // Display the name
+		GameVersionTxt.Text = GameInfo.Version; // Display the version
+		GameLocationTxt.Text = (GameInfo.FileLocation.Length > 18) ? GameInfo.FileLocation[..18] + "..." : GameInfo.FileLocation; // Display the location
+		GameProcessName.Text = GameInfo.ProcessName; // Display the ProcessName
+		PathToolTip.Content = GameInfo.FileLocation; // Set the tooltip content
+		AlwaysCheckGameRunningChk.IsChecked = GameInfo.AlwaysCheckIfRunning; // Set IsChecked
+	}
+
+	private void Button_Click(object sender, RoutedEventArgs e)
+	{
+		WindowState = WindowState.Minimized; // Minimize the window
+	}
+
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
+
+	private void OKBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SaveChanges(); // Save the changes
+		Close(); // Close the window
+	}
+
+	private void SaveChanges()
+	{
+		if (GameInfo.ProcessName != GameProcessName.Text) // If different
 		{
-			InitializeComponent();
-			GameInfo = gameInfo; // Pass the argument
-			LoadUI();
+			Definitions.Games[Definitions.Games.IndexOf(GameInfo)].ProcessName = GameProcessName.Text; // Set the new value
 		}
 
-		private void LoadUI()
-		{
-			GameNameTxt.Text = GameInfo.Name; // Display the name
-			GameVersionTxt.Text = GameInfo.Version; // Display the version
-			GameLocationTxt.Text = (GameInfo.FileLocation.Length > 18) ? GameInfo.FileLocation[..18] + "..." : GameInfo.FileLocation; // Display the location
-			GameProcessName.Text = GameInfo.ProcessName; // Display the ProcessName
-			PathToolTip.Content = GameInfo.FileLocation; // Set the tooltip content
-			AlwaysCheckGameRunningChk.IsChecked = GameInfo.AlwaysCheckIfRunning; // Set IsChecked
-		}
+		Definitions.Games[Definitions.Games.IndexOf(GameInfo)].AlwaysCheckIfRunning = AlwaysCheckGameRunningChk.IsChecked.Value; // Set
+		GameSaver.Save(Definitions.Games); // Save the changes
+	}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			WindowState = WindowState.Minimized; // Minimize the window
-		}
+	private void CancelBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
 
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
+	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Process.Start(new ProcessStartInfo("explorer.exe", System.IO.Path.GetDirectoryName(GameInfo.FileLocation)));
+	}
 
-		private void OKBtn_Click(object sender, RoutedEventArgs e)
-		{
-			SaveChanges(); // Save the changes
-			Close(); // Close the window
-		}
+	private void ProcessHelpBtn_Click(object sender, RoutedEventArgs e)
+	{
+		MessageBox.Show(Properties.Resources.ProcessNameHelp, Properties.Resources.Help, MessageBoxButton.OK, MessageBoxImage.Question); // Show a message
+	}
 
-		private void SaveChanges()
-		{
-			if (GameInfo.ProcessName != GameProcessName.Text) // If different
-			{
-				Definitions.Games[Definitions.Games.IndexOf(GameInfo)].ProcessName = GameProcessName.Text; // Set the new value
-			}
+	private void AlwaysCheckGameRunningChk_Checked(object sender, RoutedEventArgs e)
+	{
 
-			Definitions.Games[Definitions.Games.IndexOf(GameInfo)].AlwaysCheckIfRunning = AlwaysCheckGameRunningChk.IsChecked.Value; // Set
-			GameSaver.Save(Definitions.Games); // Save the changes
-		}
-
-		private void CancelBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
-
-		private void BrowseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Process.Start(new ProcessStartInfo("explorer.exe", System.IO.Path.GetDirectoryName(GameInfo.FileLocation)));
-		}
-
-		private void ProcessHelpBtn_Click(object sender, RoutedEventArgs e)
-		{
-			MessageBox.Show(Properties.Resources.ProcessNameHelp, Properties.Resources.Help, MessageBoxButton.OK, MessageBoxImage.Question); // Show a message
-		}
-
-		private void AlwaysCheckGameRunningChk_Checked(object sender, RoutedEventArgs e)
-		{
-
-		}
 	}
 }

@@ -23,16 +23,15 @@ SOFTWARE.
 */
 using System.Windows.Controls;
 
-namespace Gavilya.Pages
+namespace Gavilya.Pages;
+
+/// <summary>
+/// Logique d'interaction pour SelectGame.xaml
+/// </summary>
+public partial class SelectGame : Page
 {
-	/// <summary>
-	/// Logique d'interaction pour SelectGame.xaml
-	/// </summary>
-	public partial class SelectGame : Page
+	public SelectGame()
 	{
-		public SelectGame()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

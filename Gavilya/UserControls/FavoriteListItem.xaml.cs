@@ -30,53 +30,52 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for FavoriteListItem.xaml
+/// </summary>
+public partial class FavoriteListItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for FavoriteListItem.xaml
-	/// </summary>
-	public partial class FavoriteListItem : UserControl
+	GameInfo GameInfo { get; init; }
+	public FavoriteListItem(GameInfo gameInfo)
 	{
-		GameInfo GameInfo { get; init; }
-		public FavoriteListItem(GameInfo gameInfo)
-		{
-			InitializeComponent();
-			GameInfo = gameInfo;
+		InitializeComponent();
+		GameInfo = gameInfo;
 
-			InitUI();
+		InitUI();
+	}
+
+	private void InitUI()
+	{
+		DateTime lastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+
+		GameNameTxt.Text = GameInfo.Name;
+		TimePlayedTxt.Text = $"{Math.Round(GameInfo.TotalTimePlayed / 3600d)}{Properties.Resources.HourShort} \u00B7 {lastTimePlayed.Day} {Global.NumberToMonth(lastTimePlayed.Month)} {lastTimePlayed.Year}";
+		DescTxt.Text = GameInfo.Description[0..120].Replace("\n\n", "\n") + "...";
+
+		if (!string.IsNullOrEmpty(GameInfo.IconFileLocation)) // If there is an image
+		{
+			var bitmap = new BitmapImage();
+			var stream = File.OpenRead(GameInfo.IconFileLocation);
+
+			bitmap.BeginInit();
+			bitmap.CacheOption = BitmapCacheOption.OnLoad;
+			bitmap.StreamSource = stream;
+			bitmap.DecodePixelWidth = 249;
+			bitmap.EndInit();
+			stream.Close();
+			stream.Dispose();
+			bitmap.Freeze();
+			Image.ImageSource = bitmap; // Put the icon of the game
 		}
-
-		private void InitUI()
+		else // If the image is the app icon
 		{
-			DateTime lastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
-
-			GameNameTxt.Text = GameInfo.Name;
-			TimePlayedTxt.Text = $"{Math.Round(GameInfo.TotalTimePlayed / 3600d)}{Properties.Resources.HourShort} \u00B7 {lastTimePlayed.Day} {Global.NumberToMonth(lastTimePlayed.Month)} {lastTimePlayed.Year}";
-			DescTxt.Text = GameInfo.Description[0..120].Replace("\n\n", "\n") + "...";
-
-			if (!string.IsNullOrEmpty(GameInfo.IconFileLocation)) // If there is an image
+			if (!GameInfo.IsUWP && !GameInfo.IsSteam) // If the game isn't UWP
 			{
-				var bitmap = new BitmapImage();
-				var stream = File.OpenRead(GameInfo.IconFileLocation);
+				Icon icon = Icon.ExtractAssociatedIcon(GameInfo.FileLocation); // Grab the icon of the game
+				Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
 
-				bitmap.BeginInit();
-				bitmap.CacheOption = BitmapCacheOption.OnLoad;
-				bitmap.StreamSource = stream;
-				bitmap.DecodePixelWidth = 249;
-				bitmap.EndInit();
-				stream.Close();
-				stream.Dispose();
-				bitmap.Freeze();
-				Image.ImageSource = bitmap; // Put the icon of the game
-			}
-			else // If the image is the app icon
-			{
-				if (!GameInfo.IsUWP && !GameInfo.IsSteam) // If the game isn't UWP
-				{
-					Icon icon = Icon.ExtractAssociatedIcon(GameInfo.FileLocation); // Grab the icon of the game
-					Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
-
-				}
 			}
 		}
 	}

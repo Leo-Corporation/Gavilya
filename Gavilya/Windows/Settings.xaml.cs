@@ -27,105 +27,104 @@ using Gavilya.Pages.SettingsPages;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Logique d'interaction pour Settings.xaml
+/// </summary>
+public partial class Settings : Window
 {
-	/// <summary>
-	/// Logique d'interaction pour Settings.xaml
-	/// </summary>
-	public partial class Settings : Window
+	readonly SaveOptionsPage saveOptionsPage = new(); // Create a page
+	readonly LanguagePage languagePage = new(); // Create a page
+	readonly StartupPage startupPage = new(); // Create a page
+	readonly DataOptionsPage dataOptionsPage = new(); // Create a page
+
+	public Settings()
 	{
-		readonly SaveOptionsPage saveOptionsPage = new(); // Create a page
-		readonly LanguagePage languagePage = new(); // Create a page
-		readonly StartupPage startupPage = new(); // Create a page
-		readonly DataOptionsPage dataOptionsPage = new(); // Create a page
+		InitializeComponent();
+		NavigateToPage(SettingsPages.SaveOptions); // Change the page
+	}
 
-		public Settings()
+	private void Button_Click(object sender, RoutedEventArgs e)
+	{
+		WindowState = WindowState.Minimized; // Minimize the window
+	}
+
+	private void Button_Click_1(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
+
+	private void HideAllPages()
+	{
+		saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
+		languagePage.Visibility = Visibility.Hidden; // Hide the page
+		startupPage.Visibility = Visibility.Hidden; // Hide the page
+		dataOptionsPage.Visibility = Visibility.Hidden; // Hide the page
+	}
+
+	private void NavigateToPage(SettingsPages settingsPage)
+	{
+		HideAllPages(); // Hide all the pages
+
+		switch (settingsPage)
 		{
-			InitializeComponent();
-			NavigateToPage(SettingsPages.SaveOptions); // Change the page
+			case SettingsPages.Languages:
+				UnCheckAll(); // Uncheck all buttons
+
+				LanguageOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+				languagePage.Visibility = Visibility.Visible; // Show the page
+				OptionsDisplayer.Navigate(languagePage); // Navigate
+				break;
+			case SettingsPages.SaveOptions:
+				UnCheckAll(); // Uncheck all buttons
+
+				SaveOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+				saveOptionsPage.Visibility = Visibility.Visible; // Show the page
+				OptionsDisplayer.Navigate(saveOptionsPage); // Navigate
+				break;
+			case SettingsPages.Startup:
+				UnCheckAll(); // Uncheck all buttons
+
+				StartupOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+				startupPage.Visibility = Visibility.Visible; // Show the page
+				OptionsDisplayer.Navigate(startupPage); // Navigate
+				break;
+			case SettingsPages.Data:
+				UnCheckAll(); // Uncheck all buttons
+
+				DataOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+				dataOptionsPage.Visibility = Visibility.Visible; // Show the page
+				OptionsDisplayer.Navigate(dataOptionsPage); // Navigate
+				break;
 		}
+	}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
-		{
-			WindowState = WindowState.Minimized; // Minimize the window
-		}
+	private void UnCheckAll()
+	{
+		SaveOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		LanguageOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		StartupOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		DataOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+	}
 
-		private void Button_Click_1(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
+	private void SaveOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(SettingsPages.SaveOptions); // Show the "SaveOptions" page
+	}
 
-		private void HideAllPages()
-		{
-			saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-			languagePage.Visibility = Visibility.Hidden; // Hide the page
-			startupPage.Visibility = Visibility.Hidden; // Hide the page
-			dataOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-		}
+	private void LanguageOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(SettingsPages.Languages); // Show the "Languages" page
+	}
 
-		private void NavigateToPage(SettingsPages settingsPage)
-		{
-			HideAllPages(); // Hide all the pages
+	private void StartupOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(SettingsPages.Startup); // Show the "Startup" page
+	}
 
-			switch (settingsPage)
-			{
-				case SettingsPages.Languages:
-					UnCheckAll(); // Uncheck all buttons
-
-					LanguageOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
-					languagePage.Visibility = Visibility.Visible; // Show the page
-					OptionsDisplayer.Navigate(languagePage); // Navigate
-					break;
-				case SettingsPages.SaveOptions:
-					UnCheckAll(); // Uncheck all buttons
-
-					SaveOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
-					saveOptionsPage.Visibility = Visibility.Visible; // Show the page
-					OptionsDisplayer.Navigate(saveOptionsPage); // Navigate
-					break;
-				case SettingsPages.Startup:
-					UnCheckAll(); // Uncheck all buttons
-
-					StartupOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
-					startupPage.Visibility = Visibility.Visible; // Show the page
-					OptionsDisplayer.Navigate(startupPage); // Navigate
-					break;
-				case SettingsPages.Data:
-					UnCheckAll(); // Uncheck all buttons
-
-					DataOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
-					dataOptionsPage.Visibility = Visibility.Visible; // Show the page
-					OptionsDisplayer.Navigate(dataOptionsPage); // Navigate
-					break;
-			}
-		}
-
-		private void UnCheckAll()
-		{
-			SaveOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
-			LanguageOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
-			StartupOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
-			DataOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
-		}
-
-		private void SaveOptions_Click(object sender, RoutedEventArgs e)
-		{
-			NavigateToPage(SettingsPages.SaveOptions); // Show the "SaveOptions" page
-		}
-
-		private void LanguageOptions_Click(object sender, RoutedEventArgs e)
-		{
-			NavigateToPage(SettingsPages.Languages); // Show the "Languages" page
-		}
-
-		private void StartupOptions_Click(object sender, RoutedEventArgs e)
-		{
-			NavigateToPage(SettingsPages.Startup); // Show the "Startup" page
-		}
-
-		private void DataOptions_Click(object sender, RoutedEventArgs e)
-		{
-			NavigateToPage(SettingsPages.Data); // Show the "Data" page
-		}
+	private void DataOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(SettingsPages.Data); // Show the "Data" page
 	}
 }

@@ -26,57 +26,56 @@ using Gavilya.Pages;
 using Gavilya.Windows;
 using System.Windows;
 
-namespace Gavilya
+namespace Gavilya;
+
+/// <summary>
+/// Interaction logic for App.xaml
+/// </summary>
+public partial class App : Application
 {
-	/// <summary>
-	/// Interaction logic for App.xaml
-	/// </summary>
-	public partial class App : Application
+	protected override void OnStartup(StartupEventArgs e)
 	{
-		protected override void OnStartup(StartupEventArgs e)
+		SettingsSaver.Load(); // Load the settings
+		Global.ChangeLanguage(); // Change the language
+
+		Definitions.GameInfoPage = new(); // Create the page
+		Definitions.GameInfoPage2 = new(); // Create the page
+
+		ProfileManager.LoadProfiles(); // Load profiles
+		GameSaver.Load(); // Load the .gav file in the Definitions class
+
+		Definitions.StatGameInfoControl = new(); // New control
+		Definitions.Statistics = new(); // New page
+
+		Definitions.HomePage = new();
+
+		RecentGamesPage recentGamesPage = new(); // RecentGamesPage
+		Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
+		Definitions.RecentGamesPage.LoadGames(); // Load the games
+
+		GamesListPage gamesListPage = new(); // GamesListPage
+		Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
+		Definitions.GamesListPage.LoadGames(); // Load the games
+
+		Definitions.LibraryPage = new();
+		Definitions.ProfilePage = new();
+
+		if (Definitions.Settings.DefaultGavilyaHomePage is null)
 		{
-			SettingsSaver.Load(); // Load the settings
-			Global.ChangeLanguage(); // Change the language
+			Definitions.Settings.DefaultGavilyaHomePage = Enums.GavilyaWindowPages.Home; // Set default value
+			SettingsSaver.Save(); // Save changes
+		}
 
-			Definitions.GameInfoPage = new(); // Create the page
-			Definitions.GameInfoPage2 = new(); // Create the page
+		if (Definitions.Settings.IsFirstRun) // If it is the app first run
+		{
+			new FirstRun().Show(); // Show the first run experience
+		}
+		else
+		{
+			int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
 
-			ProfileManager.LoadProfiles(); // Load profiles
-			GameSaver.Load(); // Load the .gav file in the Definitions class
-
-			Definitions.StatGameInfoControl = new(); // New control
-			Definitions.Statistics = new(); // New page
-
-			Definitions.HomePage = new();
-
-			RecentGamesPage recentGamesPage = new(); // RecentGamesPage
-			Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
-			Definitions.RecentGamesPage.LoadGames(); // Load the games
-
-			GamesListPage gamesListPage = new(); // GamesListPage
-			Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
-			Definitions.GamesListPage.LoadGames(); // Load the games
-
-			Definitions.LibraryPage = new();
-			Definitions.ProfilePage = new();
-
-			if (Definitions.Settings.DefaultGavilyaHomePage is null)
-			{
-				Definitions.Settings.DefaultGavilyaHomePage = Enums.GavilyaWindowPages.Home; // Set default value
-				SettingsSaver.Save(); // Save changes
-			}
-
-			if (Definitions.Settings.IsFirstRun) // If it is the app first run
-			{
-				new FirstRun().Show(); // Show the first run experience
-			}
-			else
-			{
-				int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
-
-				new MainWindow(pageID == null ? null : (Enums.GavilyaWindowPages)pageID).Show(); // Show the regular main window
-				Global.CreateJumpLists();
-			}
+			new MainWindow(pageID == null ? null : (Enums.GavilyaWindowPages)pageID).Show(); // Show the regular main window
+			Global.CreateJumpLists();
 		}
 	}
 }

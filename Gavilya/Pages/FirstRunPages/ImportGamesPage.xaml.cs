@@ -27,42 +27,41 @@ using Microsoft.Win32;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gavilya.Pages.FirstRunPages
+namespace Gavilya.Pages.FirstRunPages;
+
+/// <summary>
+/// Logique d'interaction pour ImportGamesPage.xaml
+/// </summary>
+public partial class ImportGamesPage : Page
 {
-	/// <summary>
-	/// Logique d'interaction pour ImportGamesPage.xaml
-	/// </summary>
-	public partial class ImportGamesPage : Page
+	readonly FirstRun FirstRun;
+	public ImportGamesPage(FirstRun firstRun)
 	{
-		readonly FirstRun FirstRun;
-		public ImportGamesPage(FirstRun firstRun)
+		InitializeComponent();
+		FirstRun = firstRun; // Define
+	}
+
+	private void NextPage()
+	{
+		FirstRun.ChangePage(Enums.FirstRunPages.Finish); // Change page
+	}
+
+	private void ImportBtn_Click(object sender, RoutedEventArgs e)
+	{
+		OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
+		openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
+		openFileDialog.Title = Properties.Resources.ImportGames; // Title
+
+		if (openFileDialog.ShowDialog() ?? true) // If the user opend a file
 		{
-			InitializeComponent();
-			FirstRun = firstRun; // Define
+			GameSaver.Import(openFileDialog.FileName, true); // Import
 		}
 
-		private void NextPage()
-		{
-			FirstRun.ChangePage(Enums.FirstRunPages.Finish); // Change page
-		}
+		FirstRun.ChangePage(Enums.FirstRunPages.SelectImportedGames); // Change page
+	}
 
-		private void ImportBtn_Click(object sender, RoutedEventArgs e)
-		{
-			OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
-			openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-			openFileDialog.Title = Properties.Resources.ImportGames; // Title
-
-			if (openFileDialog.ShowDialog() ?? true) // If the user opend a file
-			{
-				GameSaver.Import(openFileDialog.FileName, true); // Import
-			}
-
-			FirstRun.ChangePage(Enums.FirstRunPages.SelectImportedGames); // Change page
-		}
-
-		private void SkipBtn_Click(object sender, RoutedEventArgs e)
-		{
-			NextPage(); // Change page
-		}
+	private void SkipBtn_Click(object sender, RoutedEventArgs e)
+	{
+		NextPage(); // Change page
 	}
 }

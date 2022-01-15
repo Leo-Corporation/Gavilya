@@ -26,70 +26,69 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for StatInfoCard.xaml
+/// </summary>
+public partial class StatInfoCard : UserControl
 {
-	/// <summary>
-	/// Interaction logic for StatInfoCard.xaml
-	/// </summary>
-	public partial class StatInfoCard : UserControl
+	GameInfo GameInfo { get; init; }
+	internal bool isChecked = false;
+	public StatInfoCard(GameInfo gameInfo, int pos)
 	{
-		GameInfo GameInfo { get; init; }
-		internal bool isChecked = false;
-		public StatInfoCard(GameInfo gameInfo, int pos)
+		InitializeComponent();
+		GameInfo = gameInfo; // Set
+
+		InitUI(pos); // Load the UI
+	}
+
+	private void InitUI(int pos)
+	{
+		// Calc
+		double time = (double)GameInfo.TotalTimePlayed / 3600; // Convert seconds to hours
+
+		// Text
+		GamePosTxt.Text = $"#{pos}"; // Set text
+		GameNameTxt.Text = GameInfo.Name; // Set text
+		GameTimeTxt.Text = $"{string.Format("{0:0.#}", time)}{Properties.Resources.HourShort}"; // Set text
+
+		isChecked = pos == 1; // Set
+		if (isChecked)
 		{
-			InitializeComponent();
-			GameInfo = gameInfo; // Set
-
-			InitUI(pos); // Load the UI
-		}
-
-		private void InitUI(int pos)
-		{
-			// Calc
-			double time = (double)GameInfo.TotalTimePlayed / 3600; // Convert seconds to hours
-
-			// Text
-			GamePosTxt.Text = $"#{pos}"; // Set text
-			GameNameTxt.Text = GameInfo.Name; // Set text
-			GameTimeTxt.Text = $"{string.Format("{0:0.#}", time)}{Properties.Resources.HourShort}"; // Set text
-
-			isChecked = pos == 1; // Set
-			if (isChecked)
-			{
-				ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color 
-				Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
-			}
-		}
-
-		private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-		{
-			Definitions.Statistics.UnCheckAllStatItems(); // Clear
-			ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color
-			isChecked = true;
+			ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color 
 			Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
 		}
+	}
 
-		private void ItemBorder_MouseEnter(object sender, MouseEventArgs e)
-		{
-			ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Set background color
-		}
+	private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		Definitions.Statistics.UnCheckAllStatItems(); // Clear
+		ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color
+		isChecked = true;
+		Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
+	}
 
-		private void ItemBorder_MouseLeave(object sender, MouseEventArgs e)
-		{
-			if (!isChecked)
-			{
-				ItemBorder.Background = new SolidColorBrush { Color = Colors.Transparent }; // Set background color 
-			}
-			else
-			{
-				ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color
-			}
-		}
+	private void ItemBorder_MouseEnter(object sender, MouseEventArgs e)
+	{
+		ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Set background color
+	}
 
-		internal void UnCheck()
+	private void ItemBorder_MouseLeave(object sender, MouseEventArgs e)
+	{
+		if (!isChecked)
 		{
-			isChecked = false;
 			ItemBorder.Background = new SolidColorBrush { Color = Colors.Transparent }; // Set background color 
 		}
+		else
+		{
+			ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color
+		}
+	}
+
+	internal void UnCheck()
+	{
+		isChecked = false;
+		ItemBorder.Background = new SolidColorBrush { Color = Colors.Transparent }; // Set background color 
 	}
 }

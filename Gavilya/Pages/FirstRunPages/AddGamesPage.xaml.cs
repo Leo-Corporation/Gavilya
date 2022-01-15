@@ -25,28 +25,27 @@ using Gavilya.Windows;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace Gavilya.Pages.FirstRunPages
+namespace Gavilya.Pages.FirstRunPages;
+
+/// <summary>
+/// Logique d'interaction pour AddGamesPage.xaml
+/// </summary>
+public partial class AddGamesPage : Page
 {
-	/// <summary>
-	/// Logique d'interaction pour AddGamesPage.xaml
-	/// </summary>
-	public partial class AddGamesPage : Page
+	readonly FirstRun FirstRun;
+	public AddGamesPage(FirstRun firstRun)
 	{
-		readonly FirstRun FirstRun;
-		public AddGamesPage(FirstRun firstRun)
-		{
-			InitializeComponent();
-			FirstRun = firstRun; // Define
-		}
+		InitializeComponent();
+		FirstRun = firstRun; // Define
+	}
 
-		private void NextPage()
-		{
-			FirstRun.ChangePage(Enums.FirstRunPages.SearchRawgGames); // Change page
-		}
+	private void NextPage()
+	{
+		FirstRun.ChangePage(Enums.FirstRunPages.SearchRawgGames); // Change page
+	}
 
-		private void NextBtn_Click(object sender, RoutedEventArgs e)
-		{
-			NextPage(); // Change page
-		}
+	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	{
+		NextPage(); // Change page
 	}
 }

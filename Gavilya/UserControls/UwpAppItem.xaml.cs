@@ -22,48 +22,26 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums;
+using System.Windows.Controls;
 
+namespace Gavilya.UserControls;
 /// <summary>
-/// The pages f the <see cref="MainWindow"/>.
+/// Interaction logic for UwpAppItem.xaml
 /// </summary>
-public enum GavilyaPages
+public partial class UwpAppItem : UserControl
 {
-	/// <summary>
-	/// The <see cref="Pages.GamesCardsPages"/>.
-	/// </summary>
-	Cards,
+	internal SDK.UwpApp UwpApp { get; init; }
+	public UwpAppItem(SDK.UwpApp uwpApp)
+	{
+		InitializeComponent();
+		UwpApp = uwpApp; // Set property
 
-	/// <summary>
-	/// The <see cref="Pages.RecentGamesPage"/>.
-	/// </summary>
-	Recent,
+		InitUI(); // Load the UI
+	}
 
-	/// <summary>
-	/// The <see cref="Pages.GamesListPage"/>.
-	/// </summary>
-	List,
-
-	/// <summary>
-	/// The page is unknown.
-	/// </summary>
-	Underteminated
-}
-
-public enum GavilyaWindowPages
-{
-	/// <summary>
-	/// The <see cref="Pages.HomePage"/>.
-	/// </summary>
-	Home,
-
-	/// <summary>
-	/// The <see cref="Pages.LibraryPage"/>.
-	/// </summary>
-	Library,
-
-	/// <summary>
-	/// The <see cref="Pages.ProfilePage"/>.
-	/// </summary>
-	Profile
+	private void InitUI()
+	{
+		GameNameTxt.Text = UwpApp.Name; // Set text
+		GamePackageInfoTxt.Text = UwpApp.AppID.Replace("!", " • "); // Set text and format
+	}
 }

@@ -23,16 +23,15 @@ SOFTWARE.
 */
 using System.Windows.Controls;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for NoRatingsItem.xaml
+/// </summary>
+public partial class NoRatingsItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for NoRatingsItem.xaml
-	/// </summary>
-	public partial class NoRatingsItem : UserControl
+	public NoRatingsItem()
 	{
-		public NoRatingsItem()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

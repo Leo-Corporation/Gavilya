@@ -28,57 +28,56 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for StatGameInfoControl.xaml
+/// </summary>
+public partial class StatGameInfoControl : UserControl
 {
-	/// <summary>
-	/// Interaction logic for StatGameInfoControl.xaml
-	/// </summary>
-	public partial class StatGameInfoControl : UserControl
+	public StatGameInfoControl()
 	{
-		public StatGameInfoControl()
+		InitializeComponent();
+	}
+
+	internal void InitUI(GameInfo gameInfo)
+	{
+		// Text
+		GameNameTxt.Text = gameInfo.Name; // Set text
+		DescriptionTxt.Text = gameInfo.Description; // Set text
+
+		double timePlayed = (double)gameInfo.TotalTimePlayed / 3600;
+		TotalTimePlayedTxt.Text = $"{string.Format("{0:0.#}", timePlayed)}{Properties.Resources.HourShort}";
+
+		if (gameInfo.LastTimePlayed != 0) // If the game was played
 		{
-			InitializeComponent();
+			DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
+			LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+		}
+		else
+		{
+			LastTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
 		}
 
-		internal void InitUI(GameInfo gameInfo)
+		// Icon
+		if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If a custom image is used
 		{
-			// Text
-			GameNameTxt.Text = gameInfo.Name; // Set text
-			DescriptionTxt.Text = gameInfo.Description; // Set text
+			var bitmap = new BitmapImage();
+			var stream = File.OpenRead(gameInfo.IconFileLocation);
 
-			double timePlayed = (double)gameInfo.TotalTimePlayed / 3600;
-			TotalTimePlayedTxt.Text = $"{string.Format("{0:0.#}", timePlayed)}{Properties.Resources.HourShort}";
-
-			if (gameInfo.LastTimePlayed != 0) // If the game was played
-			{
-				DateTime LastTimePlayed = Global.UnixTimeToDateTime(gameInfo.LastTimePlayed); // Get the date time
-				LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
-			}
-			else
-			{
-				LastTimePlayedTxt.Text = Properties.Resources.Never; // Set the text
-			}
-
-			// Icon
-			if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If a custom image is used
-			{
-				var bitmap = new BitmapImage();
-				var stream = File.OpenRead(gameInfo.IconFileLocation);
-
-				bitmap.BeginInit();
-				bitmap.CacheOption = BitmapCacheOption.OnLoad;
-				bitmap.StreamSource = stream;
-				bitmap.EndInit();
-				stream.Close();
-				stream.Dispose();
-				bitmap.Freeze();
-				BackgroundImage.ImageSource = bitmap;
-			}
-			else
-			{
-				System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
-				BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
-			}
+			bitmap.BeginInit();
+			bitmap.CacheOption = BitmapCacheOption.OnLoad;
+			bitmap.StreamSource = stream;
+			bitmap.EndInit();
+			stream.Close();
+			stream.Dispose();
+			bitmap.Freeze();
+			BackgroundImage.ImageSource = bitmap;
+		}
+		else
+		{
+			System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
+			BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
 		}
 	}
 }

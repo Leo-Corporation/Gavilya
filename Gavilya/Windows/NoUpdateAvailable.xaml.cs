@@ -23,21 +23,20 @@ SOFTWARE.
 */
 using System.Windows;
 
-namespace Gavilya.Windows
-{
-	/// <summary>
-	/// Logique d'interaction pour NoUpdateAvailable.xaml
-	/// </summary>
-	public partial class NoUpdateAvailable : Window
-	{
-		public NoUpdateAvailable()
-		{
-			InitializeComponent();
-		}
+namespace Gavilya.Windows;
 
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
+/// <summary>
+/// Logique d'interaction pour NoUpdateAvailable.xaml
+/// </summary>
+public partial class NoUpdateAvailable : Window
+{
+	public NoUpdateAvailable()
+	{
+		InitializeComponent();
+	}
+
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
 	}
 }

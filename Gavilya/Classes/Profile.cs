@@ -22,26 +22,25 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Classes
+namespace Gavilya.Classes;
+
+/// <summary>
+/// A Gavilya profile.
+/// </summary>
+public class Profile
 {
 	/// <summary>
-	/// A Gavilya profile.
+	/// The display name of the profile.
 	/// </summary>
-	public class Profile
-	{
-		/// <summary>
-		/// The display name of the profile.
-		/// </summary>
-		public string Name { get; set; }
+	public string Name { get; set; }
 
-		/// <summary>
-		/// The path to Games.gav file.
-		/// </summary>
-		public string SaveFilePath { get; set; }
+	/// <summary>
+	/// The path to Games.gav file.
+	/// </summary>
+	public string SaveFilePath { get; set; }
 
-		/// <summary>
-		/// The path to the profile picture.
-		/// </summary>
-		public string PictureFilePath { get; set; }
-	}
+	/// <summary>
+	/// The path to the profile picture.
+	/// </summary>
+	public string PictureFilePath { get; set; }
 }

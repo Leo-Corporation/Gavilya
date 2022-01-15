@@ -762,4 +762,19 @@
   <data name="AllBadges" xml:space="preserve">
     <value>All Badges</value>
   </data>
+  <data name="ConvertToSteam" xml:space="preserve">
+    <value>Convert to a Steam game</value>
+  </data>
+  <data name="ConvertToSteamMsg" xml:space="preserve">
+    <value>Converting a EXE game to a Steam game is irreversible, are you sure you wanna continue?</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>Convert</value>
+  </data>
+  <data name="BrowseUWPApps" xml:space="preserve">
+    <value>Browse UWP apps</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
 </root>

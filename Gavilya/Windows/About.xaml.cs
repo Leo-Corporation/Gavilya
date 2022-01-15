@@ -25,44 +25,43 @@ using Gavilya.Classes;
 using LeoCorpLibrary;
 using System.Windows;
 
-namespace Gavilya.Windows
+namespace Gavilya.Windows;
+
+/// <summary>
+/// Logique d'interaction pour About.xaml
+/// </summary>
+public partial class About : Window
 {
-	/// <summary>
-	/// Logique d'interaction pour About.xaml
-	/// </summary>
-	public partial class About : Window
+	public About()
 	{
-		public About()
-		{
-			InitializeComponent();
-			VersionTxt.Text = !Definitions.IsBeta ? Definitions.Version : Definitions.BetaVersion; // Display the current version
-		}
+		InitializeComponent();
+		VersionTxt.Text = !Definitions.IsBeta ? Definitions.Version : Definitions.BetaVersion; // Display the current version
+	}
 
-		private void CloseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			Close(); // Close the window
-		}
+	private void CloseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Close(); // Close the window
+	}
 
-		private async void UpdateBtn_Click(object sender, RoutedEventArgs e)
+	private async void UpdateBtn_Click(object sender, RoutedEventArgs e)
+	{
+		string lastVersion = await Update.GetLastVersionAsync(Definitions.LastVersionLink); // Last version of Gavilya
+		if (Update.IsAvailable(Definitions.Version, lastVersion)) // If updates are available
 		{
-			string lastVersion = await Update.GetLastVersionAsync(Definitions.LastVersionLink); // Last version of Gavilya
-			if (Update.IsAvailable(Definitions.Version, lastVersion)) // If updates are available
-			{
-				new UpdateAvailable().Show(); // Show the updates available window
-			}
-			else
-			{
-				new NoUpdateAvailable().Show(); // Show the no updates available window
-			}
+			new UpdateAvailable().Show(); // Show the updates available window
 		}
+		else
+		{
+			new NoUpdateAvailable().Show(); // Show the no updates available window
+		}
+	}
 
-		private void LicenseBtn_Click(object sender, RoutedEventArgs e)
-		{
-			MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
-				"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
-				"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
-				"RestSharp - Apache License 2.0 - © RestSharp\n" +
-				"Gavilya - MIT License - © 2020-2021 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
-		}
+	private void LicenseBtn_Click(object sender, RoutedEventArgs e)
+	{
+		MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
+			"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
+			"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
+			"RestSharp - Apache License 2.0 - © RestSharp\n" +
+			"Gavilya - MIT License - © 2020-2021 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 }

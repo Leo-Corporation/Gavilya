@@ -22,15 +22,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Classes
+namespace Gavilya.Classes;
+
+public static partial class APIKeys
 {
-	public static partial class APIKeys
-	{
-		/// <summary>
-		/// The RAWG.io API key. DO NOT SET A VALUE DIRECTLY IN A FILE THAT MIGHT BE PUBLISHED TO GITHUB. 
-		/// <para>YOUR API KEY IS SECRET!</para>
-		/// <para>Define your API keys in a copy of <see cref="APIKeys"/> called <c>APIKeysLocal.cs</c></para>
-		/// </summary>
-		public static readonly string RAWGAPIKey = "";
-	}
+	/// <summary>
+	/// The RAWG.io API key. DO NOT SET A VALUE DIRECTLY IN A FILE THAT MIGHT BE PUBLISHED TO GITHUB. 
+	/// <para>YOUR API KEY IS SECRET!</para>
+	/// <para>Define your API keys in a copy of <see cref="APIKeys"/> called <c>APIKeysLocal.cs</c></para>
+	/// </summary>
+	public static readonly string RAWGAPIKey = "";
 }

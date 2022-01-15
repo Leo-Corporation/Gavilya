@@ -25,43 +25,42 @@ using System;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
-namespace Gavilya.UserControls
+namespace Gavilya.UserControls;
+
+/// <summary>
+/// Interaction logic for StoreItem.xaml
+/// </summary>
+public partial class StoreItem : UserControl
 {
-	/// <summary>
-	/// Interaction logic for StoreItem.xaml
-	/// </summary>
-	public partial class StoreItem : UserControl
+	SDK.RAWG.Store Store { get; init; }
+	public StoreItem(SDK.RAWG.Store store)
 	{
-		SDK.RAWG.Store Store { get; init; }
-		public StoreItem(SDK.RAWG.Store store)
+		InitializeComponent();
+		Store = store; // Set
+
+		InitUI(); // Load the UI
+	}
+
+	private void InitUI()
+	{
+		// Text
+		StoreNameTxt.Text = Store.name; // Set text
+
+		// Image
+		string imgPath = Store.name switch
 		{
-			InitializeComponent();
-			Store = store; // Set
+			"Steam" => "pack://application:,,,/Gavilya;component/Assets/Steam.png",
+			"PlayStation Store" => "pack://application:,,,/Gavilya;component/Assets/PlayStation.png",
+			"Xbox Store" => "pack://application:,,,/Gavilya;component/Assets/Xbox.png",
+			"App Store" => "pack://application:,,,/Gavilya;component/Assets/AppStore.png",
+			"Nintendo Store" => "pack://application:,,,/Gavilya;component/Assets/Nintendo.png",
+			"Epic Games" => "pack://application:,,,/Gavilya;component/Assets/EpicGames.png",
+			"GOG" => "pack://application:,,,/Gavilya;component/Assets/GOG.png",
+			"Google Play" => "pack://application:,,,/Gavilya;component/Assets/GooglePlay.png",
+			"itch.io" => "pack://application:,,,/Gavilya;component/Assets/Itchio.png",
+			_ => "pack://application:,,,/Gavilya;component/Assets/Steam.png"
+		};
 
-			InitUI(); // Load the UI
-		}
-
-		private void InitUI()
-		{
-			// Text
-			StoreNameTxt.Text = Store.name; // Set text
-
-			// Image
-			string imgPath = Store.name switch
-			{
-				"Steam" => "pack://application:,,,/Gavilya;component/Assets/Steam.png",
-				"PlayStation Store" => "pack://application:,,,/Gavilya;component/Assets/PlayStation.png",
-				"Xbox Store" => "pack://application:,,,/Gavilya;component/Assets/Xbox.png",
-				"App Store" => "pack://application:,,,/Gavilya;component/Assets/AppStore.png",
-				"Nintendo Store" => "pack://application:,,,/Gavilya;component/Assets/Nintendo.png",
-				"Epic Games" => "pack://application:,,,/Gavilya;component/Assets/EpicGames.png",
-				"GOG" => "pack://application:,,,/Gavilya;component/Assets/GOG.png",
-				"Google Play" => "pack://application:,,,/Gavilya;component/Assets/GooglePlay.png",
-				"itch.io" => "pack://application:,,,/Gavilya;component/Assets/Itchio.png",
-				_ => "pack://application:,,,/Gavilya;component/Assets/Steam.png"
-			};
-
-			IconImg.Source = new BitmapImage(new Uri(imgPath));
-		}
+		IconImg.Source = new BitmapImage(new Uri(imgPath));
 	}
 }

@@ -22,31 +22,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums
+namespace Gavilya.Enums;
+
+/// <summary>
+/// The settings pages.
+/// </summary>
+public enum SettingsPages
 {
 	/// <summary>
-	/// The settings pages.
+	/// The <see cref="Pages.SettingsPages.SaveOptionsPage"/> page.
 	/// </summary>
-	public enum SettingsPages
-	{
-		/// <summary>
-		/// The <see cref="Pages.SettingsPages.SaveOptionsPage"/> page.
-		/// </summary>
-		SaveOptions,
+	SaveOptions,
 
-		/// <summary>
-		/// The <see cref="Pages.SettingsPages.LanguagePage"/> page.
-		/// </summary>
-		Languages,
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.LanguagePage"/> page.
+	/// </summary>
+	Languages,
 
-		/// <summary>
-		/// The <see cref="Pages.SettingsPages.StartupPage"/> page.
-		/// </summary>
-		Startup,
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.StartupPage"/> page.
+	/// </summary>
+	Startup,
 
-		/// <summary>
-		/// The <see cref="Pages.SettingsPages.DataOptionsPage"/> page.
-		/// </summary>
-		Data
-	}
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.DataOptionsPage"/> page.
+	/// </summary>
+	Data
 }

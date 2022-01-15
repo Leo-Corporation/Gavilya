@@ -22,22 +22,20 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums
+namespace Gavilya.Enums;
+
+/// <summary>
+/// Edit modes.
+/// </summary>
+public enum EditMode
 {
+	/// <summary>
+	/// Add a new item.
+	/// </summary>
+	Add,
 
 	/// <summary>
-	/// Edit modes.
+	/// Edit an existing item.
 	/// </summary>
-	public enum EditMode
-	{
-		/// <summary>
-		/// Add a new item.
-		/// </summary>
-		Add,
-
-		/// <summary>
-		/// Edit an existing item.
-		/// </summary>
-		Edit
-	}
+	Edit
 }
