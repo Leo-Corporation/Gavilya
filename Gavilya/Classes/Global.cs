@@ -764,4 +764,45 @@ public static class Global
 
 		return favorites; // Return final count
 	}
+
+	/// <summary>
+	/// Returns asynchronously a list of <see cref="SDK.UwpApp"/> that are installed on the user's computer.
+	/// </summary>
+	/// <returns>A <see cref="List{T}"/> of <see cref="SDK.UwpApp"/>.</returns>
+	public static async Task<List<SDK.UwpApp>> GetUwpAppsAsync()
+	{
+		try
+		{
+			ProcessStartInfo processInfo = new();
+			processInfo.FileName = "powershell.exe";
+			processInfo.Arguments = $@"& Get-StartApps | ConvertTo-Json > $env:appdata\Gavilya\UwpApps.json";
+			processInfo.UseShellExecute = false;
+			processInfo.CreateNoWindow = true;
+
+			Process process = new();
+			process.StartInfo = processInfo;
+			process.Start();
+			await process.WaitForExitAsync();
+
+			string text = await File.ReadAllTextAsync($@"{Env.AppDataPath}\Gavilya\UWPapps.json"); // Deserialize
+
+			List<SDK.UwpApp> apps = JsonSerializer.Deserialize<List<SDK.UwpApp>>(text); // Get apps
+			List<SDK.UwpApp> uwpApps = new(); // UWP apps
+
+			// Sort apps to only have UWP apps (they have a "!" in the AppID property)
+			for (int i = 0; i < apps.Count; i++)
+			{
+				if (apps[i].AppID.Contains('!'))
+				{
+					uwpApps.Add(apps[i]);
+				}
+			}
+
+			return uwpApps; // Return
+		}
+		catch (Exception ex)
+		{
+			return new() { new(ex.Message, ex.StackTrace) };
+		}
+	}
 }
