@@ -30,7 +30,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBox x:Name="PackageFamilyNameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>
-                    <Button FontSize="13" x:Name="SelectUWPAppBtn" Click="SelectUWPAppBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,0,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.BrowseUWPApps}" FontWeight="Bold" Grid.Column="1">
+                    <Button FontSize="13" x:Name="SelectUWPAppBtn" Click="SelectUWPAppBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,0,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.BrowseUWPApps}" FontWeight="Bold" Grid.Column="1" VerticalAlignment="Center">
                         <Button.ToolTip>
                             <ToolTip Content="{x:Static lang:Resources.BrowseUWPApps}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
