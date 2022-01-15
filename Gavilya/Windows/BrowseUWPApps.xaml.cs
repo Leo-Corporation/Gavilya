@@ -87,6 +87,7 @@ public partial class BrowseUWPApps : Window
 					GameNameTextBox.Text = uwpAppItem.UwpApp.Name; // Set text
 
 					Close(); // Close the Window, go back to the parent window.
+					break;
 				}
 			}
 		}
