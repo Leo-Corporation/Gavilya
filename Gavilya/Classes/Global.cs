@@ -28,6 +28,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Text.Json;
@@ -787,18 +788,27 @@ public static class Global
 			string text = await File.ReadAllTextAsync($@"{Env.AppDataPath}\Gavilya\UWPapps.json"); // Deserialize
 
 			List<SDK.UwpApp> apps = JsonSerializer.Deserialize<List<SDK.UwpApp>>(text); // Get apps
-			List<SDK.UwpApp> uwpApps = new(); // UWP apps
+			List<SDK.UwpApp> sortedApps = new(); // Create final list
+			Dictionary<SDK.UwpApp, string> uwpApps = new(); // Create a dictionnary
 
 			// Sort apps to only have UWP apps (they have a "!" in the AppID property)
 			for (int i = 0; i < apps.Count; i++)
 			{
 				if (apps[i].AppID.Contains('!'))
 				{
-					uwpApps.Add(apps[i]);
+					uwpApps.Add(apps[i], apps[i].Name);
 				}
 			}
 
-			return uwpApps; // Return
+			// Sort alphabetically
+			var sorted = from pair in uwpApps orderby pair.Value ascending select pair; // Sort
+
+			foreach (KeyValuePair<SDK.UwpApp, string> pair1 in sorted)
+			{
+				sortedApps.Add(pair1.Key);
+			}
+
+			return sortedApps; // Return
 		}
 		catch (Exception ex)
 		{
