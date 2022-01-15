@@ -24,7 +24,7 @@
 
             <StackPanel Grid.Column="1" VerticalAlignment="Center">
                 <TextBlock x:Name="GameNameTxt" d:Text="Game name" FontSize="18" FontWeight="Bold"/>
-                <TextBlock x:Name="GamePackageInfoTxt" d:Text="PackageFamilyanName ⋅ AppID" FontSize="10"/>
+                <TextBlock x:Name="GamePackageInfoTxt" d:Text="PackageFamilyanName • AppID" FontSize="10"/>
             </StackPanel>
         </Grid>
 	</Border>
