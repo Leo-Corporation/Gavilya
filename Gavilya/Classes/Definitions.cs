@@ -78,7 +78,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "2.3.0.2201";
+	public static string Version => "2.3.1.2202";
 
 	/// <summary>
 	/// True if the menu is shown.
@@ -183,12 +183,12 @@ public static class Definitions
 	/// <summary>
 	/// The languages that are available in Gavilya.
 	/// </summary>
-	public static List<string> Languages => new() { "English (United States)", "Français (France)" };
+	public static List<string> Languages => new() { "English (United States)", "Français (France)", "中文（简体）" };
 
 	/// <summary>
 	/// The languages codes based on the languages that are available in Gavilya.
 	/// </summary>
-	public static List<string> LanguagesCodes => new() { "en-US", "fr-FR" };
+	public static List<string> LanguagesCodes => new() { "en-US", "fr-FR", "zh-CN" };
 
 	public static Settings Settings { get; set; }
 }

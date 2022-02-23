@@ -60,8 +60,9 @@ public partial class About : Window
 	{
 		MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
 			"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
-			"LeoCorpLibrary - MIT License - © 2020-2021 Léo Corporation\n" +
+			"System.Drawing.Common - MIT License - © .NET Foundation and Contributors\n" +
+			"LeoCorpLibrary - MIT License - © 2020-2022 Léo Corporation\n" +
 			"RestSharp - Apache License 2.0 - © RestSharp\n" +
-			"Gavilya - MIT License - © 2020-2021 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+			"Gavilya - MIT License - © 2020-2022 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 }

@@ -11,7 +11,7 @@
     <Authors>Léo Corporation</Authors>
     <Company>Léo Corporation</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>2.3.0.2201</Version>
+    <Version>2.3.1.2202</Version>
     <Description>Where all your games are gathered.</Description>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
@@ -60,8 +60,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LeoCorpLibrary" Version="4.2.0.2201" />
-    <PackageReference Include="RestSharp" Version="107.0.3" />
+    <PackageReference Include="LeoCorpLibrary" Version="4.3.0.2202" />
+    <PackageReference Include="RestSharp" Version="107.3.0" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
