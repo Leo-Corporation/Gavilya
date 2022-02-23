@@ -542,6 +542,10 @@ public static class Global
 			case "fr-FR": // French (FR)
 				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("fr-FR"); // Change
 				break;
+
+			case "zh-CN": // Chinese (CN)
+				Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN"); // Change
+				break;
 			default: // No language
 				break;
 		}
