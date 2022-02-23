@@ -60,7 +60,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LeoCorpLibrary" Version="4.2.0.2201" />
+    <PackageReference Include="LeoCorpLibrary" Version="4.3.0.2202" />
     <PackageReference Include="RestSharp" Version="107.3.0" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
