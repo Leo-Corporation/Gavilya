@@ -76,7 +76,10 @@ public partial class MainWindow : Window
 		Definitions.MainWindow = this; // Define the Main Window
 		Global.SortGames();
 
-		LoadGames();
+		new System.Threading.Thread(delegate ()
+		{
+			LoadGames();
+		}).Start();
 		WindowState = Definitions.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal; // Set the window state
 		RefreshMaximizeRestoreButton(); // Refresh
 

@@ -45,28 +45,30 @@ public partial class GamesCardsPages : Page
 
 	public void LoadGames()
 	{
-		Definitions.HomePage.FavoriteBar.Children.Clear();
-		GamePresenter.Children.Clear(); // Remove all the games
-
-		if (Definitions.Games.Count > 0)
+		Dispatcher.Invoke(new Action(() => 
 		{
-			GamePresenter.Visibility = Visibility.Visible; // Visible
-			WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
-			foreach (GameInfo gameInfo in Definitions.Games) // For each game
+			Definitions.HomePage.FavoriteBar.Children.Clear();
+			GamePresenter.Children.Clear(); // Remove all the games
+
+			if (Definitions.Games.Count > 0)
 			{
-				GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
+				GamePresenter.Visibility = Visibility.Visible; // Visible
+				WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
+				foreach (GameInfo gameInfo in Definitions.Games) // For each game
+				{
+					GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
+				}
 			}
-		}
-		else
-		{
-			WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
-			welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
-			welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
-			WelcomeHost.Children.Add(welcomeAddGames); // Add a welcome add games
-			WelcomeHost.Visibility = Visibility.Visible; // Visible
-			GamePresenter.Visibility = Visibility.Collapsed; // Hidden
-		}
-
+			else
+			{
+				WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
+				welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
+				welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+				WelcomeHost.Children.Add(welcomeAddGames); // Add a welcome add games
+				WelcomeHost.Visibility = Visibility.Visible; // Visible
+				GamePresenter.Visibility = Visibility.Collapsed; // Hidden
+			}
+		}));
 	}
 
 	private async void GamePresenter_Drop(object sender, DragEventArgs e)
