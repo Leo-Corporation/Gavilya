@@ -47,5 +47,10 @@ public enum SettingsPages
 	/// <summary>
 	/// The <see cref="Pages.SettingsPages.DataOptionsPage"/> page.
 	/// </summary>
-	Data
+	Data,
+
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.HomeOptionsPage"/> page.
+	/// </summary>
+	Home
 }
