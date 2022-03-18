@@ -53,12 +53,12 @@ public partial class GameCard : UserControl
 	/// </summary>
 	public DispatcherTimer Timer { get; set; } // Create a timer
 
-	public GameCard(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false)
+	public GameCard(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false, bool recommanded = false)
 	{
 		InitializeComponent();
 
 		GameInfo = gameInfo; // Define the info
-		InitializeUI(gameInfo, gavilyaPages, isFromEdit); // Load the UI
+		InitializeUI(gameInfo, gavilyaPages, isFromEdit, recommanded); // Load the UI
 
 		Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
 		Timer.Tick += Timer_Tick; // Set the event
@@ -69,7 +69,7 @@ public partial class GameCard : UserControl
 	/// </summary>
 	/// <param name="gameInfo"><see cref="Classes.GameInfo"/></param>
 	/// <param name="isFromEdit"><see cref="true"/> if is called from the <see cref="EditGame"/> window.</param>
-	internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false)
+	internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false, bool recommanded = false)
 	{
 		// Tooltip
 		PlayToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
@@ -112,6 +112,11 @@ public partial class GameCard : UserControl
 			FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
 			FavBtn.Content = ""; // Change icon
+		}
+
+		if (recommanded)
+		{
+			Definitions.HomePage.RecommandedBar.Children.Add(new FavoriteGameCard(gameInfo, this)); // Add the game to the recommanded bar
 		}
 
 		// Checkbox visibility

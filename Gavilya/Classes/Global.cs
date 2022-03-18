@@ -819,4 +819,33 @@ public static class Global
 			return new() { new(ex.Message, ex.StackTrace) };
 		}
 	}
+
+	public static List<GameInfo> GetRecommandedGames()
+	{
+		try
+		{
+			Dictionary<int, int> gameScores = new();
+
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				gameScores.Add(i, Definitions.Games[i].LastTimePlayed / Definitions.Games[i].TotalTimePlayed);
+			}
+
+			var sort = from pair in gameScores orderby pair.Value ascending select pair;
+			List<GameInfo> recommandedGames = new();
+
+			foreach (KeyValuePair<int, int> keyValuePair in sort)
+			{
+				recommandedGames.Add(Definitions.Games[keyValuePair.Key]);
+			}
+
+			return recommandedGames.Count > 5
+				? recommandedGames.GetRange(0, 5)
+				: recommandedGames;
+		}
+		catch (DivideByZeroException)
+		{
+			return new();
+		}
+	}
 }

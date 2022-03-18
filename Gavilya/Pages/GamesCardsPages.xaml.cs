@@ -50,13 +50,15 @@ public partial class GamesCardsPages : Page
 			Definitions.HomePage.FavoriteBar.Children.Clear();
 			GamePresenter.Children.Clear(); // Remove all the games
 
+			var recommandedGames = Global.GetRecommandedGames();
+
 			if (Definitions.Games.Count > 0)
 			{
 				GamePresenter.Visibility = Visibility.Visible; // Visible
 				WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
 				foreach (GameInfo gameInfo in Definitions.Games) // For each game
 				{
-					GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
+					GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards, false, recommandedGames.Contains(gameInfo))); // Add the game
 				}
 			}
 			else

@@ -386,7 +386,7 @@ public partial class MainWindow : Window
 					// Convert the element to a GameCard
 					if (uIElement is GameCard gameCard) // If the element is a GameCard
 					{
-						if ((gameCard.CheckBox.IsChecked ?? true) && (gameCard.CheckBox.Visibility == Visibility.Visible)) // If the element is checked
+						if (gameCard.CheckBox.IsChecked.Value && (gameCard.CheckBox.Visibility == Visibility.Visible)) // If the element is checked
 						{
 							games.Add(gameCard); // Add to the list the GameCard
 						}
