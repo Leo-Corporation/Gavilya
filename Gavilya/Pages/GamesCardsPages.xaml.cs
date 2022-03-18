@@ -52,6 +52,9 @@ public partial class GamesCardsPages : Page
 
 			var recommandedGames = Global.GetRecommandedGames();
 
+			Definitions.HomePage.RecommandedPlaceholder.Visibility = recommandedGames.Count <= 0 ? Visibility.Visible : Visibility.Collapsed;
+
+
 			if (Definitions.Games.Count > 0)
 			{
 				GamePresenter.Visibility = Visibility.Visible; // Visible
