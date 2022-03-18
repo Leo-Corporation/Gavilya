@@ -25,6 +25,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Windows;
 using LeoCorpLibrary;
+using LeoCorpLibrary.Enums;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
