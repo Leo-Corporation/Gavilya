@@ -1314,6 +1314,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We haven&apos;t found any games you might like..
+        /// </summary>
+        public static string NoRecommandedGames {
+            get {
+                return ResourceManager.GetString("NoRecommandedGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is currently no statistics to show..
         /// </summary>
         public static string NoStatistics {
@@ -1571,6 +1580,15 @@ namespace Gavilya.Properties {
         public static string RecentGames {
             get {
                 return ResourceManager.GetString("RecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You may like....
+        /// </summary>
+        public static string RecommandedGames {
+            get {
+                return ResourceManager.GetString("RecommandedGames", resourceCulture);
             }
         }
         

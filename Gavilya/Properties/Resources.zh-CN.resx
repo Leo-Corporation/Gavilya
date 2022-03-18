@@ -783,4 +783,10 @@
   <data name="InvalidGameNumber" xml:space="preserve">
     <value>The number of games must be higher than 0.</value>
   </data>
+  <data name="RecommandedGames" xml:space="preserve">
+    <value>You may like...</value>
+  </data>
+  <data name="NoRecommandedGames" xml:space="preserve">
+    <value>We haven't found any games you might like.</value>
+  </data>
 </root>
