@@ -780,4 +780,10 @@
   <data name="Select" xml:space="preserve">
     <value>Selectionner</value>
   </data>
+  <data name="MaxNumberOfRecentGames" xml:space="preserve">
+    <value>Nombre maximal de jeux affichés dans la section "Récemment joués".</value>
+  </data>
+  <data name="InvalidGameNumber" xml:space="preserve">
+    <value>Le nombre de jeux doit être supérieur à 0.</value>
+  </data>
 </root>

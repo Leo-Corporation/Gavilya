@@ -990,6 +990,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The number of games must be higher than 0..
+        /// </summary>
+        public static string InvalidGameNumber {
+            get {
+                return ResourceManager.GetString("InvalidGameNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
@@ -1103,6 +1112,15 @@ namespace Gavilya.Properties {
         public static string MakeBackup {
             get {
                 return ResourceManager.GetString("MakeBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max number of games shown in the &quot;Recent&quot; section..
+        /// </summary>
+        public static string MaxNumberOfRecentGames {
+            get {
+                return ResourceManager.GetString("MaxNumberOfRecentGames", resourceCulture);
             }
         }
         
