@@ -780,4 +780,43 @@
   <data name="Select" xml:space="preserve">
     <value>Selectionner</value>
   </data>
+  <data name="MaxNumberOfRecentGames" xml:space="preserve">
+    <value>Nombre maximal de jeux affichés dans la section "Récemment joués".</value>
+  </data>
+  <data name="InvalidGameNumber" xml:space="preserve">
+    <value>Le nombre de jeux doit être supérieur à 0.</value>
+  </data>
+  <data name="RecommandedGames" xml:space="preserve">
+    <value>Vous aimerez peut-être...</value>
+  </data>
+  <data name="NoRecommandedGames" xml:space="preserve">
+    <value>Nous n’avons trouvé aucun jeu que vous pourriez aimer.</value>
+  </data>
+  <data name="AdminMode" xml:space="preserve">
+    <value>Mode Admin</value>
+  </data>
+  <data name="LaunchGameAsAdmin" xml:space="preserve">
+    <value>Lancer le jeu en tant qu'administrateur.</value>
+  </data>
+  <data name="CannotLaunchAsAdminUWP" xml:space="preserve">
+    <value>Impossible de lancer des applications non Win32 en tant qu’administrateur.</value>
+  </data>
+  <data name="NotificationCenter" xml:space="preserve">
+    <value>Centre de notifications</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="NotificationLower" xml:space="preserve">
+    <value>notification.</value>
+  </data>
+  <data name="NotificationsLower" xml:space="preserve">
+    <value>notifications.</value>
+  </data>
+  <data name="YouHave" xml:space="preserve">
+    <value>Vous avez</value>
+  </data>
+  <data name="NoNotifications" xml:space="preserve">
+    <value>Vous n'avez aucune notifications.</value>
+  </data>
 </root>

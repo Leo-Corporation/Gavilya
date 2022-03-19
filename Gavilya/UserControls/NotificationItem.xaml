@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="Gavilya.UserControls.NotificationItem"
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:Gavilya.UserControls"
+             xmlns:lang="clr-namespace:Gavilya.Properties"
+			 FontFamily="../Fonts/#Montserrat" Foreground="#FFF"
+			 mc:Ignorable="d" Margin="10"
+			 Width="270">
+    <Border CornerRadius="10" Padding="10" Background="#FF141428">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Button FontWeight="Bold" Content="&#xF36A;" Cursor="Hand" x:Name="CloseBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White" Click="CloseBtn_Click" HorizontalAlignment="Right" Grid.Column="1" Margin="0,2,5,0" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+
+
+            <TextBlock x:Name="IconTxt" d:Text="&#xF117;" Margin="5 0" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Top" FontSize="32" Grid.Row="1"/>
+
+            <StackPanel Grid.Column="1" Grid.Row="1">
+                <TextBlock x:Name="TitleTxt" FontSize="18" FontWeight="Bold" d:Text="Title" TextWrapping="Wrap"/>
+                <TextBlock x:Name="DescTxt" d:Text="This is the description of the notification." TextWrapping="Wrap"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,10,0,5" Orientation="Horizontal" Grid.ColumnSpan="5" Grid.Row="2" HorizontalAlignment="Center">
+                <Button FontWeight="Bold" Content="{x:Static lang:Resources.OK}" Cursor="Hand" MinWidth="50" Margin="5,0,10,0" x:Name="OKBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White"/>
+                <Button FontWeight="Bold" Content="{x:Static lang:Resources.Cancel}" Cursor="Hand" MinWidth="50" Margin="5,0,10,0" x:Name="CancelBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

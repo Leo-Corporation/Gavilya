@@ -45,7 +45,7 @@ public partial class RecentGamesPage : Page
 
 	public void LoadGames()
 	{
-		Dispatcher.Invoke(new Action(() => 
+		Dispatcher.Invoke(new Action(() =>
 		{
 			GamePresenter.Children.Clear(); // Clear the games
 
@@ -72,7 +72,7 @@ public partial class RecentGamesPage : Page
 					{
 						GamePresenter.Children.Add(gameCard); // Add the game 
 					}
-					if (c < 4)
+					if (c < Definitions.Settings.MaxNumberRecentGamesShown.Value)
 					{
 						Definitions.HomePage.RecentBar.Children.Add(new FavoriteGameCard(pair1.Key, gameCard));
 					}

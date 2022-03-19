@@ -72,13 +72,19 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Bottom">
-                            <Button x:Name="FavBtn" Click="FavBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xEB01;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Height="40" Width="40">
+                            <Button x:Name="AdminBtn" Click="AdminBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF8C0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Height="40" Width="40">
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static lang:Resources.LaunchGameAsAdmin}" Background="#000014" Foreground="White"/>
+                                </Button.ToolTip>
+                            </Button>
+
+                            <Button x:Name="FavBtn" Click="FavBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF710;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Height="40" Width="40">
                                 <Button.ToolTip>
                                     <ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="White"/>
                                 </Button.ToolTip>
                             </Button>
 
-                            <Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="15" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Width="40" Height="40">
+                            <Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF6AA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Width="40" Height="40">
                                 <Button.ToolTip>
                                     <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="White"/>
                                 </Button.ToolTip>

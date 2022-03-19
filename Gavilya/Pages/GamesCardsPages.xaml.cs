@@ -45,10 +45,15 @@ public partial class GamesCardsPages : Page
 
 	public void LoadGames()
 	{
-		Dispatcher.Invoke(new Action(() => 
+		Dispatcher.Invoke(new Action(() =>
 		{
 			Definitions.HomePage.FavoriteBar.Children.Clear();
 			GamePresenter.Children.Clear(); // Remove all the games
+
+			var recommandedGames = Global.GetRecommandedGames();
+
+			Definitions.HomePage.RecommandedPlaceholder.Visibility = recommandedGames.Count <= 0 ? Visibility.Visible : Visibility.Collapsed;
+
 
 			if (Definitions.Games.Count > 0)
 			{
@@ -56,7 +61,7 @@ public partial class GamesCardsPages : Page
 				WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
 				foreach (GameInfo gameInfo in Definitions.Games) // For each game
 				{
-					GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
+					GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards, false, recommandedGames.Contains(gameInfo))); // Add the game
 				}
 			}
 			else

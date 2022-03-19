@@ -22,35 +22,43 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums;
+using Gavilya.Classes;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
 
+namespace Gavilya.Pages.SettingsPages;
 /// <summary>
-/// The settings pages.
+/// Interaction logic for HomeOptionsPage.xaml
 /// </summary>
-public enum SettingsPages
+public partial class HomeOptionsPage : Page
 {
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.SaveOptionsPage"/> page.
-	/// </summary>
-	SaveOptions,
+	public HomeOptionsPage()
+	{
+		InitializeComponent();
+		InitUI();
+	}
 
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.LanguagePage"/> page.
-	/// </summary>
-	Languages,
+	private void InitUI()
+	{
+		NumberRecentGamesTextBox.Text = Definitions.Settings.MaxNumberRecentGamesShown.Value.ToString();
+	}
 
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.StartupPage"/> page.
-	/// </summary>
-	Startup,
+	private void SaveButton_Click(object sender, RoutedEventArgs e)
+	{
+		if (Definitions.Settings.MaxNumberRecentGamesShown.Value > 0)
+		{
+			Definitions.Settings.MaxNumberRecentGamesShown = int.Parse(NumberRecentGamesTextBox.Text);
+		}
+		else
+		{
+			MessageBox.Show(Properties.Resources.InvalidGameNumber, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error);
+		}
+	}
 
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.DataOptionsPage"/> page.
-	/// </summary>
-	Data,
-
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.HomeOptionsPage"/> page.
-	/// </summary>
-	Home
+	private void NumberRecentGamesTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
+	}
 }

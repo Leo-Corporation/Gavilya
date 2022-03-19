@@ -24,7 +24,6 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.UserControls;
 using System;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace Gavilya.Pages;
@@ -46,7 +45,7 @@ public partial class GamesListPage : Page
 	/// </summary>
 	public void LoadGames()
 	{
-		Dispatcher.Invoke(new Action(() => 
+		Dispatcher.Invoke(new Action(() =>
 		{
 			GameList.Children.Clear();
 			foreach (GameInfo gameInfo in Definitions.Games) // For each game
@@ -55,6 +54,6 @@ public partial class GamesListPage : Page
 			}
 
 			GamePage.Navigate(new SelectGame()); // Default message
-		}));		
+		}));
 	}
 }

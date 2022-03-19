@@ -53,12 +53,12 @@ public partial class GameCard : UserControl
 	/// </summary>
 	public DispatcherTimer Timer { get; set; } // Create a timer
 
-	public GameCard(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false)
+	public GameCard(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false, bool recommanded = false)
 	{
 		InitializeComponent();
 
 		GameInfo = gameInfo; // Define the info
-		InitializeUI(gameInfo, gavilyaPages, isFromEdit); // Load the UI
+		InitializeUI(gameInfo, gavilyaPages, isFromEdit, recommanded); // Load the UI
 
 		Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
 		Timer.Tick += Timer_Tick; // Set the event
@@ -69,7 +69,7 @@ public partial class GameCard : UserControl
 	/// </summary>
 	/// <param name="gameInfo"><see cref="Classes.GameInfo"/></param>
 	/// <param name="isFromEdit"><see cref="true"/> if is called from the <see cref="EditGame"/> window.</param>
-	internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false)
+	internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false, bool recommanded = false)
 	{
 		// Tooltip
 		PlayToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
@@ -111,7 +111,12 @@ public partial class GameCard : UserControl
 		{
 			FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
-			FavBtn.Content = ""; // Change icon
+			FavBtn.Content = "\uF71B"; // Change icon
+		}
+
+		if (recommanded)
+		{
+			Definitions.HomePage.RecommandedBar.Children.Add(new FavoriteGameCard(gameInfo, this)); // Add the game to the recommanded bar
 		}
 
 		// Checkbox visibility
@@ -128,8 +133,9 @@ public partial class GameCard : UserControl
 		switch (gavilyaPages)
 		{
 			case GavilyaPages.Recent: // If the page is recent
-				FavBtn.Visibility = Visibility.Hidden; // Hide the favorite button
+				FavBtn.Visibility = Visibility.Collapsed; // Hide the favorite button
 				CheckBox.Visibility = Visibility.Hidden; // Hide the checkbox
+				MenuGroup.SetValue(Grid.ColumnProperty, 3);
 				break;
 			case GavilyaPages.Cards: // If the page is card
 				FavBtn.Visibility = Visibility.Visible; // Show the favorite button
@@ -218,14 +224,14 @@ public partial class GameCard : UserControl
 		{
 			GameInfo.IsFavorite = false; // The game is no longer a favorite
 			Definitions.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
-			FavBtn.Content = ""; // Change icon
+			FavBtn.Content = "\uF710"; // Change icon
 		}
 		else
 		{
 			GameInfo.IsFavorite = true; // Set the game to be a favorite
 			FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
-			FavBtn.Content = ""; // Change icon
+			FavBtn.Content = "\uF71B"; // Change icon
 		}
 		GameSaver.Save(Definitions.Games); // Save the changes
 	}
@@ -246,5 +252,35 @@ public partial class GameCard : UserControl
 		{
 
 		}
+	}
+
+	private void MenuBtn_Click(object sender, RoutedEventArgs e)
+	{
+		MenuBorder.Visibility = MenuBorder.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+	}
+
+	private void AdminBtn_Click(object sender, RoutedEventArgs e)
+	{
+		try
+		{
+			if (!GameInfo.IsUWP && !GameInfo.IsSteam)
+			{
+				if (File.Exists(location)) // If the file exist
+				{
+					Env.ExecuteAsAdmin(location); // Start the game
+					GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+
+					Timer.Start(); // Start the timer
+
+					Definitions.RecentGamesPage.LoadGames(); // Reload the games
+					GameSaver.Save(Definitions.Games); // Save the changes
+				}
+			}
+			else
+			{
+				MessageBox.Show(Properties.Resources.CannotLaunchAsAdminUWP, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
+		}
+		catch { } // If the user says "No" the Admin prompt
 	}
 }

@@ -38,6 +38,7 @@ public partial class Settings : Window
 	readonly LanguagePage languagePage = new(); // Create a page
 	readonly StartupPage startupPage = new(); // Create a page
 	readonly DataOptionsPage dataOptionsPage = new(); // Create a page
+	readonly HomeOptionsPage homeOptionsPage = new(); // Create a page
 
 	public Settings()
 	{
@@ -97,6 +98,14 @@ public partial class Settings : Window
 				dataOptionsPage.Visibility = Visibility.Visible; // Show the page
 				OptionsDisplayer.Navigate(dataOptionsPage); // Navigate
 				break;
+
+			case SettingsPages.Home:
+				UnCheckAll(); // Uncheck all buttons
+
+				HomeOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+				homeOptionsPage.Visibility = Visibility.Visible; // Show the page
+				OptionsDisplayer.Navigate(homeOptionsPage); // Navigate
+				break;
 		}
 	}
 
@@ -106,6 +115,7 @@ public partial class Settings : Window
 		LanguageOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		StartupOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		DataOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		HomeOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 	}
 
 	private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -126,5 +136,10 @@ public partial class Settings : Window
 	private void DataOptions_Click(object sender, RoutedEventArgs e)
 	{
 		NavigateToPage(SettingsPages.Data); // Show the "Data" page
+	}
+
+	private void HomeOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(SettingsPages.Home); // Show the "Home" page
 	}
 }

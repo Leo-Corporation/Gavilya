@@ -124,6 +124,8 @@ public partial class MainWindow : Window
 				notifyIcon.Visible = true; // Show
 				notifyIcon.ShowBalloonTip(5000, Properties.Resources.MainWindowTitle, Properties.Resources.UpdateAvMessageNotify, System.Windows.Forms.ToolTipIcon.Info);
 				notifyIcon.Visible = false; // Hide
+
+				NotificationPanel.Children.Add(new NotificationItem(Properties.Resources.UpdateAv, Properties.Resources.UpdateAvMessageNotify, "\uF191", Properties.Resources.Install, Properties.Resources.Cancel, () => { new UpdateAvailable().Show(); }, null));
 			}
 		}
 	}
@@ -386,7 +388,7 @@ public partial class MainWindow : Window
 					// Convert the element to a GameCard
 					if (uIElement is GameCard gameCard) // If the element is a GameCard
 					{
-						if ((gameCard.CheckBox.IsChecked ?? true) && (gameCard.CheckBox.Visibility == Visibility.Visible)) // If the element is checked
+						if (gameCard.CheckBox.IsChecked.Value && (gameCard.CheckBox.Visibility == Visibility.Visible)) // If the element is checked
 						{
 							games.Add(gameCard); // Add to the list the GameCard
 						}
@@ -567,5 +569,22 @@ public partial class MainWindow : Window
 		ProfileTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 
 		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
+	}
+
+	private void NotificationsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		NotificationCenter.Visibility = NotificationCenter.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+		NotificationStatusTxt.Text = $"{Properties.Resources.YouHave} {NotificationPanel.Children.Count - 1} {((NotificationPanel.Children.Count - 1 > 1) ? Properties.Resources.NotificationsLower : Properties.Resources.NotificationLower)}";
+
+		if (NotificationPanel.Children.Count - 1 < 1)
+		{
+			NotificationPlaceholder.Visibility = Visibility.Visible; // Show
+			BadgeTxt.Visibility = Visibility.Hidden; // Hide
+		}
+		else
+		{
+			NotificationPlaceholder.Visibility = Visibility.Collapsed; // Hide
+			BadgeTxt.Visibility = Visibility.Visible; // Show
+		}
 	}
 }

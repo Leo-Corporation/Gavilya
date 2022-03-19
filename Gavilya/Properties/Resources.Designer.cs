@@ -151,6 +151,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin mode.
+        /// </summary>
+        public static string AdminMode {
+            get {
+                return ResourceManager.GetString("AdminMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Advanced Gamer.
         /// </summary>
         public static string AdvancedGamer {
@@ -309,6 +318,15 @@ namespace Gavilya.Properties {
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to launch Non-Win32 applications as an administrator..
+        /// </summary>
+        public static string CannotLaunchAsAdminUWP {
+            get {
+                return ResourceManager.GetString("CannotLaunchAsAdminUWP", resourceCulture);
             }
         }
         
@@ -990,6 +1008,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The number of games must be higher than 0..
+        /// </summary>
+        public static string InvalidGameNumber {
+            get {
+                return ResourceManager.GetString("InvalidGameNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         public static string Language {
@@ -1013,6 +1040,15 @@ namespace Gavilya.Properties {
         public static string LastTimePlayed {
             get {
                 return ResourceManager.GetString("LastTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Launch game as administrator..
+        /// </summary>
+        public static string LaunchGameAsAdmin {
+            get {
+                return ResourceManager.GetString("LaunchGameAsAdmin", resourceCulture);
             }
         }
         
@@ -1103,6 +1139,15 @@ namespace Gavilya.Properties {
         public static string MakeBackup {
             get {
                 return ResourceManager.GetString("MakeBackup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max number of games shown in the &quot;Recent&quot; section..
+        /// </summary>
+        public static string MaxNumberOfRecentGames {
+            get {
+                return ResourceManager.GetString("MaxNumberOfRecentGames", resourceCulture);
             }
         }
         
@@ -1251,6 +1296,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have any notifications..
+        /// </summary>
+        public static string NoNotifications {
+            get {
+                return ResourceManager.GetString("NoNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Noob Player.
         /// </summary>
         public static string NoobPlayer {
@@ -1296,6 +1350,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We haven&apos;t found any games you might like..
+        /// </summary>
+        public static string NoRecommandedGames {
+            get {
+                return ResourceManager.GetString("NoRecommandedGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is currently no statistics to show..
         /// </summary>
         public static string NoStatistics {
@@ -1310,6 +1373,42 @@ namespace Gavilya.Properties {
         public static string NotAssociated {
             get {
                 return ResourceManager.GetString("NotAssociated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notification center.
+        /// </summary>
+        public static string NotificationCenter {
+            get {
+                return ResourceManager.GetString("NotificationCenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to notification..
+        /// </summary>
+        public static string NotificationLower {
+            get {
+                return ResourceManager.GetString("NotificationLower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        public static string Notifications {
+            get {
+                return ResourceManager.GetString("Notifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to notifications..
+        /// </summary>
+        public static string NotificationsLower {
+            get {
+                return ResourceManager.GetString("NotificationsLower", resourceCulture);
             }
         }
         
@@ -1553,6 +1652,15 @@ namespace Gavilya.Properties {
         public static string RecentGames {
             get {
                 return ResourceManager.GetString("RecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You may like....
+        /// </summary>
+        public static string RecommandedGames {
+            get {
+                return ResourceManager.GetString("RecommandedGames", resourceCulture);
             }
         }
         
@@ -2057,6 +2165,15 @@ namespace Gavilya.Properties {
         public static string XUDoesNotExist {
             get {
                 return ResourceManager.GetString("XUDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have.
+        /// </summary>
+        public static string YouHave {
+            get {
+                return ResourceManager.GetString("YouHave", resourceCulture);
             }
         }
         

@@ -77,6 +77,11 @@ public class Settings
 	/// The default startup home page of Gavilya.
 	/// </summary>
 	public GavilyaWindowPages? DefaultGavilyaHomePage { get; set; }
+
+	/// <summary>
+	/// The maximum amount of recent games shown in the home page.
+	/// </summary>
+	public int? MaxNumberRecentGamesShown { get; set; }
 }
 
 public static class SettingsSaver
@@ -94,6 +99,11 @@ public static class SettingsSaver
 
 			Definitions.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
 
+			if (!Definitions.Settings.MaxNumberRecentGamesShown.HasValue)
+			{
+				Definitions.Settings.MaxNumberRecentGamesShown = 4;
+			}
+
 			streamReader.Dispose();
 		}
 		else
@@ -108,7 +118,8 @@ public static class SettingsSaver
 				MakeAutoSave = true,
 				AutoSaveDay = 1,
 				SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
-				DefaultGavilyaHomePage = GavilyaWindowPages.Home
+				DefaultGavilyaHomePage = GavilyaWindowPages.Home,
+				MaxNumberRecentGamesShown = 4
 			};
 			Save();
 		}
