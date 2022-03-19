@@ -261,6 +261,22 @@ public partial class GameCard : UserControl
 
 	private void AdminBtn_Click(object sender, RoutedEventArgs e)
 	{
+		try
+		{
+			if (!GameInfo.IsUWP && !GameInfo.IsSteam)
+			{
+				if (File.Exists(location)) // If the file exist
+				{
+					Env.ExecuteAsAdmin(location); // Start the game
+					GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 
+					Timer.Start(); // Start the timer
+
+					Definitions.RecentGamesPage.LoadGames(); // Reload the games
+					GameSaver.Save(Definitions.Games); // Save the changes
+				}
+			}
+		}
+		catch {	} // If the user says "No" the Admin prompt
 	}
 }
