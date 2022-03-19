@@ -58,6 +58,7 @@ public partial class NotificationItem : UserControl
 			CancelBtn.Click += (o, e) => CloseBtn_Click(o, e);
 		}
 
+		Definitions.MainWindow.BadgeTxt.Visibility = Visibility.Visible; // Show
 		InitUI(); // Load the UI
 	}
 
@@ -76,5 +77,19 @@ public partial class NotificationItem : UserControl
 	private void CloseBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Definitions.MainWindow.NotificationPanel.Children.Remove(this); // Remove the notification
+		Definitions.MainWindow.NotificationStatusTxt.Text = 
+			$"{Properties.Resources.YouHave} {Definitions.MainWindow.NotificationPanel.Children.Count - 1} " +
+			$"{((Definitions.MainWindow.NotificationPanel.Children.Count - 1 > 1) ? Properties.Resources.NotificationsLower : Properties.Resources.NotificationLower)}";
+		// Refresh
+
+		if (Definitions.MainWindow.NotificationPanel.Children.Count - 1 < 1)
+		{
+			Definitions.MainWindow.NotificationPlaceholder.Visibility = Visibility.Visible; // Show
+			Definitions.MainWindow.BadgeTxt.Visibility = Visibility.Hidden; // Hide
+		}
+		else
+		{
+			Definitions.MainWindow.NotificationPlaceholder.Visibility = Visibility.Collapsed; // Hide
+		}
 	}
 }

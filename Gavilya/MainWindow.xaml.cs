@@ -574,6 +574,17 @@ public partial class MainWindow : Window
 	private void NotificationsBtn_Click(object sender, RoutedEventArgs e)
 	{
 		NotificationCenter.Visibility = NotificationCenter.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible; // Set visibility
-		NotificationStatusTxt.Text = $"{Properties.Resources.YouHave} {NotificationPanel.Children.Count} {((NotificationPanel.Children.Count > 1) ? Properties.Resources.NotificationsLower : Properties.Resources.NotificationLower)}";
+		NotificationStatusTxt.Text = $"{Properties.Resources.YouHave} {NotificationPanel.Children.Count - 1} {((NotificationPanel.Children.Count - 1 > 1) ? Properties.Resources.NotificationsLower : Properties.Resources.NotificationLower)}";
+
+		if (NotificationPanel.Children.Count - 1 < 1)
+		{
+			NotificationPlaceholder.Visibility = Visibility.Visible; // Show
+			BadgeTxt.Visibility = Visibility.Hidden; // Hide
+		}
+		else
+		{
+			NotificationPlaceholder.Visibility = Visibility.Collapsed; // Hide
+			BadgeTxt.Visibility = Visibility.Visible; // Show
+		}
 	}
 }

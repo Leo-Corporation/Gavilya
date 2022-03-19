@@ -161,9 +161,14 @@
 						</Button>
 					</StackPanel>
 
-					<Button Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xE903;" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#000014" Foreground="White"/>
+					<Button Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="3" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                        <Grid>
+                            <TextBlock Text="&#xE903;"/>
+                            <TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top"/>
+                        </Grid>
+                        
+                        <Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White"/>
 						</Button.ToolTip>
 					</Button>
 
@@ -228,7 +233,7 @@
 					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
 
 					<!-- Notification center -->
-					<Grid Width="300" Grid.Column="1" x:Name="NotificationCenter">
+					<Grid Width="300" Grid.Column="1" x:Name="NotificationCenter" Visibility="Collapsed">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="Auto"/>
 							<RowDefinition/>
@@ -241,9 +246,9 @@
 
 						<ScrollViewer Grid.Row="1" Template="{DynamicResource ScrollViewerTemplate1}">
 							<StackPanel x:Name="NotificationPanel">
-                                <StackPanel x:Name="NotificationPlaceholder">
-                                    <TextBlock/>
-                                    <TextBlock/>
+                                <StackPanel Margin="0,70,0,0" x:Name="NotificationPlaceholder" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                                    <TextBlock Text="&#xF11D;" Foreground="White" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="52" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="{x:Static lang:Resources.NoNotifications}" Foreground="White" HorizontalAlignment="Center"/>
                                 </StackPanel>
 							</StackPanel>
 						</ScrollViewer>
