@@ -799,4 +799,10 @@
   <data name="NoRecommandedGames" xml:space="preserve">
     <value>We haven't found any games you might like.</value>
   </data>
+  <data name="AdminMode" xml:space="preserve">
+    <value>Admin mode</value>
+  </data>
+  <data name="LaunchGameAsAdmin" xml:space="preserve">
+    <value>Launch game as administrator.</value>
+  </data>
 </root>

@@ -792,4 +792,10 @@
   <data name="NoRecommandedGames" xml:space="preserve">
     <value>Nous n’avons trouvé aucun jeu que vous pourriez aimer.</value>
   </data>
+  <data name="AdminMode" xml:space="preserve">
+    <value>Mode Admin</value>
+  </data>
+  <data name="LaunchGameAsAdmin" xml:space="preserve">
+    <value>Lancer le jeu en tant qu'administrateur.</value>
+  </data>
 </root>

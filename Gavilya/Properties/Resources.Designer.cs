@@ -151,6 +151,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Admin mode.
+        /// </summary>
+        public static string AdminMode {
+            get {
+                return ResourceManager.GetString("AdminMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Advanced Gamer.
         /// </summary>
         public static string AdvancedGamer {
@@ -1022,6 +1031,15 @@ namespace Gavilya.Properties {
         public static string LastTimePlayed {
             get {
                 return ResourceManager.GetString("LastTimePlayed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Launch game as administrator..
+        /// </summary>
+        public static string LaunchGameAsAdmin {
+            get {
+                return ResourceManager.GetString("LaunchGameAsAdmin", resourceCulture);
             }
         }
         
