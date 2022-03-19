@@ -241,7 +241,10 @@
 
 						<ScrollViewer Grid.Row="1" Template="{DynamicResource ScrollViewerTemplate1}">
 							<StackPanel x:Name="NotificationPanel">
-								
+                                <StackPanel x:Name="NotificationPlaceholder">
+                                    <TextBlock/>
+                                    <TextBlock/>
+                                </StackPanel>
 							</StackPanel>
 						</ScrollViewer>
 					</Grid>

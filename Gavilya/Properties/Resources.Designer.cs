@@ -1296,6 +1296,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You don&apos;t have any notifications..
+        /// </summary>
+        public static string NoNotifications {
+            get {
+                return ResourceManager.GetString("NoNotifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Noob Player.
         /// </summary>
         public static string NoobPlayer {

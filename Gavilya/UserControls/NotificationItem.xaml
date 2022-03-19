@@ -24,10 +24,10 @@
             <Button FontWeight="Bold" Content="&#xF36A;" Cursor="Hand" x:Name="CloseBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White" Click="CloseBtn_Click" HorizontalAlignment="Right" Grid.Column="1" Margin="0,2,5,0" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 
 
-            <TextBlock x:Name="IconTxt" d:Text="&#xF117;" Margin="5 0" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="32" Grid.Row="1"/>
+            <TextBlock x:Name="IconTxt" d:Text="&#xF117;" Margin="5 0" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Top" FontSize="32" Grid.Row="1"/>
 
             <StackPanel Grid.Column="1" Grid.Row="1">
-                <TextBlock x:Name="TitleTxt" FontSize="18" FontWeight="Bold" d:Text="Title"/>
+                <TextBlock x:Name="TitleTxt" FontSize="18" FontWeight="Bold" d:Text="Title" TextWrapping="Wrap"/>
                 <TextBlock x:Name="DescTxt" d:Text="This is the description of the notification." TextWrapping="Wrap"/>
             </StackPanel>
 

@@ -124,6 +124,8 @@ public partial class MainWindow : Window
 				notifyIcon.Visible = true; // Show
 				notifyIcon.ShowBalloonTip(5000, Properties.Resources.MainWindowTitle, Properties.Resources.UpdateAvMessageNotify, System.Windows.Forms.ToolTipIcon.Info);
 				notifyIcon.Visible = false; // Hide
+
+				NotificationPanel.Children.Add(new NotificationItem(Properties.Resources.UpdateAv, Properties.Resources.UpdateAvMessageNotify, "\uF191", Properties.Resources.Install, Properties.Resources.Cancel, () => { new UpdateAvailable().Show(); }, null));
 			}
 		}
 	}
@@ -572,5 +574,6 @@ public partial class MainWindow : Window
 	private void NotificationsBtn_Click(object sender, RoutedEventArgs e)
 	{
 		NotificationCenter.Visibility = NotificationCenter.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+		NotificationStatusTxt.Text = $"{Properties.Resources.YouHave} {NotificationPanel.Children.Count} {((NotificationPanel.Children.Count > 1) ? Properties.Resources.NotificationsLower : Properties.Resources.NotificationLower)}";
 	}
 }

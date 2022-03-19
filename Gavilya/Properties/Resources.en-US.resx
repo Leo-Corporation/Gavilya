@@ -813,4 +813,7 @@
   <data name="YouHave" xml:space="preserve">
     <value>You have</value>
   </data>
+  <data name="NoNotifications" xml:space="preserve">
+    <value>You don't have any notifications.</value>
+  </data>
 </root>

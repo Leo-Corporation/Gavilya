@@ -44,10 +44,19 @@ public partial class NotificationItem : UserControl
 		Title = title; // Set property
 		Message = msg; // Set property
 		Icon = icon; // Set property
+		OkText = okText; // Set property
+		CancelText = cancelText; // Set property
 
 		// Actions
 		OKBtn.Click += (o, e) => okAction();
-		CloseBtn.Click += (o, e) => closeAction();
+		if (closeAction is not null)
+		{
+			CancelBtn.Click += (o, e) => closeAction();
+		}
+		else
+		{
+			CancelBtn.Click += (o, e) => CloseBtn_Click(o, e);
+		}
 
 		InitUI(); // Load the UI
 	}
