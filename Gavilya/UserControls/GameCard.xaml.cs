@@ -111,7 +111,7 @@ public partial class GameCard : UserControl
 		{
 			FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
-			FavBtn.Content = ""; // Change icon
+			FavBtn.Content = "\uF71B"; // Change icon
 		}
 
 		if (recommanded)
@@ -133,8 +133,9 @@ public partial class GameCard : UserControl
 		switch (gavilyaPages)
 		{
 			case GavilyaPages.Recent: // If the page is recent
-				FavBtn.Visibility = Visibility.Hidden; // Hide the favorite button
+				FavBtn.Visibility = Visibility.Collapsed; // Hide the favorite button
 				CheckBox.Visibility = Visibility.Hidden; // Hide the checkbox
+				MenuGroup.SetValue(Grid.ColumnProperty, 3);
 				break;
 			case GavilyaPages.Cards: // If the page is card
 				FavBtn.Visibility = Visibility.Visible; // Show the favorite button
@@ -223,14 +224,14 @@ public partial class GameCard : UserControl
 		{
 			GameInfo.IsFavorite = false; // The game is no longer a favorite
 			Definitions.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
-			FavBtn.Content = ""; // Change icon
+			FavBtn.Content = "\uF710"; // Change icon
 		}
 		else
 		{
 			GameInfo.IsFavorite = true; // Set the game to be a favorite
 			FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
-			FavBtn.Content = ""; // Change icon
+			FavBtn.Content = "\uF71B"; // Change icon
 		}
 		GameSaver.Save(Definitions.Games); // Save the changes
 	}
@@ -251,5 +252,15 @@ public partial class GameCard : UserControl
 		{
 
 		}
+	}
+
+	private void MenuBtn_Click(object sender, RoutedEventArgs e)
+	{
+		MenuBorder.Visibility = MenuBorder.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+	}
+
+	private void AdminBtn_Click(object sender, RoutedEventArgs e)
+	{
+
 	}
 }

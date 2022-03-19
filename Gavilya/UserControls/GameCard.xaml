@@ -25,24 +25,50 @@
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="30"/>
 				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="30"/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
 				<ColumnDefinition Width="30"/>
 			</Grid.ColumnDefinitions>
 
 			<CheckBox Cursor="Hand" x:Name="CheckBox" Style="{DynamicResource CheckBoxStyle1}" Background="Transparent" Grid.Column="0" x:FieldModifier="public" Visibility="Hidden" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-			<Button Name="FavBtn" Click="FavBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xeb01;" Foreground="White" FontFamily="..\Fonts\#FluentlyIcons" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Grid.Row="0">
+            <StackPanel x:Name="MenuGroup" Grid.Column="2" Grid.RowSpan="3">
+                <Button Name="MenuBtn" Click="MenuBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xFC2E;" Foreground="White" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Grid.Row="0" HorizontalAlignment="Right" Margin="0,5,5,0">
+                    <Button.ToolTip>
+                        <ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="White"/>
+                    </Button.ToolTip>
+                </Button>
+                <Border Visibility="Collapsed" Name="MenuBorder" Background="#FF000014" CornerRadius="5" Padding="3">
+                    <StackPanel>
+                        <Button x:Name="AdminBtn" Click="AdminBtn_Click" Style="{StaticResource RegularButton}" BorderThickness="0" Background="Transparent" Padding="3">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Margin="0 0 10 0" FontSize="15" Foreground="White" Text="&#xF8C0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                <TextBlock Grid.Column="1" FontWeight="Bold" FontSize="13" Foreground="White" Text="{x:Static lang:Resources.AdminMode}" HorizontalAlignment="Left"/>
+                            </Grid>
+
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.LaunchGameAsAdmin}" Background="#000014" Foreground="White"/>
+                            </Button.ToolTip>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            <Button Name="FavBtn" Click="FavBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF710;" Foreground="White" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Grid.Row="0" Margin="5,0,5,0">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="White"/>
 				</Button.ToolTip>
 			</Button>
-			<Button Name="EditBtn" Click="EditBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xe9ef;" Foreground="White" FontFamily="..\Fonts\#FluentlyIcons" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Grid.Row="0">
+            <Button Name="EditBtn" Click="EditBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="White" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="4" FontSize="15" Grid.Row="0">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.EditGame}" Background="#000014" Foreground="White"/>
 				</Button.ToolTip>
 			</Button>
 
 			<!--<Image x:Name="GameIcon" Grid.Row="1" Grid.Column="1" Height="70" Width="70" VerticalAlignment="Top" Margin="0 -10 0 0"/>-->
-			<StackPanel Name="Infos" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+			<StackPanel Name="Infos" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
 				<Button Click="Button_Click" Cursor="Hand" Margin="20 0 20 15" Style="{DynamicResource PlayButton}" Grid.Row="1" Foreground="White" FontWeight="Bold" FontSize="13" Grid.Column="1" Height="35" Width="120" VerticalAlignment="Bottom">
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 						<TextBlock Text="&#xF610;" Margin="-20 0 10 0" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" HorizontalAlignment="Left"/>
