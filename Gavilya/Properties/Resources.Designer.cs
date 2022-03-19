@@ -1368,6 +1368,42 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Notification center.
+        /// </summary>
+        public static string NotificationCenter {
+            get {
+                return ResourceManager.GetString("NotificationCenter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to notification..
+        /// </summary>
+        public static string NotificationLower {
+            get {
+                return ResourceManager.GetString("NotificationLower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Notifications.
+        /// </summary>
+        public static string Notifications {
+            get {
+                return ResourceManager.GetString("Notifications", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to notifications..
+        /// </summary>
+        public static string NotificationsLower {
+            get {
+                return ResourceManager.GetString("NotificationsLower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to of the month..
         /// </summary>
         public static string OfMonth {
@@ -2120,6 +2156,15 @@ namespace Gavilya.Properties {
         public static string XUDoesNotExist {
             get {
                 return ResourceManager.GetString("XUDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have.
+        /// </summary>
+        public static string YouHave {
+            get {
+                return ResourceManager.GetString("YouHave", resourceCulture);
             }
         }
         

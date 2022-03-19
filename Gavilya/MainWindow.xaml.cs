@@ -568,4 +568,9 @@ public partial class MainWindow : Window
 
 		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
 	}
+
+	private void NotificationsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		NotificationCenter.Visibility = NotificationCenter.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible; // Set visibility
+	}
 }

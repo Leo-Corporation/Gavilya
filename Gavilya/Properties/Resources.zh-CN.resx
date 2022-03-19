@@ -798,4 +798,19 @@
   <data name="CannotLaunchAsAdminUWP" xml:space="preserve">
     <value>Unable to launch Non-Win32 applications as an administrator.</value>
   </data>
+  <data name="NotificationCenter" xml:space="preserve">
+    <value>Notification center</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="NotificationLower" xml:space="preserve">
+    <value>notification.</value>
+  </data>
+  <data name="NotificationsLower" xml:space="preserve">
+    <value>notifications.</value>
+  </data>
+  <data name="YouHave" xml:space="preserve">
+    <value>You have</value>
+  </data>
 </root>
