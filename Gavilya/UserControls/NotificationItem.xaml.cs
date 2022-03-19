@@ -77,7 +77,7 @@ public partial class NotificationItem : UserControl
 	private void CloseBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Definitions.MainWindow.NotificationPanel.Children.Remove(this); // Remove the notification
-		Definitions.MainWindow.NotificationStatusTxt.Text = 
+		Definitions.MainWindow.NotificationStatusTxt.Text =
 			$"{Properties.Resources.YouHave} {Definitions.MainWindow.NotificationPanel.Children.Count - 1} " +
 			$"{((Definitions.MainWindow.NotificationPanel.Children.Count - 1 > 1) ? Properties.Resources.NotificationsLower : Properties.Resources.NotificationLower)}";
 		// Refresh
