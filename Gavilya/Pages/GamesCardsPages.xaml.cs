@@ -45,7 +45,7 @@ public partial class GamesCardsPages : Page
 
 	public void LoadGames()
 	{
-		Dispatcher.Invoke(new Action(() => 
+		Dispatcher.Invoke(new Action(() =>
 		{
 			Definitions.HomePage.FavoriteBar.Children.Clear();
 			GamePresenter.Children.Clear(); // Remove all the games

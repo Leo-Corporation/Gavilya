@@ -45,7 +45,7 @@ public partial class RecentGamesPage : Page
 
 	public void LoadGames()
 	{
-		Dispatcher.Invoke(new Action(() => 
+		Dispatcher.Invoke(new Action(() =>
 		{
 			GamePresenter.Children.Clear(); // Clear the games
 

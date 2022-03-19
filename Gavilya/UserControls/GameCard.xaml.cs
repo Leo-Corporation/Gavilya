@@ -281,6 +281,6 @@ public partial class GameCard : UserControl
 				MessageBox.Show(Properties.Resources.CannotLaunchAsAdminUWP, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
 			}
 		}
-		catch {	} // If the user says "No" the Admin prompt
+		catch { } // If the user says "No" the Admin prompt
 	}
 }
