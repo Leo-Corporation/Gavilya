@@ -81,7 +81,7 @@ public partial class GameInfoPage : Page
 			// Text
 			PlayBtnToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name; // Set the tooltip
 			GameNameTxt.Text = gameInfo.Name; // Set the name of the game
-			FavBtn.Content = gameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
+			FavBtn.Content = gameInfo.IsFavorite ? "\uF71B" : "\uF710"; // Set text
 
 
 			if (gameInfo.TotalTimePlayed != 0) // If the game was played
@@ -311,7 +311,7 @@ public partial class GameInfoPage : Page
 		GameInfo.IsFavorite = !GameInfo.IsFavorite;
 		Definitions.Games[Definitions.Games.IndexOf(GameInfo)] = GameInfo;
 
-		FavBtn.Content = GameInfo.IsFavorite ? "\uEB03" : "\uEB01"; // Set text
+		FavBtn.Content = GameInfo.IsFavorite ? "\uF71B" : "\uF710"; // Set text
 
 		GameSaver.Save(Definitions.Games); // Save changes
 		Definitions.GamesCardsPages.LoadGames();
@@ -483,6 +483,42 @@ public partial class GameInfoPage : Page
 		catch (Exception ex)
 		{
 			MessageBox.Show(ex.Message);
+		}
+	}
+
+	private void AdminBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (!GameInfo.IsUWP && !GameInfo.IsSteam)
+		{
+			if (File.Exists(gameLocation)) // If the file exist
+			{
+				Env.ExecuteAsAdmin(gameLocation); // Start the game
+											 // Create a game card
+
+				if (parentUIElement is GameCard gameCard) // If the parent element is a game card
+				{
+					gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+					GameSaver.Save(Definitions.Games); // Save the changes
+
+					gameCard.Timer.Start(); // Start the timer
+
+					DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+					LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+				}
+				else if (parentUIElement is GameItem gameItem) // Create a game item
+				{
+					gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+					Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
+					GameSaver.Save(Definitions.Games); // Save the changes
+
+					gameItem.Timer.Start();
+
+					DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+					LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+				}
+
+				Definitions.RecentGamesPage.LoadGames(); // Reload the games
+			}
 		}
 	}
 }
