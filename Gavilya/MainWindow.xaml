@@ -240,7 +240,7 @@
 						</StackPanel>
 
 						<ScrollViewer Grid.Row="1" Template="{DynamicResource ScrollViewerTemplate1}">
-							<StackPanel x:Name="NotifcationPanel">
+							<StackPanel x:Name="NotificationPanel">
 								
 							</StackPanel>
 						</ScrollViewer>
