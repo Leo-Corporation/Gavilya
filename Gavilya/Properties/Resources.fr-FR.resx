@@ -798,4 +798,7 @@
   <data name="LaunchGameAsAdmin" xml:space="preserve">
     <value>Lancer le jeu en tant qu'administrateur.</value>
   </data>
+  <data name="CannotLaunchAsAdminUWP" xml:space="preserve">
+    <value>Impossible de lancer des applications non Win32 en tant qu’administrateur.</value>
+  </data>
 </root>

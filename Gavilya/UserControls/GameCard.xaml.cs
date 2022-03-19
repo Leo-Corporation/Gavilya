@@ -276,6 +276,10 @@ public partial class GameCard : UserControl
 					GameSaver.Save(Definitions.Games); // Save the changes
 				}
 			}
+			else
+			{
+				MessageBox.Show(Properties.Resources.CannotLaunchAsAdminUWP, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
+			}
 		}
 		catch {	} // If the user says "No" the Admin prompt
 	}

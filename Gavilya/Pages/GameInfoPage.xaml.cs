@@ -488,37 +488,45 @@ public partial class GameInfoPage : Page
 
 	private void AdminBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (!GameInfo.IsUWP && !GameInfo.IsSteam)
+		try
 		{
-			if (File.Exists(gameLocation)) // If the file exist
+			if (!GameInfo.IsUWP && !GameInfo.IsSteam)
 			{
-				Env.ExecuteAsAdmin(gameLocation); // Start the game
-											 // Create a game card
-
-				if (parentUIElement is GameCard gameCard) // If the parent element is a game card
+				if (File.Exists(gameLocation)) // If the file exist
 				{
-					gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
-					GameSaver.Save(Definitions.Games); // Save the changes
+					Env.ExecuteAsAdmin(gameLocation); // Start the game
+													  // Create a game card
 
-					gameCard.Timer.Start(); // Start the timer
+					if (parentUIElement is GameCard gameCard) // If the parent element is a game card
+					{
+						gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+						GameSaver.Save(Definitions.Games); // Save the changes
 
-					DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
-					LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+						gameCard.Timer.Start(); // Start the timer
+
+						DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+						LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+					}
+					else if (parentUIElement is GameItem gameItem) // Create a game item
+					{
+						gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+						Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
+						GameSaver.Save(Definitions.Games); // Save the changes
+
+						gameItem.Timer.Start();
+
+						DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
+						LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
+					}
+
+					Definitions.RecentGamesPage.LoadGames(); // Reload the games
 				}
-				else if (parentUIElement is GameItem gameItem) // Create a game item
-				{
-					gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
-					Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
-					GameSaver.Save(Definitions.Games); // Save the changes
-
-					gameItem.Timer.Start();
-
-					DateTime LastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
-					LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
-				}
-
-				Definitions.RecentGamesPage.LoadGames(); // Reload the games
+			}
+			else
+			{
+				MessageBox.Show(Properties.Resources.CannotLaunchAsAdminUWP, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information);
 			}
 		}
+		catch {	} // If the user says "No" to the admin prompt
 	}
 }

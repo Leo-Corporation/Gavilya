@@ -805,4 +805,7 @@
   <data name="LaunchGameAsAdmin" xml:space="preserve">
     <value>Launch game as administrator.</value>
   </data>
+  <data name="CannotLaunchAsAdminUWP" xml:space="preserve">
+    <value>Unable to launch Non-Win32 applications as an administrator.</value>
+  </data>
 </root>

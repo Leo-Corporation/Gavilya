@@ -322,6 +322,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to launch Non-Win32 applications as an administrator..
+        /// </summary>
+        public static string CannotLaunchAsAdminUWP {
+            get {
+                return ResourceManager.GetString("CannotLaunchAsAdminUWP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change language.
         /// </summary>
         public static string ChangeLanguage {
