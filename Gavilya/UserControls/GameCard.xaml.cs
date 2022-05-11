@@ -31,6 +31,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 
@@ -75,8 +76,10 @@ public partial class GameCard : UserControl
 		PlayToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
 		GameToolTipName.Content = gameInfo.Name;
 
-		// Border thickness
-		GameCardBorder.BorderThickness = new Thickness { Bottom = 0, Top = 0, Left = 0, Right = 0 }; // Set the border thickness
+		// Border
+		GameCardBorder.BorderThickness = new(0); // Set the border thickness
+		GameCardBorder.BorderBrush = GameInfo.IsFavorite ? new SolidColorBrush(Color.FromRgb(55, 121, 238)) : GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(102, 0, 255)); // Set the border color			
+
 
 		// Location
 		location = gameInfo.FileLocation;
@@ -228,6 +231,7 @@ public partial class GameCard : UserControl
 			GameInfo.IsFavorite = false; // The game is no longer a favorite
 			Definitions.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
 			FavBtn.Content = "\uF710"; // Change icon
+			GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(102, 0, 255)); // Set the border color			
 		}
 		else
 		{
@@ -235,6 +239,7 @@ public partial class GameCard : UserControl
 			FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
 			FavBtn.Content = "\uF71B"; // Change icon
+			GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(55, 121, 238)); // Set the border color
 		}
 		GameSaver.Save(Definitions.Games); // Save the changes
 	}
