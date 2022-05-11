@@ -28,6 +28,7 @@ using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.DirectoryServices.ActiveDirectory;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -191,8 +192,10 @@ public partial class GameInfoPage : Page
 		{
 			if (File.Exists(gameLocation)) // If the file exist
 			{
-				Process.Start(gameLocation); // Start the game
-											 // Create a game card
+				Process p = new();
+				p.StartInfo.WorkingDirectory = Path.GetDirectoryName(gameLocation);
+				p.StartInfo.FileName = gameLocation;
+				p.Start();
 
 				if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 				{

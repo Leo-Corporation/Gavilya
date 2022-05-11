@@ -95,8 +95,10 @@ public partial class FavoriteGameCard : UserControl
 		{
 			if (File.Exists(GamePath)) // If the game location file exist
 			{
-				Process.Start(GamePath); // Start the game
-										 // Create a game card
+				Process p = new();
+				p.StartInfo.WorkingDirectory = Path.GetDirectoryName(GamePath);
+				p.StartInfo.FileName = GamePath;
+				p.Start();
 
 				if (parentElement is GameCard gameCard)
 				{

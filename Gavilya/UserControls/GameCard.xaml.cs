@@ -151,7 +151,10 @@ public partial class GameCard : UserControl
 		{
 			if (File.Exists(location)) // If the file exist
 			{
-				Process.Start(location); // Start the game
+				Process p = new();
+				p.StartInfo.WorkingDirectory = Path.GetDirectoryName(location);
+				p.StartInfo.FileName = location;
+				p.Start();
 				GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 
 				Timer.Start(); // Start the timer

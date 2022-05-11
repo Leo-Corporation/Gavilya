@@ -26,6 +26,7 @@ using Gavilya.Classes;
 using LeoCorpLibrary;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -113,7 +114,10 @@ public partial class GameItem : UserControl
 		{
 			if (!GameInfo.IsUWP && !GameInfo.IsSteam) // If EXE/Win32 game
 			{
-				Process.Start(GameInfo.FileLocation); // Start the game 
+				Process p = new();
+				p.StartInfo.WorkingDirectory = Path.GetDirectoryName(GameInfo.FileLocation);
+				p.StartInfo.FileName = GameInfo.FileLocation;
+				p.Start();
 			}
 			else
 			{
