@@ -82,6 +82,7 @@ public partial class GameItem : UserControl
 	{
 		GameName.Text = GameInfo.Name; // Set the name
 		GameNameToolTip.Content = GameInfo.Name;
+		FavIconTxt.Visibility = GameInfo.IsFavorite ? Visibility.Visible : Visibility.Hidden; // Set the favorite icon
 	}
 
 	private void GameBtn_Click(object sender, RoutedEventArgs e)
