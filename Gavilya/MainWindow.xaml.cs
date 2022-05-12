@@ -121,7 +121,7 @@ public partial class MainWindow : Window
 				new NotificationItem(Properties.Resources.UnusedGameNotification,
 				string.Format(Properties.Resources.UnusedGame, Definitions.LeastUsedGames.Keys.ElementAt(0).Name),
 				"\uF451", Properties.Resources.Show, Properties.Resources.Close, 
-				null, null)); 
+				() => { Definitions.GameInfoPage.InitializeUI(Definitions.LeastUsedGames.Keys.ElementAt(0), Definitions.LeastUsedGames.Values.ElementAt(0)); Definitions.MainWindow.PageContent.Navigate(Definitions.GameInfoPage); }, null)); 
 		}
 	}
 
