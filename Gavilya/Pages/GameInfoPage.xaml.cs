@@ -365,9 +365,8 @@ public partial class GameInfoPage : Page
 		AchievementsPage.Visibility = Visibility.Collapsed; // Change visibility
 	}
 
-	private async void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
+	private void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
 	{
-		List<SDK.RAWG.Rating> ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID);
 		tabCheckedID = 1; // ID
 
 		RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color

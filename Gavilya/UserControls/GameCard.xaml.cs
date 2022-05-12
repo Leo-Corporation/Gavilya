@@ -191,7 +191,7 @@ public partial class GameCard : UserControl
 
 	private void Timer_Tick(object sender, EventArgs e)
 	{
-		string processName = location;
+		string processName;
 
 		if (!GameInfo.IsUWP)
 		{
