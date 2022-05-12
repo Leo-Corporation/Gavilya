@@ -29,7 +29,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Reflection;
 using System.Text.Json;
 using System.Threading;
@@ -101,18 +100,13 @@ public static class Global
 					}
 					else
 					{
-						WebClient webClient1 = new(); // Create a web client
-						await webClient1.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
-						webClient1.Dispose(); // Release all used ressources
+						await NetworkConnection.DownloadFileAsync(new Uri(gameResults.results[0].background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the image
 
 						return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the result
 					}
 				}
 
-
-				WebClient webClient = new(); // Create a WebClient
-				await webClient.DownloadFileTaskAsync(gameResults.results[0].background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the "background_image"
-				webClient.Dispose(); // Release used ressources
+				await NetworkConnection.DownloadFileAsync(new Uri(gameResults.results[0].background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the image
 
 				return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the path
 			}
@@ -181,24 +175,20 @@ public static class Global
 				}
 				else
 				{
-					WebClient webClient1 = new(); // Create a web client
 					if (screenshotId == 0)
 					{
-						await webClient1.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the "background_image" 
+						await NetworkConnection.DownloadFileAsync(new Uri(game.background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
 					}
 					else
 					{
-						await webClient1.DownloadFileTaskAsync(game.background_image_additional, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the "background_image_additional" 
+						await NetworkConnection.DownloadFileAsync(new Uri(game.background_image_additional), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
 					}
-					webClient1.Dispose(); // Release all used ressources
 
 					return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"; // Return the result
 				}
 			}
 
-			WebClient webClient = new(); // Create a web client
-			await webClient.DownloadFileTaskAsync(game.background_image, Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the "background_image"
-			webClient.Dispose(); // Release all used ressources
+			await NetworkConnection.DownloadFileAsync(new Uri(game.background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
 
 			return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"; // Return the result
 		}
