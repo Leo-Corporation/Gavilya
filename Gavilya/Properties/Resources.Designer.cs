@@ -1998,6 +1998,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot launch game: Steam is not running..
+        /// </summary>
+        public static string SteamNotRunning {
+            get {
+                return ResourceManager.GetString("SteamNotRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Stores.
         /// </summary>
         public static string Stores {

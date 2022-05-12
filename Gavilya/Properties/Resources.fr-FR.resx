@@ -828,4 +828,7 @@
   <data name="Show" xml:space="preserve">
     <value>Montrer</value>
   </data>
+  <data name="SteamNotRunning" xml:space="preserve">
+    <value>Impossible de lancer le jeu : Steam n'est pas démarré.</value>
+  </data>
 </root>
