@@ -24,7 +24,6 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.UserControls;
-using Gavilya.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
