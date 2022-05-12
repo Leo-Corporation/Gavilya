@@ -1863,6 +1863,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show.
+        /// </summary>
+        public static string Show {
+            get {
+                return ResourceManager.GetString("Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show screenshots.
         /// </summary>
         public static string ShowScreenshots {
@@ -2066,6 +2075,24 @@ namespace Gavilya.Properties {
         public static string TrueGamerDesc {
             get {
                 return ResourceManager.GetString("TrueGamerDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You haven&apos;t played {0} since a while..
+        /// </summary>
+        public static string UnusedGame {
+            get {
+                return ResourceManager.GetString("UnusedGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unused game.
+        /// </summary>
+        public static string UnusedGameNotification {
+            get {
+                return ResourceManager.GetString("UnusedGameNotification", resourceCulture);
             }
         }
         
