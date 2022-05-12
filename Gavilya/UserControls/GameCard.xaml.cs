@@ -168,6 +168,17 @@ public partial class GameCard : UserControl
 		}
 		else
 		{
+			if (GameInfo.IsSteam)
+			{
+				// Check if Steam is not running
+				if (!Env.IsProcessRunning("Steam"))
+				{
+					// Show a message box
+					MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+					return; // Exit the function
+				}
+			}
+
 			Process.Start("explorer.exe", location); // Start the game
 			GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
 
