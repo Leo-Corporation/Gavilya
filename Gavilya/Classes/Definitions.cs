@@ -85,6 +85,11 @@ public static class Definitions
 	/// </summary>
 	public static bool IsProfileMenuVisible { get; set; }
 
+	/// <summary>
+	/// Contains the least used game(s).
+	/// </summary>
+	public static Dictionary<GameInfo, GameCard> LeastUsedGames { get; set; }
+
 	public static string BetaVersion
 	{
 		get

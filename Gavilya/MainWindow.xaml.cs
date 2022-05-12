@@ -30,6 +30,7 @@ using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -106,9 +107,24 @@ public partial class MainWindow : Window
 			_ => HomeTabBtn
 		};
 		CheckButton();
+		DisplayNotifications();
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
+
+	private void DisplayNotifications()
+	{
+		// Unused games notification
+		if (Definitions.LeastUsedGames is not null)
+		{
+			NotificationPanel.Children.Add(
+				new NotificationItem(Properties.Resources.UnusedGameNotification,
+				string.Format(Properties.Resources.UnusedGame, Definitions.LeastUsedGames.Keys.ElementAt(0).Name),
+				"\uF451", Properties.Resources.Show, Properties.Resources.Close, 
+				null, null)); 
+		}
+	}
+
 	private async void CheckUpdateOnStart()
 	{
 		if (await NetworkConnection.IsAvailableAsync())
