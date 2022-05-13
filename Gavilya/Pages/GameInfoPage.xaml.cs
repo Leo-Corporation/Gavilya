@@ -191,8 +191,10 @@ public partial class GameInfoPage : Page
 		{
 			if (File.Exists(gameLocation)) // If the file exist
 			{
-				Process.Start(gameLocation); // Start the game
-											 // Create a game card
+				Process p = new();
+				p.StartInfo.WorkingDirectory = Path.GetDirectoryName(gameLocation);
+				p.StartInfo.FileName = gameLocation;
+				p.Start();
 
 				if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 				{
@@ -363,9 +365,8 @@ public partial class GameInfoPage : Page
 		AchievementsPage.Visibility = Visibility.Collapsed; // Change visibility
 	}
 
-	private async void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
+	private void RatingsTabBtn_Click(object sender, RoutedEventArgs e)
 	{
-		List<SDK.RAWG.Rating> ratings = await Global.GetGameRatingsAsync(GameInfo.RAWGID);
 		tabCheckedID = 1; // ID
 
 		RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color

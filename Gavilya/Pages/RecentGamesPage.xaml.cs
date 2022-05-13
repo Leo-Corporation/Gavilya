@@ -78,6 +78,19 @@ public partial class RecentGamesPage : Page
 					}
 					c++;
 				}
+
+				if (Definitions.Games.Count >= 5) // If there are more than 5 games
+				{
+					// Show a notification about the least used game
+					var gameInfo = items.Last().Key;
+
+					// Get the associated game card from the game info
+					var gameCard = GamePresenter.Children.OfType<GameCard>().FirstOrDefault(x => x.GameInfo == gameInfo);
+
+					Definitions.LeastUsedGames = new(); // Create a new list
+					Definitions.LeastUsedGames.Add(gameInfo, gameCard); // Add the game info and the game card
+				}
+
 				Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
 				Definitions.HomePage.RecentBar.Visibility = Visibility.Visible;
 			}

@@ -819,4 +819,16 @@
   <data name="NoNotifications" xml:space="preserve">
     <value>Vous n'avez aucune notifications.</value>
   </data>
+  <data name="UnusedGame" xml:space="preserve">
+    <value>Vous n'avez pas joué à {0} depuis un moment.</value>
+  </data>
+  <data name="UnusedGameNotification" xml:space="preserve">
+    <value>Jeu inutilisé</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Montrer</value>
+  </data>
+  <data name="SteamNotRunning" xml:space="preserve">
+    <value>Impossible de lancer le jeu : Steam n'est pas démarré.</value>
+  </data>
 </root>

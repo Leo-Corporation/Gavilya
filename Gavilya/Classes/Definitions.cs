@@ -78,12 +78,17 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "2.4.0.2203";
+	public static string Version => "2.5.0.2205";
 
 	/// <summary>
 	/// True if the menu is shown.
 	/// </summary>
 	public static bool IsProfileMenuVisible { get; set; }
+
+	/// <summary>
+	/// Contains the least used game(s).
+	/// </summary>
+	public static Dictionary<GameInfo, GameCard> LeastUsedGames { get; set; }
 
 	public static string BetaVersion
 	{
