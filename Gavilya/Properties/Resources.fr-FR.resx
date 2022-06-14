@@ -837,4 +837,7 @@
   <data name="SeeGitHubRepo" xml:space="preserve">
     <value>Voir le dépôt GitHub.</value>
   </data>
+  <data name="NotLoggedToSteam" xml:space="preserve">
+    <value>Vous n'êtes pas connecté à Steam.</value>
+  </data>
 </root>

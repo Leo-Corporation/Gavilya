@@ -1422,6 +1422,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are not logged in to Steam..
+        /// </summary>
+        public static string NotLoggedToSteam {
+            get {
+                return ResourceManager.GetString("NotLoggedToSteam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to of the month..
         /// </summary>
         public static string OfMonth {
