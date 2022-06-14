@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.SDK.RAWG;
 using LeoCorpLibrary;
+using Microsoft.Win32;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -837,5 +838,34 @@ public static class Global
 		{
 			return new();
 		}
+	}
+
+	public static bool CanLaunchSteamGame()
+	{
+		try
+		{
+			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\ActiveProcess");
+			string result = key.GetValue("ActiveUser").ToString();
+			if (result == "0")
+			{
+				MessageBox.Show(Properties.Resources.NotLoggedToSteam, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // If the user isn't logged to steam
+				return false; // Return false, Steam cannot launch game.
+			}
+
+			// Check if Steam is not running
+			if (!Env.IsProcessRunning("Steam"))
+			{
+				// Show a message box
+				MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+				return false; // Return false, Steam cannot launch game.
+
+			}
+		}
+		catch
+		{
+			return false;
+		}
+
+		return true; // Return true, Steam can launch game.
 	}
 }

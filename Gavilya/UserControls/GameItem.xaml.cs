@@ -24,6 +24,7 @@ SOFTWARE.
 
 using Gavilya.Classes;
 using LeoCorpLibrary;
+using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -113,6 +114,11 @@ public partial class GameItem : UserControl
 	{
 		try
 		{
+			if (GameInfo.IsSteam && !Global.CanLaunchSteamGame())
+			{
+				return; // If the user can't launch the game, stop
+			}
+
 			if (!GameInfo.IsUWP && !GameInfo.IsSteam) // If EXE/Win32 game
 			{
 				Process p = new();

@@ -25,6 +25,7 @@ using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.Windows;
 using LeoCorpLibrary;
+using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -168,15 +169,9 @@ public partial class GameCard : UserControl
 		}
 		else
 		{
-			if (GameInfo.IsSteam)
+			if (GameInfo.IsSteam && !Global.CanLaunchSteamGame())
 			{
-				// Check if Steam is not running
-				if (!Env.IsProcessRunning("Steam"))
-				{
-					// Show a message box
-					MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
-					return; // Exit the function
-				}
+				return; // If the user can't launch the game, stop
 			}
 
 			Process.Start("explorer.exe", location); // Start the game
