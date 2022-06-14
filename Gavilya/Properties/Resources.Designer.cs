@@ -837,6 +837,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GitHub.
+        /// </summary>
+        public static string GitHub {
+            get {
+                return ResourceManager.GetString("GitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go Back.
         /// </summary>
         public static string GoBack {
@@ -1769,6 +1778,15 @@ namespace Gavilya.Properties {
         public static string SecondMin {
             get {
                 return ResourceManager.GetString("SecondMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to See the GitHub repository..
+        /// </summary>
+        public static string SeeGitHubRepo {
+            get {
+                return ResourceManager.GetString("SeeGitHubRepo", resourceCulture);
             }
         }
         

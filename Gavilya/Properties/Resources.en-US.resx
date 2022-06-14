@@ -828,4 +828,10 @@
   <data name="SteamNotRunning" xml:space="preserve">
     <value>Cannot launch game: Steam is not running.</value>
   </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="SeeGitHubRepo" xml:space="preserve">
+    <value>See the GitHub repository.</value>
+  </data>
 </root>

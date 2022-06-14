@@ -831,4 +831,10 @@
   <data name="SteamNotRunning" xml:space="preserve">
     <value>Impossible de lancer le jeu : Steam n'est pas démarré.</value>
   </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="SeeGitHubRepo" xml:space="preserve">
+    <value>Voir le dépôt GitHub.</value>
+  </data>
 </root>
