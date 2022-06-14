@@ -7,7 +7,7 @@
         xmlns:lang="clr-namespace:Gavilya.Properties"
         mc:Ignorable="d"
         FontFamily="../Fonts/#Montserrat"
-        Title="{x:Static lang:Resources.PopupMenu}" Height="80" Width="159" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None" Deactivated="Window_Deactivated">
+        Title="{x:Static lang:Resources.PopupMenu}" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None" Deactivated="Window_Deactivated" Width="166" Height="100">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -51,6 +51,21 @@
 
                         <Button.ToolTip>
                             <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="White"/>
+                        </Button.ToolTip>
+                    </Button>
+
+                    <Button x:Name="GitHubBtn" Click="GitHubBtn_Click" Style="{StaticResource RegularButton}" BorderThickness="0" Background="Transparent" Padding="3">
+                        <Grid Margin="5 0 0 0" Width="135">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Margin="0 0 10 0" FontSize="13" Foreground="White" Text="&#xF1FB;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBlock Grid.Column="1" FontWeight="Bold" FontSize="13" Foreground="White" Text="{x:Static lang:Resources.GitHub}" HorizontalAlignment="Left"/>
+                        </Grid>
+
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.SeeGitHubRepo}" Background="#000014" Foreground="White"/>
                         </Button.ToolTip>
                     </Button>
                 </StackPanel>
