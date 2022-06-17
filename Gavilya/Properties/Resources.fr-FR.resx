@@ -843,4 +843,7 @@
   <data name="ShowMoreUnplayedGames" xml:space="preserve">
     <value>Montrer des jeux auxquels vous n’avez pas joué depuis un moment.</value>
   </data>
+  <data name="RecommandedGamesSection" xml:space="preserve">
+    <value>Section "Vous aimerez peut-être..."</value>
+  </data>
 </root>

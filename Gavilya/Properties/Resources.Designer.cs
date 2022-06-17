@@ -1683,6 +1683,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;You may like...&quot; section.
+        /// </summary>
+        public static string RecommandedGamesSection {
+            get {
+                return ResourceManager.GetString("RecommandedGamesSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string Reset {

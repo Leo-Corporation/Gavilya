@@ -36,6 +36,9 @@
                 </Button>
             </StackPanel>
 
+            <TextBlock Text="{x:Static lang:Resources.RecommandedGamesSection}" FontWeight="Bold" FontSize="14" Margin="10 0 0 0" Foreground="White"/>
+            <CheckBox x:Name="DisplayedUnusedGamesChk" Content="{x:Static lang:Resources.ShowMoreUnplayedGames}" Foreground="#fff" Style="{DynamicResource CheckBoxStyle2}" FontWeight="Bold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="DisplayedUnusedGamesChk_Checked" Unchecked="DisplayedUnusedGamesChk_Checked"/>
+
         </StackPanel>
 	</Grid>
 </Page>
