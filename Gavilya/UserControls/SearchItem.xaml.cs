@@ -33,7 +33,7 @@ namespace Gavilya.UserControls;
 /// </summary>
 public partial class SearchItem : UserControl
 {
-	GameCard ParentGameCard { get; init; }
+	internal GameCard ParentGameCard { get; init; }
 	public SearchItem(GameCard parent)
 	{
 		InitializeComponent();
