@@ -61,7 +61,9 @@ public partial class GamesCardsPages : Page
 				WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
 				foreach (GameInfo gameInfo in Definitions.Games) // For each game
 				{
-					GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards, false, recommandedGames.Contains(gameInfo))); // Add the game
+					var game = new GameCard(gameInfo, GavilyaPages.Cards, false, recommandedGames.Contains(gameInfo));
+					GamePresenter.Children.Add(game); // Add the game
+					Definitions.MainWindow.SearchBox.Items.Add(new SearchItem(game));
 				}
 			}
 			else
