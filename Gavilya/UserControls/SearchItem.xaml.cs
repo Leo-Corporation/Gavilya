@@ -49,4 +49,9 @@ public partial class SearchItem : UserControl
 		// Set the Game name
 		GameName.Text = ParentGameCard.GameInfo.Name;
 	}
+
+	public override string ToString()
+	{
+		return ParentGameCard.GameInfo.Name;
+	}
 }
