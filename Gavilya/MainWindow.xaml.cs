@@ -603,4 +603,14 @@ public partial class MainWindow : Window
 			BadgeTxt.Visibility = Visibility.Visible; // Show
 		}
 	}
+
+	private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+	{
+		SearchBox.IsDropDownOpen = true;
+	}
+
+	private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+	{
+		SearchBox.IsDropDownOpen = true;
+	}
 }
