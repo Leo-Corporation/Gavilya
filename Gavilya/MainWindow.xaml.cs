@@ -613,4 +613,12 @@ public partial class MainWindow : Window
 	{
 		SearchBox.IsDropDownOpen = true;		
 	}
+
+	private void SearchBox_KeyUp(object sender, KeyEventArgs e)
+	{
+		if (e.Key == Key.Enter)
+		{
+			((SearchItem)SearchBox.SelectedItem).UserControl_MouseLeftButtonUp(this, null); // Click the selected item
+		}
+	}
 }

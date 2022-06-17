@@ -80,7 +80,7 @@ public partial class SearchItem : UserControl
 		return ParentGameCard.GameInfo.Name;
 	}
 
-	private void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+	internal void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 	{
 		ParentGameCard.GameCardBorder_MouseLeftButtonUp(this, e);
 	}

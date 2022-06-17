@@ -162,7 +162,7 @@
 						</Button>
 					</StackPanel>
 
-                    <ComboBox MaxWidth="400" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="Bold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus">
+                    <ComboBox MaxWidth="400" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="Bold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
                         <ComboBox.Style>
                             <Style TargetType="ComboBox">
                                 <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
