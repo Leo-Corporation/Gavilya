@@ -162,7 +162,15 @@
 						</Button>
 					</StackPanel>
 
-                    <ComboBox Name="SearchBox" Grid.Column="3" Style="{DynamicResource ComboBoxStyle1}" BorderThickness="0" Background="#fff" VerticalAlignment="Stretch" Margin="3" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True"/>
+                    <ComboBox Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="Bold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus">
+                        <ComboBox.Style>
+                            <Style TargetType="ComboBox">
+                                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
+                                <Setter Property="ItemContainerStyle" Value="{StaticResource ItemStyle}" ></Setter>
+                            </Style>
+
+                        </ComboBox.Style>
+                    </ComboBox>
 
 					<Button Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent" >
 						<Grid>
