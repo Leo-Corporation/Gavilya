@@ -611,7 +611,7 @@ public partial class MainWindow : Window
 
 	private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
 	{
-		SearchBox.IsDropDownOpen = true;		
+		SearchBox.IsDropDownOpen = true;
 	}
 
 	private void SearchBox_KeyUp(object sender, KeyEventArgs e)

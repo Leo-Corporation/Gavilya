@@ -25,7 +25,6 @@ using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.Windows;
 using LeoCorpLibrary;
-using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;

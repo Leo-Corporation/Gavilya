@@ -822,7 +822,7 @@ public static class Global
 				gameScores.Add(i, Definitions.Games[i].LastTimePlayed / Definitions.Games[i].TotalTimePlayed);
 			}
 
-			var sort = Definitions.Settings.ShowMoreUnplayedGamesRecommanded.Value 
+			var sort = Definitions.Settings.ShowMoreUnplayedGamesRecommanded.Value
 				? from pair in gameScores orderby pair.Value descending select pair
 				: from pair in gameScores orderby pair.Value ascending select pair; // Sort
 			List<GameInfo> recommandedGames = new();

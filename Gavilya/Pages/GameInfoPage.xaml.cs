@@ -25,7 +25,6 @@ using Gavilya.Classes;
 using Gavilya.UserControls;
 using Gavilya.Windows;
 using LeoCorpLibrary;
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
