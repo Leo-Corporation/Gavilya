@@ -1305,7 +1305,7 @@
                     </Grid.ColumnDefinitions>
                     <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                         <theme:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                            <Border x:Name="dropDownBorder" Background="#000014" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+                            <Border x:Name="dropDownBorder" Background="#000014" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" CornerRadius="5">
                                 <ScrollViewer x:Name="DropDownScrollViewer">
                                     <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
