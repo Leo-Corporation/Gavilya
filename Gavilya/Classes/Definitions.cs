@@ -78,7 +78,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "2.6.0.2206";
+	public static string Version => "2.6.1.2206";
 
 	/// <summary>
 	/// True if the menu is shown.

@@ -138,28 +138,35 @@ public partial class ProfilePage : Page
 
 			for (int i = 0; i < mostPlayed.Count; i++)
 			{
-				if (mostPlayed[i].IconFileLocation != string.Empty && mostPlayed[i].IconFileLocation != null) // If a custom image is used
+				try
 				{
-					var bitmap = new BitmapImage();
-					var stream = File.OpenRead(mostPlayed[i].IconFileLocation);
-
-					bitmap.BeginInit();
-					bitmap.CacheOption = BitmapCacheOption.OnLoad;
-					bitmap.StreamSource = stream;
-					bitmap.DecodePixelWidth = 256;
-					bitmap.EndInit();
-					stream.Close();
-					stream.Dispose();
-					bitmap.Freeze();
-					imgs[i].ImageSource = bitmap;
-				}
-				else
-				{
-					if (!mostPlayed[i].IsUWP && !mostPlayed[i].IsSteam) // If the game isn't UWP
+					if (mostPlayed[i].IconFileLocation != string.Empty && mostPlayed[i].IconFileLocation != null) // If a custom image is used
 					{
-						System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(mostPlayed[i].FileLocation);
-						imgs[i].ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+						var bitmap = new BitmapImage();
+						var stream = File.OpenRead(mostPlayed[i].IconFileLocation);
+
+						bitmap.BeginInit();
+						bitmap.CacheOption = BitmapCacheOption.OnLoad;
+						bitmap.StreamSource = stream;
+						bitmap.DecodePixelWidth = 256;
+						bitmap.EndInit();
+						stream.Close();
+						stream.Dispose();
+						bitmap.Freeze();
+						imgs[i].ImageSource = bitmap;
 					}
+					else
+					{
+						if (!mostPlayed[i].IsUWP && !mostPlayed[i].IsSteam) // If the game isn't UWP
+						{
+							System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(mostPlayed[i].FileLocation);
+							imgs[i].ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+						}
+					}
+				}
+				catch
+				{
+					imgs[i].ImageSource = new BitmapImage(new Uri("pack://application:,,,/Gavilya;component/Assets/PC.png")); // Show the default image
 				}
 			}
 

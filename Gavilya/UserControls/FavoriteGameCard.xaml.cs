@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using LeoCorpLibrary;
+using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
@@ -61,32 +62,38 @@ public partial class FavoriteGameCard : UserControl
 		GameNameToolTip.Content = gameInfo.Name;
 		ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
 
-		if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If there is an image
+		try
 		{
-			var bitmap = new BitmapImage();
-			var stream = File.OpenRead(gameInfo.IconFileLocation);
-
-			bitmap.BeginInit();
-			bitmap.CacheOption = BitmapCacheOption.OnLoad;
-			bitmap.StreamSource = stream;
-			bitmap.DecodePixelWidth = 170;
-			bitmap.EndInit();
-			stream.Close();
-			stream.Dispose();
-			bitmap.Freeze();
-			GameIcon.ImageSource = bitmap; // Put the icon of the game
-			GamePath = gameInfo.FileLocation; // Set the location of the game
-		}
-		else // If the image is the app icon
-		{
-			if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
+			if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If there is an image
 			{
-				Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
-				GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
-				GamePath = gameInfo.FileLocation; // Set the location of the game 
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(gameInfo.IconFileLocation);
+
+				bitmap.BeginInit();
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.DecodePixelWidth = 170;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
+				GameIcon.ImageSource = bitmap; // Put the icon of the game
+				GamePath = gameInfo.FileLocation; // Set the location of the game
+			}
+			else // If the image is the app icon
+			{
+				if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
+				{
+					Icon icon = Icon.ExtractAssociatedIcon(gameInfo.FileLocation); // Grab the icon of the game
+					GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+					GamePath = gameInfo.FileLocation; // Set the location of the game 
+				}
 			}
 		}
-
+		catch
+		{
+			GameIcon.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Gavilya;component/Assets/PC.png")); // Show the default image
+		}
 	}
 
 	private void PlayBtn_Click(object sender, RoutedEventArgs e)

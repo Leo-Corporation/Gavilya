@@ -60,24 +60,31 @@ public partial class StatGameInfoControl : UserControl
 		}
 
 		// Icon
-		if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If a custom image is used
+		try
 		{
-			var bitmap = new BitmapImage();
-			var stream = File.OpenRead(gameInfo.IconFileLocation);
+			if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If a custom image is used
+			{
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(gameInfo.IconFileLocation);
 
-			bitmap.BeginInit();
-			bitmap.CacheOption = BitmapCacheOption.OnLoad;
-			bitmap.StreamSource = stream;
-			bitmap.EndInit();
-			stream.Close();
-			stream.Dispose();
-			bitmap.Freeze();
-			BackgroundImage.ImageSource = bitmap;
+				bitmap.BeginInit();
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
+				BackgroundImage.ImageSource = bitmap;
+			}
+			else
+			{
+				System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
+				BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+			}
 		}
-		else
+		catch
 		{
-			System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
-			BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
+			BackgroundImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Gavilya;component/Assets/PC.png")); // Show the default image
 		}
 	}
 }

@@ -106,41 +106,38 @@ public partial class GameInfoPage : Page
 			DescriptionTxt.Text = gameInfo.Description;
 
 			// Icon
-			if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If a custom image is used
+			try
 			{
-				var bitmap = new BitmapImage();
-				var stream = File.OpenRead(gameInfo.IconFileLocation);
-
-				bitmap.BeginInit();
-				bitmap.CacheOption = BitmapCacheOption.OnLoad;
-				bitmap.StreamSource = stream;
-				bitmap.EndInit();
-				stream.Close();
-				stream.Dispose();
-				bitmap.Freeze();
-				BackgroundImage.ImageSource = bitmap;
-			}
-			else
-			{
-				if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
+				if (!string.IsNullOrEmpty(gameInfo.IconFileLocation)) // If a custom image is used
 				{
-					System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
-					BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+					var bitmap = new BitmapImage();
+					var stream = File.OpenRead(gameInfo.IconFileLocation);
+
+					bitmap.BeginInit();
+					bitmap.CacheOption = BitmapCacheOption.OnLoad;
+					bitmap.StreamSource = stream;
+					bitmap.EndInit();
+					stream.Close();
+					stream.Dispose();
+					bitmap.Freeze();
+					BackgroundImage.ImageSource = bitmap;
 				}
+				else
+				{
+					if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
+					{
+						System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
+						BackgroundImage.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+					}
+				}
+			}
+			catch
+			{
+				BackgroundImage.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Gavilya;component/Assets/PC.png")); // Show the default image
 			}
 
 			// Platforms
 			PlatformDisplayer.Children.Clear();
-			/*PlatformDisplayer.Children.Add(
-				new TextBlock
-				{
-					Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
-					Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
-					FontSize = 20, // Set the font size
-					FontWeight = FontWeights.Bold, // Set the font weight
-					Text = Properties.Resources.Platforms // Set the text
-				}
-			); // Add the textblock*/
 
 			foreach (SDK.RAWG.Platform platform in gameInfo.Platforms)
 			{
