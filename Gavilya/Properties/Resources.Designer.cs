@@ -1899,6 +1899,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show games that you haven&apos;t played in a while..
+        /// </summary>
+        public static string ShowMoreUnplayedGames {
+            get {
+                return ResourceManager.GetString("ShowMoreUnplayedGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show screenshots.
         /// </summary>
         public static string ShowScreenshots {
