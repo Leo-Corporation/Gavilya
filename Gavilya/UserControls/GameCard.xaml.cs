@@ -255,7 +255,7 @@ public partial class GameCard : UserControl
 		new EditGame(this).Show(); // Show the EditGame window
 	}
 
-	private void GameCardBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	internal void GameCardBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		try
 		{
