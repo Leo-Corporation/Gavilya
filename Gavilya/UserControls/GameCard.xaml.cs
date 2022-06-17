@@ -85,28 +85,35 @@ public partial class GameCard : UserControl
 		location = gameInfo.FileLocation;
 
 		// Icon
-		if (gameInfo.IconFileLocation != string.Empty && gameInfo.IconFileLocation != null) // If a custom image is used
+		try
 		{
-			var bitmap = new BitmapImage();
-			var stream = File.OpenRead(gameInfo.IconFileLocation);
-
-			bitmap.BeginInit();
-			bitmap.CacheOption = BitmapCacheOption.OnLoad;
-			bitmap.StreamSource = stream;
-			bitmap.DecodePixelWidth = 256;
-			bitmap.EndInit();
-			stream.Close();
-			stream.Dispose();
-			bitmap.Freeze();
-			GameIcon.ImageSource = bitmap;
-		}
-		else
-		{
-			if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
+			if (gameInfo.IconFileLocation != string.Empty && gameInfo.IconFileLocation != null) // If a custom image is used
 			{
-				System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
-				GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(gameInfo.IconFileLocation);
+
+				bitmap.BeginInit();
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.DecodePixelWidth = 256;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
+				GameIcon.ImageSource = bitmap;
 			}
+			else
+			{
+				if (!gameInfo.IsUWP && !gameInfo.IsSteam) // If the game isn't UWP
+				{
+					System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(gameInfo.FileLocation);
+					GameIcon.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+				}
+			}
+		}
+		catch
+		{
+			GameIcon.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Gavilya;component/Assets/PC.png")); // Show the default image
 		}
 
 		// Favorite

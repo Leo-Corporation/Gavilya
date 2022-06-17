@@ -100,17 +100,24 @@ public partial class AddEditPage : Page
 		}
 
 		// Image
-		if (GameCard.GameInfo.IconFileLocation != string.Empty && GameCard.GameInfo.IconFileLocation != null)
+		try
 		{
-			Image.ImageSource = new BitmapImage(new Uri(GameCard.GameInfo.IconFileLocation));
-		}
-		else
-		{
-			if (!isUWP)
+			if (GameCard.GameInfo.IconFileLocation != string.Empty && GameCard.GameInfo.IconFileLocation != null)
 			{
-				Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(GameCard.GameInfo.FileLocation); // Grab the icon of the game
-				Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+				Image.ImageSource = new BitmapImage(new Uri(GameCard.GameInfo.IconFileLocation));
 			}
+			else
+			{
+				if (!isUWP)
+				{
+					Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(GameCard.GameInfo.FileLocation); // Grab the icon of the game
+					Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+				}
+			}
+		}
+		catch
+		{
+			Image.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Gavilya;component/Assets/PC.png")); // Show the default image
 		}
 
 		DragWin32Games.Visibility = isUWP || isSteam ? Visibility.Collapsed : Visibility.Visible; // Set visibility

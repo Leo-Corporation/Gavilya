@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,33 +45,40 @@ public partial class SearchItem : UserControl
 
 	private void InitUI()
 	{
-		// Load the Image
-		if (ParentGameCard.GameInfo.IconFileLocation != string.Empty && ParentGameCard.GameInfo.IconFileLocation != null) // If a custom image is used
+		try
 		{
-			var bitmap = new BitmapImage();
-			var stream = File.OpenRead(ParentGameCard.GameInfo.IconFileLocation);
-
-			bitmap.BeginInit();
-			bitmap.CacheOption = BitmapCacheOption.OnLoad;
-			bitmap.StreamSource = stream;
-			bitmap.DecodePixelWidth = 80;
-			bitmap.EndInit();
-			stream.Close();
-			stream.Dispose();
-			bitmap.Freeze();
-			GameImg.Source = bitmap;
-		}
-		else
-		{
-			if (!ParentGameCard.GameInfo.IsUWP && !ParentGameCard.GameInfo.IsSteam) // If the game isn't UWP
+			// Load the Image
+			if (ParentGameCard.GameInfo.IconFileLocation != string.Empty && ParentGameCard.GameInfo.IconFileLocation != null) // If a custom image is used
 			{
-				System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(ParentGameCard.GameInfo.FileLocation);
-				GameImg.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
-			}
-		}
+				var bitmap = new BitmapImage();
+				var stream = File.OpenRead(ParentGameCard.GameInfo.IconFileLocation);
 
-		// Set the Game name
-		GameName.Text = ParentGameCard.GameInfo.Name;
+				bitmap.BeginInit();
+				bitmap.CacheOption = BitmapCacheOption.OnLoad;
+				bitmap.StreamSource = stream;
+				bitmap.DecodePixelWidth = 80;
+				bitmap.EndInit();
+				stream.Close();
+				stream.Dispose();
+				bitmap.Freeze();
+				GameImg.Source = bitmap;
+			}
+			else
+			{
+				if (!ParentGameCard.GameInfo.IsUWP && !ParentGameCard.GameInfo.IsSteam) // If the game isn't UWP
+				{
+					System.Drawing.Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(ParentGameCard.GameInfo.FileLocation);
+					GameImg.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
+				}
+			}
+
+			// Set the Game name
+			GameName.Text = ParentGameCard.GameInfo.Name;
+		}
+		catch
+		{
+			GameImg.Source = new BitmapImage(new Uri("pack://application:,,,/Gavilya;component/Assets/PC.png")); // Show the default image
+		}
 	}
 
 	public override string ToString()
