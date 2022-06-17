@@ -22,6 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using System;
+using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -68,5 +71,11 @@ public partial class LanguagePage : Page
 			Definitions.Settings.Language = "_default"; // Set the language to default
 		}
 		SettingsSaver.Save();
+
+		if (MessageBox.Show(Properties.Resources.GavilyaNeedsRestartChanges, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+		{
+			Process.Start(Directory.GetCurrentDirectory() + @"\Gavilya.exe");
+			Environment.Exit(0);
+		}
 	}
 }

@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.SDK.RAWG;
 using LeoCorpLibrary;
+using Microsoft.Win32;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -821,7 +822,9 @@ public static class Global
 				gameScores.Add(i, Definitions.Games[i].LastTimePlayed / Definitions.Games[i].TotalTimePlayed);
 			}
 
-			var sort = from pair in gameScores orderby pair.Value ascending select pair;
+			var sort = Definitions.Settings.ShowMoreUnplayedGamesRecommanded.Value
+				? from pair in gameScores orderby pair.Value descending select pair
+				: from pair in gameScores orderby pair.Value ascending select pair; // Sort
 			List<GameInfo> recommandedGames = new();
 
 			foreach (KeyValuePair<int, int> keyValuePair in sort)
@@ -837,5 +840,34 @@ public static class Global
 		{
 			return new();
 		}
+	}
+
+	public static bool CanLaunchSteamGame()
+	{
+		try
+		{
+			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\ActiveProcess");
+			string result = key.GetValue("ActiveUser").ToString();
+			if (result == "0")
+			{
+				MessageBox.Show(Properties.Resources.NotLoggedToSteam, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // If the user isn't logged to steam
+				return false; // Return false, Steam cannot launch game.
+			}
+
+			// Check if Steam is not running
+			if (!Env.IsProcessRunning("Steam"))
+			{
+				// Show a message box
+				MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+				return false; // Return false, Steam cannot launch game.
+
+			}
+		}
+		catch
+		{
+			return false;
+		}
+
+		return true; // Return true, Steam can launch game.
 	}
 }

@@ -82,6 +82,11 @@ public class Settings
 	/// The maximum amount of recent games shown in the home page.
 	/// </summary>
 	public int? MaxNumberRecentGamesShown { get; set; }
+
+	/// <summary>
+	/// True if Gavilya should display games that the user doesn't play often
+	/// </summary>
+	public bool? ShowMoreUnplayedGamesRecommanded { get; set; }
 }
 
 public static class SettingsSaver
@@ -104,6 +109,11 @@ public static class SettingsSaver
 				Definitions.Settings.MaxNumberRecentGamesShown = 4;
 			}
 
+			if (!Definitions.Settings.ShowMoreUnplayedGamesRecommanded.HasValue)
+			{
+				Definitions.Settings.ShowMoreUnplayedGamesRecommanded = true;
+			}
+
 			streamReader.Dispose();
 		}
 		else
@@ -119,7 +129,8 @@ public static class SettingsSaver
 				AutoSaveDay = 1,
 				SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
 				DefaultGavilyaHomePage = GavilyaWindowPages.Home,
-				MaxNumberRecentGamesShown = 4
+				MaxNumberRecentGamesShown = 4,
+				ShowMoreUnplayedGamesRecommanded = true
 			};
 			Save();
 		}

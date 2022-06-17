@@ -58,7 +58,8 @@ public partial class DataOptionsPage : Page
 				AutoSaveDay = 1,
 				SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
 				DefaultGavilyaHomePage = GavilyaWindowPages.Home,
-				MaxNumberRecentGamesShown = 4
+				MaxNumberRecentGamesShown = 4,
+				ShowMoreUnplayedGamesRecommanded = true
 			};
 
 			SettingsSaver.Save(); // Save changes

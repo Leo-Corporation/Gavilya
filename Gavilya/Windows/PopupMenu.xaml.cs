@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows;
 
@@ -61,5 +62,10 @@ public partial class PopupMenu : Window
 	{
 		About about = new(); // About window
 		about.Show(); // Show the About window
+	}
+
+	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Process.Start("explorer.exe", "https://github.com/Leo-Corporation/Gavilya"); // Open the GitHub repository in the default browser
 	}
 }

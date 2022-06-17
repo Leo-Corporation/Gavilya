@@ -831,4 +831,19 @@
   <data name="SteamNotRunning" xml:space="preserve">
     <value>Impossible de lancer le jeu : Steam n'est pas démarré.</value>
   </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="SeeGitHubRepo" xml:space="preserve">
+    <value>Voir le dépôt GitHub.</value>
+  </data>
+  <data name="NotLoggedToSteam" xml:space="preserve">
+    <value>Vous n'êtes pas connecté à Steam.</value>
+  </data>
+  <data name="ShowMoreUnplayedGames" xml:space="preserve">
+    <value>Montrer des jeux auxquels vous n’avez pas joué depuis un moment.</value>
+  </data>
+  <data name="RecommandedGamesSection" xml:space="preserve">
+    <value>Section "Vous aimerez peut-être..."</value>
+  </data>
 </root>

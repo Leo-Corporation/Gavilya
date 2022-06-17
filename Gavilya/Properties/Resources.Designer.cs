@@ -837,6 +837,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GitHub.
+        /// </summary>
+        public static string GitHub {
+            get {
+                return ResourceManager.GetString("GitHub", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Go Back.
         /// </summary>
         public static string GoBack {
@@ -1413,6 +1422,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are not logged in to Steam..
+        /// </summary>
+        public static string NotLoggedToSteam {
+            get {
+                return ResourceManager.GetString("NotLoggedToSteam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to of the month..
         /// </summary>
         public static string OfMonth {
@@ -1665,6 +1683,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;You may like...&quot; section.
+        /// </summary>
+        public static string RecommandedGamesSection {
+            get {
+                return ResourceManager.GetString("RecommandedGamesSection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string Reset {
@@ -1773,6 +1800,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to See the GitHub repository..
+        /// </summary>
+        public static string SeeGitHubRepo {
+            get {
+                return ResourceManager.GetString("SeeGitHubRepo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to See licenses.
         /// </summary>
         public static string SeeLicenses {
@@ -1868,6 +1904,15 @@ namespace Gavilya.Properties {
         public static string Show {
             get {
                 return ResourceManager.GetString("Show", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show games that you haven&apos;t played in a while..
+        /// </summary>
+        public static string ShowMoreUnplayedGames {
+            get {
+                return ResourceManager.GetString("ShowMoreUnplayedGames", resourceCulture);
             }
         }
         

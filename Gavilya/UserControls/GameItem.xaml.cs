@@ -113,6 +113,11 @@ public partial class GameItem : UserControl
 	{
 		try
 		{
+			if (GameInfo.IsSteam && !Global.CanLaunchSteamGame())
+			{
+				return; // If the user can't launch the game, stop
+			}
+
 			if (!GameInfo.IsUWP && !GameInfo.IsSteam) // If EXE/Win32 game
 			{
 				Process p = new();

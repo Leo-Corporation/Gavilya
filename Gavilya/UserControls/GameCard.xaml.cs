@@ -168,15 +168,9 @@ public partial class GameCard : UserControl
 		}
 		else
 		{
-			if (GameInfo.IsSteam)
+			if (GameInfo.IsSteam && !Global.CanLaunchSteamGame())
 			{
-				// Check if Steam is not running
-				if (!Env.IsProcessRunning("Steam"))
-				{
-					// Show a message box
-					MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
-					return; // Exit the function
-				}
+				return; // If the user can't launch the game, stop
 			}
 
 			Process.Start("explorer.exe", location); // Start the game
@@ -260,7 +254,7 @@ public partial class GameCard : UserControl
 		new EditGame(this).Show(); // Show the EditGame window
 	}
 
-	private void GameCardBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	internal void GameCardBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		try
 		{

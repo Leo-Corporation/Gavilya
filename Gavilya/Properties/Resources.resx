@@ -838,4 +838,19 @@
   <data name="SteamNotRunning" xml:space="preserve">
     <value>Cannot launch game: Steam is not running.</value>
   </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="SeeGitHubRepo" xml:space="preserve">
+    <value>See the GitHub repository.</value>
+  </data>
+  <data name="NotLoggedToSteam" xml:space="preserve">
+    <value>You are not logged in to Steam.</value>
+  </data>
+  <data name="ShowMoreUnplayedGames" xml:space="preserve">
+    <value>Show games that you haven't played in a while.</value>
+  </data>
+  <data name="RecommandedGamesSection" xml:space="preserve">
+    <value>"You may like..." section</value>
+  </data>
 </root>

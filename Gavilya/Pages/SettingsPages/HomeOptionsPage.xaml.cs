@@ -42,6 +42,7 @@ public partial class HomeOptionsPage : Page
 	private void InitUI()
 	{
 		NumberRecentGamesTextBox.Text = Definitions.Settings.MaxNumberRecentGamesShown.Value.ToString();
+		DisplayedUnusedGamesChk.IsChecked = Definitions.Settings.ShowMoreUnplayedGamesRecommanded; // Change the check state
 	}
 
 	private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -60,5 +61,11 @@ public partial class HomeOptionsPage : Page
 	{
 		Regex regex = new("[^0-9]+");
 		e.Handled = regex.IsMatch(e.Text);
+	}
+
+	private void DisplayedUnusedGamesChk_Checked(object sender, RoutedEventArgs e)
+	{
+		Definitions.Settings.ShowMoreUnplayedGamesRecommanded = DisplayedUnusedGamesChk.IsChecked; // Set value
+		SettingsSaver.Save(); // Save the settings
 	}
 }

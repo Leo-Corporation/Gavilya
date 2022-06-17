@@ -187,6 +187,11 @@ public partial class GameInfoPage : Page
 
 	private void PlayBtn_Click(object sender, RoutedEventArgs e)
 	{
+		if (GameInfo.IsSteam && !Global.CanLaunchSteamGame())
+		{
+			return; // If the user can't launch the game, stop
+		}
+
 		if (!GameInfo.IsUWP && !GameInfo.IsSteam)
 		{
 			if (File.Exists(gameLocation)) // If the file exist

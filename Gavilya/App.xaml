@@ -1148,6 +1148,9 @@
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
                 <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
                 <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Foreground" Value="#FFF"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type TextBox}">
@@ -1163,18 +1166,18 @@
             <SolidColorBrush x:Key="ComboBox.Static.Border" Color="#6600FF"/>
             <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="#6600FF"/>
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="Transparent"/>
-            <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FFABADB3"/>
+            <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="#FF1E1E32"/>
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
-            <SolidColorBrush x:Key="TextBox.Static.Background" Color="Transparent"/>
+            <SolidColorBrush x:Key="TextBox.Static.Background" Color="#FF1E1E32"/>
             <LinearGradientBrush x:Key="ComboBox.MouseOver.Background" EndPoint="0,1" StartPoint="0,0">
                 <GradientStop Color="#6600FF" Offset="0.0"/>
                 <GradientStop Color="#6600FF" Offset="1.0"/>
             </LinearGradientBrush>
             <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="#6600FF"/>
             <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#fff"/>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="Transparent"/>
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#6600FF"/>
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="#FF1E1E32"/>
+            <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="#FF1E1E32"/>
             <LinearGradientBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" EndPoint="0,1" StartPoint="0,0">
                 <GradientStop Color="#6600FF" Offset="0.0"/>
                 <GradientStop Color="#6600FF" Offset="1.0"/>
@@ -1302,7 +1305,7 @@
                     </Grid.ColumnDefinitions>
                     <Popup x:Name="PART_Popup" AllowsTransparency="true" Grid.ColumnSpan="2" IsOpen="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
                         <theme:SystemDropShadowChrome x:Name="shadow" Color="Transparent" MinWidth="{Binding ActualWidth, ElementName=templateRoot}" MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                            <Border x:Name="dropDownBorder" Background="#000014" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}">
+                            <Border x:Name="dropDownBorder" Background="#000014" BorderThickness="1" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" CornerRadius="5">
                                 <ScrollViewer x:Name="DropDownScrollViewer">
                                     <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                         <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -1501,7 +1504,27 @@
 				</Setter>
 			</Style>
 
-			<SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
+            <Style x:Key="ItemStyle" TargetType="{x:Type ComboBoxItem}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ComboBoxItem}">
+                            <Border x:Name="gd" Background="Transparent">
+                                <ContentPresenter />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="ComboBoxItem.IsMouseOver" Value="True">
+                                    <Setter TargetName="gd" Property="Background" Value="#FF1E1E32"></Setter>
+                                </Trigger>
+                                <Trigger Property="ComboBoxItem.IsSelected" Value="True">
+                                    <Setter TargetName="gd" Property="Background" Value="#FF28283C"></Setter>
+                                </Trigger>                                
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <SolidColorBrush x:Key="RadioButton.Static.Background" Color="#FFFFFFFF"/>
 			<SolidColorBrush x:Key="RadioButton.Static.Border" Color="#FF707070"/>
 			<SolidColorBrush x:Key="RadioButton.Static.Glyph" Color="#FF212121"/>
 			<SolidColorBrush x:Key="RadioButton.MouseOver.Background" Color="Transparent"/>
