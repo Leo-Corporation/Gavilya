@@ -435,7 +435,7 @@ public partial class GameInfoPage : Page
 
 		List<SDK.RAWG.Achievement> achievements = await Global.GetAchievementsAsync(GameInfo.RAWGID); // Get achievements
 
-		if (achievements.Count > 0)
+		if (achievements is not null && achievements.Count > 0)
 		{
 			foreach (SDK.RAWG.Achievement achievement in achievements)
 			{
