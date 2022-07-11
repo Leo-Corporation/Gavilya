@@ -433,7 +433,7 @@ public partial class MainWindow : Window
 					// Clear search box
 					// 1. Find the SearchItem in the SearchBox
 					// 2. Remove the SearchItem
-					
+
 					for (int i = 0; i < SearchBox.Items.Count; i++)
 					{
 						if (SearchBox.Items[i] is SearchItem searchItem)
