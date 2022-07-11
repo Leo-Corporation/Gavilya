@@ -10,7 +10,7 @@
 		xmlns:uc="clr-namespace:Gavilya.UserControls"
 		mc:Ignorable="d"
 		FontFamily="/Fonts/#Montserrat"
-		Title="Gavilya" Height="700" Width="1185" MinHeight="450" MinWidth="450" WindowStartupLocation="CenterScreen" LocationChanged="Window_LocationChanged" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded" >
+		Title="Gavilya" Height="700" Width="1185" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" LocationChanged="Window_LocationChanged" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded" >
 
 	<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
