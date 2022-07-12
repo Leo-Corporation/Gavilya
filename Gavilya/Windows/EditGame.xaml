@@ -1,115 +1,115 @@
 ﻿<Window x:Class="Gavilya.Windows.EditGame" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Gavilya.Windows" xmlns:lang="clr-namespace:Gavilya.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Title="{x:Static lang:Resources.EditGame}" Height="600" Width="520" AllowsTransparency="True" WindowStartupLocation="CenterScreen" Background="Transparent" ResizeMode="NoResize" WindowStyle="None">
-    <WindowChrome.WindowChrome>
-        <WindowChrome CaptionHeight="50" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
-    </WindowChrome.WindowChrome>
+	<WindowChrome.WindowChrome>
+		<WindowChrome CaptionHeight="50" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
+	</WindowChrome.WindowChrome>
 
-    <Window.Resources>
-        <Style x:Key="WindowMainPanelStyle" TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}" />
-            <Setter Property="BorderThickness" Value="1" />
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Maximized">
-                    <Setter Property="Margin" Value="6 0 6 0" />
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="TitleBarButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" Background="Transparent" CornerRadius="5" BorderThickness="0" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" RecognizesAccessKey="True" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#28283C" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#28283C" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
+	<Window.Resources>
+		<Style x:Key="WindowMainPanelStyle" TargetType="{x:Type Border}">
+			<Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Maximized">
+					<Setter Property="Margin" Value="6 0 6 0" />
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="TitleBarButtonStyle" TargetType="Button">
+			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="Height" Value="32" />
+			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+			<Setter Property="IsTabStop" Value="False" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border x:Name="border" Background="Transparent" CornerRadius="5" BorderThickness="0" SnapsToDevicePixels="true">
+							<ContentPresenter x:Name="contentPresenter" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" RecognizesAccessKey="True" />
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter TargetName="border" Property="Background" Value="#28283C" />
+							</Trigger>
+							<Trigger Property="IsPressed" Value="true">
+								<Setter TargetName="border" Property="Background" Value="#28283C" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
 
-        <Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="Height" Value="32" />
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
-            <Setter Property="IsTabStop" Value="False" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" Background="Transparent" CornerRadius="5" BorderThickness="0" SnapsToDevicePixels="true">
-                            <ContentPresenter x:Name="contentPresenter" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" RecognizesAccessKey="True" />
-                        </Border>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="Red" />
-                                <Setter Property="Foreground" Value="DarkRed" />
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="Red" />
-                                <Setter Property="Foreground" Value="DarkRed" />
-                            </Trigger>
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-    </Window.Resources>
+		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
+			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Height" Value="32" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+			<Setter Property="IsTabStop" Value="False" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border x:Name="border" Background="Transparent" CornerRadius="5" BorderThickness="0" SnapsToDevicePixels="true">
+							<ContentPresenter x:Name="contentPresenter" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" RecognizesAccessKey="True" />
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter TargetName="border" Property="Background" Value="Red" />
+								<Setter Property="Foreground" Value="DarkRed" />
+							</Trigger>
+							<Trigger Property="IsPressed" Value="true">
+								<Setter TargetName="border" Property="Background" Value="Red" />
+								<Setter Property="Foreground" Value="DarkRed" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
 
-    <Border Margin="10" CornerRadius="10" Background="#FF0A0A1E">
-        <Border.Effect>
-            <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
-        </Border.Effect>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="35" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+	<Border Margin="10" CornerRadius="10" Background="#FF0A0A1E">
+		<Border.Effect>
+			<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
+		</Border.Effect>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="35" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
 
-            <Grid Height="35" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+			<Grid Height="35" VerticalAlignment="Top">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
 
-                <Rectangle Fill="#FF000014" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
-                    <Rectangle.Effect>
-                        <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0" />
-                    </Rectangle.Effect>
-                </Rectangle>
+				<Rectangle Fill="#FF000014" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+					<Rectangle.Effect>
+						<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0" />
+					</Rectangle.Effect>
+				</Rectangle>
 
-                <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.EditGame}" FontWeight="ExtraBold" Foreground="White">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
-                                    <Setter Property="Foreground" Value="{DynamicResource WindowTitleBarInactiveText}" />
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
+				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.EditGame}" FontWeight="ExtraBold" Foreground="White">
+					<TextBlock.Style>
+						<Style TargetType="TextBlock">
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}" Value="False">
+									<Setter Property="Foreground" Value="{DynamicResource WindowTitleBarInactiveText}" />
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</TextBlock.Style>
+				</TextBlock>
 
-                <Button Grid.Column="2" Click="Button_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xF4E0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+				<Button Grid.Column="2" Click="Button_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xF4E0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 
-                <Button Grid.Column="3" Click="Button_Click_1" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
-            </Grid>
+				<Button Grid.Column="3" Click="Button_Click_1" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+			</Grid>
 
-            <Grid Grid.Row="1">
-                <Frame x:Name="Content" NavigationUIVisibility="Hidden" />
-            </Grid>
-        </Grid>
-    </Border>
+			<Grid Grid.Row="1">
+				<Frame x:Name="Content" NavigationUIVisibility="Hidden" />
+			</Grid>
+		</Grid>
+	</Border>
 </Window>
