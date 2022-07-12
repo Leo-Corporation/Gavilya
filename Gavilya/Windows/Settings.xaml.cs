@@ -57,20 +57,8 @@ public partial class Settings : Window
 		Close(); // Close the window
 	}
 
-	private void HideAllPages()
-	{
-		saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-		languagePage.Visibility = Visibility.Hidden; // Hide the page
-		startupPage.Visibility = Visibility.Hidden; // Hide the page
-		dataOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-		homeOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-		searchOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-	}
-
 	private void NavigateToPage(SettingsPages settingsPage)
 	{
-		HideAllPages(); // Hide all the pages
-
 		switch (settingsPage)
 		{
 			case SettingsPages.Languages:
