@@ -882,6 +882,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hide the search bar.
+        /// </summary>
+        public static string HideSearchBar {
+            get {
+                return ResourceManager.GetString("HideSearchBar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home.
         /// </summary>
         public static string Home {
@@ -1778,6 +1787,24 @@ namespace Gavilya.Properties {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search bar.
+        /// </summary>
+        public static string SearchBar {
+            get {
+                return ResourceManager.GetString("SearchBar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string SearchF {
+            get {
+                return ResourceManager.GetString("SearchF", resourceCulture);
             }
         }
         

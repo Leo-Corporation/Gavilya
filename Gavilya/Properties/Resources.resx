@@ -853,4 +853,13 @@
   <data name="RecommandedGamesSection" xml:space="preserve">
     <value>"You may like..." section</value>
   </data>
+  <data name="SearchF" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="HideSearchBar" xml:space="preserve">
+    <value>Hide the search bar</value>
+  </data>
+  <data name="SearchBar" xml:space="preserve">
+    <value>Search bar</value>
+  </data>
 </root>

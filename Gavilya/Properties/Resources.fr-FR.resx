@@ -846,4 +846,13 @@
   <data name="RecommandedGamesSection" xml:space="preserve">
     <value>Section "Vous aimerez peut-être..."</value>
   </data>
+  <data name="SearchF" xml:space="preserve">
+    <value>Recherche</value>
+  </data>
+  <data name="HideSearchBar" xml:space="preserve">
+    <value>Masquer la barre de recherche</value>
+  </data>
+  <data name="SearchBar" xml:space="preserve">
+    <value>Barre de recherche</value>
+  </data>
 </root>
