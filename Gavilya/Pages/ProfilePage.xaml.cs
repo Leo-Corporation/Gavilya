@@ -126,6 +126,11 @@ public partial class ProfilePage : Page
 			Top2Rect.Height = h1; // Set height
 			Top3Rect.Height = h2; // Set height
 
+			// Load tooltips
+			Top1ToolTip.Content = $"{mostPlayed[0].Name} ({mostPlayed[0].TotalTimePlayed / 3600}{Properties.Resources.HourShort})"; // Set tooltip
+			Top2ToolTip.Content = $"{mostPlayed[1].Name} ({mostPlayed[1].TotalTimePlayed / 3600}{Properties.Resources.HourShort})"; // Set tooltip
+			Top3ToolTip.Content = $"{mostPlayed[2].Name} ({mostPlayed[2].TotalTimePlayed / 3600}{Properties.Resources.HourShort})"; // Set tooltip
+
 			GameName1.Text = mostPlayed[0].Name; // Set text
 			GameName2.Text = mostPlayed[1].Name; // Set text
 			GameName3.Text = mostPlayed[2].Name; // Set text
