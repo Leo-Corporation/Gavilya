@@ -108,6 +108,9 @@ public partial class MainWindow : Window
 		};
 		CheckButton();
 		DisplayNotifications();
+
+		// Search box
+		SearchBox.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();

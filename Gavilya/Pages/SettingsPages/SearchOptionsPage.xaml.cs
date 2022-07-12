@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Classes;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -34,10 +35,20 @@ public partial class SearchOptionsPage : Page
 	public SearchOptionsPage()
 	{
 		InitializeComponent();
+		InitUI(); // Initialize the UI.
+	}
+
+	private void InitUI()
+	{
+		HideSearchBarChk.IsChecked = Definitions.Settings.HideSearchBar; // Set the Checked state
 	}
 
 	private void HideSearchBarChk_Checked(object sender, RoutedEventArgs e)
 	{
-		//TODO: Add settings
+		Definitions.Settings.HideSearchBar = HideSearchBarChk.IsChecked; // Set settings value
+		SettingsSaver.Save(); // Save changes
+
+		// Hide search bar in MainWindow
+		Definitions.MainWindow.SearchBox.Visibility = HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 	}
 }
