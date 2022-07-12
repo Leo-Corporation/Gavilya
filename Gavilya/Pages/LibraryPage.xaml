@@ -1,95 +1,85 @@
-﻿<Page x:Class="Gavilya.Pages.LibraryPage"
-	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	  xmlns:local="clr-namespace:Gavilya.Pages"
-	  xmlns:lang="clr-namespace:Gavilya.Properties"
-	  FontFamily="..\Fonts\#Montserrat" Foreground="#FFF"
-	  mc:Ignorable="d" 
-	  d:DesignHeight="450" d:DesignWidth="800"
-	  Title="LibraryPage">
+﻿<Page x:Class="Gavilya.Pages.LibraryPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" FontFamily="..\Fonts\#Hauora" Foreground="#FFF" mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800" Title="LibraryPage">
 
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition/>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
 		</Grid.RowDefinitions>
 
 		<StackPanel Grid.Row="0">
 			<StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
-				<TextBlock Text="&#xF4DD;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center"/>
-				<TextBlock Text="{x:Static lang:Resources.Library}" FontSize="18" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+				<TextBlock Text="&#xF4DD;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
+				<TextBlock Text="{x:Static lang:Resources.Library}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
 			</StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10,0,0,0">
-                <Button Click="AddBtn_Click" Margin="5" Grid.Row="1" x:Name="AddBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="0 0 5 0" Text="&#xe901;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
-                        <TextBlock Text="{x:Static lang:Resources.Add}" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <Button.ToolTip>
-                        <ToolTip Content="{x:Static lang:Resources.AddGame}" Background="#000014" Foreground="White"/>
-                    </Button.ToolTip>
-                </Button>
-
-                <Button Click="AddUWPBtn_Click" Margin="5" Grid.Row="1" x:Name="AddUWPBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Margin="0 0 5 0" Text="&#xe901;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center"/>
-                        <TextBlock Text="{x:Static lang:Resources.AddUWPGame}" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <Button.ToolTip>
-                        <ToolTip Content="{x:Static lang:Resources.AddUWPGame}" Background="#000014" Foreground="White"/>
-                    </Button.ToolTip>
-                </Button>
-                <Button Click="AddSteamBtn_Click" Margin="5" Grid.Row="1" x:Name="AddSteamBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White">
-                    <StackPanel Orientation="Horizontal">
-                        <Image Source="..\Assets\Steam.png" Height="20" Width="20" Margin="0,0,5,0"/>
-                        <TextBlock Text="{x:Static lang:Resources.AddSteamGame}" VerticalAlignment="Center"/>
-                    </StackPanel>
-
-                    <Button.ToolTip>
-                        <ToolTip Content="{x:Static lang:Resources.AddSteamGame}" Background="#000014" Foreground="White"/>
-                    </Button.ToolTip>
-                </Button>
-            </StackPanel>
-            <StackPanel	Orientation="Horizontal" Margin="10 5">
-				<Button x:Name="GameCardTabBtn" Style="{StaticResource TabButtonBorder}" Click="GameCardTabBtn_Click" MouseEnter="GameCardTabBtn_MouseEnter" MouseLeave="GameCardTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="#FF6600FF">
+			<StackPanel Orientation="Horizontal" Margin="10,0,0,0">
+				<Button Click="AddBtn_Click" Margin="5" Grid.Row="1" x:Name="AddBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White">
 					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="&#xF451;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.GameCard}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+						<TextBlock Margin="0 0 5 0" Text="&#xe901;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.Add}" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.GameCard}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="#000014" Foreground="White" />
+					</Button.ToolTip>
+				</Button>
+
+				<Button Click="AddUWPBtn_Click" Margin="5" Grid.Row="1" x:Name="AddUWPBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Margin="0 0 5 0" Text="&#xe901;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.AddUWPGame}" VerticalAlignment="Center" />
+					</StackPanel>
+
+					<Button.ToolTip>
+						<ToolTip Content="{x:Static lang:Resources.AddUWPGame}" Background="#000014" Foreground="White" />
+					</Button.ToolTip>
+				</Button>
+				<Button Click="AddSteamBtn_Click" Margin="5" Grid.Row="1" x:Name="AddSteamBtn" Padding="5" HorizontalAlignment="Left" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="..\Assets\Steam.png" Height="20" Width="20" Margin="0,0,5,0" />
+						<TextBlock Text="{x:Static lang:Resources.AddSteamGame}" VerticalAlignment="Center" />
+					</StackPanel>
+
+					<Button.ToolTip>
+						<ToolTip Content="{x:Static lang:Resources.AddSteamGame}" Background="#000014" Foreground="White" />
+					</Button.ToolTip>
+				</Button>
+			</StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="10 5">
+				<Button x:Name="GameCardTabBtn" Style="{StaticResource TabButtonBorder}" Click="GameCardTabBtn_Click" MouseEnter="GameCardTabBtn_MouseEnter" MouseLeave="GameCardTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="#FF6600FF">
+					<StackPanel Orientation="Horizontal">
+						<TextBlock Text="&#xF451;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.GameCard}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
+					</StackPanel>
+
+					<Button.ToolTip>
+						<ToolTip Content="{x:Static lang:Resources.GameCard}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 
 				<Button x:Name="RecentTabBtn" Style="{StaticResource TabButtonBorder}" Click="RecentTabBtn_Click" MouseEnter="GameCardTabBtn_MouseEnter" MouseLeave="GameCardTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="&#xF47F;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.RecentGames}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+						<TextBlock Text="&#xF47F;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.RecentGames}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 
 				<Button x:Name="GameListTabBtn" Style="{StaticResource TabButtonBorder}" Click="GameListTabBtn_Click" MouseEnter="GameCardTabBtn_MouseEnter" MouseLeave="GameCardTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="&#xF138;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.GameList}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+						<TextBlock Text="&#xF138;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.GameList}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.GameList}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.GameList}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
 		</StackPanel>
 
-		<Frame x:Name="PageDisplayer" Margin="10 0 0 0" NavigationUIVisibility="Hidden" Grid.Row="1" Navigated="PageDisplayer_Navigated"/>
+		<Frame x:Name="PageDisplayer" Margin="10 0 0 0" NavigationUIVisibility="Hidden" Grid.Row="1" Navigated="PageDisplayer_Navigated" />
 	</Grid>
 </Page>

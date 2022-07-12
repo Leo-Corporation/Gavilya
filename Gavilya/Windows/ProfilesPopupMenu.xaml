@@ -1,68 +1,58 @@
-﻿<Window x:Class="Gavilya.Windows.ProfilesPopupMenu"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:lang="clr-namespace:Gavilya.Properties"
-        mc:Ignorable="d"
-        FontFamily="../Fonts/#Montserrat"
-        Title="{x:Static lang:Resources.Profiles}" Height="250" Width="400" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None" Deactivated="Window_Deactivated">
+﻿<Window x:Class="Gavilya.Windows.ProfilesPopupMenu" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:lang="clr-namespace:Gavilya.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Title="{x:Static lang:Resources.Profiles}" Height="250" Width="400" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None" Deactivated="Window_Deactivated">
 	<Grid>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
 		</Grid.RowDefinitions>
 		<Path Panel.ZIndex="10" Data="M6 0L12 12L0 12L6 0Z" Fill="#FF000014" HorizontalAlignment="Center">
 			<Path.Effect>
-				<DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
+				<DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0" />
 			</Path.Effect>
 		</Path>
 		<Border Grid.Row="1" CornerRadius="10" Margin="10 0 10 10" Background="#FF000014">
 			<Border.Effect>
-				<DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0"/>
+				<DropShadowEffect Color="#FF646564" BlurRadius="15" Opacity="0.8" ShadowDepth="0" />
 			</Border.Effect>
 			<Grid VerticalAlignment="Stretch">
 
 				<Grid.RowDefinitions>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="Auto"/>
-					<RowDefinition Height="*"/>
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="*" />
 				</Grid.RowDefinitions>
-				
+
 				<StackPanel>
 					<StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
 						<Button x:Name="StatsBtn" Click="StatsBtn_Click" Padding="5" Margin="0,0,0,0" Content="&#xE9C4;" Style="{StaticResource RegularButton}" Foreground="#FFF" Background="{x:Null}" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" HorizontalAlignment="Right">
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Statistics}" Background="#000014" Foreground="White"/>
+								<ToolTip Content="{x:Static lang:Resources.Statistics}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
 						<Rectangle RadiusX="25" RadiusY="25" Width="50" Height="50" HorizontalAlignment="Center" Margin="10">
 							<Rectangle.Fill>
-								<ImageBrush x:Name="ProfilePicture" ImageSource="../Assets/DefaultPP.png"/>
+								<ImageBrush x:Name="ProfilePicture" ImageSource="../Assets/DefaultPP.png" />
 							</Rectangle.Fill>
 						</Rectangle>
 						<Button x:Name="AddProfileBtn" Click="AddProfileBtn_Click" Padding="5" Margin="0,0,0,0" Content="&#xe901;" Style="{StaticResource RegularButton}" Foreground="#FFF" Background="{x:Null}" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" HorizontalAlignment="Right">
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.AddProfile}" Background="#000014" Foreground="White"/>
+								<ToolTip Content="{x:Static lang:Resources.AddProfile}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-						<TextBlock d:Text="ProfileName" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="0,0,0,0" Foreground="White" FontWeight="Bold" FontSize="16" HorizontalAlignment="Center"/>
+						<TextBlock d:Text="ProfileName" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="0,0,0,0" Foreground="White" FontWeight="ExtraBold" FontSize="16" HorizontalAlignment="Center" />
 						<Button x:Name="EditProfileBtn" Click="EditProfileBtn_Click" Padding="5" Margin="5,0,0,0" Content="&#xe9ef;" Style="{StaticResource RegularButton}" Foreground="#FFF" Background="{x:Null}" FontFamily="..\Fonts\#FluentlyIcons">
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.EditProfile}" Background="#000014" Foreground="White"/>
+								<ToolTip Content="{x:Static lang:Resources.EditProfile}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
 					</StackPanel>
 				</StackPanel>
 
-				<TextBlock Grid.Row="1" Foreground="White" Text="{x:Static lang:Resources.OtherProfiles}" Margin="10,0,0,0"/>
+				<TextBlock Grid.Row="1" Foreground="White" Text="{x:Static lang:Resources.OtherProfiles}" Margin="10,0,0,0" />
 
 				<ScrollViewer HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto" CanContentScroll="True" Grid.Row="2">
-					<StackPanel Grid.Row="2" x:Name="ProfileDisplayer">
-
-					</StackPanel>
+					<StackPanel Grid.Row="2" x:Name="ProfileDisplayer"></StackPanel>
 				</ScrollViewer>
 			</Grid>
 		</Border>

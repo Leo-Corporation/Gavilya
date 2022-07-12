@@ -5,7 +5,7 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:local="clr-namespace:Gavilya.UserControls"
 			 mc:Ignorable="d" 
-			 FontFamily="../Fonts/#Montserrat"
+			 FontFamily="../Fonts/#Hauora"
 			 Height="30" MinWidth="200" Margin="0,0,5,0">
 	<Grid MouseEnter="Grid_MouseEnter" MouseLeave="Grid_MouseLeave">
 		<Button Padding="5 0 5 0" x:Name="GameBtn" Click="GameBtn_Click" Style="{DynamicResource RegularButton}" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Center" Margin="0,0,5,0" FontSize="11">

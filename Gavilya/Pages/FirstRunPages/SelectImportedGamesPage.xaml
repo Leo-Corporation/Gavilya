@@ -1,37 +1,27 @@
-﻿<Page x:Class="Gavilya.Pages.FirstRunPages.SelectImportedGamesPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Gavilya.Pages.FirstRunPages"
-      xmlns:lang="clr-namespace:Gavilya.Properties"
-      mc:Ignorable="d" 
-      FontFamily="../../Fonts/#Montserrat"
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="SelectImportedGamesPage">
+﻿<Page x:Class="Gavilya.Pages.FirstRunPages.SelectImportedGamesPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.Pages.FirstRunPages" xmlns:lang="clr-namespace:Gavilya.Properties" mc:Ignorable="d" FontFamily="../../Fonts/#Hauora" d:DesignHeight="450" d:DesignWidth="800" Title="SelectImportedGamesPage">
 
-    <Grid>
+	<Grid>
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="250"/>
-			<ColumnDefinition/>
+			<ColumnDefinition Width="250" />
+			<ColumnDefinition />
 		</Grid.ColumnDefinitions>
 
 		<Grid.RowDefinitions>
-			<RowDefinition/>
-			<RowDefinition Height="Auto"/>
+			<RowDefinition />
+			<RowDefinition Height="Auto" />
 		</Grid.RowDefinitions>
 
-		<Image Margin="10" Grid.RowSpan="3" Source="..\..\Assets\importGames.png"/>
+		<Image Margin="10" Grid.RowSpan="3" Source="..\..\Assets\importGames.png" />
 
 		<Grid Grid.Column="1">
 			<Grid.RowDefinitions>
-				<RowDefinition Height="Auto"/>
-				<RowDefinition/>
+				<RowDefinition Height="Auto" />
+				<RowDefinition />
 			</Grid.RowDefinitions>
-			
+
 			<StackPanel Margin="10" Grid.Row="0">
-				<TextBlock Text="{x:Static lang:Resources.ImportGames}" Foreground="White" FontWeight="Bold" FontSize="16" Margin="10 10 10 5"/>
-				<TextBlock Text="{x:Static lang:Resources.SelectGamesImport}" TextWrapping="Wrap" FontSize="13" Foreground="White" Margin="10 5 10 5"/>
+				<TextBlock Text="{x:Static lang:Resources.ImportGames}" Foreground="White" FontWeight="ExtraBold" FontSize="16" Margin="10 10 10 5" />
+				<TextBlock Text="{x:Static lang:Resources.SelectGamesImport}" TextWrapping="Wrap" FontSize="13" Foreground="White" Margin="10 5 10 5" />
 			</StackPanel>
 
 			<ScrollViewer Template="{DynamicResource ScrollViewerTemplate1}" Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
@@ -42,8 +32,8 @@
 		<Button x:Name="NextBtn" Click="NextBtn_Click" Grid.Column="1" Padding="10 7 10 7" Margin="10" Grid.Row="1" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#6600FF">
 
 			<StackPanel Orientation="Horizontal">
-				<TextBlock FontSize="12" FontWeight="Bold" Text="{x:Static lang:Resources.Continue}" Foreground="White" VerticalAlignment="Center"/>
-				<TextBlock FontSize="10" FontFamily="..\..\Fonts\#FluentlyIcons" Text="&#xe919;" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0"/>
+				<TextBlock FontSize="12" FontWeight="ExtraBold" Text="{x:Static lang:Resources.Continue}" Foreground="White" VerticalAlignment="Center" />
+				<TextBlock FontSize="10" FontFamily="..\..\Fonts\#FluentlyIcons" Text="&#xe919;" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" />
 			</StackPanel>
 		</Button>
 	</Grid>
