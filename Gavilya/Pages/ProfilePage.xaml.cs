@@ -86,7 +86,7 @@ public partial class ProfilePage : Page
 		}
 
 		ProfileNameTxt.Text = CurrentProfile.Name; // Show name
-		TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
+		TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort} • {Definitions.Games.Count} {(Definitions.Games.Count > 1 ? Properties.Resources.GamesL : Properties.Resources.GameL)}"; // Set text
 
 		// Get top 3 most played games
 		// Values
