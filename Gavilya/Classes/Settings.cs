@@ -87,6 +87,11 @@ public class Settings
 	/// True if Gavilya should display games that the user doesn't play often
 	/// </summary>
 	public bool? ShowMoreUnplayedGamesRecommanded { get; set; }
+
+	/// <summary>
+	/// True if Gavilya should hide the search bar. (default = false)
+	/// </summary>
+	public bool? HideSearchBar { get; set; }
 }
 
 public static class SettingsSaver
@@ -114,6 +119,11 @@ public static class SettingsSaver
 				Definitions.Settings.ShowMoreUnplayedGamesRecommanded = true;
 			}
 
+			if (!Definitions.Settings.HideSearchBar.HasValue)
+			{
+				Definitions.Settings.HideSearchBar = false;
+			}
+
 			streamReader.Dispose();
 		}
 		else
@@ -130,7 +140,8 @@ public static class SettingsSaver
 				SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
 				DefaultGavilyaHomePage = GavilyaWindowPages.Home,
 				MaxNumberRecentGamesShown = 4,
-				ShowMoreUnplayedGamesRecommanded = true
+				ShowMoreUnplayedGamesRecommanded = true,
+				HideSearchBar = false
 			};
 			Save();
 		}

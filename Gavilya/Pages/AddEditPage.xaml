@@ -1,84 +1,74 @@
-﻿<Page x:Class="Gavilya.Pages.AddEditPage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:Gavilya.Pages"
-	  xmlns:lang="clr-namespace:Gavilya.Properties"
-	  FontFamily="..\Fonts\#Montserrat"
-      mc:Ignorable="d" 
-      Height="520" Width="500" Background="Transparent" Foreground="#FFF"
-      Title="AddEditPage">
+﻿<Page x:Class="Gavilya.Pages.AddEditPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" FontFamily="..\Fonts\#Hauora" mc:Ignorable="d" Height="570" Width="500" Background="Transparent" Foreground="#FFF" Title="AddEditPage">
 
-    <Grid>
+	<Grid>
 		<StackPanel Orientation="Vertical" Margin="10">
-			<TextBlock Text="{x:Static lang:Resources.Location}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
+			<TextBlock Text="{x:Static lang:Resources.Location}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
 			<StackPanel x:Name="DragWin32Games">
 				<Border CornerRadius="5" Background="#141428" Padding="10" Cursor="Hand" x:Name="LocationBorder" AllowDrop="True" Drop="LocationBorder_Drop" MouseLeftButtonUp="LocationBorder_MouseLeftButtonUp">
 					<StackPanel VerticalAlignment="Center">
-						<TextBlock Text="&#xEA0E;" FontSize="24" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.SelectDragDropGame}" Margin="10" FontWeight="Bold" HorizontalAlignment="Center"/>
+						<TextBlock Text="&#xEA0E;" FontSize="24" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.SelectDragDropGame}" Margin="10" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 				</Border>
-				<TextBlock x:Name="LocationTxt" d:Text="C:\Games\Game.exe" Margin="5"/>
+				<TextBlock x:Name="LocationTxt" d:Text="C:\Games\Game.exe" Margin="5" />
 			</StackPanel>
 			<StackPanel x:Name="UWPGames" Visibility="Collapsed">
-				<TextBlock Text="{x:Static lang:Resources.PackageFamilyName}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBox x:Name="PackageFamilyNameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>
-                    <Button FontSize="13" x:Name="SelectUWPAppBtn" Click="SelectUWPAppBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,0,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.BrowseUWPApps}" FontWeight="Bold" Grid.Column="1" VerticalAlignment="Center">
-                        <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.BrowseUWPApps}" Background="#000014" Foreground="White"/>
-                        </Button.ToolTip>
-                    </Button>
-                </Grid>
-                <TextBlock Text="{x:Static lang:Resources.ApplicationId}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
-				<TextBox x:Name="AppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.PackageFamilyName}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+					<TextBox x:Name="PackageFamilyNameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+					<Button FontSize="13" x:Name="SelectUWPAppBtn" Click="SelectUWPAppBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,0,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.BrowseUWPApps}" FontWeight="ExtraBold" Grid.Column="1" VerticalAlignment="Center">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.BrowseUWPApps}" Background="#000014" Foreground="White" />
+						</Button.ToolTip>
+					</Button>
+				</Grid>
+				<TextBlock Text="{x:Static lang:Resources.ApplicationId}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
+				<TextBox x:Name="AppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 			</StackPanel>
 			<StackPanel x:Name="SteamGameInfo" Visibility="Collapsed">
-				<TextBlock Text="{x:Static lang:Resources.SteamAppId}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
-				<TextBox x:Name="SteamAppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.SteamAppId}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
+				<TextBox x:Name="SteamAppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 			</StackPanel>
 
-			<TextBlock Text="{x:Static lang:Resources.Name}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
-			<TextBox x:Name="NameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>
+			<TextBlock Text="{x:Static lang:Resources.Name}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
+			<TextBox x:Name="NameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 
-			<TextBlock Text="{x:Static lang:Resources.Version}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
-			<TextBox x:Name="VersionTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="Bold" TextAlignment="Center"/>
+			<TextBlock Text="{x:Static lang:Resources.Version}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
+			<TextBox x:Name="VersionTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 
-			<TextBlock Text="{x:Static lang:Resources.Image}" FontWeight="Bold" FontSize="13" Margin="2" VerticalAlignment="Center"/>
+			<TextBlock Text="{x:Static lang:Resources.Image}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
 			<Rectangle RadiusX="10" RadiusY="10" Width="250" Height="140" HorizontalAlignment="Center">
 				<Rectangle.Fill>
-					<ImageBrush x:Name="Image" d:ImageSource="..\Assets\addGame.png"/>
+					<ImageBrush x:Name="Image" d:ImageSource="..\Assets\addGame.png" />
 				</Rectangle.Fill>
 			</Rectangle>
 
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<Button FontSize="13" x:Name="ImageBrowseBtn" Click="ImageBrowseBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0,5,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Browse}" FontWeight="Bold" HorizontalAlignment="Center">
+				<Button FontSize="13" x:Name="ImageBrowseBtn" Click="ImageBrowseBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0,5,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Browse}" FontWeight="ExtraBold" HorizontalAlignment="Center">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
-				<Button FontSize="13" x:Name="RAWGImageBrowseBtn" Click="RAWGImageBrowseBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,5,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.RAWGio}" FontWeight="Bold" HorizontalAlignment="Center">
+				<Button FontSize="13" x:Name="RAWGImageBrowseBtn" Click="RAWGImageBrowseBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,5,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.RAWGio}" FontWeight="ExtraBold" HorizontalAlignment="Center">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.RAWGio}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.RAWGio}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
 
 			<StackPanel HorizontalAlignment="Center" Margin="0 20 0 0" Orientation="Horizontal">
-				<Button FontSize="13" Cursor="Hand" x:Name="NextBtn" Click="NextBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Next}" FontWeight="Bold">
+				<Button FontSize="13" Cursor="Hand" x:Name="NextBtn" Click="NextBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Next}" FontWeight="ExtraBold">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Next}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.Next}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
-				<Button FontSize="13" x:Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="Bold">
+				<Button FontSize="13" x:Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="ExtraBold">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>

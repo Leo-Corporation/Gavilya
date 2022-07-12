@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gavilya.UserControls"
              mc:Ignorable="d" 
-			 FontFamily="..\Fonts\#Montserrat"
+			 FontFamily="..\Fonts\#Hauora"
              d:DesignHeight="200" d:DesignWidth="800" SizeChanged="UserControl_SizeChanged">
     <Grid>
 		<Grid.RowDefinitions>

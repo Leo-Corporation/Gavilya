@@ -108,6 +108,10 @@ public partial class MainWindow : Window
 		};
 		CheckButton();
 		DisplayNotifications();
+
+		// Search box
+		SearchBox.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
@@ -433,7 +437,7 @@ public partial class MainWindow : Window
 					// Clear search box
 					// 1. Find the SearchItem in the SearchBox
 					// 2. Remove the SearchItem
-					
+
 					for (int i = 0; i < SearchBox.Items.Count; i++)
 					{
 						if (SearchBox.Items[i] is SearchItem searchItem)
@@ -635,6 +639,22 @@ public partial class MainWindow : Window
 		if (e.Key == Key.Enter)
 		{
 			((SearchItem)SearchBox.SelectedItem).UserControl_MouseLeftButtonUp(this, null); // Click the selected item
+		}
+	}
+
+	internal bool IsSearchVisible { get; set; } = false;
+	private void SearchBtn_Click(object sender, RoutedEventArgs e)
+	{
+		IsSearchVisible = !IsSearchVisible; // Toggle
+		if (IsSearchVisible)
+		{
+			ColorElement(SearchBtn, Definitions.HomeButtonBackColor); // Change the background
+			SearchBox.Visibility = Visibility.Visible; // Show
+		}
+		else
+		{
+			ColorElement(SearchBtn, new SolidColorBrush(Colors.Transparent)); // Change the background
+			SearchBox.Visibility = Visibility.Collapsed; // Hide
 		}
 	}
 }

@@ -433,12 +433,12 @@ public static class Global
 			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
 			var achievementsResults = JsonSerializer.Deserialize<AchievementsResults>(response.Content); // Deserialize the content of the reponse
-			return achievementsResults.results;
+			return achievementsResults.results ?? new(); // Return the results
 		}
 		catch (Exception ex)
 		{
 			MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
-			return new List<Achievement>();
+			return new();
 		}
 	}
 

@@ -86,7 +86,7 @@ public partial class ProfilePage : Page
 		}
 
 		ProfileNameTxt.Text = CurrentProfile.Name; // Show name
-		TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort}"; // Set text
+		TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort} • {Definitions.Games.Count} {(Definitions.Games.Count > 1 ? Properties.Resources.GamesL : Properties.Resources.GameL)}"; // Set text
 
 		// Get top 3 most played games
 		// Values
@@ -125,6 +125,11 @@ public partial class ProfilePage : Page
 			Top1Rect.Height = h; // Set height
 			Top2Rect.Height = h1; // Set height
 			Top3Rect.Height = h2; // Set height
+
+			// Load tooltips
+			Top1ToolTip.Content = $"{mostPlayed[0].Name} ({mostPlayed[0].TotalTimePlayed / 3600}{Properties.Resources.HourShort})"; // Set tooltip
+			Top2ToolTip.Content = $"{mostPlayed[1].Name} ({mostPlayed[1].TotalTimePlayed / 3600}{Properties.Resources.HourShort})"; // Set tooltip
+			Top3ToolTip.Content = $"{mostPlayed[2].Name} ({mostPlayed[2].TotalTimePlayed / 3600}{Properties.Resources.HourShort})"; // Set tooltip
 
 			GameName1.Text = mostPlayed[0].Name; // Set text
 			GameName2.Text = mostPlayed[1].Name; // Set text

@@ -736,6 +736,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to game.
+        /// </summary>
+        public static string GameL {
+            get {
+                return ResourceManager.GetString("GameL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List view.
         /// </summary>
         public static string GameList {
@@ -777,6 +786,24 @@ namespace Gavilya.Properties {
         public static string GameProperties {
             get {
                 return ResourceManager.GetString("GameProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Games.
+        /// </summary>
+        public static string Games {
+            get {
+                return ResourceManager.GetString("Games", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to games.
+        /// </summary>
+        public static string GamesL {
+            get {
+                return ResourceManager.GetString("GamesL", resourceCulture);
             }
         }
         
@@ -878,6 +905,15 @@ namespace Gavilya.Properties {
         public static string Help {
             get {
                 return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide the search bar.
+        /// </summary>
+        public static string HideSearchBar {
+            get {
+                return ResourceManager.GetString("HideSearchBar", resourceCulture);
             }
         }
         
@@ -1778,6 +1814,24 @@ namespace Gavilya.Properties {
         public static string Search {
             get {
                 return ResourceManager.GetString("Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search bar.
+        /// </summary>
+        public static string SearchBar {
+            get {
+                return ResourceManager.GetString("SearchBar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string SearchF {
+            get {
+                return ResourceManager.GetString("SearchF", resourceCulture);
             }
         }
         

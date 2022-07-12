@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Gavilya.UserControls"
 			 xmlns:lang="clr-namespace:Gavilya.Properties"
 			 Foreground="White"
-			 FontFamily="../Fonts/#Montserrat"
+			 FontFamily="../Fonts/#Hauora"
              mc:Ignorable="d" 
              Height="50" Width="350">
 	<Button x:Name="ProfileItemBtn" Background="Transparent" Style="{StaticResource RegularButton}" HorizontalContentAlignment="Left">

@@ -52,5 +52,10 @@ public enum SettingsPages
 	/// <summary>
 	/// The <see cref="Pages.SettingsPages.HomeOptionsPage"/> page.
 	/// </summary>
-	Home
+	Home,
+
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.SearchOptionsPage"/> page.
+	/// </summary>
+	Search
 }

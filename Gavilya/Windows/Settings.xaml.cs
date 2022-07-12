@@ -39,6 +39,7 @@ public partial class Settings : Window
 	readonly StartupPage startupPage = new(); // Create a page
 	readonly DataOptionsPage dataOptionsPage = new(); // Create a page
 	readonly HomeOptionsPage homeOptionsPage = new(); // Create a page
+	readonly SearchOptionsPage searchOptionsPage = new(); // Create a page
 
 	public Settings()
 	{
@@ -56,18 +57,8 @@ public partial class Settings : Window
 		Close(); // Close the window
 	}
 
-	private void HideAllPages()
-	{
-		saveOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-		languagePage.Visibility = Visibility.Hidden; // Hide the page
-		startupPage.Visibility = Visibility.Hidden; // Hide the page
-		dataOptionsPage.Visibility = Visibility.Hidden; // Hide the page
-	}
-
 	private void NavigateToPage(SettingsPages settingsPage)
 	{
-		HideAllPages(); // Hide all the pages
-
 		switch (settingsPage)
 		{
 			case SettingsPages.Languages:
@@ -98,13 +89,19 @@ public partial class Settings : Window
 				dataOptionsPage.Visibility = Visibility.Visible; // Show the page
 				OptionsDisplayer.Navigate(dataOptionsPage); // Navigate
 				break;
-
 			case SettingsPages.Home:
 				UnCheckAll(); // Uncheck all buttons
 
 				HomeOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
 				homeOptionsPage.Visibility = Visibility.Visible; // Show the page
 				OptionsDisplayer.Navigate(homeOptionsPage); // Navigate
+				break;
+			case SettingsPages.Search:
+				UnCheckAll(); // Uncheck all buttons
+
+				SearchOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+				searchOptionsPage.Visibility = Visibility.Visible; // Show the page
+				OptionsDisplayer.Navigate(searchOptionsPage); // Navigate
 				break;
 		}
 	}
@@ -116,6 +113,7 @@ public partial class Settings : Window
 		StartupOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		DataOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		HomeOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		SearchOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 	}
 
 	private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -141,5 +139,10 @@ public partial class Settings : Window
 	private void HomeOptions_Click(object sender, RoutedEventArgs e)
 	{
 		NavigateToPage(SettingsPages.Home); // Show the "Home" page
+	}
+
+	private void SearchOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(SettingsPages.Search); // Show the "Search" page
 	}
 }

@@ -1,16 +1,4 @@
-﻿<Window x:Class="Gavilya.MainWindow"
-		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:pages="clr-namespace:Gavilya.Pages"
-		xmlns:lang="clr-namespace:Gavilya.Properties"
-		xmlns:local="clr-namespace:Gavilya"
-		xmlns:sys="clr-namespace:System;assembly=mscorlib"
-		xmlns:uc="clr-namespace:Gavilya.UserControls"
-		mc:Ignorable="d"
-		FontFamily="/Fonts/#Montserrat"
-		Title="Gavilya" Height="700" Width="1185" MinHeight="450" MinWidth="450" WindowStartupLocation="CenterScreen" LocationChanged="Window_LocationChanged" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded" >
+﻿<Window x:Class="Gavilya.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pages="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:local="clr-namespace:Gavilya" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:uc="clr-namespace:Gavilya.UserControls" mc:Ignorable="d" FontFamily="/Fonts/#Hauora" Title="Gavilya" Height="700" Width="1185" MinHeight="450" MinWidth="840" WindowStartupLocation="CenterScreen" LocationChanged="Window_LocationChanged" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded">
 
 	<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
@@ -29,24 +17,14 @@
 		<Style x:Key="TitleBarButtonStyle" TargetType="Button">
 			<Setter Property="Foreground" Value="White" />
 			<Setter Property="Padding" Value="0" />
-			<Setter Property="Height" Value="32"/>
+			<Setter Property="Height" Value="32" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
 			<Setter Property="IsTabStop" Value="False" />
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
-						<Border
-					x:Name="border"
-					Background="{TemplateBinding Background}"
-					BorderThickness="0" CornerRadius="5"
-					SnapsToDevicePixels="true">
-							<ContentPresenter
-						x:Name="contentPresenter"
-						Margin="0"
-						HorizontalAlignment="Center"
-						VerticalAlignment="Center"
-						Focusable="False"
-						RecognizesAccessKey="True" />
+						<Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="5" SnapsToDevicePixels="true">
+							<ContentPresenter x:Name="contentPresenter" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" RecognizesAccessKey="True" />
 						</Border>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="true">
@@ -63,25 +41,15 @@
 
 		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
 			<Setter Property="Foreground" Value="White" />
-			<Setter Property="Height" Value="32"/>
+			<Setter Property="Height" Value="32" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
 			<Setter Property="IsTabStop" Value="False" />
 			<Setter Property="Template">
 				<Setter.Value>
 					<ControlTemplate TargetType="{x:Type Button}">
-						<Border
-					x:Name="border"
-					Background="Transparent"
-					BorderThickness="0" CornerRadius="5"
-					SnapsToDevicePixels="true">
-							<ContentPresenter
-						x:Name="contentPresenter"
-						Margin="0"
-						HorizontalAlignment="Center"
-						VerticalAlignment="Center"
-						Focusable="False"
-						RecognizesAccessKey="True" />
+						<Border x:Name="border" Background="Transparent" BorderThickness="0" CornerRadius="5" SnapsToDevicePixels="true">
+							<ContentPresenter x:Name="contentPresenter" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" RecognizesAccessKey="True" />
 						</Border>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="true">
@@ -100,166 +68,157 @@
 	</Window.Resources>
 
 	<Window.Effect>
-		<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality"/>
+		<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
 	</Window.Effect>
 	<Border Name="WindowBorder" Margin="10" BorderThickness="0" Background="#3C3C52" CornerRadius="5 5 0 0">
 		<Grid>
 			<Grid.RowDefinitions>
-				<RowDefinition Height="50"/>
-				<RowDefinition/>
+				<RowDefinition Height="50" />
+				<RowDefinition />
 			</Grid.RowDefinitions>
 
 			<Border Height="50" Style="{StaticResource WindowMainPanelStyle}">
 				<Grid Height="50" VerticalAlignment="Top">
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="*"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
-						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
 
 					<Rectangle Fill="#FF000014" Grid.ColumnSpan="15" RadiusX="5" RadiusY="5">
 						<Rectangle.Effect>
-							<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0"/>
+							<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0" />
 						</Rectangle.Effect>
 					</Rectangle>
 
-					<Button Name="BackBtn" Click="BackBtn_Click"  Style="{StaticResource TitleBarButtonStyle}" Content="&#xe993;" FontSize="14" Grid.Column="0" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+					<Button Name="BackBtn" Click="BackBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe993;" FontSize="14" Grid.Column="0" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.GoBack}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.GoBack}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
 
-					<Button Name="ForwardBtn" Click="ForwardBtn_Click"  Style="{StaticResource TitleBarButtonStyle}" Content="&#xe994;" FontSize="14" Grid.Column="1" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+					<Button Name="ForwardBtn" Click="ForwardBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe994;" FontSize="14" Grid.Column="1" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.GoForward}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.GoForward}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
 
 					<StackPanel Orientation="Horizontal" Grid.Column="2">
-						<Button x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="{x:Static lang:Resources.Home}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="Bold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
+						<Button x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="{x:Static lang:Resources.Home}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Home}" Background="#000014" Foreground="White"/>
+								<ToolTip Content="{x:Static lang:Resources.Home}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
-						<Button x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="{x:Static lang:Resources.Library}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="Bold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
+						<Button x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="{x:Static lang:Resources.Library}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Library}" Background="#000014" Foreground="White"/>
+								<ToolTip Content="{x:Static lang:Resources.Library}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
-						<Button x:Name="ProfileTabBtn" Click="ProfileTabBtn_Click" Content="{x:Static lang:Resources.MyProfile}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="Bold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
+						<Button x:Name="ProfileTabBtn" Click="ProfileTabBtn_Click" Content="{x:Static lang:Resources.MyProfile}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.MyProfile}" Background="#000014" Foreground="White"/>
+								<ToolTip Content="{x:Static lang:Resources.MyProfile}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
 					</StackPanel>
 
-                    <ComboBox MaxWidth="400" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="Bold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
-                        <ComboBox.Style>
-                            <Style TargetType="ComboBox">
-                                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
-                                <Setter Property="ItemContainerStyle" Value="{StaticResource ItemStyle}" ></Setter>
-                            </Style>
+					<ComboBox MaxWidth="400" MaxDropDownHeight="135" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="ExtraBold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
+						<ComboBox.Style>
+							<Style TargetType="ComboBox">
+								<Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
+								<Setter Property="ItemContainerStyle" Value="{StaticResource ItemStyle}"></Setter>
+							</Style>
 
-                        </ComboBox.Style>
-                    </ComboBox>
+						</ComboBox.Style>
+					</ComboBox>
 
-					<Button Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent" >
-						<Grid>
-							<TextBlock Text="&#xE903;"/>
-							<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top"/>
-						</Grid>
-						
+					<Button x:Name="SearchBtn" Click="SearchBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="18" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="White" BorderThickness="0" Background="Transparent" Content="&#xF690;">
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.Search}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
 
-					<Button x:Name="ProfileBtn" Style="{StaticResource TitleBarButtonStyle}" Padding="5" Margin="5" Background="Transparent" Click="ProfileBtn_Click" Height="35" Width="35" Grid.Column="5">
+					<Button x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="5" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+						<Grid>
+							<TextBlock Text="&#xE903;" />
+							<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top" />
+						</Grid>
+
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White" />
+						</Button.ToolTip>
+					</Button>
+
+					<Button x:Name="ProfileBtn" Style="{StaticResource TitleBarButtonStyle}" Padding="5" Margin="5" Background="Transparent" Click="ProfileBtn_Click" Height="35" Width="35" Grid.Column="6">
 						<Rectangle RadiusX="15" RadiusY="15" Width="30" Height="30">
 							<Rectangle.Fill>
-								<ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png"/>
+								<ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png" />
 							</Rectangle.Fill>
 						</Rectangle>
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Profiles}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.Profiles}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
 
-					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="6" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
-					<Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+					<Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="8" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
-					<StackPanel Grid.Column="8" Orientation="Horizontal">
+					<StackPanel Grid.Column="9" Orientation="Horizontal">
 						<Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="6" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.More}" Background="#000014" Foreground="White"/>
+								<ToolTip Content="{x:Static lang:Resources.More}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
-						<Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF28283C" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
+						<Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF28283C" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons" />
 					</StackPanel>
-					<Button
-		Grid.Column="9"
-		Click="Button_Click"
-		RenderOptions.EdgeMode="Aliased"
-		Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
-					<Button
-		x:Name="MaximizeButton"
-		Grid.Column="10"
-		Click="MaximizeButton_Click" Background="Transparent"
-		Style="{StaticResource TitleBarButtonStyle}" Width="46"	Height="32" Content="&#xFA40;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
-					<Button
-		x:Name="RestoreButton"
-		Grid.Column="10"
-		Click="RestoreButton_Click"
-		Visibility="Collapsed" Background="Transparent"
-		Style="{StaticResource TitleBarButtonStyle}" Width="46"	Height="32" Content="&#xF670;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="16"></Button>
-					<Button
-		Grid.Column="11"
-		Click="Button_Click_2"
-		Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+					<Button Grid.Column="10" Click="Button_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+					<Button x:Name="MaximizeButton" Grid.Column="11" Click="MaximizeButton_Click" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xFA40;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+					<Button x:Name="RestoreButton" Grid.Column="11" Click="RestoreButton_Click" Visibility="Collapsed" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xF670;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="16"></Button>
+					<Button Grid.Column="12" Click="Button_Click_2" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 				</Grid>
 			</Border>
 			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#0A0A1E">
 				<Grid>
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition/>
-						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition />
+						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
-					
+
 					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
 
 					<!-- Notification center -->
 					<Grid Width="300" Grid.Column="1" x:Name="NotificationCenter" Visibility="Collapsed">
 						<Grid.RowDefinitions>
-							<RowDefinition Height="Auto"/>
-							<RowDefinition/>
+							<RowDefinition Height="Auto" />
+							<RowDefinition />
 						</Grid.RowDefinitions>
 
 						<StackPanel Margin="10">
-							<TextBlock Text="{x:Static lang:Resources.Notifications}" Foreground="White" FontWeight="Bold" FontSize="22"/>
-							<TextBlock x:Name="NotificationStatusTxt" d:Text="You have 1 notification." Foreground="White"/>
+							<TextBlock Text="{x:Static lang:Resources.Notifications}" Foreground="White" FontWeight="ExtraBold" FontSize="22" />
+							<TextBlock x:Name="NotificationStatusTxt" d:Text="You have 1 notification." Foreground="White" />
 						</StackPanel>
 
 						<ScrollViewer Grid.Row="1" Template="{DynamicResource ScrollViewerTemplate1}">
 							<StackPanel x:Name="NotificationPanel">
 								<StackPanel Margin="0,70,0,0" x:Name="NotificationPlaceholder" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-									<TextBlock Text="&#xF11D;" Foreground="White" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="52" HorizontalAlignment="Center"/>
-									<TextBlock Text="{x:Static lang:Resources.NoNotifications}" Foreground="White" HorizontalAlignment="Center"/>
+									<TextBlock Text="&#xF11D;" Foreground="White" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="52" HorizontalAlignment="Center" />
+									<TextBlock Text="{x:Static lang:Resources.NoNotifications}" Foreground="White" HorizontalAlignment="Center" />
 								</StackPanel>
 							</StackPanel>
 						</ScrollViewer>

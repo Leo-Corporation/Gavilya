@@ -37,33 +37,7 @@ public static class Definitions
 	/// <summary>
 	/// The gradient for the "HomeButtonBackColor".
 	/// </summary>
-	public static LinearGradientBrush HomeButtonBackColor
-	{
-		get
-		{
-			Color color1 = Color.FromRgb(102, 0, 255); // First color
-			Color color2 = Color.FromRgb(102, 0, 255); // Second color
-
-			GradientStopCollection gradientStops = new(); // A collection of GradientStop
-
-			GradientStop gradientStop = new(); // First GradientStop
-			GradientStop gradientStop1 = new(); // Second GradientStop
-
-			gradientStop.Color = color1; // Color of the first GradientStop
-			gradientStop.Offset = 0; // Offset of the first GradientStop
-
-			gradientStop1.Color = color2; // Color of the second GradientStop
-			gradientStop1.Offset = 1; // Offset of the second GradientStop
-
-			gradientStops.Add(gradientStop); // Add the first GradientStop
-			gradientStops.Add(gradientStop1); // Add the second GradientStop
-
-			LinearGradientBrush linearGradientBrush = new(); // Gradient to return
-			linearGradientBrush.GradientStops = gradientStops;// Add the GradientStops to the corresponding property
-
-			return linearGradientBrush; // Return the gradient
-		}
-	}
+	public static SolidColorBrush HomeButtonBackColor => new(Color.FromRgb(102, 0, 255)); // Gradient to return
 
 	/// <summary>
 	/// The <see cref="UserControls.StatGameInfoControl"/> control.
@@ -78,7 +52,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "2.6.1.2206";
+	public static string Version => "2.7.0.2207";
 
 	/// <summary>
 	/// True if the menu is shown.

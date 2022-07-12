@@ -1,83 +1,73 @@
-﻿<Page x:Class="Gavilya.Pages.ProfilePage"
-	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	  xmlns:local="clr-namespace:Gavilya.Pages"
-	  xmlns:lang="clr-namespace:Gavilya.Properties"
-	  FontFamily="..\Fonts\#Montserrat" Foreground="#FFF"
-	  mc:Ignorable="d" 
-	  d:DesignHeight="450" d:DesignWidth="800"
-	  Title="ProfilePage">
+﻿<Page x:Class="Gavilya.Pages.ProfilePage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" FontFamily="..\Fonts\#Hauora" Foreground="#FFF" mc:Ignorable="d" d:DesignHeight="450" d:DesignWidth="800" Title="ProfilePage">
 
 	<ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Visible" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
 		<StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="10">
-				<TextBlock Text="&#xF5C8;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center"/>
-				<TextBlock Text="{x:Static lang:Resources.Profile}" FontSize="18" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+				<TextBlock Text="&#xF5C8;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
+				<TextBlock Text="{x:Static lang:Resources.Profile}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
 			</StackPanel>
 
 			<Grid>
 				<Grid.ColumnDefinitions>
-					<ColumnDefinition/>
-					<ColumnDefinition Width="Auto"/>
+					<ColumnDefinition />
+					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
-				
+
 				<StackPanel Grid.Column="0" Orientation="Horizontal">
 					<Rectangle RadiusX="50" RadiusY="50" Width="100" Height="100" HorizontalAlignment="Center" Margin="10">
 						<Rectangle.Fill>
-							<ImageBrush x:Name="ProfilePicture" ImageSource="../Assets/DefaultPP.png"/>
+							<ImageBrush x:Name="ProfilePicture" ImageSource="../Assets/DefaultPP.png" />
 						</Rectangle.Fill>
 					</Rectangle>
 					<StackPanel VerticalAlignment="Center">
-						<TextBlock x:Name="ProfileNameTxt" d:Text="Profile name" FontSize="36" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
-						<TextBlock x:Name="TotalTimePlayedTxt" d:Text="300,7h" FontSize="16" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+						<TextBlock x:Name="ProfileNameTxt" d:Text="Profile name" FontSize="36" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
+						<TextBlock x:Name="TotalTimePlayedTxt" d:Text="300,7h" FontSize="16" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
 					</StackPanel>
 				</StackPanel>
 
 				<Button Click="EditBtn_Click" Margin="5" Grid.Column="1" x:Name="EditBtn" Padding="5" HorizontalAlignment="Stretch" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White" VerticalAlignment="Center">
 					<StackPanel Orientation="Horizontal">
-						<TextBlock Margin="0 0 5 0" Text="&#xF3DE;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.Edit}" VerticalAlignment="Center"/>
+						<TextBlock Margin="0 0 5 0" Text="&#xF3DE;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.Edit}" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Edit}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.Edit}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 			</Grid>
 
-			<StackPanel	Orientation="Horizontal" Margin="10 5">
+			<StackPanel Orientation="Horizontal" Margin="10 5">
 				<Button x:Name="SpotlightTabBtn" Style="{StaticResource TabButtonBorder}" Click="SpotlightTabBtn_Click" MouseEnter="SpotlightTabBtn_MouseEnter" MouseLeave="SpotlightTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="#FF6600FF">
 					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="&#xF342;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.Spotlight}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+						<TextBlock Text="&#xF342;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.Spotlight}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Spotlight}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.Spotlight}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 
 				<Button x:Name="FavoriteTabBtn" Style="{StaticResource TabButtonBorder}" Click="FavoriteTabBtn_Click" MouseEnter="SpotlightTabBtn_MouseEnter" MouseLeave="SpotlightTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="&#xF710;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.Favorites}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+						<TextBlock Text="&#xF710;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.Favorites}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Favorites}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.Favorites}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 
 				<Button x:Name="BadgesTabBtn" Style="{StaticResource TabButtonBorder}" Click="BadgesTabBtn_Click" MouseEnter="SpotlightTabBtn_MouseEnter" MouseLeave="SpotlightTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
-						<TextBlock Text="&#xF837;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.Badges}" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
+						<TextBlock Text="&#xF837;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.Badges}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Badges}" Background="#000014" Foreground="White"/>
+						<ToolTip Content="{x:Static lang:Resources.Badges}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
@@ -85,275 +75,285 @@
 			<StackPanel x:Name="SpotlightPage">
 				<StackPanel Orientation="Horizontal" Height="200" x:Name="GraphPanel" Grid.Row="0" HorizontalAlignment="Center">
 					<StackPanel VerticalAlignment="Bottom">
-						<Rectangle x:Name="Top2Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C"/>
-						<TextBlock x:Name="P2Txt" Text="{x:Static lang:Resources.P2}" FontSize="16" FontWeight="Bold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						<Rectangle x:Name="Top2Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C">
+							<Rectangle.ToolTip>
+								<ToolTip x:Name="Top2ToolTip" Background="#000014" Foreground="White" />
+							</Rectangle.ToolTip>
+						</Rectangle>
+						<TextBlock x:Name="P2Txt" Text="{x:Static lang:Resources.P2}" FontSize="16" FontWeight="ExtraBold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel VerticalAlignment="Bottom">
-						<Rectangle x:Name="Top1Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C"/>
-						<TextBlock x:Name="P1Txt" Text="{x:Static lang:Resources.P1}" FontSize="16" FontWeight="Bold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						<Rectangle x:Name="Top1Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C">
+							<Rectangle.ToolTip>
+								<ToolTip x:Name="Top1ToolTip" Background="#000014" Foreground="White" />
+							</Rectangle.ToolTip>
+						</Rectangle>
+						<TextBlock x:Name="P1Txt" Text="{x:Static lang:Resources.P1}" FontSize="16" FontWeight="ExtraBold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel VerticalAlignment="Bottom">
-						<Rectangle x:Name="Top3Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C"/>
-						<TextBlock x:Name="P3Txt" Text="{x:Static lang:Resources.P3}" FontSize="16" FontWeight="Bold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+						<Rectangle x:Name="Top3Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C">
+							<Rectangle.ToolTip>
+								<ToolTip x:Name="Top3ToolTip" Background="#000014" Foreground="White" />
+							</Rectangle.ToolTip>
+						</Rectangle>
+						<TextBlock x:Name="P3Txt" Text="{x:Static lang:Resources.P3}" FontSize="16" FontWeight="ExtraBold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
 					</StackPanel>
 				</StackPanel>
 				<Border Margin="10,10,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
 					<Grid>
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="Auto" />
 						</Grid.ColumnDefinitions>
-						
-						<TextBlock Text="{x:Static lang:Resources.P1}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478"/>
+
+						<TextBlock Text="{x:Static lang:Resources.P1}" FontWeight="ExtraBold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478" />
 						<Rectangle Margin="10" RadiusX="10" RadiusY="10" Width="150" Height="84.375" Grid.Column="1">
 							<Rectangle.Fill>
-								<ImageBrush x:Name="GameImg1"/>
+								<ImageBrush x:Name="GameImg1" />
 							</Rectangle.Fill>
 						</Rectangle>
-						<TextBlock x:Name="GameName1" d:Text="GameName" FontWeight="Bold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center" Grid.Column="2"/>
-						<TextBlock x:Name="Game1TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Center" FontStyle="Italic" Grid.Column="3"/>
+						<TextBlock x:Name="GameName1" d:Text="GameName" FontWeight="ExtraBold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center" Grid.Column="2" />
+						<TextBlock x:Name="Game1TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Center" FontStyle="Italic" Grid.Column="3" />
 					</Grid>
 				</Border>
 				<Border Margin="10,5,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
 					<Grid>
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="Auto" />
 						</Grid.ColumnDefinitions>
-						
-						<TextBlock Text="{x:Static lang:Resources.P2}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478"/>
+
+						<TextBlock Text="{x:Static lang:Resources.P2}" FontWeight="ExtraBold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478" />
 						<Rectangle Margin="10" RadiusX="10" RadiusY="10" Width="150" Height="84.375" Grid.Column="1">
 							<Rectangle.Fill>
-								<ImageBrush x:Name="GameImg2"/>
+								<ImageBrush x:Name="GameImg2" />
 							</Rectangle.Fill>
 						</Rectangle>
-						<TextBlock x:Name="GameName2" d:Text="GameName" FontWeight="Bold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center" Grid.Column="2"/>
-						<TextBlock x:Name="Game2TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Center" FontStyle="Italic" Grid.Column="3"/>
+						<TextBlock x:Name="GameName2" d:Text="GameName" FontWeight="ExtraBold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center" Grid.Column="2" />
+						<TextBlock x:Name="Game2TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Center" FontStyle="Italic" Grid.Column="3" />
 					</Grid>
 				</Border>
 				<Border Margin="10,5,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
 					<Grid>
 						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition Width="Auto"/>
-							<ColumnDefinition/>
-							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+							<ColumnDefinition Width="Auto" />
 
 						</Grid.ColumnDefinitions>
-						<TextBlock Text="{x:Static lang:Resources.P3}" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478"/>
+						<TextBlock Text="{x:Static lang:Resources.P3}" FontWeight="ExtraBold" FontSize="16" VerticalAlignment="Center" Foreground="#FF646478" />
 						<Rectangle Margin="10" RadiusX="10" RadiusY="10" Width="150" Height="84.375" Grid.Column="1">
 							<Rectangle.Fill>
-								<ImageBrush x:Name="GameImg3"/>
+								<ImageBrush x:Name="GameImg3" />
 							</Rectangle.Fill>
 						</Rectangle>
-						<TextBlock x:Name="GameName3" d:Text="GameName" FontWeight="Bold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center" Grid.Column="2"/>
-						<TextBlock x:Name="Game3TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Center" FontStyle="Italic" Grid.Column="3"/>
+						<TextBlock x:Name="GameName3" d:Text="GameName" FontWeight="ExtraBold" Margin="10,0,0,0" FontSize="18" VerticalAlignment="Center" Grid.Column="2" />
+						<TextBlock x:Name="Game3TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Center" FontStyle="Italic" Grid.Column="3" />
 					</Grid>
 				</Border>
 			</StackPanel>
-			
-			<StackPanel x:Name="FavoritesTab" Visibility="Collapsed">
-				
-			</StackPanel>
+
+			<StackPanel x:Name="FavoritesTab" Visibility="Collapsed"></StackPanel>
 
 			<StackPanel x:Name="BadgesTab" Visibility="Collapsed" Margin="5">
-				<TextBlock x:Name="MyBadgesTxt" Text="{x:Static lang:Resources.MyBadges}" FontSize="20" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+				<TextBlock x:Name="MyBadgesTxt" Text="{x:Static lang:Resources.MyBadges}" FontSize="20" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
 				<WrapPanel x:Name="MyBadgesPart">
 					<StackPanel x:Name="TheStartImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.TheStartDesc}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.TheStartDesc}" Background="#000014" Foreground="White" />
 						</StackPanel.ToolTip>
-						
-						<Image Height="150" Width="150" Source="..\Assets\TheStart.png" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.TheStart}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+						<Image Height="150" Width="150" Source="..\Assets\TheStart.png" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.TheStart}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel x:Name="CrazyAboutImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.CrazyAboutItDesc}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.CrazyAboutItDesc}" Background="#000014" Foreground="White" />
 						</StackPanel.ToolTip>
-						<Image Height="150" Width="150" Source="..\Assets\CrazyAbout.png" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.CrazyAboutIt}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+						<Image Height="150" Width="150" Source="..\Assets\CrazyAbout.png" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.CrazyAboutIt}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel x:Name="NoobPlayerImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.NoobPlayerDesc}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.NoobPlayerDesc}" Background="#000014" Foreground="White" />
 						</StackPanel.ToolTip>
-						
-						<Image Height="150" Width="150" Source="..\Assets\NoobPlayer.png" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.NoobPlayer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+						<Image Height="150" Width="150" Source="..\Assets\NoobPlayer.png" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.NoobPlayer}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel x:Name="StarterGamerImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.StarterGamerDesc}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.StarterGamerDesc}" Background="#000014" Foreground="White" />
 						</StackPanel.ToolTip>
-                        
-						<Image Height="150" Width="150" Source="..\Assets\StarterGamer.png" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.StarterGamer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+						<Image Height="150" Width="150" Source="..\Assets\StarterGamer.png" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.StarterGamer}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel x:Name="AdvancedGamerImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.AdvancedGamerDesc}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.AdvancedGamerDesc}" Background="#000014" Foreground="White" />
 						</StackPanel.ToolTip>
-                        
-						<Image Height="150" Width="150" Source="..\Assets\AdvancedGamer.png" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.AdvancedGamer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+						<Image Height="150" Width="150" Source="..\Assets\AdvancedGamer.png" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.AdvancedGamer}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel x:Name="TrueGamerImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.TrueGamerDesc}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.TrueGamerDesc}" Background="#000014" Foreground="White" />
 						</StackPanel.ToolTip>
-                        
-						<Image Height="150" Width="150" Source="..\Assets\TrueGamer.png" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.TrueGamer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+						<Image Height="150" Width="150" Source="..\Assets\TrueGamer.png" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.TrueGamer}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel x:Name="LegendaryImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.LegendaryGamerDesc}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.LegendaryGamerDesc}" Background="#000014" Foreground="White" />
 						</StackPanel.ToolTip>
-                        
-						<Image Height="150" Width="150" Source="..\Assets\LegendaryGamer.png" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.LegendaryGamer}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+						<Image Height="150" Width="150" Source="..\Assets\LegendaryGamer.png" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.LegendaryGamer}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel x:Name="NeedSpaceOnTheShelvesImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" Background="#000014" Foreground="White"/>
+							<ToolTip Content="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" Background="#000014" Foreground="White" />
 						</StackPanel.ToolTip>
-                        
-						<Image Height="150" Width="150" Source="..\Assets\NeedSpaceShelves.png" HorizontalAlignment="Center"/>
-						<TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelves}" FontSize="13" FontWeight="Bold" HorizontalAlignment="Center"/>
+
+						<Image Height="150" Width="150" Source="..\Assets\NeedSpaceShelves.png" HorizontalAlignment="Center" />
+						<TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelves}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 				</WrapPanel>
-                <TextBlock Text="{x:Static lang:Resources.AllBadges}" FontSize="20" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center"/>
+				<TextBlock Text="{x:Static lang:Resources.AllBadges}" FontSize="20" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" />
 
-                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <Image Height="150" Width="150" Source="..\Assets\TheStart.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{x:Static lang:Resources.TheStart}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                            <TextBlock Text="{x:Static lang:Resources.TheStartDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+						<Image Height="150" Width="150" Source="..\Assets\TheStart.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<StackPanel Grid.Column="1" VerticalAlignment="Center">
+							<TextBlock Text="{x:Static lang:Resources.TheStart}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock Text="{x:Static lang:Resources.TheStartDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+						</StackPanel>
+					</Grid>
+				</Border>
 
-                        <Image Height="150" Width="150" Source="..\Assets\CrazyAbout.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{x:Static lang:Resources.CrazyAboutIt}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                            <TextBlock Text="{x:Static lang:Resources.CrazyAboutItDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+						<Image Height="150" Width="150" Source="..\Assets\CrazyAbout.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<StackPanel Grid.Column="1" VerticalAlignment="Center">
+							<TextBlock Text="{x:Static lang:Resources.CrazyAboutIt}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock Text="{x:Static lang:Resources.CrazyAboutItDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+						</StackPanel>
+					</Grid>
+				</Border>
 
-                        <Image Height="150" Width="150" Source="..\Assets\NoobPlayer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{x:Static lang:Resources.NoobPlayer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                            <TextBlock Text="{x:Static lang:Resources.NoobPlayerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+						<Image Height="150" Width="150" Source="..\Assets\NoobPlayer.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<StackPanel Grid.Column="1" VerticalAlignment="Center">
+							<TextBlock Text="{x:Static lang:Resources.NoobPlayer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock Text="{x:Static lang:Resources.NoobPlayerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+						</StackPanel>
+					</Grid>
+				</Border>
 
-                        <Image Height="150" Width="150" Source="..\Assets\StarterGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{x:Static lang:Resources.StarterGamer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                            <TextBlock Text="{x:Static lang:Resources.StarterGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+						<Image Height="150" Width="150" Source="..\Assets\StarterGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<StackPanel Grid.Column="1" VerticalAlignment="Center">
+							<TextBlock Text="{x:Static lang:Resources.StarterGamer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock Text="{x:Static lang:Resources.StarterGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+						</StackPanel>
+					</Grid>
+				</Border>
 
-                        <Image Height="150" Width="150" Source="..\Assets\AdvancedGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{x:Static lang:Resources.AdvancedGamer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                            <TextBlock Text="{x:Static lang:Resources.AdvancedGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+						<Image Height="150" Width="150" Source="..\Assets\AdvancedGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<StackPanel Grid.Column="1" VerticalAlignment="Center">
+							<TextBlock Text="{x:Static lang:Resources.AdvancedGamer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock Text="{x:Static lang:Resources.AdvancedGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+						</StackPanel>
+					</Grid>
+				</Border>
 
-                        <Image Height="150" Width="150" Source="..\Assets\TrueGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{x:Static lang:Resources.TrueGamer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                            <TextBlock Text="{x:Static lang:Resources.TrueGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
+
+						<Image Height="150" Width="150" Source="..\Assets\TrueGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<StackPanel Grid.Column="1" VerticalAlignment="Center">
+							<TextBlock Text="{x:Static lang:Resources.TrueGamer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock Text="{x:Static lang:Resources.TrueGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+						</StackPanel>
+					</Grid>
+				</Border>
 
 
-                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-                        <Image Height="150" Width="150" Source="..\Assets\LegendaryGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{x:Static lang:Resources.LegendaryGamer}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                            <TextBlock Text="{x:Static lang:Resources.LegendaryGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
+						<Image Height="150" Width="150" Source="..\Assets\LegendaryGamer.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<StackPanel Grid.Column="1" VerticalAlignment="Center">
+							<TextBlock Text="{x:Static lang:Resources.LegendaryGamer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock Text="{x:Static lang:Resources.LegendaryGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+						</StackPanel>
+					</Grid>
+				</Border>
 
-                <Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
+				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+					<Grid>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto" />
+							<ColumnDefinition />
+						</Grid.ColumnDefinitions>
 
-                        <Image Height="150" Width="150" Source="..\Assets\NeedSpaceShelves.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                            <TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelves}" FontSize="24" FontWeight="Bold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                            <TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Grid>
-                </Border>
-            </StackPanel>
-			
+						<Image Height="150" Width="150" Source="..\Assets\NeedSpaceShelves.png" HorizontalAlignment="Center" VerticalAlignment="Center" />
+						<StackPanel Grid.Column="1" VerticalAlignment="Center">
+							<TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelves}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+						</StackPanel>
+					</Grid>
+				</Border>
+			</StackPanel>
+
 			<StackPanel x:Name="NothingToShow" Visibility="Collapsed" HorizontalAlignment="Center" VerticalAlignment="Center">
-				<TextBlock Text="&#xF3EA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="96" HorizontalAlignment="Center"/>
-				<TextBlock Text="{x:Static lang:Resources.NoGames}" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="14" FontWeight="Bold"/>
+				<TextBlock Text="&#xF3EA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="96" HorizontalAlignment="Center" />
+				<TextBlock Text="{x:Static lang:Resources.NoGames}" HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="14" FontWeight="ExtraBold" />
 			</StackPanel>
 		</StackPanel>
 	</ScrollViewer>
