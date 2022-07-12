@@ -111,6 +111,7 @@ public partial class MainWindow : Window
 
 		// Search box
 		SearchBox.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
@@ -638,6 +639,22 @@ public partial class MainWindow : Window
 		if (e.Key == Key.Enter)
 		{
 			((SearchItem)SearchBox.SelectedItem).UserControl_MouseLeftButtonUp(this, null); // Click the selected item
+		}
+	}
+
+	bool isSearchVisible = false;
+	private void SearchBtn_Click(object sender, RoutedEventArgs e)
+	{
+		isSearchVisible = !isSearchVisible; // Toggle
+		if (isSearchVisible)
+		{
+			ColorElement(SearchBtn, Definitions.HomeButtonBackColor); // Change the background
+			SearchBox.Visibility = Visibility.Visible; // Show
+		}
+		else
+		{
+			ColorElement(SearchBtn, new SolidColorBrush(Colors.Transparent)); // Change the background
+			SearchBox.Visibility = Visibility.Collapsed; // Hide
 		}
 	}
 }

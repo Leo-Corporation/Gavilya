@@ -10,7 +10,7 @@
 		xmlns:uc="clr-namespace:Gavilya.UserControls"
 		mc:Ignorable="d"
 		FontFamily="/Fonts/#Montserrat"
-		Title="Gavilya" Height="700" Width="1185" MinHeight="450" MinWidth="800" WindowStartupLocation="CenterScreen" LocationChanged="Window_LocationChanged" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded" >
+		Title="Gavilya" Height="700" Width="1185" MinHeight="450" MinWidth="840" WindowStartupLocation="CenterScreen" LocationChanged="Window_LocationChanged" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded" >
 
 	<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
@@ -124,6 +124,7 @@
 						<ColumnDefinition Width="Auto"/>
 						<ColumnDefinition Width="Auto"/>
 						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
 
 					<Rectangle Fill="#FF000014" Grid.ColumnSpan="15" RadiusX="5" RadiusY="5">
@@ -162,28 +163,34 @@
 						</Button>
 					</StackPanel>
 
-                    <ComboBox MaxWidth="400" MaxDropDownHeight="135" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="Bold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
-                        <ComboBox.Style>
-                            <Style TargetType="ComboBox">
-                                <Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
-                                <Setter Property="ItemContainerStyle" Value="{StaticResource ItemStyle}" ></Setter>
-                            </Style>
+					<ComboBox MaxWidth="400" MaxDropDownHeight="135" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="Bold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
+						<ComboBox.Style>
+							<Style TargetType="ComboBox">
+								<Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}"/>
+								<Setter Property="ItemContainerStyle" Value="{StaticResource ItemStyle}" ></Setter>
+							</Style>
 
-                        </ComboBox.Style>
-                    </ComboBox>
+						</ComboBox.Style>
+					</ComboBox>
 
-					<Button Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent" >
+					<Button x:Name="SearchBtn" Click="SearchBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="18" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="White" BorderThickness="0" Background="Transparent" Content="&#xF690;" >
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Search}" Background="#000014" Foreground="White"/>
+						</Button.ToolTip>
+					</Button>
+
+					<Button x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="5" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent" >
 						<Grid>
 							<TextBlock Text="&#xE903;"/>
 							<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top"/>
 						</Grid>
-						
+
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White"/>
 						</Button.ToolTip>
 					</Button>
 
-					<Button x:Name="ProfileBtn" Style="{StaticResource TitleBarButtonStyle}" Padding="5" Margin="5" Background="Transparent" Click="ProfileBtn_Click" Height="35" Width="35" Grid.Column="5">
+					<Button x:Name="ProfileBtn" Style="{StaticResource TitleBarButtonStyle}" Padding="5" Margin="5" Background="Transparent" Click="ProfileBtn_Click" Height="35" Width="35" Grid.Column="6">
 						<Rectangle RadiusX="15" RadiusY="15" Width="30" Height="30">
 							<Rectangle.Fill>
 								<ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png"/>
@@ -194,17 +201,17 @@
 						</Button.ToolTip>
 					</Button>
 
-					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="6" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#000014" Foreground="White"/>
 						</Button.ToolTip>
 					</Button>
-					<Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+					<Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="8" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White"/>
 						</Button.ToolTip>
 					</Button>
-					<StackPanel Grid.Column="8" Orientation="Horizontal">
+					<StackPanel Grid.Column="9" Orientation="Horizontal">
 						<Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="6" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.More}" Background="#000014" Foreground="White"/>
@@ -213,23 +220,23 @@
 						<Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF28283C" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons"/>
 					</StackPanel>
 					<Button
-		Grid.Column="9"
+		Grid.Column="10"
 		Click="Button_Click"
 		RenderOptions.EdgeMode="Aliased"
 		Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button
 		x:Name="MaximizeButton"
-		Grid.Column="10"
+		Grid.Column="11"
 		Click="MaximizeButton_Click" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}" Width="46"	Height="32" Content="&#xFA40;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button
 		x:Name="RestoreButton"
-		Grid.Column="10"
+		Grid.Column="11"
 		Click="RestoreButton_Click"
 		Visibility="Collapsed" Background="Transparent"
 		Style="{StaticResource TitleBarButtonStyle}" Width="46"	Height="32" Content="&#xF670;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="16"></Button>
 					<Button
-		Grid.Column="11"
+		Grid.Column="12"
 		Click="Button_Click_2"
 		Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 				</Grid>
@@ -240,7 +247,7 @@
 						<ColumnDefinition/>
 						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
-					
+
 					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
 
 					<!-- Notification center -->
