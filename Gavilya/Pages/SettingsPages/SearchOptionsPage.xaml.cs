@@ -25,6 +25,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Gavilya.Pages.SettingsPages;
 /// <summary>
@@ -50,5 +51,10 @@ public partial class SearchOptionsPage : Page
 
 		// Hide search bar in MainWindow
 		Definitions.MainWindow.SearchBox.Visibility = HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		Definitions.MainWindow.SearchBtn.Visibility = !HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+
+		// Reset toggle search button state
+		Definitions.MainWindow.SearchBtn.Background = new SolidColorBrush(Colors.Transparent); // Set default background color
+		Definitions.MainWindow.IsSearchVisible = false; // Reset to default value
 	}
 }

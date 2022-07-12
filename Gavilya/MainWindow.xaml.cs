@@ -642,11 +642,11 @@ public partial class MainWindow : Window
 		}
 	}
 
-	bool isSearchVisible = false;
+	internal bool IsSearchVisible { get; set; } = false;
 	private void SearchBtn_Click(object sender, RoutedEventArgs e)
 	{
-		isSearchVisible = !isSearchVisible; // Toggle
-		if (isSearchVisible)
+		IsSearchVisible = !IsSearchVisible; // Toggle
+		if (IsSearchVisible)
 		{
 			ColorElement(SearchBtn, Definitions.HomeButtonBackColor); // Change the background
 			SearchBox.Visibility = Visibility.Visible; // Show
