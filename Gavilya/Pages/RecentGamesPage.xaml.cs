@@ -47,62 +47,69 @@ public partial class RecentGamesPage : Page
 	{
 		Dispatcher.Invoke(new Action(() =>
 		{
-			GamePresenter.Children.Clear(); // Clear the games
-
-			if (Definitions.Games.Count > 0) // If there is games
+			try
 			{
-				GamePresenter.Visibility = Visibility.Visible; // Visible
-				WelcomeHost.Visibility = Visibility.Collapsed; // Hide
+				GamePresenter.Children.Clear(); // Clear the games
 
-				Dictionary<GameInfo, int> keyValuePairs = new(); // Create a dictionnary
-
-				foreach (GameInfo gameInfo in Definitions.Games) // For each games
+				if (Definitions.Games.Count > 0) // If there is games
 				{
-					keyValuePairs.Add(gameInfo, gameInfo.LastTimePlayed); // Add the game and the last time played to the dictionnary
-				}
+					GamePresenter.Visibility = Visibility.Visible; // Visible
+					WelcomeHost.Visibility = Visibility.Collapsed; // Hide
 
-				var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
+					Dictionary<GameInfo, int> keyValuePairs = new(); // Create a dictionnary
 
-				int c = 0;
-				Definitions.HomePage.RecentBar.Children.Clear(); // Clear all items
-				foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
-				{
-					var gameCard = new GameCard(pair1.Key, GavilyaPages.Recent, true);
-					if (Definitions.Settings.PageId != 1)
+					foreach (GameInfo gameInfo in Definitions.Games) // For each games
 					{
-						GamePresenter.Children.Add(gameCard); // Add the game 
+						if (!keyValuePairs.ContainsKey(gameInfo))
+						{
+							keyValuePairs.Add(gameInfo, gameInfo.LastTimePlayed); // Add the game and the last time played to the dictionnary
+						}
 					}
-					if (c < Definitions.Settings.MaxNumberRecentGamesShown.Value)
+
+					var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
+
+					int c = 0;
+					Definitions.HomePage.RecentBar.Children.Clear(); // Clear all items
+					foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
 					{
-						Definitions.HomePage.RecentBar.Children.Add(new FavoriteGameCard(pair1.Key, gameCard));
+						var gameCard = new GameCard(pair1.Key, GavilyaPages.Recent, true);
+						if (Definitions.Settings.PageId != 1)
+						{
+							GamePresenter.Children.Add(gameCard); // Add the game 
+						}
+						if (c < Definitions.Settings.MaxNumberRecentGamesShown.Value)
+						{
+							Definitions.HomePage.RecentBar.Children.Add(new FavoriteGameCard(pair1.Key, gameCard));
+						}
+						c++;
 					}
-					c++;
-				}
 
-				if (Definitions.Games.Count >= 5) // If there are more than 5 games
+					if (Definitions.Games.Count >= 5) // If there are more than 5 games
+					{
+						// Show a notification about the least used game
+						var gameInfo = items.Last().Key;
+
+						// Get the associated game card from the game info
+						var gameCard = GamePresenter.Children.OfType<GameCard>().FirstOrDefault(x => x.GameInfo == gameInfo);
+
+						Definitions.LeastUsedGames = new(); // Create a new list
+						Definitions.LeastUsedGames.Add(gameInfo, gameCard); // Add the game info and the game card
+					}
+
+					Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
+					Definitions.HomePage.RecentBar.Visibility = Visibility.Visible;
+				}
+				else
 				{
-					// Show a notification about the least used game
-					var gameInfo = items.Last().Key;
+					GamePresenter.Visibility = Visibility.Collapsed; // Hide
+					WelcomeHost.Visibility = Visibility.Visible; // Visible
 
-					// Get the associated game card from the game info
-					var gameCard = GamePresenter.Children.OfType<GameCard>().FirstOrDefault(x => x.GameInfo == gameInfo);
-
-					Definitions.LeastUsedGames = new(); // Create a new list
-					Definitions.LeastUsedGames.Add(gameInfo, gameCard); // Add the game info and the game card
+					WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
+					Definitions.HomePage.RecentBar.Visibility = Visibility.Collapsed; // Hide
+					Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Visible; // Show
 				}
-
-				Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
-				Definitions.HomePage.RecentBar.Visibility = Visibility.Visible;
 			}
-			else
-			{
-				GamePresenter.Visibility = Visibility.Collapsed; // Hide
-				WelcomeHost.Visibility = Visibility.Visible; // Visible
-
-				WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
-				Definitions.HomePage.RecentBar.Visibility = Visibility.Collapsed; // Hide
-				Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Visible; // Show
-			}
+			catch { }
 		}));
 	}
 }
