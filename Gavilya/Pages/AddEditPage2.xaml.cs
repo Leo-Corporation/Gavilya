@@ -134,6 +134,11 @@ public partial class AddEditPage2 : Page
 				GameCard.GameInfo.Platforms = Platforms; // Set
 				GameCard.GameInfo.Stores = Stores; // Set
 
+				if (ConvertSteamPanel.Visibility != Visibility.Collapsed) // If the steam convert process is launched
+				{
+					ConvertSteamBtn_Click(this, null);
+				}
+
 				Definitions.Games[Definitions.Games.IndexOf(old)] = GameCard.GameInfo; // Update
 				GameSaver.Save(Definitions.Games); // Save
 

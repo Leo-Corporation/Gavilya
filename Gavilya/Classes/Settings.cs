@@ -92,6 +92,11 @@ public class Settings
 	/// True if Gavilya should hide the search bar. (default = false)
 	/// </summary>
 	public bool? HideSearchBar { get; set; }
+
+	/// <summary>
+	/// The number of search results to display in the search box. (default = 3)
+	/// </summary>
+	public int? NumberOfSearchResultsToDisplay { get; set; }
 }
 
 public static class SettingsSaver
@@ -124,6 +129,11 @@ public static class SettingsSaver
 				Definitions.Settings.HideSearchBar = false;
 			}
 
+			if (!Definitions.Settings.NumberOfSearchResultsToDisplay.HasValue)
+			{
+				Definitions.Settings.NumberOfSearchResultsToDisplay = 3;
+			}
+
 			streamReader.Dispose();
 		}
 		else
@@ -141,7 +151,8 @@ public static class SettingsSaver
 				DefaultGavilyaHomePage = GavilyaWindowPages.Home,
 				MaxNumberRecentGamesShown = 4,
 				ShowMoreUnplayedGamesRecommanded = true,
-				HideSearchBar = false
+				HideSearchBar = false,
+				NumberOfSearchResultsToDisplay = 3
 			};
 			Save();
 		}

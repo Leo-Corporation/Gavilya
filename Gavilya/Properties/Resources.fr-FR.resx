@@ -864,4 +864,13 @@
   <data name="GameL" xml:space="preserve">
     <value>jeu</value>
   </data>
+  <data name="NumberResults" xml:space="preserve">
+    <value>Nombre de résultats à afficher</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Résultats</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progression effectuée :</value>
+  </data>
 </root>

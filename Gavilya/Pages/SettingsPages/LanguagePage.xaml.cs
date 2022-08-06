@@ -58,6 +58,8 @@ public partial class LanguagePage : Page
 		{
 			Languages.SelectedIndex = 0; // Set the selected index
 		}
+
+		Languages.SelectionChanged += (o, e) => { SaveButton.Visibility = Visibility.Visible; };
 	}
 
 	private void SaveButton_Click(object sender, RoutedEventArgs e)

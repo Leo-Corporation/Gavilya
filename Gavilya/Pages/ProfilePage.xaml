@@ -270,6 +270,7 @@
 						<StackPanel Grid.Column="1" VerticalAlignment="Center">
 							<TextBlock Text="{x:Static lang:Resources.NoobPlayer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 							<TextBlock Text="{x:Static lang:Resources.NoobPlayerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock x:Name="NoobProgressTxt" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 						</StackPanel>
 					</Grid>
 				</Border>
@@ -285,6 +286,7 @@
 						<StackPanel Grid.Column="1" VerticalAlignment="Center">
 							<TextBlock Text="{x:Static lang:Resources.StarterGamer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 							<TextBlock Text="{x:Static lang:Resources.StarterGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock x:Name="StarterGarmerProgressTxt" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 						</StackPanel>
 					</Grid>
 				</Border>
@@ -300,6 +302,7 @@
 						<StackPanel Grid.Column="1" VerticalAlignment="Center">
 							<TextBlock Text="{x:Static lang:Resources.AdvancedGamer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 							<TextBlock Text="{x:Static lang:Resources.AdvancedGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock x:Name="AdvancedProgressTxt" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 						</StackPanel>
 					</Grid>
 				</Border>
@@ -315,6 +318,7 @@
 						<StackPanel Grid.Column="1" VerticalAlignment="Center">
 							<TextBlock Text="{x:Static lang:Resources.TrueGamer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 							<TextBlock Text="{x:Static lang:Resources.TrueGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock x:Name="TrueGamerProgressTxt" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 						</StackPanel>
 					</Grid>
 				</Border>
@@ -331,6 +335,7 @@
 						<StackPanel Grid.Column="1" VerticalAlignment="Center">
 							<TextBlock Text="{x:Static lang:Resources.LegendaryGamer}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 							<TextBlock Text="{x:Static lang:Resources.LegendaryGamerDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock x:Name="LegendaryProgressTxt" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 						</StackPanel>
 					</Grid>
 				</Border>
@@ -346,6 +351,7 @@
 						<StackPanel Grid.Column="1" VerticalAlignment="Center">
 							<TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelves}" FontSize="24" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 							<TextBlock Text="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
+							<TextBlock x:Name="ShelvesProgressTxt" FontSize="14" FontWeight="Regular" Margin="10,10,0,0" VerticalAlignment="Center" TextWrapping="Wrap" />
 						</StackPanel>
 					</Grid>
 				</Border>

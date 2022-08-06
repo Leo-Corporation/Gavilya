@@ -60,7 +60,8 @@ public partial class DataOptionsPage : Page
 				DefaultGavilyaHomePage = GavilyaWindowPages.Home,
 				MaxNumberRecentGamesShown = 4,
 				ShowMoreUnplayedGamesRecommanded = true,
-				HideSearchBar = false
+				HideSearchBar = false,
+				NumberOfSearchResultsToDisplay = 3
 			};
 
 			SettingsSaver.Save(); // Save changes

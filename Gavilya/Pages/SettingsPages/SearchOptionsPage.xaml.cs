@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -42,6 +43,7 @@ public partial class SearchOptionsPage : Page
 	private void InitUI()
 	{
 		HideSearchBarChk.IsChecked = Definitions.Settings.HideSearchBar; // Set the Checked state
+		SearchResultsTextBox.Text = Definitions.Settings.NumberOfSearchResultsToDisplay.Value.ToString();
 	}
 
 	private void HideSearchBarChk_Checked(object sender, RoutedEventArgs e)
@@ -56,5 +58,19 @@ public partial class SearchOptionsPage : Page
 		// Reset toggle search button state
 		Definitions.MainWindow.SearchBtn.Background = new SolidColorBrush(Colors.Transparent); // Set default background color
 		Definitions.MainWindow.IsSearchVisible = false; // Reset to default value
+	}
+
+	private void SaveButton_Click(object sender, RoutedEventArgs e)
+	{
+		Definitions.Settings.NumberOfSearchResultsToDisplay = int.Parse(SearchResultsTextBox.Text); // Set settings value
+		SettingsSaver.Save(); // Save changes
+
+		Definitions.MainWindow.SearchBox.MaxDropDownHeight = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set max drop down height
+	}
+
+	private void SearchResultsTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
 	}
 }

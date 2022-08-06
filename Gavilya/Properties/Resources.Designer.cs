@@ -1467,6 +1467,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of results to display.
+        /// </summary>
+        public static string NumberResults {
+            get {
+                return ResourceManager.GetString("NumberResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to of the month..
         /// </summary>
         public static string OfMonth {
@@ -1638,6 +1647,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Progress made:.
+        /// </summary>
+        public static string Progress {
+            get {
+                return ResourceManager.GetString("Progress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Properties.
         /// </summary>
         public static string Properties {
@@ -1760,6 +1778,15 @@ namespace Gavilya.Properties {
         public static string ResetSettingsMsg {
             get {
                 return ResourceManager.GetString("ResetSettingsMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Results.
+        /// </summary>
+        public static string Results {
+            get {
+                return ResourceManager.GetString("Results", resourceCulture);
             }
         }
         

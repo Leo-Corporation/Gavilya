@@ -112,6 +112,7 @@ public partial class MainWindow : Window
 		// Search box
 		SearchBox.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		SearchBox.MaxDropDownHeight = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set the max drop down height (45 = height of SearchItem)
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();

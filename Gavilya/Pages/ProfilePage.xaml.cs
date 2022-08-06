@@ -261,11 +261,15 @@ public partial class ProfilePage : Page
 			VisibleBadges++; // Increment by 1
 		}
 
+		NoobProgressTxt.Text = $"{Properties.Resources.Progress} {(Global.GetTotalTimePlayed() / 3600 > 1 ? 1 : Global.GetTotalTimePlayed() / 3600d) * 100d:0.00}%"; // Set text
+
 		if (Global.GetTotalTimePlayed() / 3600 >= 10)
 		{
 			StarterGamerImg.Visibility = Visibility.Visible; // Show
 			VisibleBadges++; // Increment by 1
 		}
+
+		StarterGarmerProgressTxt.Text = $"{Properties.Resources.Progress} {(Global.GetTotalTimePlayed() / 3600 > 10 ? 1 : Global.GetTotalTimePlayed() / 3600d / 10d) * 100d:0.00}%"; // Set text
 
 		if (Global.GetTotalTimePlayed() / 3600 >= 100)
 		{
@@ -273,11 +277,15 @@ public partial class ProfilePage : Page
 			VisibleBadges++; // Increment by 1
 		}
 
+		AdvancedProgressTxt.Text = $"{Properties.Resources.Progress} {(Global.GetTotalTimePlayed() / 3600 > 100 ? 1 : Global.GetTotalTimePlayed() / 3600d / 100d) * 100d:0.00}%"; // Set text
+
 		if (Global.GetTotalTimePlayed() / 3600 >= 1000)
 		{
 			TrueGamerImg.Visibility = Visibility.Visible; // Show
 			VisibleBadges++; // Increment by 1
 		}
+
+		TrueGamerProgressTxt.Text = $"{Properties.Resources.Progress} {(Global.GetTotalTimePlayed() / 3600 > 1000 ? 1 : Global.GetTotalTimePlayed() / 3600d / 1000d) * 100d:0.00}%"; // Set text
 
 		if (Global.GetTotalTimePlayed() / 3600 >= 5000)
 		{
@@ -285,11 +293,15 @@ public partial class ProfilePage : Page
 			VisibleBadges++; // Increment by 1
 		}
 
+		LegendaryProgressTxt.Text = $"{Properties.Resources.Progress} {(Global.GetTotalTimePlayed() / 3600 > 5000 ? 1 : Global.GetTotalTimePlayed() / 3600d / 5000d) * 100d:0.00}%"; // Set text
+
 		if (Definitions.Games.Count >= 50)
 		{
 			NeedSpaceOnTheShelvesImg.Visibility = Visibility.Visible; // Show
 			VisibleBadges++; // Increment by 1
 		}
+
+		ShelvesProgressTxt.Text = $"{Properties.Resources.Progress} {(Definitions.Games.Count >= 50 ? 1 : Definitions.Games.Count / 50d) * 100d:0.00}%"; // Set text
 
 		MyBadgesTxt.Visibility = (VisibleBadges == 0) ? Visibility.Collapsed : Visibility.Visible;
 	}
