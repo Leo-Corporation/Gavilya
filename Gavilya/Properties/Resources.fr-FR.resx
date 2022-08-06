@@ -870,4 +870,7 @@
   <data name="Results" xml:space="preserve">
     <value>Résultats</value>
   </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Progression effectuée :</value>
+  </data>
 </root>
