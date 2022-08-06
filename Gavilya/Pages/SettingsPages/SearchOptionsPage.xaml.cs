@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -56,5 +57,16 @@ public partial class SearchOptionsPage : Page
 		// Reset toggle search button state
 		Definitions.MainWindow.SearchBtn.Background = new SolidColorBrush(Colors.Transparent); // Set default background color
 		Definitions.MainWindow.IsSearchVisible = false; // Reset to default value
+	}
+
+	private void SaveButton_Click(object sender, RoutedEventArgs e)
+	{
+
+	}
+
+	private void SearchResultsTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+	{
+		Regex regex = new("[^0-9]+");
+		e.Handled = regex.IsMatch(e.Text);
 	}
 }
