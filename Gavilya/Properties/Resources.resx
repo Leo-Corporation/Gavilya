@@ -871,4 +871,10 @@
   <data name="GameL" xml:space="preserve">
     <value>game</value>
   </data>
+  <data name="NumberResults" xml:space="preserve">
+    <value>Number of results to display</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
 </root>
