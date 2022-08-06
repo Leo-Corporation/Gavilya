@@ -43,6 +43,7 @@ public partial class SearchOptionsPage : Page
 	private void InitUI()
 	{
 		HideSearchBarChk.IsChecked = Definitions.Settings.HideSearchBar; // Set the Checked state
+		SearchResultsTextBox.Text = Definitions.Settings.NumberOfSearchResultsToDisplay.Value.ToString();
 	}
 
 	private void HideSearchBarChk_Checked(object sender, RoutedEventArgs e)
@@ -61,7 +62,8 @@ public partial class SearchOptionsPage : Page
 
 	private void SaveButton_Click(object sender, RoutedEventArgs e)
 	{
-
+		Definitions.Settings.NumberOfSearchResultsToDisplay = int.Parse(SearchResultsTextBox.Text); // Set settings value
+		SettingsSaver.Save(); // Save changes
 	}
 
 	private void SearchResultsTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
