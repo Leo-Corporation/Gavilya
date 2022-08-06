@@ -64,6 +64,8 @@ public partial class SearchOptionsPage : Page
 	{
 		Definitions.Settings.NumberOfSearchResultsToDisplay = int.Parse(SearchResultsTextBox.Text); // Set settings value
 		SettingsSaver.Save(); // Save changes
+
+		Definitions.MainWindow.SearchBox.MaxDropDownHeight = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set max drop down height
 	}
 
 	private void SearchResultsTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
