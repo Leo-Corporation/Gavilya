@@ -172,21 +172,18 @@ public static class Global
 			{
 				if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg")) // If the image exist
 				{
-					return Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg";
+					File.Delete(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg");
+				}
+				if (screenshotId == 0)
+				{
+					await NetworkConnection.DownloadFileAsync(new Uri(game.background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
 				}
 				else
 				{
-					if (screenshotId == 0)
-					{
-						await NetworkConnection.DownloadFileAsync(new Uri(game.background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
-					}
-					else
-					{
-						await NetworkConnection.DownloadFileAsync(new Uri(game.background_image_additional), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
-					}
-
-					return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"; // Return the result
+					await NetworkConnection.DownloadFileAsync(new Uri(game.background_image_additional), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
 				}
+
+				return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"; // Return the result
 			}
 
 			await NetworkConnection.DownloadFileAsync(new Uri(game.background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
