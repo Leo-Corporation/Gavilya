@@ -43,7 +43,7 @@ namespace Gavilya.Fps
 
 			BackColor = Color.FromArgb(255, 1, 1, 1);
 			TransparencyKey = Color.FromArgb(255, 1, 1, 1);
-			//FormClickThrough();
+			FormClickThrough();
 		}
 
 		private void WindowHandle_Tick(object sender, EventArgs e)
