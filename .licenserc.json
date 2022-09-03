@@ -5,10 +5,10 @@
         "",
         "Copyright (c) Léo Corporation"
     ],
-
     "ignore": [
         "**/*.Designer.cs",
         "Gavilya/Properties/",
+        "Gavilya.Fps/",
         "Gavilya/Ressources/",
         "Xalyus Updater/Properties/",
         "Xalyus Updater/Resources/",
