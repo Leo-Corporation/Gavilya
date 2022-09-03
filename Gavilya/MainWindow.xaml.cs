@@ -26,9 +26,11 @@ using Gavilya.Enums;
 using Gavilya.Pages;
 using Gavilya.UserControls;
 using Gavilya.Windows;
+using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -46,6 +48,7 @@ namespace Gavilya;
 /// </summary>
 public partial class MainWindow : Window
 {
+	bool fpsToggled = false;
 	public MainWindow(GavilyaWindowPages? startupPage = null)
 	{
 		InitializeComponent();
@@ -113,6 +116,31 @@ public partial class MainWindow : Window
 		SearchBox.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		SearchBox.MaxDropDownHeight = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set the max drop down height (45 = height of SearchItem)
+
+		// FPS
+
+		var fps = Combination.FromString("Control+Shift+F");
+
+		Action fpsAction = () => 
+		{
+			if (!fpsToggled) Process.Start(Env.CurrentAppDirectory + "/Gavilya.Fps.exe");
+			else
+			{
+				var proc = new Process();
+				proc.StartInfo.FileName = "cmd.exe";
+				proc.StartInfo.Arguments = "/c taskkill /f /im Gavilya.Fps.exe";
+				proc.StartInfo.UseShellExecute = false;
+				proc.StartInfo.CreateNoWindow = true;
+				proc.Start();
+			}
+
+			fpsToggled = !fpsToggled;
+		};
+		var assignment = new Dictionary<Combination, Action>
+		{
+			{ fps, fpsAction }
+		};
+		Hook.GlobalEvents().OnCombination(assignment);
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
