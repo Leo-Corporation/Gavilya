@@ -29,7 +29,7 @@
 					<ColumnDefinition/>
 					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
-				<Slider Margin="10 0 0 0" x:Name="OpacitySlider" ValueChanged="OpacitySlider_ValueChanged" Minimum="0" Maximum="100" TickFrequency="1" VerticalAlignment="Center"/>
+				<Slider Margin="10 0 0 0" x:Name="OpacitySlider" ValueChanged="OpacitySlider_ValueChanged" Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" LargeChange="1" SmallChange="1"  VerticalAlignment="Center"/>
 				<TextBlock FontSize="16" Margin="5" FontWeight="Bold" Text="{Binding Value, ElementName=OpacitySlider}" Grid.Column="1" VerticalAlignment="Center"/>
 			</Grid>
 
