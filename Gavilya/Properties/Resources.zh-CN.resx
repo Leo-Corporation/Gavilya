@@ -870,4 +870,16 @@
   <data name="Progress" xml:space="preserve">
     <value>Progress made:</value>
   </data>
+  <data name="FpsCounter" xml:space="preserve">
+    <value>FPS Counter</value>
+  </data>
+  <data name="Opacity" xml:space="preserve">
+    <value>Opacity</value>
+  </data>
+  <data name="FpsCounterOpacity" xml:space="preserve">
+    <value>The opacity of the FPS Counter.</value>
+  </data>
+  <data name="OpenFpsCounter" xml:space="preserve">
+    <value>Press {0} to open the FPS Counter.</value>
+  </data>
 </root>
