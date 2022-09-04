@@ -282,7 +282,7 @@ public partial class MainWindow : Window
 		SettingsSaver.Save(); // Save settings
 
 		Global.CreateJumpLists();
-		Environment.Exit(0); // Quit the app
+		Application.Current.Shutdown(); // Quit the app
 	}
 
 	/// <summary>
@@ -679,5 +679,10 @@ public partial class MainWindow : Window
 			ColorElement(SearchBtn, new SolidColorBrush(Colors.Transparent)); // Change the background
 			SearchBox.Visibility = Visibility.Collapsed; // Hide
 		}
+	}
+
+	private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+	{
+		Application.Current.Shutdown();
 	}
 }
