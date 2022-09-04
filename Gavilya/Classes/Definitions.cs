@@ -60,6 +60,11 @@ public static class Definitions
 	public static bool IsProfileMenuVisible { get; set; }
 
 	/// <summary>
+	/// True if the Fps Counter is visible. (default: false)
+	/// </summary>
+	public static bool IsFpsToggled { get; set; } = false;
+
+	/// <summary>
 	/// Contains the least used game(s).
 	/// </summary>
 	public static Dictionary<GameInfo, GameCard> LeastUsedGames { get; set; }

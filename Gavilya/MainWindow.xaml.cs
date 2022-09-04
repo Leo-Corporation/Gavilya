@@ -48,7 +48,6 @@ namespace Gavilya;
 /// </summary>
 public partial class MainWindow : Window
 {
-	bool fpsToggled = false;
 	public MainWindow(GavilyaWindowPages? startupPage = null)
 	{
 		InitializeComponent();
@@ -123,7 +122,7 @@ public partial class MainWindow : Window
 
 		Action fpsAction = () => 
 		{
-			if (!fpsToggled) Process.Start(Env.CurrentAppDirectory + "/Gavilya.Fps.exe");
+			if (!Definitions.IsFpsToggled) Process.Start(Env.CurrentAppDirectory + "/Gavilya.Fps.exe");
 			else
 			{
 				var proc = new Process();
@@ -134,7 +133,7 @@ public partial class MainWindow : Window
 				proc.Start();
 			}
 
-			fpsToggled = !fpsToggled;
+			Definitions.IsFpsToggled = !Definitions.IsFpsToggled;
 		};
 		var assignment = new Dictionary<Combination, Action>
 		{

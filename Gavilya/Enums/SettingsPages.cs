@@ -57,5 +57,10 @@ public enum SettingsPages
 	/// <summary>
 	/// The <see cref="Pages.SettingsPages.SearchOptionsPage"/> page.
 	/// </summary>
-	Search
+	Search,
+
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.FpsOptionsPage"/> page.
+	/// </summary>
+	FPS
 }

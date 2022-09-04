@@ -97,6 +97,11 @@ public class Settings
 	/// The number of search results to display in the search box. (default = 3)
 	/// </summary>
 	public int? NumberOfSearchResultsToDisplay { get; set; }
+
+	/// <summary>
+	/// The opacity of the FPS Counter (a value between 0 et 1)
+	/// </summary>
+	public double? FpsCounterOpacity { get; set; }
 }
 
 public static class SettingsSaver
@@ -134,6 +139,11 @@ public static class SettingsSaver
 				Definitions.Settings.NumberOfSearchResultsToDisplay = 3;
 			}
 
+			if (!Definitions.Settings.FpsCounterOpacity.HasValue)
+			{
+				Definitions.Settings.FpsCounterOpacity = 0;
+			}
+
 			streamReader.Dispose();
 		}
 		else
@@ -152,7 +162,8 @@ public static class SettingsSaver
 				MaxNumberRecentGamesShown = 4,
 				ShowMoreUnplayedGamesRecommanded = true,
 				HideSearchBar = false,
-				NumberOfSearchResultsToDisplay = 3
+				NumberOfSearchResultsToDisplay = 3,
+				FpsCounterOpacity = 0
 			};
 			Save();
 		}
