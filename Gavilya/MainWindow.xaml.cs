@@ -120,19 +120,14 @@ public partial class MainWindow : Window
 
 		var fps = Combination.FromString("Control+Shift+F");
 
-		Action fpsAction = () => 
+		Action fpsAction = () =>
 		{
-			if (!Definitions.IsFpsToggled) Process.Start(Env.CurrentAppDirectory + "/Gavilya.Fps.exe");
-			else
-			{
-				var proc = new Process();
-				proc.StartInfo.FileName = "cmd.exe";
-				proc.StartInfo.Arguments = "/c taskkill /f /im Gavilya.Fps.exe";
-				proc.StartInfo.UseShellExecute = false;
-				proc.StartInfo.CreateNoWindow = true;
-				proc.Start();
-			}
-
+			var proc = new Process();
+			proc.StartInfo.FileName = "cmd.exe";
+			proc.StartInfo.Arguments = !Definitions.IsFpsToggled ? $"/c \"{Env.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}" : "/c taskkill /f /im Gavilya.Fps.exe";
+			proc.StartInfo.UseShellExecute = false;
+			proc.StartInfo.CreateNoWindow = true;
+			proc.Start();
 			Definitions.IsFpsToggled = !Definitions.IsFpsToggled;
 		};
 		var assignment = new Dictionary<Combination, Action>

@@ -141,7 +141,7 @@ public static class SettingsSaver
 
 			if (!Definitions.Settings.FpsCounterOpacity.HasValue)
 			{
-				Definitions.Settings.FpsCounterOpacity = 0;
+				Definitions.Settings.FpsCounterOpacity = 1;
 			}
 
 			streamReader.Dispose();
@@ -163,7 +163,7 @@ public static class SettingsSaver
 				ShowMoreUnplayedGamesRecommanded = true,
 				HideSearchBar = false,
 				NumberOfSearchResultsToDisplay = 3,
-				FpsCounterOpacity = 0
+				FpsCounterOpacity = 1
 			};
 			Save();
 		}

@@ -49,6 +49,13 @@ public partial class FpsOptionsPage : Page
 	public FpsOptionsPage()
 	{
 		InitializeComponent();
+		InitUI();
+	}
+
+	private void InitUI()
+	{
+		FpsShortcutTxt.Text = string.Format(Properties.Resources.OpenFpsCounter, "Ctrl+Shift+F");
+		OpacitySlider.Value = (Definitions.Settings.FpsCounterOpacity ?? 1) * 100;
 	}
 
 	private void OpacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -72,7 +79,13 @@ public partial class FpsOptionsPage : Page
 			proc.Start();
 
 			// Restart the app
-			Process.Start(Env.CurrentAppDirectory + "/Gavilya.Fps.exe");
+			var proc2 = new Process();
+			proc2.StartInfo.FileName = "cmd.exe";
+			proc2.StartInfo.Arguments = $"/c \"{Env.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}";
+			proc2.StartInfo.UseShellExecute = false;
+			proc2.StartInfo.CreateNoWindow = true;
+			proc2.Start();
+			Definitions.IsFpsToggled = !Definitions.IsFpsToggled;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Gavilya.Fps
 {
@@ -41,8 +41,10 @@ namespace Gavilya.Fps
 				}
 			};
 
+			var alpha = Program.Opacity * 255;
+			Opacity = Program.Opacity;
 			BackColor = Color.FromArgb(255, 1, 1, 1);
-			TransparencyKey = Color.FromArgb(255, 1, 1, 1);
+			TransparencyKey = Color.FromArgb((int)alpha, 1, 1, 1);
 			FormClickThrough();
 		}
 
