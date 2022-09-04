@@ -88,70 +88,77 @@ namespace Gavilya.Fps
 		[STAThread]
 		public static void Main(string[] argv)
 		{
-			if (argv != null && argv.Length >= 1)
+			try
 			{
-				Opacity = double.Parse(argv[0]);
-			}
-
-			//create ETW session and register providers
-			m_EtwSession = new TraceEventSession("mysess");
-			m_EtwSession.StopOnDispose = true;
-			m_EtwSession.EnableProvider("Microsoft-Windows-D3D9");
-			m_EtwSession.EnableProvider("Microsoft-Windows-DXGI");
-
-			//handle event
-			m_EtwSession.Source.AllEvents += data =>
-			{
-				// filter out frame presentation events
-				if (((int)data.ID == EventID_D3D9PresentStart && data.ProviderGuid == D3D9_provider) ||
-				((int)data.ID == EventID_DxgiPresentStart && data.ProviderGuid == DXGI_provider))
+				if (argv != null && argv.Length >= 1)
 				{
-					int pid = data.ProcessID;
-					double t;
-
-					t = watch.Elapsed.TotalMilliseconds;
-					lock (sync)
-					{
-						//if process is not yet in Dictionary, add it
-						if (!frames.ContainsKey(pid))
-						{
-							frames[pid] = new TimestampCollection();
-
-							string name = "";
-							var proc = Process.GetProcessById(pid);
-							if (proc != null)
-							{
-								using (proc)
-								{
-									name = proc.ProcessName;
-								}
-							}
-							else name = pid.ToString();
-							frames[pid].Name = pid.ToString();
-						}
-					}
-					//store frame timestamp in collection
-					frames[pid].Add(t);
-
+					Opacity = double.Parse(argv[0]);
 				}
-			};
 
-			watch = new Stopwatch();
-			watch.Start();
+				//create ETW session and register providers
+				m_EtwSession = new TraceEventSession("mysess");
+				m_EtwSession.StopOnDispose = true;
+				m_EtwSession.EnableProvider("Microsoft-Windows-D3D9");
+				m_EtwSession.EnableProvider("Microsoft-Windows-DXGI");
 
-			Thread thETW = new Thread(EtwThreadProc);
-			thETW.IsBackground = true;
-			thETW.SetApartmentState(ApartmentState.STA);
-			thETW.Start();
+				//handle event
+				m_EtwSession.Source.AllEvents += data =>
+				{
+					// filter out frame presentation events
+					if (((int)data.ID == EventID_D3D9PresentStart && data.ProviderGuid == D3D9_provider) ||
+					((int)data.ID == EventID_DxgiPresentStart && data.ProviderGuid == DXGI_provider))
+					{
+						int pid = data.ProcessID;
+						double t;
 
-			Thread thOutput = new Thread(OutputThreadProc);
-			thOutput.IsBackground = true;
-			thOutput.SetApartmentState(ApartmentState.STA);
-			thOutput.Start();
-			Application.EnableVisualStyles();
-			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new FpsCounter());
-			m_EtwSession.Dispose();
+						t = watch.Elapsed.TotalMilliseconds;
+						lock (sync)
+						{
+							//if process is not yet in Dictionary, add it
+							if (!frames.ContainsKey(pid))
+							{
+								frames[pid] = new TimestampCollection();
+
+								string name = "";
+								var proc = Process.GetProcessById(pid);
+								if (proc != null)
+								{
+									using (proc)
+									{
+										name = proc.ProcessName;
+									}
+								}
+								else name = pid.ToString();
+								frames[pid].Name = pid.ToString();
+							}
+						}
+						//store frame timestamp in collection
+						frames[pid].Add(t);
+
+					}
+				};
+
+				watch = new Stopwatch();
+				watch.Start();
+
+				Thread thETW = new Thread(EtwThreadProc);
+				thETW.IsBackground = true;
+				thETW.SetApartmentState(ApartmentState.STA);
+				thETW.Start();
+
+				Thread thOutput = new Thread(OutputThreadProc);
+				thOutput.IsBackground = true;
+				thOutput.SetApartmentState(ApartmentState.STA);
+				thOutput.Start();
+				Application.EnableVisualStyles();
+				Application.SetCompatibleTextRenderingDefault(false);
+				Application.Run(new FpsCounter());
+				m_EtwSession.Dispose();
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(e.Message + "\n\n" + e.StackTrace);
+			}
 		}
 
 		[DllImport("user32.dll")]
