@@ -29,20 +29,20 @@
 					<ColumnDefinition/>
 					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
-				<Slider Margin="10 0 0 0" x:Name="OpacitySlider" ValueChanged="OpacitySlider_ValueChanged" Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" LargeChange="1" SmallChange="1"  VerticalAlignment="Center"/>
+				<Slider Margin="10 0 0 0" Style="{DynamicResource SliderStyle1}" x:Name="OpacitySlider" ValueChanged="OpacitySlider_ValueChanged" Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" LargeChange="1" SmallChange="1"  VerticalAlignment="Center"/>
 				<TextBlock FontSize="16" Margin="5" FontWeight="Bold" Text="{Binding Value, ElementName=OpacitySlider}" Grid.Column="1" VerticalAlignment="Center"/>
 			</Grid>
 
-            <Button Click="SaveButton_Click" Margin="10 10 0 10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left" Visibility="Collapsed">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0 0 5 0" Text="&#xead3;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
-                    <TextBlock Text="{x:Static lang:Resources.SaveChanges}" FontWeight="ExtraBold" FontSize="13" />
-                </StackPanel>
+			<Button Click="SaveButton_Click" Margin="10 10 0 10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left" Visibility="Collapsed">
+				<StackPanel Orientation="Horizontal">
+					<TextBlock Margin="0 0 5 0" Text="&#xead3;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+					<TextBlock Text="{x:Static lang:Resources.SaveChanges}" FontWeight="ExtraBold" FontSize="13" />
+				</StackPanel>
 
-                <Button.ToolTip>
-                    <ToolTip Content="{x:Static lang:Resources.SaveChanges}" Background="#0A0A1E" Foreground="White" />
-                </Button.ToolTip>
-            </Button>
-        </StackPanel>
+				<Button.ToolTip>
+					<ToolTip Content="{x:Static lang:Resources.SaveChanges}" Background="#0A0A1E" Foreground="White" />
+				</Button.ToolTip>
+			</Button>
+		</StackPanel>
 	</Grid>
 </Page>
