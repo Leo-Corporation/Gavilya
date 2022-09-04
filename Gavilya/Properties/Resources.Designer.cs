@@ -709,6 +709,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FPS Counter.
+        /// </summary>
+        public static string FpsCounter {
+            get {
+                return ResourceManager.GetString("FpsCounter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The opacity of the FPS Counter..
+        /// </summary>
+        public static string FpsCounterOpacity {
+            get {
+                return ResourceManager.GetString("FpsCounterOpacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Card view.
         /// </summary>
         public static string GameCard {
@@ -1503,11 +1521,29 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Opacity.
+        /// </summary>
+        public static string Opacity {
+            get {
+                return ResourceManager.GetString("Opacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open.
         /// </summary>
         public static string Open {
             get {
                 return ResourceManager.GetString("Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press {0} to open the FPS Counter..
+        /// </summary>
+        public static string OpenFpsCounter {
+            get {
+                return ResourceManager.GetString("OpenFpsCounter", resourceCulture);
             }
         }
         

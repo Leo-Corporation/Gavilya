@@ -28,6 +28,9 @@ public static partial class APIKeys
 {
 	/// <summary>
 	/// The RAWG.io API key. DO NOT SET A VALUE DIRECTLY IN A FILE THAT MIGHT BE PUBLISHED TO GITHUB. 
+	/// It is highyly recommanded that you don't store you API Key as plaintext, but as an encrypted string.
+	/// For security reasons, the encryption system used by official Léo Corporation releases isn't available.
+	/// We recommand that you use AES algorithm.
 	/// <para>YOUR API KEY IS SECRET!</para>
 	/// <para>Define your API keys in a copy of <see cref="APIKeys"/> called <c>APIKeysLocal.cs</c></para>
 	/// </summary>

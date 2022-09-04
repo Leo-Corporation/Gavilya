@@ -52,12 +52,17 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "2.8.0.2208";
+	public static string Version => "2.9.0.2209";
 
 	/// <summary>
 	/// True if the menu is shown.
 	/// </summary>
 	public static bool IsProfileMenuVisible { get; set; }
+
+	/// <summary>
+	/// True if the Fps Counter is visible. (default: false)
+	/// </summary>
+	public static bool IsFpsToggled { get; set; } = false;
 
 	/// <summary>
 	/// Contains the least used game(s).

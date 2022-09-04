@@ -176,6 +176,18 @@
 
 					</Button>
 
+					<Button Click="FpsOptions_Click" Padding="13" x:Name="FpsOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+							<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xFB92;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />
+							<TextBlock Text="{x:Static lang:Resources.FpsCounter}" />
+						</StackPanel>
+
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.FpsCounter}" Background="#000014" Foreground="White" />
+						</Button.ToolTip>
+
+					</Button>
+
 					<Button Click="DataOptions_Click" Padding="13" x:Name="DataOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
 						<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 							<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xF345;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />

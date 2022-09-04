@@ -26,9 +26,11 @@ using Gavilya.Enums;
 using Gavilya.Pages;
 using Gavilya.UserControls;
 using Gavilya.Windows;
+using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -113,6 +115,26 @@ public partial class MainWindow : Window
 		SearchBox.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		SearchBox.MaxDropDownHeight = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set the max drop down height (45 = height of SearchItem)
+
+		// FPS
+
+		var fps = Combination.FromString("Control+Shift+F");
+
+		Action fpsAction = () =>
+		{
+			var proc = new Process();
+			proc.StartInfo.FileName = "cmd.exe";
+			proc.StartInfo.Arguments = !Definitions.IsFpsToggled ? $"/c \"{Env.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}" : "/c taskkill /f /im Gavilya.Fps.exe";
+			proc.StartInfo.UseShellExecute = false;
+			proc.StartInfo.CreateNoWindow = true;
+			proc.Start();
+			Definitions.IsFpsToggled = !Definitions.IsFpsToggled;
+		};
+		var assignment = new Dictionary<Combination, Action>
+		{
+			{ fps, fpsAction }
+		};
+		Hook.GlobalEvents().OnCombination(assignment);
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
@@ -260,7 +282,7 @@ public partial class MainWindow : Window
 		SettingsSaver.Save(); // Save settings
 
 		Global.CreateJumpLists();
-		Environment.Exit(0); // Quit the app
+		Application.Current.Shutdown(); // Quit the app
 	}
 
 	/// <summary>
@@ -657,5 +679,10 @@ public partial class MainWindow : Window
 			ColorElement(SearchBtn, new SolidColorBrush(Colors.Transparent)); // Change the background
 			SearchBox.Visibility = Visibility.Collapsed; // Hide
 		}
+	}
+
+	private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+	{
+		Application.Current.Shutdown();
 	}
 }

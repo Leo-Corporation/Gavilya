@@ -40,6 +40,7 @@ public partial class Settings : Window
 	readonly DataOptionsPage dataOptionsPage = new(); // Create a page
 	readonly HomeOptionsPage homeOptionsPage = new(); // Create a page
 	readonly SearchOptionsPage searchOptionsPage = new(); // Create a page
+	readonly FpsOptionsPage fpsOptionsPage = new(); // Create a page
 
 	public Settings()
 	{
@@ -103,6 +104,13 @@ public partial class Settings : Window
 				searchOptionsPage.Visibility = Visibility.Visible; // Show the page
 				OptionsDisplayer.Navigate(searchOptionsPage); // Navigate
 				break;
+			case SettingsPages.FPS:
+				UnCheckAll(); // Uncheck all buttons
+
+				FpsOptions.Background = Definitions.HomeButtonBackColor; // Set the new background
+				fpsOptionsPage.Visibility = Visibility.Visible; // Show the page
+				OptionsDisplayer.Navigate(fpsOptionsPage); // Navigate
+				break;
 		}
 	}
 
@@ -114,6 +122,7 @@ public partial class Settings : Window
 		DataOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		HomeOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		SearchOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		FpsOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 	}
 
 	private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -144,5 +153,10 @@ public partial class Settings : Window
 	private void SearchOptions_Click(object sender, RoutedEventArgs e)
 	{
 		NavigateToPage(SettingsPages.Search); // Show the "Search" page
+	}
+
+	private void FpsOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(SettingsPages.FPS); // Show the "FPS" page
 	}
 }
