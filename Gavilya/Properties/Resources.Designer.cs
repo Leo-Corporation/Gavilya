@@ -1710,7 +1710,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Gavilya is integrated with the RAWG.io database, wich means that Gavilya can automatically find covers, descriptions, and other informations about a game..
+        ///   Looks up a localized string similar to Gavilya is integrated with the RAWG.io database, which means that Gavilya can automatically find covers, descriptions, and other informations about a game..
         /// </summary>
         public static string RAWGDescriptionFirstRun {
             get {
