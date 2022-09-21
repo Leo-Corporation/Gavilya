@@ -65,7 +65,7 @@
   <ItemGroup>
     <PackageReference Include="LeoCorpLibrary" Version="4.9.0.2208" />
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
-    <PackageReference Include="RestSharp" Version="108.0.1" />
+    <PackageReference Include="RestSharp" Version="108.0.2" />
     <PackageReference Include="System.Drawing.Common" Version="6.0.0" />
   </ItemGroup>
 
