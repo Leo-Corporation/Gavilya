@@ -107,31 +107,13 @@
 						</Button.ToolTip>
 					</Button>
 
-					<Button Name="ForwardBtn" Click="ForwardBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe994;" FontSize="14" Grid.Column="1" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.GoForward}" Background="#000014" Foreground="White" />
-						</Button.ToolTip>
-					</Button>
+                    <Button Name="ForwardBtn" Click="ForwardBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe994;" FontSize="14" Grid.Column="1" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static lang:Resources.GoForward}" Background="#000014" Foreground="White" />
+                        </Button.ToolTip>
+                    </Button>
 
-					<StackPanel Orientation="Horizontal" Grid.Column="2">
-						<Button x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="{x:Static lang:Resources.Home}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
-							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Home}" Background="#000014" Foreground="White" />
-							</Button.ToolTip>
-						</Button>
-						<Button x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="{x:Static lang:Resources.Library}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
-							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Library}" Background="#000014" Foreground="White" />
-							</Button.ToolTip>
-						</Button>
-						<Button x:Name="ProfileTabBtn" Click="ProfileTabBtn_Click" Content="{x:Static lang:Resources.MyProfile}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
-							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.MyProfile}" Background="#000014" Foreground="White" />
-							</Button.ToolTip>
-						</Button>
-					</StackPanel>
-
-					<ComboBox MaxWidth="400" MaxDropDownHeight="135" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="ExtraBold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
+                    <ComboBox MaxWidth="400" MaxDropDownHeight="135" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="ExtraBold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
 						<ComboBox.Style>
 							<Style TargetType="ComboBox">
 								<Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
@@ -145,29 +127,7 @@
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.Search}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
-					</Button>
-
-					<Button x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="5" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
-						<Grid>
-							<TextBlock Text="&#xE903;" />
-							<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top" />
-						</Grid>
-
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White" />
-						</Button.ToolTip>
-					</Button>
-
-					<Button x:Name="ProfileBtn" Style="{StaticResource TitleBarButtonStyle}" Padding="5" Margin="5" Background="Transparent" Click="ProfileBtn_Click" Height="35" Width="35" Grid.Column="6">
-						<Rectangle RadiusX="15" RadiusY="15" Width="30" Height="30">
-							<Rectangle.Fill>
-								<ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png" />
-							</Rectangle.Fill>
-						</Rectangle>
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Profiles}" Background="#000014" Foreground="White" />
-						</Button.ToolTip>
-					</Button>
+					</Button>									
 
 					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
@@ -196,11 +156,54 @@
 			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#0A0A1E">
 				<Grid>
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
 						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition />
 					</Grid.ColumnDefinitions>
 
-					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
+                    <Grid x:Name="Sidebar">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="&#xF488;" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" FontFamily="Fonts/#FluentSystemIcons-Filled">
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Home}" Background="#000014" Foreground="White" />
+                            </Button.ToolTip>
+                        </Button>
+                        <Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="&#xFE7B;" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="1" FontFamily="Fonts/#FluentSystemIcons-Filled">
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Library}" Background="#000014" Foreground="White" />
+                            </Button.ToolTip>
+                        </Button>
+                        
+                        <Button x:Name="ProfileBtn" Padding="5" Style="{StaticResource ButtonMenu}" Margin="5 2" Background="Transparent" Click="ProfileBtn_Click" BorderThickness="2 0 0 0" Grid.Row="3" Height="40" Cursor="Hand">
+                            <Rectangle RadiusX="15" RadiusY="15" Width="25" Height="25">
+                                <Rectangle.Fill>
+                                    <ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.Profiles}" Background="#000014" Foreground="White" />
+                            </Button.ToolTip>
+                        </Button>
+                        <Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5,2,5,5" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="5" FontFamily="Fonts/#FluentSystemIcons-Filled" BorderBrush="Transparent">
+                            <Grid>
+                                <TextBlock Text="&#xF115;" />
+                                <TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top" />
+                            </Grid>
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White" />
+                            </Button.ToolTip>
+                        </Button>
+                    </Grid>
+                    
+					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated" Grid.Column="2"></Frame>
 
 					<!-- Notification center -->
 					<Grid Width="300" Grid.Column="1" x:Name="NotificationCenter" Visibility="Collapsed">

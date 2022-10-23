@@ -104,7 +104,6 @@ public partial class AddEditProfileWindow : Window
 			}
 			ProfileManager.SaveProfiles();
 
-			Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh
 			Definitions.MainWindow.LoadProfilesUI(); // Refresh
 			Definitions.ProfilePage.InitUI();
 			Close(); // Closes the window 

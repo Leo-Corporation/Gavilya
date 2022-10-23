@@ -105,7 +105,7 @@ public partial class MainWindow : Window
 		{
 			GavilyaWindowPages.Home => HomeTabBtn,
 			GavilyaWindowPages.Library => LibraryTabBtn,
-			GavilyaWindowPages.Profile => ProfileTabBtn,
+			GavilyaWindowPages.Profile => ProfileBtn,
 			_ => HomeTabBtn
 		};
 		CheckButton();
@@ -559,29 +559,19 @@ public partial class MainWindow : Window
 		}
 		else if (PageContent.Content is ProfilePage)
 		{
-			CheckedTabButton = ProfileTabBtn; // Check
+			CheckedTabButton = ProfileBtn; // Check
 		}
 		CheckButton(); // Refresh
 	}
 
-	internal ProfilesPopupMenu ProfilesPopupMenu = new();
 	private void ProfileBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Definitions.IsProfileMenuVisible) // If the menu is visible
-		{
-			ProfilesPopupMenu.Hide(); // Close
-			Definitions.IsProfileMenuVisible = false; // Is not shown
-		}
-		else
-		{
-			double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
 
-			ProfilesPopupMenu.WindowStartupLocation = WindowStartupLocation.Manual; // Set the startup position to manual
-			ProfilesPopupMenu.Left = (PointToScreen(Mouse.GetPosition(this)).X - ProfilesPopupMenu.Width / 2) / factor; // Calculate the X position
-			ProfilesPopupMenu.Top = PointToScreen(Mouse.GetPosition(this)).Y / factor + 5; // Calculate the Y position
-			ProfilesPopupMenu.Show(); // Show
-			Definitions.IsProfileMenuVisible = true; // Is shown
-		}
+		CheckedTabButton = ProfileBtn; // Set the checked button
+		CheckButton(); // Update the UI
+
+		Definitions.ProfilePage.InitUI(); // Refresh the content
+		PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
 	}
 
 	Button CheckedTabButton { get; set; }
@@ -602,32 +592,28 @@ public partial class MainWindow : Window
 		PageContent.Navigate(Definitions.LibraryPage); // Show the Library page
 	}
 
-	private void ProfileTabBtn_Click(object sender, RoutedEventArgs e)
-	{
-		CheckedTabButton = ProfileTabBtn; // Set the checked button
-		CheckButton(); // Update the UI
-
-		Definitions.ProfilePage.InitUI(); // Refresh the content
-		PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
-	}
-
 	private void HomeTabBtn_MouseLeave(object sender, MouseEventArgs e)
 	{
 		Button button = (Button)sender; // Get the button
 		if (button == CheckedTabButton)
 		{
-			button.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) };
+			button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) };
+			CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
 		}
 	}
 
 	private void CheckButton()
 	{
 		// Reset
+		HomeTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		LibraryTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		ProfileBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		HomeTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		LibraryTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
-		ProfileTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		ProfileBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 
-		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
+		CheckedTabButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
+		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
 	}
 
 	private void NotificationsBtn_Click(object sender, RoutedEventArgs e)

@@ -55,11 +55,6 @@ public static class Definitions
 	public static string Version => "2.9.1.2209";
 
 	/// <summary>
-	/// True if the menu is shown.
-	/// </summary>
-	public static bool IsProfileMenuVisible { get; set; }
-
-	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)
 	/// </summary>
 	public static bool IsFpsToggled { get; set; } = false;
@@ -81,7 +76,7 @@ public static class Definitions
 	/// <summary>
 	/// Define if the current build is a preversion of Gavilya, not made for production nor Pre-Release.
 	/// </summary>
-	public static bool IsBeta => false;
+	public static bool IsBeta => true;
 
 
 	/// <summary>

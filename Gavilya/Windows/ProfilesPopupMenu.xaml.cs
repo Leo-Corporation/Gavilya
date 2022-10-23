@@ -94,11 +94,7 @@ public partial class ProfilesPopupMenu : Window
 
 	private void Window_Deactivated(object sender, EventArgs e)
 	{
-		if (Definitions.IsProfileMenuVisible)
-		{
-			Hide(); // Close
-			Definitions.IsProfileMenuVisible = false; // Define
-		}
+		
 	}
 
 	private void AddProfileBtn_Click(object sender, RoutedEventArgs e)

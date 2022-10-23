@@ -82,7 +82,6 @@ public partial class ProfileItem : UserControl
 		{
 			Definitions.Profiles.Remove(CurrentProfile); // Remove
 			ProfileManager.SaveProfiles(); // Save changes
-			Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh 
 		}
 	}
 
