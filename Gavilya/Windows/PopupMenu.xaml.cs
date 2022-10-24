@@ -52,12 +52,6 @@ public partial class PopupMenu : Window
 		}
 	}
 
-	private void SettingsBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Settings settings = new(); // Settings window
-		settings.Show(); // Show the Settings window
-	}
-
 	private void AboutBtn_Click(object sender, RoutedEventArgs e)
 	{
 		About about = new(); // About window

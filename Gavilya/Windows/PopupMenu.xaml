@@ -1,4 +1,4 @@
-﻿<Window x:Class="Gavilya.Windows.PopupMenu" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Gavilya.Windows" xmlns:lang="clr-namespace:Gavilya.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Title="{x:Static lang:Resources.PopupMenu}" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None" Deactivated="Window_Deactivated" Width="166" Height="100">
+﻿<Window x:Class="Gavilya.Windows.PopupMenu" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:Gavilya.Windows" xmlns:lang="clr-namespace:Gavilya.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Title="{x:Static lang:Resources.PopupMenu}" ShowInTaskbar="False" AllowsTransparency="True" Background="Transparent" WindowStyle="None" Deactivated="Window_Deactivated" Width="166" Height="77">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -28,22 +28,7 @@
                         <Button.ToolTip>
                             <ToolTip Content="{x:Static lang:Resources.About}" Background="#000014" Foreground="White" />
                         </Button.ToolTip>
-                    </Button>
-
-                    <Button x:Name="SettingsBtn" Click="SettingsBtn_Click" Style="{StaticResource RegularButton}" BorderThickness="0" Background="Transparent" Padding="3">
-                        <Grid Margin="5 0 0 0" Width="135">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Margin="0 0 10 0" FontSize="13" Foreground="White" Text="&#xeae0;" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Center" VerticalAlignment="Center" />
-                            <TextBlock Grid.Column="1" FontWeight="ExtraBold" FontSize="13" Foreground="White" Text="{x:Static lang:Resources.Settings}" HorizontalAlignment="Left" />
-                        </Grid>
-
-                        <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="White" />
-                        </Button.ToolTip>
-                    </Button>
+                    </Button>                    
 
                     <Button x:Name="GitHubBtn" Click="GitHubBtn_Click" Style="{StaticResource RegularButton}" BorderThickness="0" Background="Transparent" Padding="3">
                         <Grid Margin="5 0 0 0" Width="135">

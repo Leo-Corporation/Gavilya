@@ -169,6 +169,7 @@
 							<RowDefinition Height="Auto"/>
 							<RowDefinition Height="*"/>
 							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
 
 						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="&#xF488;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" FontFamily="Fonts/#FluentSystemIcons-Filled">
@@ -204,6 +205,12 @@
 							</Grid>
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="SettingsBtn" Click="SettingsBtn_Click" Content="&#xF6B3;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="6" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
 					</Grid>

@@ -609,11 +609,13 @@ public partial class MainWindow : Window
 		LibraryTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		ProfileBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
-		
+		SettingsBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+
 		HomeTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		LibraryTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		ProfileBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		RecentTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		SettingsBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 
 		CheckedTabButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
 		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
@@ -681,5 +683,13 @@ public partial class MainWindow : Window
 		CheckButton(); // Update the UI
 
 		PageContent.Navigate(Definitions.RecentGamesPage); // Show the Home page
+	}
+
+	private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Windows.Settings settings = new(); // Settings window
+		CheckedTabButton = SettingsBtn; // Set the checked button
+		CheckButton(); // Update the UI
+		settings.Show(); // Show the Settings window
 	}
 }
