@@ -122,6 +122,9 @@ public partial class GameCard : UserControl
 			FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
 			FavBtn.Content = "\uF71B"; // Change icon
+			FavoriteSideBarItem = new FavoriteSideBarItem(gameInfo, this);
+
+			Definitions.MainWindow.FavoriteSideBar.Children.Add(FavoriteSideBarItem);
 		}
 
 		if (recommanded)
@@ -235,6 +238,7 @@ public partial class GameCard : UserControl
 	}
 
 	FavoriteGameCard FavoriteGameCard;
+	FavoriteSideBarItem FavoriteSideBarItem;
 
 	private void FavBtn_Click(object sender, RoutedEventArgs e)
 	{
@@ -242,6 +246,8 @@ public partial class GameCard : UserControl
 		{
 			GameInfo.IsFavorite = false; // The game is no longer a favorite
 			Definitions.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
+			Definitions.MainWindow.FavoriteSideBar.Children.Remove(FavoriteSideBarItem);
+
 			FavBtn.Content = "\uF710"; // Change icon
 			GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(102, 0, 255)); // Set the border color			
 		}
@@ -250,6 +256,8 @@ public partial class GameCard : UserControl
 			GameInfo.IsFavorite = true; // Set the game to be a favorite
 			FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
+			FavoriteSideBarItem = new FavoriteSideBarItem(GameInfo, this);
+			Definitions.MainWindow.FavoriteSideBar.Children.Add(FavoriteSideBarItem);
 			FavBtn.Content = "\uF71B"; // Change icon
 			GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(55, 121, 238)); // Set the border color
 		}
@@ -268,10 +276,7 @@ public partial class GameCard : UserControl
 			Definitions.GameInfoPage.InitializeUI(GameInfo, this);
 			Definitions.MainWindow.PageContent.Content = Definitions.GameInfoPage;
 		}
-		catch (Exception)
-		{
-
-		}
+		catch { }
 	}
 
 	private void MenuBtn_Click(object sender, RoutedEventArgs e)

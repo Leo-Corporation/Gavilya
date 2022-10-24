@@ -42,19 +42,6 @@ public partial class LibraryPage : Page
 	public LibraryPage()
 	{
 		InitializeComponent();
-		InitUI();
-	}
-
-	private void InitUI()
-	{
-		if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
-		{
-			AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
-		}
-		else
-		{
-			AddUWPBtn.Visibility = Visibility.Visible; // Show
-		}
 	}
 
 	private void GameCardTabBtn_Click(object sender, RoutedEventArgs e)

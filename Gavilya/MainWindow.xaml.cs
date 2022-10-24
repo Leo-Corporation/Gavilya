@@ -28,6 +28,7 @@ using Gavilya.UserControls;
 using Gavilya.Windows;
 using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
+using LeoCorpLibrary.Enums;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -117,7 +118,6 @@ public partial class MainWindow : Window
 		SearchBox.MaxDropDownHeight = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set the max drop down height (45 = height of SearchItem)
 
 		// FPS
-
 		var fps = Combination.FromString("Control+Shift+F");
 
 		Action fpsAction = () =>
@@ -135,6 +135,16 @@ public partial class MainWindow : Window
 			{ fps, fpsAction }
 		};
 		Hook.GlobalEvents().OnCombination(assignment);
+
+		// Add Popup
+		if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
+		{
+			AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
+		}
+		else
+		{
+			AddUWPBtn.Visibility = Visibility.Visible; // Show
+		}
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
@@ -553,13 +563,17 @@ public partial class MainWindow : Window
 		{
 			CheckedTabButton = HomeTabBtn; // Check
 		}
-		else if (PageContent.Content is LibraryPage)
+		else if (PageContent.Content is LibraryPage or GameInfoPage)
 		{
 			CheckedTabButton = LibraryTabBtn; // Check
 		}
 		else if (PageContent.Content is ProfilePage)
 		{
 			CheckedTabButton = ProfileBtn; // Check
+		}
+		else if (PageContent.Content is RecentGamesPage)
+		{
+			CheckedTabButton = RecentTabBtn; // Check
 		}
 		CheckButton(); // Refresh
 	}

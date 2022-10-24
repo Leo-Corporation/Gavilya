@@ -254,6 +254,11 @@
 								</Border>
 							</Popup>
 						</Grid>
+
+						<StackPanel x:Name="FavoriteSideBar" Grid.Row="5">
+							<!-- Favorite items will display here -->
+						</StackPanel>
+						
 						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5,2,5,5" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="6" FontFamily="Fonts/#FluentSystemIcons-Filled" BorderBrush="Transparent">
 							<Grid>
 								<TextBlock Text="&#xF115;" />
