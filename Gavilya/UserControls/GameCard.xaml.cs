@@ -154,6 +154,8 @@ public partial class GameCard : UserControl
 				FavBtn.Visibility = Visibility.Visible; // Show the favorite button
 				break;
 		}
+
+		GameNameTxt.Text = GameInfo.Name;
 	}
 
 	bool gameStarted = false;
@@ -227,14 +229,16 @@ public partial class GameCard : UserControl
 		}
 	}
 
+	public bool SelectModeToggled { get; set; }
+
 	private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
 	{
-		GameCardBorder.BorderThickness = new Thickness { Bottom = 3, Top = 3, Left = 3, Right = 3 }; // Set the border thickness
+		ContentGrid.Visibility = Visibility.Visible;
 	}
 
 	private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
 	{
-		GameCardBorder.BorderThickness = new Thickness { Bottom = 0, Top = 0, Left = 0, Right = 0 }; // Set the border thickness
+		ContentGrid.Visibility = Visibility.Collapsed;
 	}
 
 	FavoriteGameCard FavoriteGameCard;
@@ -307,5 +311,12 @@ public partial class GameCard : UserControl
 			}
 		}
 		catch { } // If the user says "No" the Admin prompt
+	}
+
+	private void CheckBox_Checked(object sender, RoutedEventArgs e)
+	{
+		GameCardBorder.BorderThickness = CheckBox.IsChecked ?? false ?
+			new(3)
+			: new(0); // Set the border thickness
 	}
 }

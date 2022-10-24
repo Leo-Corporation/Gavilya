@@ -746,17 +746,9 @@
 						<ControlTemplate TargetType="{x:Type Button}">
 							<Border x:Name="border" BorderThickness="0" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true" CornerRadius="5,5,5,5">
 								<Border.Background>
-									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad">
-										<LinearGradientBrush.RelativeTransform>
-											<TransformGroup>
-												<ScaleTransform CenterY="0.5" CenterX="0.5" />
-												<SkewTransform CenterY="0.5" CenterX="0.5" />
-												<RotateTransform Angle="180" CenterY="0.5" CenterX="0.5" />
-												<TranslateTransform />
-											</TransformGroup>
-										</LinearGradientBrush.RelativeTransform>
-										<GradientStop Color="#3779EE" />
-										<GradientStop Color="#3E84ED" Offset="1" />
+									<LinearGradientBrush StartPoint="-2.252774E-08, -6.007397E-08" EndPoint="0.7293306, 0.74163395">
+										<GradientStop Color="#00C6FB" Offset="0" />
+										<GradientStop Color="#005BEA" Offset="1" />
 									</LinearGradientBrush>
 								</Border.Background>
 								<ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
@@ -1023,10 +1015,10 @@
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type Button}">
-                            <Border x:Name="border" MinHeight="20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="5" SnapsToDevicePixels="true" Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
+							<Border x:Name="border" MinHeight="20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="5" SnapsToDevicePixels="true" Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
 								<Border.Effect>
 									<DropShadowEffect ShadowDepth="0" Opacity="0" />
-								</Border.Effect>								
+								</Border.Effect>
 								<ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 							</Border>
 							<ControlTemplate.Triggers>
@@ -1034,10 +1026,10 @@
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
 								</Trigger>
 								<Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
-                                </Trigger>
+									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
+								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
-                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
+									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
 									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}" />
@@ -1579,7 +1571,7 @@
 					</Setter.Value>
 				</Setter>
 			</Style>
-			
+
 			<ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
 				<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
 					<Path x:Name="grip" Data="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" Fill="{TemplateBinding Foreground}" SnapsToDevicePixels="True" StrokeThickness="1" Stretch="Fill" Stroke="{TemplateBinding Foreground}" UseLayoutRounding="True" VerticalAlignment="Center"/>
