@@ -52,7 +52,11 @@ public partial class FavoriteListItem : UserControl
 
 		GameNameTxt.Text = GameInfo.Name;
 		TimePlayedTxt.Text = $"{Math.Round(GameInfo.TotalTimePlayed / 3600d)}{Properties.Resources.HourShort} \u00B7 {lastTimePlayed.Day} {Global.NumberToMonth(lastTimePlayed.Month)} {lastTimePlayed.Year}";
-		DescTxt.Text = GameInfo.Description[0..120].Replace("\n\n", "\n") + "...";
+		
+		DescTxt.Text = string.IsNullOrEmpty(GameInfo.Description) && GameInfo.Description.Length > 121 
+			? GameInfo.Description[0..120].Replace("\n\n", "\n") + "..." 
+			: GameInfo.Description;
+
 
 		if (!string.IsNullOrEmpty(GameInfo.IconFileLocation)) // If there is an image
 		{

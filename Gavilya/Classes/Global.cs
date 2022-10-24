@@ -509,6 +509,7 @@ public static class Global
 	/// </summary>
 	internal static void ReloadAllPages()
 	{
+		Definitions.MainWindow.FavoriteSideBar.Children.Clear();
 		Definitions.GamesCardsPages.LoadGames(); // Reload the page
 		Definitions.GamesListPage.LoadGames(); // Reload the page
 		Definitions.RecentGamesPage.LoadGames(); // Reload the page
@@ -694,7 +695,9 @@ public static class Global
 				{
 					Title = Definitions.Games[i].Name,
 					Arguments = $"{Definitions.Games[i].FileLocation}",
-					Description = Definitions.Games[i].Description[0..120].Replace("\n\n", "\n") + "...",
+					Description = string.IsNullOrEmpty(Definitions.Games[i].Description) && Definitions.Games[i].Description.Length > 121
+						? Definitions.Games[i].Description[0..120].Replace("\n\n", "\n") + "..."
+						: Definitions.Games[i].Description,
 					CustomCategory = Properties.Resources.Favorites,
 					IconResourcePath = isExe ? Definitions.Games[i].FileLocation : Assembly.GetEntryAssembly().Location,
 					ApplicationPath = "explorer.exe"
