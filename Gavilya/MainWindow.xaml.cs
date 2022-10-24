@@ -692,4 +692,30 @@ public partial class MainWindow : Window
 		CheckButton(); // Update the UI
 		settings.Show(); // Show the Settings window
 	}
+
+	private void AddBtn_Click(object sender, RoutedEventArgs e)
+	{
+		AddPopup.IsOpen = true;
+	}
+
+	private void AddGameBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(false, false).Show(); // Open the "Add Game" dialog
+		AddPopup.IsOpen = false;
+
+	}
+
+	private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(true, false).Show(); // Add game
+		AddPopup.IsOpen = false;
+
+	}
+
+	private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(false, true).Show(); // Add Steam Game
+		AddPopup.IsOpen = false;
+
+	}
 }
