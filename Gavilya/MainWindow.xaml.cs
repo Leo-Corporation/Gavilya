@@ -473,7 +473,7 @@ public partial class MainWindow : Window
 						foreach (FavoriteSideBarItem favoriteSideBarItem in Definitions.MainWindow.FavoriteSideBar.Children)
 						{
 							favoriteSideBarItems.Add(favoriteSideBarItem); // Add to the list
-							
+
 						}
 						foreach (FavoriteSideBarItem favoriteSideBarItem1 in favoriteSideBarItems)
 						{

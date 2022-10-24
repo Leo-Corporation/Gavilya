@@ -94,7 +94,7 @@ public partial class ProfilesPopupMenu : Window
 
 	private void Window_Deactivated(object sender, EventArgs e)
 	{
-		
+
 	}
 
 	private void AddProfileBtn_Click(object sender, RoutedEventArgs e)
