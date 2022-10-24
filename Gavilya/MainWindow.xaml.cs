@@ -370,18 +370,21 @@ public partial class MainWindow : Window
 			{
 				if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard gameCard) // If the element is a GameCard
 				{
-					if (gameCard.CheckBox.IsVisible) // If the check box is visible
+					if (gameCard.SelectModeToggled) // If the check box is visible
 					{
 						gameCard.CheckBox.Visibility = Visibility.Hidden; // The checkbox isn't visible
 						ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
+						gameCard.GameCardBorder.BorderThickness = new(0); // Set the border thickness; // Show the controls
 						RemoveShadowElement(SelectBtn); // Remove shadow
 					}
 					else
 					{
 						gameCard.CheckBox.Visibility = Visibility.Visible; // The checkbox is visible
+						gameCard.GameCardBorder.BorderThickness = gameCard.CheckBox.IsChecked ?? false ? new(3) : new(0); // Set the border thickness; // Show the controls
 						ColorElement(SelectBtn, Definitions.HomeButtonBackColor); // Change the background
 						ShadowElement(SelectBtn); // Shadow
 					}
+					gameCard.SelectModeToggled = !gameCard.SelectModeToggled;
 					Definitions.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
 				}
 			}
@@ -418,7 +421,7 @@ public partial class MainWindow : Window
 		for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++)
 		{
 			var game = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
-			if (game.CheckBox.IsChecked.Value)
+			if (game.CheckBox.IsChecked.Value && game.SelectModeToggled)
 			{
 				return true;
 			}
