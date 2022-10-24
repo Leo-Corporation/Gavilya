@@ -456,6 +456,7 @@ public partial class MainWindow : Window
 					if (gameCard1.GameInfo.IsFavorite) // If the game is a favorite
 					{
 						List<FavoriteGameCard> favoriteGameCards = new();
+						List<FavoriteSideBarItem> favoriteSideBarItems = new();
 						foreach (FavoriteGameCard favoriteGameCard in Definitions.HomePage.FavoriteBar.Children) // Foreach favorite
 						{
 							favoriteGameCards.Add(favoriteGameCard); // Add to the list
@@ -466,6 +467,19 @@ public partial class MainWindow : Window
 							if (favoriteGameCard1.GameInfo == gameCard1.GameInfo) // If the favorite is corresponding to the game
 							{
 								Definitions.HomePage.FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
+							}
+						}
+
+						foreach (FavoriteSideBarItem favoriteSideBarItem in Definitions.MainWindow.FavoriteSideBar.Children)
+						{
+							favoriteSideBarItems.Add(favoriteSideBarItem); // Add to the list
+							
+						}
+						foreach (FavoriteSideBarItem favoriteSideBarItem1 in favoriteSideBarItems)
+						{
+							if (favoriteSideBarItem1.Parent is GameCard && (GameCard)favoriteSideBarItem1.Parent == gameCard1)
+							{
+								Definitions.MainWindow.FavoriteSideBar.Children.Remove(favoriteSideBarItem1);
 							}
 						}
 					}
@@ -494,9 +508,11 @@ public partial class MainWindow : Window
 
 				if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
 				{
-					WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
-					welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
-					welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+					WelcomeAddGames welcomeAddGames = new()
+					{
+						VerticalAlignment = VerticalAlignment.Stretch, // Center
+						HorizontalAlignment = HorizontalAlignment.Stretch // Center
+					}; // New WelcomeAddGames
 					Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
 					Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
 					Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen

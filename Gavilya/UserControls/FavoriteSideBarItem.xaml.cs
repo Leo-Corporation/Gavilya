@@ -47,7 +47,7 @@ namespace Gavilya.UserControls
 	/// </summary>
 	public partial class FavoriteSideBarItem : UserControl
 	{
-		UIElement Parent { get; init; }
+		internal UIElement Parent { get; init; }
 		public FavoriteSideBarItem(GameInfo gameInfo, UIElement parent)
 		{
 			InitializeComponent();
