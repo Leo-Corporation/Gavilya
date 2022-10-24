@@ -61,7 +61,6 @@ public partial class MainWindow : Window
 		Definitions.LibraryPage.PageDisplayer.Content = Definitions.Settings.PageId switch
 		{
 			0 => Definitions.GamesCardsPages,
-			1 => Definitions.RecentGamesPage,
 			2 => Definitions.GamesListPage,
 			_ => Definitions.GamesCardsPages
 		}; // Show the page
@@ -69,7 +68,6 @@ public partial class MainWindow : Window
 		Definitions.LibraryPage.CheckedButton = Definitions.Settings.PageId switch
 		{
 			0 => Definitions.LibraryPage.GameCardTabBtn,
-			1 => Definitions.LibraryPage.RecentTabBtn,
 			2 => Definitions.LibraryPage.GameListTabBtn,
 			_ => Definitions.LibraryPage.GameCardTabBtn
 		}; // Check
@@ -99,6 +97,7 @@ public partial class MainWindow : Window
 			GavilyaWindowPages.Home => Definitions.HomePage,
 			GavilyaWindowPages.Library => Definitions.LibraryPage,
 			GavilyaWindowPages.Profile => Definitions.ProfilePage,
+			GavilyaWindowPages.Recent => Definitions.RecentGamesPage,
 			_ => Definitions.HomePage
 		});
 		CheckedTabButton = (startupPage ?? Definitions.Settings.DefaultGavilyaHomePage) switch
@@ -106,6 +105,7 @@ public partial class MainWindow : Window
 			GavilyaWindowPages.Home => HomeTabBtn,
 			GavilyaWindowPages.Library => LibraryTabBtn,
 			GavilyaWindowPages.Profile => ProfileBtn,
+			GavilyaWindowPages.Recent => RecentTabBtn,
 			_ => HomeTabBtn
 		};
 		CheckButton();
@@ -608,9 +608,12 @@ public partial class MainWindow : Window
 		HomeTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		LibraryTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		ProfileBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		
 		HomeTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		LibraryTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		ProfileBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		RecentTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 
 		CheckedTabButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
 		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
@@ -670,5 +673,13 @@ public partial class MainWindow : Window
 	private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 	{
 		Application.Current.Shutdown();
+	}
+
+	private void RecentTabBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CheckedTabButton = RecentTabBtn; // Set the checked button
+		CheckButton(); // Update the UI
+
+		PageContent.Navigate(Definitions.RecentGamesPage); // Show the Home page
 	}
 }

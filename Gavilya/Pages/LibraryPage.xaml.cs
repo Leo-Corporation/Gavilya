@@ -65,14 +65,6 @@ public partial class LibraryPage : Page
 		PageDisplayer.Content = Definitions.GamesCardsPages; // Set page content
 	}
 
-	private void RecentTabBtn_Click(object sender, RoutedEventArgs e)
-	{
-		CheckedButton = RecentTabBtn; // Set
-		RefreshTabUI();
-
-		PageDisplayer.Content = Definitions.RecentGamesPage; // Set page content
-	}
-
 	private void GameListTabBtn_Click(object sender, RoutedEventArgs e)
 	{
 		CheckedButton = GameListTabBtn; // Set
@@ -85,16 +77,11 @@ public partial class LibraryPage : Page
 	internal void RefreshTabUI()
 	{
 		GameCardTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 		GameListTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
 
 		if (PageDisplayer.Content is GamesCardsPages)
 		{
 			CheckedButton = GameCardTabBtn; // Set
-		}
-		else if (PageDisplayer.Content is RecentGamesPage)
-		{
-			CheckedButton = RecentTabBtn; // Set
 		}
 		else if (PageDisplayer.Content is GamesListPage)
 		{
