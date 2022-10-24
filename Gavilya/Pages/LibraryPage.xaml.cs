@@ -111,19 +111,4 @@ public partial class LibraryPage : Page
 	{
 		RefreshTabUI();
 	}
-
-	private void AddBtn_Click(object sender, RoutedEventArgs e)
-	{
-		new AddGame(false, false).Show(); // Open the "Add Game" dialog
-	}
-
-	private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
-	{
-		new AddGame(true, false).Show(); // Add game
-	}
-
-	private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
-	{
-		new AddGame(false, true).Show(); // Add Steam Game
-	}
 }
