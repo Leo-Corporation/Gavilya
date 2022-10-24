@@ -65,5 +65,10 @@ public enum GavilyaWindowPages
 	/// <summary>
 	/// The <see cref="Pages.ProfilePage"/>.
 	/// </summary>
-	Profile
+	Profile,
+
+	/// <summary>
+	/// The <see cref="Pages.RecentGamesPage"/>.
+	/// </summary>
+	Recent
 }

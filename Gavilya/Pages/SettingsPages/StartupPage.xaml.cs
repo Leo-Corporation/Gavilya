@@ -47,12 +47,12 @@ public partial class StartupPage : Page
 	private void InitUI()
 	{
 		CardsPageRadioBtn.IsChecked = Definitions.Settings.PageId == 0; // Check if the page ID is equal to 0
-		RecentPageRadioBtn.IsChecked = Definitions.Settings.PageId == 1; // Check if the page ID is equal to 1
 		ListPageRadioBtn.IsChecked = Definitions.Settings.PageId == 2; // Check if the page ID is equal to 2
 
 		HomePageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Home; // Check
 		LibraryPageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Library; // Check
 		ProfilePageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Profile; // Check
+		RecentPageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Recent; // Check if the page ID is equal to 1
 	}
 
 	Border CheckedBorder { get; set; }
@@ -85,10 +85,10 @@ public partial class StartupPage : Page
 	private void RecentPageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		RecentPageRadioBtn.IsChecked = true; // Check
-		CheckedBorder = RecentPageBorder; // Set checked border
-		RefreshBorders(); // Refresh
+		PageCheckedBorder = RecentPageBorder; // Set checked border
+		RefreshPageBorders(); // Refresh
 
-		Definitions.Settings.PageId = 1; // Set the startup page
+		Definitions.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Recent; // Set the startup page
 		SettingsSaver.Save(); // Save changes
 	}
 
@@ -100,8 +100,8 @@ public partial class StartupPage : Page
 
 	private void RecentPageRadioBtn_Checked(object sender, RoutedEventArgs e)
 	{
-		CheckedBorder = RecentPageBorder; // Set checked border
-		RefreshBorders(); // Refresh
+		PageCheckedBorder = RecentPageBorder; // Set checked border
+		RefreshPageBorders(); // Refresh
 	}
 
 	private void ListPageRadioBtn_Checked(object sender, RoutedEventArgs e)
@@ -123,7 +123,6 @@ public partial class StartupPage : Page
 	private void RefreshBorders()
 	{
 		CardsPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
-		RecentPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 		ListPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 
 		CheckedBorder.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
@@ -134,6 +133,7 @@ public partial class StartupPage : Page
 		HomePageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 		LibraryPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 		ProfilePageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
+		RecentPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 
 		PageCheckedBorder.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
 	}
