@@ -52,7 +52,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "2.9.1.2209";
+	public static string Version => "3.0.0.2210-pre1";
 
 	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)
@@ -76,7 +76,7 @@ public static class Definitions
 	/// <summary>
 	/// Define if the current build is a preversion of Gavilya, not made for production nor Pre-Release.
 	/// </summary>
-	public static bool IsBeta => true;
+	public static bool IsBeta => false;
 
 
 	/// <summary>
