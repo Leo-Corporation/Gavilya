@@ -198,6 +198,31 @@ public partial class ProfilePage : Page
 			FavoritesTab.Visibility = Visibility.Collapsed; // Hide
 		}
 		LoadBadges();
+		LoadProfileUI();
+	}
+
+	internal void LoadProfileUI()
+	{
+		ProfileDisplayer.Children.Clear();
+
+		ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[Definitions.Settings.CurrentProfileIndex])); // Add profile 
+
+
+		// Load the profile displayer
+		if (Definitions.Profiles.Count > 1) // If there is more than one profile
+		{
+			for (int i = 0; i < Definitions.Profiles.Count; i++)
+			{
+				if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
+				{
+					ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
+				}
+			}
+		}
+		else
+		{
+			ProfileDisplayer.Children.Add(new NoProfileItem()); // Add a message
+		}
 	}
 
 	private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -358,6 +383,11 @@ public partial class ProfilePage : Page
 	private void EditBtn_Click(object sender, RoutedEventArgs e)
 	{
 		new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
+	}
+
+	private void AddProfileBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddEditProfileWindow(EditMode.Add).Show(); // Add
 	}
 
 	private void BadgesTabBtn_Click(object sender, RoutedEventArgs e)

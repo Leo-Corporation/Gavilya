@@ -4,7 +4,32 @@
 		<StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="10">
 				<TextBlock Text="&#xF5C8;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
-				<TextBlock Text="{x:Static lang:Resources.Profile}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
+				<TextBlock Text="{x:Static lang:Resources.Profiles}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
+			</StackPanel>
+
+			<Border CornerRadius="5" Background="#FF141428" Padding="5" Margin="5" HorizontalAlignment="Center">
+				<Grid x:Name="ProfileSwitcher">
+					<Grid.RowDefinitions>
+						<RowDefinition/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+
+					<StackPanel x:Name="ProfileDisplayer">
+						<!-- Profiles will show here -->
+					</StackPanel>
+					
+					<Button Click="AddProfileBtn_Click" x:Name="AddProfileBtn" Style="{DynamicResource RegularButton}" Padding="5" Background="Transparent" Foreground="#FFF" Grid.Row="1">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Text="&#xF10A;" FontSize="16" FontFamily="../Fonts/#FluentSystemIcons-Regular" VerticalAlignment="Center" Margin="0,0,5,0"/>
+							<TextBlock Text="{x:Static lang:Resources.AddProfile}" FontWeight="Bold" FontSize="14" VerticalAlignment="Center"/>
+						</StackPanel>
+					</Button>
+				</Grid>
+			</Border>
+		   
+			<StackPanel Orientation="Horizontal" Margin="10">
+				<TextBlock Text="&#xF4AB;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
+				<TextBlock Text="{x:Static lang:Resources.AboutYou}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
 			</StackPanel>
 
 			<Grid>
