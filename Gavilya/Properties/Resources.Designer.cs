@@ -70,6 +70,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About you.
+        /// </summary>
+        public static string AboutYou {
+            get {
+                return ResourceManager.GetString("AboutYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to of players have unlocked this achievement..
         /// </summary>
         public static string AchievementPlayerUnlocked {
@@ -444,6 +453,15 @@ namespace Gavilya.Properties {
         public static string CreateAProfile {
             get {
                 return ResourceManager.GetString("CreateAProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current.
+        /// </summary>
+        public static string Current {
+            get {
+                return ResourceManager.GetString("Current", resourceCulture);
             }
         }
         

@@ -891,4 +891,10 @@
   <data name="SortInverse" xml:space="preserve">
     <value>Trier dans l'ordre inverse</value>
   </data>
+  <data name="Current" xml:space="preserve">
+    <value>Actuel</value>
+  </data>
+  <data name="AboutYou" xml:space="preserve">
+    <value>A propos de vous</value>
+  </data>
 </root>
