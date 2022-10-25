@@ -95,4 +95,20 @@ public partial class LibraryPage : Page
 	{
 		RefreshTabUI();
 	}
+
+	private void SortAlpha_Click(object sender, RoutedEventArgs e)
+	{
+		Global.SortGames();
+		Global.ReloadAllPages();
+		SortAlpha.Background = Definitions.HomeButtonBackColor;
+		SortReverse.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)};
+	}
+
+	private void SortReverse_Click(object sender, RoutedEventArgs e)
+	{
+		Global.SortGames(false);
+		Global.ReloadAllPages();
+		SortAlpha.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
+		SortReverse.Background = Definitions.HomeButtonBackColor;
+	}
 }

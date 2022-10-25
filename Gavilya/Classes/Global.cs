@@ -552,7 +552,7 @@ public static class Global
 	/// <summary>
 	/// Sorts the games: A-Z.
 	/// </summary>
-	internal static void SortGames()
+	internal static void SortGames(bool alpha = true)
 	{
 		try
 		{
@@ -574,6 +574,11 @@ public static class Global
 			for (int i = 0; i < sortedGames.Count; i++)
 			{
 				sortedFinal[i] = Definitions.Games[gamesNames.IndexOf(sortedGames[i])]; // Add the game
+			}
+
+			if (!alpha)
+			{
+				sortedFinal.Reverse();
 			}
 
 			Definitions.Games = sortedFinal; // Save the changes

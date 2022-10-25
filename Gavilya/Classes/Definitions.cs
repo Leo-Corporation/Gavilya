@@ -132,7 +132,7 @@ public static class Definitions
 	/// <summary>
 	/// The games that are added to the <see cref="MainWindow"/>.
 	/// </summary>
-	public static List<GameInfo> Games = new();
+	public static List<GameInfo> Games { get; set; } = new();
 
 	/// <summary>
 	/// The link of the last version <see cref="string"/>.
