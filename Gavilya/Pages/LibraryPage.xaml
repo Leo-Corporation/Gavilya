@@ -6,12 +6,19 @@
 			<RowDefinition />
 		</Grid.RowDefinitions>
 
-		<StackPanel Grid.Row="0">
-            <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
-                <TextBlock Text="&#xF4DD;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
-                <TextBlock Text="{x:Static lang:Resources.Library}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" Margin="10 5">
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+
+			<StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+				<TextBlock Text="&#xF4DD;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
+				<TextBlock Text="{x:Static lang:Resources.Library}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
+			</StackPanel>
+			<StackPanel Grid.Column="1" Orientation="Horizontal" Margin="10 5">
 				<Button x:Name="GameCardTabBtn" Style="{StaticResource TabButtonBorder}" Click="GameCardTabBtn_Click" MouseEnter="GameCardTabBtn_MouseEnter" MouseLeave="GameCardTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="#FF6600FF">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF451;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
@@ -34,7 +41,22 @@
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
-		</StackPanel>
+
+			<Border Background="#FF1E1E32" CornerRadius="5" Padding="5" Margin="2" Grid.Column="2" VerticalAlignment="Center">
+				<StackPanel Orientation="Horizontal">
+					<Button Click="SortAlpha_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF6600FF" x:Name="SortAlpha" Content="&#xFDF2;" VerticalAlignment="Center" FontSize="16">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="#000014" Foreground="White" />
+						</Button.ToolTip>
+					</Button>
+					<Button Click="SortReverse_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF28283C" x:Name="SortReverse" Content="&#xFDF4;" VerticalAlignment="Center" FontSize="16">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="#000014" Foreground="White" />
+						</Button.ToolTip>
+					</Button>
+				</StackPanel>
+			</Border>
+		</Grid>
 
 		<Frame x:Name="PageDisplayer" Margin="10 0 0 0" NavigationUIVisibility="Hidden" Grid.Row="1" Navigated="PageDisplayer_Navigated" />
 	</Grid>

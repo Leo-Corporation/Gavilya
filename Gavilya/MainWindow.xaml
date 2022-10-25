@@ -153,7 +153,7 @@
 					<Button Grid.Column="12" Click="Button_Click_2" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 				</Grid>
 			</Border>
-			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#0A0A1E">
+			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#000014">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="Auto" />
