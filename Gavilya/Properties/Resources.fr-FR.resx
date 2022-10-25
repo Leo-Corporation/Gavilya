@@ -885,4 +885,10 @@
   <data name="OpenFpsCounter" xml:space="preserve">
     <value>Appuyez sur {0} pour ouvrir le compteur de FPS.</value>
   </data>
+  <data name="SortAlphabetically" xml:space="preserve">
+    <value>Trier par ordre alphabétique</value>
+  </data>
+  <data name="SortInverse" xml:space="preserve">
+    <value>Trier dans l'ordre inverse</value>
+  </data>
 </root>

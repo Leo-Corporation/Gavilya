@@ -2061,6 +2061,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sort alphabetically.
+        /// </summary>
+        public static string SortAlphabetically {
+            get {
+                return ResourceManager.GetString("SortAlphabetically", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort in reverse order.
+        /// </summary>
+        public static string SortInverse {
+            get {
+                return ResourceManager.GetString("SortInverse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Spotlight.
         /// </summary>
         public static string Spotlight {

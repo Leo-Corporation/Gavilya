@@ -882,4 +882,10 @@
   <data name="OpenFpsCounter" xml:space="preserve">
     <value>Press {0} to open the FPS Counter.</value>
   </data>
+  <data name="SortAlphabetically" xml:space="preserve">
+    <value>Sort alphabetically</value>
+  </data>
+  <data name="SortInverse" xml:space="preserve">
+    <value>Sort in reverse order</value>
+  </data>
 </root>
