@@ -521,27 +521,6 @@ public partial class MainWindow : Window
 		}
 	}
 
-	readonly PopupMenu PopupMenu = new(); // The menu
-	private void MoreBtn_Click(object sender, RoutedEventArgs e)
-	{
-		if (Definitions.IsMenuShown) // If the menu is visible
-		{
-			PopupMenu.Hide(); // Close
-			Definitions.IsMenuShown = false; // Is not shown
-		}
-		else
-		{
-			double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
-
-
-			PopupMenu.WindowStartupLocation = WindowStartupLocation.Manual; // Set the startup position to manual
-			PopupMenu.Left = (PointToScreen(Mouse.GetPosition(this)).X - PopupMenu.Width / 2) / factor; // Calculate the X position
-			PopupMenu.Top = PointToScreen(Mouse.GetPosition(this)).Y / factor + 5; // Calculate the Y position
-			PopupMenu.Show(); // Show
-			Definitions.IsMenuShown = true; // Is shown
-		}
-	}
-
 	private void Window_Loaded(object sender, RoutedEventArgs e)
 	{
 		DefineMaximumSize(); // Define the maximum size of the window

@@ -127,7 +127,7 @@
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.Search}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
-					</Button>									
+					</Button>
 
 					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
@@ -139,14 +139,7 @@
 							<ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
-					<StackPanel Grid.Column="9" Orientation="Horizontal">
-						<Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="6" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
-							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.More}" Background="#000014" Foreground="White" />
-							</Button.ToolTip>
-						</Button>
-						<Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF28283C" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons" />
-					</StackPanel>
+					<TextBlock Grid.Column="9" Text="&#xe9db;" FontSize="30" Width="10" Height="32" Foreground="#FF28283C" Background="Transparent" FontFamily="Fonts\#FluentlyIcons" VerticalAlignment="Center" />
 					<Button Grid.Column="10" Click="Button_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button x:Name="MaximizeButton" Grid.Column="11" Click="MaximizeButton_Click" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xFA40;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button x:Name="RestoreButton" Grid.Column="11" Click="RestoreButton_Click" Visibility="Collapsed" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xF670;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="16"></Button>
@@ -188,7 +181,7 @@
 								<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#000014" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
-						
+
 						<Button x:Name="ProfileBtn" Padding="5" Style="{StaticResource ButtonMenu}" Margin="5 2" Background="Transparent" Click="ProfileBtn_Click" BorderThickness="2 0 0 0" Grid.Row="3" Height="40" Cursor="Hand">
 							<Rectangle RadiusX="15" RadiusY="15" Width="25" Height="25">
 								<Rectangle.Fill>
@@ -277,7 +270,7 @@
 							</Button.ToolTip>
 						</Button>
 					</Grid>
-					
+
 					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated" Grid.Column="2"></Frame>
 
 					<!-- Notification center -->
