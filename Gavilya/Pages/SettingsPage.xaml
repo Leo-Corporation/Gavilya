@@ -6,19 +6,28 @@
 	  xmlns:local="clr-namespace:Gavilya.Pages"
 	  xmlns:lang="clr-namespace:Gavilya.Properties"
 	  FontFamily="../Fonts/#Hauora"
-	  mc:Ignorable="d" 
+	  mc:Ignorable="d" Foreground="#FFF"
 	  d:DesignHeight="450" d:DesignWidth="800"
 	  Title="SettingsPage">
 
-	<Grid>
-		<Grid Grid.Row="1">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+            <TextBlock Text="&#xF6B3;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
+            <TextBlock Text="{x:Static lang:Resources.Settings}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
+        </StackPanel>
+        <Grid Grid.Row="1">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="*" />
 			</Grid.ColumnDefinitions>
 
 			<StackPanel Margin="5" Grid.Column="0" HorizontalAlignment="Left">
-				<Button Click="SaveOptions_Click" Padding="13" x:Name="SaveOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+				<Button Click="SaveOptions_Click" Padding="5" x:Name="SaveOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource ButtonMenu}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,1" BorderThickness="2 0 0 0">
 					<StackPanel Orientation="Horizontal" VerticalAlignment="Center">
 						<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xF680;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />
 						<TextBlock Text="{x:Static lang:Resources.SaveOptions}" />
@@ -30,7 +39,7 @@
 
 				</Button>
 
-				<Button Click="LanguageOptions_Click" Padding="13" x:Name="LanguageOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+				<Button Click="LanguageOptions_Click" Padding="5" x:Name="LanguageOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource ButtonMenu}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,1" BorderThickness="2 0 0 0">
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 						<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xF4F4;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />
 						<TextBlock Text="{x:Static lang:Resources.Languages}" />
@@ -42,7 +51,7 @@
 
 				</Button>
 
-				<Button Click="StartupOptions_Click" Padding="13" x:Name="StartupOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+				<Button Click="StartupOptions_Click" Padding="5" x:Name="StartupOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource ButtonMenu}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,1" BorderThickness="2 0 0 0">
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 						<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xF60F;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />
 						<TextBlock Text="{x:Static lang:Resources.Startup}" />
@@ -54,7 +63,7 @@
 
 				</Button>
 
-				<Button Click="HomeOptions_Click" Padding="13" x:Name="HomeOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+				<Button Click="HomeOptions_Click" Padding="5" x:Name="HomeOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource ButtonMenu}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,1" BorderThickness="2 0 0 0">
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 						<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xF481;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />
 						<TextBlock Text="{x:Static lang:Resources.Home}" />
@@ -66,7 +75,7 @@
 
 				</Button>
 
-				<Button Click="SearchOptions_Click" Padding="13" x:Name="SearchOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+				<Button Click="SearchOptions_Click" Padding="5" x:Name="SearchOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource ButtonMenu}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,1" BorderThickness="2 0 0 0">
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 						<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xF690;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />
 						<TextBlock Text="{x:Static lang:Resources.SearchF}" />
@@ -78,7 +87,7 @@
 
 				</Button>
 
-				<Button Click="FpsOptions_Click" Padding="13" x:Name="FpsOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+				<Button Click="FpsOptions_Click" Padding="5" x:Name="FpsOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource ButtonMenu}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,1" BorderThickness="2 0 0 0">
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 						<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xFB92;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />
 						<TextBlock Text="{x:Static lang:Resources.FpsCounter}" />
@@ -90,7 +99,7 @@
 
 				</Button>
 
-				<Button Click="DataOptions_Click" Padding="13" x:Name="DataOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource SettingsButton}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,5">
+				<Button Click="DataOptions_Click" Padding="5" x:Name="DataOptions" Cursor="Hand" FontSize="13" FontWeight="ExtraBold" Style="{DynamicResource ButtonMenu}" Background="{x:Null}" Foreground="White" HorizontalContentAlignment="Left" Margin="0,0,0,1" BorderThickness="2 0 0 0">
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 						<TextBlock FontWeight="Normal" Margin="0 0 10 0" Text="&#xF345;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" FontSize="15" />
 						<TextBlock Text="{x:Static lang:Resources.Data}" />
@@ -104,7 +113,7 @@
 			</StackPanel>
 
 			<ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Template="{DynamicResource ScrollViewerTemplate1}">
-				<Frame NavigationUIVisibility="Hidden" Name="OptionsDisplayer" Grid.Column="1" />
+				<Frame NavigationUIVisibility="Hidden" Name="OptionsDisplayer" Grid.Column="1" Navigated="OptionsDisplayer_Navigated" />
 			</ScrollViewer>
 		</Grid>
 	</Grid>
