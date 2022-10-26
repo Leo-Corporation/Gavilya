@@ -118,9 +118,9 @@ public partial class ProfilePage : Page
 		if (mostPlayed.Count >= 3)
 		{
 			int longestPlayed = mostPlayed[0].TotalTimePlayed;
-			double h = mostPlayed[0].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
-			double h1 = mostPlayed[1].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
-			double h2 = mostPlayed[2].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
+			double h = mostPlayed[0].TotalTimePlayed * (GraphPanel.Height - 50) / longestPlayed;
+			double h1 = mostPlayed[1].TotalTimePlayed * (GraphPanel.Height - 50) / longestPlayed;
+			double h2 = mostPlayed[2].TotalTimePlayed * (GraphPanel.Height - 50) / longestPlayed;
 
 			Top1Rect.Height = h; // Set height
 			Top2Rect.Height = h1; // Set height
