@@ -235,11 +235,11 @@ public partial class ProfilePage : Page
 	internal Button CheckedButton { get; set; }
 	internal void RefreshTabUI()
 	{
-		SpotlightTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		FavoriteTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		BadgesTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+		SpotlightTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		FavoriteTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color 
+		BadgesTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color 
 
-		CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 	}
 
 	private void HideAll()
@@ -361,23 +361,6 @@ public partial class ProfilePage : Page
 			NothingToShow.Visibility = Visibility.Visible;
 		}
 		RefreshTabUI();
-	}
-
-	private void SpotlightTabBtn_MouseEnter(object sender, MouseEventArgs e)
-	{
-		Button button = (Button)sender; // Create button
-
-		button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
-	}
-
-	private void SpotlightTabBtn_MouseLeave(object sender, MouseEventArgs e)
-	{
-		Button button = (Button)sender; // Create button
-
-		if (CheckedButton != button)
-		{
-			button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		}
 	}
 
 	private void EditBtn_Click(object sender, RoutedEventArgs e)

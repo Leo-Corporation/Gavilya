@@ -60,8 +60,8 @@ public partial class LibraryPage : Page
 	internal Button CheckedButton { get; set; }
 	internal void RefreshTabUI()
 	{
-		GameCardTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		GameListTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+		GameCardTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		GameListTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
 
 		if (PageDisplayer.Content is GamesCardsPages)
 		{
@@ -71,7 +71,7 @@ public partial class LibraryPage : Page
 		{
 			CheckedButton = GameListTabBtn; // Set
 		}
-		CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 	}
 
 	private void GameCardTabBtn_MouseEnter(object sender, MouseEventArgs e)
@@ -101,7 +101,7 @@ public partial class LibraryPage : Page
 		Global.SortGames();
 		Global.ReloadAllPages();
 		SortAlpha.Background = Definitions.HomeButtonBackColor;
-		SortReverse.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)};
+		SortReverse.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
 	}
 
 	private void SortReverse_Click(object sender, RoutedEventArgs e)

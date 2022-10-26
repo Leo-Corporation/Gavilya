@@ -688,7 +688,10 @@
 				<Setter Property="Border.CornerRadius" Value="5,0,0,5" />
 			</Style>
 
-			<Style TargetType="Button" x:Key="TabButtonLast" BasedOn="{StaticResource ModernTabButton}">
+			<Style TargetType="Button" x:Key="TabButtonMiddle" BasedOn="{StaticResource ModernTabButton}">
+				<Setter Property="Border.CornerRadius" Value="0" />
+			</Style>
+            <Style TargetType="Button" x:Key="TabButtonLast" BasedOn="{StaticResource ModernTabButton}">
 				<Setter Property="Border.CornerRadius" Value="0,5,5,0" />
 			</Style>
 

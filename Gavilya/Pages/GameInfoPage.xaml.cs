@@ -321,46 +321,15 @@ public partial class GameInfoPage : Page
 		Definitions.GamesCardsPages.LoadGames();
 	}
 
-	private void AboutTabBtn_MouseEnter(object sender, MouseEventArgs e)
-	{
-		Button button = (Button)sender; // Create button
-
-		button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
-	}
-
-	private void AboutTabBtn_MouseLeave(object sender, MouseEventArgs e)
-	{
-		Button button = (Button)sender; // Create button
-
-		if (button.Name == "RatingsTabBtn" && tabCheckedID != 1)
-		{
-			button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-			button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		}
-		else if (button.Name == "AboutTabBtn" && tabCheckedID != 0)
-		{
-			button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-			button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		}
-		else if (button.Name == "AchievementsTabBtn" && tabCheckedID != 2)
-		{
-			button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-			button.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		}
-	}
-
 
 	private void AboutTabBtn_Click(object sender, RoutedEventArgs e)
 	{
 		tabCheckedID = 0; // ID
 
-		AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
-		RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-		RatingsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-
-		AchievementsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-		AchievementsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
+		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
 
 		AboutPage.Visibility = Visibility.Visible; // Change visibility
 		RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
@@ -371,13 +340,10 @@ public partial class GameInfoPage : Page
 	{
 		tabCheckedID = 1; // ID
 
-		RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
-		AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-		AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-
-		AchievementsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-		AchievementsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
+		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
 
 		AboutPage.Visibility = Visibility.Collapsed; // Change visibility
 		RatingsPage.Visibility = Visibility.Visible; // Change visibility 
@@ -464,13 +430,10 @@ public partial class GameInfoPage : Page
 	{
 		tabCheckedID = 2; // ID
 
-		AchievementsTabBtn.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
-		RatingsTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-		RatingsTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-
-		AboutTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color
-		AboutTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Change color
+		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
+		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
 
 		AboutPage.Visibility = Visibility.Collapsed; // Change visibility
 		RatingsPage.Visibility = Visibility.Collapsed; // Change visibility

@@ -139,7 +139,7 @@
 							<ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
-					<TextBlock Grid.Column="9" Text="&#xe9db;" FontSize="30" Width="10" Height="32" Foreground="#FF28283C" Background="Transparent" FontFamily="Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+					<TextBlock Grid.Column="9" Text="&#xe9db;" FontSize="25" Width="10" Foreground="#FF28283C" Background="Transparent" FontFamily="Fonts\#FluentlyIcons" VerticalAlignment="Center" Margin="5,0,0,0" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
 					<Button Grid.Column="10" Click="Button_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button x:Name="MaximizeButton" Grid.Column="11" Click="MaximizeButton_Click" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xFA40;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button x:Name="RestoreButton" Grid.Column="11" Click="RestoreButton_Click" Visibility="Collapsed" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xF670;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="16"></Button>

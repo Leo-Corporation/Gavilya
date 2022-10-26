@@ -62,8 +62,8 @@
 				</Button>
 			</Grid>
 
-			<StackPanel Orientation="Horizontal" Margin="10 5">
-				<Button x:Name="SpotlightTabBtn" Style="{StaticResource TabButtonBorder}" Click="SpotlightTabBtn_Click" MouseEnter="SpotlightTabBtn_MouseEnter" MouseLeave="SpotlightTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="#FF6600FF">
+			<StackPanel Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
+				<Button x:Name="SpotlightTabBtn" Style="{StaticResource TabButtonFirst}" Click="SpotlightTabBtn_Click" Padding="10 5" Background="#FF6600FF" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="#FF6600FF">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF342;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Spotlight}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
@@ -74,7 +74,7 @@
 					</Button.ToolTip>
 				</Button>
 
-				<Button x:Name="FavoriteTabBtn" Style="{StaticResource TabButtonBorder}" Click="FavoriteTabBtn_Click" MouseEnter="SpotlightTabBtn_MouseEnter" MouseLeave="SpotlightTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="{x:Null}">
+				<Button x:Name="FavoriteTabBtn" Style="{StaticResource TabButtonMiddle}" Click="FavoriteTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF710;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Favorites}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
@@ -85,7 +85,7 @@
 					</Button.ToolTip>
 				</Button>
 
-				<Button x:Name="BadgesTabBtn" Style="{StaticResource TabButtonBorder}" Click="BadgesTabBtn_Click" MouseEnter="SpotlightTabBtn_MouseEnter" MouseLeave="SpotlightTabBtn_MouseLeave" Padding="10" Background="{x:Null}" Foreground="White" Cursor="Hand" BorderThickness="0 0 0 2" BorderBrush="{x:Null}">
+				<Button x:Name="BadgesTabBtn" Style="{StaticResource TabButtonLast}" Click="BadgesTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF837;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Badges}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
