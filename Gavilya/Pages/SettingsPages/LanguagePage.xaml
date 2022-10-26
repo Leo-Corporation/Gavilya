@@ -9,7 +9,7 @@
 		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Languages}" Foreground="White" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
-            <Border CornerRadius="5" Background="#FF1E1E32" Margin="10,10,10,0">
+			<Border CornerRadius="5" Background="#FF1E1E32" Margin="10,10,10,0">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>

@@ -894,4 +894,10 @@
   <data name="AboutYou" xml:space="preserve">
     <value>About you</value>
   </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>Save settings.</value>
+  </data>
+  <data name="RecommandedSettings" xml:space="preserve">
+    <value>Settings related to the "You may like..." section.</value>
+  </data>
 </root>

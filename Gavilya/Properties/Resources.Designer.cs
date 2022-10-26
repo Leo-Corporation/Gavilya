@@ -1800,6 +1800,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings related to the &quot;You may like...&quot; section..
+        /// </summary>
+        public static string RecommandedSettings {
+            get {
+                return ResourceManager.GetString("RecommandedSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string Reset {
@@ -1877,6 +1886,15 @@ namespace Gavilya.Properties {
         public static string SaveOptions {
             get {
                 return ResourceManager.GetString("SaveOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save settings..
+        /// </summary>
+        public static string SaveSettings {
+            get {
+                return ResourceManager.GetString("SaveSettings", resourceCulture);
             }
         }
         
