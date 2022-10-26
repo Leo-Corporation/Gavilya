@@ -41,6 +41,8 @@ public partial class SettingsPage : Page
 	readonly HomeOptionsPage homeOptionsPage = new(); // Create a page
 	readonly SearchOptionsPage searchOptionsPage = new(); // Create a page
 	readonly FpsOptionsPage fpsOptionsPage = new(); // Create a page
+	readonly AboutPage aboutPage = new();
+
 	public SettingsPage()
 	{
 		InitializeComponent();
@@ -55,50 +57,49 @@ public partial class SettingsPage : Page
 				UnCheckAll();
 				CheckButton(LanguageOptions);
 
-				languagePage.Visibility = Visibility.Visible;
 				OptionsDisplayer.Navigate(languagePage);
 				break;
 			case Enums.SettingsPages.SaveOptions:
 				UnCheckAll();
 				CheckButton(SaveOptions);
 
-				saveOptionsPage.Visibility = Visibility.Visible;
 				OptionsDisplayer.Navigate(saveOptionsPage);
 				break;
 			case Enums.SettingsPages.Startup:
 				UnCheckAll();
 				CheckButton(StartupOptions);
 
-				startupPage.Visibility = Visibility.Visible;
 				OptionsDisplayer.Navigate(startupPage);
 				break;
 			case Enums.SettingsPages.Data:
 				UnCheckAll();
 				CheckButton(DataOptions);
 
-				dataOptionsPage.Visibility = Visibility.Visible;
 				OptionsDisplayer.Navigate(dataOptionsPage);
 				break;
 			case Enums.SettingsPages.Home:
 				UnCheckAll();
 				CheckButton(HomeOptions);
 
-				homeOptionsPage.Visibility = Visibility.Visible;
 				OptionsDisplayer.Navigate(homeOptionsPage);
 				break;
 			case Enums.SettingsPages.Search:
 				UnCheckAll(); // Uncheck all buttons
-				CheckButton(SearchOptions);
-				
-				searchOptionsPage.Visibility = Visibility.Visible; // Show the page
+				CheckButton(SearchOptions); // Show the page
+
 				OptionsDisplayer.Navigate(searchOptionsPage); // Navigate
 				break;
 			case Enums.SettingsPages.FPS:
 				UnCheckAll(); // Uncheck all buttons
-				CheckButton(FpsOptions);
+				CheckButton(FpsOptions); // Show the page
 
-				fpsOptionsPage.Visibility = Visibility.Visible; // Show the page
 				OptionsDisplayer.Navigate(fpsOptionsPage); // Navigate
+				break;
+			case Enums.SettingsPages.About:
+				UnCheckAll(); // Uncheck all buttons
+				CheckButton(About); // Show the page
+
+				OptionsDisplayer.Navigate(aboutPage); // Navigate
 				break;
 		}
 	}
@@ -118,6 +119,7 @@ public partial class SettingsPage : Page
 		HomeOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		SearchOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		FpsOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		About.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 
 		SaveOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		LanguageOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
@@ -126,6 +128,7 @@ public partial class SettingsPage : Page
 		HomeOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		SearchOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		FpsOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		About.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 	}
 
 	private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -189,6 +192,14 @@ public partial class SettingsPage : Page
 			case DataOptionsPage:
 				CheckButton(DataOptions);
 				break;
+			case AboutPage:
+				CheckButton(About);
+				break;
 		}
+	}
+
+	private void About_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(Enums.SettingsPages.About); // Show the "FPS" page
 	}
 }
