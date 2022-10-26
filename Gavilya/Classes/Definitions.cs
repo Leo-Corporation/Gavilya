@@ -125,6 +125,11 @@ public static class Definitions
 	public static ProfilePage ProfilePage { get; set; }
 
 	/// <summary>
+	/// THe <see cref="Pages.SettingsPage"/> page.
+	/// </summary>
+	public static SettingsPage SettingsPage { get; set; }
+
+	/// <summary>
 	/// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.
 	/// </summary>
 	public static bool IsGamesCardsPagesCheckBoxesVisible { get; set; }

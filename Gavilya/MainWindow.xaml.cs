@@ -720,10 +720,10 @@ public partial class MainWindow : Window
 
 	private void SettingsBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Windows.Settings settings = new(); // Settings window
 		CheckedTabButton = SettingsBtn; // Set the checked button
 		CheckButton(); // Update the UI
-		settings.Show(); // Show the Settings window
+
+		PageContent.Navigate(Definitions.SettingsPage); // Show the Home page
 	}
 
 	private void AddBtn_Click(object sender, RoutedEventArgs e)
