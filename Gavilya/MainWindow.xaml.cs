@@ -152,7 +152,7 @@ public partial class MainWindow : Window
 	private void DisplayNotifications()
 	{
 		// Unused games notification
-		if (Definitions.LeastUsedGames is not null)
+		if (Definitions.Settings.UnusedGameNotification ?? true && Definitions.LeastUsedGames is not null)
 		{
 			NotificationPanel.Children.Add(
 				new NotificationItem(Properties.Resources.UnusedGameNotification,
@@ -164,6 +164,8 @@ public partial class MainWindow : Window
 
 	private async void CheckUpdateOnStart()
 	{
+		if (!(Definitions.Settings.UpdatesAvNotification ?? true)) return;
+
 		if (await NetworkConnection.IsAvailableAsync())
 		{
 			notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe");

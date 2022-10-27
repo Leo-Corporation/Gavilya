@@ -61,7 +61,10 @@ public partial class DataOptionsPage : Page
 				MaxNumberRecentGamesShown = 4,
 				ShowMoreUnplayedGamesRecommanded = true,
 				HideSearchBar = false,
-				NumberOfSearchResultsToDisplay = 3
+				NumberOfSearchResultsToDisplay = 3,
+				FpsCounterOpacity = 1,
+				UpdatesAvNotification = true,
+				UnusedGameNotification = true
 			};
 
 			SettingsSaver.Save(); // Save changes

@@ -35,6 +35,13 @@ public partial class NotifOptionsPage : Page
 	public NotifOptionsPage()
 	{
 		InitializeComponent();
+		InitUI();
+	}
+
+	private void InitUI()
+	{
+		UpdatesChk.IsChecked = Definitions.Settings.UpdatesAvNotification;
+		UnusedGameChk.IsChecked = Definitions.Settings.UnusedGameNotification;
 	}
 
 	private void UpdatesChk_Checked(object sender, RoutedEventArgs e)

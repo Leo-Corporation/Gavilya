@@ -102,6 +102,16 @@ public class Settings
 	/// The opacity of the FPS Counter (a value between 0 et 1)
 	/// </summary>
 	public double? FpsCounterOpacity { get; set; }
+
+	/// <summary>
+	/// True if Gavilya should show a notification if updates are available.
+	/// </summary>
+	public bool? UpdatesAvNotification { get; set; }
+
+	/// <summary>
+	/// True if Gavilya should show a reminder to the user when a game is unused.
+	/// </summary>
+	public bool? UnusedGameNotification { get; set; }
 }
 
 public static class SettingsSaver
@@ -144,6 +154,16 @@ public static class SettingsSaver
 				Definitions.Settings.FpsCounterOpacity = 1;
 			}
 
+			if (!Definitions.Settings.UpdatesAvNotification.HasValue)
+			{
+				Definitions.Settings.UpdatesAvNotification = true;
+			}
+
+			if (!Definitions.Settings.UnusedGameNotification.HasValue)
+			{
+				Definitions.Settings.UnusedGameNotification = true;
+			}
+
 			streamReader.Dispose();
 		}
 		else
@@ -163,7 +183,9 @@ public static class SettingsSaver
 				ShowMoreUnplayedGamesRecommanded = true,
 				HideSearchBar = false,
 				NumberOfSearchResultsToDisplay = 3,
-				FpsCounterOpacity = 1
+				FpsCounterOpacity = 1,
+				UpdatesAvNotification = true,
+				UnusedGameNotification = true
 			};
 			Save();
 		}
