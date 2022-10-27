@@ -32,6 +32,11 @@
 						<ToolTip Content="{x:Static lang:Resources.SeeLicenses}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
+				<Button x:Name="GitHubBtn" Click="GitHubBtn_Click" Content="&#xFDAB;" Foreground="White" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" Style="{StaticResource RegularButton}" Background="#1E1E32" Cursor="Hand" Padding="10 5" FontSize="14" Margin="10,0,0,0">
+					<Button.ToolTip>
+						<ToolTip Content="{x:Static lang:Resources.SeeGitHubRepo}" Background="#000014" Foreground="White" />
+					</Button.ToolTip>
+				</Button>
 			</StackPanel>
 		</StackPanel>
 	</Grid>

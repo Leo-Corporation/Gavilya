@@ -27,6 +27,7 @@ using Gavilya.Windows;
 using LeoCorpLibrary;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,5 +74,10 @@ public partial class AboutPage : Page
 			"LeoCorpLibrary - MIT License - © 2020-2022 Léo Corporation\n" +
 			"RestSharp - Apache License 2.0 - © RestSharp\n" +
 			"Gavilya - MIT License - © 2020-2022 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+	}
+
+	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Process.Start("explorer.exe", "https://github.com/Leo-Corporation/Gavilya"); // Open the GitHub repository in the default browser
 	}
 }
