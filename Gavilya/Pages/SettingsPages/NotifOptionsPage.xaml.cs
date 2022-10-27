@@ -22,55 +22,30 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums;
+using Gavilya.Classes;
+using System.Windows;
+using System.Windows.Controls;
 
+namespace Gavilya.Pages.SettingsPages;
 /// <summary>
-/// The settings pages.
+/// Interaction logic for NotifOptionsPage.xaml
 /// </summary>
-public enum SettingsPages
+public partial class NotifOptionsPage : Page
 {
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.SaveOptionsPage"/> page.
-	/// </summary>
-	SaveOptions,
+	public NotifOptionsPage()
+	{
+		InitializeComponent();
+	}
 
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.LanguagePage"/> page.
-	/// </summary>
-	Languages,
+	private void UpdatesChk_Checked(object sender, RoutedEventArgs e)
+	{
+		Definitions.Settings.UpdatesAvNotification = UpdatesChk.IsChecked;
+		SettingsSaver.Save();
+	}
 
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.StartupPage"/> page.
-	/// </summary>
-	Startup,
-
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.DataOptionsPage"/> page.
-	/// </summary>
-	Data,
-
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.HomeOptionsPage"/> page.
-	/// </summary>
-	Home,
-
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.SearchOptionsPage"/> page.
-	/// </summary>
-	Search,
-
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.FpsOptionsPage"/> page.
-	/// </summary>
-	FPS,
-
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.AboutPage"/> page.
-	/// </summary>
-	About,
-
-	/// <summary>
-	/// The <see cref="Pages.SettingsPages.NotifOptionsPage"/> page.
-	/// </summary>
-	Notifications
+	private void UnusedGameChk_Checked(object sender, RoutedEventArgs e)
+	{
+		Definitions.Settings.UnusedGameNotification = UnusedGameChk.IsChecked;
+		SettingsSaver.Save();
+	}
 }

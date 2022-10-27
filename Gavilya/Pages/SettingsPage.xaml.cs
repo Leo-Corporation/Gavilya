@@ -42,6 +42,7 @@ public partial class SettingsPage : Page
 	readonly SearchOptionsPage searchOptionsPage = new(); // Create a page
 	readonly FpsOptionsPage fpsOptionsPage = new(); // Create a page
 	readonly AboutPage aboutPage = new();
+	readonly NotifOptionsPage notifOptionsPage = new();
 
 	public SettingsPage()
 	{
@@ -101,6 +102,12 @@ public partial class SettingsPage : Page
 
 				OptionsDisplayer.Navigate(aboutPage); // Navigate
 				break;
+			case Enums.SettingsPages.Notifications:
+				UnCheckAll(); // Uncheck all buttons
+				CheckButton(Notifications); // Show the page
+
+				OptionsDisplayer.Navigate(notifOptionsPage); // Navigate
+				break;
 		}
 	}
 
@@ -120,6 +127,7 @@ public partial class SettingsPage : Page
 		SearchOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		FpsOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		About.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		Notifications.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 
 		SaveOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		LanguageOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
@@ -129,6 +137,7 @@ public partial class SettingsPage : Page
 		SearchOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		FpsOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		About.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		Notifications.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 	}
 
 	private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -195,11 +204,19 @@ public partial class SettingsPage : Page
 			case AboutPage:
 				CheckButton(About);
 				break;
+			case NotifOptionsPage:
+				CheckButton(Notifications);
+				break;
 		}
 	}
 
 	private void About_Click(object sender, RoutedEventArgs e)
 	{
-		NavigateToPage(Enums.SettingsPages.About); // Show the "FPS" page
+		NavigateToPage(Enums.SettingsPages.About); // Show the "About" page
+	}
+
+	private void Notifications_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(Enums.SettingsPages.Notifications); // Show the "Notifications" page
 	}
 }
