@@ -21,10 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
 using Gavilya.Pages;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Gavilya.Windows;
 
@@ -65,6 +67,25 @@ public partial class AddGame : Window
 			1 => AddEditPage2,
 			_ => AddEditPage
 		}; // Set
+
+		if (id == 1)
+		{
+			LineBorder.Background = Definitions.HomeButtonBackColor;
+			NumberBorder.Background = Definitions.HomeButtonBackColor;
+			Page2Btn.Foreground = Definitions.HomeButtonBackColor;
+
+			_1Txt.Visibility = Visibility.Collapsed;
+			CheckTxt.Visibility = Visibility.Visible;
+		}
+		else
+		{
+			LineBorder.Background = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
+			NumberBorder.Background = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
+			Page2Btn.Foreground = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
+
+			_1Txt.Visibility = Visibility.Visible;
+			CheckTxt.Visibility = Visibility.Collapsed;
+		}
 	}
 
 	private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -90,125 +111,13 @@ public partial class AddGame : Window
 		Close(); // Close the window
 	}
 
-	//private void Button_Click_2(object sender, RoutedEventArgs e)
-	//{
-	//	OpenFileDialog openFileDialog = new(); // OpenFileDialog
-	//	openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
+	private void Page2Btn_Click(object sender, RoutedEventArgs e)
+	{
+		AddEditPage.NextBtn_Click(this, e);
+	}
 
-	//	if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
-	//	{
-	//		try
-	//		{
-	//			BitmapImage image = new(new Uri(openFileDialog.FileName)); // Create the image
-	//			GameImg.Source = image; // Set the GameImg's source to the image
-	//			GameIconLocation = openFileDialog.FileName; // Set the path to the image
-	//		}
-	//		catch (Exception ex)
-	//		{
-	//			MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
-	//		}
-	//	}
-	//}
-
-	//private async void BrowseBtn_Click(object sender, RoutedEventArgs e)
-	//{
-	//	OpenFileDialog openFileDialog = new(); // OpenFileDialog
-	//	openFileDialog.Filter = "EXE|*.exe"; // Filter
-
-	//	if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
-	//	{
-	//		FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(openFileDialog.FileName); // Get the version
-
-	//		nameTxt.Text = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName; // Name of the file
-	//		versionTxt.Text = fileVersionInfo.FileVersion; // Version of the file
-	//		locationTxt.Text = openFileDialog.FileName; // Location of the file
-	//		if (GameIconLocation == string.Empty) // If there is no image
-	//		{
-	//			try
-	//			{
-	//				GameIconLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName);
-
-	//				if (GameIconLocation == string.Empty)
-	//				{
-	//					Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(openFileDialog.FileName); // Grab the icon of the game
-	//					GameImg.Source = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
-	//				}
-	//				else
-	//				{
-	//					var bitmap = new BitmapImage(); // Create Bitmap
-	//					var stream = File.OpenRead(GameIconLocation); // Create a stream
-
-	//					bitmap.BeginInit(); // Init bitmap
-	//					bitmap.CacheOption = BitmapCacheOption.OnLoad;
-	//					bitmap.StreamSource = stream;
-	//					bitmap.EndInit(); // End init bitmap
-	//					stream.Close(); // Close the stream
-	//					stream.Dispose(); // Release ressources
-	//					bitmap.Freeze(); // Freeze bitmap
-
-	//					GameImg.Source = bitmap; // Show the image
-	//				}
-	//			}
-	//			catch
-	//			{
-
-	//			}
-	//		}
-	//	}
-	//}
-
-	//private void AddBtn_Click(object sender, RoutedEventArgs e)
-	//{
-	//	if (!(string.IsNullOrEmpty(nameTxt.Text) || string.IsNullOrEmpty(locationTxt.Text))) /// If the fields are filled
-	//	{
-	//		GameInfo gameInfo = new()
-	//		{
-	//			FileLocation = locationTxt.Text, // The file location of the game
-	//			Name = nameTxt.Text, // The name of the game
-	//			Version = versionTxt.Text, // The version of the game
-	//			IconFileLocation = GameIconLocation, // The location of the icon of the game
-	//			IsFavorite = false, // The game is not a favorite by default
-	//			RAWGID = RAWGID, // The RAWG Id of the game
-	//			Description = GameDescription, // The description of the game
-	//			Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
-	//			LastTimePlayed = 0, // Never played
-	//			TotalTimePlayed = 0, // Never played
-	//			ProcessName = string.Empty, // Default
-	//			Stores = Stores
-	//		}; // Create a GameInfo class
-
-	//		Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the game
-	//		Definitions.Games.Add(gameInfo);
-	//		new GameSaver().Save(Definitions.Games);
-	//		Global.RemoveWelcomeScreen(); // Remove
-	//		Global.SortGames(); // Sort
-	//		Definitions.RecentGamesPage.LoadGames(); // Reload the games
-	//		Definitions.GamesListPage.LoadGames(); // Reload the page
-	//		Close(); // Close the Window
-	//	}
-	//	else
-	//	{
-	//		MessageBox.Show(Properties.Resources.GameFieldsEmpty);
-	//	}
-	//}
-
-	//private void CancelBtn_Click(object sender, RoutedEventArgs e)
-	//{
-	//	Close(); // Close the Window
-	//}
-
-	//private void Button_Click_3(object sender, RoutedEventArgs e)
-	//{
-	//	new SearchGameCover(this, GameAssociationActions.Search).Show(); // Show the window
-	//}
-
-	//private void AssociateGameLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	//{
-	//	new SearchGameCover(this, GameAssociationActions.Associate).Show(); // Show the window
-	//}
-
-	//private void DescriptionLink_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-	//{
-	//	new DescriptionWindow(GameDescription, this).Show(); // Show the Description window
-	//}
+	private void Page1Btn_Click(object sender, RoutedEventArgs e)
+	{
+		ChangePage(0);
+	}
 }
