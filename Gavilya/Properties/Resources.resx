@@ -910,4 +910,7 @@
   <data name="RecommandedSettings" xml:space="preserve">
     <value>Settings related to the "You may like..." section.</value>
   </data>
+  <data name="SelectNotification" xml:space="preserve">
+    <value>Select notifications you want to receive in Notification Center.</value>
+  </data>
 </root>

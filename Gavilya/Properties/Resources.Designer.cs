@@ -2043,6 +2043,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select notifications you want to receive in Notification Center..
+        /// </summary>
+        public static string SelectNotification {
+            get {
+                return ResourceManager.GetString("SelectNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
