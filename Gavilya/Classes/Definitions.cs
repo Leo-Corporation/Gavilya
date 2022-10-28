@@ -52,12 +52,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "2.9.1.2209";
-
-	/// <summary>
-	/// True if the menu is shown.
-	/// </summary>
-	public static bool IsProfileMenuVisible { get; set; }
+	public static string Version => "3.0.0.2210";
 
 	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)
@@ -130,6 +125,11 @@ public static class Definitions
 	public static ProfilePage ProfilePage { get; set; }
 
 	/// <summary>
+	/// THe <see cref="Pages.SettingsPage"/> page.
+	/// </summary>
+	public static SettingsPage SettingsPage { get; set; }
+
+	/// <summary>
 	/// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.
 	/// </summary>
 	public static bool IsGamesCardsPagesCheckBoxesVisible { get; set; }
@@ -137,7 +137,7 @@ public static class Definitions
 	/// <summary>
 	/// The games that are added to the <see cref="MainWindow"/>.
 	/// </summary>
-	public static List<GameInfo> Games = new();
+	public static List<GameInfo> Games { get; set; } = new();
 
 	/// <summary>
 	/// The link of the last version <see cref="string"/>.

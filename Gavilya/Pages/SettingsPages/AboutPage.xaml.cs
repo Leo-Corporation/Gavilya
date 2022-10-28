@@ -21,26 +21,36 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using Gavilya.Classes;
+using Gavilya.Windows;
 using LeoCorpLibrary;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace Gavilya.Windows;
-
+namespace Gavilya.Pages.SettingsPages;
 /// <summary>
-/// Logique d'interaction pour About.xaml
+/// Interaction logic for AboutPage.xaml
 /// </summary>
-public partial class About : Window
+public partial class AboutPage : Page
 {
-	public About()
+	public AboutPage()
 	{
-		InitializeComponent();
+		InitializeComponent(); 
 		VersionTxt.Text = !Definitions.IsBeta ? Definitions.Version : Definitions.BetaVersion; // Display the current version
-	}
-
-	private void CloseBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Close(); // Close the window
 	}
 
 	private async void UpdateBtn_Click(object sender, RoutedEventArgs e)
@@ -64,5 +74,10 @@ public partial class About : Window
 			"LeoCorpLibrary - MIT License - © 2020-2022 Léo Corporation\n" +
 			"RestSharp - Apache License 2.0 - © RestSharp\n" +
 			"Gavilya - MIT License - © 2020-2022 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+	}
+
+	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Process.Start("explorer.exe", "https://github.com/Leo-Corporation/Gavilya"); // Open the GitHub repository in the default browser
 	}
 }

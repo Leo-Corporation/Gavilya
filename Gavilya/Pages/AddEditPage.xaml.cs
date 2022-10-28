@@ -125,7 +125,7 @@ public partial class AddEditPage : Page
 		SteamGameInfo.Visibility = !isSteam ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 	}
 
-	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	internal void NextBtn_Click(object sender, RoutedEventArgs e)
 	{
 		if (isUWP)
 		{

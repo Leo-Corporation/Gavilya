@@ -647,6 +647,54 @@
 					</Setter.Value>
 				</Setter>
 			</Style>
+			<Style x:Key="ModernTabButton" TargetType="{x:Type Button}">
+				<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual5}" />
+				<Setter Property="Background" Value="{StaticResource Button.Static.Background4}" />
+				<Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border4}" />
+				<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+				<Setter Property="BorderThickness" Value="1" />
+				<Setter Property="HorizontalContentAlignment" Value="Center" />
+				<Setter Property="VerticalContentAlignment" Value="Center" />
+				<Setter Property="Padding" Value="1" />
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type Button}">
+							<Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true" CornerRadius="{TemplateBinding Border.CornerRadius}" Cursor="Hand">
+								<ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsDefaulted" Value="true">
+									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+								</Trigger>
+								<Trigger Property="IsMouseOver" Value="true">
+									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background4}" />
+									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border4}" />
+								</Trigger>
+								<Trigger Property="IsPressed" Value="true">
+									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background4}" />
+									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border4}" />
+								</Trigger>
+								<Trigger Property="IsEnabled" Value="false">
+									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background4}" />
+									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border4}" />
+									<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground4}" />
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style TargetType="Button" x:Key="TabButtonFirst" BasedOn="{StaticResource ModernTabButton}">
+				<Setter Property="Border.CornerRadius" Value="5,0,0,5" />
+			</Style>
+
+			<Style TargetType="Button" x:Key="TabButtonMiddle" BasedOn="{StaticResource ModernTabButton}">
+				<Setter Property="Border.CornerRadius" Value="0" />
+			</Style>
+            <Style TargetType="Button" x:Key="TabButtonLast" BasedOn="{StaticResource ModernTabButton}">
+				<Setter Property="Border.CornerRadius" Value="0,5,5,0" />
+			</Style>
+
 			<SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3" />
 			<SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#6600FF" />
 			<SolidColorBrush x:Key="TextBox.Focus.Border" Color="#6600FF" />
@@ -746,17 +794,9 @@
 						<ControlTemplate TargetType="{x:Type Button}">
 							<Border x:Name="border" BorderThickness="0" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true" CornerRadius="5,5,5,5">
 								<Border.Background>
-									<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Pad">
-										<LinearGradientBrush.RelativeTransform>
-											<TransformGroup>
-												<ScaleTransform CenterY="0.5" CenterX="0.5" />
-												<SkewTransform CenterY="0.5" CenterX="0.5" />
-												<RotateTransform Angle="180" CenterY="0.5" CenterX="0.5" />
-												<TranslateTransform />
-											</TransformGroup>
-										</LinearGradientBrush.RelativeTransform>
-										<GradientStop Color="#3779EE" />
-										<GradientStop Color="#3E84ED" Offset="1" />
+									<LinearGradientBrush StartPoint="-2.252774E-08, -6.007397E-08" EndPoint="0.7293306, 0.74163395">
+										<GradientStop Color="#00C6FB" Offset="0" />
+										<GradientStop Color="#005BEA" Offset="1" />
 									</LinearGradientBrush>
 								</Border.Background>
 								<ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
@@ -1023,51 +1063,21 @@
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type Button}">
-							<Border x:Name="border" MinHeight="20" Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="#FF5A5A70" CornerRadius="5" SnapsToDevicePixels="true" Margin="5" Padding="5,5,5,5">
+							<Border x:Name="border" MinHeight="20" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" CornerRadius="5" SnapsToDevicePixels="true" Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
 								<Border.Effect>
 									<DropShadowEffect ShadowDepth="0" Opacity="0" />
 								</Border.Effect>
-								<VisualStateManager.VisualStateGroups>
-									<VisualStateGroup x:Name="CommonStates">
-										<VisualState x:Name="Normal" />
-										<VisualState x:Name="MouseOver">
-											<Storyboard>
-												<DoubleAnimationUsingKeyFrames Storyboard.TargetName="border" Storyboard.TargetProperty="(UIElement.Effect).(DropShadowEffect.Opacity)">
-													<EasingDoubleKeyFrame KeyTime="00:00:00" Value="0.6" />
-												</DoubleAnimationUsingKeyFrames>
-											</Storyboard>
-										</VisualState>
-										<VisualState x:Name="Pressed" />
-										<VisualState x:Name="Disabled" />
-									</VisualStateGroup>
-								</VisualStateManager.VisualStateGroups>
-								<ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+								<ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
 							</Border>
 							<ControlTemplate.Triggers>
 								<Trigger Property="IsDefaulted" Value="true">
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
 								</Trigger>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Background" TargetName="border">
-										<Setter.Value>
-											<LinearGradientBrush>
-												<GradientStop Color="#6600FF" />
-												<GradientStop Color="#FF6600FF" Offset="1" />
-											</LinearGradientBrush>
-										</Setter.Value>
-									</Setter>
-									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}" />
+									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
-									<Setter Property="Background" TargetName="border">
-										<Setter.Value>
-											<LinearGradientBrush>
-												<GradientStop Color="#6600FF" />
-												<GradientStop Color="#FF6600FF" Offset="1" />
-											</LinearGradientBrush>
-										</Setter.Value>
-									</Setter>
-									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}" />
+									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
 									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}" />
@@ -1609,7 +1619,7 @@
 					</Setter.Value>
 				</Setter>
 			</Style>
-			
+
 			<ControlTemplate x:Key="SliderThumbHorizontalDefault" TargetType="{x:Type Thumb}">
 				<Grid HorizontalAlignment="Center" UseLayoutRounding="True" VerticalAlignment="Center">
 					<Path x:Name="grip" Data="M0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12Z" Fill="{TemplateBinding Foreground}" SnapsToDevicePixels="True" StrokeThickness="1" Stretch="Fill" Stroke="{TemplateBinding Foreground}" UseLayoutRounding="True" VerticalAlignment="Center"/>
@@ -1834,6 +1844,266 @@
 						<Setter Property="Template" Value="{StaticResource SliderVertical}"/>
 					</Trigger>
 				</Style.Triggers>
+			</Style>
+
+			<SolidColorBrush x:Key="Expander.Static.Circle.Stroke" Color="Transparent"/>
+			<SolidColorBrush x:Key="Expander.Static.Circle.Fill" Color="Transparent"/>
+			<SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="#CCC"/>
+			<SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="Transparent"/>
+			<SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="Transparent"/>
+			<SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="#FFF"/>
+			<SolidColorBrush x:Key="Expander.Pressed.Circle.Stroke" Color="Transparent"/>
+			<SolidColorBrush x:Key="Expander.Pressed.Circle.Fill" Color="Transparent"/>
+			<SolidColorBrush x:Key="Expander.Pressed.Arrow.Stroke" Color="#FFF"/>
+			<SolidColorBrush x:Key="Expander.Disabled.Circle.Stroke" Color="Transparent"/>
+			<SolidColorBrush x:Key="Expander.Disabled.Circle.Fill" Color="Transparent"/>
+			<SolidColorBrush x:Key="Expander.Disabled.Arrow.Stroke" Color="#FF707070"/>
+			<Style x:Key="ExpanderHeaderFocusVisual">
+				<Setter Property="Control.Template">
+					<Setter.Value>
+						<ControlTemplate>
+							<Border>
+								<Rectangle Margin="0" StrokeDashArray="1 2" Stroke="Black" SnapsToDevicePixels="true" StrokeThickness="1"/>
+							</Border>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style x:Key="ExpanderDownHeaderStyle" TargetType="{x:Type ToggleButton}">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type ToggleButton}">
+							<Border Padding="{TemplateBinding Padding}">
+								<Grid Background="Transparent" SnapsToDevicePixels="False" Margin="0 0 15 0">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="19"/>
+									</Grid.ColumnDefinitions>
+									<Ellipse x:Name="circle" Fill="{StaticResource Expander.Static.Circle.Fill}" HorizontalAlignment="Center" Height="19" Stroke="{StaticResource Expander.Static.Circle.Stroke}" VerticalAlignment="Center" Width="19" Grid.Column="1"/>
+									<Path x:Name="arrow" Data="F1 M 3.52 7.2 C 3.626667 7.093334 3.766666 7.040001 3.94 7.04 C 4.113333 7.040001 4.266666 7.093334 4.4 7.2 L 10 12.8 L 15.599999 7.2 C 15.759998 7.040001 15.959998 6.986668 16.199999 7.04 C 16.439999 7.093334 16.593332 7.240001 16.66 7.48 C 16.726665 7.720001 16.666666 7.933334 16.48 8.12 L 10.44 14.16 C 10.306665 14.266666 10.16 14.32 10 14.32 C 9.84 14.32 9.693333 14.266666 9.559999 14.16 L 3.52 8.12 C 3.386667 7.986668 3.32 7.833334 3.32 7.66 C 3.32 7.486668 3.386667 7.333334 3.52 7.2 Z " HorizontalAlignment="Center" Stroke="{StaticResource Expander.Static.Arrow.Stroke}" SnapsToDevicePixels="false" StrokeThickness="1" VerticalAlignment="Center" Grid.Column="1"/>
+									<ContentPresenter Grid.Column="0" HorizontalAlignment="Left" Margin="4,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="True" VerticalAlignment="Center"/>
+								</Grid>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsChecked" Value="true">
+									<Setter Property="Data" TargetName="arrow" Value="F1 M 3.52 13.12 C 3.626667 13.226667 3.766666 13.280001 3.94 13.280001 C 4.113333 13.280001 4.266666 13.226667 4.4 13.12 L 10 7.52 L 15.599999 13.12 C 15.759998 13.280001 15.959998 13.333334 16.199999 13.280001 C 16.439999 13.226666 16.593332 13.08 16.66 12.84 C 16.726665 12.6 16.666666 12.386667 16.48 12.2 L 10.44 6.16 C 10.306665 6.053333 10.16 6 10 6 C 9.84 6 9.693333 6.053333 9.559999 6.16 L 3.52 12.2 C 3.386667 12.333334 3.32 12.486668 3.32 12.66 C 3.32 12.833334 3.386667 12.986667 3.52 13.12 Z "/>
+								</Trigger>
+								<Trigger Property="IsMouseOver" Value="true">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Stroke}"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.MouseOver.Arrow.Stroke}"/>
+								</Trigger>
+								<Trigger Property="IsPressed" Value="true">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Stroke}"/>
+									<Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+								</Trigger>
+								<Trigger Property="IsEnabled" Value="false">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Stroke}"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Disabled.Arrow.Stroke}"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style x:Key="ExpanderUpHeaderStyle" TargetType="{x:Type ToggleButton}">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type ToggleButton}">
+							<Border Padding="{TemplateBinding Padding}">
+								<Grid Background="Transparent" SnapsToDevicePixels="False">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="19"/>
+										<ColumnDefinition Width="*"/>
+									</Grid.ColumnDefinitions>
+									<Grid>
+										<Grid.LayoutTransform>
+											<TransformGroup>
+												<TransformGroup.Children>
+													<TransformCollection>
+														<RotateTransform Angle="180"/>
+													</TransformCollection>
+												</TransformGroup.Children>
+											</TransformGroup>
+										</Grid.LayoutTransform>
+										<Ellipse x:Name="circle" Fill="{StaticResource Expander.Static.Circle.Fill}" HorizontalAlignment="Center" Height="19" Stroke="{StaticResource Expander.Static.Circle.Stroke}" VerticalAlignment="Center" Width="19"/>
+										<Path x:Name="arrow" Data="F1 M 3.52 7.2 C 3.626667 7.093334 3.766666 7.040001 3.94 7.04 C 4.113333 7.040001 4.266666 7.093334 4.4 7.2 L 10 12.8 L 15.599999 7.2 C 15.759998 7.040001 15.959998 6.986668 16.199999 7.04 C 16.439999 7.093334 16.593332 7.240001 16.66 7.48 C 16.726665 7.720001 16.666666 7.933334 16.48 8.12 L 10.44 14.16 C 10.306665 14.266666 10.16 14.32 10 14.32 C 9.84 14.32 9.693333 14.266666 9.559999 14.16 L 3.52 8.12 C 3.386667 7.986668 3.32 7.833334 3.32 7.66 C 3.32 7.486668 3.386667 7.333334 3.52 7.2 Z " HorizontalAlignment="Center" Stroke="{StaticResource Expander.Static.Arrow.Stroke}" SnapsToDevicePixels="false" StrokeThickness="2" VerticalAlignment="Center"/>
+									</Grid>
+									<ContentPresenter Grid.Column="1" HorizontalAlignment="Left" Margin="4,0,0,0" RecognizesAccessKey="True" SnapsToDevicePixels="True" VerticalAlignment="Center"/>
+								</Grid>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsChecked" Value="true">
+									<Setter Property="Data" TargetName="arrow" Value="F1 M 3.52 13.12 C 3.626667 13.226667 3.766666 13.280001 3.94 13.280001 C 4.113333 13.280001 4.266666 13.226667 4.4 13.12 L 10 7.52 L 15.599999 13.12 C 15.759998 13.280001 15.959998 13.333334 16.199999 13.280001 C 16.439999 13.226666 16.593332 13.08 16.66 12.84 C 16.726665 12.6 16.666666 12.386667 16.48 12.2 L 10.44 6.16 C 10.306665 6.053333 10.16 6 10 6 C 9.84 6 9.693333 6.053333 9.559999 6.16 L 3.52 12.2 C 3.386667 12.333334 3.32 12.486668 3.32 12.66 C 3.32 12.833334 3.386667 12.986667 3.52 13.12 Z "/>
+								</Trigger>
+								<Trigger Property="IsMouseOver" Value="true">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Stroke}"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.MouseOver.Arrow.Stroke}"/>
+								</Trigger>
+								<Trigger Property="IsPressed" Value="true">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Stroke}"/>
+									<Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+								</Trigger>
+								<Trigger Property="IsEnabled" Value="false">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Stroke}"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Disabled.Arrow.Stroke}"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style x:Key="ExpanderLeftHeaderStyle" TargetType="{x:Type ToggleButton}">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type ToggleButton}">
+							<Border Padding="{TemplateBinding Padding}">
+								<Grid Background="Transparent" SnapsToDevicePixels="False">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="19"/>
+										<RowDefinition Height="*"/>
+									</Grid.RowDefinitions>
+									<Grid>
+										<Grid.LayoutTransform>
+											<TransformGroup>
+												<TransformGroup.Children>
+													<TransformCollection>
+														<RotateTransform Angle="90"/>
+													</TransformCollection>
+												</TransformGroup.Children>
+											</TransformGroup>
+										</Grid.LayoutTransform>
+										<Ellipse x:Name="circle" Fill="{StaticResource Expander.Static.Circle.Fill}" HorizontalAlignment="Center" Height="19" Stroke="{StaticResource Expander.Static.Circle.Stroke}" VerticalAlignment="Center" Width="19"/>
+										<Path x:Name="arrow" Data="F1 M 3.52 7.2 C 3.626667 7.093334 3.766666 7.040001 3.94 7.04 C 4.113333 7.040001 4.266666 7.093334 4.4 7.2 L 10 12.8 L 15.599999 7.2 C 15.759998 7.040001 15.959998 6.986668 16.199999 7.04 C 16.439999 7.093334 16.593332 7.240001 16.66 7.48 C 16.726665 7.720001 16.666666 7.933334 16.48 8.12 L 10.44 14.16 C 10.306665 14.266666 10.16 14.32 10 14.32 C 9.84 14.32 9.693333 14.266666 9.559999 14.16 L 3.52 8.12 C 3.386667 7.986668 3.32 7.833334 3.32 7.66 C 3.32 7.486668 3.386667 7.333334 3.52 7.2 Z " HorizontalAlignment="Center" Stroke="{StaticResource Expander.Static.Arrow.Stroke}" SnapsToDevicePixels="false" StrokeThickness="2" VerticalAlignment="Center"/>
+									</Grid>
+									<ContentPresenter HorizontalAlignment="Center" Margin="0,4,0,0" RecognizesAccessKey="True" Grid.Row="1" SnapsToDevicePixels="True" VerticalAlignment="Top"/>
+								</Grid>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsChecked" Value="true">
+									<Setter Property="Data" TargetName="arrow" Value="F1 M 3.52 13.12 C 3.626667 13.226667 3.766666 13.280001 3.94 13.280001 C 4.113333 13.280001 4.266666 13.226667 4.4 13.12 L 10 7.52 L 15.599999 13.12 C 15.759998 13.280001 15.959998 13.333334 16.199999 13.280001 C 16.439999 13.226666 16.593332 13.08 16.66 12.84 C 16.726665 12.6 16.666666 12.386667 16.48 12.2 L 10.44 6.16 C 10.306665 6.053333 10.16 6 10 6 C 9.84 6 9.693333 6.053333 9.559999 6.16 L 3.52 12.2 C 3.386667 12.333334 3.32 12.486668 3.32 12.66 C 3.32 12.833334 3.386667 12.986667 3.52 13.12 Z "/>
+								</Trigger>
+								<Trigger Property="IsMouseOver" Value="true">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Stroke}"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.MouseOver.Arrow.Stroke}"/>
+								</Trigger>
+								<Trigger Property="IsPressed" Value="true">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Stroke}"/>
+									<Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+								</Trigger>
+								<Trigger Property="IsEnabled" Value="false">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Stroke}"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Disabled.Arrow.Stroke}"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style x:Key="ExpanderRightHeaderStyle" TargetType="{x:Type ToggleButton}">
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type ToggleButton}">
+							<Border Padding="{TemplateBinding Padding}">
+								<Grid Background="Transparent" SnapsToDevicePixels="False">
+									<Grid.RowDefinitions>
+										<RowDefinition Height="19"/>
+										<RowDefinition Height="*"/>
+									</Grid.RowDefinitions>
+									<Grid>
+										<Grid.LayoutTransform>
+											<TransformGroup>
+												<TransformGroup.Children>
+													<TransformCollection>
+														<RotateTransform Angle="-90"/>
+													</TransformCollection>
+												</TransformGroup.Children>
+											</TransformGroup>
+										</Grid.LayoutTransform>
+										<Ellipse x:Name="circle" Fill="{StaticResource Expander.Static.Circle.Fill}" HorizontalAlignment="Center" Height="19" Stroke="{StaticResource Expander.Static.Circle.Stroke}" VerticalAlignment="Center" Width="19"/>
+										<Path x:Name="arrow" Data="F1 M 3.52 7.2 C 3.626667 7.093334 3.766666 7.040001 3.94 7.04 C 4.113333 7.040001 4.266666 7.093334 4.4 7.2 L 10 12.8 L 15.599999 7.2 C 15.759998 7.040001 15.959998 6.986668 16.199999 7.04 C 16.439999 7.093334 16.593332 7.240001 16.66 7.48 C 16.726665 7.720001 16.666666 7.933334 16.48 8.12 L 10.44 14.16 C 10.306665 14.266666 10.16 14.32 10 14.32 C 9.84 14.32 9.693333 14.266666 9.559999 14.16 L 3.52 8.12 C 3.386667 7.986668 3.32 7.833334 3.32 7.66 C 3.32 7.486668 3.386667 7.333334 3.52 7.2 Z " HorizontalAlignment="Center" Stroke="{StaticResource Expander.Static.Arrow.Stroke}" SnapsToDevicePixels="false" StrokeThickness="2" VerticalAlignment="Center"/>
+									</Grid>
+									<ContentPresenter HorizontalAlignment="Center" Margin="0,4,0,0" RecognizesAccessKey="True" Grid.Row="1" SnapsToDevicePixels="True" VerticalAlignment="Top"/>
+								</Grid>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsChecked" Value="true">
+									<Setter Property="Data" TargetName="arrow" Value="F1 M 3.52 13.12 C 3.626667 13.226667 3.766666 13.280001 3.94 13.280001 C 4.113333 13.280001 4.266666 13.226667 4.4 13.12 L 10 7.52 L 15.599999 13.12 C 15.759998 13.280001 15.959998 13.333334 16.199999 13.280001 C 16.439999 13.226666 16.593332 13.08 16.66 12.84 C 16.726665 12.6 16.666666 12.386667 16.48 12.2 L 10.44 6.16 C 10.306665 6.053333 10.16 6 10 6 C 9.84 6 9.693333 6.053333 9.559999 6.16 L 3.52 12.2 C 3.386667 12.333334 3.32 12.486668 3.32 12.66 C 3.32 12.833334 3.386667 12.986667 3.52 13.12 Z "/>
+								</Trigger>
+								<Trigger Property="IsMouseOver" Value="true">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Stroke}"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.MouseOver.Arrow.Stroke}"/>
+								</Trigger>
+								<Trigger Property="IsPressed" Value="true">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Stroke}"/>
+									<Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+								</Trigger>
+								<Trigger Property="IsEnabled" Value="false">
+									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Stroke}"/>
+									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Fill}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Disabled.Arrow.Stroke}"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
+			</Style>
+			<Style x:Key="ExpanderStyle1" TargetType="{x:Type Expander}">
+				<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+				<Setter Property="Background" Value="Transparent"/>
+				<Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+				<Setter Property="VerticalContentAlignment" Value="Stretch"/>
+				<Setter Property="BorderBrush" Value="Transparent"/>
+				<Setter Property="BorderThickness" Value="1"/>
+				<Setter Property="Template">
+					<Setter.Value>
+						<ControlTemplate TargetType="{x:Type Expander}">
+							<Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="6" SnapsToDevicePixels="true">
+								<DockPanel>
+									<ToggleButton x:Name="HeaderSite" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" DockPanel.Dock="Top" FontStretch="{TemplateBinding FontStretch}" Foreground="{TemplateBinding Foreground}" FocusVisualStyle="{StaticResource ExpanderHeaderFocusVisual}" FontStyle="{TemplateBinding FontStyle}" FontFamily="{TemplateBinding FontFamily}" FontWeight="{TemplateBinding FontWeight}" FontSize="{TemplateBinding FontSize}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" IsChecked="{Binding IsExpanded, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Margin="1" MinWidth="0" MinHeight="0" Padding="{TemplateBinding Padding}" Style="{StaticResource ExpanderDownHeaderStyle}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+									<ContentPresenter x:Name="ExpandSite" DockPanel.Dock="Bottom" Focusable="false" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Visibility="Collapsed"/>
+								</DockPanel>
+							</Border>
+							<ControlTemplate.Triggers>
+								<Trigger Property="IsExpanded" Value="true">
+									<Setter Property="Visibility" TargetName="ExpandSite" Value="Visible"/>
+								</Trigger>
+								<Trigger Property="ExpandDirection" Value="Right">
+									<Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Right"/>
+									<Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Left"/>
+									<Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderRightHeaderStyle}"/>
+								</Trigger>
+								<Trigger Property="ExpandDirection" Value="Up">
+									<Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Top"/>
+									<Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Bottom"/>
+									<Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderUpHeaderStyle}"/>
+								</Trigger>
+								<Trigger Property="ExpandDirection" Value="Left">
+									<Setter Property="DockPanel.Dock" TargetName="ExpandSite" Value="Left"/>
+									<Setter Property="DockPanel.Dock" TargetName="HeaderSite" Value="Right"/>
+									<Setter Property="Style" TargetName="HeaderSite" Value="{StaticResource ExpanderLeftHeaderStyle}"/>
+								</Trigger>
+								<Trigger Property="IsEnabled" Value="false">
+									<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+								</Trigger>
+							</ControlTemplate.Triggers>
+						</ControlTemplate>
+					</Setter.Value>
+				</Setter>
 			</Style>
 		</ResourceDictionary>
 

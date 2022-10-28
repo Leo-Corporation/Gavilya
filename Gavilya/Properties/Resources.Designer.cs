@@ -70,6 +70,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About you.
+        /// </summary>
+        public static string AboutYou {
+            get {
+                return ResourceManager.GetString("AboutYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to of players have unlocked this achievement..
         /// </summary>
         public static string AchievementPlayerUnlocked {
@@ -444,6 +453,15 @@ namespace Gavilya.Properties {
         public static string CreateAProfile {
             get {
                 return ResourceManager.GetString("CreateAProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current.
+        /// </summary>
+        public static string Current {
+            get {
+                return ResourceManager.GetString("Current", resourceCulture);
             }
         }
         
@@ -1782,6 +1800,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings related to the &quot;You may like...&quot; section..
+        /// </summary>
+        public static string RecommandedSettings {
+            get {
+                return ResourceManager.GetString("RecommandedSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset.
         /// </summary>
         public static string Reset {
@@ -1859,6 +1886,15 @@ namespace Gavilya.Properties {
         public static string SaveOptions {
             get {
                 return ResourceManager.GetString("SaveOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save settings..
+        /// </summary>
+        public static string SaveSettings {
+            get {
+                return ResourceManager.GetString("SaveSettings", resourceCulture);
             }
         }
         
@@ -2007,6 +2043,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select notifications you want to receive in Notification Center..
+        /// </summary>
+        public static string SelectNotification {
+            get {
+                return ResourceManager.GetString("SelectNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
@@ -2057,6 +2102,24 @@ namespace Gavilya.Properties {
         public static string SkipStep {
             get {
                 return ResourceManager.GetString("SkipStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort alphabetically.
+        /// </summary>
+        public static string SortAlphabetically {
+            get {
+                return ResourceManager.GetString("SortAlphabetically", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort in reverse order.
+        /// </summary>
+        public static string SortInverse {
+            get {
+                return ResourceManager.GetString("SortInverse", resourceCulture);
             }
         }
         

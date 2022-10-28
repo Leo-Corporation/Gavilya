@@ -68,6 +68,14 @@ public partial class ProfileItem : UserControl
 			}
 		}
 
+		if (CurrentProfile == Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]) // If this is the current profile
+		{
+			DeleteBtn.Visibility = Visibility.Collapsed; // Hide buttons
+			SwitchBtn.Visibility = Visibility.Collapsed; // Hide buttons
+
+			CurrentBorder.Visibility = Visibility.Visible; // Show
+		}
+
 		ProfileNameTxt.Text = CurrentProfile.Name; // Show name
 	}
 
@@ -82,11 +90,11 @@ public partial class ProfileItem : UserControl
 		{
 			Definitions.Profiles.Remove(CurrentProfile); // Remove
 			ProfileManager.SaveProfiles(); // Save changes
-			Definitions.MainWindow.ProfilesPopupMenu.InitUI(); // Refresh 
+			Definitions.ProfilePage.LoadProfileUI();
 		}
 	}
 
-	private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+	private void SwitchBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Definitions.Settings.CurrentProfileIndex = Definitions.Profiles.IndexOf(CurrentProfile); // Set the new profile
 		SettingsSaver.Save(); // Save

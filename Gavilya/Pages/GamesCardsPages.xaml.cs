@@ -48,6 +48,7 @@ public partial class GamesCardsPages : Page
 		Dispatcher.Invoke(new Action(() =>
 		{
 			Definitions.HomePage.FavoriteBar.Children.Clear();
+			Definitions.HomePage.RecommandedBar.Children.Clear();
 			Definitions.MainWindow.SearchBox.Items.Clear();
 			GamePresenter.Children.Clear(); // Remove all the games
 

@@ -21,10 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
 using Gavilya.Pages;
 using Gavilya.UserControls;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Gavilya.Windows;
 
@@ -70,6 +72,25 @@ public partial class EditGame : Window
 			1 => AddEditPage2,
 			_ => AddEditPage
 		}; // Set
+
+		if (id == 1)
+		{
+			LineBorder.Background = Definitions.HomeButtonBackColor;
+			NumberBorder.Background = Definitions.HomeButtonBackColor;
+			Page2Btn.Foreground = Definitions.HomeButtonBackColor;
+
+			_1Txt.Visibility = Visibility.Collapsed;
+			CheckTxt.Visibility = Visibility.Visible;
+		}
+		else
+		{
+			LineBorder.Background = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
+			NumberBorder.Background = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
+			Page2Btn.Foreground = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
+
+			_1Txt.Visibility = Visibility.Visible;
+			CheckTxt.Visibility = Visibility.Collapsed;
+		}
 	}
 
 	private void Button_Click(object sender, RoutedEventArgs e)
@@ -80,5 +101,15 @@ public partial class EditGame : Window
 	private void Button_Click_1(object sender, RoutedEventArgs e)
 	{
 		Close(); // Close the window
+	}
+
+	private void Page2Btn_Click(object sender, RoutedEventArgs e)
+	{
+		AddEditPage.NextBtn_Click(this, e);
+	}
+
+	private void Page1Btn_Click(object sender, RoutedEventArgs e)
+	{
+		ChangePage(0);
 	}
 }

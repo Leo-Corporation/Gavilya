@@ -23,9 +23,6 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
-using Gavilya.Windows;
-using LeoCorpLibrary;
-using LeoCorpLibrary.Enums;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -42,19 +39,6 @@ public partial class LibraryPage : Page
 	public LibraryPage()
 	{
 		InitializeComponent();
-		InitUI();
-	}
-
-	private void InitUI()
-	{
-		if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
-		{
-			AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
-		}
-		else
-		{
-			AddUWPBtn.Visibility = Visibility.Visible; // Show
-		}
 	}
 
 	private void GameCardTabBtn_Click(object sender, RoutedEventArgs e)
@@ -63,14 +47,6 @@ public partial class LibraryPage : Page
 		RefreshTabUI();
 
 		PageDisplayer.Content = Definitions.GamesCardsPages; // Set page content
-	}
-
-	private void RecentTabBtn_Click(object sender, RoutedEventArgs e)
-	{
-		CheckedButton = RecentTabBtn; // Set
-		RefreshTabUI();
-
-		PageDisplayer.Content = Definitions.RecentGamesPage; // Set page content
 	}
 
 	private void GameListTabBtn_Click(object sender, RoutedEventArgs e)
@@ -84,23 +60,18 @@ public partial class LibraryPage : Page
 	internal Button CheckedButton { get; set; }
 	internal void RefreshTabUI()
 	{
-		GameCardTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		GameListTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+		GameCardTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		GameListTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
 
 		if (PageDisplayer.Content is GamesCardsPages)
 		{
 			CheckedButton = GameCardTabBtn; // Set
 		}
-		else if (PageDisplayer.Content is RecentGamesPage)
-		{
-			CheckedButton = RecentTabBtn; // Set
-		}
 		else if (PageDisplayer.Content is GamesListPage)
 		{
 			CheckedButton = GameListTabBtn; // Set
 		}
-		CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 	}
 
 	private void GameCardTabBtn_MouseEnter(object sender, MouseEventArgs e)
@@ -125,18 +96,19 @@ public partial class LibraryPage : Page
 		RefreshTabUI();
 	}
 
-	private void AddBtn_Click(object sender, RoutedEventArgs e)
+	private void SortAlpha_Click(object sender, RoutedEventArgs e)
 	{
-		new AddGame(false, false).Show(); // Open the "Add Game" dialog
+		Global.SortGames();
+		Global.ReloadAllPages();
+		SortAlpha.Background = Definitions.HomeButtonBackColor;
+		SortReverse.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
 	}
 
-	private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
+	private void SortReverse_Click(object sender, RoutedEventArgs e)
 	{
-		new AddGame(true, false).Show(); // Add game
-	}
-
-	private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
-	{
-		new AddGame(false, true).Show(); // Add Steam Game
+		Global.SortGames(false);
+		Global.ReloadAllPages();
+		SortAlpha.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
+		SortReverse.Background = Definitions.HomeButtonBackColor;
 	}
 }

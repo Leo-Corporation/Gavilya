@@ -885,4 +885,25 @@
   <data name="OpenFpsCounter" xml:space="preserve">
     <value>Appuyez sur {0} pour ouvrir le compteur de FPS.</value>
   </data>
+  <data name="SortAlphabetically" xml:space="preserve">
+    <value>Trier par ordre alphabétique</value>
+  </data>
+  <data name="SortInverse" xml:space="preserve">
+    <value>Trier dans l'ordre inverse</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>Actuel</value>
+  </data>
+  <data name="AboutYou" xml:space="preserve">
+    <value>A propos de vous</value>
+  </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>Paramètres de sauvegarde.</value>
+  </data>
+  <data name="RecommandedSettings" xml:space="preserve">
+    <value>Paramètres liés à la section "Vous aimerez peut-être...".</value>
+  </data>
+  <data name="SelectNotification" xml:space="preserve">
+    <value>Sélectionnez les notifications que vous souhaitez recevoir dans le centre de notification.</value>
+  </data>
 </root>

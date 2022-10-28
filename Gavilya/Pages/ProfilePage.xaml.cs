@@ -118,9 +118,9 @@ public partial class ProfilePage : Page
 		if (mostPlayed.Count >= 3)
 		{
 			int longestPlayed = mostPlayed[0].TotalTimePlayed;
-			double h = mostPlayed[0].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
-			double h1 = mostPlayed[1].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
-			double h2 = mostPlayed[2].TotalTimePlayed * (GraphPanel.Height - 29.6) / longestPlayed;
+			double h = mostPlayed[0].TotalTimePlayed * (GraphPanel.Height - 50) / longestPlayed;
+			double h1 = mostPlayed[1].TotalTimePlayed * (GraphPanel.Height - 50) / longestPlayed;
+			double h2 = mostPlayed[2].TotalTimePlayed * (GraphPanel.Height - 50) / longestPlayed;
 
 			Top1Rect.Height = h; // Set height
 			Top2Rect.Height = h1; // Set height
@@ -198,6 +198,31 @@ public partial class ProfilePage : Page
 			FavoritesTab.Visibility = Visibility.Collapsed; // Hide
 		}
 		LoadBadges();
+		LoadProfileUI();
+	}
+
+	internal void LoadProfileUI()
+	{
+		ProfileDisplayer.Children.Clear();
+
+		ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[Definitions.Settings.CurrentProfileIndex])); // Add profile 
+
+
+		// Load the profile displayer
+		if (Definitions.Profiles.Count > 1) // If there is more than one profile
+		{
+			for (int i = 0; i < Definitions.Profiles.Count; i++)
+			{
+				if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
+				{
+					ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
+				}
+			}
+		}
+		else
+		{
+			ProfileDisplayer.Children.Add(new NoProfileItem()); // Add a message
+		}
 	}
 
 	private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -210,11 +235,11 @@ public partial class ProfilePage : Page
 	internal Button CheckedButton { get; set; }
 	internal void RefreshTabUI()
 	{
-		SpotlightTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		FavoriteTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		BadgesTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
+		SpotlightTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		FavoriteTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color 
+		BadgesTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color 
 
-		CheckedButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 	}
 
 	private void HideAll()
@@ -338,26 +363,14 @@ public partial class ProfilePage : Page
 		RefreshTabUI();
 	}
 
-	private void SpotlightTabBtn_MouseEnter(object sender, MouseEventArgs e)
-	{
-		Button button = (Button)sender; // Create button
-
-		button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
-	}
-
-	private void SpotlightTabBtn_MouseLeave(object sender, MouseEventArgs e)
-	{
-		Button button = (Button)sender; // Create button
-
-		if (CheckedButton != button)
-		{
-			button.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Change color 
-		}
-	}
-
 	private void EditBtn_Click(object sender, RoutedEventArgs e)
 	{
 		new AddEditProfileWindow(EditMode.Edit, CurrentProfile).Show(); // Edit
+	}
+
+	private void AddProfileBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddEditProfileWindow(EditMode.Add).Show(); // Add
 	}
 
 	private void BadgesTabBtn_Click(object sender, RoutedEventArgs e)

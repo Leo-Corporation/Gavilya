@@ -122,6 +122,9 @@ public partial class GameCard : UserControl
 			FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
 			FavBtn.Content = "\uF71B"; // Change icon
+			FavoriteSideBarItem = new FavoriteSideBarItem(gameInfo, this);
+
+			Definitions.MainWindow.FavoriteSideBar.Children.Add(FavoriteSideBarItem);
 		}
 
 		if (recommanded)
@@ -151,6 +154,8 @@ public partial class GameCard : UserControl
 				FavBtn.Visibility = Visibility.Visible; // Show the favorite button
 				break;
 		}
+
+		GameNameTxt.Text = GameInfo.Name;
 	}
 
 	bool gameStarted = false;
@@ -224,17 +229,20 @@ public partial class GameCard : UserControl
 		}
 	}
 
+	public bool SelectModeToggled { get; set; }
+
 	private void StackPanel_MouseEnter(object sender, MouseEventArgs e)
 	{
-		GameCardBorder.BorderThickness = new Thickness { Bottom = 3, Top = 3, Left = 3, Right = 3 }; // Set the border thickness
+		ContentGrid.Visibility = Visibility.Visible;
 	}
 
 	private void StackPanel_MouseLeave(object sender, MouseEventArgs e)
 	{
-		GameCardBorder.BorderThickness = new Thickness { Bottom = 0, Top = 0, Left = 0, Right = 0 }; // Set the border thickness
+		ContentGrid.Visibility = Visibility.Collapsed;
 	}
 
 	FavoriteGameCard FavoriteGameCard;
+	FavoriteSideBarItem FavoriteSideBarItem;
 
 	private void FavBtn_Click(object sender, RoutedEventArgs e)
 	{
@@ -242,6 +250,8 @@ public partial class GameCard : UserControl
 		{
 			GameInfo.IsFavorite = false; // The game is no longer a favorite
 			Definitions.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
+			Definitions.MainWindow.FavoriteSideBar.Children.Remove(FavoriteSideBarItem);
+
 			FavBtn.Content = "\uF710"; // Change icon
 			GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(102, 0, 255)); // Set the border color			
 		}
@@ -250,6 +260,8 @@ public partial class GameCard : UserControl
 			GameInfo.IsFavorite = true; // Set the game to be a favorite
 			FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
 			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
+			FavoriteSideBarItem = new FavoriteSideBarItem(GameInfo, this);
+			Definitions.MainWindow.FavoriteSideBar.Children.Add(FavoriteSideBarItem);
 			FavBtn.Content = "\uF71B"; // Change icon
 			GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(55, 121, 238)); // Set the border color
 		}
@@ -268,10 +280,7 @@ public partial class GameCard : UserControl
 			Definitions.GameInfoPage.InitializeUI(GameInfo, this);
 			Definitions.MainWindow.PageContent.Content = Definitions.GameInfoPage;
 		}
-		catch (Exception)
-		{
-
-		}
+		catch { }
 	}
 
 	private void MenuBtn_Click(object sender, RoutedEventArgs e)
@@ -302,5 +311,12 @@ public partial class GameCard : UserControl
 			}
 		}
 		catch { } // If the user says "No" the Admin prompt
+	}
+
+	private void CheckBox_Checked(object sender, RoutedEventArgs e)
+	{
+		GameCardBorder.BorderThickness = CheckBox.IsChecked ?? false ?
+			new(3)
+			: new(0); // Set the border thickness
 	}
 }

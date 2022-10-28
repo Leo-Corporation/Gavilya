@@ -21,51 +21,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using Gavilya.Classes;
-using System;
-using System.Diagnostics;
-using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
 
-namespace Gavilya.Windows;
-
+namespace Gavilya.Pages.SettingsPages;
 /// <summary>
-/// Logique d'interaction pour PopupMenu.xaml
+/// Interaction logic for NotifOptionsPage.xaml
 /// </summary>
-public partial class PopupMenu : Window
+public partial class NotifOptionsPage : Page
 {
-	public PopupMenu()
+	public NotifOptionsPage()
 	{
 		InitializeComponent();
-		if (Properties.Settings.Default.Language != "_default")
-		{
-			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(Properties.Settings.Default.Language); // Change 
-		}
+		InitUI();
 	}
 
-	private void Window_Deactivated(object sender, EventArgs e)
+	private void InitUI()
 	{
-		if (Definitions.IsMenuShown)
-		{
-			Hide(); // Close
-			Definitions.IsMenuShown = false; // Define
-		}
+		UpdatesChk.IsChecked = Definitions.Settings.UpdatesAvNotification;
+		UnusedGameChk.IsChecked = Definitions.Settings.UnusedGameNotification;
 	}
 
-	private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+	private void UpdatesChk_Checked(object sender, RoutedEventArgs e)
 	{
-		Settings settings = new(); // Settings window
-		settings.Show(); // Show the Settings window
+		Definitions.Settings.UpdatesAvNotification = UpdatesChk.IsChecked;
+		SettingsSaver.Save();
 	}
 
-	private void AboutBtn_Click(object sender, RoutedEventArgs e)
+	private void UnusedGameChk_Checked(object sender, RoutedEventArgs e)
 	{
-		About about = new(); // About window
-		about.Show(); // Show the About window
-	}
-
-	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
-	{
-		Process.Start("explorer.exe", "https://github.com/Leo-Corporation/Gavilya"); // Open the GitHub repository in the default browser
+		Definitions.Settings.UnusedGameNotification = UnusedGameChk.IsChecked;
+		SettingsSaver.Save();
 	}
 }

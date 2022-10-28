@@ -28,6 +28,7 @@ using Gavilya.UserControls;
 using Gavilya.Windows;
 using Gma.System.MouseKeyHook;
 using LeoCorpLibrary;
+using LeoCorpLibrary.Enums;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -61,7 +62,6 @@ public partial class MainWindow : Window
 		Definitions.LibraryPage.PageDisplayer.Content = Definitions.Settings.PageId switch
 		{
 			0 => Definitions.GamesCardsPages,
-			1 => Definitions.RecentGamesPage,
 			2 => Definitions.GamesListPage,
 			_ => Definitions.GamesCardsPages
 		}; // Show the page
@@ -69,7 +69,6 @@ public partial class MainWindow : Window
 		Definitions.LibraryPage.CheckedButton = Definitions.Settings.PageId switch
 		{
 			0 => Definitions.LibraryPage.GameCardTabBtn,
-			1 => Definitions.LibraryPage.RecentTabBtn,
 			2 => Definitions.LibraryPage.GameListTabBtn,
 			_ => Definitions.LibraryPage.GameCardTabBtn
 		}; // Check
@@ -99,13 +98,15 @@ public partial class MainWindow : Window
 			GavilyaWindowPages.Home => Definitions.HomePage,
 			GavilyaWindowPages.Library => Definitions.LibraryPage,
 			GavilyaWindowPages.Profile => Definitions.ProfilePage,
+			GavilyaWindowPages.Recent => Definitions.RecentGamesPage,
 			_ => Definitions.HomePage
 		});
 		CheckedTabButton = (startupPage ?? Definitions.Settings.DefaultGavilyaHomePage) switch
 		{
 			GavilyaWindowPages.Home => HomeTabBtn,
 			GavilyaWindowPages.Library => LibraryTabBtn,
-			GavilyaWindowPages.Profile => ProfileTabBtn,
+			GavilyaWindowPages.Profile => ProfileBtn,
+			GavilyaWindowPages.Recent => RecentTabBtn,
 			_ => HomeTabBtn
 		};
 		CheckButton();
@@ -117,7 +118,6 @@ public partial class MainWindow : Window
 		SearchBox.MaxDropDownHeight = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set the max drop down height (45 = height of SearchItem)
 
 		// FPS
-
 		var fps = Combination.FromString("Control+Shift+F");
 
 		Action fpsAction = () =>
@@ -135,6 +135,16 @@ public partial class MainWindow : Window
 			{ fps, fpsAction }
 		};
 		Hook.GlobalEvents().OnCombination(assignment);
+
+		// Add Popup
+		if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
+		{
+			AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
+		}
+		else
+		{
+			AddUWPBtn.Visibility = Visibility.Visible; // Show
+		}
 	}
 
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
@@ -142,7 +152,7 @@ public partial class MainWindow : Window
 	private void DisplayNotifications()
 	{
 		// Unused games notification
-		if (Definitions.LeastUsedGames is not null)
+		if (Definitions.Settings.UnusedGameNotification ?? true && Definitions.LeastUsedGames is not null)
 		{
 			NotificationPanel.Children.Add(
 				new NotificationItem(Properties.Resources.UnusedGameNotification,
@@ -154,6 +164,8 @@ public partial class MainWindow : Window
 
 	private async void CheckUpdateOnStart()
 	{
+		if (!(Definitions.Settings.UpdatesAvNotification ?? true)) return;
+
 		if (await NetworkConnection.IsAvailableAsync())
 		{
 			notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe");
@@ -360,18 +372,21 @@ public partial class MainWindow : Window
 			{
 				if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard gameCard) // If the element is a GameCard
 				{
-					if (gameCard.CheckBox.IsVisible) // If the check box is visible
+					if (gameCard.SelectModeToggled) // If the check box is visible
 					{
 						gameCard.CheckBox.Visibility = Visibility.Hidden; // The checkbox isn't visible
 						ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
+						gameCard.GameCardBorder.BorderThickness = new(0); // Set the border thickness; // Show the controls
 						RemoveShadowElement(SelectBtn); // Remove shadow
 					}
 					else
 					{
 						gameCard.CheckBox.Visibility = Visibility.Visible; // The checkbox is visible
+						gameCard.GameCardBorder.BorderThickness = gameCard.CheckBox.IsChecked ?? false ? new(3) : new(0); // Set the border thickness; // Show the controls
 						ColorElement(SelectBtn, Definitions.HomeButtonBackColor); // Change the background
 						ShadowElement(SelectBtn); // Shadow
 					}
+					gameCard.SelectModeToggled = !gameCard.SelectModeToggled;
 					Definitions.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
 				}
 			}
@@ -408,7 +423,7 @@ public partial class MainWindow : Window
 		for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++)
 		{
 			var game = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
-			if (game.CheckBox.IsChecked.Value)
+			if (game.CheckBox.IsChecked.Value && game.SelectModeToggled)
 			{
 				return true;
 			}
@@ -443,6 +458,7 @@ public partial class MainWindow : Window
 					if (gameCard1.GameInfo.IsFavorite) // If the game is a favorite
 					{
 						List<FavoriteGameCard> favoriteGameCards = new();
+						List<FavoriteSideBarItem> favoriteSideBarItems = new();
 						foreach (FavoriteGameCard favoriteGameCard in Definitions.HomePage.FavoriteBar.Children) // Foreach favorite
 						{
 							favoriteGameCards.Add(favoriteGameCard); // Add to the list
@@ -453,6 +469,19 @@ public partial class MainWindow : Window
 							if (favoriteGameCard1.GameInfo == gameCard1.GameInfo) // If the favorite is corresponding to the game
 							{
 								Definitions.HomePage.FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
+							}
+						}
+
+						foreach (FavoriteSideBarItem favoriteSideBarItem in Definitions.MainWindow.FavoriteSideBar.Children)
+						{
+							favoriteSideBarItems.Add(favoriteSideBarItem); // Add to the list
+
+						}
+						foreach (FavoriteSideBarItem favoriteSideBarItem1 in favoriteSideBarItems)
+						{
+							if (favoriteSideBarItem1.Parent is GameCard && (GameCard)favoriteSideBarItem1.Parent == gameCard1)
+							{
+								Definitions.MainWindow.FavoriteSideBar.Children.Remove(favoriteSideBarItem1);
 							}
 						}
 					}
@@ -481,35 +510,16 @@ public partial class MainWindow : Window
 
 				if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
 				{
-					WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
-					welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
-					welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+					WelcomeAddGames welcomeAddGames = new()
+					{
+						VerticalAlignment = VerticalAlignment.Stretch, // Center
+						HorizontalAlignment = HorizontalAlignment.Stretch // Center
+					}; // New WelcomeAddGames
 					Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
 					Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
 					Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
 				}
 			}
-		}
-	}
-
-	readonly PopupMenu PopupMenu = new(); // The menu
-	private void MoreBtn_Click(object sender, RoutedEventArgs e)
-	{
-		if (Definitions.IsMenuShown) // If the menu is visible
-		{
-			PopupMenu.Hide(); // Close
-			Definitions.IsMenuShown = false; // Is not shown
-		}
-		else
-		{
-			double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
-
-
-			PopupMenu.WindowStartupLocation = WindowStartupLocation.Manual; // Set the startup position to manual
-			PopupMenu.Left = (PointToScreen(Mouse.GetPosition(this)).X - PopupMenu.Width / 2) / factor; // Calculate the X position
-			PopupMenu.Top = PointToScreen(Mouse.GetPosition(this)).Y / factor + 5; // Calculate the Y position
-			PopupMenu.Show(); // Show
-			Definitions.IsMenuShown = true; // Is shown
 		}
 	}
 
@@ -553,35 +563,29 @@ public partial class MainWindow : Window
 		{
 			CheckedTabButton = HomeTabBtn; // Check
 		}
-		else if (PageContent.Content is LibraryPage)
+		else if (PageContent.Content is LibraryPage or GameInfoPage)
 		{
 			CheckedTabButton = LibraryTabBtn; // Check
 		}
 		else if (PageContent.Content is ProfilePage)
 		{
-			CheckedTabButton = ProfileTabBtn; // Check
+			CheckedTabButton = ProfileBtn; // Check
+		}
+		else if (PageContent.Content is RecentGamesPage)
+		{
+			CheckedTabButton = RecentTabBtn; // Check
 		}
 		CheckButton(); // Refresh
 	}
 
-	internal ProfilesPopupMenu ProfilesPopupMenu = new();
 	private void ProfileBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Definitions.IsProfileMenuVisible) // If the menu is visible
-		{
-			ProfilesPopupMenu.Hide(); // Close
-			Definitions.IsProfileMenuVisible = false; // Is not shown
-		}
-		else
-		{
-			double factor = PresentationSource.FromVisual(this).CompositionTarget.TransformToDevice.M11; // Get factor for DPI
 
-			ProfilesPopupMenu.WindowStartupLocation = WindowStartupLocation.Manual; // Set the startup position to manual
-			ProfilesPopupMenu.Left = (PointToScreen(Mouse.GetPosition(this)).X - ProfilesPopupMenu.Width / 2) / factor; // Calculate the X position
-			ProfilesPopupMenu.Top = PointToScreen(Mouse.GetPosition(this)).Y / factor + 5; // Calculate the Y position
-			ProfilesPopupMenu.Show(); // Show
-			Definitions.IsProfileMenuVisible = true; // Is shown
-		}
+		CheckedTabButton = ProfileBtn; // Set the checked button
+		CheckButton(); // Update the UI
+
+		Definitions.ProfilePage.InitUI(); // Refresh the content
+		PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
 	}
 
 	Button CheckedTabButton { get; set; }
@@ -602,32 +606,33 @@ public partial class MainWindow : Window
 		PageContent.Navigate(Definitions.LibraryPage); // Show the Library page
 	}
 
-	private void ProfileTabBtn_Click(object sender, RoutedEventArgs e)
-	{
-		CheckedTabButton = ProfileTabBtn; // Set the checked button
-		CheckButton(); // Update the UI
-
-		Definitions.ProfilePage.InitUI(); // Refresh the content
-		PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
-	}
-
 	private void HomeTabBtn_MouseLeave(object sender, MouseEventArgs e)
 	{
 		Button button = (Button)sender; // Get the button
 		if (button == CheckedTabButton)
 		{
-			button.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) };
+			button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) };
+			CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
 		}
 	}
 
 	private void CheckButton()
 	{
 		// Reset
+		HomeTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		LibraryTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		ProfileBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		RecentTabBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		SettingsBtn.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+
 		HomeTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		LibraryTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
-		ProfileTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		ProfileBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		RecentTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
+		SettingsBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 
-		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
+		CheckedTabButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
+		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
 	}
 
 	private void NotificationsBtn_Click(object sender, RoutedEventArgs e)
@@ -684,5 +689,47 @@ public partial class MainWindow : Window
 	private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 	{
 		Application.Current.Shutdown();
+	}
+
+	private void RecentTabBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CheckedTabButton = RecentTabBtn; // Set the checked button
+		CheckButton(); // Update the UI
+
+		PageContent.Navigate(Definitions.RecentGamesPage); // Show the Home page
+	}
+
+	private void SettingsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CheckedTabButton = SettingsBtn; // Set the checked button
+		CheckButton(); // Update the UI
+
+		PageContent.Navigate(Definitions.SettingsPage); // Show the Home page
+	}
+
+	private void AddBtn_Click(object sender, RoutedEventArgs e)
+	{
+		AddPopup.IsOpen = true;
+	}
+
+	private void AddGameBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(false, false).Show(); // Open the "Add Game" dialog
+		AddPopup.IsOpen = false;
+
+	}
+
+	private void AddUWPBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(true, false).Show(); // Add game
+		AddPopup.IsOpen = false;
+
+	}
+
+	private void AddSteamBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AddGame(false, true).Show(); // Add Steam Game
+		AddPopup.IsOpen = false;
+
 	}
 }

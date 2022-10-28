@@ -10,71 +10,104 @@
 
 		<StackPanel Grid.Row="1" Margin="0,0,10,0">
 			<!-- Import games section -->
-			<TextBlock Text="{x:Static lang:Resources.ImportGames}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
-			<TextBlock Text="{x:Static lang:Resources.ImportGamesDescription}" Margin="10 0 0 0" Foreground="White" FontSize="12" TextWrapping="Wrap" />
-			<Button Click="ImportButton_Click" Margin="10 10 0 10" x:Name="ImportButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Margin="0 0 5 0" Text="&#xe9ea;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
-					<TextBlock Text="{x:Static lang:Resources.Import}" FontWeight="ExtraBold" FontSize="13" />
-				</StackPanel>
-
-				<Button.ToolTip>
-					<ToolTip Content="{x:Static lang:Resources.ImportGames}" Background="#0A0A1E" Foreground="White" />
-				</Button.ToolTip>
-
-			</Button>
-
-			<!-- Export games section -->
-
-			<TextBlock Text="{x:Static lang:Resources.ExportGames}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
-			<TextBlock Text="{x:Static lang:Resources.ExportGamesDescription}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
-			<Button Click="ExportButton_Click" Margin="10 10 0 10" x:Name="ExportButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Margin="0 0 5 0" Text="&#xe931;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
-					<TextBlock Text="{x:Static lang:Resources.Export}" FontWeight="ExtraBold" FontSize="13" />
-				</StackPanel>
-
-				<Button.ToolTip>
-					<ToolTip Content="{x:Static lang:Resources.ExportGames}" Background="#0A0A1E" Foreground="White" />
-				</Button.ToolTip>
-			</Button>
-
-			<!-- Autosave section -->
-			<TextBlock Text="{x:Static lang:Resources.AutoSave}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
-			<CheckBox x:Name="MakeAutoSavesChk" Content="{x:Static lang:Resources.MakeAutoSaves}" Foreground="#fff" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="MakeAutoSavesChk_Checked" Unchecked="MakeAutoSavesChk_Unchecked" />
-
-			<StackPanel x:Name="AutoSaveSection">
-				<TextBlock Text="{x:Static lang:Resources.SaveLocation}" Foreground="#fff" Margin="10,0,0,0" />
-				<StackPanel Orientation="Horizontal">
-					<TextBlock x:Name="PathTxt" d:Text="C:\Windows" Foreground="#FFF" Margin="10,0,10,0" VerticalAlignment="Center" MaxWidth="500" />
-					<Button Click="Browse_Click" Margin="10 10 0 10" x:Name="Browse" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
+            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32" Foreground="#FFF">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xF151;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+                            <TextBlock Text="{x:Static lang:Resources.ImportGames}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
+                            <TextBlock Text="{x:Static lang:Resources.ImportGamesDescription}" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" TextWrapping="Wrap"/>
+						</StackPanel>
+					</StackPanel>
+				</Expander.Header>
+				<StackPanel>
+					<Button Click="ImportButton_Click" Margin="10 10 0 10" x:Name="ImportButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
 						<StackPanel Orientation="Horizontal">
-							<TextBlock Margin="0 0 5 0" Text="&#xEA0E;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
-							<TextBlock Text="{x:Static lang:Resources.Browse}" FontWeight="ExtraBold" FontSize="13" />
+							<TextBlock Margin="0 0 5 0" Text="&#xe9ea;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+							<TextBlock Text="{x:Static lang:Resources.Import}" FontWeight="ExtraBold" FontSize="13" />
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#0A0A1E" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.ImportGames}" Background="#0A0A1E" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
 				</StackPanel>
-				<StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Margin="10,0,0,0">
-					<TextBlock Text="{x:Static lang:Resources.AutoSaveOnDate}" Foreground="#fff" VerticalAlignment="Center" />
-					<ComboBox x:Name="SaveTime" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="White" BorderThickness="2" Padding="5" VerticalAlignment="Center" SelectionChanged="SaveTime_SelectionChanged" />
-					<TextBlock Text="{x:Static lang:Resources.OfMonth}" Foreground="#fff" VerticalAlignment="Center" />
-				</StackPanel>
+			</Expander>
 
-				<Button Click="SaveNowBtn_Click" Margin="10 10 0 10" x:Name="SaveNowBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
-					<StackPanel Orientation="Horizontal">
-						<TextBlock Margin="0 0 5 0" Text="&#xEAD3;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
-						<TextBlock Text="{x:Static lang:Resources.MakeBackup}" FontWeight="ExtraBold" FontSize="13" />
+			<!-- Export games section -->
+
+            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xF1A5;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.ExportGames}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
+							<TextBlock Text="{x:Static lang:Resources.ExportGamesDescription}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+						</StackPanel>
 					</StackPanel>
+				</Expander.Header>
+				<StackPanel>
+					<Button Click="ExportButton_Click" Margin="10 10 0 10" x:Name="ExportButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Margin="0 0 5 0" Text="&#xe931;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+							<TextBlock Text="{x:Static lang:Resources.Export}" FontWeight="ExtraBold" FontSize="13" />
+						</StackPanel>
 
-					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.MakeBackup}" Background="#0A0A1E" Foreground="White" />
-					</Button.ToolTip>
-				</Button>
-			</StackPanel>
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.ExportGames}" Background="#0A0A1E" Foreground="White" />
+						</Button.ToolTip>
+					</Button>
+				</StackPanel>
+			</Expander>
+
+			<!-- Autosave section -->
+            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xFC52;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.AutoSave}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
+							<TextBlock Text="{x:Static lang:Resources.SaveSettings}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+						</StackPanel>
+					</StackPanel>
+				</Expander.Header>
+				<StackPanel>
+					<CheckBox x:Name="MakeAutoSavesChk" Content="{x:Static lang:Resources.MakeAutoSaves}" Foreground="#fff" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="MakeAutoSavesChk_Checked" Unchecked="MakeAutoSavesChk_Unchecked" />
+
+					<StackPanel x:Name="AutoSaveSection">
+						<TextBlock Text="{x:Static lang:Resources.SaveLocation}" Foreground="#fff" Margin="10,0,0,0" />
+						<StackPanel Orientation="Horizontal">
+							<TextBlock x:Name="PathTxt" d:Text="C:\Windows" Foreground="#FFF" Margin="10,0,10,0" VerticalAlignment="Center" MaxWidth="500" />
+							<Button Click="Browse_Click" Margin="10 10 0 10" x:Name="Browse" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
+								<StackPanel Orientation="Horizontal">
+									<TextBlock Margin="0 0 5 0" Text="&#xEA0E;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+									<TextBlock Text="{x:Static lang:Resources.Browse}" FontWeight="ExtraBold" FontSize="13" />
+								</StackPanel>
+
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#0A0A1E" Foreground="White" />
+								</Button.ToolTip>
+							</Button>
+						</StackPanel>
+						<StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Margin="10,0,0,0">
+							<TextBlock Text="{x:Static lang:Resources.AutoSaveOnDate}" Foreground="#fff" VerticalAlignment="Center" />
+							<ComboBox x:Name="SaveTime" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="White" BorderThickness="2" Padding="5" VerticalAlignment="Center" SelectionChanged="SaveTime_SelectionChanged" />
+							<TextBlock Text="{x:Static lang:Resources.OfMonth}" Foreground="#fff" VerticalAlignment="Center" />
+						</StackPanel>
+
+						<Button Click="SaveNowBtn_Click" Margin="10 10 0 10" x:Name="SaveNowBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Margin="0 0 5 0" Text="&#xEAD3;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+								<TextBlock Text="{x:Static lang:Resources.MakeBackup}" FontWeight="ExtraBold" FontSize="13" />
+							</StackPanel>
+
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.MakeBackup}" Background="#0A0A1E" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+					</StackPanel>
+				</StackPanel>
+			</Expander>
 		</StackPanel>
 	</Grid>
 </Page>

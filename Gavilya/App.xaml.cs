@@ -59,6 +59,7 @@ public partial class App : Application
 
 		Definitions.LibraryPage = new();
 		Definitions.ProfilePage = new();
+		Definitions.SettingsPage = new();
 
 		if (Definitions.Settings.DefaultGavilyaHomePage is null)
 		{

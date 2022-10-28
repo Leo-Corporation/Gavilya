@@ -113,24 +113,6 @@
 						</Button.ToolTip>
 					</Button>
 
-					<StackPanel Orientation="Horizontal" Grid.Column="2">
-						<Button x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="{x:Static lang:Resources.Home}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
-							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Home}" Background="#000014" Foreground="White" />
-							</Button.ToolTip>
-						</Button>
-						<Button x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="{x:Static lang:Resources.Library}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
-							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Library}" Background="#000014" Foreground="White" />
-							</Button.ToolTip>
-						</Button>
-						<Button x:Name="ProfileTabBtn" Click="ProfileTabBtn_Click" Content="{x:Static lang:Resources.MyProfile}" Padding="5" Style="{DynamicResource ButtonMenu}" FontWeight="ExtraBold" FontSize="14" Background="Transparent" Foreground="#FFF" Margin="5 2" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave">
-							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.MyProfile}" Background="#000014" Foreground="White" />
-							</Button.ToolTip>
-						</Button>
-					</StackPanel>
-
 					<ComboBox MaxWidth="400" MaxDropDownHeight="135" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="ExtraBold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
 						<ComboBox.Style>
 							<Style TargetType="ComboBox">
@@ -147,28 +129,6 @@
 						</Button.ToolTip>
 					</Button>
 
-					<Button x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="5" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
-						<Grid>
-							<TextBlock Text="&#xE903;" />
-							<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top" />
-						</Grid>
-
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White" />
-						</Button.ToolTip>
-					</Button>
-
-					<Button x:Name="ProfileBtn" Style="{StaticResource TitleBarButtonStyle}" Padding="5" Margin="5" Background="Transparent" Click="ProfileBtn_Click" Height="35" Width="35" Grid.Column="6">
-						<Rectangle RadiusX="15" RadiusY="15" Width="30" Height="30">
-							<Rectangle.Fill>
-								<ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png" />
-							</Rectangle.Fill>
-						</Rectangle>
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Profiles}" Background="#000014" Foreground="White" />
-						</Button.ToolTip>
-					</Button>
-
 					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="#000014" Foreground="White" />
@@ -179,28 +139,142 @@
 							<ToolTip Content="{x:Static lang:Resources.Delete}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
-					<StackPanel Grid.Column="9" Orientation="Horizontal">
-						<Button Name="MoreBtn" Click="MoreBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xea6f;" FontSize="3" Grid.Column="6" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="White" BorderThickness="0" Background="Transparent">
-							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.More}" Background="#000014" Foreground="White" />
-							</Button.ToolTip>
-						</Button>
-						<Button Content="&#xe9db;" FontSize="20" Grid.Column="5" Width="10" Height="32" Foreground="#FF28283C" BorderThickness="0" Background="Transparent" FontFamily="Fonts\#FluentlyIcons" />
-					</StackPanel>
+					<TextBlock Grid.Column="9" Text="&#xe9db;" FontSize="25" Width="10" Foreground="#FF28283C" Background="Transparent" FontFamily="Fonts\#FluentlyIcons" VerticalAlignment="Center" Margin="5,0,0,0" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
 					<Button Grid.Column="10" Click="Button_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button x:Name="MaximizeButton" Grid.Column="11" Click="MaximizeButton_Click" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xFA40;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 					<Button x:Name="RestoreButton" Grid.Column="11" Click="RestoreButton_Click" Visibility="Collapsed" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xF670;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="16"></Button>
 					<Button Grid.Column="12" Click="Button_Click_2" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 				</Grid>
 			</Border>
-			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#0A0A1E">
+			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="#000014">
 				<Grid>
 					<Grid.ColumnDefinitions>
-						<ColumnDefinition />
 						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition />
 					</Grid.ColumnDefinitions>
 
-					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated"></Frame>
+					<Grid x:Name="Sidebar">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="&#xF488;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.Home}" Background="#000014" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="&#xFE7B;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="1" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.Library}" Background="#000014" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="RecentTabBtn" Click="RecentTabBtn_Click" Content="&#xF486;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="2" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#000014" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+
+						<Button x:Name="ProfileBtn" Padding="5" Style="{StaticResource ButtonMenu}" Margin="5 2" Background="Transparent" Click="ProfileBtn_Click" BorderThickness="2 0 0 0" Grid.Row="3" Height="40" Cursor="Hand">
+							<Rectangle RadiusX="15" RadiusY="15" Width="25" Height="25">
+								<Rectangle.Fill>
+									<ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png" />
+								</Rectangle.Fill>
+							</Rectangle>
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.Profiles}" Background="#000014" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+						<Grid Grid.Row="4">
+							<Button BorderThickness="2 0 0 0" Padding="5" Height="40" BorderBrush="Transparent" x:Name="AddBtn" Click="AddBtn_Click" Content="&#xF10B;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="4" FontFamily="Fonts/#FluentSystemIcons-Filled">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="#000014" Foreground="White" />
+								</Button.ToolTip>
+							</Button>
+							<Popup StaysOpen="False" x:Name="AddPopup" IsOpen="False" AllowsTransparency="True" Placement="Left" PlacementTarget="{Binding ElementName=AddBtn}">
+								<Border Padding="5" CornerRadius="5" Background="#FF1E1E32">
+									<StackPanel>
+										<Button Click="AddGameBtn_Click" Margin="5" Grid.Row="1" x:Name="AddGameBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White" HorizontalContentAlignment="Stretch">
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="Auto"/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<TextBlock Margin="0 0 5 0" Text="&#xF10D;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" FontSize="18" />
+												<TextBlock Text="{x:Static lang:Resources.Add}" VerticalAlignment="Center" Grid.Column="1" />
+											</Grid>
+
+											<Button.ToolTip>
+												<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="#000014" Foreground="White" />
+											</Button.ToolTip>
+										</Button>
+
+										<Button Click="AddUWPBtn_Click" Margin="5" Grid.Row="1" x:Name="AddUWPBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White" HorizontalContentAlignment="Stretch">
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="Auto"/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<TextBlock Margin="0 0 5 0" Text="&#xF74A;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" FontSize="18" />
+												<TextBlock Text="{x:Static lang:Resources.AddUWPGame}" VerticalAlignment="Center" Grid.Column="1" />
+											</Grid>
+
+											<Button.ToolTip>
+												<ToolTip Content="{x:Static lang:Resources.AddUWPGame}" Background="#000014" Foreground="White" />
+											</Button.ToolTip>
+										</Button>
+										<Button Click="AddSteamBtn_Click" Margin="5" Grid.Row="1" x:Name="AddSteamBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White" HorizontalContentAlignment="Stretch">
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="Auto"/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<Image Source="..\Assets\Steam.png" Height="20" Width="20" Margin="0,0,5,0" />
+												<TextBlock Text="{x:Static lang:Resources.AddSteamGame}" VerticalAlignment="Center" Grid.Column="1" />
+											</Grid>
+											<Button.ToolTip>
+												<ToolTip Content="{x:Static lang:Resources.AddSteamGame}" Background="#000014" Foreground="White" />
+											</Button.ToolTip>
+										</Button>
+									</StackPanel>
+								</Border>
+							</Popup>
+						</Grid>
+
+                        <TextBlock Grid.Row="5" Text="&#xF4E0;" FontSize="25" Foreground="#FF28283C" Background="Transparent" FontFamily="Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
+
+                        <ScrollViewer Grid.Row="6" CanContentScroll="True" VerticalScrollBarVisibility="Hidden">
+							<StackPanel x:Name="FavoriteSideBar">
+								<!-- Favorite items will display here -->
+							</StackPanel>
+						</ScrollViewer>
+
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5,2,5,5" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="7" FontFamily="Fonts/#FluentSystemIcons-Filled" BorderBrush="Transparent">
+							<Grid>
+								<TextBlock Text="&#xF115;" />
+								<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top" />
+							</Grid>
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="#000014" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="SettingsBtn" Click="SettingsBtn_Click" Content="&#xF6B3;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="8" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="#000014" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+					</Grid>
+
+					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated" Grid.Column="2"></Frame>
 
 					<!-- Notification center -->
 					<Grid Width="300" Grid.Column="1" x:Name="NotificationCenter" Visibility="Collapsed">

@@ -62,5 +62,15 @@ public enum SettingsPages
 	/// <summary>
 	/// The <see cref="Pages.SettingsPages.FpsOptionsPage"/> page.
 	/// </summary>
-	FPS
+	FPS,
+
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.AboutPage"/> page.
+	/// </summary>
+	About,
+
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.NotifOptionsPage"/> page.
+	/// </summary>
+	Notifications
 }
