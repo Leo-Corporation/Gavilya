@@ -152,7 +152,7 @@ public partial class MainWindow : Window
 	private void DisplayNotifications()
 	{
 		// Unused games notification
-		if (Definitions.Settings.UnusedGameNotification ?? true && Definitions.LeastUsedGames is not null)
+		if (Definitions.Settings.UnusedGameNotification.Value && Definitions.LeastUsedGames is not null)
 		{
 			NotificationPanel.Children.Add(
 				new NotificationItem(Properties.Resources.UnusedGameNotification,
