@@ -24,7 +24,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.Windows;
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -170,7 +170,7 @@ public partial class GameCard : UserControl
 				p.StartInfo.WorkingDirectory = Path.GetDirectoryName(location);
 				p.StartInfo.FileName = location;
 				p.Start();
-				GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+				GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 
 				Timer.Start(); // Start the timer
 
@@ -186,7 +186,7 @@ public partial class GameCard : UserControl
 			}
 
 			Process.Start("explorer.exe", location); // Start the game
-			GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+			GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 
 			Timer.Start(); // Start the timer
 
@@ -296,8 +296,8 @@ public partial class GameCard : UserControl
 			{
 				if (File.Exists(location)) // If the file exist
 				{
-					Env.ExecuteAsAdmin(location); // Start the game
-					GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+					Sys.ExecuteAsAdmin(location); // Start the game
+					GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 
 					Timer.Start(); // Start the timer
 

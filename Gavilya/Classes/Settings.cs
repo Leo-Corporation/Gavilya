@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Enums;
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -121,7 +121,7 @@ public static class SettingsSaver
 	/// </summary>
 	public static void Load()
 	{
-		string AppDataPath = Env.GetAppDataPath(); // Get %APPDATA% folder
+		string AppDataPath = FileSys.AppDataPath; // Get %APPDATA% folder
 		if (File.Exists(AppDataPath + @"\Gavilya\Settings.gavsettings"))
 		{
 			XmlSerializer xmlSerializer = new(typeof(Settings)); // XML Serializer
@@ -177,7 +177,7 @@ public static class SettingsSaver
 				CurrentProfileIndex = 0,
 				MakeAutoSave = true,
 				AutoSaveDay = 1,
-				SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
+				SavePath = $@"{FileSys.AppDataPath}\Gavilya\Backups",
 				DefaultGavilyaHomePage = GavilyaWindowPages.Home,
 				MaxNumberRecentGamesShown = 4,
 				ShowMoreUnplayedGamesRecommanded = true,
@@ -196,7 +196,7 @@ public static class SettingsSaver
 	/// </summary>
 	public static void Save()
 	{
-		string AppDataPath = Env.GetAppDataPath(); // Get %APPDATA% folder
+		string AppDataPath = FileSys.AppDataPath; // Get %APPDATA% folder
 		XmlSerializer xmlSerializer = new(Definitions.Settings.GetType()); // XML Serializer
 
 		if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist

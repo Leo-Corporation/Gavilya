@@ -23,8 +23,8 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using Gavilya.Windows;
-using LeoCorpLibrary;
 using Microsoft.Win32;
+using PeyrSharp.Env;
 using System;
 using System.IO;
 using System.Windows;
@@ -58,7 +58,7 @@ public partial class SaveOptionsPage : Page
 
 		if (Definitions.Settings.SavePath is null)
 		{
-			Definitions.Settings.SavePath = $@"{Env.AppDataPath}\Gavilya\Backups"; // Set value
+			Definitions.Settings.SavePath = $@"{FileSys.AppDataPath}\Gavilya\Backups"; // Set value
 		}
 
 		SettingsSaver.Save(); // Save changes

@@ -52,7 +52,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "3.0.0.2210";
+	public static string Version => "3.0.1.2211";
 
 	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)
@@ -63,6 +63,8 @@ public static class Definitions
 	/// Contains the least used game(s).
 	/// </summary>
 	public static Dictionary<GameInfo, GameCard> LeastUsedGames { get; set; }
+
+	public static string CurrentAppDirectory => Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
 	public static string BetaVersion
 	{

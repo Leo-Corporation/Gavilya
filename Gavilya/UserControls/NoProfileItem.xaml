@@ -3,16 +3,6 @@
 		<StackPanel>
 			<TextBlock Text="{x:Static lang:Resources.NoProfilesFound}" FontSize="18" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 			<TextBlock Text="{x:Static lang:Resources.CreateAProfile}" HorizontalAlignment="Center" />
-			<Button x:Name="CreateProfileBtn" Click="CreateProfileBtn_Click" Padding="5" Margin="10" Foreground="#FFF" Style="{StaticResource RegularButton}" HorizontalAlignment="Center" Background="#FF0A0A1E">
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="&#xE901;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
-					<TextBlock Text="{x:Static lang:Resources.AddProfile}" Margin="5 0 0 0" VerticalAlignment="Center" />
-				</StackPanel>
-
-				<Button.ToolTip>
-					<ToolTip Content="{x:Static lang:Resources.AddProfile}" Background="#000014" Foreground="White" />
-				</Button.ToolTip>
-			</Button>
 		</StackPanel>
 	</Grid>
 </UserControl>

@@ -23,7 +23,6 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
-using LeoCorpLibrary;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -69,7 +68,7 @@ public partial class FpsOptionsPage : Page
 			// Restart the app
 			var proc2 = new Process();
 			proc2.StartInfo.FileName = "cmd.exe";
-			proc2.StartInfo.Arguments = $"/c \"{Env.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}";
+			proc2.StartInfo.Arguments = $"/c \"{Definitions.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}";
 			proc2.StartInfo.UseShellExecute = false;
 			proc2.StartInfo.CreateNoWindow = true;
 			proc2.Start();

@@ -24,14 +24,13 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.UserControls;
 using Gavilya.Windows;
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
@@ -200,7 +199,7 @@ public partial class GameInfoPage : Page
 
 				if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 				{
-					gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+					gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 					GameSaver.Save(Definitions.Games); // Save the changes
 
 					gameCard.Timer.Start(); // Start the timer
@@ -210,7 +209,7 @@ public partial class GameInfoPage : Page
 				}
 				else if (parentUIElement is GameItem gameItem) // Create a game item
 				{
-					gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+					gameItem.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 					Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
 					GameSaver.Save(Definitions.Games); // Save the changes
 
@@ -230,7 +229,7 @@ public partial class GameInfoPage : Page
 
 			if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 			{
-				gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+				gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 				GameSaver.Save(Definitions.Games); // Save the changes
 
 				gameCard.Timer.Start(); // Start the timer
@@ -240,7 +239,7 @@ public partial class GameInfoPage : Page
 			}
 			else if (parentUIElement is GameItem gameItem) // Create a game item
 			{
-				gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+				gameItem.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 				Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
 				GameSaver.Save(Definitions.Games); // Save the changes
 
@@ -328,8 +327,8 @@ public partial class GameInfoPage : Page
 
 		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
-		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
-		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
+		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
+		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
 
 		AboutPage.Visibility = Visibility.Visible; // Change visibility
 		RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
@@ -342,8 +341,8 @@ public partial class GameInfoPage : Page
 
 		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
-		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
-		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
+		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
+		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
 
 		AboutPage.Visibility = Visibility.Collapsed; // Change visibility
 		RatingsPage.Visibility = Visibility.Visible; // Change visibility 
@@ -433,7 +432,7 @@ public partial class GameInfoPage : Page
 		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 
 		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
-		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color
+		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
 
 		AboutPage.Visibility = Visibility.Collapsed; // Change visibility
 		RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
@@ -460,12 +459,12 @@ public partial class GameInfoPage : Page
 			{
 				if (File.Exists(gameLocation)) // If the file exist
 				{
-					Env.ExecuteAsAdmin(gameLocation); // Start the game
+					Sys.ExecuteAsAdmin(gameLocation); // Start the game
 													  // Create a game card
 
 					if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 					{
-						gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+						gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 						GameSaver.Save(Definitions.Games); // Save the changes
 
 						gameCard.Timer.Start(); // Start the timer
@@ -475,7 +474,7 @@ public partial class GameInfoPage : Page
 					}
 					else if (parentUIElement is GameItem gameItem) // Create a game item
 					{
-						gameItem.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+						gameItem.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 						Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
 						GameSaver.Save(Definitions.Games); // Save the changes
 
