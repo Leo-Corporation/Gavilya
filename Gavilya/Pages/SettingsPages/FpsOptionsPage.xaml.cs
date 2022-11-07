@@ -23,7 +23,6 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
-using PeyrSharp.Env;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;

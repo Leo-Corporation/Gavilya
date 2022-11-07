@@ -23,7 +23,6 @@ SOFTWARE.
 */
 using Gavilya.SDK.RAWG;
 using Microsoft.Win32;
-using PeyrSharp.Core;
 using PeyrSharp.Env;
 using RestSharp;
 using System;

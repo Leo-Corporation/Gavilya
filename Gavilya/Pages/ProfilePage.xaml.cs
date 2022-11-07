@@ -236,8 +236,8 @@ public partial class ProfilePage : Page
 	internal void RefreshTabUI()
 	{
 		SpotlightTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
-		FavoriteTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color 
-		BadgesTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60)}; // Change color 
+		FavoriteTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		BadgesTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
 
 		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 	}
