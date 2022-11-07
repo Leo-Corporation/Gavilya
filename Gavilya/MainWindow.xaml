@@ -199,7 +199,7 @@
 									<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="#000014" Foreground="White" />
 								</Button.ToolTip>
 							</Button>
-							<Popup StaysOpen="False" x:Name="AddPopup" IsOpen="False" AllowsTransparency="True" Placement="Left" PlacementTarget="{Binding ElementName=AddBtn}">
+							<Popup StaysOpen="False" x:Name="AddPopup" IsOpen="False" AllowsTransparency="True" Placement="Left" PlacementTarget="{Binding ElementName=AddBtn}" PopupAnimation="Fade">
 								<Border Padding="5" CornerRadius="5" Background="#FF1E1E32">
 									<StackPanel>
 										<Button Click="AddGameBtn_Click" Margin="5" Grid.Row="1" x:Name="AddGameBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White" HorizontalContentAlignment="Stretch">
@@ -249,9 +249,9 @@
 							</Popup>
 						</Grid>
 
-                        <TextBlock Grid.Row="5" Text="&#xF4E0;" FontSize="25" Foreground="#FF28283C" Background="Transparent" FontFamily="Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
+						<TextBlock Grid.Row="5" Text="&#xF4E0;" FontSize="25" Foreground="#FF28283C" Background="Transparent" FontFamily="Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
 
-                        <ScrollViewer Grid.Row="6" CanContentScroll="True" VerticalScrollBarVisibility="Hidden">
+						<ScrollViewer Grid.Row="6" CanContentScroll="True" VerticalScrollBarVisibility="Hidden">
 							<StackPanel x:Name="FavoriteSideBar">
 								<!-- Favorite items will display here -->
 							</StackPanel>
