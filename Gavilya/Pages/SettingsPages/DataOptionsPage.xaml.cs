@@ -24,7 +24,7 @@ SOFTWARE.
 
 using Gavilya.Classes;
 using Gavilya.Enums;
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -56,7 +56,7 @@ public partial class DataOptionsPage : Page
 				CurrentProfileIndex = 0,
 				MakeAutoSave = true,
 				AutoSaveDay = 1,
-				SavePath = $@"{Env.AppDataPath}\Gavilya\Backups",
+				SavePath = $@"{FileSys.AppDataPath}\Gavilya\Backups",
 				DefaultGavilyaHomePage = GavilyaWindowPages.Home,
 				MaxNumberRecentGamesShown = 4,
 				ShowMoreUnplayedGamesRecommanded = true,

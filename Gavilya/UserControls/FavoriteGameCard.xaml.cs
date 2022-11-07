@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -114,7 +114,7 @@ public partial class FavoriteGameCard : UserControl
 
 				if (parentElement is GameCard gameCard)
 				{
-					gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
+					gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Get the current unix time
 					GameSaver.Save(Definitions.Games); // Save the changes
 
 					Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
@@ -133,7 +133,7 @@ public partial class FavoriteGameCard : UserControl
 
 			if (parentElement is GameCard gameCard)
 			{
-				gameCard.GameInfo.LastTimePlayed = Env.GetUnixTime(); // Get the current unix time
+				gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Get the current unix time
 				GameSaver.Save(Definitions.Games); // Save the changes
 
 				Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations

@@ -27,8 +27,9 @@ using Gavilya.Pages;
 using Gavilya.UserControls;
 using Gavilya.Windows;
 using Gma.System.MouseKeyHook;
-using LeoCorpLibrary;
-using LeoCorpLibrary.Enums;
+using PeyrSharp.Core;
+using PeyrSharp.Enums;
+using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -124,7 +125,7 @@ public partial class MainWindow : Window
 		{
 			var proc = new Process();
 			proc.StartInfo.FileName = "cmd.exe";
-			proc.StartInfo.Arguments = !Definitions.IsFpsToggled ? $"/c \"{Env.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}" : "/c taskkill /f /im Gavilya.Fps.exe";
+			proc.StartInfo.Arguments = !Definitions.IsFpsToggled ? $"/c \"{Definitions.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}" : "/c taskkill /f /im Gavilya.Fps.exe";
 			proc.StartInfo.UseShellExecute = false;
 			proc.StartInfo.CreateNoWindow = true;
 			proc.Start();
@@ -137,7 +138,7 @@ public partial class MainWindow : Window
 		Hook.GlobalEvents().OnCombination(assignment);
 
 		// Add Popup
-		if (Env.WindowsVersion != WindowsVersion.Windows10 && Env.WindowsVersion != WindowsVersion.Windows11)
+		if (Sys.CurrentWindowsVersion != WindowsVersion.Windows10 && Sys.CurrentWindowsVersion != WindowsVersion.Windows11)
 		{
 			AddUWPBtn.Visibility = Visibility.Collapsed; // Hide
 		}
@@ -166,7 +167,7 @@ public partial class MainWindow : Window
 	{
 		if (!(Definitions.Settings.UpdatesAvNotification ?? true)) return;
 
-		if (await NetworkConnection.IsAvailableAsync())
+		if (await Internet.IsAvailableAsync())
 		{
 			notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe");
 			notifyIcon.BalloonTipClicked += (o, e) =>
@@ -323,11 +324,13 @@ public partial class MainWindow : Window
 	{
 		DropShadowEffect dropShadowEffect = new(); // Shadow Effect
 
-		Color color = new(); // Color of the shadow
-		color.ScA = 1; // Alpha
-		color.ScR = 0; // Red
-		color.ScG = 0; // Green
-		color.ScB = 0; // Blue
+		Color color = new()
+		{
+			ScA = 1, // Alpha
+			ScR = 0, // Red
+			ScG = 0, // Green
+			ScB = 0 // Blue
+		}; // Color of the shadow
 
 		dropShadowEffect.Color = color; // Put the shadow color
 		dropShadowEffect.Direction = 315; // Direction of the shadow
@@ -344,11 +347,12 @@ public partial class MainWindow : Window
 	/// <param name="uIElement">The <see cref="UIElement"/> to remove the shadow to.</param>
 	private static void RemoveShadowElement(UIElement uIElement)
 	{
-		DropShadowEffect dropShadowEffect = new(); // Shadow Effect
-
-		dropShadowEffect.ShadowDepth = 0; // Put the shadow depth to 0
-		dropShadowEffect.BlurRadius = 0; // Put the blur radius to 5
-		dropShadowEffect.Color = Color.FromArgb(0, 0, 0, 0); // Put the color of the shadow to transparent
+		DropShadowEffect dropShadowEffect = new()
+		{
+			ShadowDepth = 0, // Put the shadow depth to 0
+			BlurRadius = 0, // Put the blur radius to 5
+			Color = Color.FromArgb(0, 0, 0, 0) // Put the color of the shadow to transparent
+		}; // Shadow Effect
 
 		uIElement.Effect = dropShadowEffect; // Put the effect as the drop shadow
 	}
@@ -479,7 +483,7 @@ public partial class MainWindow : Window
 						}
 						foreach (FavoriteSideBarItem favoriteSideBarItem1 in favoriteSideBarItems)
 						{
-							if (favoriteSideBarItem1.Parent is GameCard && (GameCard)favoriteSideBarItem1.Parent == gameCard1)
+							if (favoriteSideBarItem1.Parent is GameCard card && card == gameCard1)
 							{
 								Definitions.MainWindow.FavoriteSideBar.Children.Remove(favoriteSideBarItem1);
 							}

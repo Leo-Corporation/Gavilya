@@ -23,8 +23,8 @@ SOFTWARE.
 */
 using Gavilya.Classes;
 using Gavilya.Enums;
-using LeoCorpLibrary;
 using Microsoft.Win32;
+using PeyrSharp.Env;
 using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
@@ -99,7 +99,7 @@ public partial class AddEditProfileWindow : Window
 
 				Random random = new();
 				CurrentProfile.Name = nameTxt.Text;
-				CurrentProfile.SaveFilePath = $@"{Env.AppDataPath}\Gavilya\Games-{CurrentProfile.Name}-{random.Next(0, 9999999)}.gav";
+				CurrentProfile.SaveFilePath = $@"{FileSys.AppDataPath}\Gavilya\Games-{CurrentProfile.Name}-{random.Next(0, 9999999)}.gav";
 				Definitions.Profiles.Add(CurrentProfile); // Add profile
 			}
 			ProfileManager.SaveProfiles();

@@ -22,8 +22,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.SDK.RAWG;
-using LeoCorpLibrary;
 using Microsoft.Win32;
+using PeyrSharp.Core;
+using PeyrSharp.Env;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -84,32 +85,32 @@ public static class Global
 
 				int gameID = gameResults.results[0].id; // Get the firts result's id
 
-				if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+				if (!Directory.Exists(FileSys.AppDataPath + @"\Gavilya\Games")) // If the directory doesn't exist
 				{
-					Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the directory
+					Directory.CreateDirectory(FileSys.AppDataPath + @"\Gavilya\Games"); // Create the directory
 				}
 
-				if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{gameID}")) // If the directory doesn't exist
+				if (!Directory.Exists(FileSys.AppDataPath + @$"\Gavilya\games\{gameID}")) // If the directory doesn't exist
 				{
-					Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}"); // Create the game directory
+					Directory.CreateDirectory(FileSys.AppDataPath + $@"\Gavilya\Games\{gameID}"); // Create the game directory
 				}
 				else
 				{
-					if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg")) // If the image exist
+					if (File.Exists(FileSys.AppDataPath + $@"\Gavilya\Games\{gameID}\bg_img.jpg")) // If the image exist
 					{
-						return Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg";
+						return FileSys.AppDataPath + $@"\Gavilya\Games\{gameID}\bg_img.jpg";
 					}
 					else
 					{
-						await NetworkConnection.DownloadFileAsync(new Uri(gameResults.results[0].background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the image
+						await DownloadFileAsync(new Uri(gameResults.results[0].background_image), FileSys.AppDataPath + $@"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the image
 
-						return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the result
+						return FileSys.AppDataPath + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the result
 					}
 				}
 
-				await NetworkConnection.DownloadFileAsync(new Uri(gameResults.results[0].background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the image
+				await DownloadFileAsync(new Uri(gameResults.results[0].background_image), FileSys.AppDataPath + $@"\Gavilya\Games\{gameID}\bg_img.jpg"); // Download the image
 
-				return Env.GetAppDataPath() + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the path
+				return FileSys.AppDataPath + @$"\Gavilya\Games\{gameID}\bg_img.jpg"; // Return the path
 			}
 			else // If there isn't any results
 			{
@@ -159,36 +160,36 @@ public static class Global
 				strId = "1"; // Set text
 			}
 
-			if (!Directory.Exists(Env.GetAppDataPath() + @"\Gavilya\Games")) // If the directory doesn't exist
+			if (!Directory.Exists(FileSys.AppDataPath + @"\Gavilya\Games")) // If the directory doesn't exist
 			{
-				Directory.CreateDirectory(Env.GetAppDataPath() + @"\Gavilya\Games"); // Create the direspctory
+				Directory.CreateDirectory(FileSys.AppDataPath + @"\Gavilya\Games"); // Create the direspctory
 			}
 
-			if (!Directory.Exists(Env.GetAppDataPath() + @$"\Gavilya\games\{id}")) // If the directory doesn't exist
+			if (!Directory.Exists(FileSys.AppDataPath + @$"\Gavilya\games\{id}")) // If the directory doesn't exist
 			{
-				Directory.CreateDirectory(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}"); // Create the game directory
+				Directory.CreateDirectory(FileSys.AppDataPath + $@"\Gavilya\Games\{id}"); // Create the game directory
 			}
 			else
 			{
-				if (File.Exists(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg")) // If the image exist
+				if (File.Exists(FileSys.AppDataPath + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg")) // If the image exist
 				{
-					File.Delete(Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg");
+					File.Delete(FileSys.AppDataPath + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg");
 				}
 				if (screenshotId == 0)
 				{
-					await NetworkConnection.DownloadFileAsync(new Uri(game.background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
+					await DownloadFileAsync(new Uri(game.background_image), FileSys.AppDataPath + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
 				}
 				else
 				{
-					await NetworkConnection.DownloadFileAsync(new Uri(game.background_image_additional), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
+					await DownloadFileAsync(new Uri(game.background_image_additional), FileSys.AppDataPath + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
 				}
 
-				return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"; // Return the result
+				return FileSys.AppDataPath + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"; // Return the result
 			}
 
-			await NetworkConnection.DownloadFileAsync(new Uri(game.background_image), Env.GetAppDataPath() + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
+			await DownloadFileAsync(new Uri(game.background_image), FileSys.AppDataPath + $@"\Gavilya\Games\{id}\bg_img{strId}.jpg"); // Download the image
 
-			return Env.GetAppDataPath() + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"; // Return the result
+			return FileSys.AppDataPath + @$"\Gavilya\Games\{id}\bg_img{strId}.jpg"; // Return the result
 		}
 		catch (Exception ex)
 		{
@@ -785,7 +786,7 @@ public static class Global
 			process.Start();
 			await process.WaitForExitAsync();
 
-			string text = await File.ReadAllTextAsync($@"{Env.AppDataPath}\Gavilya\UWPapps.json"); // Deserialize
+			string text = await File.ReadAllTextAsync($@"{FileSys.AppDataPath}\Gavilya\UWPapps.json"); // Deserialize
 
 			List<SDK.UwpApp> apps = JsonSerializer.Deserialize<List<SDK.UwpApp>>(text); // Get apps
 			List<SDK.UwpApp> sortedApps = new(); // Create final list
@@ -860,12 +861,11 @@ public static class Global
 			}
 
 			// Check if Steam is not running
-			if (!Env.IsProcessRunning("Steam"))
+			if (!Sys.RunningProcessesNames.ToList().Contains("Steam"))
 			{
 				// Show a message box
 				MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
 				return false; // Return false, Steam cannot launch game.
-
 			}
 		}
 		catch
@@ -874,5 +874,12 @@ public static class Global
 		}
 
 		return true; // Return true, Steam can launch game.
+	}
+
+	public static async Task DownloadFileAsync(Uri uri, string filePath)
+	{
+		using var s = await new System.Net.Http.HttpClient().GetStreamAsync(uri);
+		using var fs = new FileStream(filePath, FileMode.CreateNew);
+		await s.CopyToAsync(fs);
 	}
 }

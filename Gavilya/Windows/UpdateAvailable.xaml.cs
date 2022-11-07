@@ -22,7 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System;
 using System.IO;
 using System.Windows;
@@ -54,7 +54,7 @@ public partial class UpdateAvailable : Window
 	{
 		if (File.Exists(AppDomain.CurrentDomain.BaseDirectory + @"\Xalyus Updater.exe")) // If Xalyus Updater exist
 		{
-			Env.ExecuteAsAdmin(AppDomain.CurrentDomain.BaseDirectory + @"\Xalyus Updater.exe"); // Launch the updater
+			Sys.ExecuteAsAdmin(AppDomain.CurrentDomain.BaseDirectory + @"\Xalyus Updater.exe"); // Launch the updater
 			Environment.Exit(0); // Close Gavilya
 		}
 		else

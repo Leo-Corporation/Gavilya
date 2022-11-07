@@ -64,6 +64,8 @@ public static class Definitions
 	/// </summary>
 	public static Dictionary<GameInfo, GameCard> LeastUsedGames { get; set; }
 
+	public static string CurrentAppDirectory => Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
 	public static string BetaVersion
 	{
 		get

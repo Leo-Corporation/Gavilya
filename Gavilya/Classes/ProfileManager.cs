@@ -21,7 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
@@ -45,7 +45,7 @@ public static class ProfileManager
 				{
 					Name = Global.UserName,
 					PictureFilePath = "_default",
-					SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
+					SaveFilePath = FileSys.AppDataPath + @"\Gavilya\Games.gav"
 				});
 		}
 		else
@@ -56,7 +56,7 @@ public static class ProfileManager
 				{
 					Name = Global.UserName,
 					PictureFilePath = "_default",
-					SaveFilePath = Env.AppDataPath + @"\Gavilya\Games.gav"
+					SaveFilePath = FileSys.AppDataPath + @"\Gavilya\Games.gav"
 				}
 			};
 		}
@@ -67,7 +67,7 @@ public static class ProfileManager
 	/// </summary>
 	public static void SaveProfiles()
 	{
-		string AppDataPath = Env.AppDataPath; // Get %APPDATA% folder
+		string AppDataPath = FileSys.AppDataPath; // Get %APPDATA% folder
 		XmlSerializer xmlSerializer = new(Definitions.Profiles.GetType()); // XML Serializer
 
 		if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
@@ -86,7 +86,7 @@ public static class ProfileManager
 	/// </summary>
 	public static void LoadProfiles()
 	{
-		string AppDataPath = Env.AppDataPath; // Get %APPDATA% folder
+		string AppDataPath = FileSys.AppDataPath; // Get %APPDATA% folder
 		if (File.Exists(AppDataPath + @"\Gavilya\Profiles.gavprofiles"))
 		{
 			XmlSerializer xmlSerializer = new(typeof(List<Profile>)); // XML Serializer

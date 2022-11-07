@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
-using LeoCorpLibrary;
 using Microsoft.Win32;
+using PeyrSharp.Core;
 using System;
 using System.IO;
 using System.Windows;
@@ -96,7 +96,7 @@ public partial class ImportGameItem : UserControl
 
 	private async void GetRAWGImageBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (await NetworkConnection.IsAvailableAsync())
+		if (await Internet.IsAvailableAsync())
 		{
 			GameInfo.IconFileLocation = await Global.GetCoverImageAsync(GameInfo.RAWGID); // Set path
 			InitUI(); // Refresh the UI 

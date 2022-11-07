@@ -23,7 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
-using LeoCorpLibrary;
+using PeyrSharp.Env;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -130,7 +130,7 @@ public partial class GameItem : UserControl
 				Process.Start("explorer.exe", GameInfo.FileLocation); // Start the game
 			}
 
-			GameInfo.LastTimePlayed = Env.GetUnixTime(); // Set the last time played
+			GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
 			Definitions.Games[Definitions.Games.IndexOf(GameInfo)].LastTimePlayed = GameInfo.LastTimePlayed; // Update the games
 			GameSaver.Save(Definitions.Games); // Save the changes
 
