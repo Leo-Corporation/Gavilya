@@ -860,7 +860,7 @@ public static class Global
 			}
 
 			// Check if Steam is not running
-			if (!Sys.RunningProcessesNames.ToList().Contains("Steam"))
+			if (!IsProcessRunning("Steam"))
 			{
 				// Show a message box
 				MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
