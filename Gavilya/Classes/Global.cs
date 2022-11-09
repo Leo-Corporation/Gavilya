@@ -700,9 +700,7 @@ public static class Global
 				{
 					Title = Definitions.Games[i].Name,
 					Arguments = $"{Definitions.Games[i].FileLocation}",
-					Description = string.IsNullOrEmpty(Definitions.Games[i].Description) && Definitions.Games[i].Description.Length > 121
-						? Definitions.Games[i].Description[0..120].Replace("\n\n", "\n") + "..."
-						: Definitions.Games[i].Description,
+					Description = Definitions.Games[i].FileLocation,
 					CustomCategory = Properties.Resources.Favorites,
 					IconResourcePath = isExe ? Definitions.Games[i].FileLocation : Assembly.GetEntryAssembly().Location,
 					ApplicationPath = "explorer.exe"
