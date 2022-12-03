@@ -3,7 +3,7 @@
 ![GitHub issues](https://img.shields.io/github/issues/Leo-Corporation/Gavilya)
 ![GitHub](https://img.shields.io/github/license/Leo-Corporation/Gavilya)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Leo-Corporation/Gavilya/.NET%20Core%20Desktop)
-![Using LeoCorpLibrary](https://img.shields.io/badge/using-LeoCorpLibrary-blue)
+![Using PeyrSharp](https://img.shields.io/badge/using-PeyrSharp-DD00FF?logo=nuget)
 <br />
 <p align="center">
   <a href="https://github.com/Leo-Corporation/Gavilya">
