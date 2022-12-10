@@ -906,4 +906,28 @@
   <data name="SelectNotification" xml:space="preserve">
     <value>Sélectionnez les notifications que vous souhaitez recevoir dans le centre de notification.</value>
   </data>
+  <data name="GameTags" xml:space="preserve">
+    <value>Libellés de jeux</value>
+  </data>
+  <data name="ManageGameTags" xml:space="preserve">
+    <value>Créez, modifiez ou supprimez vos libellés de jeu.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Ajouter un libellé</value>
+  </data>
+  <data name="DeleteTag" xml:space="preserve">
+    <value>Supprimer ce libellé</value>
+  </data>
+  <data name="DeleteTagMsg" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir supprimer ce libellé ? Cette opération supprimera son affectation aux jeux attribués.</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="NameNeededMsg" xml:space="preserve">
+    <value>Veuillez spécifier un nom.</value>
+  </data>
+  <data name="AssociateTags" xml:space="preserve">
+    <value>Associer des libellés</value>
+  </data>
 </root>

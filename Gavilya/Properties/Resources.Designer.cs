@@ -151,6 +151,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a tag.
+        /// </summary>
+        public static string AddTag {
+            get {
+                return ResourceManager.GetString("AddTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Microsoft Store game.
         /// </summary>
         public static string AddUWPGame {
@@ -246,6 +255,15 @@ namespace Gavilya.Properties {
         public static string AssociateGame {
             get {
                 return ResourceManager.GetString("AssociateGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Associate tags.
+        /// </summary>
+        public static string AssociateTags {
+            get {
+                return ResourceManager.GetString("AssociateTags", resourceCulture);
             }
         }
         
@@ -372,6 +390,15 @@ namespace Gavilya.Properties {
         public static string Close {
             get {
                 return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color.
+        /// </summary>
+        public static string Color {
+            get {
+                return ResourceManager.GetString("Color", resourceCulture);
             }
         }
         
@@ -543,6 +570,24 @@ namespace Gavilya.Properties {
         public static string DeleteProfileMsg {
             get {
                 return ResourceManager.GetString("DeleteProfileMsg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete this tag.
+        /// </summary>
+        public static string DeleteTag {
+            get {
+                return ResourceManager.GetString("DeleteTag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this tag? This will remove its association with the assigned games..
+        /// </summary>
+        public static string DeleteTagMsg {
+            get {
+                return ResourceManager.GetString("DeleteTagMsg", resourceCulture);
             }
         }
         
@@ -840,6 +885,15 @@ namespace Gavilya.Properties {
         public static string GamesL {
             get {
                 return ResourceManager.GetString("GamesL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game tags.
+        /// </summary>
+        public static string GameTags {
+            get {
+                return ResourceManager.GetString("GameTags", resourceCulture);
             }
         }
         
@@ -1224,6 +1278,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Create, edit or remove your game tags..
+        /// </summary>
+        public static string ManageGameTags {
+            get {
+                return ResourceManager.GetString("ManageGameTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Max number of games shown in the &quot;Recent&quot; section..
         /// </summary>
         public static string MaxNumberOfRecentGames {
@@ -1319,6 +1382,15 @@ namespace Gavilya.Properties {
         public static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please specify a name..
+        /// </summary>
+        public static string NameNeededMsg {
+            get {
+                return ResourceManager.GetString("NameNeededMsg", resourceCulture);
             }
         }
         
