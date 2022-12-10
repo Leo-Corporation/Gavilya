@@ -21,6 +21,6 @@
 				<ToolTip Content="{x:Static lang:Resources.Edit}" Background="#0A0A1E" Foreground="White" />
 			</Button.ToolTip>
 		</Button>
-		<Button Content="&#xF34D;" Click="EditBtn_Click" Margin="10 10 0 10" x:Name="DeleteBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
+		<Button Content="&#xF34D;" Click="DeleteBtn_Click" Margin="10 10 0 10" x:Name="DeleteBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>
 	</StackPanel>
 </UserControl>

@@ -88,4 +88,16 @@ public partial class EditTagItem : UserControl
 			ForegroundBorder.Background = color;			
 		}
 	}
+
+	private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+	{
+		if (MessageBox.Show(Properties.Resources.DeleteTagMsg, Properties.Resources.DeleteTag, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+		{
+			//TODO: Remove tag from all associated games
+			Definitions.Settings.GameTags.RemoveAt(ID);
+			SettingsSaver.Save();
+
+			Parent.InitUI();
+		}
+	}
 }
