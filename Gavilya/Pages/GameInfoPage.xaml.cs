@@ -172,6 +172,13 @@ public partial class GameInfoPage : Page
 
 			// Achievments
 			LoadAchievements();
+
+			// Tags
+			TagsDisplayer.Children.Clear();
+			for (int i = 0; i < gameInfo.AssociatedTags.Count; i++)
+			{
+				TagsDisplayer.Children.Add(new TagItem(gameInfo.AssociatedTags[i]));
+			}
 		}
 		catch (Exception)
 		{
