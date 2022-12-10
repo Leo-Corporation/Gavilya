@@ -48,6 +48,7 @@ public partial class GamesOptionsPage : Page
 	{
 		// Load tags
 		TagsDisplayer.Children.Clear();
+		NameTextBox.Text = "";
 		for (int i = 0; i < Definitions.Settings.GameTags.Count; i++)
 		{
 			TagsDisplayer.Children.Add(new EditTagItem(Definitions.Settings.GameTags[i], i, this));
