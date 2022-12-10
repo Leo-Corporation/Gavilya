@@ -65,6 +65,7 @@ public partial class AssociateTags : Window
 			for (int j = 0; j < GameInfo.AssociatedTags.Count; j++)
 			{
 				check = GameInfo.AssociatedTags[j].Guid == Definitions.Settings.GameTags[i].Guid;
+				if (check) break;				
 			}
 			TagsDisplayer.Children.Add(new TagSelectItem(Definitions.Settings.GameTags[i], check));
 		}
