@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.Enums;
 using PeyrSharp.Env;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
 
@@ -112,6 +113,11 @@ public class Settings
 	/// True if Gavilya should show a reminder to the user when a game is unused.
 	/// </summary>
 	public bool? UnusedGameNotification { get; set; }
+
+	/// <summary>
+	/// The global game tags available for the user.
+	/// </summary>
+	public List<GameTag> GameTags { get; set; }
 }
 
 public static class SettingsSaver
@@ -164,6 +170,8 @@ public static class SettingsSaver
 				Definitions.Settings.UnusedGameNotification = true;
 			}
 
+			Definitions.Settings.GameTags ??= new();
+
 			streamReader.Dispose();
 		}
 		else
@@ -185,7 +193,8 @@ public static class SettingsSaver
 				NumberOfSearchResultsToDisplay = 3,
 				FpsCounterOpacity = 1,
 				UpdatesAvNotification = true,
-				UnusedGameNotification = true
+				UnusedGameNotification = true,
+				GameTags = new()
 			};
 			Save();
 		}

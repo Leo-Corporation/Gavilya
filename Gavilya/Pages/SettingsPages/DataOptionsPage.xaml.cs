@@ -64,7 +64,8 @@ public partial class DataOptionsPage : Page
 				NumberOfSearchResultsToDisplay = 3,
 				FpsCounterOpacity = 1,
 				UpdatesAvNotification = true,
-				UnusedGameNotification = true
+				UnusedGameNotification = true,
+				GameTags = new()
 			};
 
 			SettingsSaver.Save(); // Save changes
