@@ -68,6 +68,20 @@ public partial class EditTagItem : UserControl
 
 		Definitions.Settings.GameTags[ID] = GameTag;
 		SettingsSaver.Save();
+
+		for (int i = 0; i < Definitions.Games.Count; i++)
+		{
+			for (int j = 0; j < Definitions.Games[i].AssociatedTags.Count; i++)
+			{
+				if (Definitions.Games[i].AssociatedTags[j].Guid == Definitions.Settings.GameTags[ID].Guid)
+				{
+					Definitions.Games[i].AssociatedTags[j] = GameTag;
+					break;
+				}
+			}
+		}
+		GameSaver.Save(Definitions.Games);
+
 		Parent.InitUI();
 	}
 
@@ -93,10 +107,21 @@ public partial class EditTagItem : UserControl
 	{
 		if (MessageBox.Show(Properties.Resources.DeleteTagMsg, Properties.Resources.DeleteTag, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
-			//TODO: Remove tag from all associated games
+			for (int i = 0; i < Definitions.Games.Count; i++)
+			{
+				for (int j = 0; j < Definitions.Games[i].AssociatedTags.Count; i++)
+				{
+					if (Definitions.Games[i].AssociatedTags[j].Guid == Definitions.Settings.GameTags[ID].Guid)
+					{
+						Definitions.Games[i].AssociatedTags.RemoveAt(j);
+						break;
+					}
+				}
+			}
+
 			Definitions.Settings.GameTags.RemoveAt(ID);
 			SettingsSaver.Save();
-
+			GameSaver.Save(Definitions.Games);
 			Parent.InitUI();
 		}
 	}

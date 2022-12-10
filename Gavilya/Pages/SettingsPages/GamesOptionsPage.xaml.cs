@@ -71,6 +71,7 @@ public partial class GamesOptionsPage : Page
 			return;
 		}
 		Definitions.Settings.GameTags.Add(new(NameTextBox.Text, hexColor));
+		SettingsSaver.Save();
 
 		InitUI();
 	}
