@@ -99,7 +99,7 @@ public partial class EditTagItem : UserControl
 			RGB rgb = new(colorDialog.Color);
 			GameTag.Color = rgb.ToHex().Value;
 
-			ForegroundBorder.Background = color;			
+			ForegroundBorder.Background = color;
 		}
 	}
 

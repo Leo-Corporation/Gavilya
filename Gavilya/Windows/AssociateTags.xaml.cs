@@ -25,20 +25,8 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Pages;
 using Gavilya.UserControls;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Gavilya.Windows;
 /// <summary>
@@ -65,7 +53,7 @@ public partial class AssociateTags : Window
 			for (int j = 0; j < GameInfo.AssociatedTags.Count; j++)
 			{
 				check = GameInfo.AssociatedTags[j].Guid == Definitions.Settings.GameTags[i].Guid;
-				if (check) break;				
+				if (check) break;
 			}
 			TagsDisplayer.Children.Add(new TagSelectItem(Definitions.Settings.GameTags[i], check));
 		}
@@ -74,7 +62,7 @@ public partial class AssociateTags : Window
 	private void CloseBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Close();
-    }
+	}
 
 	private void SelectBtn_Click(object sender, RoutedEventArgs e)
 	{
@@ -89,5 +77,5 @@ public partial class AssociateTags : Window
 		GameInfo.AssociatedTags = tags;
 		AddEditPage2.GameCard.GameInfo = GameInfo;
 		Close();
-    }
+	}
 }

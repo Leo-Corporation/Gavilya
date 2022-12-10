@@ -229,5 +229,5 @@ public partial class AddEditPage2 : Page
 	private void AddTagsBtn_Click(object sender, RoutedEventArgs e)
 	{
 		new AssociateTags(this).Show();
-    }
+	}
 }
