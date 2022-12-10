@@ -6,7 +6,7 @@
 			 xmlns:local="clr-namespace:Gavilya.UserControls"
 			 mc:Ignorable="d" Foreground="#FFF" 
 			 FontFamily="..\Fonts\#Hauora"
-			 Height="50" Width="300">
+			 Height="50" Width="300" Margin="0 2">
 	<Border CornerRadius="10" Background="#FF141428">
 		<Grid>
 			<Grid.RowDefinitions>
