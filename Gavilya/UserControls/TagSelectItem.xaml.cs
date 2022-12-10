@@ -22,22 +22,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Classes;
+using PeyrSharp.Core.Converters;
+using System.Windows.Controls;
+using System.Windows.Media;
 
-using PeyrSharp.Core;
-
-namespace Gavilya.Classes;
-public class GameTag
+namespace Gavilya.UserControls;
+/// <summary>
+/// Interaction logic for TagSelectItem.xaml
+/// </summary>
+public partial class TagSelectItem : UserControl
 {
-	public GameTag(string name, string color)
+	internal GameTag GameTag { get; init; }
+	public TagSelectItem(GameTag gameTag, bool isChecked)
 	{
-		Name = name;
-		Color = color;
-		Guid = GuidGen.Generate();
+		GameTag = gameTag;
+		InitializeComponent();
+		InitUI();
+		GameCheck.IsChecked = isChecked;
 	}
 
-	public GameTag() { }
-
-	public string Name { get; set; }
-	public string Color { get; set; }
-	public string Guid { get; set; }
+	private void InitUI()
+	{
+		TagNameTxt.Text = GameTag.Name;
+		var rgb = new HEX(GameTag.Color).ToRgb().Color;
+		var color = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
+		ColorDot.Fill = color;
+	}
 }

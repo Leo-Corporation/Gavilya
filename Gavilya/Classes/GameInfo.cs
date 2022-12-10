@@ -105,4 +105,9 @@ public class GameInfo
 	/// True if the game uses Steam URI to launch/or requires Steam.
 	/// </summary>
 	public bool IsSteam { get; set; }
+
+	/// <summary>
+	/// A list that contains the tags that are associated with the game.
+	/// </summary>
+	public List<GameTag> AssociatedTags { get; set; }
 }

@@ -225,4 +225,9 @@ public partial class AddEditPage2 : Page
 		Regex regex = new("[^0-9]+");
 		e.Handled = regex.IsMatch(e.Text);
 	}
+
+	private void AddTagsBtn_Click(object sender, RoutedEventArgs e)
+	{
+		new AssociateTags(this).Show();
+    }
 }

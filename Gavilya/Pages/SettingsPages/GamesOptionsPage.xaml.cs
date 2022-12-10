@@ -100,5 +100,6 @@ public partial class GamesOptionsPage : Page
 		int g = new Random().Next(0, 255);
 		int b = new Random().Next(0, 255);
 		ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)r, (byte)g, (byte)b) }; // Set color
+		hexColor = new RGB(r, g, b).ToHex().Value;
 	}
 }
