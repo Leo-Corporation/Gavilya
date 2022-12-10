@@ -24,4 +24,16 @@ SOFTWARE.
 
 
 namespace Gavilya.Classes;
-public record GameTag(string Name, string Color);
+public class GameTag
+{
+	public GameTag(string name, string color)
+	{
+		Name = name;
+		Color = color;
+	}
+
+	public GameTag() { }
+
+	public string Name { get; set; }
+	public string Color { get; set; }
+}

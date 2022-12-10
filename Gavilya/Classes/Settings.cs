@@ -170,7 +170,7 @@ public static class SettingsSaver
 				Definitions.Settings.UnusedGameNotification = true;
 			}
 
-			Definitions.Settings.GameTags ??= new();
+			if (Definitions.Settings.GameTags is null) Definitions.Settings.GameTags = new();
 
 			streamReader.Dispose();
 		}
