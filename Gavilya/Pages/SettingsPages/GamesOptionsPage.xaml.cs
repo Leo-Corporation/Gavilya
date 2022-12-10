@@ -92,4 +92,13 @@ public partial class GamesOptionsPage : Page
 			ForegroundBorder.Background = color;
 		}
 	}
+
+	private void ForegroundBorder_MouseRightButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		// Generate a random color
+		int r = new Random().Next(0, 255);
+		int g = new Random().Next(0, 255);
+		int b = new Random().Next(0, 255);
+		ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)r, (byte)g, (byte)b) }; // Set color
+	}
 }
