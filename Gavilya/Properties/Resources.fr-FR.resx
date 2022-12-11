@@ -939,4 +939,7 @@
   <data name="HiddenGames" xml:space="preserve">
     <value>Jeux cachés</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Libellés</value>
+  </data>
 </root>

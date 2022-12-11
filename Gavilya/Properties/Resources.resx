@@ -946,4 +946,7 @@
   <data name="HiddenGames" xml:space="preserve">
     <value>Hidden games</value>
   </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
 </root>
