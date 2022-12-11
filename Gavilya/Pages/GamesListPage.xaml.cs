@@ -48,11 +48,21 @@ public partial class GamesListPage : Page
 		Dispatcher.Invoke(new Action(() =>
 		{
 			GameList.Children.Clear();
+			FavGameList.Children.Clear();
 			foreach (GameInfo gameInfo in Definitions.Games) // For each game
 			{
-				GameList.Children.Add(new GameItem(gameInfo)); // Add a game
+				if (gameInfo.IsFavorite)
+				{
+					FavGameList.Children.Add(new GameItem(gameInfo)); // Add a game
+				}
+				else
+				{
+					GameList.Children.Add(new GameItem(gameInfo)); // Add a game
+				}
 			}
 
+			FavTxt.Text = $"{Properties.Resources.Favorites} ({FavGameList.Children.Count})";
+			GamesTxt.Text = $"{Properties.Resources.Games} ({GameList.Children.Count})";
 			GamePage.Navigate(new SelectGame()); // Default message
 		}));
 	}

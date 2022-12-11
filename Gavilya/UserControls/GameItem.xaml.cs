@@ -104,6 +104,16 @@ public partial class GameItem : UserControl
 			}
 		}
 
+		foreach (UIElement uIElement in Definitions.GamesListPage.FavGameList.Children) // For each UIElement in the list
+		{
+			if (uIElement is GameItem gameItem) // If the UIElement is a GameItem
+			{
+				gameItem.GameBtn.Background = Definitions.TransparentColor; // Change the background color
+				gameItem.PlayBtn.Visibility = Visibility.Hidden;
+				gameItem.IsChecked = false;
+			}
+		}
+
 		GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change the background color
 		PlayBtn.Visibility = Visibility.Visible; // Show
 		IsChecked = true;
