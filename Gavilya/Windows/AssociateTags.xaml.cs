@@ -34,12 +34,13 @@ namespace Gavilya.Windows;
 /// </summary>
 public partial class AssociateTags : Window
 {
-	GameInfo GameInfo { get; set; }
+	internal List<GameTag> NewTags { get; set; }
+
 	AddEditPage2 AddEditPage2 { get; init; }
 	public AssociateTags(AddEditPage2 addEditPage2)
 	{
 		InitializeComponent();
-		GameInfo = addEditPage2.GameCard.GameInfo;
+		NewTags = addEditPage2.Tags;
 		AddEditPage2 = addEditPage2;
 
 		InitUI();
@@ -50,9 +51,9 @@ public partial class AssociateTags : Window
 		for (int i = 0; i < Definitions.Settings.GameTags.Count; i++)
 		{
 			bool check = false;
-			for (int j = 0; j < GameInfo.AssociatedTags.Count; j++)
+			for (int j = 0; j < NewTags.Count; j++)
 			{
-				check = GameInfo.AssociatedTags[j].Guid == Definitions.Settings.GameTags[i].Guid;
+				check = NewTags[j].Guid == Definitions.Settings.GameTags[i].Guid;
 				if (check) break;
 			}
 			TagsDisplayer.Children.Add(new TagSelectItem(Definitions.Settings.GameTags[i], check));
@@ -74,8 +75,8 @@ public partial class AssociateTags : Window
 				tags.Add(tagSelectItem.GameTag);
 			}
 		}
-		GameInfo.AssociatedTags = tags;
-		AddEditPage2.GameCard.GameInfo = GameInfo;
+		NewTags = tags;
+		AddEditPage2.Tags = NewTags;
 		Close();
 	}
 }
