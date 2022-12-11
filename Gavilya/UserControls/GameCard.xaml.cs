@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.Windows;
+using PeyrSharp.Core.Converters;
 using PeyrSharp.Env;
 using System;
 using System.Diagnostics;
@@ -33,6 +34,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Gavilya.UserControls;
@@ -156,6 +158,23 @@ public partial class GameCard : UserControl
 		}
 
 		GameNameTxt.Text = GameInfo.Name;
+
+		// Tags
+		for (int i = 0; i < (GameInfo.AssociatedTags.Count > 3 ? 3 : GameInfo.AssociatedTags.Count); i++)
+		{
+			var rgb = new HEX(GameInfo.AssociatedTags[i].Color).ToRgb().Color;
+			Rectangle rectangle = new()
+			{
+				RadiusX = 15,
+				RadiusY = 15,
+				Margin = new(10, 0, 0, 0),
+				Height = 10,
+				Width = 10,
+				Fill = new SolidColorBrush(Color.FromRgb(rgb.R, rgb.G, rgb.B))
+			};
+
+			TagDisplayer.Children.Add(rectangle);
+		}
 	}
 
 	bool gameStarted = false;
@@ -167,7 +186,7 @@ public partial class GameCard : UserControl
 			if (File.Exists(location)) // If the file exist
 			{
 				Process p = new();
-				p.StartInfo.WorkingDirectory = Path.GetDirectoryName(location);
+				p.StartInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(location);
 				p.StartInfo.FileName = location;
 				p.Start();
 				GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
