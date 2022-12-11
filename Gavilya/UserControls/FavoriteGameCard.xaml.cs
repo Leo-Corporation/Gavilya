@@ -58,6 +58,9 @@ public partial class FavoriteGameCard : UserControl
 	/// <param name="gameInfo"></param>
 	private void InitUI(GameInfo gameInfo)
 	{
+		// Visibility
+		Visibility = !Definitions.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+
 		// Tooltip
 		GameNameToolTip.Content = gameInfo.Name;
 		ToolTipGamePlay.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;

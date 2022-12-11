@@ -50,6 +50,9 @@ public partial class GameItem : UserControl
 
 		Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
 		Timer.Tick += Timer_Tick; // Add the event
+
+		// Visibility
+		Visibility = !Definitions.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
 	}
 
 	bool gameStarted = false;
@@ -95,6 +98,16 @@ public partial class GameItem : UserControl
 	private void CheckedChanged()
 	{
 		foreach (UIElement uIElement in Definitions.GamesListPage.GameList.Children) // For each UIElement in the list
+		{
+			if (uIElement is GameItem gameItem) // If the UIElement is a GameItem
+			{
+				gameItem.GameBtn.Background = Definitions.TransparentColor; // Change the background color
+				gameItem.PlayBtn.Visibility = Visibility.Hidden;
+				gameItem.IsChecked = false;
+			}
+		}
+
+		foreach (UIElement uIElement in Definitions.GamesListPage.FavGameList.Children) // For each UIElement in the list
 		{
 			if (uIElement is GameItem gameItem) // If the UIElement is a GameItem
 			{

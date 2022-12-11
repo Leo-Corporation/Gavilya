@@ -172,6 +172,14 @@ public partial class GameInfoPage : Page
 
 			// Achievments
 			LoadAchievements();
+
+			// Tags
+			TagsDisplayer.Children.Clear();
+			for (int i = 0; i < gameInfo.AssociatedTags.Count; i++)
+			{
+				TagsDisplayer.Children.Add(new TagItem(gameInfo.AssociatedTags[i]));
+			}
+			TagsTxt.Visibility = (TagsDisplayer.Children.Count > 0) ? Visibility.Visible : Visibility.Collapsed;
 		}
 		catch (Exception)
 		{

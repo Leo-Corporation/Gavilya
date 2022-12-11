@@ -13,15 +13,24 @@
 			</Grid.RowDefinitions>
 
 			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="30" />
+				<ColumnDefinition MinWidth="30" Width="Auto" />
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition Width="30" />
 			</Grid.ColumnDefinitions>
 
-			<CheckBox Cursor="Hand" x:Name="CheckBox" Style="{DynamicResource CheckBoxStyle1}" Background="Transparent" Grid.Column="0" x:FieldModifier="public" Visibility="Hidden" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
-			<StackPanel x:Name="MenuGroup" Grid.Column="2" Grid.RowSpan="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <CheckBox Cursor="Hand" x:Name="CheckBox" Style="{DynamicResource CheckBoxStyle1}" Background="Transparent" Grid.Column="0" x:FieldModifier="public" Visibility="Hidden" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked" Margin="10,0,0,0"/>
+                <StackPanel x:Name="TagDisplayer" Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Center">
+                    <!-- Tags are loaded here -->
+                </StackPanel>
+            </Grid>
+            <StackPanel x:Name="MenuGroup" Grid.Column="2" Grid.RowSpan="3">
 				<Button Name="MenuBtn" Click="MenuBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xFC2E;" Foreground="White" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Grid.Row="0" HorizontalAlignment="Right" Margin="0,5,5,0">
 					<Button.ToolTip>
 						<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="White" />

@@ -19,51 +19,25 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+SOFTWARE. 
 */
-using Gavilya.Classes;
-using Gavilya.UserControls;
-using System;
-using System.Windows.Controls;
 
-namespace Gavilya.Pages;
 
-/// <summary>
-/// Logique d'interaction pour GamesListPage.xaml
-/// </summary>
-public partial class GamesListPage : Page
+using PeyrSharp.Core;
+
+namespace Gavilya.Classes;
+public class GameTag
 {
-	public GamesListPage()
+	public GameTag(string name, string color)
 	{
-		InitializeComponent();
-		GamePage.Navigate(new SelectGame());
-		LoadGames(); // Load the games
+		Name = name;
+		Color = color;
+		Guid = GuidGen.Generate();
 	}
 
-	/// <summary>
-	/// Loads the games.
-	/// </summary>
-	public void LoadGames()
-	{
-		Dispatcher.Invoke(new Action(() =>
-		{
-			GameList.Children.Clear();
-			FavGameList.Children.Clear();
-			foreach (GameInfo gameInfo in Definitions.Games) // For each game
-			{
-				if (gameInfo.IsFavorite)
-				{
-					FavGameList.Children.Add(new GameItem(gameInfo)); // Add a game
-				}
-				else
-				{
-					GameList.Children.Add(new GameItem(gameInfo)); // Add a game
-				}
-			}
+	public GameTag() { }
 
-			FavTxt.Text = $"{Properties.Resources.Favorites} ({FavGameList.Children.Count})";
-			GamesTxt.Text = $"{Properties.Resources.Games} ({GameList.Children.Count})";
-			GamePage.Navigate(new SelectGame()); // Default message
-		}));
-	}
+	public string Name { get; set; }
+	public string Color { get; set; }
+	public string Guid { get; set; }
 }

@@ -84,6 +84,8 @@ public partial class AddEditPage : Page
 		NameTextBox.Text = GameCard.GameInfo.Name; // Set
 		VersionTextBox.Text = GameCard.GameInfo.Version; // Set
 
+		HideChk.IsChecked = EditGame.GameCard.GameInfo.IsHidden ?? false;
+
 		GameIconLocation = GameCard.GameInfo.IconFileLocation; // Set
 
 		if (isUWP)
@@ -295,6 +297,18 @@ public partial class AddEditPage : Page
 	private void SelectUWPAppBtn_Click(object sender, RoutedEventArgs e)
 	{
 		new BrowseUWPApps(PackageFamilyNameTextBox, AppIdTextBox, NameTextBox).Show();
+	}
+
+	private void HideChk_Checked(object sender, RoutedEventArgs e)
+	{
+		if (isFromAdd)
+		{
+			AddGame.Hidden = HideChk.IsChecked;
+		}
+		else
+		{
+			EditGame.GameCard.GameInfo.IsHidden = HideChk.IsChecked;
+		}
 	}
 
 	private async void LocationBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

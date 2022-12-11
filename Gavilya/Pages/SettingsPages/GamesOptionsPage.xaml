@@ -1,0 +1,74 @@
+﻿<Page x:Class="Gavilya.Pages.SettingsPages.GamesOptionsPage"
+	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+	  xmlns:local="clr-namespace:Gavilya.Pages.SettingsPages"
+	  xmlns:lang="clr-namespace:Gavilya.Properties"
+	  mc:Ignorable="d" FontFamily="..\..\Fonts\#Hauora"
+	  d:DesignHeight="450" d:DesignWidth="800"
+	  Title="GamesOptionsPage">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Games}" Foreground="White" FontSize="17" FontWeight="ExtraBold" />
+
+		<StackPanel Grid.Row="1">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xF140;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.HiddenGames}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
+							<TextBlock Text="{x:Static lang:Resources.DisplayHiddenGames}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+						</StackPanel>
+					</StackPanel>
+				</Expander.Header>
+                <CheckBox x:Name="DisplayHiddenChk" Content="{x:Static lang:Resources.DisplayHiddenGames}" Foreground="#FFF" Checked="DisplayHiddenChk_Unchecked" Unchecked="DisplayHiddenChk_Unchecked" BorderThickness="2" Style="{DynamicResource CheckBoxStyle2}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" />
+
+            </Expander>
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xF77D;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.GameTags}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
+							<TextBlock Text="{x:Static lang:Resources.ManageGameTags}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+						</StackPanel>
+					</StackPanel>
+				</Expander.Header>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition/>
+					</Grid.RowDefinitions>
+
+					<StackPanel Orientation="Horizontal" Margin="10">
+						<TextBlock Text="{x:Static lang:Resources.Color}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+						<Border Background="MediumPurple" x:Name="ForegroundBorder" MouseLeftButtonUp="ForegroundBorder_MouseLeftButtonUp" CornerRadius="5" Width="30" Cursor="Hand" Height="30" VerticalAlignment="Center" Margin="0,0,10,0"  MouseRightButtonUp="ForegroundBorder_MouseRightButtonUp"/>
+						<TextBlock Text="{x:Static lang:Resources.Name}" VerticalAlignment="Center" Margin="0,0,10,0"/>
+						<TextBox x:Name="NameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" MinWidth="150" FontWeight="ExtraBold" TextAlignment="Center" HorizontalAlignment="Left" VerticalAlignment="Center" />
+						<Button Click="AddBtn_Click" Margin="10 10 0 10" x:Name="AddBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
+							<StackPanel Orientation="Horizontal">
+								<TextBlock Margin="0 0 5 0" Text="&#xF10A;" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />
+								<TextBlock Text="{x:Static lang:Resources.Add}" FontWeight="ExtraBold" FontSize="13" />
+							</StackPanel>
+
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.AddTag}" Background="#0A0A1E" Foreground="White" />
+							</Button.ToolTip>
+						</Button>
+					</StackPanel>
+
+					<StackPanel x:Name="TagsDisplayer" Grid.Row="1">
+						
+					</StackPanel>
+				</Grid>
+			</Expander>
+		</StackPanel>
+	</Grid>
+</Page>

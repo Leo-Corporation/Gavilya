@@ -94,6 +94,7 @@ public partial class ProfilePage : Page
 
 		for (int i = 0; i < Definitions.Games.Count; i++)
 		{
+			if (Definitions.Games[i].IsHidden ?? false && !Definitions.DisplayHiddenGames) continue;
 			gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
 		}
 

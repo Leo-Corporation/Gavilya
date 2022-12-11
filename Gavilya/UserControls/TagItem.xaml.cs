@@ -19,51 +19,35 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+SOFTWARE. 
 */
+
 using Gavilya.Classes;
-using Gavilya.UserControls;
-using System;
+using PeyrSharp.Core.Converters;
 using System.Windows.Controls;
+using System.Windows.Media;
 
-namespace Gavilya.Pages;
-
+namespace Gavilya.UserControls;
 /// <summary>
-/// Logique d'interaction pour GamesListPage.xaml
+/// Interaction logic for TagItem.xaml
 /// </summary>
-public partial class GamesListPage : Page
+public partial class TagItem : UserControl
 {
-	public GamesListPage()
+	internal GameTag GameTag { get; init; }
+
+	public TagItem(GameTag gameTag)
 	{
+		GameTag = gameTag;
 		InitializeComponent();
-		GamePage.Navigate(new SelectGame());
-		LoadGames(); // Load the games
+		InitUI();
 	}
 
-	/// <summary>
-	/// Loads the games.
-	/// </summary>
-	public void LoadGames()
+	private void InitUI()
 	{
-		Dispatcher.Invoke(new Action(() =>
-		{
-			GameList.Children.Clear();
-			FavGameList.Children.Clear();
-			foreach (GameInfo gameInfo in Definitions.Games) // For each game
-			{
-				if (gameInfo.IsFavorite)
-				{
-					FavGameList.Children.Add(new GameItem(gameInfo)); // Add a game
-				}
-				else
-				{
-					GameList.Children.Add(new GameItem(gameInfo)); // Add a game
-				}
-			}
-
-			FavTxt.Text = $"{Properties.Resources.Favorites} ({FavGameList.Children.Count})";
-			GamesTxt.Text = $"{Properties.Resources.Games} ({GameList.Children.Count})";
-			GamePage.Navigate(new SelectGame()); // Default message
-		}));
+		TagNameTxt.Text = GameTag.Name;
+		var rgb = new HEX(GameTag.Color).ToRgb().Color;
+		var color = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
+		ColorDot.Fill = color;
+		TagBorder.BorderBrush = color;
 	}
 }

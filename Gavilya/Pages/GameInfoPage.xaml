@@ -137,13 +137,13 @@
 						<RowDefinition Height="Auto" />
 					</Grid.RowDefinitions>
 
-					<StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
-						<TextBlock Margin="1" Text="{x:Static lang:Resources.About}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
+					<StackPanel Grid.Row="0" Grid.Column="0" Margin="10 0">
+						<TextBlock Text="{x:Static lang:Resources.About}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
 						<TextBlock Name="DescriptionTxt" Foreground="White" TextWrapping="Wrap" />
 					</StackPanel>
 
 
-					<StackPanel Grid.Row="1" Grid.Column="0">
+					<StackPanel Margin="10 0" Grid.Row="1" Grid.Column="0">
 						<TextBlock Margin="1" Text="{x:Static lang:Resources.Platforms}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
 						<WrapPanel Grid.Row="1" Name="PlatformDisplayer" Grid.Column="0" Orientation="Horizontal" Margin="10"></WrapPanel>
 					</StackPanel>
@@ -155,16 +155,22 @@
 						</Grid.RowDefinitions>
 
 
-						<StackPanel Grid.Row="1" Name="StoreDisplayer" Grid.Column="1" Margin="10">
-							<TextBlock Margin="1" Text="{x:Static lang:Resources.Platforms}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
-						</StackPanel>
+						<Grid Grid.Row="1">
+							<StackPanel>
+								<TextBlock x:Name="TagsTxt" Margin="10" Text="{x:Static lang:Resources.Tags}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
+								<WrapPanel Orientation="Horizontal" Margin="10 0" x:Name="TagsDisplayer" Width="220"/>
+								<StackPanel Name="StoreDisplayer" Grid.Column="1" Margin="10">
+									<TextBlock Margin="1" Text="{x:Static lang:Resources.Platforms}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
+								</StackPanel>
+							</StackPanel>
+						</Grid>
 					</Grid>
 				</Grid>
 
 				<Grid x:Name="RatingsPage" Grid.Row="1" Visibility="Collapsed">
 
 					<StackPanel>
-						<StackPanel Orientation="Horizontal">
+						<StackPanel Orientation="Horizontal" Margin="10 0">
 							<TextBlock Text="{x:Static lang:Resources.Ratings}" Foreground="White" FontWeight="ExtraBold" FontSize="20" />
 							<TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="White" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" />
 						</StackPanel>
@@ -292,7 +298,7 @@
 
 				<Grid x:Name="AchievementsPage" Grid.Row="1" Visibility="Collapsed">
 					<StackPanel>
-						<StackPanel Orientation="Horizontal">
+						<StackPanel Orientation="Horizontal" Margin="10 0">
 							<TextBlock Text="{x:Static lang:Resources.Achievements}" Foreground="White" FontWeight="ExtraBold" FontSize="20" />
 							<TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="White" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" />
 

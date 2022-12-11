@@ -43,6 +43,7 @@ public partial class SettingsPage : Page
 	readonly FpsOptionsPage fpsOptionsPage = new(); // Create a page
 	readonly AboutPage aboutPage = new();
 	readonly NotifOptionsPage notifOptionsPage = new();
+	readonly GamesOptionsPage gamesOptionsPage = new();
 
 	public SettingsPage()
 	{
@@ -108,6 +109,12 @@ public partial class SettingsPage : Page
 
 				OptionsDisplayer.Navigate(notifOptionsPage); // Navigate
 				break;
+			case Enums.SettingsPages.GamesOptions:
+				UnCheckAll(); // Uncheck all buttons
+				CheckButton(GameOptions); // Show the page
+
+				OptionsDisplayer.Navigate(gamesOptionsPage); // Navigate
+				break;
 		}
 	}
 
@@ -128,6 +135,7 @@ public partial class SettingsPage : Page
 		FpsOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		About.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		Notifications.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		GameOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 
 		SaveOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		LanguageOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
@@ -138,6 +146,7 @@ public partial class SettingsPage : Page
 		FpsOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		About.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		Notifications.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		GameOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 	}
 
 	private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -207,6 +216,9 @@ public partial class SettingsPage : Page
 			case NotifOptionsPage:
 				CheckButton(Notifications);
 				break;
+			case GamesOptionsPage:
+				CheckButton(GameOptions);
+				break;
 		}
 	}
 
@@ -218,5 +230,10 @@ public partial class SettingsPage : Page
 	private void Notifications_Click(object sender, RoutedEventArgs e)
 	{
 		NavigateToPage(Enums.SettingsPages.Notifications); // Show the "Notifications" page
+	}
+
+	private void GameOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(Enums.SettingsPages.GamesOptions); // Show the "Games" page
 	}
 }

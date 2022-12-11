@@ -903,4 +903,40 @@
   <data name="SelectNotification" xml:space="preserve">
     <value>Select notifications you want to receive in Notification Center.</value>
   </data>
+  <data name="GameTags" xml:space="preserve">
+    <value>Game tags</value>
+  </data>
+  <data name="ManageGameTags" xml:space="preserve">
+    <value>Create, edit or remove your game tags.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Add a tag</value>
+  </data>
+  <data name="DeleteTag" xml:space="preserve">
+    <value>Delete this tag</value>
+  </data>
+  <data name="DeleteTagMsg" xml:space="preserve">
+    <value>Are you sure you want to delete this tag? This will remove its association with the assigned games.</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="NameNeededMsg" xml:space="preserve">
+    <value>Please specify a name.</value>
+  </data>
+  <data name="AssociateTags" xml:space="preserve">
+    <value>Associate tags</value>
+  </data>
+  <data name="HideGame" xml:space="preserve">
+    <value>Hide this game</value>
+  </data>
+  <data name="DisplayHiddenGames" xml:space="preserve">
+    <value>Display hidden games</value>
+  </data>
+  <data name="HiddenGames" xml:space="preserve">
+    <value>Hidden games</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
 </root>

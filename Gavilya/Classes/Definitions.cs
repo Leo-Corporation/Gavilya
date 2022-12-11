@@ -52,7 +52,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "3.0.2.2211";
+	public static string Version => "3.1.0.2212";
 
 	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)
@@ -177,6 +177,11 @@ public static class Definitions
 	public static List<string> LanguagesCodes => new() { "en-US", "fr-FR", "zh-CN" };
 
 	public static Settings Settings { get; set; }
+
+	/// <summary>
+	/// <see langword="true"/> if hidden games should display despite being hidden.
+	/// </summary>
+	public static bool DisplayHiddenGames { get; set; } = false;
 }
 
 /// <summary>

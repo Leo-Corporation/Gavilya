@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.Windows;
+using PeyrSharp.Core.Converters;
 using PeyrSharp.Env;
 using System;
 using System.Diagnostics;
@@ -33,6 +34,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace Gavilya.UserControls;
@@ -45,7 +47,7 @@ public partial class GameCard : UserControl
 	string location; // Location
 
 	/// <summary>
-	/// The infos of the game
+	/// The infos of the game|| !Definitions.Display
 	/// </summary>
 	public GameInfo GameInfo { get; set; }
 
@@ -72,6 +74,9 @@ public partial class GameCard : UserControl
 	/// <param name="isFromEdit"><see cref="true"/> if is called from the <see cref="EditGame"/> window.</param>
 	internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false, bool recommanded = false)
 	{
+		// Visibility
+		Visibility = !Definitions.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+
 		// Tooltip
 		PlayToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
 		GameToolTipName.Content = gameInfo.Name;
@@ -156,6 +161,23 @@ public partial class GameCard : UserControl
 		}
 
 		GameNameTxt.Text = GameInfo.Name;
+
+		// Tags
+		for (int i = 0; i < (GameInfo.AssociatedTags.Count > 3 ? 3 : GameInfo.AssociatedTags.Count); i++)
+		{
+			var rgb = new HEX(GameInfo.AssociatedTags[i].Color).ToRgb().Color;
+			Rectangle rectangle = new()
+			{
+				RadiusX = 15,
+				RadiusY = 15,
+				Margin = new(10, 0, 0, 0),
+				Height = 10,
+				Width = 10,
+				Fill = new SolidColorBrush(Color.FromRgb(rgb.R, rgb.G, rgb.B))
+			};
+
+			TagDisplayer.Children.Add(rectangle);
+		}
 	}
 
 	bool gameStarted = false;
@@ -167,7 +189,7 @@ public partial class GameCard : UserControl
 			if (File.Exists(location)) // If the file exist
 			{
 				Process p = new();
-				p.StartInfo.WorkingDirectory = Path.GetDirectoryName(location);
+				p.StartInfo.WorkingDirectory = System.IO.Path.GetDirectoryName(location);
 				p.StartInfo.FileName = location;
 				p.Start();
 				GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
