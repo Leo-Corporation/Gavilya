@@ -601,6 +601,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Display hidden games.
+        /// </summary>
+        public static string DisplayHiddenGames {
+            get {
+                return ResourceManager.GetString("DisplayHiddenGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Done!.
         /// </summary>
         public static string Done {
@@ -995,6 +1004,24 @@ namespace Gavilya.Properties {
         public static string Help {
             get {
                 return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hidden games.
+        /// </summary>
+        public static string HiddenGames {
+            get {
+                return ResourceManager.GetString("HiddenGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide this game.
+        /// </summary>
+        public static string HideGame {
+            get {
+                return ResourceManager.GetString("HideGame", resourceCulture);
             }
         }
         

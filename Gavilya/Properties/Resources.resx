@@ -937,4 +937,13 @@
   <data name="AssociateTags" xml:space="preserve">
     <value>Associate tags</value>
   </data>
+  <data name="HideGame" xml:space="preserve">
+    <value>Hide this game</value>
+  </data>
+  <data name="DisplayHiddenGames" xml:space="preserve">
+    <value>Display hidden games</value>
+  </data>
+  <data name="HiddenGames" xml:space="preserve">
+    <value>Hidden games</value>
+  </data>
 </root>

@@ -930,4 +930,13 @@
   <data name="AssociateTags" xml:space="preserve">
     <value>Associer des libellés</value>
   </data>
+  <data name="HideGame" xml:space="preserve">
+    <value>Cacher ce jeu</value>
+  </data>
+  <data name="DisplayHiddenGames" xml:space="preserve">
+    <value>Afficher les jeux cachés</value>
+  </data>
+  <data name="HiddenGames" xml:space="preserve">
+    <value>Jeux cachés</value>
+  </data>
 </root>
