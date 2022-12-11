@@ -309,9 +309,9 @@ public partial class AddEditPage : Page
 		{
 			EditGame.GameCard.GameInfo.IsHidden = HideChk.IsChecked;
 		}
-    }
+	}
 
-    private async void LocationBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	private async void LocationBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		OpenFileDialog openFileDialog = new(); // OpenFileDialog
 		openFileDialog.Filter = "EXE|*.exe"; // Filter

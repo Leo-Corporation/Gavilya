@@ -110,5 +110,5 @@ public partial class GamesOptionsPage : Page
 		Global.ReloadAllPages();
 		Definitions.ProfilePage.InitUI();
 		Definitions.HomePage.InitUI();
-    }
+	}
 }
