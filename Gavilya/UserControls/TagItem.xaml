@@ -12,7 +12,7 @@
 				<ColumnDefinition Width="Auto" />
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
-			<Rectangle x:Name="ColorDot" d:Fill="#10F15F" RadiusX="15" RadiusY="15" Margin="10 0 0 0" Height="10" Width="10"/>
+			<Rectangle x:Name="ColorDot" d:Fill="#10F15F" RadiusX="15" RadiusY="15" Margin="4 0 0 0" Height="10" Width="10"/>
 			<TextBlock d:Text="TagName" Margin="10,0,10,0" x:Name="TagNameTxt" FontSize="11" FontWeight="ExtraBold" Text="" Foreground="White" VerticalAlignment="Center" Grid.Column="1"/>
 
 		</Grid>
