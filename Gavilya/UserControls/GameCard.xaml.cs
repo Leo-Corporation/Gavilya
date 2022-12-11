@@ -47,7 +47,7 @@ public partial class GameCard : UserControl
 	string location; // Location
 
 	/// <summary>
-	/// The infos of the game
+	/// The infos of the game|| !Definitions.Display
 	/// </summary>
 	public GameInfo GameInfo { get; set; }
 
@@ -74,6 +74,9 @@ public partial class GameCard : UserControl
 	/// <param name="isFromEdit"><see cref="true"/> if is called from the <see cref="EditGame"/> window.</param>
 	internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false, bool recommanded = false)
 	{
+		// Visibility
+		Visibility = !Definitions.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+
 		// Tooltip
 		PlayToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
 		GameToolTipName.Content = gameInfo.Name;

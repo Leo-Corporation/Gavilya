@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Classes;
 using System;
 using System.IO;
 using System.Windows;
@@ -47,6 +48,9 @@ public partial class SearchItem : UserControl
 	{
 		try
 		{
+			// Visibility
+			Visibility = !Definitions.DisplayHiddenGames && (ParentGameCard.GameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+
 			// Load the Image
 			if (ParentGameCard.GameInfo.IconFileLocation != string.Empty && ParentGameCard.GameInfo.IconFileLocation != null) // If a custom image is used
 			{

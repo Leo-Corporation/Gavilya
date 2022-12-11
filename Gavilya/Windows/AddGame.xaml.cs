@@ -43,6 +43,7 @@ public partial class AddGame : Window
 	public string GameName = string.Empty;
 	public string GameVersion = string.Empty;
 	public string GameLocation = string.Empty;
+	internal bool? Hidden { get; set; }
 	public bool IsUWP { get; set; }
 	public bool IsSteam { get; set; }
 

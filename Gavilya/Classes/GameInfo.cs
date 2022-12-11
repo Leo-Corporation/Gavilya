@@ -110,4 +110,9 @@ public class GameInfo
 	/// A list that contains the tags that are associated with the game.
 	/// </summary>
 	public List<GameTag> AssociatedTags { get; set; }
+
+	/// <summary>
+	/// True if the game shouldn't display.
+	/// </summary>
+	public bool? IsHidden { get; set; }
 }

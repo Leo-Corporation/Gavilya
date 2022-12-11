@@ -103,4 +103,12 @@ public partial class GamesOptionsPage : Page
 		ForegroundBorder.Background = new SolidColorBrush { Color = Color.FromRgb((byte)r, (byte)g, (byte)b) }; // Set color
 		hexColor = new RGB(r, g, b).ToHex().Value;
 	}
+
+	private void DisplayHiddenChk_Unchecked(object sender, RoutedEventArgs e)
+	{
+		Definitions.DisplayHiddenGames = DisplayHiddenChk.IsChecked ?? false;
+		Global.ReloadAllPages();
+		Definitions.ProfilePage.InitUI();
+		Definitions.HomePage.InitUI();
+    }
 }

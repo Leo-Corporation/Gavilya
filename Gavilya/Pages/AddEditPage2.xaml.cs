@@ -43,6 +43,7 @@ public partial class AddEditPage2 : Page
 
 	internal List<Platform> Platforms { get; set; }
 	internal List<Store> Stores { get; set; }
+	internal List<GameTag> Tags { get; set; }
 	internal string GameDescription { get; set; }
 	internal int RAWGID { get; set; }
 	internal GameCard GameCard { get; set; }
@@ -57,6 +58,7 @@ public partial class AddEditPage2 : Page
 		Platforms = new();
 		Stores = new();
 		RAWGID = AddGame.RAWGID;
+		Tags = new();
 	}
 
 	public AddEditPage2(EditGame editGame, GameCard gameCard)
@@ -65,6 +67,7 @@ public partial class AddEditPage2 : Page
 		EditGame = editGame; // Set
 		isFromAdd = false;
 		GameCard = EditGame.GameCard; // Set
+		Tags = EditGame.GameCard.GameInfo.AssociatedTags;
 
 		RAWGID = GameCard.GameInfo.RAWGID; // Set value
 		old = gameCard.GameInfo;
@@ -119,7 +122,9 @@ public partial class AddEditPage2 : Page
 					Stores = Stores,
 					AlwaysCheckIfRunning = false,
 					IsUWP = AddGame.IsUWP,
-					IsSteam = AddGame.IsSteam
+					IsSteam = AddGame.IsSteam,
+					IsHidden = AddGame.Hidden,
+					AssociatedTags = Tags
 				});
 
 				GameSaver.Save(Definitions.Games); // Save
@@ -133,6 +138,7 @@ public partial class AddEditPage2 : Page
 				GameCard.GameInfo.Description = DescriptionTextBox.Text; // Set
 				GameCard.GameInfo.Platforms = Platforms; // Set
 				GameCard.GameInfo.Stores = Stores; // Set
+				GameCard.GameInfo.AssociatedTags = Tags; // Set
 
 				if (ConvertSteamPanel.Visibility != Visibility.Collapsed) // If the steam convert process is launched
 				{

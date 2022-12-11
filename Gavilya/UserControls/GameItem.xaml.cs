@@ -50,6 +50,9 @@ public partial class GameItem : UserControl
 
 		Timer = new DispatcherTimer { Interval = TimeSpan.FromSeconds(1) }; // Define the timer
 		Timer.Tick += Timer_Tick; // Add the event
+
+		// Visibility
+		Visibility = !Definitions.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
 	}
 
 	bool gameStarted = false;

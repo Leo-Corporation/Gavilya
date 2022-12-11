@@ -21,6 +21,19 @@
 			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xF140;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.HiddenGames}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
+							<TextBlock Text="{x:Static lang:Resources.DisplayHiddenGames}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+						</StackPanel>
+					</StackPanel>
+				</Expander.Header>
+                <CheckBox x:Name="DisplayHiddenChk" Content="{x:Static lang:Resources.DisplayHiddenGames}" Foreground="#FFF" Checked="DisplayHiddenChk_Unchecked" Unchecked="DisplayHiddenChk_Unchecked" BorderThickness="2" Style="{DynamicResource CheckBoxStyle2}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" />
+
+            </Expander>
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+				<Expander.Header>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF77D;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
 						<StackPanel>
 							<TextBlock Text="{x:Static lang:Resources.GameTags}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
