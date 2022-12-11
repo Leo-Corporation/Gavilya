@@ -179,6 +179,7 @@ public partial class GameInfoPage : Page
 			{
 				TagsDisplayer.Children.Add(new TagItem(gameInfo.AssociatedTags[i]));
 			}
+			TagsTxt.Visibility = (TagsDisplayer.Children.Count > 0) ? Visibility.Visible : Visibility.Collapsed;
 		}
 		catch (Exception)
 		{
