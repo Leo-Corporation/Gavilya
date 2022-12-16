@@ -2,7 +2,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/Leo-Corporation/Gavilya)
 ![GitHub issues](https://img.shields.io/github/issues/Leo-Corporation/Gavilya)
 ![GitHub](https://img.shields.io/github/license/Leo-Corporation/Gavilya)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/Leo-Corporation/Gavilya/.NET%20Core%20Desktop)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Leo-Corporation/Gavilya/dotnet-desktop.yml?branch=main)
 ![Using PeyrSharp](https://img.shields.io/badge/using-PeyrSharp-DD00FF?logo=nuget)
 <br />
 <p align="center">
