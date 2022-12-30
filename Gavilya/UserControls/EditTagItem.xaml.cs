@@ -71,7 +71,7 @@ public partial class EditTagItem : UserControl
 
 		for (int i = 0; i < Definitions.Games.Count; i++)
 		{
-			for (int j = 0; j < Definitions.Games[i].AssociatedTags.Count; i++)
+			for (int j = 0; j < Definitions.Games[i].AssociatedTags.Count; j++)
 			{
 				if (Definitions.Games[i].AssociatedTags[j].Guid == Definitions.Settings.GameTags[ID].Guid)
 				{
@@ -109,7 +109,7 @@ public partial class EditTagItem : UserControl
 		{
 			for (int i = 0; i < Definitions.Games.Count; i++)
 			{
-				for (int j = 0; j < Definitions.Games[i].AssociatedTags.Count; i++)
+				for (int j = 0; j < Definitions.Games[i].AssociatedTags.Count; j++)
 				{
 					if (Definitions.Games[i].AssociatedTags[j].Guid == Definitions.Settings.GameTags[ID].Guid)
 					{
