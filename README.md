@@ -15,7 +15,7 @@
   <p align="center">
     A simple game launcher written in C# .NET 6.
     <br />
-    <a href="https://github.com/Leo-Corporation/Gavilya/releases"><strong>Download »</strong></a>
+    <a href="https://bit.ly/Gavilya"><strong>Download »</strong></a>
     <br />
     <a href="https://github.com/Leo-Corporation/Gavilya/issues/new?assignees=&labels=bug&template=bug-report.yml&title=%5BBug%5D+">Report Bug</a>
     ·
