@@ -88,9 +88,11 @@ public partial class SaveOptionsPage : Page
 
 	private void ImportButton_Click(object sender, RoutedEventArgs e)
 	{
-		OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
-		openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-		openFileDialog.Title = Properties.Resources.ImportGames; // Title
+		OpenFileDialog openFileDialog = new()
+		{
+			Filter = $"{Properties.Resources.GavFiles}|*.gav", // Extension
+			Title = Properties.Resources.ImportGames // Title
+		}; // Create an OpenFileDialog
 
 		if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
 		{
@@ -104,10 +106,12 @@ public partial class SaveOptionsPage : Page
 
 	private void ExportButton_Click(object sender, RoutedEventArgs e)
 	{
-		SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
-		saveFileDialog.FileName = $"GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}.gav"; // File name
-		saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-		saveFileDialog.Title = Properties.Resources.ExportGames; // Title
+		SaveFileDialog saveFileDialog = new()
+		{
+			FileName = $"GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}.gav", // File name
+			Filter = $"{Properties.Resources.GavFiles}|*.gav", // Extension
+			Title = Properties.Resources.ExportGames // Title
+		}; // Create a SaveFileDialog
 
 		if (saveFileDialog.ShowDialog() ?? true)
 		{
@@ -143,10 +147,12 @@ public partial class SaveOptionsPage : Page
 	{
 		try
 		{
-			SaveFileDialog saveFileDialog = new(); // Create a SaveFileDialog
-			saveFileDialog.FileName = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav"; // File name
-			saveFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-			saveFileDialog.Title = Properties.Resources.SaveLocation; // Title
+			SaveFileDialog saveFileDialog = new()
+			{
+				FileName = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav", // File name
+				Filter = $"{Properties.Resources.GavFiles}|*.gav", // Extension
+				Title = Properties.Resources.SaveLocation // Title
+			}; // Create a SaveFileDialog
 
 			if (saveFileDialog.ShowDialog() ?? true)
 			{

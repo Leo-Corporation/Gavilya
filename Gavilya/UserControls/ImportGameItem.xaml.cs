@@ -65,8 +65,10 @@ public partial class ImportGameItem : UserControl
 
 	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
 	{
-		OpenFileDialog openFileDialog = new(); // OpenFileDialog
-		openFileDialog.Filter = "EXE|*.exe"; // Filter
+		OpenFileDialog openFileDialog = new()
+		{
+			Filter = "EXE|*.exe" // Filter
+		}; // OpenFileDialog
 
 		if (openFileDialog.ShowDialog() ?? true)
 		{
@@ -77,8 +79,10 @@ public partial class ImportGameItem : UserControl
 
 	private void IconBrowseBtn_Click(object sender, RoutedEventArgs e)
 	{
-		OpenFileDialog openFileDialog = new(); // OpenFileDialog
-		openFileDialog.Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*"; // Filter
+		OpenFileDialog openFileDialog = new()
+		{
+			Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*" // Filter
+		}; // OpenFileDialog
 
 		if (openFileDialog.ShowDialog() ?? true)
 		{

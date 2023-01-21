@@ -773,14 +773,18 @@ public static class Global
 	{
 		try
 		{
-			ProcessStartInfo processInfo = new();
-			processInfo.FileName = "powershell.exe";
-			processInfo.Arguments = $@"& Get-StartApps | ConvertTo-Json > $env:appdata\Gavilya\UwpApps.json";
-			processInfo.UseShellExecute = false;
-			processInfo.CreateNoWindow = true;
+			ProcessStartInfo processInfo = new()
+			{
+				FileName = "powershell.exe",
+				Arguments = $@"& Get-StartApps | ConvertTo-Json > $env:appdata\Gavilya\UwpApps.json",
+				UseShellExecute = false,
+				CreateNoWindow = true
+			};
 
-			Process process = new();
-			process.StartInfo = processInfo;
+			Process process = new()
+			{
+				StartInfo = processInfo
+			};
 			process.Start();
 			await process.WaitForExitAsync();
 

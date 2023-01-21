@@ -168,12 +168,12 @@ public static class Definitions
 			return gIndex;
 		}
 	}
-		
 
-/// <summary>
-/// The <see cref="Pages.GameInfoPage"/> of any games.
-/// </summary>
-public static GameInfoPage GameInfoPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.GameInfoPage"/> of any games.
+	/// </summary>
+	public static GameInfoPage GameInfoPage { get; set; }
 
 	/// <summary>
 	/// The <see cref="Pages.GameInfoPage"/> of any games.

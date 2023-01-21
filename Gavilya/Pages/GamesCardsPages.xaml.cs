@@ -70,9 +70,11 @@ public partial class GamesCardsPages : Page
 			}
 			else
 			{
-				WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
-				welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
-				welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+				WelcomeAddGames welcomeAddGames = new()
+				{
+					VerticalAlignment = VerticalAlignment.Stretch, // Center
+					HorizontalAlignment = HorizontalAlignment.Stretch // Center
+				}; // New WelcomeAddGames
 				WelcomeHost.Children.Add(welcomeAddGames); // Add a welcome add games
 				WelcomeHost.Visibility = Visibility.Visible; // Visible
 				GamePresenter.Visibility = Visibility.Collapsed; // Hidden

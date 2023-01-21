@@ -48,9 +48,11 @@ public partial class ImportGamesPage : Page
 
 	private void ImportBtn_Click(object sender, RoutedEventArgs e)
 	{
-		OpenFileDialog openFileDialog = new(); // Create an OpenFileDialog
-		openFileDialog.Filter = $"{Properties.Resources.GavFiles}|*.gav"; // Extension
-		openFileDialog.Title = Properties.Resources.ImportGames; // Title
+		OpenFileDialog openFileDialog = new()
+		{
+			Filter = $"{Properties.Resources.GavFiles}|*.gav", // Extension
+			Title = Properties.Resources.ImportGames // Title
+		}; // Create an OpenFileDialog
 
 		if (openFileDialog.ShowDialog() ?? true) // If the user opend a file
 		{
