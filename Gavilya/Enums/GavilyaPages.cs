@@ -47,7 +47,12 @@ public enum GavilyaPages
 	/// <summary>
 	/// The page is unknown.
 	/// </summary>
-	Underteminated
+	Underteminated,
+
+	/// <summary>
+	/// The <see cref="Pages.TagPage"/>.
+	/// </summary>
+	Tags
 }
 
 public enum GavilyaWindowPages

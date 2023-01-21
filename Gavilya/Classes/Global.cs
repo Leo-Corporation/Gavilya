@@ -513,6 +513,7 @@ public static class Global
 		Definitions.GamesCardsPages.LoadGames(); // Reload the page
 		Definitions.GamesListPage.LoadGames(); // Reload the page
 		Definitions.RecentGamesPage.LoadGames(); // Reload the page
+		Definitions.TagPage.InitUI(); // Reload the page
 	}
 
 	/// <summary>

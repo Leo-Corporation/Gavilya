@@ -127,9 +127,14 @@ public static class Definitions
 	public static ProfilePage ProfilePage { get; set; }
 
 	/// <summary>
-	/// THe <see cref="Pages.SettingsPage"/> page.
+	/// The <see cref="Pages.SettingsPage"/> page.
 	/// </summary>
 	public static SettingsPage SettingsPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.TagPage"/> page.
+	/// </summary>
+	public static TagPage TagPage { get; set; }
 
 	/// <summary>
 	/// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.
@@ -151,10 +156,24 @@ public static class Definitions
 	/// </summary>
 	public static bool IsMenuShown { get; set; }
 
-	/// <summary>
-	/// The <see cref="Pages.GameInfoPage"/> of any games.
-	/// </summary>
-	public static GameInfoPage GameInfoPage { get; set; }
+	public static Dictionary<string, int> GuidIndex
+	{
+		get
+		{
+			Dictionary<string, int> gIndex = new();
+			for (int i = 0; i < Definitions.Settings.GameTags.Count; i++)
+			{
+				gIndex.Add(Definitions.Settings.GameTags[i].Guid, i);
+			}
+			return gIndex;
+		}
+	}
+		
+
+/// <summary>
+/// The <see cref="Pages.GameInfoPage"/> of any games.
+/// </summary>
+public static GameInfoPage GameInfoPage { get; set; }
 
 	/// <summary>
 	/// The <see cref="Pages.GameInfoPage"/> of any games.
