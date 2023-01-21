@@ -60,6 +60,17 @@ public partial class TagPage : Page
 		}
 		SectionDisplayer.Children.Add(new TagCategory(new(Properties.Resources.Other, "#eeeeee")));
 
+		if (Definitions.Games.Count == 0)
+		{
+			WelcomeAddGames welcomeAddGames = new(); // New WelcomeAddGames
+			welcomeAddGames.VerticalAlignment = VerticalAlignment.Stretch; // Center
+			welcomeAddGames.HorizontalAlignment = HorizontalAlignment.Stretch; // Center
+			WelcomeHost.Children.Add(welcomeAddGames); // Add a welcome add games
+			WelcomeHost.Visibility = Visibility.Visible; // Visible
+			MainContentScrollViewer.Visibility = Visibility.Collapsed; // Hidden
+			return;
+		}
+
 		for (int i = 0; i < Definitions.Games.Count; i++)
 		{
 			Add(Definitions.Games[i]);

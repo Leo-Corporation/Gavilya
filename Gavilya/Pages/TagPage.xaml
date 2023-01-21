@@ -16,8 +16,10 @@
 		</Grid.RowDefinitions>
 
 
-		<ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+		<ScrollViewer x:Name="MainContentScrollViewer" Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Margin="10,10,-10,-10">
 			<StackPanel x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Vertical" x:Name="SectionDisplayer" Grid.Row="1"></StackPanel>
 		</ScrollViewer>
+		<Grid x:FieldModifier="public" Name="WelcomeHost" Grid.Row="2" Visibility="Collapsed" AllowDrop="False"></Grid>
+
 	</Grid>
 </Page>
