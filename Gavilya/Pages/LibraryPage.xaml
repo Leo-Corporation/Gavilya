@@ -36,7 +36,12 @@
 							<ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
-					<Button Click="GameListTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF28283C" x:Name="GameListTabBtn" Content="&#xF138;" VerticalAlignment="Center" FontSize="16">
+                    <Button Click="GameTagTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonMiddle}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF28283C" x:Name="GameTagTabBtn" Content="&#xF77D;" VerticalAlignment="Center" FontSize="16">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.GameTags}" Background="#000014" Foreground="White" />
+						</Button.ToolTip>
+					</Button>
+                    <Button Click="GameListTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF28283C" x:Name="GameListTabBtn" Content="&#xF138;" VerticalAlignment="Center" FontSize="16">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>

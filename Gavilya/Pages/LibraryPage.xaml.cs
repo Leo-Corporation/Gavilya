@@ -62,6 +62,7 @@ public partial class LibraryPage : Page
 	{
 		GameCardTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
 		GameListTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		GameTagTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
 
 		if (PageDisplayer.Content is GamesCardsPages)
 		{
@@ -70,6 +71,10 @@ public partial class LibraryPage : Page
 		else if (PageDisplayer.Content is GamesListPage)
 		{
 			CheckedButton = GameListTabBtn; // Set
+		}
+		else
+		{
+			CheckedButton = GameTagTabBtn;
 		}
 		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
 	}
@@ -110,5 +115,13 @@ public partial class LibraryPage : Page
 		Global.ReloadAllPages();
 		SortAlpha.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
 		SortReverse.Background = Definitions.HomeButtonBackColor;
+	}
+
+	private void GameTagTabBtn_Click(object sender, RoutedEventArgs e)
+	{
+		CheckedButton = GameTagTabBtn; // Set
+
+		PageDisplayer.Content = Definitions.TagPage; // Set page content
+		RefreshTabUI();
 	}
 }
