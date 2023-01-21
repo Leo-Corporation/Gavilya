@@ -64,7 +64,7 @@
   <ItemGroup>
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
     <PackageReference Include="PeyrSharp.Core" Version="1.2.0.2301" />
-    <PackageReference Include="PeyrSharp.Env" Version="1.1.0.2212" />
+    <PackageReference Include="PeyrSharp.Env" Version="1.2.0.2301" />
     <PackageReference Include="RestSharp" Version="108.0.3" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
