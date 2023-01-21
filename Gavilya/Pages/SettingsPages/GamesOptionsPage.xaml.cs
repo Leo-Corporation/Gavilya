@@ -74,6 +74,7 @@ public partial class GamesOptionsPage : Page
 		SettingsSaver.Save();
 
 		InitUI();
+		Definitions.TagPage.InitUI();
 	}
 
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
