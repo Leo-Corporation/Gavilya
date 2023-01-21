@@ -13,7 +13,7 @@
     <Description>Where all your games are gathered.</Description>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
-    <Copyright>© 2022</Copyright>
+    <Copyright>© 2023</Copyright>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
