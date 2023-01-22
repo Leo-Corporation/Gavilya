@@ -116,7 +116,7 @@ public partial class MainWindow : Window
 		// Search box
 		SearchBox.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
-		SearchBox.MaxDropDownHeight = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set the max drop down height (45 = height of SearchItem)
+		SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 58; // Set the max drop down height (45 = height of SearchItem)
 
 		// FPS
 		var fps = Combination.FromString("Control+Shift+F");
@@ -494,16 +494,17 @@ public partial class MainWindow : Window
 					// 1. Find the SearchItem in the SearchBox
 					// 2. Remove the SearchItem
 
-					for (int i = 0; i < SearchBox.Items.Count; i++)
+					for (int i = 0; i < SearchDisplayer.Children.Count; i++)
 					{
-						if (SearchBox.Items[i] is SearchItem searchItem)
+						if (SearchDisplayer.Children[i] is SearchItem searchItem)
 						{
 							if (searchItem.ParentGameCard == gameCard1)
 							{
-								SearchBox.Items.Remove(searchItem);
+								SearchDisplayer.Children.Remove(searchItem);
 							}
 						}
 					}
+					visIndex = Enumerable.Range(0, SearchDisplayer.Children.Count).ToList();
 
 					Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
 					Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
@@ -656,21 +657,48 @@ public partial class MainWindow : Window
 		}
 	}
 
+	private void Search(string query)
+	{
+		visIndex = Enumerable.Range(0, SearchDisplayer.Children.Count).ToList();
+		for (int i = 0; i < SearchDisplayer.Children.Count; i++)
+		{
+			if (SearchDisplayer.Children[i] is SearchItem searchItem)
+			{
+				searchItem.Visibility = !searchItem.ParentGameCard.GameInfo.Name.ToLower().Contains(query.ToLower()) ? Visibility.Collapsed : Visibility.Visible;
+				if (searchItem.Visibility == Visibility.Collapsed) visIndex.Remove(i);
+			}
+		}
+	}
+
 	private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
 	{
-		SearchBox.IsDropDownOpen = true;
+		SearchPopup.IsOpen = true;
+		if (selectedIndex >= 0) ((SearchItem)SearchDisplayer.Children[selectedIndex]).SetFocusState(false);
+		selectedIndex = -1;
+		Search(SearchBox.Text);
 	}
 
-	private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
-	{
-		SearchBox.IsDropDownOpen = true;
-	}
-
+	int selectedIndex = -1;
+	List<int> visIndex = new();
 	private void SearchBox_KeyUp(object sender, KeyEventArgs e)
 	{
-		if (e.Key == Key.Enter)
+		if (visIndex.Count == 0) visIndex = Enumerable.Range(0, SearchDisplayer.Children.Count).ToList();
+
+		switch (e.Key)
 		{
-			((SearchItem)SearchBox.SelectedItem).UserControl_MouseLeftButtonUp(this, null); // Click the selected item
+			case Key.Down when selectedIndex < visIndex.Count - 1:
+				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex < 0 ? 0 : selectedIndex] + (selectedIndex < 0 ? 1 : 0)]).SetFocusState(false);
+				selectedIndex++;
+				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(true);
+				break;
+			case Key.Up when selectedIndex > 0:
+				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(false);
+				selectedIndex--;
+				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(true);
+				break;
+			case Key.Enter:
+				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).UserControl_MouseLeftButtonUp(this, null); // Click the selected item
+				break;
 		}
 	}
 
@@ -736,4 +764,31 @@ public partial class MainWindow : Window
 		AddPopup.IsOpen = false;
 
 	}
+
+	private void SearchBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+	{
+		SearchPopup.IsOpen = true;
+		if (selectedIndex >= 0) ((SearchItem)SearchDisplayer.Children[selectedIndex]).SetFocusState(false);
+		selectedIndex = -1;
+	}
+
+	private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+	{
+		if (SearchPopup.IsFocused) return;
+		SearchPopup.IsOpen = false;
+	}
+
+	private void TextBox_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+	{
+		if (e.NewFocus is ScrollViewer &&
+		   (e.NewFocus as ScrollViewer).Name == "SearchScroller")
+		{
+			e.Handled = true;
+		}
+		else
+		{
+			SearchPopup.IsOpen = false;
+		}
+	}
+
 }

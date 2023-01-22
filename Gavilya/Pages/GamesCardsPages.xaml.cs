@@ -49,7 +49,7 @@ public partial class GamesCardsPages : Page
 		{
 			Definitions.HomePage.FavoriteBar.Children.Clear();
 			Definitions.HomePage.RecommandedBar.Children.Clear();
-			Definitions.MainWindow.SearchBox.Items.Clear();
+			Definitions.MainWindow.SearchDisplayer.Children.Clear();
 			GamePresenter.Children.Clear(); // Remove all the games
 
 			var recommandedGames = Global.GetRecommandedGames();
@@ -65,7 +65,7 @@ public partial class GamesCardsPages : Page
 				{
 					var game = new GameCard(gameInfo, GavilyaPages.Cards, false, recommandedGames.Contains(gameInfo));
 					GamePresenter.Children.Add(game); // Add the game
-					Definitions.MainWindow.SearchBox.Items.Add(new SearchItem(game));
+					Definitions.MainWindow.SearchDisplayer.Children.Add(new SearchItem(game));
 				}
 			}
 			else

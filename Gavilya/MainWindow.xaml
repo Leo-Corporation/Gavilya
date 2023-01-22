@@ -113,15 +113,25 @@
 						</Button.ToolTip>
 					</Button>
 
-					<ComboBox MaxWidth="400" MaxDropDownHeight="135" Name="SearchBox" Grid.Column="3" BorderThickness="2" FontWeight="ExtraBold" VerticalAlignment="Stretch" Margin="3 7" IsEditable="True" WindowChrome.IsHitTestVisibleInChrome="True" TextBoxBase.TextChanged="SearchBox_TextChanged" GotFocus="SearchBox_GotFocus" KeyUp="SearchBox_KeyUp">
-						<ComboBox.Style>
-							<Style TargetType="ComboBox">
-								<Setter Property="Template" Value="{StaticResource ComboBoxEditableTemplate}" />
-								<Setter Property="ItemContainerStyle" Value="{StaticResource ItemStyle}"></Setter>
-							</Style>
+					<StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Center">
+						<TextBox PreviewLostKeyboardFocus="TextBox_PreviewLostKeyboardFocus" LostFocus="SearchBox_LostFocus" PreviewMouseLeftButtonUp="SearchBox_PreviewMouseLeftButtonUp" Foreground="White" Background="#FF1E1E32" Style="{DynamicResource RegularTextBox}" Width="400" Name="SearchBox" Grid.Column="3" BorderThickness="0" FontWeight="ExtraBold" VerticalAlignment="Stretch" Margin="3 7" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="SearchBox_TextChanged" KeyUp="SearchBox_KeyUp">
+							
+						</TextBox>
+					</StackPanel>
 
-						</ComboBox.Style>
-					</ComboBox>
+					<Popup Width="400" StaysOpen="False" x:Name="SearchPopup" AllowsTransparency="True" Placement="Bottom" PopupAnimation="Fade" IsOpen="False" PlacementTarget="{Binding ElementName=SearchBox}">
+						<Border Background="#0a0a12" Padding="10" CornerRadius="5" Margin="8">
+							<ScrollViewer x:Name="SearchScroller" HorizontalScrollBarVisibility="Disabled" Template="{DynamicResource ScrollViewerTemplate1}">
+								<StackPanel x:Name="SearchDisplayer">
+
+								</StackPanel>
+							</ScrollViewer>
+
+							<Border.Effect>
+								<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
+							</Border.Effect>
+						</Border>
+					</Popup>
 
 					<Button x:Name="SearchBtn" Click="SearchBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="18" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="White" BorderThickness="0" Background="Transparent" Content="&#xF690;">
 						<Button.ToolTip>
