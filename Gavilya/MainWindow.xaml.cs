@@ -665,6 +665,20 @@ public partial class MainWindow : Window
 			if (SearchDisplayer.Children[i] is SearchItem searchItem)
 			{
 				searchItem.Visibility = !searchItem.ParentGameCard.GameInfo.Name.ToLower().Contains(query.ToLower()) ? Visibility.Collapsed : Visibility.Visible;
+				if (FilterComboBox.SelectedIndex == 1 && searchItem.ParentGameCard.GameInfo.AssociatedTags.Count == 0) searchItem.Visibility = Visibility.Collapsed;
+				
+				if (FilterComboBox.SelectedIndex == 1 && searchItem.Visibility != Visibility.Collapsed && SelectedTags.Count > 0)
+				{
+					for (int j = 0; j < searchItem.ParentGameCard.GameInfo.AssociatedTags.Count; j++)
+					{
+						if (!SelectedTags.Contains(searchItem.ParentGameCard.GameInfo.AssociatedTags[j].Guid))
+						{
+							searchItem.Visibility = Visibility.Collapsed;
+							break;
+						}
+					}
+				}
+
 				if (searchItem.Visibility == Visibility.Collapsed) visIndex.Remove(i);
 			}
 		}
@@ -791,4 +805,42 @@ public partial class MainWindow : Window
 		}
 	}
 
+	List<string> SelectedTags = Enumerable.Empty<string>().ToList();
+	private void TagsApplyBtn_Click(object sender, RoutedEventArgs e)
+	{
+		SelectedTags.Clear();
+		for (int i = 0; i < TagsDisplayer.Children.Count; i++)
+		{
+			if (TagsDisplayer.Children[i] is TagSelectItem tagSelectItem && (tagSelectItem.GameCheck.IsChecked ?? false))
+			{
+				SelectedTags.Add(tagSelectItem.GameTag.Guid);
+			}
+		}
+		Search(SearchBox.Text);
+	}
+
+	private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		try
+		{
+			TagsFilters.Visibility = (FilterComboBox.SelectedIndex == 1) ? Visibility.Visible : Visibility.Collapsed;
+			LoadTagsSearchUI();
+			Search(SearchBox.Text);
+		}
+		catch { }
+	}
+
+	private void FiltersBtn_Click(object sender, RoutedEventArgs e)
+	{
+		FiltersPopup.IsOpen = true;
+	}
+
+	private void LoadTagsSearchUI()
+	{
+		TagsDisplayer.Children.Clear();
+		for (int i = 0; i < Definitions.Settings.GameTags.Count; i++)
+		{
+			TagsDisplayer.Children.Add(new TagSelectItem(Definitions.Settings.GameTags[i], false));
+		}
+	}
 }
