@@ -939,4 +939,10 @@
   <data name="Tags" xml:space="preserve">
     <value>Tags</value>
   </data>
+  <data name="AllFilters" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
 </root>

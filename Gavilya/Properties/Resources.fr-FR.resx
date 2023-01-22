@@ -942,4 +942,10 @@
   <data name="Tags" xml:space="preserve">
     <value>Libellés</value>
   </data>
+  <data name="AllFilters" xml:space="preserve">
+    <value>Tout</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtres</value>
+  </data>
 </root>

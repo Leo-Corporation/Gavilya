@@ -89,7 +89,7 @@ public partial class GameProperties : Window
 
 	private void BrowseBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Process.Start(new ProcessStartInfo("explorer.exe", System.IO.Path.GetDirectoryName(GameInfo.FileLocation)));
+		Process.Start(new ProcessStartInfo("explorer.exe", GameInfo.IsSteam ? $"https://steamcommunity.com/app/{GameInfo.FileLocation.Replace("steam://rungameid/", "")}/" : System.IO.Path.GetDirectoryName(GameInfo.FileLocation)));
 	}
 
 	private void ProcessHelpBtn_Click(object sender, RoutedEventArgs e)

@@ -123,6 +123,7 @@ public partial class EditTagItem : UserControl
 			SettingsSaver.Save();
 			GameSaver.Save(Definitions.Games);
 			Parent.InitUI();
+			Definitions.TagPage.InitUI();
 		}
 	}
 }

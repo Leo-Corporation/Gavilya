@@ -27,6 +27,7 @@ using System;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Gavilya.UserControls;
@@ -85,6 +86,18 @@ public partial class SearchItem : UserControl
 		}
 	}
 
+	internal void SetFocusState(bool focused)
+	{
+		if (focused)
+		{
+			MainGrid.Background = new SolidColorBrush(Color.FromRgb(20, 20, 40));
+		}
+		else
+		{
+			MainGrid.Background = null;
+		}
+	}
+
 	public override string ToString()
 	{
 		return ParentGameCard.GameInfo.Name;
@@ -93,5 +106,6 @@ public partial class SearchItem : UserControl
 	internal void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 	{
 		ParentGameCard.GameCardBorder_MouseLeftButtonUp(this, e);
+		Definitions.MainWindow.SearchPopup.IsOpen = false;
 	}
 }

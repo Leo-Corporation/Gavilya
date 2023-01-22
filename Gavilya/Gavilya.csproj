@@ -9,11 +9,11 @@
     <Authors>Léo Corporation</Authors>
     <Company>Léo Corporation</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>3.1.1.2212</Version>
+    <Version>3.2.0.2301-rc1</Version>
     <Description>Where all your games are gathered.</Description>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
-    <Copyright>© 2022</Copyright>
+    <Copyright>© 2023</Copyright>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <UseWindowsForms>True</UseWindowsForms>
   </PropertyGroup>
@@ -63,8 +63,8 @@
 
   <ItemGroup>
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
-    <PackageReference Include="PeyrSharp.Core" Version="1.1.0.2212" />
-    <PackageReference Include="PeyrSharp.Env" Version="1.1.0.2212" />
+    <PackageReference Include="PeyrSharp.Core" Version="1.2.0.2301" />
+    <PackageReference Include="PeyrSharp.Env" Version="1.2.0.2301" />
     <PackageReference Include="RestSharp" Version="108.0.3" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>

@@ -22,58 +22,31 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Enums;
+using Gavilya.Classes;
+using PeyrSharp.Core.Converters;
+using System.Windows.Controls;
+using System.Windows.Media;
 
+namespace Gavilya.UserControls;
 /// <summary>
-/// The pages f the <see cref="MainWindow"/>.
+/// Interaction logic for TagCategory.xaml
 /// </summary>
-public enum GavilyaPages
+public partial class TagCategory : UserControl
 {
-	/// <summary>
-	/// The <see cref="Pages.GamesCardsPages"/>.
-	/// </summary>
-	Cards,
+	GameTag GameTag { get; init; }
+	public TagCategory(GameTag gameTag)
+	{
+		InitializeComponent();
+		GameTag = gameTag;
 
-	/// <summary>
-	/// The <see cref="Pages.RecentGamesPage"/>.
-	/// </summary>
-	Recent,
+		InitUI();
+	}
 
-	/// <summary>
-	/// The <see cref="Pages.GamesListPage"/>.
-	/// </summary>
-	List,
-
-	/// <summary>
-	/// The page is unknown.
-	/// </summary>
-	Underteminated,
-
-	/// <summary>
-	/// The <see cref="Pages.TagPage"/>.
-	/// </summary>
-	Tags
-}
-
-public enum GavilyaWindowPages
-{
-	/// <summary>
-	/// The <see cref="Pages.HomePage"/>.
-	/// </summary>
-	Home,
-
-	/// <summary>
-	/// The <see cref="Pages.LibraryPage"/>.
-	/// </summary>
-	Library,
-
-	/// <summary>
-	/// The <see cref="Pages.ProfilePage"/>.
-	/// </summary>
-	Profile,
-
-	/// <summary>
-	/// The <see cref="Pages.RecentGamesPage"/>.
-	/// </summary>
-	Recent
+	internal void InitUI()
+	{
+		TagNameTxt.Text = GameTag.Name;
+		var rgb = new HEX(GameTag.Color).ToRgb().Color;
+		var color = new SolidColorBrush { Color = Color.FromRgb(rgb.R, rgb.G, rgb.B) }; // Set color
+		ColorDot.Fill = color;
+	}
 }
