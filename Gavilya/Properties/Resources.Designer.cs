@@ -205,6 +205,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string AllFilters {
+            get {
+                return ResourceManager.GetString("AllFilters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Always check if the game is currently running.
         /// </summary>
         public static string AlwaysCheckIfGameRunning {
@@ -759,6 +768,15 @@ namespace Gavilya.Properties {
         public static string FileNotExist {
             get {
                 return ResourceManager.GetString("FileNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filters.
+        /// </summary>
+        public static string Filters {
+            get {
+                return ResourceManager.GetString("Filters", resourceCulture);
             }
         }
         
