@@ -113,7 +113,7 @@
 						</Button.ToolTip>
 					</Button>
 
-					<StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Center">
+					<StackPanel x:Name="SearchPanel" Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Center">
 						<Button Click="FiltersBtn_Click" x:Name="FiltersBtn" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" Background="#FF1E1E32" Foreground="White" Padding="7" Style="{DynamicResource RegularButton}" VerticalAlignment="Center" Height="36">
 							<TextBlock Text="&#xF407;" FontSize="15" FontFamily="\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />
 

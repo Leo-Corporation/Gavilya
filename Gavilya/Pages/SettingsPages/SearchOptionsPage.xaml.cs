@@ -52,7 +52,8 @@ public partial class SearchOptionsPage : Page
 		SettingsSaver.Save(); // Save changes
 
 		// Hide search bar in MainWindow
-		Definitions.MainWindow.SearchBox.Visibility = HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		if (Definitions.MainWindow is null) return;
+		Definitions.MainWindow.SearchPanel.Visibility = HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		Definitions.MainWindow.SearchBtn.Visibility = !HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 
 		// Reset toggle search button state
