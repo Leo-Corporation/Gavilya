@@ -116,7 +116,7 @@ public partial class MainWindow : Window
 		// Search box
 		SearchPanel.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
-		SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 58; // Set the max drop down height (45 = height of SearchItem)
+		SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45 + 36; // Set the max drop down height (45 = height of SearchItem)
 
 		// FPS
 		var fps = Combination.FromString("Control+Shift+F");

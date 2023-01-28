@@ -159,9 +159,8 @@
 					<Popup Width="400" StaysOpen="False" x:Name="SearchPopup" AllowsTransparency="True" Placement="Bottom" PopupAnimation="Fade" IsOpen="False" PlacementTarget="{Binding ElementName=SearchBox}">
 						<Border Background="#0a0a12" Padding="10" CornerRadius="5" Margin="8">
 							<ScrollViewer x:Name="SearchScroller" HorizontalScrollBarVisibility="Disabled" Template="{DynamicResource ScrollViewerTemplate1}">
-								<StackPanel x:Name="SearchDisplayer">
-
-								</StackPanel>
+                                <StackPanel x:Name="SearchDisplayer">
+                                </StackPanel>
 							</ScrollViewer>
 
 							<Border.Effect>
