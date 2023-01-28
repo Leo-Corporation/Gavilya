@@ -59,9 +59,9 @@ public partial class AboutPage : Page
 		MessageBox.Show($"{Properties.Resources.Licenses}\n\n" +
 			"Fluent System Icons - MIT License - © 2020 Microsoft Corporation\n" +
 			"System.Drawing.Common - MIT License - © .NET Foundation and Contributors\n" +
-			"LeoCorpLibrary - MIT License - © 2020-2022 Léo Corporation\n" +
+			"PeyrSharp - MIT License - © 2022-2023 Léo Corporation\n" +
 			"RestSharp - Apache License 2.0 - © RestSharp\n" +
-			"Gavilya - MIT License - © 2020-2022 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
+			"Gavilya - MIT License - © 2020-2023 Léo Corporation", $"{Properties.Resources.MainWindowTitle} - {Properties.Resources.Licenses}", MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 
 	private void GitHubBtn_Click(object sender, RoutedEventArgs e)
