@@ -113,7 +113,7 @@
 						</Button.ToolTip>
 					</Button>
 
-					<StackPanel Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Center">
+					<StackPanel x:Name="SearchPanel" Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Center">
 						<Button Click="FiltersBtn_Click" x:Name="FiltersBtn" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" Background="#FF1E1E32" Foreground="White" Padding="7" Style="{DynamicResource RegularButton}" VerticalAlignment="Center" Height="36">
 							<TextBlock Text="&#xF407;" FontSize="15" FontFamily="\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />
 
@@ -159,9 +159,8 @@
 					<Popup Width="400" StaysOpen="False" x:Name="SearchPopup" AllowsTransparency="True" Placement="Bottom" PopupAnimation="Fade" IsOpen="False" PlacementTarget="{Binding ElementName=SearchBox}">
 						<Border Background="#0a0a12" Padding="10" CornerRadius="5" Margin="8">
 							<ScrollViewer x:Name="SearchScroller" HorizontalScrollBarVisibility="Disabled" Template="{DynamicResource ScrollViewerTemplate1}">
-								<StackPanel x:Name="SearchDisplayer">
-
-								</StackPanel>
+                                <StackPanel x:Name="SearchDisplayer">
+                                </StackPanel>
 							</ScrollViewer>
 
 							<Border.Effect>

@@ -114,9 +114,9 @@ public partial class MainWindow : Window
 		DisplayNotifications();
 
 		// Search box
-		SearchBox.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		SearchPanel.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
-		SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 58; // Set the max drop down height (45 = height of SearchItem)
+		SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45 + 36; // Set the max drop down height (45 = height of SearchItem)
 
 		// FPS
 		var fps = Combination.FromString("Control+Shift+F");
@@ -723,12 +723,12 @@ public partial class MainWindow : Window
 		if (IsSearchVisible)
 		{
 			ColorElement(SearchBtn, Definitions.HomeButtonBackColor); // Change the background
-			SearchBox.Visibility = Visibility.Visible; // Show
+			SearchPanel.Visibility = Visibility.Visible; // Show
 		}
 		else
 		{
 			ColorElement(SearchBtn, new SolidColorBrush(Colors.Transparent)); // Change the background
-			SearchBox.Visibility = Visibility.Collapsed; // Hide
+			SearchPanel.Visibility = Visibility.Collapsed; // Hide
 		}
 	}
 

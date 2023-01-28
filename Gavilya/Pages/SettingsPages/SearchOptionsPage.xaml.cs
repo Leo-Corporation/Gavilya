@@ -52,7 +52,8 @@ public partial class SearchOptionsPage : Page
 		SettingsSaver.Save(); // Save changes
 
 		// Hide search bar in MainWindow
-		Definitions.MainWindow.SearchBox.Visibility = HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		if (Definitions.MainWindow is null) return;
+		Definitions.MainWindow.SearchPanel.Visibility = HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 		Definitions.MainWindow.SearchBtn.Visibility = !HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 
 		// Reset toggle search button state
@@ -65,7 +66,7 @@ public partial class SearchOptionsPage : Page
 		Definitions.Settings.NumberOfSearchResultsToDisplay = int.Parse(SearchResultsTextBox.Text); // Set settings value
 		SettingsSaver.Save(); // Save changes
 
-		Definitions.MainWindow.SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45; // Set max drop down height
+		Definitions.MainWindow.SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45 + 36; // Set max drop down height
 	}
 
 	private void SearchResultsTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
