@@ -24,6 +24,8 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Enums;
 using Gavilya.UserControls;
+using PeyrSharp.Core.Converters;
+using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,11 +51,17 @@ public partial class RecentGamesPage : Page
 		{
 			try
 			{
-				GamePresenter.Children.Clear(); // Clear the games
+				TodayGamePresenter.Children.Clear(); // Clear the games
+				YesterdayGamePresenter.Children.Clear(); // Clear the games
+				MonthGamePresenter.Children.Clear(); // Clear the games
+				OtherGamePresenter.Children.Clear(); // Clear the games
 
 				if (Definitions.Games.Count > 0) // If there is games
 				{
-					GamePresenter.Visibility = Visibility.Visible; // Visible
+					TodayGamePresenter.Visibility = Visibility.Visible; // Visible
+					YesterdayGamePresenter.Visibility = Visibility.Visible; // Visible
+					MonthGamePresenter.Visibility = Visibility.Visible; // Visible
+					OtherGamePresenter.Visibility = Visibility.Visible; // Visible
 					WelcomeHost.Visibility = Visibility.Collapsed; // Hide
 
 					Dictionary<GameInfo, int> keyValuePairs = new(); // Create a dictionnary
@@ -75,7 +83,22 @@ public partial class RecentGamesPage : Page
 						var gameCard = new GameCard(pair1.Key, GavilyaPages.Recent, true);
 						if (Definitions.Settings.PageId != 1)
 						{
-							GamePresenter.Children.Add(gameCard); // Add the game 
+							if (Global.IsSameDate(Time.UnixTimeToDateTime(pair1.Key.LastTimePlayed), DateTime.Now))
+							{
+								TodayGamePresenter.Children.Add(gameCard);
+							}
+							else if (Global.IsSameDate(Time.UnixTimeToDateTime(pair1.Key.LastTimePlayed), new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day - 1)))
+							{
+								YesterdayGamePresenter.Children.Add(gameCard);
+							}
+							else if (Time.UnixTimeToDateTime(pair1.Key.LastTimePlayed) >= DateTime.Now.AddDays(-30))
+							{
+								MonthGamePresenter.Children.Add(gameCard);
+							}
+							else
+							{
+								OtherGamePresenter.Children.Add(gameCard);
+							}
 						}
 						if (c < Definitions.Settings.MaxNumberRecentGamesShown.Value)
 						{
@@ -90,10 +113,17 @@ public partial class RecentGamesPage : Page
 						var gameInfo = items.Last().Key;
 
 						// Get the associated game card from the game info
-						var gameCard = GamePresenter.Children.OfType<GameCard>().FirstOrDefault(x => x.GameInfo == gameInfo);
+						var cards = TodayGamePresenter.Children.OfType<GameCard>().ToList();
+						cards.AddRange(YesterdayGamePresenter.Children.OfType<GameCard>());
+						cards.AddRange(MonthGamePresenter.Children.OfType<GameCard>());
+						cards.AddRange(OtherGamePresenter.Children.OfType<GameCard>());
 
-						Definitions.LeastUsedGames = new(); // Create a new list
-						Definitions.LeastUsedGames.Add(gameInfo, gameCard); // Add the game info and the game card
+						var gameCard = cards.FirstOrDefault(x => x.GameInfo == gameInfo);
+
+						Definitions.LeastUsedGames = new()
+						{
+							{ gameInfo, gameCard } // Add the game info and the game card
+						}; // Create a new list
 					}
 
 					Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
@@ -101,7 +131,10 @@ public partial class RecentGamesPage : Page
 				}
 				else
 				{
-					GamePresenter.Visibility = Visibility.Collapsed; // Hide
+					TodayGamePresenter.Visibility = Visibility.Collapsed; // Hide
+					YesterdayGamePresenter.Visibility = Visibility.Collapsed; // Hide
+					MonthGamePresenter.Visibility = Visibility.Collapsed; // Hide
+					OtherGamePresenter.Visibility = Visibility.Collapsed; // Hide
 					WelcomeHost.Visibility = Visibility.Visible; // Visible
 
 					WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
