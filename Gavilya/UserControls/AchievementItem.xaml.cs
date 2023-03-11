@@ -41,16 +41,23 @@ public partial class AchievementItem : UserControl
 
 	private void InitUI(Achievement achievement)
 	{
-		var image = new BitmapImage();
-		image.BeginInit();
-		image.UriSource = new Uri(achievement.image);
-		image.DecodePixelWidth = 50;
-		image.EndInit();
+		try
+		{
+			// Load text
+			AchievementNameTxt.Text = achievement.name; // Set text
+			AchievementDescriptionTxt.Text = achievement.description; // Set text
+			AchievementPourcentTxt.Text = $"{achievement.percent}% {Properties.Resources.AchievementPlayerUnlocked}"; // Set text
 
-		AchievementImg.Source = image; // Set the image
+			// Load the image
+			var image = new BitmapImage();
+			image.BeginInit();
+			image.UriSource = new Uri(achievement.image);
+			image.DecodePixelWidth = 50;
+			image.EndInit();
 
-		AchievementNameTxt.Text = achievement.name; // Set text
-		AchievementDescriptionTxt.Text = achievement.description; // Set text
-		AchievementPourcentTxt.Text = $"{achievement.percent}% {Properties.Resources.AchievementPlayerUnlocked}"; // Set text
+			AchievementImg.Source = image; // Set the image
+
+		}
+		catch { } // In case the image isn't loaded properly
 	}
 }
