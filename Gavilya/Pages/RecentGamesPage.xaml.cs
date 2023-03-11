@@ -31,6 +31,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms.Design;
 
 namespace Gavilya.Pages;
 
@@ -58,10 +59,10 @@ public partial class RecentGamesPage : Page
 
 				if (Definitions.Games.Count > 0) // If there is games
 				{
-					TodayGamePresenter.Visibility = Visibility.Visible; // Visible
-					YesterdayGamePresenter.Visibility = Visibility.Visible; // Visible
-					MonthGamePresenter.Visibility = Visibility.Visible; // Visible
-					OtherGamePresenter.Visibility = Visibility.Visible; // Visible
+					TodaySection.Visibility = Visibility.Visible; // Visible
+					YesterdaySection.Visibility = Visibility.Visible; // Visible
+					MonthSection.Visibility = Visibility.Visible; // Visible
+					OtherSection.Visibility = Visibility.Visible; // Visible
 					WelcomeHost.Visibility = Visibility.Collapsed; // Hide
 
 					Dictionary<GameInfo, int> keyValuePairs = new(); // Create a dictionnary
@@ -99,6 +100,11 @@ public partial class RecentGamesPage : Page
 							{
 								OtherGamePresenter.Children.Add(gameCard);
 							}
+
+							TodaySection.Visibility = TodayGamePresenter.Children.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+							YesterdaySection.Visibility = YesterdayGamePresenter.Children.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+							MonthSection.Visibility = MonthGamePresenter.Children.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+							OtherSection.Visibility = OtherGamePresenter.Children.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
 						}
 						if (c < Definitions.Settings.MaxNumberRecentGamesShown.Value)
 						{
@@ -131,10 +137,10 @@ public partial class RecentGamesPage : Page
 				}
 				else
 				{
-					TodayGamePresenter.Visibility = Visibility.Collapsed; // Hide
-					YesterdayGamePresenter.Visibility = Visibility.Collapsed; // Hide
-					MonthGamePresenter.Visibility = Visibility.Collapsed; // Hide
-					OtherGamePresenter.Visibility = Visibility.Collapsed; // Hide
+					TodaySection.Visibility = Visibility.Collapsed; // Hide
+					YesterdaySection.Visibility = Visibility.Collapsed; // Hide
+					MonthSection.Visibility = Visibility.Collapsed; // Hide
+					OtherSection.Visibility = Visibility.Collapsed; // Hide
 					WelcomeHost.Visibility = Visibility.Visible; // Visible
 
 					WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"

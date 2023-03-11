@@ -12,14 +12,22 @@
 		</StackPanel>
 		<ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 			<StackPanel>
-                <TextBlock Margin="10,10,10,0" FontSize="14" FontWeight="Bold" Text="{x:Static lang:Resources.Today}"/>
-                <WrapPanel x:Name="TodayGamePresenter" x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Grid.Row="1" AllowDrop="True"></WrapPanel>
-                <TextBlock Margin="10,10,10,0" FontSize="14" FontWeight="Bold" Text="{x:Static lang:Resources.Yesterday}"/>
-				<WrapPanel x:Name="YesterdayGamePresenter" x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Grid.Row="1" AllowDrop="True"></WrapPanel>
-                <TextBlock Margin="10,10,10,0" FontSize="14" FontWeight="Bold" Text="{x:Static lang:Resources.ThisMonth}"/>
-				<WrapPanel x:Name="MonthGamePresenter" x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Grid.Row="1" AllowDrop="True"></WrapPanel>
-                <TextBlock Margin="10,10,10,0" FontSize="14" FontWeight="Bold" Text="{x:Static lang:Resources.LongTimeAgo}"/>
-				<WrapPanel x:Name="OtherGamePresenter" x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Grid.Row="1" AllowDrop="True"></WrapPanel>
+				<StackPanel x:Name="TodaySection">
+					<TextBlock Margin="10,10,10,0" FontSize="14" FontWeight="Bold" Text="{x:Static lang:Resources.Today}"/>
+					<WrapPanel x:Name="TodayGamePresenter" x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Grid.Row="1" AllowDrop="True"></WrapPanel>
+				</StackPanel>
+				<StackPanel x:Name="YesterdaySection">
+					<TextBlock Margin="10,10,10,0" FontSize="14" FontWeight="Bold" Text="{x:Static lang:Resources.Yesterday}"/>
+					<WrapPanel x:Name="YesterdayGamePresenter" x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Grid.Row="1" AllowDrop="True"></WrapPanel>
+				</StackPanel>
+				<StackPanel x:Name="MonthSection">
+					<TextBlock Margin="10,10,10,0" FontSize="14" FontWeight="Bold" Text="{x:Static lang:Resources.ThisMonth}"/>
+					<WrapPanel x:Name="MonthGamePresenter" x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Grid.Row="1" AllowDrop="True"></WrapPanel>
+				</StackPanel>
+				<StackPanel x:Name="OtherSection">
+					<TextBlock Margin="10,10,10,0" FontSize="14" FontWeight="Bold" Text="{x:Static lang:Resources.LongTimeAgo}"/>
+					<WrapPanel x:Name="OtherGamePresenter" x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Grid.Row="1" AllowDrop="True"></WrapPanel>
+				</StackPanel>
 			</StackPanel>
 		</ScrollViewer>
 
