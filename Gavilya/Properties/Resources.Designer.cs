@@ -1836,6 +1836,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Random game.
+        /// </summary>
+        public static string RandomGame {
+            get {
+                return ResourceManager.GetString("RandomGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ratings.
         /// </summary>
         public static string Ratings {

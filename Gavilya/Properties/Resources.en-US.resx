@@ -945,4 +945,7 @@
   <data name="Filters" xml:space="preserve">
     <value>Filters</value>
   </data>
+  <data name="RandomGame" xml:space="preserve">
+    <value>Random game</value>
+  </data>
 </root>
