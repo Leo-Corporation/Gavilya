@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -39,6 +40,15 @@ public partial class LibraryPage : Page
 	public LibraryPage()
 	{
 		InitializeComponent();
+		InitUI();
+	}
+
+	private void InitUI()
+	{
+		if (Definitions.Games.Count < 3)
+		{
+			RandomGameBtn.Visibility = Visibility.Collapsed;
+		}
 	}
 
 	private void GameCardTabBtn_Click(object sender, RoutedEventArgs e)
@@ -123,5 +133,13 @@ public partial class LibraryPage : Page
 
 		PageDisplayer.Content = Definitions.TagPage; // Set page content
 		RefreshTabUI();
+	}
+
+	private void RandomGameBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Random random = new();
+		int i = random.Next(0, Definitions.Games.Count - 1);
+		Definitions.GameInfoPage.InitializeUI(Definitions.Games[i]);
+		Definitions.MainWindow.PageContent.Navigate(Definitions.GameInfoPage);
 	}
 }
