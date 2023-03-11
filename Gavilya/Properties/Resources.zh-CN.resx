@@ -948,4 +948,16 @@
   <data name="RandomGame" xml:space="preserve">
     <value>随机游戏</value>
   </data>
+  <data name="Today" xml:space="preserve">
+    <value>今天</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>昨日</value>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>这个月</value>
+  </data>
+  <data name="LongTimeAgo" xml:space="preserve">
+    <value>很久以前</value>
+  </data>
 </root>
