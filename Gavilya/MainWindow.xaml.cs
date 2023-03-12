@@ -147,7 +147,6 @@ public partial class MainWindow : Window
 			AddUWPBtn.Visibility = Visibility.Visible; // Show
 		}
 	}
-
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
 
 	private void DisplayNotifications()
@@ -687,6 +686,7 @@ public partial class MainWindow : Window
 	private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
 	{
 		SearchPopup.IsOpen = true;
+		FiltersBtn.Visibility = Visibility.Visible;
 		if (selectedIndex >= 0) ((SearchItem)SearchDisplayer.Children[selectedIndex]).SetFocusState(false);
 		selectedIndex = -1;
 		Search(SearchBox.Text);
@@ -694,6 +694,7 @@ public partial class MainWindow : Window
 
 	int selectedIndex = -1;
 	List<int> visIndex = new();
+	double offset = 0;
 	private void SearchBox_KeyUp(object sender, KeyEventArgs e)
 	{
 		if (visIndex.Count == 0) visIndex = Enumerable.Range(0, SearchDisplayer.Children.Count).ToList();
@@ -703,12 +704,16 @@ public partial class MainWindow : Window
 			case Key.Down when selectedIndex < visIndex.Count - 1:
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex < 0 ? 0 : selectedIndex] + (selectedIndex < 0 ? 1 : 0)]).SetFocusState(false);
 				selectedIndex++;
+				offset += selectedIndex - Definitions.Settings.NumberOfSearchResultsToDisplay >= 0 ? 45 : 0;
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(true);
+				SearchScroller.ScrollToVerticalOffset(offset);
 				break;
 			case Key.Up when selectedIndex > 0:
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(false);
 				selectedIndex--;
+				offset -= offset > 0 ? 45 : 0;
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(true);
+				SearchScroller.ScrollToVerticalOffset(offset);
 				break;
 			case Key.Enter:
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).UserControl_MouseLeftButtonUp(this, null); // Click the selected item
@@ -782,6 +787,8 @@ public partial class MainWindow : Window
 	private void SearchBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		SearchPopup.IsOpen = true;
+		FiltersBtn.Visibility = Visibility.Visible;
+
 		if (selectedIndex >= 0) ((SearchItem)SearchDisplayer.Children[selectedIndex]).SetFocusState(false);
 		selectedIndex = -1;
 	}
@@ -790,6 +797,8 @@ public partial class MainWindow : Window
 	{
 		if (SearchPopup.IsFocused) return;
 		SearchPopup.IsOpen = false;
+		
+		if (!FiltersBtn.IsFocused && !FiltersBtn.IsMouseOver) FiltersBtn.Visibility = Visibility.Collapsed;
 	}
 
 	private void TextBox_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
@@ -802,6 +811,7 @@ public partial class MainWindow : Window
 		else
 		{
 			SearchPopup.IsOpen = false;
+			if (!FiltersBtn.IsFocused && !FiltersBtn.IsMouseOver) FiltersBtn.Visibility = Visibility.Collapsed;
 		}
 	}
 
@@ -842,5 +852,10 @@ public partial class MainWindow : Window
 		{
 			TagsDisplayer.Children.Add(new TagSelectItem(Definitions.Settings.GameTags[i], false));
 		}
+	}
+	
+	private void FiltersPopup_Closed(object sender, EventArgs e)
+	{
+		FiltersBtn.Visibility = Visibility.Collapsed;
 	}
 }

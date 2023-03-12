@@ -1296,6 +1296,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A long time ago.
+        /// </summary>
+        public static string LongTimeAgo {
+            get {
+                return ResourceManager.GetString("LongTimeAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gavilya.
         /// </summary>
         public static string MainWindowTitle {
@@ -1832,6 +1841,15 @@ namespace Gavilya.Properties {
         public static string Properties {
             get {
                 return ResourceManager.GetString("Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Random game.
+        /// </summary>
+        public static string RandomGame {
+            get {
+                return ResourceManager.GetString("RandomGame", resourceCulture);
             }
         }
         
@@ -2403,6 +2421,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This month.
+        /// </summary>
+        public static string ThisMonth {
+            get {
+                return ResourceManager.GetString("ThisMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Today.
+        /// </summary>
+        public static string Today {
+            get {
+                return ResourceManager.GetString("Today", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TOP 10 MOST PLAYED GAMES.
         /// </summary>
         public static string Top10MostPlayedGames {
@@ -2552,6 +2588,15 @@ namespace Gavilya.Properties {
         public static string XUDoesNotExist {
             get {
                 return ResourceManager.GetString("XUDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yesterday.
+        /// </summary>
+        public static string Yesterday {
+            get {
+                return ResourceManager.GetString("Yesterday", resourceCulture);
             }
         }
         

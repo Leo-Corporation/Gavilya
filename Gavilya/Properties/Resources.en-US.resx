@@ -945,4 +945,19 @@
   <data name="Filters" xml:space="preserve">
     <value>Filters</value>
   </data>
+  <data name="RandomGame" xml:space="preserve">
+    <value>Random game</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>This month</value>
+  </data>
+  <data name="LongTimeAgo" xml:space="preserve">
+    <value>A long time ago</value>
+  </data>
 </root>

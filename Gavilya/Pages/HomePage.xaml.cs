@@ -24,6 +24,7 @@ SOFTWARE.
 
 using Gavilya.Classes;
 using Gavilya.UserControls;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -53,6 +54,11 @@ public partial class HomePage : Page
 		RecentPlaceholder.Children.Add(new WelcomeRecentGames() { VerticalAlignment = VerticalAlignment.Center });
 		RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
 		RecentBar.Visibility = Visibility.Visible;
+
+		if (Definitions.Games.Count < 3)
+		{
+			RandomGameBtn.Visibility = Visibility.Collapsed;
+		}
 	}
 
 	private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
@@ -61,4 +67,12 @@ public partial class HomePage : Page
 		scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 2);
 		e.Handled = true;
 	}
+
+	private void RandomGameBtn_Click(object sender, RoutedEventArgs e)
+	{
+		Random random = new();
+		int i = random.Next(0, Definitions.Games.Count - 1);
+		Definitions.GameInfoPage.InitializeUI(Definitions.Games[i]);
+		Definitions.MainWindow.PageContent.Navigate(Definitions.GameInfoPage);
+    }
 }
