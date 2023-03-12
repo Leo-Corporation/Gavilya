@@ -147,7 +147,6 @@ public partial class MainWindow : Window
 			AddUWPBtn.Visibility = Visibility.Visible; // Show
 		}
 	}
-
 	readonly System.Windows.Forms.NotifyIcon notifyIcon = new();
 
 	private void DisplayNotifications()
@@ -687,6 +686,7 @@ public partial class MainWindow : Window
 	private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
 	{
 		SearchPopup.IsOpen = true;
+		FiltersBtn.Visibility = Visibility.Visible;
 		if (selectedIndex >= 0) ((SearchItem)SearchDisplayer.Children[selectedIndex]).SetFocusState(false);
 		selectedIndex = -1;
 		Search(SearchBox.Text);
@@ -787,6 +787,8 @@ public partial class MainWindow : Window
 	private void SearchBox_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		SearchPopup.IsOpen = true;
+		FiltersBtn.Visibility = Visibility.Visible;
+
 		if (selectedIndex >= 0) ((SearchItem)SearchDisplayer.Children[selectedIndex]).SetFocusState(false);
 		selectedIndex = -1;
 	}
@@ -795,6 +797,8 @@ public partial class MainWindow : Window
 	{
 		if (SearchPopup.IsFocused) return;
 		SearchPopup.IsOpen = false;
+		
+		if (!FiltersBtn.IsFocused && !FiltersBtn.IsMouseOver) FiltersBtn.Visibility = Visibility.Collapsed;
 	}
 
 	private void TextBox_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
@@ -807,6 +811,7 @@ public partial class MainWindow : Window
 		else
 		{
 			SearchPopup.IsOpen = false;
+			if (!FiltersBtn.IsFocused && !FiltersBtn.IsMouseOver) FiltersBtn.Visibility = Visibility.Collapsed;
 		}
 	}
 
@@ -847,5 +852,10 @@ public partial class MainWindow : Window
 		{
 			TagsDisplayer.Children.Add(new TagSelectItem(Definitions.Settings.GameTags[i], false));
 		}
+	}
+	
+	private void FiltersPopup_Closed(object sender, EventArgs e)
+	{
+		FiltersBtn.Visibility = Visibility.Collapsed;
 	}
 }
