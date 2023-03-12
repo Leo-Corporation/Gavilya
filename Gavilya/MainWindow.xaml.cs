@@ -694,6 +694,7 @@ public partial class MainWindow : Window
 
 	int selectedIndex = -1;
 	List<int> visIndex = new();
+	double offset = 0;
 	private void SearchBox_KeyUp(object sender, KeyEventArgs e)
 	{
 		if (visIndex.Count == 0) visIndex = Enumerable.Range(0, SearchDisplayer.Children.Count).ToList();
@@ -703,12 +704,16 @@ public partial class MainWindow : Window
 			case Key.Down when selectedIndex < visIndex.Count - 1:
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex < 0 ? 0 : selectedIndex] + (selectedIndex < 0 ? 1 : 0)]).SetFocusState(false);
 				selectedIndex++;
+				offset += selectedIndex - Definitions.Settings.NumberOfSearchResultsToDisplay >= 0 ? 45 : 0;
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(true);
+				SearchScroller.ScrollToVerticalOffset(offset);
 				break;
 			case Key.Up when selectedIndex > 0:
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(false);
 				selectedIndex--;
+				offset -= offset > 0 ? 45 : 0;
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(true);
+				SearchScroller.ScrollToVerticalOffset(offset);
 				break;
 			case Key.Enter:
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).UserControl_MouseLeftButtonUp(this, null); // Click the selected item
