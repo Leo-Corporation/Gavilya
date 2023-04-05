@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -65,7 +65,7 @@
     <PackageReference Include="MouseKeyHook" Version="5.6.0" />
     <PackageReference Include="PeyrSharp.Core" Version="1.4.0.2303" />
     <PackageReference Include="PeyrSharp.Env" Version="1.4.0.2303" />
-    <PackageReference Include="RestSharp" Version="108.0.3" />
+    <PackageReference Include="RestSharp" Version="110.1.0" />
     <PackageReference Include="System.Drawing.Common" Version="7.0.0" />
   </ItemGroup>
 
