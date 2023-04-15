@@ -49,7 +49,8 @@ public partial class AddEditPage : Page
 
 	readonly bool isFromAdd, isUWP, isSteam;
 	GameCard GameCard { get; set; }
-	public AddEditPage(AddGame addGame)
+	AddEditPage2 AddEditPage2 { get; set; }
+	public AddEditPage(AddGame addGame, AddEditPage2 addEditPage2)
 	{
 		InitializeComponent();
 		AddGame = addGame; // Set
@@ -57,13 +58,14 @@ public partial class AddEditPage : Page
 		isUWP = addGame.IsUWP; // Set
 		isSteam = addGame.IsSteam; // Set
 		RAWGID = -1; // -1 => Default value, no assigned RAWG ID.
+		AddEditPage2 = addEditPage2;
 
 		DragWin32Games.Visibility = isUWP || isSteam ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 		UWPGames.Visibility = !isUWP ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 		SteamGameInfo.Visibility = !isSteam ? Visibility.Collapsed : Visibility.Visible; // Set visibility
 	}
 
-	public AddEditPage(EditGame editGame, GameCard gameCard)
+	public AddEditPage(EditGame editGame, GameCard gameCard, AddEditPage2 addEditPage2)
 	{
 		InitializeComponent();
 
@@ -73,6 +75,7 @@ public partial class AddEditPage : Page
 		GameCard = EditGame.GameCard; // Set
 		isUWP = GameCard.GameInfo.IsUWP; // Set
 		isSteam = GameCard.GameInfo.IsSteam; // Set
+		AddEditPage2 = addEditPage2;
 
 		InitUI();
 	}
@@ -367,6 +370,13 @@ public partial class AddEditPage : Page
 
 	private void RAWGImageBrowseBtn_Click(object sender, RoutedEventArgs e)
 	{
-		new SearchGameCover(this, GameAssociationActions.Search).Show(); // Show
+		if (RAWGID != -1)
+		{
+			new SearchGameCover(this, GameAssociationActions.Search).Show(); // Show 
+		}
+		else
+		{
+			new SearchGameCover(this, AddEditPage2, GameAssociationActions.Both).Show(); // Show 
+		}
 	}
 }

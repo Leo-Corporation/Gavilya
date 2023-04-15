@@ -54,8 +54,8 @@ public partial class AddGame : Window
 		InitializeComponent();
 		IsUWP = isUWP; // Set
 		IsSteam = isSteam; // Set
-		AddEditPage = new(this);
 		AddEditPage2 = new(this);
+		AddEditPage = new(this, AddEditPage2);
 
 		ChangePage(0);
 	}

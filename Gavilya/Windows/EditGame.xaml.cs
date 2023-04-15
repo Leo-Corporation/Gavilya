@@ -58,8 +58,8 @@ public partial class EditGame : Window
 		InitializeComponent();
 		GameCard = gameCard; // Pass the arg
 
-		AddEditPage = new(this, GameCard);
 		AddEditPage2 = new(this, GameCard);
+		AddEditPage = new(this, GameCard, AddEditPage2);
 
 		ChangePage(0);
 	}

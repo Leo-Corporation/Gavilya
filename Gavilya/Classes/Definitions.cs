@@ -216,5 +216,10 @@ public enum GameAssociationActions
 	/// <summary>
 	/// Associate a game.
 	/// </summary>
-	Associate
+	Associate,
+
+	/// <summary>
+	/// Search the cover and associate the game ID to it.
+	/// </summary>
+	Both
 }
