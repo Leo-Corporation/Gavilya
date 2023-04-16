@@ -9,7 +9,7 @@
     <Authors>Léo Corporation</Authors>
     <Company>Léo Corporation</Company>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>3.4.0.2304-rc1</Version>
+    <Version>3.4.0.2304</Version>
     <Description>Where all your games are gathered.</Description>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
