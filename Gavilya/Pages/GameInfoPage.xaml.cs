@@ -362,6 +362,12 @@ public partial class GameInfoPage : Page
 	/// </summary>
 	private async void LoadRatings()
 	{
+		// Reset
+		Pgr1.Value = 0;
+		Pgr2.Value = 0;
+		Pgr3.Value = 0;
+		Pgr4.Value = 0;
+
 		if (GameInfo.RAWGID != -1 && GameInfo.RAWGID != 0) // Check if the game is connected to RAWG.io
 		{
 			RatingsItem.Visibility = Visibility.Visible; // Show
@@ -371,10 +377,20 @@ public partial class GameInfoPage : Page
 
 			if (ratings.Count > 0) // If there is ratings
 			{
+				float r = await Global.GetGameRatingAsync(GameInfo.RAWGID); // Get the average rating
+				RatingTxt.Text = r.ToString(); // Set text
+
 				int totalRatings = 0; // Total ratings
 				for (int i = 0; i < ratings.Count; i++) // For each ratings
 				{
 					totalRatings += ratings[i].count; // Add the count of ratings
+				}
+
+				if (totalRatings == 0 || r == 0)
+				{
+					RatingsItem.Visibility = Visibility.Collapsed; // Hide
+					NoRatings.Visibility = Visibility.Visible; // Show
+					return;
 				}
 
 				for (int i = 0; i < ratings.Count; i++) // For each "rating"
@@ -388,8 +404,12 @@ public partial class GameInfoPage : Page
 					}
 				}
 
-				float r = await Global.GetGameRatingAsync(GameInfo.RAWGID); // Get the average rating
-				RatingTxt.Text = r.ToString(); // Set text
+				
+			}
+			else
+			{
+				RatingsItem.Visibility = Visibility.Collapsed; // Hide
+				NoRatings.Visibility = Visibility.Visible; // Show
 			}
 		}
 		else
