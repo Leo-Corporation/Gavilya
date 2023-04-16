@@ -1242,6 +1242,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Left.
+        /// </summary>
+        public static string Left {
+            get {
+                return ResourceManager.GetString("Left", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Legendary Gamer.
         /// </summary>
         public static string LegendaryGamer {
@@ -1989,6 +1998,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Right.
+        /// </summary>
+        public static string Right {
+            get {
+                return ResourceManager.GetString("Right", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string Save {
@@ -2219,6 +2237,24 @@ namespace Gavilya.Properties {
         public static string ShowScreenshots {
             get {
                 return ResourceManager.GetString("ShowScreenshots", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sidebar.
+        /// </summary>
+        public static string Sidebar {
+            get {
+                return ResourceManager.GetString("Sidebar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sidebar position..
+        /// </summary>
+        public static string SidebarPosition {
+            get {
+                return ResourceManager.GetString("SidebarPosition", resourceCulture);
             }
         }
         
