@@ -118,6 +118,11 @@ public class Settings
 	/// The global game tags available for the user.
 	/// </summary>
 	public List<GameTag> GameTags { get; set; }
+
+	/// <summary>
+	/// The position of the sidebar.
+	/// </summary>
+	public Position? SidebarPosition { get; set; }
 }
 
 public static class SettingsSaver
@@ -135,42 +140,15 @@ public static class SettingsSaver
 
 			Definitions.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
 
-			if (!Definitions.Settings.MaxNumberRecentGamesShown.HasValue)
-			{
-				Definitions.Settings.MaxNumberRecentGamesShown = 4;
-			}
-
-			if (!Definitions.Settings.ShowMoreUnplayedGamesRecommanded.HasValue)
-			{
-				Definitions.Settings.ShowMoreUnplayedGamesRecommanded = true;
-			}
-
-			if (!Definitions.Settings.HideSearchBar.HasValue)
-			{
-				Definitions.Settings.HideSearchBar = false;
-			}
-
-			if (!Definitions.Settings.NumberOfSearchResultsToDisplay.HasValue)
-			{
-				Definitions.Settings.NumberOfSearchResultsToDisplay = 3;
-			}
-
-			if (!Definitions.Settings.FpsCounterOpacity.HasValue)
-			{
-				Definitions.Settings.FpsCounterOpacity = 1;
-			}
-
-			if (!Definitions.Settings.UpdatesAvNotification.HasValue)
-			{
-				Definitions.Settings.UpdatesAvNotification = true;
-			}
-
-			if (!Definitions.Settings.UnusedGameNotification.HasValue)
-			{
-				Definitions.Settings.UnusedGameNotification = true;
-			}
-
-			if (Definitions.Settings.GameTags is null) Definitions.Settings.GameTags = new();
+			Definitions.Settings.MaxNumberRecentGamesShown ??= 4;
+			Definitions.Settings.ShowMoreUnplayedGamesRecommanded ??= true;
+			Definitions.Settings.HideSearchBar ??= false;
+			Definitions.Settings.NumberOfSearchResultsToDisplay ??= 3;
+			Definitions.Settings.FpsCounterOpacity ??= 1;
+			Definitions.Settings.UpdatesAvNotification ??= true;
+			Definitions.Settings.UnusedGameNotification ??= true;
+			Definitions.Settings.GameTags ??= new();
+			Definitions.Settings.SidebarPosition ??= Position.Left;
 
 			streamReader.Dispose();
 		}
@@ -194,7 +172,8 @@ public static class SettingsSaver
 				FpsCounterOpacity = 1,
 				UpdatesAvNotification = true,
 				UnusedGameNotification = true,
-				GameTags = new()
+				GameTags = new(),
+				SidebarPosition = Position.Left
 			};
 			Save();
 		}

@@ -92,6 +92,13 @@ public partial class MainWindow : Window
 
 		CheckUpdateOnStart(); // Check update on start
 
+		// Sidebar
+		Grid.SetColumn(Sidebar, Definitions.Settings.SidebarPosition switch
+		{
+			Position.Right => 3,
+			_ => 0
+		});
+
 		// Tabs
 
 		PageContent.Navigate((startupPage ?? Definitions.Settings.DefaultGavilyaHomePage) switch
