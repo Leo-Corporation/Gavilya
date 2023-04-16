@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using Gavilya.Enums;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,6 +44,7 @@ public partial class HomeOptionsPage : Page
 	{
 		NumberRecentGamesTextBox.Text = Definitions.Settings.MaxNumberRecentGamesShown.Value.ToString();
 		DisplayedUnusedGamesChk.IsChecked = Definitions.Settings.ShowMoreUnplayedGamesRecommanded; // Change the check state
+		PositionCombobox.SelectedIndex = (int)Definitions.Settings.SidebarPosition;
 	}
 
 	private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -67,5 +69,17 @@ public partial class HomeOptionsPage : Page
 	{
 		Definitions.Settings.ShowMoreUnplayedGamesRecommanded = DisplayedUnusedGamesChk.IsChecked; // Set value
 		SettingsSaver.Save(); // Save the settings
+	}
+
+	private void PositionCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+	{
+		Definitions.Settings.SidebarPosition = (Position)PositionCombobox.SelectedIndex;
+		SettingsSaver.Save();
+		if (Definitions.MainWindow is null) return;
+		Grid.SetColumn(Definitions.MainWindow.Sidebar, Definitions.Settings.SidebarPosition switch
+		{
+			Position.Right => 3,
+			_ => 0
+		});
 	}
 }

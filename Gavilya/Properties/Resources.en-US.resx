@@ -960,4 +960,16 @@
   <data name="LongTimeAgo" xml:space="preserve">
     <value>A long time ago</value>
   </data>
+  <data name="Sidebar" xml:space="preserve">
+    <value>Sidebar</value>
+  </data>
+  <data name="SidebarPosition" xml:space="preserve">
+    <value>Sidebar position.</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Right</value>
+  </data>
 </root>

@@ -46,6 +46,28 @@
 				</Expander.Header>
 				<CheckBox x:Name="DisplayedUnusedGamesChk" Content="{x:Static lang:Resources.ShowMoreUnplayedGames}" Foreground="#fff" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="DisplayedUnusedGamesChk_Checked" Unchecked="DisplayedUnusedGamesChk_Checked" />
 			</Expander>
+
+			<Border Margin="5" CornerRadius="5" Background="#1E1E32">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto"/>
+						<ColumnDefinition/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+					<StackPanel Margin="10 15" Orientation="Horizontal">
+						<TextBlock Text="&#xFA93;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" Foreground="White"/>
+						<StackPanel>
+							<TextBlock Text="{x:Static lang:Resources.Sidebar}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
+							<TextBlock Text="{x:Static lang:Resources.SidebarPosition}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+						</StackPanel>
+					</StackPanel>
+					<ComboBox x:Name="PositionCombobox" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="White" BorderThickness="2" Padding="5" VerticalAlignment="Center" SelectionChanged="PositionCombobox_SelectionChanged" Grid.Column="2">
+						<ComboBoxItem Content="{x:Static lang:Resources.Left}"/>
+						<ComboBoxItem Content="{x:Static lang:Resources.Right}"/>
+					</ComboBox>
+
+				</Grid>
+			</Border>
 		</StackPanel>
 	</Grid>
 </Page>

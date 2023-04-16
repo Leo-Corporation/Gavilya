@@ -57,6 +57,13 @@ public partial class SearchGameCover : Window
 			AddEditPage2 = page1; // Set
 		}
 	}
+	public SearchGameCover(AddEditPage page, AddEditPage2 page1, GameAssociationActions gameAssociationActions)
+	{
+		InitializeComponent();
+		associationActions = gameAssociationActions; // Define the var
+		AddEditPage = page; // Set
+		AddEditPage2 = page1; // Set
+	}
 
 	private async void Button_Click(object sender, RoutedEventArgs e)
 	{
@@ -128,6 +135,11 @@ public partial class SearchGameCover : Window
 				case GameAssociationActions.Search: // If the action is to get the cover (search)
 					string bgImage = await Global.GetCoverImageAsync(selectedGame.Id, selectedGame.SelectedScreenshot); // File name
 					LoadImageInWindow(bgImage, selectedGame.Id); // Load the image
+					break;
+				case GameAssociationActions.Both:
+					Associate(selectedGame.Id); // Associate the game
+					string bgImage2 = await Global.GetCoverImageAsync(selectedGame.Id, selectedGame.SelectedScreenshot); // File name
+					LoadImageInWindow(bgImage2, selectedGame.Id); // Load the image
 					break;
 			}
 			Close(); // Close the window

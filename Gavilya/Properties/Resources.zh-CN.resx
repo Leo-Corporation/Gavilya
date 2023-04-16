@@ -960,4 +960,16 @@
   <data name="LongTimeAgo" xml:space="preserve">
     <value>很久以前</value>
   </data>
+  <data name="Sidebar" xml:space="preserve">
+    <value>侧边栏</value>
+  </data>
+  <data name="SidebarPosition" xml:space="preserve">
+    <value>侧边栏的位置。</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>左边</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>对</value>
+  </data>
 </root>

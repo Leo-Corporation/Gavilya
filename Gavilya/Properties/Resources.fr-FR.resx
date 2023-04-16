@@ -963,4 +963,16 @@
   <data name="LongTimeAgo" xml:space="preserve">
     <value>Il y a longtemps</value>
   </data>
+  <data name="Sidebar" xml:space="preserve">
+    <value>Barre latérale</value>
+  </data>
+  <data name="SidebarPosition" xml:space="preserve">
+    <value>Position de la barre latérale.</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Gauche</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Droite</value>
+  </data>
 </root>

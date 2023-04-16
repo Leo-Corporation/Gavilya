@@ -52,7 +52,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "3.3.0.2303";
+	public static string Version => "3.4.0.2304";
 
 	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)
@@ -216,5 +216,10 @@ public enum GameAssociationActions
 	/// <summary>
 	/// Associate a game.
 	/// </summary>
-	Associate
+	Associate,
+
+	/// <summary>
+	/// Search the cover and associate the game ID to it.
+	/// </summary>
+	Both
 }

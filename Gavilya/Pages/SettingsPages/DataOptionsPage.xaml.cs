@@ -65,7 +65,8 @@ public partial class DataOptionsPage : Page
 				FpsCounterOpacity = 1,
 				UpdatesAvNotification = true,
 				UnusedGameNotification = true,
-				GameTags = new()
+				GameTags = new(),
+				SidebarPosition = Position.Left
 			};
 
 			SettingsSaver.Save(); // Save changes
