@@ -43,7 +43,7 @@
 						</Grid.RowDefinitions>
 						<StackPanel Orientation="Vertical">
 							<TextBlock Text="{x:Static lang:Resources.Top10MostPlayedGames}" FontSize="14" FontWeight="ExtraBold" Foreground="#FF64648C" />
-							<Button x:Name="SortBtn" Margin="5" Padding="5" Foreground="#FFF" Click="SortBtn_Click" Style="{DynamicResource RegularButton}" Background="#FF323246" HorizontalAlignment="Left">
+							<Button x:Name="SortBtn" Margin="5" Padding="5" Foreground="{DynamicResource Foreground}" Click="SortBtn_Click" Style="{DynamicResource RegularButton}" Background="#FF323246" HorizontalAlignment="Left">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock x:Name="SortIconTxt" Text="&#xEB3E;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
 									<TextBlock x:Name="SortTxt" d:Text="Most Played" VerticalAlignment="Center" Margin="10,0,0,0" FontWeight="ExtraBold" />

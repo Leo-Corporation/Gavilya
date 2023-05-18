@@ -21,7 +21,7 @@
 			<TextBlock Text="{x:Static lang:Resources.FpsCounter}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" />
 			<TextBlock x:Name="FpsShortcutTxt" Text="{x:Static lang:Resources.OpenFpsCounter}" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" FontSize="12" />
 
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="{DynamicResource Foreground}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
                         <TextBlock Text="&#xFCFD;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>

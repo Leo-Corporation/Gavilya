@@ -57,11 +57,9 @@
 			<SolidColorBrush x:Key="Button.Pressed.Border4" Color="#FF2C628B" />
 			<SolidColorBrush x:Key="Button.Disabled.Background4" Color="#FF323248" />
 			<SolidColorBrush x:Key="Button.Disabled.Border4" Color="#FFADB2B5" />
-			<SolidColorBrush x:Key="Button.Disabled.Foreground4" Color="#FF838383" />
-			<SolidColorBrush x:Key="Menu.Static.Background" Color="#FFFFFF" Opacity="0" />
-			<SolidColorBrush x:Key="Menu.Static.Border" Color="#FF999999" Opacity="0" />
-			<SolidColorBrush x:Key="Menu.Static.Foreground" Color="#FFF" />
-			<SolidColorBrush x:Key="Menu.Static.Separator" Color="#FFD7D7D7" />
+            <SolidColorBrush x:Key="Button.Disabled.Foreground4" Color="#FF838383" />
+            <SolidColorBrush x:Key="Menu.Static.Border" Color="#FF999999" Opacity="0" />
+            <SolidColorBrush x:Key="Menu.Static.Separator" Color="#FFD7D7D7" />
 			<SolidColorBrush x:Key="Menu.Disabled.Foreground" Color="#FF707070" />
 			<SolidColorBrush x:Key="MenuItem.Selected.Background" Color="#3D26A0DA" Opacity="0" />
 			<SolidColorBrush x:Key="MenuItem.Selected.Border" Color="Transparent" />
@@ -362,7 +360,7 @@
 											<Binding Path="ViewportHeight" RelativeSource="{RelativeSource TemplatedParent}" />
 										</MultiBinding>
 									</RepeatButton.Visibility>
-									<Path Data="{StaticResource UpArrow}" Fill="{StaticResource Menu.Static.Foreground}" />
+									<Path Data="{StaticResource UpArrow}" Fill="{DynamicResource Foreground}" />
 								</RepeatButton>
 								<RepeatButton Command="{x:Static ScrollBar.LineDownCommand}" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Grid.Column="0" Focusable="false" Grid.Row="2" Style="{StaticResource MenuScrollButton}">
 									<RepeatButton.Visibility>
@@ -373,7 +371,7 @@
 											<Binding Path="ViewportHeight" RelativeSource="{RelativeSource TemplatedParent}" />
 										</MultiBinding>
 									</RepeatButton.Visibility>
-									<Path Data="{StaticResource DownArrow}" Fill="{StaticResource Menu.Static.Foreground}" />
+									<Path Data="{StaticResource DownArrow}" Fill="{DynamicResource Foreground}" />
 								</RepeatButton>
 							</Grid>
 						</ControlTemplate>
@@ -388,7 +386,7 @@
 							<ColumnDefinition Width="Auto" />
 						</Grid.ColumnDefinitions>
 						<ContentPresenter x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16" Visibility="Collapsed" />
-						<Path x:Name="GlyphPanel" Data="{StaticResource Checkmark}" FlowDirection="LeftToRight" Fill="{StaticResource Menu.Static.Foreground}" Margin="3" VerticalAlignment="Center" Visibility="Collapsed" />
+						<Path x:Name="GlyphPanel" Data="{StaticResource Checkmark}" FlowDirection="LeftToRight" Fill="{DynamicResource Foreground}" Margin="3" VerticalAlignment="Center" Visibility="Collapsed" />
 						<ContentPresenter ContentSource="Header" Grid.Column="1" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 					</Grid>
 				</Border>
@@ -429,7 +427,7 @@
 						<Path x:Name="GlyphPanel" Data="{StaticResource Checkmark}" FlowDirection="LeftToRight" Fill="{TemplateBinding Foreground}" Margin="3" VerticalAlignment="Center" Visibility="Collapsed" />
 						<ContentPresenter ContentSource="Header" Grid.Column="1" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
 						<Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Bottom" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" PlacementTarget="{Binding ElementName=templateRoot}">
-							<Border x:Name="SubMenuBorder" Background="{StaticResource Menu.Static.Background}" BorderThickness="1" BorderBrush="{StaticResource Menu.Static.Border}" Padding="2">
+							<Border x:Name="SubMenuBorder" Background="{DynamicResource Foreground}" BorderThickness="1" BorderBrush="{StaticResource Menu.Static.Border}" Padding="2">
 								<ScrollViewer x:Name="SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
 									<Grid RenderOptions.ClearTypeHint="Enabled">
 										<Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -481,7 +479,7 @@
 						</Grid.ColumnDefinitions>
 						<ContentPresenter x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16" />
 						<Border x:Name="GlyphPanel" Background="{StaticResource MenuItem.Selected.Background}" BorderThickness="1" BorderBrush="{StaticResource MenuItem.Selected.Border}" ClipToBounds="False" HorizontalAlignment="Center" Height="22" Margin="-1,0,0,0" VerticalAlignment="Center" Visibility="Hidden" Width="22">
-							<Path x:Name="Glyph" Data="{StaticResource Checkmark}" FlowDirection="LeftToRight" Fill="{StaticResource Menu.Static.Foreground}" Height="11" Width="10" />
+							<Path x:Name="Glyph" Data="{StaticResource Checkmark}" FlowDirection="LeftToRight" Fill="{DynamicResource Foreground}" Height="11" Width="10" />
 						</Border>
 						<ContentPresenter x:Name="menuHeaderContainer" ContentSource="Header" Grid.Column="2" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
 						<TextBlock x:Name="menuGestureText" Grid.Column="4" Margin="{TemplateBinding Padding}" Opacity="0.7" Text="{TemplateBinding InputGestureText}" VerticalAlignment="Center" />
@@ -526,13 +524,13 @@
 						</Grid.ColumnDefinitions>
 						<ContentPresenter x:Name="Icon" ContentSource="Icon" HorizontalAlignment="Center" Height="16" Margin="3" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" Width="16" />
 						<Border x:Name="GlyphPanel" Background="{StaticResource MenuItem.Highlight.Background}" BorderThickness="1" BorderBrush="{StaticResource MenuItem.Highlight.Border}" Height="22" Margin="-1,0,0,0" VerticalAlignment="Center" Visibility="Hidden" Width="22">
-							<Path x:Name="Glyph" Data="{DynamicResource Checkmark}" FlowDirection="LeftToRight" Fill="{StaticResource Menu.Static.Foreground}" Height="11" Width="9" />
+							<Path x:Name="Glyph" Data="{DynamicResource Checkmark}" FlowDirection="LeftToRight" Fill="{DynamicResource Foreground}" Height="11" Width="9" />
 						</Border>
 						<ContentPresenter ContentSource="Header" Grid.Column="2" HorizontalAlignment="Left" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
 						<TextBlock Grid.Column="4" Margin="{TemplateBinding Padding}" Opacity="0.7" Text="{TemplateBinding InputGestureText}" VerticalAlignment="Center" />
-						<Path x:Name="RightArrow" Grid.Column="5" Data="{StaticResource RightArrow}" Fill="{StaticResource Menu.Static.Foreground}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" />
+						<Path x:Name="RightArrow" Grid.Column="5" Data="{StaticResource RightArrow}" Fill="{DynamicResource Foreground}" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" />
 						<Popup x:Name="PART_Popup" AllowsTransparency="true" Focusable="false" HorizontalOffset="-2" IsOpen="{Binding IsSubmenuOpen, RelativeSource={RelativeSource TemplatedParent}}" Placement="Right" PopupAnimation="{DynamicResource {x:Static SystemParameters.MenuPopupAnimationKey}}" VerticalOffset="-3">
-							<Border x:Name="SubMenuBorder" Background="{StaticResource Menu.Static.Background}" BorderThickness="1" BorderBrush="{StaticResource Menu.Static.Border}" Padding="2">
+							<Border x:Name="SubMenuBorder" Background="{DynamicResource Foreground}" BorderThickness="1" BorderBrush="{StaticResource Menu.Static.Border}" Padding="2">
 								<ScrollViewer x:Name="SubMenuScrollViewer" Style="{DynamicResource {ComponentResourceKey ResourceId=MenuScrollViewer, TypeInTargetAssembly={x:Type FrameworkElement}}}">
 									<Grid RenderOptions.ClearTypeHint="Enabled">
 										<Canvas HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
@@ -585,14 +583,14 @@
 					<Trigger Property="Role" Value="TopLevelHeader">
 						<Setter Property="Background" Value="Transparent" />
 						<Setter Property="BorderBrush" Value="Transparent" />
-						<Setter Property="Foreground" Value="{StaticResource Menu.Static.Foreground}" />
+						<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 						<Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelHeaderTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
 						<Setter Property="Padding" Value="6,0" />
 					</Trigger>
 					<Trigger Property="Role" Value="TopLevelItem">
-						<Setter Property="Background" Value="{StaticResource Menu.Static.Background}" />
+						<Setter Property="Background" Value="{DynamicResource Foreground}" />
 						<Setter Property="BorderBrush" Value="{StaticResource Menu.Static.Border}" />
-						<Setter Property="Foreground" Value="{StaticResource Menu.Static.Foreground}" />
+						<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 						<Setter Property="Template" Value="{DynamicResource {ComponentResourceKey ResourceId=TopLevelItemTemplateKey, TypeInTargetAssembly={x:Type MenuItem}}}" />
 						<Setter Property="Padding" Value="6,0" />
 					</Trigger>
@@ -1142,7 +1140,7 @@
 				<Setter Property="Stylus.IsFlicksEnabled" Value="False" />
 				<Setter Property="VerticalAlignment" Value="Center" />
 				<Setter Property="VerticalContentAlignment" Value="Center" />
-				<Setter Property="Foreground" Value="#FFF" />
+				<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 				<Setter Property="Template">
 					<Setter.Value>
 						<ControlTemplate TargetType="{x:Type TextBox}">
@@ -1158,8 +1156,6 @@
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="Transparent" />
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent" />
             <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent" />
-            <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="#fff" />
-            <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="#fff" />
             <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Background" Color="Transparent" />            
             <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="Transparent" />
 			<SolidColorBrush x:Key="ComboBox.Disabled.Border" Color="#FFD9D9D9" />
@@ -1195,7 +1191,7 @@
 									<Setter Property="BorderBrush" TargetName="splitBorder" Value="{StaticResource ComboBox.Static.Editable.Button.Border}" />
 								</MultiDataTrigger>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Fill" TargetName="arrow" Value="{StaticResource ComboBox.MouseOver.Glyph}" />
+									<Setter Property="Fill" TargetName="arrow" Value="{DynamicResource Foreground}" />
 								</Trigger>
 								<MultiDataTrigger>
 									<MultiDataTrigger.Conditions>
@@ -1216,7 +1212,7 @@
 									<Setter Property="BorderBrush" TargetName="splitBorder" Value="{DynamicResource Accent}" />
 								</MultiDataTrigger>
 								<Trigger Property="IsPressed" Value="true">
-									<Setter Property="Fill" TargetName="arrow" Value="{StaticResource ComboBox.Pressed.Glyph}" />
+									<Setter Property="Fill" TargetName="arrow" Value="{DynamicResource Foreground}" />
 								</Trigger>
 								<MultiDataTrigger>
 									<MultiDataTrigger.Conditions>
@@ -1379,7 +1375,7 @@
 					</Trigger>
 
 					<Trigger Property="IsMouseOver" Value="True">
-						<Setter Property="Foreground" Value="#fff" />
+						<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 					</Trigger>
 				</Style.Triggers>
 			</Style>
@@ -1785,12 +1781,10 @@
 			<SolidColorBrush x:Key="Expander.Static.Circle.Fill" Color="Transparent"/>
 			<SolidColorBrush x:Key="Expander.Static.Arrow.Stroke" Color="#CCC"/>
 			<SolidColorBrush x:Key="Expander.MouseOver.Circle.Stroke" Color="Transparent"/>
-			<SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="Transparent"/>
-			<SolidColorBrush x:Key="Expander.MouseOver.Arrow.Stroke" Color="#FFF"/>
-			<SolidColorBrush x:Key="Expander.Pressed.Circle.Stroke" Color="Transparent"/>
-			<SolidColorBrush x:Key="Expander.Pressed.Circle.Fill" Color="Transparent"/>
-			<SolidColorBrush x:Key="Expander.Pressed.Arrow.Stroke" Color="#FFF"/>
-			<SolidColorBrush x:Key="Expander.Disabled.Circle.Stroke" Color="Transparent"/>
+            <SolidColorBrush x:Key="Expander.MouseOver.Circle.Fill" Color="Transparent"/>
+            <SolidColorBrush x:Key="Expander.Pressed.Circle.Stroke" Color="Transparent"/>
+            <SolidColorBrush x:Key="Expander.Pressed.Circle.Fill" Color="Transparent"/>
+            <SolidColorBrush x:Key="Expander.Disabled.Circle.Stroke" Color="Transparent"/>
 			<SolidColorBrush x:Key="Expander.Disabled.Circle.Fill" Color="Transparent"/>
 			<SolidColorBrush x:Key="Expander.Disabled.Arrow.Stroke" Color="#FF707070"/>
 			<Style x:Key="ExpanderHeaderFocusVisual">
@@ -1826,13 +1820,13 @@
 								<Trigger Property="IsMouseOver" Value="true">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Stroke}"/>
 									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Fill}"/>
-									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.MouseOver.Arrow.Stroke}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource Foreground}"/>
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Stroke}"/>
 									<Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
 									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Fill}"/>
-									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource Foreground}"/>
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Stroke}"/>
@@ -1877,13 +1871,13 @@
 								<Trigger Property="IsMouseOver" Value="true">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Stroke}"/>
 									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Fill}"/>
-									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.MouseOver.Arrow.Stroke}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource Foreground}"/>
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Stroke}"/>
 									<Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
 									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Fill}"/>
-									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource Foreground}"/>
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Stroke}"/>
@@ -1928,13 +1922,13 @@
 								<Trigger Property="IsMouseOver" Value="true">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Stroke}"/>
 									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Fill}"/>
-									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.MouseOver.Arrow.Stroke}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource Foreground}"/>
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Stroke}"/>
 									<Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
 									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Fill}"/>
-									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource Foreground}"/>
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Stroke}"/>
@@ -1979,13 +1973,13 @@
 								<Trigger Property="IsMouseOver" Value="true">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Stroke}"/>
 									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.MouseOver.Circle.Fill}"/>
-									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.MouseOver.Arrow.Stroke}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource Foreground}"/>
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Stroke}"/>
 									<Setter Property="StrokeThickness" TargetName="circle" Value="1.5"/>
 									<Setter Property="Fill" TargetName="circle" Value="{StaticResource Expander.Pressed.Circle.Fill}"/>
-									<Setter Property="Stroke" TargetName="arrow" Value="{StaticResource Expander.Pressed.Arrow.Stroke}"/>
+									<Setter Property="Stroke" TargetName="arrow" Value="{DynamicResource Foreground}"/>
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
 									<Setter Property="Stroke" TargetName="circle" Value="{StaticResource Expander.Disabled.Circle.Stroke}"/>

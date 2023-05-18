@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Gavilya.UserControls.FavoriteListItem" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.UserControls" mc:Ignorable="d" FontFamily="..\Fonts\#Hauora" Foreground="#FFF" Height="200" Width="800">
+﻿<UserControl x:Class="Gavilya.UserControls.FavoriteListItem" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.UserControls" mc:Ignorable="d" FontFamily="..\Fonts\#Hauora" Foreground="{DynamicResource Foreground}" Height="200" Width="800">
 	<Border Margin="10" Padding="10" CornerRadius="10" Background="{DynamicResource Background2}">
 		<StackPanel Orientation="Horizontal">
 			<Rectangle Margin="10" RadiusX="20" RadiusY="20" Width="249" Height="140">

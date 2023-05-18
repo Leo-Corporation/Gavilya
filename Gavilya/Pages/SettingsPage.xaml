@@ -6,7 +6,7 @@
 	  xmlns:local="clr-namespace:Gavilya.Pages"
 	  xmlns:lang="clr-namespace:Gavilya.Properties"
 	  FontFamily="../Fonts/#Hauora"
-	  mc:Ignorable="d" Foreground="#FFF"
+	  mc:Ignorable="d" Foreground="{DynamicResource Foreground}"
 	  d:DesignHeight="450" d:DesignWidth="800"
 	  Title="SettingsPage">
 

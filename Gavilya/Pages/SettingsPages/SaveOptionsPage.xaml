@@ -10,7 +10,7 @@
 
 		<StackPanel Grid.Row="1" Margin="0,0,10,0">
 			<!-- Import games section -->
-            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}" Foreground="#FFF">
+            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF151;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -36,7 +36,7 @@
 
 			<!-- Export games section -->
 
-            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
+            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="{DynamicResource Foreground}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF1A5;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -61,7 +61,7 @@
 			</Expander>
 
 			<!-- Autosave section -->
-            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
+            <Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="{DynamicResource Foreground}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xFC52;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -72,12 +72,12 @@
 					</StackPanel>
 				</Expander.Header>
 				<StackPanel>
-					<CheckBox x:Name="MakeAutoSavesChk" Content="{x:Static lang:Resources.MakeAutoSaves}" Foreground="#fff" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="MakeAutoSavesChk_Checked" Unchecked="MakeAutoSavesChk_Unchecked" />
+					<CheckBox x:Name="MakeAutoSavesChk" Content="{x:Static lang:Resources.MakeAutoSaves}" Foreground="{DynamicResource Foreground}" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="MakeAutoSavesChk_Checked" Unchecked="MakeAutoSavesChk_Unchecked" />
 
 					<StackPanel x:Name="AutoSaveSection">
-						<TextBlock Text="{x:Static lang:Resources.SaveLocation}" Foreground="#fff" Margin="10,0,0,0" />
+						<TextBlock Text="{x:Static lang:Resources.SaveLocation}" Foreground="{DynamicResource Foreground}" Margin="10,0,0,0" />
 						<StackPanel Orientation="Horizontal">
-							<TextBlock x:Name="PathTxt" d:Text="C:\Windows" Foreground="#FFF" Margin="10,0,10,0" VerticalAlignment="Center" MaxWidth="500" />
+							<TextBlock x:Name="PathTxt" d:Text="C:\Windows" Foreground="{DynamicResource Foreground}" Margin="10,0,10,0" VerticalAlignment="Center" MaxWidth="500" />
 							<Button Click="Browse_Click" Margin="10 10 0 10" x:Name="Browse" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Margin="0 0 5 0" Text="&#xEA0E;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
@@ -90,9 +90,9 @@
 							</Button>
 						</StackPanel>
 						<StackPanel Orientation="Horizontal" VerticalAlignment="Stretch" Margin="10,0,0,0">
-							<TextBlock Text="{x:Static lang:Resources.AutoSaveOnDate}" Foreground="#fff" VerticalAlignment="Center" />
+							<TextBlock Text="{x:Static lang:Resources.AutoSaveOnDate}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
 							<ComboBox x:Name="SaveTime" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}" BorderThickness="2" Padding="5" VerticalAlignment="Center" SelectionChanged="SaveTime_SelectionChanged" />
-							<TextBlock Text="{x:Static lang:Resources.OfMonth}" Foreground="#fff" VerticalAlignment="Center" />
+							<TextBlock Text="{x:Static lang:Resources.OfMonth}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
 						</StackPanel>
 
 						<Button Click="SaveNowBtn_Click" Margin="10 10 0 10" x:Name="SaveNowBtn" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">

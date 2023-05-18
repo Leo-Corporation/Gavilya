@@ -9,7 +9,7 @@
 		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Home}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="{DynamicResource Foreground}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF47F;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -34,7 +34,7 @@
 				</StackPanel>
 			</Expander>
 
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="{DynamicResource Foreground}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF47A;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -44,7 +44,7 @@
 						</StackPanel>
 					</StackPanel>
 				</Expander.Header>
-				<CheckBox x:Name="DisplayedUnusedGamesChk" Content="{x:Static lang:Resources.ShowMoreUnplayedGames}" Foreground="#fff" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="DisplayedUnusedGamesChk_Checked" Unchecked="DisplayedUnusedGamesChk_Checked" />
+				<CheckBox x:Name="DisplayedUnusedGamesChk" Content="{x:Static lang:Resources.ShowMoreUnplayedGames}" Foreground="{DynamicResource Foreground}" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="DisplayedUnusedGamesChk_Checked" Unchecked="DisplayedUnusedGamesChk_Checked" />
 			</Expander>
 
 			<Border Margin="5" CornerRadius="5" Background="{DynamicResource Background2}">

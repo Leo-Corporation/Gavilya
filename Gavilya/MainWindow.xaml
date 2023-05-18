@@ -127,7 +127,7 @@
 						<Border Background="#0a0a12" Padding="10" CornerRadius="5" Margin="8">
 							<StackPanel>
 								<TextBlock Text="{x:Static lang:Resources.Filters}" FontWeight="ExtraBold" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}" />
-								<ComboBox SelectedIndex="0" SelectionChanged="FilterComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FilterComboBox" Background="Transparent" BorderBrush="{DynamicResource Accent}" Foreground="#FFF" HorizontalAlignment="Left" Margin="5,5,5,0" VerticalAlignment="Center">
+								<ComboBox SelectedIndex="0" SelectionChanged="FilterComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FilterComboBox" Background="Transparent" BorderBrush="{DynamicResource Accent}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left" Margin="5,5,5,0" VerticalAlignment="Center">
 									<ComboBoxItem Content="{x:Static lang:Resources.AllFilters}"/>
 									<ComboBoxItem Content="{x:Static lang:Resources.Tags}"/>
 								</ComboBox>
@@ -138,13 +138,13 @@
 
 										</StackPanel>
 									</ScrollViewer>
-									<Button Margin="0 5" x:Name="TagsApplyBtn" Background="{DynamicResource Background2}" Foreground="#FFF" Padding="10,5,10,5" Style="{StaticResource RegularButton}" FontWeight="ExtraBold" Cursor="Hand" VerticalAlignment="Center" Click="TagsApplyBtn_Click" Visibility="Visible" HorizontalAlignment="Center">
+									<Button Margin="0 5" x:Name="TagsApplyBtn" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Padding="10,5,10,5" Style="{StaticResource RegularButton}" FontWeight="ExtraBold" Cursor="Hand" VerticalAlignment="Center" Click="TagsApplyBtn_Click" Visibility="Visible" HorizontalAlignment="Center">
 										<StackPanel Orientation="Horizontal">
 											<TextBlock Text="&#xF295;" FontWeight="Regular" FontFamily="\Fonts\#FluentSystemIcons-Regular" Margin="0,0,0,0" VerticalAlignment="Center"/>
 											<TextBlock Text="{x:Static lang:Resources.Apply}" FontWeight="ExtraBold" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" />
 										</StackPanel>
 										<Button.ToolTip>
-											<ToolTip Content="{x:Static lang:Resources.Apply}" Foreground="#FFF" Background="{DynamicResource Background2}"/>
+											<ToolTip Content="{x:Static lang:Resources.Apply}" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}"/>
 										</Button.ToolTip>
 									</Button>
 								</StackPanel>
@@ -214,17 +214,17 @@
 							<RowDefinition Height="Auto"/>
 						</Grid.RowDefinitions>
 
-						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="&#xF488;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" FontFamily="Fonts/#FluentSystemIcons-Filled">
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="&#xF488;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" FontFamily="Fonts/#FluentSystemIcons-Filled">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.Home}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 							</Button.ToolTip>
 						</Button>
-						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="&#xFE7B;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="1" FontFamily="Fonts/#FluentSystemIcons-Filled">
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="&#xFE7B;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="1" FontFamily="Fonts/#FluentSystemIcons-Filled">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.Library}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 							</Button.ToolTip>
 						</Button>
-						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="RecentTabBtn" Click="RecentTabBtn_Click" Content="&#xF486;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="2" FontFamily="Fonts/#FluentSystemIcons-Filled">
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="RecentTabBtn" Click="RecentTabBtn_Click" Content="&#xF486;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="2" FontFamily="Fonts/#FluentSystemIcons-Filled">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 							</Button.ToolTip>
@@ -241,7 +241,7 @@
 							</Button.ToolTip>
 						</Button>
 						<Grid Grid.Row="4">
-							<Button BorderThickness="2 0 0 0" Padding="5" Height="40" BorderBrush="Transparent" x:Name="AddBtn" Click="AddBtn_Click" Content="&#xF10B;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="4" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button BorderThickness="2 0 0 0" Padding="5" Height="40" BorderBrush="Transparent" x:Name="AddBtn" Click="AddBtn_Click" Content="&#xF10B;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="4" FontFamily="Fonts/#FluentSystemIcons-Filled">
 								<Button.ToolTip>
 									<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
@@ -304,7 +304,7 @@
 							</StackPanel>
 						</ScrollViewer>
 
-						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5,2,5,5" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="7" FontFamily="Fonts/#FluentSystemIcons-Filled" BorderBrush="Transparent">
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5,2,5,5" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="7" FontFamily="Fonts/#FluentSystemIcons-Filled" BorderBrush="Transparent">
 							<Grid>
 								<TextBlock Text="&#xF115;" />
 								<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top" />
@@ -314,7 +314,7 @@
 							</Button.ToolTip>
 						</Button>
 
-						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="SettingsBtn" Click="SettingsBtn_Click" Content="&#xF6B3;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="#FFF" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="8" FontFamily="Fonts/#FluentSystemIcons-Filled">
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="SettingsBtn" Click="SettingsBtn_Click" Content="&#xF6B3;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="8" FontFamily="Fonts/#FluentSystemIcons-Filled">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 							</Button.ToolTip>

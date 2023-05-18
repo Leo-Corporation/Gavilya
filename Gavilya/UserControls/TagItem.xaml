@@ -4,7 +4,7 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:local="clr-namespace:Gavilya.UserControls"
-			 mc:Ignorable="d" Foreground="#FFF"
+			 mc:Ignorable="d" Foreground="{DynamicResource Foreground}"
 			 Height="22" Margin="3" FontFamily="..\Fonts\#Hauora">
 	<Border x:Name="TagBorder" Padding="0" BorderThickness="2" d:BorderBrush="#10F15F" CornerRadius="10" Background="{DynamicResource Background2}">
 		<Grid>

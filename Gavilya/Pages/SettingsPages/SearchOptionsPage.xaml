@@ -9,7 +9,7 @@
 		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.SearchF}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="{DynamicResource Foreground}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -20,11 +20,11 @@
 					</StackPanel>
 				</Expander.Header>
 				<StackPanel>
-					<CheckBox x:Name="HideSearchBarChk" Content="{x:Static lang:Resources.HideSearchBar}" Foreground="#fff" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="HideSearchBarChk_Checked" Unchecked="HideSearchBarChk_Checked" />
+					<CheckBox x:Name="HideSearchBarChk" Content="{x:Static lang:Resources.HideSearchBar}" Foreground="{DynamicResource Foreground}" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="HideSearchBarChk_Checked" Unchecked="HideSearchBarChk_Checked" />
 				</StackPanel>
 			</Expander>
    
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="{DynamicResource Foreground}">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xFA96;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
