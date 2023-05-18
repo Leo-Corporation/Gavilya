@@ -87,7 +87,7 @@
 
 				<Button FontSize="13" Cursor="Hand" x:Name="SelectBtn" Click="SelectBtn_Click" Style="{DynamicResource PlayButton}" Margin="10" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Select}" FontWeight="ExtraBold" Grid.Row="1" HorizontalAlignment="Center">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Select}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.Select}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</Grid>

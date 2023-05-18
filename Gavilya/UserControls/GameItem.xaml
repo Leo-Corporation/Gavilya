@@ -21,7 +21,7 @@
                 <Button x:Name="PlayBtn" Click="PlayBtn_Click" Padding="5" Grid.Column="1" Content="&#xF610;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" Style="{DynamicResource PlayButton}" Foreground="{DynamicResource Foreground}" Width="22" Height="22" VerticalAlignment="Center" Margin="10,0,0,0" Visibility="Hidden"/>
 			</Grid>
 			<Button.ToolTip>
-				<ToolTip Name="GameNameToolTip" Background="#000014" Foreground="{DynamicResource Foreground}"/>
+				<ToolTip Name="GameNameToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}"/>
 			</Button.ToolTip>
 
 		</Button>

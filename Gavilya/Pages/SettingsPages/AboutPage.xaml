@@ -29,12 +29,12 @@
 				</Button>
 				<Button x:Name="LicenseBtn" Click="LicenseBtn_Click" Content="&#xea38;" Foreground="{DynamicResource Foreground}" FontFamily="..\..\Fonts\#FluentlyIcons" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Cursor="Hand" Padding="10 5" FontSize="14" Margin="10,0,0,0">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.SeeLicenses}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.SeeLicenses}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 				<Button x:Name="GitHubBtn" Click="GitHubBtn_Click" Content="&#xFDAB;" Foreground="{DynamicResource Foreground}" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Cursor="Hand" Padding="10 5" FontSize="14" Margin="10,0,0,0">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.SeeGitHubRepo}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.SeeGitHubRepo}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>

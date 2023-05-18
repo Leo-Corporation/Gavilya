@@ -14,7 +14,7 @@
 				<Grid>
 					<Grid.Background>
 						<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-							<GradientStop Color="#000014" Offset="0.95" />
+							<GradientStop Color="{DynamicResource Background}" Offset="0.95" />
 							<GradientStop Color="#33C8C8C8" Offset="0" />
 						</LinearGradientBrush>
 					</Grid.Background>
@@ -36,7 +36,7 @@
 									</StackPanel>
 
 									<Button.ToolTip>
-										<ToolTip Name="PlayBtnToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
+										<ToolTip Name="PlayBtnToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 									</Button.ToolTip>
 								</Button>
 
@@ -63,19 +63,19 @@
 						<StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Bottom">
 							<Button x:Name="AdminBtn" Click="AdminBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF8C0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Height="40" Width="40">
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.LaunchGameAsAdmin}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+									<ToolTip Content="{x:Static lang:Resources.LaunchGameAsAdmin}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 
 							<Button x:Name="FavBtn" Click="FavBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF710;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Height="40" Width="40">
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+									<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 
 							<Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF6AA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Width="40" Height="40">
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+									<ToolTip Content="{x:Static lang:Resources.Settings}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 						</StackPanel>
@@ -83,7 +83,7 @@
 				</Grid>
 			</Grid>
 
-			<Grid Margin="0 0 0 20" Background="#000014" Grid.Row="1">
+			<Grid Margin="0 0 0 20" Background="{DynamicResource Background}" Grid.Row="1">
 
 				<Grid.RowDefinitions>
 					<RowDefinition Height="Auto" />
@@ -98,7 +98,7 @@
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.About}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+							<ToolTip Content="{x:Static lang:Resources.About}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 
@@ -109,7 +109,7 @@
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Ratings}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+							<ToolTip Content="{x:Static lang:Resources.Ratings}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 
@@ -120,7 +120,7 @@
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Achievements}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+							<ToolTip Content="{x:Static lang:Resources.Achievements}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 				</StackPanel>
@@ -206,7 +206,7 @@
 												</ProgressBar.Foreground>
 
 												<ProgressBar.ToolTip>
-													<ToolTip x:Name="Pgr4ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
+													<ToolTip x:Name="Pgr4ToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 												</ProgressBar.ToolTip>
 											</ProgressBar>
 										</StackPanel>
@@ -229,7 +229,7 @@
 												</ProgressBar.Foreground>
 
 												<ProgressBar.ToolTip>
-													<ToolTip x:Name="Pgr3ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
+													<ToolTip x:Name="Pgr3ToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 												</ProgressBar.ToolTip>
 											</ProgressBar>
 										</StackPanel>
@@ -252,7 +252,7 @@
 												</ProgressBar.Foreground>
 
 												<ProgressBar.ToolTip>
-													<ToolTip x:Name="Pgr2ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
+													<ToolTip x:Name="Pgr2ToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 												</ProgressBar.ToolTip>
 											</ProgressBar>
 										</StackPanel>
@@ -275,7 +275,7 @@
 												</ProgressBar.Foreground>
 
 												<ProgressBar.ToolTip>
-													<ToolTip x:Name="Pgr1ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
+													<ToolTip x:Name="Pgr1ToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 												</ProgressBar.ToolTip>
 											</ProgressBar>
 										</StackPanel>

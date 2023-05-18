@@ -79,7 +79,7 @@
                             </StackPanel>
 
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Install}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+                                <ToolTip Content="{x:Static lang:Resources.Install}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
                             </Button.ToolTip>
                         </Button>
                         <Button Name="CancelBtn" Click="CancelBtn_Click" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Padding="7">
@@ -89,7 +89,7 @@
                             </StackPanel>
 
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+                                <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>

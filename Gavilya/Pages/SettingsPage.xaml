@@ -34,7 +34,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.SaveOptions}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.SaveOptions}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -46,7 +46,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Languages}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.Languages}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -58,7 +58,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Startup}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.Startup}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -70,7 +70,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Home}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.Home}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -81,7 +81,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Games}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.Games}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -92,7 +92,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Notifications}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.Notifications}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -104,7 +104,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.SearchF}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.SearchF}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -116,7 +116,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.FpsCounter}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.FpsCounter}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -128,7 +128,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Data}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.Data}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>
@@ -139,7 +139,7 @@
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.About}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+						<ToolTip Content="{x:Static lang:Resources.About}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 
 				</Button>

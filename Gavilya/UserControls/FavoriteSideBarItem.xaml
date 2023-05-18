@@ -8,7 +8,7 @@
 			 Height="45" Width="45">
 	<Border CornerRadius="5" Margin="2.5" Cursor="Hand" MouseLeftButtonUp="Border_MouseLeftButtonUp">
 		<Border.ToolTip>
-			<ToolTip Name="GameNameToolTip" Background="#000014" Foreground="{DynamicResource Foreground}"/>
+			<ToolTip Name="GameNameToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}"/>
 		</Border.ToolTip>
 
 		<Border.Background>

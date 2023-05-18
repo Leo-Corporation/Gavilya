@@ -126,7 +126,7 @@
                         <TextBox FontSize="14" FontWeight="ExtraBold" x:Name="GameSearchName" BorderThickness="2" Width="240" Style="{StaticResource RegularTextBox}" Background="{DynamicResource Background}" BorderBrush="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" SelectionBrush="#FF505066" />
                         <Button Click="Button_Click" Padding="5" Width="30" FontSize="13" Margin="10 0 0 0" Style="{StaticResource RegularButton}" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xead9;" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}">
                             <Button.ToolTip>
-                                <ToolTip Content="{x:Static lang:Resources.Search}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+                                <ToolTip Content="{x:Static lang:Resources.Search}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
                             </Button.ToolTip>
                         </Button>
                     </StackPanel>
@@ -146,7 +146,7 @@
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.SelectGame}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+                            <ToolTip Content="{x:Static lang:Resources.SelectGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
                 </StackPanel>

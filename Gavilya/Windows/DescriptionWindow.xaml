@@ -126,7 +126,7 @@
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Apply}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+                            <ToolTip Content="{x:Static lang:Resources.Apply}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
                     <Button x:Name="CancelBtn" FontFamily="..\Fonts\#Hauora" Padding="7" Click="CancelBtn_Click" Style="{DynamicResource RegularButton}" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" FontWeight="ExtraBold">
@@ -136,7 +136,7 @@
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="{DynamicResource Foreground}" />
+                            <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
                 </StackPanel>
