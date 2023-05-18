@@ -123,7 +123,7 @@
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" VerticalAlignment="Top">
 						<TextBlock Text="{x:Static lang:Resources.Name}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" FontWeight="ExtraBold" />
-						<TextBox FontSize="15" Name="nameTxt" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}" Margin="10 0 0 0" Width="250" BorderBrush="{DynamicResource Background2}" VerticalAlignment="Center" />
+						<TextBox FontSize="15" Name="nameTxt" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background}" Style="{DynamicResource RegularTextBox}" Margin="10 0 0 0" Width="250" BorderBrush="{DynamicResource Background2}" VerticalAlignment="Center" />
 					</StackPanel>
 				</StackPanel>
 			</Grid>

@@ -1,5 +1,5 @@
 ﻿<UserControl x:Class="Gavilya.UserControls.ImportGameItem" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.UserControls" Foreground="{DynamicResource Foreground}" xmlns:lang="clr-namespace:Gavilya.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Width="370" Margin="5">
-	<Border CornerRadius="10" Padding="15" Background="#FF0A0A1E">
+	<Border CornerRadius="10" Padding="15" Background="{DynamicResource Background}">
 		<StackPanel>
 			<StackPanel Orientation="Horizontal">
 				<CheckBox x:Name="SelectCheckBox" IsChecked="True" BorderThickness="2" Margin="0,5,5,5" Style="{DynamicResource CheckBoxStyle2}" VerticalAlignment="Center" Foreground="{DynamicResource Foreground}" x:FieldModifier="public" />

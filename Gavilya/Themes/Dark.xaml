@@ -9,6 +9,8 @@
     <SolidColorBrush x:Key="Gray" Color="#C6C6C6"/>
     <SolidColorBrush x:Key="LightForeground" Color="#64648C"/>
     <SolidColorBrush x:Key="HoverForeground" Color="White"/>
+    <SolidColorBrush x:Key="Graph" Color="#64648C"/>
+    <SolidColorBrush x:Key="SelectedItem" Color="#3C3C50"/>
 
     <LinearGradientBrush x:Key="GameCardGradient" EndPoint="0.5,1" StartPoint="0.5,0">
 		<GradientStop Color="#000014" Offset="0.95" />

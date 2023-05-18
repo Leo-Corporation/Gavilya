@@ -70,7 +70,7 @@
 	<Window.Effect>
 		<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
 	</Window.Effect>
-	<Border Name="WindowBorder" Margin="10" BorderThickness="0" Background="#3C3C52" CornerRadius="5 5 0 0">
+	<Border Name="WindowBorder" Margin="10" BorderThickness="0" Background="{DynamicResource Background2}" CornerRadius="5 5 0 0">
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="50" />
@@ -124,7 +124,7 @@
 					</StackPanel>
 
 					<Popup Closed="FiltersPopup_Closed" x:Name="FiltersPopup" StaysOpen="False" AllowsTransparency="True" Placement="Bottom" PopupAnimation="Fade" IsOpen="False" PlacementTarget="{Binding ElementName=FiltersBtn}">
-						<Border Background="#0a0a12" Padding="10" CornerRadius="5" Margin="8">
+						<Border Background="{DynamicResource Background}" Padding="10" CornerRadius="5" Margin="8">
 							<StackPanel>
 								<TextBlock Text="{x:Static lang:Resources.Filters}" FontWeight="ExtraBold" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}" />
 								<ComboBox SelectedIndex="0" SelectionChanged="FilterComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FilterComboBox" Background="Transparent" BorderBrush="{DynamicResource Accent}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left" Margin="5,5,5,0" VerticalAlignment="Center">
@@ -157,7 +157,7 @@
 					</Popup>
 
 					<Popup Width="400" StaysOpen="False" x:Name="SearchPopup" AllowsTransparency="True" Placement="Bottom" PopupAnimation="Fade" IsOpen="False" PlacementTarget="{Binding ElementName=SearchBox}">
-						<Border Background="#0a0a12" Padding="10" CornerRadius="5" Margin="8">
+						<Border Background="{DynamicResource Background}" Padding="10" CornerRadius="5" Margin="8">
 							<ScrollViewer x:Name="SearchScroller" HorizontalScrollBarVisibility="Disabled" Template="{DynamicResource ScrollViewerTemplate1}">
 								<StackPanel x:Name="SearchDisplayer">
 								</StackPanel>

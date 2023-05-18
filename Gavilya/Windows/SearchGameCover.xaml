@@ -67,7 +67,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Background="#FF0A0A1E" BorderThickness="0" CornerRadius="10" Margin="15">
+    <Border Background="{DynamicResource Background}" BorderThickness="0" CornerRadius="10" Margin="15">
         <Border.Effect>
             <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
         </Border.Effect>

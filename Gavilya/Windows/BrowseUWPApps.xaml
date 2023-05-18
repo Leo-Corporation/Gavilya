@@ -33,7 +33,7 @@
 		<WindowChrome CaptionHeight="45"></WindowChrome>
 	</WindowChrome.WindowChrome>
 
-	<Border Margin="10" CornerRadius="10" Background="#FF000011">
+	<Border Margin="10" CornerRadius="10" Background="{DynamicResource Background}">
 		<Border.Effect>
 			<DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="15" Opacity="0.5" />
 		</Border.Effect>
@@ -72,7 +72,7 @@
 					<StackPanel x:Name="GamesPanel"></StackPanel>
 				</ScrollViewer>
 
-				<Button FontSize="13" Cursor="Hand" x:Name="SelectBtn" Click="SelectBtn_Click" Style="{DynamicResource PlayButton}" Margin="10" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Select}" FontWeight="ExtraBold" Grid.Row="1" HorizontalAlignment="Center">
+				<Button FontSize="13" Cursor="Hand" x:Name="SelectBtn" Click="SelectBtn_Click" Style="{DynamicResource PlayButton}" Margin="10" Foreground="{DynamicResource HoverForeground}" Padding="7" Content="{x:Static lang:Resources.Select}" FontWeight="ExtraBold" Grid.Row="1" HorizontalAlignment="Center">
 					<Button.ToolTip>
 						<ToolTip Content="{x:Static lang:Resources.Select}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>

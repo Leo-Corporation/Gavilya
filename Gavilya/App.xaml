@@ -2,7 +2,7 @@
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="/Themes/Test.xaml"/>
+				<ResourceDictionary Source="/Themes/Dark.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 			<Style x:Key="FocusVisual1">
 				<Setter Property="Control.Template">
@@ -50,9 +50,9 @@
 				</Setter>
 			</Style>
 			<SolidColorBrush x:Key="Button.Static.Background4" Color="#FFDDDDDD" />
-            <SolidColorBrush x:Key="Button.Static.Border4" Color="#FF707070" />
-            <SolidColorBrush x:Key="Button.MouseOver.Border4" Color="#FF3C7FB1" />
-            <SolidColorBrush x:Key="Button.Pressed.Border4" Color="#FF2C628B" />
+			<SolidColorBrush x:Key="Button.Static.Border4" Color="#FF707070" />
+			<SolidColorBrush x:Key="Button.MouseOver.Border4" Color="#FF3C7FB1" />
+			<SolidColorBrush x:Key="Button.Pressed.Border4" Color="#FF2C628B" />
 			<SolidColorBrush x:Key="Button.Disabled.Background4" Color="#FF323248" />
 			<SolidColorBrush x:Key="Button.Disabled.Border4" Color="#FFADB2B5" />
 			<SolidColorBrush x:Key="Button.Disabled.Foreground4" Color="#FF838383" />
@@ -769,7 +769,7 @@
 				<Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual4}" />
 				<Setter Property="Background" Value="{StaticResource Button.Static.Background3}" />
 				<Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border3}" />
-				<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+				<Setter Property="Foreground" Value="{DynamicResource HoverForeground}" />
 				<Setter Property="BorderThickness" Value="1" />
 				<Setter Property="HorizontalContentAlignment" Value="Center" />
 				<Setter Property="VerticalContentAlignment" Value="Center" />
@@ -784,17 +784,23 @@
 							<ControlTemplate.Triggers>
 								<Trigger Property="IsDefaulted" Value="true">
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+									<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{DynamicResource HoverForeground}" />
+
 								</Trigger>
 								<Trigger Property="IsMouseOver" Value="true">
 									<Setter Property="Background" TargetName="border" Value="{DynamicResource PlayGradientHover}">
 										
 									</Setter>
 									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border3}" />
+									<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{DynamicResource HoverForeground}" />
+
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
 									<Setter Property="Background" TargetName="border" Value="{DynamicResource PlayGradientPressed}">
 									</Setter>
 									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border3}" />
+									<Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{DynamicResource HoverForeground}" />
+
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
 									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background3}" />
@@ -941,9 +947,9 @@
 					</Setter.Value>
 				</Setter>
 			</Style>
-            <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070" />
-            <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1" />
-            <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B" />
+			<SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070" />
+			<SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1" />
+			<SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B" />
 			<SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4" />
 			<SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5" />
 			<SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383" />
@@ -1051,8 +1057,8 @@
 			</Style>
 			<SolidColorBrush x:Key="Button.Static.Background6" Color="#FFDDDDDD" />
 			<SolidColorBrush x:Key="Button.Static.Border6" Color="#FF707070" />
-			<SolidColorBrush x:Key="Button.MouseOver.Background6" Color="#FF0A0A1E" />
-			<SolidColorBrush x:Key="Button.Pressed.Background6" Color="#FF0A0A1E" />
+			<SolidColorBrush x:Key="Button.MouseOver.Background6" Color="{DynamicResource Background}" />
+			<SolidColorBrush x:Key="Button.Pressed.Background6" Color="{DynamicResource Background}" />
 			<SolidColorBrush x:Key="Button.Disabled.Background6" Color="#FFF4F4F4" />
 			<SolidColorBrush x:Key="Button.Disabled.Border6" Color="#FFADB2B5" />
 			<SolidColorBrush x:Key="Button.Disabled.Foreground6" Color="#FF838383" />

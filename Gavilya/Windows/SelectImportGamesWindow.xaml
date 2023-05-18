@@ -66,7 +66,7 @@
 		</Style>
 	</Window.Resources>
 
-	<Border Margin="10" CornerRadius="10" Background="#FF0A0A1E">
+	<Border Margin="10" CornerRadius="10" Background="{DynamicResource Background}">
 		<Border.Effect>
 			<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
 		</Border.Effect>
@@ -84,7 +84,7 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 
-				<Rectangle Fill="#FF000013" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+				<Rectangle Fill="{DynamicResource Background}" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
 					<Rectangle.Effect>
 						<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0" />
 					</Rectangle.Effect>
