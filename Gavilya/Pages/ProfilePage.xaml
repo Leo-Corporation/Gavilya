@@ -63,7 +63,7 @@
 			</Grid>
 
 			<StackPanel Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
-				<Button x:Name="SpotlightTabBtn" Style="{StaticResource TabButtonFirst}" Click="SpotlightTabBtn_Click" Padding="10 5" Background="#FF6600FF" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="#FF6600FF">
+				<Button x:Name="SpotlightTabBtn" Style="{StaticResource TabButtonFirst}" Click="SpotlightTabBtn_Click" Padding="10 5" Background="{DynamicResource Accent}" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{DynamicResource Accent}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF342;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Spotlight}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />

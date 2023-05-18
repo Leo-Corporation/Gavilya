@@ -622,7 +622,7 @@ public partial class MainWindow : Window
 		Button button = (Button)sender; // Get the button
 		if (button == CheckedTabButton)
 		{
-			button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) };
+			button.BorderBrush = Global.GetSolidColor("Accent");
 			CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
 		}
 	}
@@ -642,7 +642,7 @@ public partial class MainWindow : Window
 		RecentTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		SettingsBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 
-		CheckedTabButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
+		CheckedTabButton.BorderBrush = Global.GetSolidColor("Accent"); // Check
 		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
 	}
 

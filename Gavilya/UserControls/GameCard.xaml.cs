@@ -83,7 +83,7 @@ public partial class GameCard : UserControl
 
 		// Border
 		GameCardBorder.BorderThickness = new(0); // Set the border thickness
-		GameCardBorder.BorderBrush = GameInfo.IsFavorite ? new SolidColorBrush(Color.FromRgb(55, 121, 238)) : GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(102, 0, 255)); // Set the border color			
+		GameCardBorder.BorderBrush = GameInfo.IsFavorite ? new SolidColorBrush(Color.FromRgb(55, 121, 238)) : GameCardBorder.BorderBrush = Global.GetSolidColor("Accent"); // Set the border color			
 
 
 		// Location
@@ -275,7 +275,7 @@ public partial class GameCard : UserControl
 			Definitions.MainWindow.FavoriteSideBar.Children.Remove(FavoriteSideBarItem);
 
 			FavBtn.Content = "\uF710"; // Change icon
-			GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(102, 0, 255)); // Set the border color			
+			GameCardBorder.BorderBrush = Global.GetSolidColor("Accent"); // Set the border color			
 		}
 		else
 		{

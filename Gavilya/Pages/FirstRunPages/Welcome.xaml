@@ -5,7 +5,7 @@
             <Image Source="..\..\Assets\computer-rocket.png" Width="250" />
             <TextBlock FontWeight="ExtraBold" FontSize="24" Text="{x:Static lang:Resources.Welcome}" Foreground="White" HorizontalAlignment="Center" />
             <TextBlock FontSize="14" Text="{x:Static lang:Resources.GameGathered}" Foreground="White" HorizontalAlignment="Center" />
-            <Button x:Name="GetStartedBtn" Click="GetStartedBtn_Click" Padding="7" Margin="0 20 0 0" Cursor="Hand" Style="{StaticResource RegularButton}" HorizontalAlignment="Center" Background="#6600FF">
+            <Button x:Name="GetStartedBtn" Click="GetStartedBtn_Click" Padding="7" Margin="0 20 0 0" Cursor="Hand" Style="{StaticResource RegularButton}" HorizontalAlignment="Center" Background="{DynamicResource Accent}">
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="12" FontWeight="ExtraBold" Text="{x:Static lang:Resources.GetStarted}" Foreground="White" VerticalAlignment="Center" />

@@ -32,7 +32,7 @@
         </Style>
     </Window.Resources>
 
-    <Border CornerRadius="10" Margin="10" Background="#FF000014">
+    <Border CornerRadius="10" Margin="10" Background="{DynamicResource Background}">
 
         <Border.Effect>
             <DropShadowEffect Color="DarkGray" ShadowDepth="0" BlurRadius="15" Opacity="0.5" RenderingBias="Quality" />

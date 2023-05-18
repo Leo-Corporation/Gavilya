@@ -57,7 +57,7 @@
     </WindowChrome.WindowChrome>
 
 
-    <Border Margin="10" CornerRadius="10" Background="#FF000014">
+    <Border Margin="10" CornerRadius="10" Background="{DynamicResource Background}">
         <Border.Effect>
             <DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="15" Opacity="0.5" />
         </Border.Effect>

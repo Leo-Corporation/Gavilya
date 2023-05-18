@@ -86,14 +86,14 @@ public partial class LibraryPage : Page
 		{
 			CheckedButton = GameTagTabBtn;
 		}
-		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		CheckedButton.Background = Global.GetSolidColor("Accent"); // Change color
 	}
 
 	private void GameCardTabBtn_MouseEnter(object sender, MouseEventArgs e)
 	{
 		Button button = (Button)sender; // Create button
 
-		button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		button.BorderBrush = Global.GetSolidColor("Accent"); // Change color
 	}
 
 	private void GameCardTabBtn_MouseLeave(object sender, MouseEventArgs e)

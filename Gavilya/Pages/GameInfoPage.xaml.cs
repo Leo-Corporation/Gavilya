@@ -333,7 +333,7 @@ public partial class GameInfoPage : Page
 	{
 		tabCheckedID = 0; // ID
 
-		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		AboutTabBtn.Background = Global.GetSolidColor("Accent"); // Change color
 
 		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
 		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
@@ -347,7 +347,7 @@ public partial class GameInfoPage : Page
 	{
 		tabCheckedID = 1; // ID
 
-		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		RatingsTabBtn.Background = Global.GetSolidColor("Accent"); // Change color
 
 		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
 		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
@@ -457,7 +457,7 @@ public partial class GameInfoPage : Page
 	{
 		tabCheckedID = 2; // ID
 
-		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		AchievementsTabBtn.Background = Global.GetSolidColor("Accent"); // Change color
 
 		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
 		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color

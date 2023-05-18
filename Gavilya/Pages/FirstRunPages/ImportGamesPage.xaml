@@ -19,7 +19,7 @@
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="ImportBtn" Click="ImportBtn_Click" Grid.Column="1" Padding="10 7 10 7" Margin="10" Grid.Row="1" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#6600FF">
+            <Button x:Name="ImportBtn" Click="ImportBtn_Click" Grid.Column="1" Padding="10 7 10 7" Margin="10" Grid.Row="1" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{DynamicResource Accent}">
 
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontSize="12" FontWeight="ExtraBold" Text="{x:Static lang:Resources.Import}" Foreground="White" VerticalAlignment="Center" />

@@ -240,7 +240,7 @@ public partial class ProfilePage : Page
 		FavoriteTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
 		BadgesTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
 
-		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		CheckedButton.Background = Global.GetSolidColor("Accent"); // Change color
 	}
 
 	private void HideAll()

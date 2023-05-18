@@ -47,7 +47,7 @@ public partial class GameResult : UserControl
 		GameNameToolTip.Content = gameName; // Set the name of the game in the tool tip
 		Id = id; // Define the Game Id
 
-		Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		Screen1Border.BorderBrush = Global.GetSolidColor("Accent"); // Set border brush
 		CheckedBorder = Screen1Border; // Set value
 
 		ScreenshotsViewer.Visibility = Visibility.Collapsed;
@@ -102,7 +102,7 @@ public partial class GameResult : UserControl
 	private void Screen1RadioBtn_Checked(object sender, RoutedEventArgs e)
 	{
 		ResetBorders(); // Reset
-		Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		Screen1Border.BorderBrush = Global.GetSolidColor("Accent"); // Set border brush
 		CheckedBorder = Screen1Border; // Set value
 		SelectedScreenshot = 0; // Set
 	}
@@ -110,7 +110,7 @@ public partial class GameResult : UserControl
 	private void Screen2RadioBtn_Checked(object sender, RoutedEventArgs e)
 	{
 		ResetBorders(); // Reset
-		Screen2Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		Screen2Border.BorderBrush = Global.GetSolidColor("Accent"); // Set border brush
 		CheckedBorder = Screen2Border; // Set value
 		SelectedScreenshot = 1; // Set
 	}
@@ -118,7 +118,7 @@ public partial class GameResult : UserControl
 	private void Border_MouseEnter(object sender, MouseEventArgs e)
 	{
 		Border border = (Border)sender;
-		border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		border.BorderBrush = Global.GetSolidColor("Accent"); // Set border brush
 	}
 
 	private void Border_MouseLeave(object sender, MouseEventArgs e)
@@ -136,7 +136,7 @@ public partial class GameResult : UserControl
 		SelectedScreenshot = 0; // Set
 		ResetBorders(); // Reset
 		CheckedBorder = Screen1Border; // Set value
-		Screen1Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		Screen1Border.BorderBrush = Global.GetSolidColor("Accent"); // Set border brush
 	}
 
 	private void Screen2Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -145,7 +145,7 @@ public partial class GameResult : UserControl
 		SelectedScreenshot = 1; // Set
 		ResetBorders(); // Reset
 		CheckedBorder = Screen2Border; // Set value
-		Screen2Border.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Set border brush
+		Screen2Border.BorderBrush = Global.GetSolidColor("Accent"); // Set border brush
 	}
 
 	private void ShowBtn_Click(object sender, RoutedEventArgs e)

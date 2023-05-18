@@ -26,7 +26,7 @@
 
 			<Border Background="#FF1E1E32" CornerRadius="5" Padding="5" Margin="10 2" Grid.Column="2" VerticalAlignment="Center">
 				<StackPanel Margin="5 0" Orientation="Horizontal">
-					<Button Click="SortAlpha_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF6600FF" x:Name="SortAlpha" Content="&#xFDF2;" VerticalAlignment="Center" FontSize="16">
+					<Button Click="SortAlpha_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="{DynamicResource Accent}" x:Name="SortAlpha" Content="&#xFDF2;" VerticalAlignment="Center" FontSize="16">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
@@ -36,7 +36,7 @@
 							<ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>
 					</Button>
-					<Button Click="GameCardTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF6600FF" x:Name="GameCardTabBtn" Content="&#xF451;" VerticalAlignment="Center" FontSize="16" Margin="10,0,0,0">
+					<Button Click="GameCardTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="#FFF" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="{DynamicResource Accent}" x:Name="GameCardTabBtn" Content="&#xF451;" VerticalAlignment="Center" FontSize="16" Margin="10,0,0,0">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="#000014" Foreground="White" />
 						</Button.ToolTip>

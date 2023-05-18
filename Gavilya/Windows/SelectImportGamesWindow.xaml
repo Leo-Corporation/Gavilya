@@ -120,7 +120,7 @@
 					<StackPanel Name="GamePresenter" Grid.Row="1"></StackPanel>
 				</ScrollViewer>
 
-				<Button x:Name="FinishBtn" Click="FinishBtn_Click" Padding="10 7 10 7" Margin="10" Grid.Row="2" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#6600FF">
+				<Button x:Name="FinishBtn" Click="FinishBtn_Click" Padding="10 7 10 7" Margin="10" Grid.Row="2" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{DynamicResource Accent}">
 
 					<StackPanel Orientation="Horizontal" Grid.Row="2">
 						<TextBlock FontSize="12" FontWeight="ExtraBold" Text="{x:Static lang:Resources.Finish}" Foreground="White" VerticalAlignment="Center" />

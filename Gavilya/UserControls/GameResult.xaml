@@ -39,7 +39,7 @@
 										<ImageBrush x:Name="Screen1Img" />
 									</Rectangle.Fill>
 								</Rectangle>
-								<RadioButton x:Name="Screen1RadioBtn" Checked="Screen1RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="1" Background="Transparent" BorderBrush="#6600FF" FontWeight="ExtraBold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="White" Style="{DynamicResource RadioButtonStyle1}" />
+								<RadioButton x:Name="Screen1RadioBtn" Checked="Screen1RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="1" Background="Transparent" BorderBrush="{DynamicResource Accent}" FontWeight="ExtraBold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="White" Style="{DynamicResource RadioButtonStyle1}" />
 							</StackPanel>
 						</Border>
 						<Border x:Name="Screen2Border" CornerRadius="10" Margin="5" BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="Screen2Border_MouseLeftButtonUp">
@@ -49,7 +49,7 @@
 										<ImageBrush x:Name="Screen2Img" />
 									</Rectangle.Fill>
 								</Rectangle>
-								<RadioButton x:Name="Screen2RadioBtn" Checked="Screen2RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="2" Background="Transparent" BorderBrush="#6600FF" FontWeight="ExtraBold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="White" Style="{DynamicResource RadioButtonStyle1}" />
+								<RadioButton x:Name="Screen2RadioBtn" Checked="Screen2RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="2" Background="Transparent" BorderBrush="{DynamicResource Accent}" FontWeight="ExtraBold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="White" Style="{DynamicResource RadioButtonStyle1}" />
 							</StackPanel>
 						</Border>
 					</StackPanel>

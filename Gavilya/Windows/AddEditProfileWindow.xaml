@@ -56,7 +56,7 @@
 		<WindowChrome CaptionHeight="45"></WindowChrome>
 	</WindowChrome.WindowChrome>
 
-	<Border Margin="10" CornerRadius="10" Background="#FF000014">
+	<Border Margin="10" CornerRadius="10" Background="{DynamicResource Background}">
 		<Border.Effect>
 			<DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="15" Opacity="0.5" />
 		</Border.Effect>
@@ -105,7 +105,7 @@
 							</StackPanel>
 
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="White" />
+								<ToolTip Content="{x:Static lang:Resources.Browse}" Background="{DynamicResource Background}" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
 
@@ -116,7 +116,7 @@
 							</StackPanel>
 
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.Reset}" Background="#000014" Foreground="White" />
+								<ToolTip Content="{x:Static lang:Resources.Reset}" Background="{DynamicResource Background}" Foreground="White" />
 							</Button.ToolTip>
 						</Button>
 

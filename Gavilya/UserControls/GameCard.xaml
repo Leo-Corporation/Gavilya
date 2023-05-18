@@ -1,5 +1,5 @@
 ﻿<UserControl x:Class="Gavilya.UserControls.GameCard" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:local="clr-namespace:Gavilya.UserControls" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Height="144" Width="256" Margin="0 10 10 0">
-	<Border MouseLeftButtonUp="GameCardBorder_MouseLeftButtonUp" x:Name="GameCardBorder" BorderThickness="0" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" Cursor="Hand" CornerRadius="5" BorderBrush="#FF6600FF">
+	<Border MouseLeftButtonUp="GameCardBorder_MouseLeftButtonUp" x:Name="GameCardBorder" BorderThickness="0" MouseEnter="StackPanel_MouseEnter" MouseLeave="StackPanel_MouseLeave" Cursor="Hand" CornerRadius="5" BorderBrush="{DynamicResource Accent}">
 		<Border.Background>
 			<ImageBrush x:Name="GameIcon" Stretch="UniformToFill"></ImageBrush>
 		</Border.Background>
@@ -36,7 +36,7 @@
 						<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="White" />
 					</Button.ToolTip>
 				</Button>
-				<Border Visibility="Collapsed" Name="MenuBorder" Background="#FF000014" CornerRadius="5" Padding="3">
+				<Border Visibility="Collapsed" Name="MenuBorder" Background="{DynamicResource Background}" CornerRadius="5" Padding="3">
 					<StackPanel>
 						<Button x:Name="AdminBtn" Click="AdminBtn_Click" Style="{StaticResource RegularButton}" BorderThickness="0" Background="Transparent" Padding="3">
 							<Grid>
