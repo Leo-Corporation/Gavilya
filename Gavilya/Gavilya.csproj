@@ -210,11 +210,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Update="Ressources\Fonts.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Fonts.resx</DependentUpon>
-    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -227,10 +222,6 @@
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Ressources\Fonts.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Fonts.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 
