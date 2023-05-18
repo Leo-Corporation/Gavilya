@@ -1,4 +1,4 @@
-﻿<Page x:Class="Gavilya.Pages.GamesListPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" d:DesignHeight="450" d:DesignWidth="800" Title="GamesListPage" Foreground="White">
+﻿<Page x:Class="Gavilya.Pages.GamesListPage" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" d:DesignHeight="450" d:DesignWidth="800" Title="GamesListPage" Foreground="{DynamicResource Foreground}">
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -11,7 +11,7 @@
 			<ColumnDefinition Width="*" />
 		</Grid.ColumnDefinitions>
 
-		<TextBlock Visibility="Collapsed" Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="ExtraBold" FontSize="20" Foreground="White" VerticalAlignment="Center" />
+		<TextBlock Visibility="Collapsed" Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="ExtraBold" FontSize="20" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
 
 		<ScrollViewer Grid.Row="1" Grid.Column="0" VerticalScrollBarVisibility="Auto">
 			<Grid>

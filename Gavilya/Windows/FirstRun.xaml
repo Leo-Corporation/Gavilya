@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Gavilya.Windows.FirstRun" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:local="clr-namespace:Gavilya.Windows" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" Title="{x:Static lang:Resources.Welcome}" Height="450" Width="700" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Window.Resources>
         <Style x:Key="TitleBarButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="Height" Value="32" />
             <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -25,7 +25,7 @@
             </Setter>
         </Style>
         <Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -76,7 +76,7 @@
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="15" Text="{x:Static lang:Resources.Welcome}" FontWeight="ExtraBold" Foreground="White">
+            <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="15" Text="{x:Static lang:Resources.Welcome}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}">
                 <TextBlock.Style>
                     <Style TargetType="TextBlock">
                         <Style.Triggers>

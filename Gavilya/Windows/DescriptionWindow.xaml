@@ -15,7 +15,7 @@
             </Style.Triggers>
         </Style>
         <Style x:Key="TitleBarButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="Height" Value="32" />
             <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -40,7 +40,7 @@
         </Style>
 
         <Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -91,7 +91,7 @@
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.EditGameDescription}" FontWeight="ExtraBold" Foreground="White">
+                <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.EditGameDescription}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
@@ -115,28 +115,28 @@
                 </Grid.RowDefinitions>
 
                 <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto">
-                    <TextBox d:Text="Content here" Grid.Row="0" FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource MultiLineTextBox}" BorderBrush="#1E1E32" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="490" VerticalContentAlignment="Top" />
+                    <TextBox d:Text="Content here" Grid.Row="0" FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="#FF0A0A1E" Style="{DynamicResource MultiLineTextBox}" BorderBrush="#1E1E32" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="490" VerticalContentAlignment="Top" />
                 </ScrollViewer>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10" HorizontalAlignment="Center">
-                    <Button x:Name="ApplyBtn" Cursor="Hand" FontFamily="..\Fonts\#Hauora" Padding="7" Click="ApplyBtn_Click" Style="{DynamicResource PlayButton}" Foreground="White" Background="#FF141428" Margin="0,0,10,0" FontWeight="ExtraBold">
+                    <Button x:Name="ApplyBtn" Cursor="Hand" FontFamily="..\Fonts\#Hauora" Padding="7" Click="ApplyBtn_Click" Style="{DynamicResource PlayButton}" Foreground="{DynamicResource Foreground}" Background="#FF141428" Margin="0,0,10,0" FontWeight="ExtraBold">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xe98e;" FontSize="10" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="Normal" />
                             <TextBlock Text="{x:Static lang:Resources.Apply}" FontSize="12" VerticalAlignment="Center" />
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Apply}" Background="#000014" Foreground="White" />
+                            <ToolTip Content="{x:Static lang:Resources.Apply}" Background="#000014" Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
-                    <Button x:Name="CancelBtn" FontFamily="..\Fonts\#Hauora" Padding="7" Click="CancelBtn_Click" Style="{DynamicResource RegularButton}" Foreground="White" Background="#FF141428" FontWeight="ExtraBold">
+                    <Button x:Name="CancelBtn" FontFamily="..\Fonts\#Hauora" Padding="7" Click="CancelBtn_Click" Style="{DynamicResource RegularButton}" Foreground="{DynamicResource Foreground}" Background="#FF141428" FontWeight="ExtraBold">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xe9d8;" FontSize="10" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="Normal" />
                             <TextBlock Text="{x:Static lang:Resources.Cancel}" FontSize="12" VerticalAlignment="Center" />
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="White" />
+                            <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
                 </StackPanel>

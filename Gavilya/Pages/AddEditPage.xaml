@@ -19,26 +19,26 @@
 						<ColumnDefinition />
 						<ColumnDefinition Width="Auto" />
 					</Grid.ColumnDefinitions>
-					<TextBox x:Name="PackageFamilyNameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
-					<Button FontSize="13" x:Name="SelectUWPAppBtn" Click="SelectUWPAppBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,0,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.BrowseUWPApps}" FontWeight="ExtraBold" Grid.Column="1" VerticalAlignment="Center">
+					<TextBox x:Name="PackageFamilyNameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+					<Button FontSize="13" x:Name="SelectUWPAppBtn" Click="SelectUWPAppBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,0,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.BrowseUWPApps}" FontWeight="ExtraBold" Grid.Column="1" VerticalAlignment="Center">
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.BrowseUWPApps}" Background="{DynamicResource Background}" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.BrowseUWPApps}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 				</Grid>
 				<TextBlock Text="{x:Static lang:Resources.ApplicationId}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
-				<TextBox x:Name="AppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+				<TextBox x:Name="AppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 			</StackPanel>
 			<StackPanel x:Name="SteamGameInfo" Visibility="Collapsed">
 				<TextBlock Text="{x:Static lang:Resources.SteamAppId}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
-				<TextBox x:Name="SteamAppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+				<TextBox x:Name="SteamAppIdTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 			</StackPanel>
 
 			<TextBlock Text="{x:Static lang:Resources.Name}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
-			<TextBox x:Name="NameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+			<TextBox x:Name="NameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 
 			<TextBlock Text="{x:Static lang:Resources.Version}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
-			<TextBox x:Name="VersionTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+			<TextBox x:Name="VersionTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="#141428" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 
 			<TextBlock Text="{x:Static lang:Resources.Image}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
 			<Rectangle RadiusX="10" RadiusY="10" Width="250" Height="140" HorizontalAlignment="Center">
@@ -48,14 +48,14 @@
 			</Rectangle>
 
 			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-				<Button FontSize="13" x:Name="ImageBrowseBtn" Click="ImageBrowseBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0,5,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Browse}" FontWeight="ExtraBold" HorizontalAlignment="Center">
+				<Button FontSize="13" x:Name="ImageBrowseBtn" Click="ImageBrowseBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0,5,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Browse}" FontWeight="ExtraBold" HorizontalAlignment="Center">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Browse}" Background="{DynamicResource Background}" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.Browse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
-				<Button FontSize="13" x:Name="RAWGImageBrowseBtn" Click="RAWGImageBrowseBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,5,0,0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.RAWGio}" FontWeight="ExtraBold" HorizontalAlignment="Center">
+				<Button FontSize="13" x:Name="RAWGImageBrowseBtn" Click="RAWGImageBrowseBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="10,5,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.RAWGio}" FontWeight="ExtraBold" HorizontalAlignment="Center">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.RAWGio}" Background="{DynamicResource Background}" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.RAWGio}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
@@ -63,14 +63,14 @@
 			<CheckBox x:Name="HideChk" Content="{x:Static lang:Resources.HideGame}" Foreground="#FFF" Checked="HideChk_Checked" Unchecked="HideChk_Checked" BorderThickness="2" Style="{DynamicResource CheckBoxStyle2}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" />
 
 			<StackPanel HorizontalAlignment="Center" Margin="0 20 0 0" Orientation="Horizontal">
-				<Button FontSize="13" Cursor="Hand" x:Name="NextBtn" Click="NextBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Next}" FontWeight="ExtraBold">
+				<Button FontSize="13" Cursor="Hand" x:Name="NextBtn" Click="NextBtn_Click" Style="{DynamicResource PlayButton}" Margin="0 0 10 0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Next}" FontWeight="ExtraBold">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Next}" Background="{DynamicResource Background}" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.Next}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
-				<Button FontSize="13" x:Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="ExtraBold">
+				<Button FontSize="13" x:Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="ExtraBold">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Cancel}" Background="{DynamicResource Background}" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.Cancel}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>

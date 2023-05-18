@@ -3,8 +3,8 @@
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Image Source="..\Assets\recentGames.png" Width="300" />
 
-            <TextBlock Text="{x:Static lang:Resources.RecentGames}" Foreground="White" FontWeight="ExtraBold" FontSize="16" HorizontalAlignment="Center" />
-            <TextBlock Text="{x:Static lang:Resources.WelcomeRecentGames}" Foreground="White" FontSize="12" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Static lang:Resources.RecentGames}" Foreground="{DynamicResource Foreground}" FontWeight="ExtraBold" FontSize="16" HorizontalAlignment="Center" />
+            <TextBlock Text="{x:Static lang:Resources.WelcomeRecentGames}" Foreground="{DynamicResource Foreground}" FontSize="12" HorizontalAlignment="Center" />
         </StackPanel>
     </Grid>
 </UserControl>

@@ -14,27 +14,27 @@
 			<RowDefinition />
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.About}" Foreground="White" FontSize="17" FontWeight="ExtraBold" />
+		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.About}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1">
 			<Image Source="..\..\Resources\Gavilya.png" Name="Logo" Width="100" />
-			<TextBlock TextAlignment="Center" Text="{x:Static lang:Resources.AppName}" Foreground="White" FontWeight="ExtraBold" FontSize="17" />
-			<TextBlock Margin="0 0 0 10" x:Name="VersionTxt" TextAlignment="Center" Text="" Foreground="White" FontSize="12" />
+			<TextBlock TextAlignment="Center" Text="{x:Static lang:Resources.AppName}" Foreground="{DynamicResource Foreground}" FontWeight="ExtraBold" FontSize="17" />
+			<TextBlock Margin="0 0 0 10" x:Name="VersionTxt" TextAlignment="Center" Text="" Foreground="{DynamicResource Foreground}" FontSize="12" />
 			<StackPanel Orientation="Horizontal">
-				<Button Name="UpdateBtn" Click="UpdateBtn_Click" Cursor="Hand" Padding="5" FontSize="14" Style="{StaticResource RegularButton}" FontWeight="ExtraBold" Background="#1E1E32" Foreground="White">
+				<Button Name="UpdateBtn" Click="UpdateBtn_Click" Cursor="Hand" Padding="5" FontSize="14" Style="{StaticResource RegularButton}" FontWeight="ExtraBold" Background="#1E1E32" Foreground="{DynamicResource Foreground}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock FontWeight="Regular" Margin="0 0 10 0" Text="&#xe92a;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" HorizontalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.CheckForUpdates}" />
 					</StackPanel>
 				</Button>
-				<Button x:Name="LicenseBtn" Click="LicenseBtn_Click" Content="&#xea38;" Foreground="White" FontFamily="..\..\Fonts\#FluentlyIcons" Style="{StaticResource RegularButton}" Background="#1E1E32" Cursor="Hand" Padding="10 5" FontSize="14" Margin="10,0,0,0">
+				<Button x:Name="LicenseBtn" Click="LicenseBtn_Click" Content="&#xea38;" Foreground="{DynamicResource Foreground}" FontFamily="..\..\Fonts\#FluentlyIcons" Style="{StaticResource RegularButton}" Background="#1E1E32" Cursor="Hand" Padding="10 5" FontSize="14" Margin="10,0,0,0">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.SeeLicenses}" Background="#000014" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.SeeLicenses}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
-				<Button x:Name="GitHubBtn" Click="GitHubBtn_Click" Content="&#xFDAB;" Foreground="White" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" Style="{StaticResource RegularButton}" Background="#1E1E32" Cursor="Hand" Padding="10 5" FontSize="14" Margin="10,0,0,0">
+				<Button x:Name="GitHubBtn" Click="GitHubBtn_Click" Content="&#xFDAB;" Foreground="{DynamicResource Foreground}" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" Style="{StaticResource RegularButton}" Background="#1E1E32" Cursor="Hand" Padding="10 5" FontSize="14" Margin="10,0,0,0">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.SeeGitHubRepo}" Background="#000014" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.SeeGitHubRepo}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>

@@ -14,16 +14,16 @@
 					</Grid.RenderTransform>
 					<CheckBox x:FieldModifier="public" x:Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="#FF141428" Cursor="Hand" />
 				</Grid>
-				<TextBlock d:Text="GameName" Margin="10 0 0 0" x:Name="GameName" FontSize="20" FontWeight="ExtraBold" Text="" Foreground="White" VerticalAlignment="Center">
+				<TextBlock d:Text="GameName" Margin="10 0 0 0" x:Name="GameName" FontSize="20" FontWeight="ExtraBold" Text="" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
 					<TextBlock.ToolTip>
-						<ToolTip x:Name="GameNameToolTip" Background="#FF323248" Foreground="White" />
+						<ToolTip x:Name="GameNameToolTip" Background="#FF323248" Foreground="{DynamicResource Foreground}" />
 					</TextBlock.ToolTip>
 				</TextBlock>
 			</StackPanel>
 			<StackPanel Margin="10" Grid.Row="1">
 				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="{x:Static lang:Resources.Screenshots}" FontWeight="ExtraBold" Foreground="White" FontSize="17" VerticalAlignment="Center" />
-					<Button Name="ShowBtn" Click="ShowBtn_Click" Cursor="Hand" Padding="5" FontSize="14" Style="{StaticResource RegularButton}" FontWeight="ExtraBold" Background="#1E1E32" Foreground="White" Margin="10,0,0,0" VerticalAlignment="Center">
+					<TextBlock Text="{x:Static lang:Resources.Screenshots}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" FontSize="17" VerticalAlignment="Center" />
+					<Button Name="ShowBtn" Click="ShowBtn_Click" Cursor="Hand" Padding="5" FontSize="14" Style="{StaticResource RegularButton}" FontWeight="ExtraBold" Background="#1E1E32" Foreground="{DynamicResource Foreground}" Margin="10,0,0,0" VerticalAlignment="Center">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock FontWeight="Regular" Margin="0 0 10 0" Text="&#xEA16;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" HorizontalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.ShowScreenshots}" />
@@ -39,7 +39,7 @@
 										<ImageBrush x:Name="Screen1Img" />
 									</Rectangle.Fill>
 								</Rectangle>
-								<RadioButton x:Name="Screen1RadioBtn" Checked="Screen1RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="1" Background="Transparent" BorderBrush="{DynamicResource Accent}" FontWeight="ExtraBold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="White" Style="{DynamicResource RadioButtonStyle1}" />
+								<RadioButton x:Name="Screen1RadioBtn" Checked="Screen1RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="1" Background="Transparent" BorderBrush="{DynamicResource Accent}" FontWeight="ExtraBold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="{DynamicResource Foreground}" Style="{DynamicResource RadioButtonStyle1}" />
 							</StackPanel>
 						</Border>
 						<Border x:Name="Screen2Border" CornerRadius="10" Margin="5" BorderThickness="3" BorderBrush="{x:Null}" MouseEnter="Border_MouseEnter" MouseLeave="Border_MouseLeave" Cursor="Hand" MouseLeftButtonUp="Screen2Border_MouseLeftButtonUp">
@@ -49,7 +49,7 @@
 										<ImageBrush x:Name="Screen2Img" />
 									</Rectangle.Fill>
 								</Rectangle>
-								<RadioButton x:Name="Screen2RadioBtn" Checked="Screen2RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="2" Background="Transparent" BorderBrush="{DynamicResource Accent}" FontWeight="ExtraBold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="White" Style="{DynamicResource RadioButtonStyle1}" />
+								<RadioButton x:Name="Screen2RadioBtn" Checked="Screen2RadioBtn_Checked" GroupName="ScreenRadioGroup" Content="2" Background="Transparent" BorderBrush="{DynamicResource Accent}" FontWeight="ExtraBold" FontSize="13" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="4" Foreground="{DynamicResource Foreground}" Style="{DynamicResource RadioButtonStyle1}" />
 							</StackPanel>
 						</Border>
 					</StackPanel>

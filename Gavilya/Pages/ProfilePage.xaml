@@ -50,49 +50,49 @@
 					</StackPanel>
 				</StackPanel>
 
-				<Button Click="EditBtn_Click" Margin="5" Grid.Column="1" x:Name="EditBtn" Padding="5" HorizontalAlignment="Stretch" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="White" VerticalAlignment="Center">
+				<Button Click="EditBtn_Click" Margin="5" Grid.Column="1" x:Name="EditBtn" Padding="5" HorizontalAlignment="Stretch" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Margin="0 0 5 0" Text="&#xF3DE;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Edit}" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Edit}" Background="#000014" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.Edit}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</Grid>
 
 			<StackPanel Orientation="Horizontal" Margin="10 5" HorizontalAlignment="Center">
-				<Button x:Name="SpotlightTabBtn" Style="{StaticResource TabButtonFirst}" Click="SpotlightTabBtn_Click" Padding="10 5" Background="{DynamicResource Accent}" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{DynamicResource Accent}">
+				<Button x:Name="SpotlightTabBtn" Style="{StaticResource TabButtonFirst}" Click="SpotlightTabBtn_Click" Padding="10 5" Background="{DynamicResource Accent}" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{DynamicResource Accent}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF342;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Spotlight}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Spotlight}" Background="#000014" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.Spotlight}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 
-				<Button x:Name="FavoriteTabBtn" Style="{StaticResource TabButtonMiddle}" Click="FavoriteTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
+				<Button x:Name="FavoriteTabBtn" Style="{StaticResource TabButtonMiddle}" Click="FavoriteTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF710;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Favorites}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Favorites}" Background="#000014" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.Favorites}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 
-				<Button x:Name="BadgesTabBtn" Style="{StaticResource TabButtonLast}" Click="BadgesTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
+				<Button x:Name="BadgesTabBtn" Style="{StaticResource TabButtonLast}" Click="BadgesTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF837;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Badges}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 					</StackPanel>
 
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Badges}" Background="#000014" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.Badges}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
@@ -102,7 +102,7 @@
 					<StackPanel VerticalAlignment="Bottom">
 						<Rectangle x:Name="Top2Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C">
 							<Rectangle.ToolTip>
-								<ToolTip x:Name="Top2ToolTip" Background="#000014" Foreground="White" />
+								<ToolTip x:Name="Top2ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
 							</Rectangle.ToolTip>
 						</Rectangle>
 						<TextBlock x:Name="P2Txt" Text="{x:Static lang:Resources.P2}" FontSize="16" FontWeight="ExtraBold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -110,7 +110,7 @@
 					<StackPanel VerticalAlignment="Bottom">
 						<Rectangle x:Name="Top1Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C">
 							<Rectangle.ToolTip>
-								<ToolTip x:Name="Top1ToolTip" Background="#000014" Foreground="White" />
+								<ToolTip x:Name="Top1ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
 							</Rectangle.ToolTip>
 						</Rectangle>
 						<TextBlock x:Name="P1Txt" Text="{x:Static lang:Resources.P1}" FontSize="16" FontWeight="ExtraBold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -118,7 +118,7 @@
 					<StackPanel VerticalAlignment="Bottom">
 						<Rectangle x:Name="Top3Rect" Margin="10 0 10 0" Width="50" RadiusX="5" VerticalAlignment="Bottom" RadiusY="5" Fill="#FF64648C">
 							<Rectangle.ToolTip>
-								<ToolTip x:Name="Top3ToolTip" Background="#000014" Foreground="White" />
+								<ToolTip x:Name="Top3ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
 							</Rectangle.ToolTip>
 						</Rectangle>
 						<TextBlock x:Name="P3Txt" Text="{x:Static lang:Resources.P3}" FontSize="16" FontWeight="ExtraBold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
@@ -190,7 +190,7 @@
 				<WrapPanel x:Name="MyBadgesPart">
 					<StackPanel x:Name="TheStartImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.TheStartDesc}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.TheStartDesc}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</StackPanel.ToolTip>
 
 						<Image Height="150" Width="150" Source="..\Assets\TheStart.png" HorizontalAlignment="Center" />
@@ -198,14 +198,14 @@
 					</StackPanel>
 					<StackPanel x:Name="CrazyAboutImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.CrazyAboutItDesc}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.CrazyAboutItDesc}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</StackPanel.ToolTip>
 						<Image Height="150" Width="150" Source="..\Assets\CrazyAbout.png" HorizontalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.CrazyAboutIt}" FontSize="13" FontWeight="ExtraBold" HorizontalAlignment="Center" />
 					</StackPanel>
 					<StackPanel x:Name="NoobPlayerImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.NoobPlayerDesc}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.NoobPlayerDesc}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</StackPanel.ToolTip>
 
 						<Image Height="150" Width="150" Source="..\Assets\NoobPlayer.png" HorizontalAlignment="Center" />
@@ -213,7 +213,7 @@
 					</StackPanel>
 					<StackPanel x:Name="StarterGamerImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.StarterGamerDesc}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.StarterGamerDesc}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</StackPanel.ToolTip>
 
 						<Image Height="150" Width="150" Source="..\Assets\StarterGamer.png" HorizontalAlignment="Center" />
@@ -221,7 +221,7 @@
 					</StackPanel>
 					<StackPanel x:Name="AdvancedGamerImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.AdvancedGamerDesc}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.AdvancedGamerDesc}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</StackPanel.ToolTip>
 
 						<Image Height="150" Width="150" Source="..\Assets\AdvancedGamer.png" HorizontalAlignment="Center" />
@@ -229,7 +229,7 @@
 					</StackPanel>
 					<StackPanel x:Name="TrueGamerImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.TrueGamerDesc}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.TrueGamerDesc}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</StackPanel.ToolTip>
 
 						<Image Height="150" Width="150" Source="..\Assets\TrueGamer.png" HorizontalAlignment="Center" />
@@ -237,7 +237,7 @@
 					</StackPanel>
 					<StackPanel x:Name="LegendaryImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.LegendaryGamerDesc}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.LegendaryGamerDesc}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</StackPanel.ToolTip>
 
 						<Image Height="150" Width="150" Source="..\Assets\LegendaryGamer.png" HorizontalAlignment="Center" />
@@ -245,7 +245,7 @@
 					</StackPanel>
 					<StackPanel x:Name="NeedSpaceOnTheShelvesImg" Visibility="Collapsed" Margin="5">
 						<StackPanel.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.NeedSpaceOnTheShelvesDesc}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</StackPanel.ToolTip>
 
 						<Image Height="150" Width="150" Source="..\Assets\NeedSpaceShelves.png" HorizontalAlignment="Center" />

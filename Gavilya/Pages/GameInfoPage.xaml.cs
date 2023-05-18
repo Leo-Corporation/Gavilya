@@ -148,7 +148,7 @@ public partial class GameInfoPage : Page
 			StoreDisplayer.Children.Add(
 				new TextBlock
 				{
-					Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to white
+					Foreground = new SolidColorBrush { Color = Colors.White }, // Set the foreground to {DynamicResource Foreground}
 					Margin = new Thickness { Left = 1, Bottom = 1, Right = 1, Top = 1 }, // Set the the margin
 					FontSize = 20, // Set the font size
 					FontWeight = FontWeights.Bold, // Set the font weight

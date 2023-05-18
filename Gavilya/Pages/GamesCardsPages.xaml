@@ -6,7 +6,7 @@
 			<RowDefinition />
 		</Grid.RowDefinitions>
 
-		<TextBlock Visibility="Collapsed" Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="ExtraBold" FontSize="20" Foreground="White" VerticalAlignment="Center" />
+		<TextBlock Visibility="Collapsed" Grid.Row="0" Text="{x:Static lang:Resources.YourGames}" FontWeight="ExtraBold" FontSize="20" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
 
 		<ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
 			<WrapPanel x:FieldModifier="public" FlowDirection="LeftToRight" Orientation="Horizontal" Name="GamePresenter" Grid.Row="1" AllowDrop="True" Drop="GamePresenter_Drop"></WrapPanel>

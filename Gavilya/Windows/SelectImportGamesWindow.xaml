@@ -14,7 +14,7 @@
 			</Style.Triggers>
 		</Style>
 		<Style x:Key="TitleBarButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -39,7 +39,7 @@
 		</Style>
 
 		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -90,7 +90,7 @@
 					</Rectangle.Effect>
 				</Rectangle>
 
-				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.ImportGames}" FontWeight="ExtraBold" Foreground="White">
+				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.ImportGames}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}">
 					<TextBlock.Style>
 						<Style TargetType="TextBlock">
 							<Style.Triggers>
@@ -114,17 +114,17 @@
 					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 
-				<TextBlock Grid.Row="0" Text="{x:Static lang:Resources.SelectGamesImport}" TextWrapping="Wrap" FontSize="13" Foreground="White" Margin="10 5 10 5" />
+				<TextBlock Grid.Row="0" Text="{x:Static lang:Resources.SelectGamesImport}" TextWrapping="Wrap" FontSize="13" Foreground="{DynamicResource Foreground}" Margin="10 5 10 5" />
 
 				<ScrollViewer Template="{DynamicResource ScrollViewerTemplate1}" Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
 					<StackPanel Name="GamePresenter" Grid.Row="1"></StackPanel>
 				</ScrollViewer>
 
-				<Button x:Name="FinishBtn" Click="FinishBtn_Click" Padding="10 7 10 7" Margin="10" Grid.Row="2" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{DynamicResource Accent}">
+				<Button x:Name="FinishBtn" Click="FinishBtn_Click" Padding="10 7 10 7" Margin="10" Grid.Row="2" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{DynamicResource Accent}">
 
 					<StackPanel Orientation="Horizontal" Grid.Row="2">
-						<TextBlock FontSize="12" FontWeight="ExtraBold" Text="{x:Static lang:Resources.Finish}" Foreground="White" VerticalAlignment="Center" />
-						<TextBlock FontSize="10" FontFamily="..\Fonts\#FluentlyIcons" Text="&#xE919;" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" />
+						<TextBlock FontSize="12" FontWeight="ExtraBold" Text="{x:Static lang:Resources.Finish}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
+						<TextBlock FontSize="10" FontFamily="..\Fonts\#FluentlyIcons" Text="&#xE919;" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" Margin="10,0,0,0" />
 					</StackPanel>
 				</Button>
 			</Grid>

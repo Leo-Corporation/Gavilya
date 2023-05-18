@@ -5,7 +5,7 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:local="clr-namespace:Gavilya.UserControls"
 			 xmlns:lang="clr-namespace:Gavilya.Properties"
-			 Foreground="White"
+			 Foreground="{DynamicResource Foreground}"
 			 FontFamily="../Fonts/#Hauora"
 			 mc:Ignorable="d" 
 			 Height="80" Width="500">
@@ -29,26 +29,26 @@
 				</Rectangle.Fill>
 			</Rectangle>
 			<StackPanel Orientation="Horizontal" Grid.Column="1">
-				<TextBlock d:Text="ProfileName" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="White" FontWeight="Bold" FontSize="16"/>
+				<TextBlock d:Text="ProfileName" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{DynamicResource Foreground}" FontWeight="Bold" FontSize="16"/>
 				<Border x:Name="CurrentBorder" Visibility="Collapsed" CornerRadius="10" Padding="7 2" BorderThickness="1" BorderBrush="#FF7E7E92" Background="#1E1E32" VerticalAlignment="Center" Margin="10,0,0,0">
 					<TextBlock Foreground="#7e7e92" Text="{x:Static lang:Resources.Current}" FontWeight="Bold" FontSize="11"/>
 				</Border>
 			</StackPanel>
 		</Grid>
 		
-		<Button x:Name="SwitchBtn" Click="SwitchBtn_Click" Style="{StaticResource RegularButton}" Padding="5" Height="30" Width="30" Grid.Column="1" Content="&#xF18E;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="2 0" Background="Transparent" Foreground="White" FontSize="16">
+		<Button x:Name="SwitchBtn" Click="SwitchBtn_Click" Style="{StaticResource RegularButton}" Padding="5" Height="30" Width="30" Grid.Column="1" Content="&#xF18E;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="2 0" Background="Transparent" Foreground="{DynamicResource Foreground}" FontSize="16">
 			<Button.ToolTip>
-				<ToolTip Content="{x:Static lang:Resources.DeleteProfile}" Background="#000014" Foreground="White"/>
+				<ToolTip Content="{x:Static lang:Resources.DeleteProfile}" Background="#000014" Foreground="{DynamicResource Foreground}"/>
 			</Button.ToolTip>
 		</Button>
-		<Button x:Name="EditBtn" Click="EditBtn_Click" Style="{StaticResource RegularButton}" Padding="5" Height="30" Width="30" Grid.Column="2" Content="&#xF3DE;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="2 0" Background="Transparent" Foreground="White" FontSize="16">
+		<Button x:Name="EditBtn" Click="EditBtn_Click" Style="{StaticResource RegularButton}" Padding="5" Height="30" Width="30" Grid.Column="2" Content="&#xF3DE;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="2 0" Background="Transparent" Foreground="{DynamicResource Foreground}" FontSize="16">
 			<Button.ToolTip>
-				<ToolTip Content="{x:Static lang:Resources.EditProfile}" Background="#000014" Foreground="White"/>
+				<ToolTip Content="{x:Static lang:Resources.EditProfile}" Background="#000014" Foreground="{DynamicResource Foreground}"/>
 			</Button.ToolTip>
 		</Button>
-		<Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource RegularButton}" Padding="5" Height="30" Width="30" Grid.Column="3" Content="&#xF34D;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="2 0" Background="Transparent" Foreground="White" FontSize="16">
+		<Button x:Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource RegularButton}" Padding="5" Height="30" Width="30" Grid.Column="3" Content="&#xF34D;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="2 0" Background="Transparent" Foreground="{DynamicResource Foreground}" FontSize="16">
 			<Button.ToolTip>
-				<ToolTip Content="{x:Static lang:Resources.DeleteProfile}" Background="#000014" Foreground="White"/>
+				<ToolTip Content="{x:Static lang:Resources.DeleteProfile}" Background="#000014" Foreground="{DynamicResource Foreground}"/>
 			</Button.ToolTip>
 		</Button>
 	</Grid>

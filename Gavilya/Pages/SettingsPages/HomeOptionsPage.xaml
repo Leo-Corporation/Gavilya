@@ -6,7 +6,7 @@
 			<RowDefinition />
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Home}" Foreground="White" FontSize="17" FontWeight="ExtraBold" />
+		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Home}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
 			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
@@ -14,21 +14,21 @@
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF47F;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
 						<StackPanel>
-							<TextBlock Text="{x:Static lang:Resources.RecentGames}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
-							<TextBlock Text="{x:Static lang:Resources.MaxNumberOfRecentGames}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+							<TextBlock Text="{x:Static lang:Resources.RecentGames}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" />
+							<TextBlock Text="{x:Static lang:Resources.MaxNumberOfRecentGames}" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" FontSize="12" />
 						</StackPanel>
 					</StackPanel>
 				</Expander.Header>
 				<StackPanel Orientation="Horizontal">
-					<TextBox x:Name="NumberRecentGamesTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="10,5,0,5" BorderThickness="0" Background="#141428" Foreground="White" d:Text="Placeholder" MinWidth="50" FontWeight="ExtraBold" TextAlignment="Center" HorizontalAlignment="Left" PreviewTextInput="NumberRecentGamesTextBox_PreviewTextInput" />
-					<Button Click="SaveButton_Click" Margin="10 10 0 10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="White" HorizontalAlignment="Left">
+					<TextBox x:Name="NumberRecentGamesTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="10,5,0,5" BorderThickness="0" Background="#141428" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" MinWidth="50" FontWeight="ExtraBold" TextAlignment="Center" HorizontalAlignment="Left" PreviewTextInput="NumberRecentGamesTextBox_PreviewTextInput" />
+					<Button Click="SaveButton_Click" Margin="10 10 0 10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Margin="0 0 5 0" Text="&#xead3;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.SaveChanges}" FontWeight="ExtraBold" FontSize="13" />
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.SaveChanges}" Background="#0A0A1E" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.SaveChanges}" Background="#0A0A1E" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 				</StackPanel>
@@ -39,8 +39,8 @@
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF47A;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
 						<StackPanel>
-							<TextBlock Text="{x:Static lang:Resources.RecommandedGamesSection}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
-							<TextBlock Text="{x:Static lang:Resources.RecommandedSettings}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+							<TextBlock Text="{x:Static lang:Resources.RecommandedGamesSection}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" />
+							<TextBlock Text="{x:Static lang:Resources.RecommandedSettings}" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" FontSize="12" />
 						</StackPanel>
 					</StackPanel>
 				</Expander.Header>
@@ -55,13 +55,13 @@
 						<ColumnDefinition Width="Auto"/>
 					</Grid.ColumnDefinitions>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
-						<TextBlock Text="&#xFA93;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" Foreground="White"/>
+						<TextBlock Text="&#xFA93;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" Foreground="{DynamicResource Foreground}"/>
 						<StackPanel>
-							<TextBlock Text="{x:Static lang:Resources.Sidebar}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
-							<TextBlock Text="{x:Static lang:Resources.SidebarPosition}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+							<TextBlock Text="{x:Static lang:Resources.Sidebar}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" />
+							<TextBlock Text="{x:Static lang:Resources.SidebarPosition}" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" FontSize="12" />
 						</StackPanel>
 					</StackPanel>
-					<ComboBox x:Name="PositionCombobox" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="White" BorderThickness="2" Padding="5" VerticalAlignment="Center" SelectionChanged="PositionCombobox_SelectionChanged" Grid.Column="2">
+					<ComboBox x:Name="PositionCombobox" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}" BorderThickness="2" Padding="5" VerticalAlignment="Center" SelectionChanged="PositionCombobox_SelectionChanged" Grid.Column="2">
 						<ComboBoxItem Content="{x:Static lang:Resources.Left}"/>
 						<ComboBoxItem Content="{x:Static lang:Resources.Right}"/>
 					</ComboBox>

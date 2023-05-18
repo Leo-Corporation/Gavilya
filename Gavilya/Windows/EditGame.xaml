@@ -14,7 +14,7 @@
 			</Style.Triggers>
 		</Style>
 		<Style x:Key="TitleBarButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -39,7 +39,7 @@
 		</Style>
 
 		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -91,7 +91,7 @@
 					</Rectangle.Effect>
 				</Rectangle>
 
-				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.EditGame}" FontWeight="ExtraBold" Foreground="White">
+				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.EditGame}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}">
 					<TextBlock.Style>
 						<Style TargetType="TextBlock">
 							<Style.Triggers>
@@ -118,8 +118,8 @@
 						<StackPanel>
 							<Border CornerRadius="10" Width="20" Height="20" Background="{DynamicResource Accent}">
 								<Grid>
-									<TextBlock x:Name="_1Txt" Text="1" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
-									<TextBlock x:Name="CheckTxt" Text="&#xF299;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" Visibility="Collapsed" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+									<TextBlock x:Name="_1Txt" Text="1" FontWeight="Bold" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+									<TextBlock x:Name="CheckTxt" Text="&#xF299;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" Visibility="Collapsed" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
 								</Grid>
 							</Border>
 							<TextBlock Text="{x:Static lang:Resources.Infos}" FontWeight="Bold"/>
@@ -137,7 +137,7 @@
 
 						<StackPanel Grid.Column="1">
 							<Border x:Name="NumberBorder" CornerRadius="10" Width="20" Height="20" Background="#323246">
-								<TextBlock Text="2" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+								<TextBlock Text="2" FontWeight="Bold" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
 							</Border>
 							<TextBlock Text="{x:Static lang:Resources.Integrations}" FontWeight="Bold"/>
 						</StackPanel>

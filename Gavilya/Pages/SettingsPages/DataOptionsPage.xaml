@@ -6,7 +6,7 @@
 			<RowDefinition />
 		</Grid.RowDefinitions>
 
-		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Data}" Foreground="White" FontSize="17" FontWeight="ExtraBold" />
+		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Data}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
 			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
@@ -14,8 +14,8 @@
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF140;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
 						<StackPanel>
-							<TextBlock Text="{x:Static lang:Resources.ResetSettings}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="White" />
-							<TextBlock Text="{x:Static lang:Resources.ResetSettingsDesc}" Margin="10 0 0 0" Foreground="White" FontSize="12" />
+							<TextBlock Text="{x:Static lang:Resources.ResetSettings}" FontWeight="ExtraBold" FontSize="14" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" />
+							<TextBlock Text="{x:Static lang:Resources.ResetSettingsDesc}" Margin="10 0 0 0" Foreground="{DynamicResource Foreground}" FontSize="12" />
 						</StackPanel>
 					</StackPanel>
 				</Expander.Header>

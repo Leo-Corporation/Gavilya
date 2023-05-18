@@ -26,56 +26,56 @@
 						</Grid.ColumnDefinitions>
 
 						<StackPanel Margin="0 100 0 0" VerticalAlignment="Bottom">
-							<TextBlock Margin="10 10 10 10" d:Text="Title" Name="GameNameTxt" Foreground="White" FontSize="25" FontWeight="ExtraBold" />
+							<TextBlock Margin="10 10 10 10" d:Text="Title" Name="GameNameTxt" Foreground="{DynamicResource Foreground}" FontSize="25" FontWeight="ExtraBold" />
 
 							<StackPanel Orientation="Horizontal">
-								<Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 10 0" Padding="18 8 18 8" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="ExtraBold" FontSize="16" Foreground="White" HorizontalAlignment="Left">
+								<Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 10 0" Padding="18 8 18 8" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="ExtraBold" FontSize="16" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">
 									<StackPanel Orientation="Horizontal">
 										<TextBlock Text="&#xF610;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="15" VerticalAlignment="Center" FontWeight="Normal" />
 										<TextBlock Margin="10 0 0 0" Text="{x:Static lang:Resources.Play}" FontWeight="ExtraBold" FontSize="15" VerticalAlignment="Center" />
 									</StackPanel>
 
 									<Button.ToolTip>
-										<ToolTip Name="PlayBtnToolTip" Background="#000014" Foreground="White" />
+										<ToolTip Name="PlayBtnToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
 									</Button.ToolTip>
 								</Button>
 
 								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="&#xEA2C;" FontSize="30" FontFamily="..\Fonts\#FluentlyIcons" Foreground="White" VerticalAlignment="Center" />
+									<TextBlock Text="&#xEA2C;" FontSize="30" FontFamily="..\Fonts\#FluentlyIcons" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
 									<StackPanel VerticalAlignment="Center">
-										<TextBlock FontWeight="ExtraBold" Margin="10 0 10 0" Text="{x:Static lang:Resources.LastTimePlayed}" Foreground="White" FontSize="18" />
-										<TextBlock Margin="10 0 10 0" d:Text="LastTimePlayedTxt" Name="LastTimePlayedTxt" Foreground="White" FontSize="15" />
+										<TextBlock FontWeight="ExtraBold" Margin="10 0 10 0" Text="{x:Static lang:Resources.LastTimePlayed}" Foreground="{DynamicResource Foreground}" FontSize="18" />
+										<TextBlock Margin="10 0 10 0" d:Text="LastTimePlayedTxt" Name="LastTimePlayedTxt" Foreground="{DynamicResource Foreground}" FontSize="15" />
 									</StackPanel>
 								</StackPanel>
 
 								<TextBlock Text="&#xE9DA;" FontSize="30" FontFamily="..\Fonts\#FluentlyIcons" Foreground="#FFC8C8DC" VerticalAlignment="Center" Margin="10,0,20,0" />
 
 								<StackPanel Orientation="Horizontal">
-									<TextBlock Text="&#xe99f;" FontSize="30" FontFamily="..\Fonts\#FluentlyIcons" Foreground="White" VerticalAlignment="Center" />
+									<TextBlock Text="&#xe99f;" FontSize="30" FontFamily="..\Fonts\#FluentlyIcons" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
 									<StackPanel VerticalAlignment="Center">
-										<TextBlock FontWeight="ExtraBold" Margin="10 0 10 0" Text="{x:Static lang:Resources.TotalTimePlayed}" Foreground="White" FontSize="18" />
-										<TextBlock Margin="10 0 10 0" d:Text="TotalTimePlayedTxt" Name="TotalTimePlayedTxt" Foreground="White" FontSize="15" />
+										<TextBlock FontWeight="ExtraBold" Margin="10 0 10 0" Text="{x:Static lang:Resources.TotalTimePlayed}" Foreground="{DynamicResource Foreground}" FontSize="18" />
+										<TextBlock Margin="10 0 10 0" d:Text="TotalTimePlayedTxt" Name="TotalTimePlayedTxt" Foreground="{DynamicResource Foreground}" FontSize="15" />
 									</StackPanel>
 								</StackPanel>
 							</StackPanel>
 						</StackPanel>
 
 						<StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Bottom">
-							<Button x:Name="AdminBtn" Click="AdminBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF8C0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Height="40" Width="40">
+							<Button x:Name="AdminBtn" Click="AdminBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF8C0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="{DynamicResource Foreground}" Height="40" Width="40">
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.LaunchGameAsAdmin}" Background="#000014" Foreground="White" />
+									<ToolTip Content="{x:Static lang:Resources.LaunchGameAsAdmin}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 
-							<Button x:Name="FavBtn" Click="FavBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF710;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Height="40" Width="40">
+							<Button x:Name="FavBtn" Click="FavBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF710;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="{DynamicResource Foreground}" Height="40" Width="40">
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="White" />
+									<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 
-							<Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF6AA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="White" Width="40" Height="40">
+							<Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF6AA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="{DynamicResource Foreground}" Width="40" Height="40">
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="White" />
+									<ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 						</StackPanel>
@@ -91,36 +91,36 @@
 				</Grid.RowDefinitions>
 
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-					<Button x:Name="AboutTabBtn" Style="{StaticResource TabButtonFirst}" Click="AboutTabBtn_Click" Padding="10 5" Background="{DynamicResource Accent}" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{DynamicResource Accent}">
+					<Button x:Name="AboutTabBtn" Style="{StaticResource TabButtonFirst}" Click="AboutTabBtn_Click" Padding="10 5" Background="{DynamicResource Accent}" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{DynamicResource Accent}">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="&#xEA38;" FontSize="15" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.About}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.About}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.About}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 
-					<Button x:Name="RatingsTabBtn" Style="{StaticResource TabButtonMiddle}" Click="RatingsTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
+					<Button x:Name="RatingsTabBtn" Style="{StaticResource TabButtonMiddle}" Click="RatingsTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="&#xEA2F;" FontSize="15" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.Ratings}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Ratings}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.Ratings}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 
-					<Button x:Name="AchievementsTabBtn" Style="{StaticResource TabButtonLast}" Click="AchievementsTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="White" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
+					<Button x:Name="AchievementsTabBtn" Style="{StaticResource TabButtonLast}" Click="AchievementsTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="&#xeb52;" FontSize="15" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.Achievements}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Achievements}" Background="#000014" Foreground="White" />
+							<ToolTip Content="{x:Static lang:Resources.Achievements}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 				</StackPanel>
@@ -138,13 +138,13 @@
 					</Grid.RowDefinitions>
 
 					<StackPanel Grid.Row="0" Grid.Column="0" Margin="10 0">
-						<TextBlock Text="{x:Static lang:Resources.About}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
-						<TextBlock Name="DescriptionTxt" Foreground="White" TextWrapping="Wrap" />
+						<TextBlock Text="{x:Static lang:Resources.About}" FontSize="20" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" />
+						<TextBlock Name="DescriptionTxt" Foreground="{DynamicResource Foreground}" TextWrapping="Wrap" />
 					</StackPanel>
 
 
 					<StackPanel Margin="10 0" Grid.Row="1" Grid.Column="0">
-						<TextBlock Margin="1" Text="{x:Static lang:Resources.Platforms}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
+						<TextBlock Margin="1" Text="{x:Static lang:Resources.Platforms}" FontSize="20" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" />
 						<WrapPanel Grid.Row="1" Name="PlatformDisplayer" Grid.Column="0" Orientation="Horizontal" Margin="10"></WrapPanel>
 					</StackPanel>
 
@@ -157,10 +157,10 @@
 
 						<Grid Grid.Row="1">
 							<StackPanel>
-								<TextBlock x:Name="TagsTxt" Margin="10" Text="{x:Static lang:Resources.Tags}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
+								<TextBlock x:Name="TagsTxt" Margin="10" Text="{x:Static lang:Resources.Tags}" FontSize="20" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" />
 								<WrapPanel Orientation="Horizontal" Margin="10 0" x:Name="TagsDisplayer" Width="220"/>
 								<StackPanel Name="StoreDisplayer" Grid.Column="1" Margin="10">
-									<TextBlock Margin="1" Text="{x:Static lang:Resources.Platforms}" FontSize="20" FontWeight="ExtraBold" Foreground="White" />
+									<TextBlock Margin="1" Text="{x:Static lang:Resources.Platforms}" FontSize="20" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" />
 								</StackPanel>
 							</StackPanel>
 						</Grid>
@@ -171,8 +171,8 @@
 
 					<StackPanel>
 						<StackPanel Orientation="Horizontal" Margin="10 0">
-							<TextBlock Text="{x:Static lang:Resources.Ratings}" Foreground="White" FontWeight="ExtraBold" FontSize="20" />
-							<TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="White" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" />
+							<TextBlock Text="{x:Static lang:Resources.Ratings}" Foreground="{DynamicResource Foreground}" FontWeight="ExtraBold" FontSize="20" />
+							<TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="{DynamicResource Foreground}" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" />
 						</StackPanel>
 
 						<StackPanel x:Name="RatingsItem">
@@ -183,12 +183,12 @@
 										<ColumnDefinition />
 									</Grid.ColumnDefinitions>
 
-									<TextBlock x:Name="RatingTxt" d:Text="3.5" Margin="10" FontSize="55" FontWeight="ExtraBold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" />
+									<TextBlock x:Name="RatingTxt" d:Text="3.5" Margin="10" FontSize="55" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" />
 
 									<StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="20,0,0,0">
 
 										<StackPanel Orientation="Horizontal">
-											<TextBlock Text="4" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center" />
+											<TextBlock Text="4" FontSize="14" Foreground="{DynamicResource Foreground}" Width="10" VerticalAlignment="Center" />
 											<ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr4" d:Value="28" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
 												<ProgressBar.Foreground>
 													<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -206,12 +206,12 @@
 												</ProgressBar.Foreground>
 
 												<ProgressBar.ToolTip>
-													<ToolTip x:Name="Pgr4ToolTip" Background="#000014" Foreground="White" />
+													<ToolTip x:Name="Pgr4ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
 												</ProgressBar.ToolTip>
 											</ProgressBar>
 										</StackPanel>
 										<StackPanel Orientation="Horizontal">
-											<TextBlock Text="3" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center" />
+											<TextBlock Text="3" FontSize="14" Foreground="{DynamicResource Foreground}" Width="10" VerticalAlignment="Center" />
 											<ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr3" d:Value="19" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
 												<ProgressBar.Foreground>
 													<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -229,12 +229,12 @@
 												</ProgressBar.Foreground>
 
 												<ProgressBar.ToolTip>
-													<ToolTip x:Name="Pgr3ToolTip" Background="#000014" Foreground="White" />
+													<ToolTip x:Name="Pgr3ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
 												</ProgressBar.ToolTip>
 											</ProgressBar>
 										</StackPanel>
 										<StackPanel Orientation="Horizontal">
-											<TextBlock Text="2" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center" />
+											<TextBlock Text="2" FontSize="14" Foreground="{DynamicResource Foreground}" Width="10" VerticalAlignment="Center" />
 											<ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr2" d:Value="28" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
 												<ProgressBar.Foreground>
 													<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -252,12 +252,12 @@
 												</ProgressBar.Foreground>
 
 												<ProgressBar.ToolTip>
-													<ToolTip x:Name="Pgr2ToolTip" Background="#000014" Foreground="White" />
+													<ToolTip x:Name="Pgr2ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
 												</ProgressBar.ToolTip>
 											</ProgressBar>
 										</StackPanel>
 										<StackPanel Orientation="Horizontal">
-											<TextBlock Text="1" FontSize="14" Foreground="White" Width="10" VerticalAlignment="Center" />
+											<TextBlock Text="1" FontSize="14" Foreground="{DynamicResource Foreground}" Width="10" VerticalAlignment="Center" />
 											<ProgressBar Margin="5" Height="20" Style="{DynamicResource ProgressBarStyle1}" x:Name="Pgr1" d:Value="8" Width="500" Background="{x:Null}" BorderBrush="{x:Null}">
 												<ProgressBar.Foreground>
 													<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -275,7 +275,7 @@
 												</ProgressBar.Foreground>
 
 												<ProgressBar.ToolTip>
-													<ToolTip x:Name="Pgr1ToolTip" Background="#000014" Foreground="White" />
+													<ToolTip x:Name="Pgr1ToolTip" Background="#000014" Foreground="{DynamicResource Foreground}" />
 												</ProgressBar.ToolTip>
 											</ProgressBar>
 										</StackPanel>
@@ -284,7 +284,7 @@
 								</Grid>
 							</Border>
 
-							<Button x:Name="GoToRawg" Click="GoToRawg_Click" Foreground="White" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="#141428" HorizontalAlignment="Left">
+							<Button x:Name="GoToRawg" Click="GoToRawg_Click" Foreground="{DynamicResource Foreground}" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="#141428" HorizontalAlignment="Left">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xea85;" FontSize="13" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 									<TextBlock Text="{x:Static lang:Resources.SeeOnRAWG}" FontSize="13" FontWeight="ExtraBold" VerticalAlignment="Center" />
@@ -299,10 +299,10 @@
 				<Grid x:Name="AchievementsPage" Grid.Row="1" Visibility="Collapsed">
 					<StackPanel>
 						<StackPanel Orientation="Horizontal" Margin="10 0">
-							<TextBlock Text="{x:Static lang:Resources.Achievements}" Foreground="White" FontWeight="ExtraBold" FontSize="20" />
-							<TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="White" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" />
+							<TextBlock Text="{x:Static lang:Resources.Achievements}" Foreground="{DynamicResource Foreground}" FontWeight="ExtraBold" FontSize="20" />
+							<TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="{DynamicResource Foreground}" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" />
 
-							<Button x:Name="GoToRawgAchivements" Click="GoToRawgAchivements_Click" Foreground="White" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="#141428" HorizontalAlignment="Left">
+							<Button x:Name="GoToRawgAchivements" Click="GoToRawgAchivements_Click" Foreground="{DynamicResource Foreground}" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="#141428" HorizontalAlignment="Left">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xea85;" FontSize="13" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 									<TextBlock Text="{x:Static lang:Resources.SeeOnRAWG}" FontSize="13" FontWeight="ExtraBold" VerticalAlignment="Center" />

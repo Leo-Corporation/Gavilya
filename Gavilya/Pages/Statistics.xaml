@@ -1,4 +1,4 @@
-﻿<Page x:Class="Gavilya.Pages.Statistics" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:uc="clr-namespace:Gavilya.UserControls" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" d:DesignHeight="450" d:DesignWidth="800" Title="Statistics" Foreground="White">
+﻿<Page x:Class="Gavilya.Pages.Statistics" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:uc="clr-namespace:Gavilya.UserControls" mc:Ignorable="d" FontFamily="../Fonts/#Hauora" d:DesignHeight="450" d:DesignWidth="800" Title="Statistics" Foreground="{DynamicResource Foreground}">
 
 	<Grid>
 		<Grid.RowDefinitions>

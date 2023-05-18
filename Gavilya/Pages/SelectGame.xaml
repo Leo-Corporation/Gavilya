@@ -8,6 +8,6 @@
 
         <Image Source="..\Assets\selectGames.png" Width="300" />
 
-        <TextBlock Grid.Column="1" Margin="0 0 0 50" Text="{x:Static lang:Resources.SelectGameStart}" Foreground="White" FontSize="18" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <TextBlock Grid.Column="1" Margin="0 0 0 50" Text="{x:Static lang:Resources.SelectGameStart}" Foreground="{DynamicResource Foreground}" FontSize="18" FontWeight="ExtraBold" VerticalAlignment="Center" HorizontalAlignment="Center" />
     </Grid>
 </Page>
