@@ -66,13 +66,8 @@
 				</Button.ToolTip>
 			</Button>
 
-			<Grid Name="Infos" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
-				<Grid.Background>
-					<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-						<GradientStop Color="Black" Offset="1"/>
-						<GradientStop Color="#006D6D6D" Offset="0"/>
-					</LinearGradientBrush>
-				</Grid.Background>
+			<Grid Name="Infos" Background="{DynamicResource GameCardGradient2}" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6">
+				
                 
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
