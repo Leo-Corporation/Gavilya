@@ -110,7 +110,7 @@
                                 <ToolTip Name="PathToolTip" Background="#FF323248" Foreground="{DynamicResource Foreground}" />
                             </TextBlock.ToolTip>
                         </TextBlock>
-                        <Button x:Name="BrowseBtn" Click="BrowseBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32">
+                        <Button x:Name="BrowseBtn" Click="BrowseBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="&#xea0e;" FontSize="12" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
                                 <TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.Open}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
@@ -124,12 +124,12 @@
 
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{x:Static lang:Resources.GameProcess}" Foreground="{DynamicResource Foreground}" FontWeight="ExtraBold" FontSize="14" Margin="10 5 10 5" VerticalAlignment="Center" />
-                        <Button x:Name="ProcessHelpBtn" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xea29;" Click="ProcessHelpBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
+                        <Button x:Name="ProcessHelpBtn" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xea29;" Click="ProcessHelpBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.Help}" Background="#000014" Foreground="{DynamicResource Foreground}" />
                             </Button.ToolTip>
                         </Button>
-                        <TextBox x:Name="GameProcessName" Width="193" Padding="5 0 0 0" d:Text="GameProcessHere" Style="{StaticResource RegularTextBox}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" Margin="10 5 10 5" BorderBrush="#FF1E1E32" />
+                        <TextBox x:Name="GameProcessName" Width="193" Padding="5 0 0 0" d:Text="GameProcessHere" Style="{StaticResource RegularTextBox}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" Margin="10 5 10 5" BorderBrush="{DynamicResource Background2}" />
                     </StackPanel>
 
                     <CheckBox x:Name="AlwaysCheckGameRunningChk" Content="{x:Static lang:Resources.AlwaysCheckIfGameRunning}" Foreground="#FFF" Checked="AlwaysCheckGameRunningChk_Checked" Unchecked="AlwaysCheckGameRunningChk_Checked" BorderThickness="2" Style="{DynamicResource CheckBoxStyle2}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" />
@@ -137,8 +137,8 @@
             </Grid>
 
             <StackPanel Grid.Row="2" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button FontWeight="ExtraBold" Content="{x:Static lang:Resources.OK}" Cursor="Hand" MinWidth="50" Margin="5 5 10 10" x:Name="OKBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="{DynamicResource Foreground}" Click="OKBtn_Click" />
-                <Button FontWeight="ExtraBold" Content="{x:Static lang:Resources.Cancel}" Cursor="Hand" MinWidth="50" Margin="5 5 10 10" x:Name="CancelBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="{DynamicResource Foreground}" Click="CancelBtn_Click" />
+                <Button FontWeight="ExtraBold" Content="{x:Static lang:Resources.OK}" Cursor="Hand" MinWidth="50" Margin="5 5 10 10" x:Name="OKBtn" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Click="OKBtn_Click" />
+                <Button FontWeight="ExtraBold" Content="{x:Static lang:Resources.Cancel}" Cursor="Hand" MinWidth="50" Margin="5 5 10 10" x:Name="CancelBtn" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Click="CancelBtn_Click" />
             </StackPanel>
         </Grid>
     </Border>

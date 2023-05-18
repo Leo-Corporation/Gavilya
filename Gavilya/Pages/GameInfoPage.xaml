@@ -61,19 +61,19 @@
 						</StackPanel>
 
 						<StackPanel Orientation="Horizontal" Grid.Column="1" VerticalAlignment="Bottom">
-							<Button x:Name="AdminBtn" Click="AdminBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF8C0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="{DynamicResource Foreground}" Height="40" Width="40">
+							<Button x:Name="AdminBtn" Click="AdminBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF8C0;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Height="40" Width="40">
 								<Button.ToolTip>
 									<ToolTip Content="{x:Static lang:Resources.LaunchGameAsAdmin}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 
-							<Button x:Name="FavBtn" Click="FavBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF710;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="{DynamicResource Foreground}" Height="40" Width="40">
+							<Button x:Name="FavBtn" Click="FavBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF710;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Height="40" Width="40">
 								<Button.ToolTip>
 									<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 
-							<Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF6AA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="#1E1E32" Foreground="{DynamicResource Foreground}" Width="40" Height="40">
+							<Button x:Name="PropertiesBtn" Click="PropertiesBtn_Click" Margin="0,0,10,0" HorizontalAlignment="Right" Style="{StaticResource RegularButton}" Padding="10.5 8 10.5 8" Content="&#xF6AA;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" FontSize="18" VerticalAlignment="Stretch" FontWeight="Normal" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Width="40" Height="40">
 								<Button.ToolTip>
 									<ToolTip Content="{x:Static lang:Resources.Settings}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
@@ -176,7 +176,7 @@
 						</StackPanel>
 
 						<StackPanel x:Name="RatingsItem">
-							<Border CornerRadius="10" Margin="10" Padding="10" Background="#FF141428" Width="650" HorizontalAlignment="Left" VerticalAlignment="Center">
+							<Border CornerRadius="10" Margin="10" Padding="10" Background="{DynamicResource Background2}" Width="650" HorizontalAlignment="Left" VerticalAlignment="Center">
 								<Grid>
 									<Grid.ColumnDefinitions>
 										<ColumnDefinition Width="Auto" />
@@ -284,7 +284,7 @@
 								</Grid>
 							</Border>
 
-							<Button x:Name="GoToRawg" Click="GoToRawg_Click" Foreground="{DynamicResource Foreground}" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="#141428" HorizontalAlignment="Left">
+							<Button x:Name="GoToRawg" Click="GoToRawg_Click" Foreground="{DynamicResource Foreground}" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="{DynamicResource Background2}" HorizontalAlignment="Left">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xea85;" FontSize="13" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 									<TextBlock Text="{x:Static lang:Resources.SeeOnRAWG}" FontSize="13" FontWeight="ExtraBold" VerticalAlignment="Center" />
@@ -302,7 +302,7 @@
 							<TextBlock Text="{x:Static lang:Resources.Achievements}" Foreground="{DynamicResource Foreground}" FontWeight="ExtraBold" FontSize="20" />
 							<TextBlock Text="{x:Static lang:Resources.RAWGPowered}" Foreground="{DynamicResource Foreground}" FontStyle="Italic" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0" />
 
-							<Button x:Name="GoToRawgAchivements" Click="GoToRawgAchivements_Click" Foreground="{DynamicResource Foreground}" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="#141428" HorizontalAlignment="Left">
+							<Button x:Name="GoToRawgAchivements" Click="GoToRawgAchivements_Click" Foreground="{DynamicResource Foreground}" Padding="5" Style="{DynamicResource RegularButton}" Margin="10 0 0 0" Background="{DynamicResource Background2}" HorizontalAlignment="Left">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock Text="&#xea85;" FontSize="13" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 									<TextBlock Text="{x:Static lang:Resources.SeeOnRAWG}" FontSize="13" FontWeight="ExtraBold" VerticalAlignment="Center" />

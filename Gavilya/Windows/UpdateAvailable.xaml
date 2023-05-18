@@ -82,7 +82,7 @@
                                 <ToolTip Content="{x:Static lang:Resources.Install}" Background="#000014" Foreground="{DynamicResource Foreground}" />
                             </Button.ToolTip>
                         </Button>
-                        <Button Name="CancelBtn" Click="CancelBtn_Click" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Padding="7">
+                        <Button Name="CancelBtn" Click="CancelBtn_Click" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Padding="7">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0 0 10 0" Foreground="{DynamicResource Foreground}" Text="&#xe9d8;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 <TextBlock Foreground="{DynamicResource Foreground}" Text="{x:Static lang:Resources.Cancel}" FontSize="13" FontWeight="ExtraBold" />

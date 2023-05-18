@@ -9,7 +9,7 @@
 		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.SearchF}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -24,7 +24,7 @@
 				</StackPanel>
 			</Expander>
    
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xFA96;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -35,8 +35,8 @@
 					</StackPanel>
 				</Expander.Header>
 				<StackPanel Orientation="Horizontal">
-					<TextBox MaxLength="2" x:Name="SearchResultsTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="10,5,0,5" BorderThickness="0" Background="#141428" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" MinWidth="50" FontWeight="ExtraBold" TextAlignment="Center" HorizontalAlignment="Left" PreviewTextInput="SearchResultsTextBox_PreviewTextInput" />
-					<Button Click="SaveButton_Click" Margin="10 10 0 10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">
+					<TextBox MaxLength="2" x:Name="SearchResultsTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="10,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" MinWidth="50" FontWeight="ExtraBold" TextAlignment="Center" HorizontalAlignment="Left" PreviewTextInput="SearchResultsTextBox_PreviewTextInput" />
+					<Button Click="SaveButton_Click" Margin="10 10 0 10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Margin="0 0 5 0" Text="&#xead3;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.SaveChanges}" FontWeight="ExtraBold" FontSize="13" />

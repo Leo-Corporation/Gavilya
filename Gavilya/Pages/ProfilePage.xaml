@@ -7,7 +7,7 @@
 				<TextBlock Text="{x:Static lang:Resources.Profiles}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
 			</StackPanel>
 
-			<Border CornerRadius="5" Background="#FF141428" Padding="5" Margin="5" HorizontalAlignment="Center">
+			<Border CornerRadius="5" Background="{DynamicResource Background2}" Padding="5" Margin="5" HorizontalAlignment="Center">
 				<Grid x:Name="ProfileSwitcher">
 					<Grid.RowDefinitions>
 						<RowDefinition/>
@@ -50,7 +50,7 @@
 					</StackPanel>
 				</StackPanel>
 
-				<Button Click="EditBtn_Click" Margin="5" Grid.Column="1" x:Name="EditBtn" Padding="5" HorizontalAlignment="Stretch" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
+				<Button Click="EditBtn_Click" Margin="5" Grid.Column="1" x:Name="EditBtn" Padding="5" HorizontalAlignment="Stretch" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Margin="0 0 5 0" Text="&#xF3DE;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Edit}" VerticalAlignment="Center" />
@@ -124,7 +124,7 @@
 						<TextBlock x:Name="P3Txt" Text="{x:Static lang:Resources.P3}" FontSize="16" FontWeight="ExtraBold" Margin="0,10,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
 					</StackPanel>
 				</StackPanel>
-				<Border Margin="10,10,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
+				<Border Margin="10,10,10,5" Padding="10" CornerRadius="10" Background="{DynamicResource Background2}">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -143,7 +143,7 @@
 						<TextBlock x:Name="Game1TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Center" FontStyle="Italic" Grid.Column="3" />
 					</Grid>
 				</Border>
-				<Border Margin="10,5,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
+				<Border Margin="10,5,10,5" Padding="10" CornerRadius="10" Background="{DynamicResource Background2}">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -162,7 +162,7 @@
 						<TextBlock x:Name="Game2TimeTxt" d:Text="10,3h" FontWeight="Normal" Margin="10,0,0,0" VerticalAlignment="Center" FontStyle="Italic" Grid.Column="3" />
 					</Grid>
 				</Border>
-				<Border Margin="10,5,10,5" Padding="10" CornerRadius="10" Background="#FF141428">
+				<Border Margin="10,5,10,5" Padding="10" CornerRadius="10" Background="{DynamicResource Background2}">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -254,7 +254,7 @@
 				</WrapPanel>
 				<TextBlock Text="{x:Static lang:Resources.AllBadges}" FontSize="20" FontWeight="ExtraBold" Margin="10,10,0,0" VerticalAlignment="Center" />
 
-				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+				<Border Background="{DynamicResource Background2}" CornerRadius="10" Padding="10" Margin="10">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -269,7 +269,7 @@
 					</Grid>
 				</Border>
 
-				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+				<Border Background="{DynamicResource Background2}" CornerRadius="10" Padding="10" Margin="10">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -284,7 +284,7 @@
 					</Grid>
 				</Border>
 
-				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+				<Border Background="{DynamicResource Background2}" CornerRadius="10" Padding="10" Margin="10">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -300,7 +300,7 @@
 					</Grid>
 				</Border>
 
-				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+				<Border Background="{DynamicResource Background2}" CornerRadius="10" Padding="10" Margin="10">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -316,7 +316,7 @@
 					</Grid>
 				</Border>
 
-				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+				<Border Background="{DynamicResource Background2}" CornerRadius="10" Padding="10" Margin="10">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -332,7 +332,7 @@
 					</Grid>
 				</Border>
 
-				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+				<Border Background="{DynamicResource Background2}" CornerRadius="10" Padding="10" Margin="10">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -349,7 +349,7 @@
 				</Border>
 
 
-				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+				<Border Background="{DynamicResource Background2}" CornerRadius="10" Padding="10" Margin="10">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />
@@ -365,7 +365,7 @@
 					</Grid>
 				</Border>
 
-				<Border Background="#141428" CornerRadius="10" Padding="10" Margin="10">
+				<Border Background="{DynamicResource Background2}" CornerRadius="10" Padding="10" Margin="10">
 					<Grid>
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto" />

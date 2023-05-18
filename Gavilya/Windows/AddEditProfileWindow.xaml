@@ -98,7 +98,7 @@
 							</Rectangle.Fill>
 						</Rectangle>
 
-						<Button x:Name="BrowseBtn" Click="BrowseBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" VerticalAlignment="Center">
+						<Button x:Name="BrowseBtn" Click="BrowseBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" VerticalAlignment="Center">
 							<StackPanel Orientation="Horizontal">
 								<TextBlock Text="&#xea0e;" FontSize="12" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
 								<TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.Browse}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
@@ -109,7 +109,7 @@
 							</Button.ToolTip>
 						</Button>
 
-						<Button x:Name="ResetProfilePictureBtn" Click="ResetProfilePictureBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="#FF1E1E32" VerticalAlignment="Center" Margin="10,0,0,0">
+						<Button x:Name="ResetProfilePictureBtn" Click="ResetProfilePictureBtn_Click" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" VerticalAlignment="Center" Margin="10,0,0,0">
 							<StackPanel Orientation="Horizontal">
 								<TextBlock Text="&#xe914;" FontSize="12" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
 								<TextBlock FontWeight="ExtraBold" Text="{x:Static lang:Resources.Reset}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
@@ -123,14 +123,14 @@
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" VerticalAlignment="Top">
 						<TextBlock Text="{x:Static lang:Resources.Name}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" FontWeight="ExtraBold" />
-						<TextBox FontSize="15" Name="nameTxt" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}" Margin="10 0 0 0" Width="250" BorderBrush="#1E1E32" VerticalAlignment="Center" />
+						<TextBox FontSize="15" Name="nameTxt" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="#FF0A0A1E" Style="{DynamicResource RegularTextBox}" Margin="10 0 0 0" Width="250" BorderBrush="{DynamicResource Background2}" VerticalAlignment="Center" />
 					</StackPanel>
 				</StackPanel>
 			</Grid>
 
 			<StackPanel Grid.Row="2" Grid.ColumnSpan="5" Orientation="Horizontal" HorizontalAlignment="Center">
-				<Button FontWeight="ExtraBold" Content="{x:Static lang:Resources.Add}" Cursor="Hand" MinWidth="50" Margin="5 5 10 10" x:Name="OKBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="{DynamicResource Foreground}" Click="OKBtn_Click" />
-				<Button FontWeight="ExtraBold" Content="{x:Static lang:Resources.Cancel}" Cursor="Hand" MinWidth="50" Margin="5 5 10 10" x:Name="CancelBtn" Padding="5" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Foreground="{DynamicResource Foreground}" Click="CancelBtn_Click" />
+				<Button FontWeight="ExtraBold" Content="{x:Static lang:Resources.Add}" Cursor="Hand" MinWidth="50" Margin="5 5 10 10" x:Name="OKBtn" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Click="OKBtn_Click" />
+				<Button FontWeight="ExtraBold" Content="{x:Static lang:Resources.Cancel}" Cursor="Hand" MinWidth="50" Margin="5 5 10 10" x:Name="CancelBtn" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Click="CancelBtn_Click" />
 			</StackPanel>
 		</Grid>
 	</Border>

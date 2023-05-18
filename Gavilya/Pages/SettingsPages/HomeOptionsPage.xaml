@@ -9,7 +9,7 @@
 		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Home}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF47F;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -20,8 +20,8 @@
 					</StackPanel>
 				</Expander.Header>
 				<StackPanel Orientation="Horizontal">
-					<TextBox x:Name="NumberRecentGamesTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="10,5,0,5" BorderThickness="0" Background="#141428" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" MinWidth="50" FontWeight="ExtraBold" TextAlignment="Center" HorizontalAlignment="Left" PreviewTextInput="NumberRecentGamesTextBox_PreviewTextInput" />
-					<Button Click="SaveButton_Click" Margin="10 10 0 10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">
+					<TextBox x:Name="NumberRecentGamesTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="10,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" MinWidth="50" FontWeight="ExtraBold" TextAlignment="Center" HorizontalAlignment="Left" PreviewTextInput="NumberRecentGamesTextBox_PreviewTextInput" />
+					<Button Click="SaveButton_Click" Margin="10 10 0 10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Margin="0 0 5 0" Text="&#xead3;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.SaveChanges}" FontWeight="ExtraBold" FontSize="13" />
@@ -34,7 +34,7 @@
 				</StackPanel>
 			</Expander>
 
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF47A;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -47,7 +47,7 @@
 				<CheckBox x:Name="DisplayedUnusedGamesChk" Content="{x:Static lang:Resources.ShowMoreUnplayedGames}" Foreground="#fff" Style="{DynamicResource CheckBoxStyle2}" FontWeight="ExtraBold" VerticalContentAlignment="Center" BorderThickness="3" Margin="10" Checked="DisplayedUnusedGamesChk_Checked" Unchecked="DisplayedUnusedGamesChk_Checked" />
 			</Expander>
 
-			<Border Margin="5" CornerRadius="5" Background="#1E1E32">
+			<Border Margin="5" CornerRadius="5" Background="{DynamicResource Background2}">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="Auto"/>

@@ -6,7 +6,7 @@
 			 xmlns:local="clr-namespace:Gavilya.UserControls"
 			 mc:Ignorable="d" Foreground="#FFF"
 			 Height="22" Margin="3" FontFamily="..\Fonts\#Hauora">
-	<Border x:Name="TagBorder" Padding="0" BorderThickness="2" d:BorderBrush="#10F15F" CornerRadius="10" Background="#FF141428">
+	<Border x:Name="TagBorder" Padding="0" BorderThickness="2" d:BorderBrush="#10F15F" CornerRadius="10" Background="{DynamicResource Background2}">
 		<Grid>
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="Auto" />

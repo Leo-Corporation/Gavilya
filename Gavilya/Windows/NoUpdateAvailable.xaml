@@ -69,7 +69,7 @@
                     <TextBlock Text="{x:Static lang:Resources.UpdateUnMessage}" Foreground="{DynamicResource Foreground}" FontWeight="SemiBold" Margin="10 0 0 10" FontSize="11" TextWrapping="Wrap" />
 
                     <StackPanel Orientation="Horizontal" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                        <Button Name="CancelBtn" Click="CloseBtn_Click" Style="{StaticResource RegularButton}" Background="#FF1E1E32" Padding="5">
+                        <Button Name="CancelBtn" Click="CloseBtn_Click" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Padding="5">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0 0 10 0" Foreground="{DynamicResource Foreground}" Text="&#xe9d8;" FontFamily="..\Fonts\#FluentlyIcons" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center" />
                                 <TextBlock Foreground="{DynamicResource Foreground}" Text="{x:Static lang:Resources.Close}" FontSize="13" FontWeight="ExtraBold" />

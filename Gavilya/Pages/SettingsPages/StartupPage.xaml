@@ -9,7 +9,7 @@
 		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Startup}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
-			<Expander IsExpanded="True" Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+			<Expander IsExpanded="True" Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF60F;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>
@@ -35,7 +35,7 @@
 					</Border>
 				</StackPanel>
 			</Expander>
-			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="#FF1E1E32"  Foreground="#FFF">
+			<Expander Margin="5" Style="{DynamicResource ExpanderStyle1}" Background="{DynamicResource Background2}"  Foreground="#FFF">
 				<Expander.Header>
 					<StackPanel Margin="10 15" Orientation="Horizontal">
 						<TextBlock Text="&#xF751;" FontSize="22" FontFamily="..\..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center"/>

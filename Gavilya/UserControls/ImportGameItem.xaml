@@ -19,7 +19,7 @@
 						<ToolTip x:Name="LocationToolTip" Content="Location" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</TextBlock.ToolTip>
 				</TextBlock>
-				<Button Margin="5" Click="BrowseBtn_Click" x:Name="BrowseBtn" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" Background="#FF1E1E32" VerticalAlignment="Center" Padding="5">
+				<Button Margin="5" Click="BrowseBtn_Click" x:Name="BrowseBtn" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" VerticalAlignment="Center" Padding="5">
 					<Button.ToolTip>
 						<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
@@ -39,13 +39,13 @@
 						<ToolTip x:Name="IconLocationToolTip" Content="Location" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</TextBlock.ToolTip>
 				</TextBlock>
-				<Button Margin="5" Click="IconBrowseBtn_Click" x:Name="IconBrowseBtn" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" Background="#FF1E1E32" VerticalAlignment="Center" Padding="5">
+				<Button Margin="5" Click="IconBrowseBtn_Click" x:Name="IconBrowseBtn" Content="{x:Static lang:Resources.Browse}" Style="{DynamicResource RegularButton}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" VerticalAlignment="Center" Padding="5">
 					<Button.ToolTip>
 						<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</StackPanel>
-			<Button Margin="5" Click="GetRAWGImageBtn_Click" x:Name="GetRAWGImageBtn" Content="{x:Static lang:Resources.GetRAWGImage}" Style="{DynamicResource RegularButton}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" Background="#FF1E1E32" VerticalAlignment="Center" Padding="5" HorizontalAlignment="Center">
+			<Button Margin="5" Click="GetRAWGImageBtn_Click" x:Name="GetRAWGImageBtn" Content="{x:Static lang:Resources.GetRAWGImage}" Style="{DynamicResource RegularButton}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" VerticalAlignment="Center" Padding="5" HorizontalAlignment="Center">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.GetRAWGImage}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>

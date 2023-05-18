@@ -30,7 +30,7 @@
 			</Rectangle>
 			<StackPanel Orientation="Horizontal" Grid.Column="1">
 				<TextBlock d:Text="ProfileName" x:Name="ProfileNameTxt" VerticalAlignment="Center" Margin="10,0,0,0" Foreground="{DynamicResource Foreground}" FontWeight="Bold" FontSize="16"/>
-				<Border x:Name="CurrentBorder" Visibility="Collapsed" CornerRadius="10" Padding="7 2" BorderThickness="1" BorderBrush="#FF7E7E92" Background="#1E1E32" VerticalAlignment="Center" Margin="10,0,0,0">
+				<Border x:Name="CurrentBorder" Visibility="Collapsed" CornerRadius="10" Padding="7 2" BorderThickness="1" BorderBrush="#FF7E7E92" Background="{DynamicResource Background2}" VerticalAlignment="Center" Margin="10,0,0,0">
 					<TextBlock Foreground="#7e7e92" Text="{x:Static lang:Resources.Current}" FontWeight="Bold" FontSize="11"/>
 				</Border>
 			</StackPanel>

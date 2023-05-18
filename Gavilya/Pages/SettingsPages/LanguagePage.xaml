@@ -9,7 +9,7 @@
 		<TextBlock Grid.Row="0" Margin="10" Text="{x:Static lang:Resources.Languages}" Foreground="{DynamicResource Foreground}" FontSize="17" FontWeight="ExtraBold" />
 
 		<StackPanel Grid.Row="1">
-			<Border CornerRadius="5" Background="#FF1E1E32" Margin="10,10,10,0">
+			<Border CornerRadius="5" Background="{DynamicResource Background2}" Margin="10,10,10,0">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition/>
@@ -25,7 +25,7 @@
 					</StackPanel>
 					<StackPanel Orientation="Horizontal" Grid.Column="1">
 						<ComboBox x:Name="Languages" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}" BorderThickness="2" Padding="5" VerticalAlignment="Center" />
-						<Button Click="SaveButton_Click" Margin="10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="#1E1E32" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left" Visibility="Collapsed" VerticalAlignment="Center">
+						<Button Click="SaveButton_Click" Margin="10" x:Name="SaveButton" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left" Visibility="Collapsed" VerticalAlignment="Center">
 							<StackPanel Orientation="Horizontal">
 								<TextBlock Margin="0 0 5 0" Text="&#xead3;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
 								<TextBlock Text="{x:Static lang:Resources.SaveChanges}" FontWeight="ExtraBold" FontSize="13" />

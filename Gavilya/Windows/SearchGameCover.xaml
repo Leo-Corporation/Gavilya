@@ -123,8 +123,8 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Margin="5" Orientation="Horizontal">
-                        <TextBox FontSize="14" FontWeight="ExtraBold" x:Name="GameSearchName" BorderThickness="2" Width="240" Style="{StaticResource RegularTextBox}" Background="{DynamicResource Background}" BorderBrush="#FF1E1E32" Foreground="{DynamicResource Foreground}" SelectionBrush="#FF505066" />
-                        <Button Click="Button_Click" Padding="5" Width="30" FontSize="13" Margin="10 0 0 0" Style="{StaticResource RegularButton}" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xead9;" Background="#FF1E1E32" Foreground="{DynamicResource Foreground}">
+                        <TextBox FontSize="14" FontWeight="ExtraBold" x:Name="GameSearchName" BorderThickness="2" Width="240" Style="{StaticResource RegularTextBox}" Background="{DynamicResource Background}" BorderBrush="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" SelectionBrush="#FF505066" />
+                        <Button Click="Button_Click" Padding="5" Width="30" FontSize="13" Margin="10 0 0 0" Style="{StaticResource RegularButton}" FontFamily="..\Fonts\#FluentlyIcons" Content="&#xead9;" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.Search}" Background="#000014" Foreground="{DynamicResource Foreground}" />
                             </Button.ToolTip>
@@ -139,7 +139,7 @@
                 </ScrollViewer>
 
                 <StackPanel Margin="5" Grid.Row="2">
-                    <Button Name="SelectGame" Click="SelectGame_Click" HorizontalAlignment="Center" Padding="7" Style="{StaticResource PlayButton}" Cursor="Hand" Foreground="{DynamicResource Foreground}" Background="#FF1E1E32" FontWeight="ExtraBold" FontSize="14">
+                    <Button Name="SelectGame" Click="SelectGame_Click" HorizontalAlignment="Center" Padding="7" Style="{StaticResource PlayButton}" Cursor="Hand" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" FontWeight="ExtraBold" FontSize="14">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Margin="0 0 5 0" FontWeight="Regular" Text="&#xea72;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
                             <TextBlock Text="{x:Static lang:Resources.SelectGame}" VerticalAlignment="Center" />

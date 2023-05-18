@@ -9,11 +9,11 @@
 
 			<TextBlock Text="{x:Static lang:Resources.Description}" FontWeight="ExtraBold" FontSize="13" Margin="2,2,2,5" VerticalAlignment="Center" />
 			<ScrollViewer Height="200" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-				<TextBox Padding="5" d:Text="Content here" Grid.Row="0" FontSize="15" x:Name="DescriptionTextBox" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="#FF141428" Style="{DynamicResource MultiLineTextBox}" BorderBrush="#1E1E32" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="470" VerticalContentAlignment="Top" />
+				<TextBox Padding="5" d:Text="Content here" Grid.Row="0" FontSize="15" x:Name="DescriptionTextBox" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" Style="{DynamicResource MultiLineTextBox}" BorderBrush="{DynamicResource Background2}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="470" VerticalContentAlignment="Top" />
 			</ScrollViewer>
 
 			<TextBlock Text="{x:Static lang:Resources.Integrations}" FontWeight="ExtraBold" FontSize="13" Margin="2,5,2,2" VerticalAlignment="Center" />
-			<Border CornerRadius="5" Background="#141428" Padding="10">
+			<Border CornerRadius="5" Background="{DynamicResource Background2}" Padding="10">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition />
@@ -22,7 +22,7 @@
 
 					<StackPanel Orientation="Horizontal" Grid.Column="0">
 						<TextBlock Text="{x:Static lang:Resources.RAWGio}" Grid.Column="0" FontWeight="ExtraBold" Margin="0,0,10,0" VerticalAlignment="Center" />
-						<Button FontSize="13" x:Name="AssociateBtn" Click="AssociateBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.AssociateGame}" FontWeight="ExtraBold" VerticalAlignment="Center">
+						<Button FontSize="13" x:Name="AssociateBtn" Click="AssociateBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.AssociateGame}" FontWeight="ExtraBold" VerticalAlignment="Center">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.AssociateGame}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 							</Button.ToolTip>
@@ -34,7 +34,7 @@
 					</StackPanel>
 				</Grid>
 			</Border>
-			<Border x:Name="SteamBorder" Visibility="Collapsed" d:Visibility="Visible" CornerRadius="5" Margin="0 10" Background="#141428" Padding="10">
+			<Border x:Name="SteamBorder" Visibility="Collapsed" d:Visibility="Visible" CornerRadius="5" Margin="0 10" Background="{DynamicResource Background2}" Padding="10">
 				<Grid>
 					<Grid.RowDefinitions>
 						<RowDefinition />
@@ -43,7 +43,7 @@
 
 					<StackPanel Orientation="Horizontal" Grid.Column="0">
 						<TextBlock Text="{x:Static lang:Resources.Steam}" Grid.Column="0" FontWeight="ExtraBold" Margin="0,0,10,0" VerticalAlignment="Center" />
-						<Button FontSize="13" x:Name="ConvertSteamBtn" Click="ConvertSteamBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Convert}" FontWeight="ExtraBold" VerticalAlignment="Center">
+						<Button FontSize="13" x:Name="ConvertSteamBtn" Click="ConvertSteamBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Convert}" FontWeight="ExtraBold" VerticalAlignment="Center">
 							<Button.ToolTip>
 								<ToolTip Content="{x:Static lang:Resources.ConvertToSteam}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 							</Button.ToolTip>
@@ -69,7 +69,7 @@
 				</Grid>
 			</Border>
             <TextBlock Text="{x:Static lang:Resources.GameTags}" FontWeight="ExtraBold" FontSize="13" Margin="2,5,2,2" VerticalAlignment="Center" />
-            <Border x:Name="TagsBorder" Visibility="Visible" CornerRadius="5" Margin="0 10" Background="#141428" Padding="10">
+            <Border x:Name="TagsBorder" Visibility="Visible" CornerRadius="5" Margin="0 10" Background="{DynamicResource Background2}" Padding="10">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
@@ -77,7 +77,7 @@
                     </Grid.RowDefinitions>
 
                     <StackPanel Orientation="Horizontal" Grid.Column="0">
-                        <Button FontSize="13" x:Name="AddTagsBtn" Click="AddTagsBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.AssociateTags}" FontWeight="ExtraBold" VerticalAlignment="Center">
+                        <Button FontSize="13" x:Name="AddTagsBtn" Click="AddTagsBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.AssociateTags}" FontWeight="ExtraBold" VerticalAlignment="Center">
                             <Button.ToolTip>
                                 <ToolTip Content="{x:Static lang:Resources.ConvertToSteam}" Background="#000014" Foreground="{DynamicResource Foreground}" />
                             </Button.ToolTip>
@@ -88,7 +88,7 @@
         </StackPanel>
 
 		<StackPanel HorizontalAlignment="Center" Grid.Row="1" Margin="0 0 0 20" Orientation="Horizontal" VerticalAlignment="Bottom">
-			<Button FontSize="13" x:Name="BackBtn" Click="BackBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Back}" FontWeight="ExtraBold">
+			<Button FontSize="13" x:Name="BackBtn" Click="BackBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Back}" FontWeight="ExtraBold">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.Back}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
@@ -98,7 +98,7 @@
 					<ToolTip Content="{x:Static lang:Resources.Finish}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
 			</Button>
-			<Button FontSize="13" x:Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="#FF1E1E32" Margin="0,0,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="ExtraBold">
+			<Button FontSize="13" x:Name="CancelBtn" Click="CancelBtn_Click" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0,0,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Cancel}" FontWeight="ExtraBold">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
