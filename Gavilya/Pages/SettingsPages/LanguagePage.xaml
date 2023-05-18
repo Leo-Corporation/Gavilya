@@ -32,7 +32,7 @@
 							</StackPanel>
 
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.SaveChanges}" Background="#0A0A1E" Foreground="{DynamicResource Foreground}" />
+								<ToolTip Content="{x:Static lang:Resources.SaveChanges}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" />
 							</Button.ToolTip>
 						</Button>
 					</StackPanel>

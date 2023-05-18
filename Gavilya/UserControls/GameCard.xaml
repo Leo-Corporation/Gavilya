@@ -31,7 +31,7 @@
                 </StackPanel>
             </Grid>
             <StackPanel x:Name="MenuGroup" Grid.Column="2" Grid.RowSpan="3">
-				<Button Name="MenuBtn" Click="MenuBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xFC2E;" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Grid.Row="0" HorizontalAlignment="Right" Margin="0,5,5,0">
+				<Button Name="MenuBtn" Click="MenuBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xFC2E;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Grid.Row="0" HorizontalAlignment="Right" Margin="0,5,5,0">
 					<Button.ToolTip>
 						<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
@@ -55,12 +55,12 @@
 					</StackPanel>
 				</Border>
 			</StackPanel>
-			<Button Name="FavBtn" Click="FavBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF710;" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Grid.Row="0" Margin="5,0,5,0">
+			<Button Name="FavBtn" Click="FavBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF710;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Grid.Row="0" Margin="5,0,5,0">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
 			</Button>
-			<Button Name="EditBtn" Click="EditBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="4" FontSize="15" Grid.Row="0">
+			<Button Name="EditBtn" Click="EditBtn_Click" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="4" FontSize="15" Grid.Row="0">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.EditGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
@@ -74,9 +74,9 @@
 					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
 
-				<TextBlock d:Text="Text" Margin="10 5" FontSize="14" TextWrapping="Wrap" FontWeight="ExtraBold" x:Name="GameNameTxt" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center"/>
+				<TextBlock d:Text="Text" Margin="10 5" FontSize="14" TextWrapping="Wrap" FontWeight="ExtraBold" x:Name="GameNameTxt" Foreground="{DynamicResource HoverForeground}" VerticalAlignment="Center"/>
 
-				<Button Click="Button_Click" Content="&#xF610;" FontFamily="../Fonts/#FluentSystemIcons-Filled" Cursor="Hand" Margin="20 0 20 15" Style="{DynamicResource PlayButton}" Grid.Row="1" Foreground="{DynamicResource Foreground}" FontWeight="ExtraBold" FontSize="13" Grid.Column="1" Height="35" Width="35" VerticalAlignment="Bottom">
+				<Button Click="Button_Click" Content="&#xF610;" FontFamily="../Fonts/#FluentSystemIcons-Filled" Cursor="Hand" Margin="20 0 20 15" Style="{DynamicResource PlayButton}" Grid.Row="1" Foreground="{DynamicResource HoverForeground}" FontWeight="ExtraBold" FontSize="13" Grid.Column="1" Height="35" Width="35" VerticalAlignment="Bottom">
 					<Button.ToolTip>
 						<ToolTip Name="PlayToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>

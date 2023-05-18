@@ -28,7 +28,7 @@
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.ImportGames}" Background="#0A0A1E" Foreground="{DynamicResource Foreground}" />
+							<ToolTip Content="{x:Static lang:Resources.ImportGames}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 				</StackPanel>
@@ -54,7 +54,7 @@
 						</StackPanel>
 
 						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.ExportGames}" Background="#0A0A1E" Foreground="{DynamicResource Foreground}" />
+							<ToolTip Content="{x:Static lang:Resources.ExportGames}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
 				</StackPanel>
@@ -85,7 +85,7 @@
 								</StackPanel>
 
 								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.Browse}" Background="#0A0A1E" Foreground="{DynamicResource Foreground}" />
+									<ToolTip Content="{x:Static lang:Resources.Browse}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" />
 								</Button.ToolTip>
 							</Button>
 						</StackPanel>
@@ -102,7 +102,7 @@
 							</StackPanel>
 
 							<Button.ToolTip>
-								<ToolTip Content="{x:Static lang:Resources.MakeBackup}" Background="#0A0A1E" Foreground="{DynamicResource Foreground}" />
+								<ToolTip Content="{x:Static lang:Resources.MakeBackup}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" />
 							</Button.ToolTip>
 						</Button>
 					</StackPanel>

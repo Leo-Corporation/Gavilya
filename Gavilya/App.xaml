@@ -2,7 +2,7 @@
 	<Application.Resources>
 		<ResourceDictionary>
 			<ResourceDictionary.MergedDictionaries>
-				<ResourceDictionary Source="/Themes/Dark.xaml"/>
+				<ResourceDictionary Source="/Themes/Test.xaml"/>
 			</ResourceDictionary.MergedDictionaries>
 			<Style x:Key="FocusVisual1">
 				<Setter Property="Control.Template">

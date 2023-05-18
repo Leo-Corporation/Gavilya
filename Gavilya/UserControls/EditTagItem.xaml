@@ -18,7 +18,7 @@
 			</StackPanel>
 
 			<Button.ToolTip>
-				<ToolTip Content="{x:Static lang:Resources.Edit}" Background="#0A0A1E" Foreground="{DynamicResource Foreground}" />
+				<ToolTip Content="{x:Static lang:Resources.Edit}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" />
 			</Button.ToolTip>
 		</Button>
 		<Button Content="&#xF34D;" Click="DeleteBtn_Click" Margin="10 10 0 10" x:Name="DeleteBtn" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left" FontFamily="..\Fonts\#FluentSystemIcons-Regular"/>

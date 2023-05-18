@@ -24,7 +24,7 @@
 							<TextBlock Margin="10 10 10 10" d:Text="Title" Name="GameNameTxt" Foreground="{DynamicResource Foreground}" FontSize="25" FontWeight="ExtraBold" />
 
 							<StackPanel Orientation="Horizontal">
-								<Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 10 0" Padding="18 8 18 8" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="ExtraBold" FontSize="16" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left">
+								<Button Click="PlayBtn_Click" Cursor="Hand" Margin="10 0 10 0" Padding="18 8 18 8" x:Name="PlayBtn" Style="{StaticResource PlayButton}" FontWeight="ExtraBold" FontSize="16" Foreground="{DynamicResource HoverForeground}" HorizontalAlignment="Left">
 									<StackPanel Orientation="Horizontal">
 										<TextBlock Text="&#xF610;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="15" VerticalAlignment="Center" FontWeight="Normal" />
 										<TextBlock Margin="10 0 0 0" Text="{x:Static lang:Resources.Play}" FontWeight="ExtraBold" FontSize="15" VerticalAlignment="Center" />
