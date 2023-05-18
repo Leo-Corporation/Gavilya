@@ -70,9 +70,9 @@ public partial class LibraryPage : Page
 	internal Button CheckedButton { get; set; }
 	internal void RefreshTabUI()
 	{
-		GameCardTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
-		GameListTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
-		GameTagTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		GameCardTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
+		GameListTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
+		GameTagTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
 
 		if (PageDisplayer.Content is GamesCardsPages)
 		{
@@ -116,14 +116,14 @@ public partial class LibraryPage : Page
 		Global.SortGames();
 		Global.ReloadAllPages();
 		SortAlpha.Background = Definitions.HomeButtonBackColor;
-		SortReverse.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
+		SortReverse.Background = Global.GetSolidColor("SelectedBackground");
 	}
 
 	private void SortReverse_Click(object sender, RoutedEventArgs e)
 	{
 		Global.SortGames(false);
 		Global.ReloadAllPages();
-		SortAlpha.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
+		SortAlpha.Background = Global.GetSolidColor("SelectedBackground");
 		SortReverse.Background = Definitions.HomeButtonBackColor;
 	}
 

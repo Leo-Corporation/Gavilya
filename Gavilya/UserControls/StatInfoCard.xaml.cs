@@ -71,7 +71,7 @@ public partial class StatInfoCard : UserControl
 
 	private void ItemBorder_MouseEnter(object sender, MouseEventArgs e)
 	{
-		ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Set background color
+		ItemBorder.Background = Global.GetSolidColor("SelectedBackground"); // Set background color
 	}
 
 	private void ItemBorder_MouseLeave(object sender, MouseEventArgs e)

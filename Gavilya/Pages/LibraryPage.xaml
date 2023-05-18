@@ -31,7 +31,7 @@
 							<ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
-					<Button Click="SortReverse_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF28283C" x:Name="SortReverse" Content="&#xFDF4;" VerticalAlignment="Center" FontSize="16">
+					<Button Click="SortReverse_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="{DynamicResource SelectedBackground}" x:Name="SortReverse" Content="&#xFDF4;" VerticalAlignment="Center" FontSize="16">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
@@ -41,12 +41,12 @@
 							<ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
-					<Button Click="GameTagTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonMiddle}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF28283C" x:Name="GameTagTabBtn" Content="&#xF77D;" VerticalAlignment="Center" FontSize="16">
+					<Button Click="GameTagTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonMiddle}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="{DynamicResource SelectedBackground}" x:Name="GameTagTabBtn" Content="&#xF77D;" VerticalAlignment="Center" FontSize="16">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.GameTags}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
 					</Button>
-					<Button Click="GameListTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="#FF28283C" x:Name="GameListTabBtn" Content="&#xF138;" VerticalAlignment="Center" FontSize="16">
+					<Button Click="GameListTabBtn_Click" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="{DynamicResource SelectedBackground}" x:Name="GameListTabBtn" Content="&#xF138;" VerticalAlignment="Center" FontSize="16">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>

@@ -27,7 +27,7 @@
 				</Grid>
 			</Border>
 
-			<Border Grid.Row="1" CornerRadius="10" Background="#FF28283C" Margin="10,10,20,10" Padding="10">
+			<Border Grid.Row="1" CornerRadius="10" Background="{DynamicResource SelectedBackground}" Margin="10,10,20,10" Padding="10">
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition />

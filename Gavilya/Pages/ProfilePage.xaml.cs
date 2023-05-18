@@ -236,9 +236,9 @@ public partial class ProfilePage : Page
 	internal Button CheckedButton { get; set; }
 	internal void RefreshTabUI()
 	{
-		SpotlightTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
-		FavoriteTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
-		BadgesTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		SpotlightTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
+		FavoriteTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
+		BadgesTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
 
 		CheckedButton.Background = Global.GetSolidColor("Accent"); // Change color
 	}

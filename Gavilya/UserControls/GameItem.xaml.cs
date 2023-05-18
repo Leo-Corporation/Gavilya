@@ -117,7 +117,7 @@ public partial class GameItem : UserControl
 			}
 		}
 
-		GameBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change the background color
+		GameBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change the background color
 		PlayBtn.Visibility = Visibility.Visible; // Show
 		IsChecked = true;
 	}

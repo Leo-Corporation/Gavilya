@@ -50,11 +50,9 @@
 				</Setter>
 			</Style>
 			<SolidColorBrush x:Key="Button.Static.Background4" Color="#FFDDDDDD" />
-			<SolidColorBrush x:Key="Button.Static.Border4" Color="#FF707070" />
-			<SolidColorBrush x:Key="Button.MouseOver.Background4" Color="#28283C" />
-			<SolidColorBrush x:Key="Button.MouseOver.Border4" Color="#FF3C7FB1" />
-			<SolidColorBrush x:Key="Button.Pressed.Background4" Color="#28283C" />
-			<SolidColorBrush x:Key="Button.Pressed.Border4" Color="#FF2C628B" />
+            <SolidColorBrush x:Key="Button.Static.Border4" Color="#FF707070" />
+            <SolidColorBrush x:Key="Button.MouseOver.Border4" Color="#FF3C7FB1" />
+            <SolidColorBrush x:Key="Button.Pressed.Border4" Color="#FF2C628B" />
 			<SolidColorBrush x:Key="Button.Disabled.Background4" Color="#FF323248" />
 			<SolidColorBrush x:Key="Button.Disabled.Border4" Color="#FFADB2B5" />
 			<SolidColorBrush x:Key="Button.Disabled.Foreground4" Color="#FF838383" />
@@ -246,9 +244,9 @@
 									<ColumnDefinition Width="4" />
 									<ColumnDefinition Width="4" />
 								</Grid.ColumnDefinitions>
-								<Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="#28283C" />
-								<Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="#28283C" />
-								<Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="#28283C" />
+								<Ellipse Grid.Column="0" Grid.ColumnSpan="2" Fill="{DynamicResource SelectedBackground}" />
+								<Rectangle Grid.Column="1" Grid.ColumnSpan="3" Fill="{DynamicResource SelectedBackground}" />
+								<Ellipse Grid.Column="3" Grid.ColumnSpan="2" Fill="{DynamicResource SelectedBackground}" />
 							</Grid>
 						</ControlTemplate>
 					</Setter.Value>
@@ -266,9 +264,9 @@
 									<RowDefinition Height="4" />
 									<RowDefinition Height="4" />
 								</Grid.RowDefinitions>
-								<Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="#28283C" />
-								<Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="#28283C" />
-								<Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="#28283C" />
+								<Ellipse Grid.Row="0" Grid.RowSpan="2" Fill="{DynamicResource SelectedBackground}" />
+								<Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="{DynamicResource SelectedBackground}" />
+								<Ellipse Grid.Row="3" Grid.RowSpan="2" Fill="{DynamicResource SelectedBackground}" />
 							</Grid>
 						</ControlTemplate>
 					</Setter.Value>
@@ -619,11 +617,11 @@
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
 								</Trigger>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background4}" />
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource SelectedBackground}" />
 									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border4}" />
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background4}" />
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource SelectedBackground}" />
 									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border4}" />
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
@@ -656,11 +654,11 @@
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
 								</Trigger>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background4}" />
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource SelectedBackground}" />
 									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border4}" />
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background4}" />
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource SelectedBackground}" />
 									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border4}" />
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
@@ -869,7 +867,7 @@
 									<Setter Property="Fill" TargetName="indeterminateMark" Value="{StaticResource OptionMark.Disabled.Glyph}" />
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
-									<Setter Property="Background" TargetName="checkBoxBorder" Value="#28283C" />
+									<Setter Property="Background" TargetName="checkBoxBorder" Value="{DynamicResource SelectedBackground}" />
 									<Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{DynamicResource Accent}" />
 									<Setter Property="Fill" TargetName="optionMark" Value="LightGray" />
 									<Setter Property="Fill" TargetName="indeterminateMark" Value="LightGray" />
@@ -943,11 +941,9 @@
 					</Setter.Value>
 				</Setter>
 			</Style>
-			<SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070" />
-			<SolidColorBrush x:Key="Button.MouseOver.Background1" Color="#28283C" />
-			<SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1" />
-			<SolidColorBrush x:Key="Button.Pressed.Background1" Color="#28283C" />
-			<SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B" />
+            <SolidColorBrush x:Key="Button.Static.Border1" Color="#FF707070" />
+            <SolidColorBrush x:Key="Button.MouseOver.Border1" Color="#FF3C7FB1" />
+            <SolidColorBrush x:Key="Button.Pressed.Border1" Color="#FF2C628B" />
 			<SolidColorBrush x:Key="Button.Disabled.Background1" Color="#FFF4F4F4" />
 			<SolidColorBrush x:Key="Button.Disabled.Border1" Color="#FFADB2B5" />
 			<SolidColorBrush x:Key="Button.Disabled.Foreground1" Color="#FF838383" />
@@ -971,11 +967,11 @@
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
 								</Trigger>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}" />
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource SelectedBackground}" />
 									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border1}" />
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background1}" />
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource SelectedBackground}" />
 									<Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border1}" />
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
@@ -1029,10 +1025,10 @@
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
 								</Trigger>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource SelectedBackground}"/>
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background1}"/>
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource SelectedBackground}"/>
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
 									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}" />
@@ -1439,7 +1435,7 @@
 									<Setter TargetName="gd" Property="Background" Value="{DynamicResource Background2}"></Setter>
 								</Trigger>
 								<Trigger Property="ComboBoxItem.IsSelected" Value="True">
-									<Setter TargetName="gd" Property="Background" Value="#FF28283C"></Setter>
+									<Setter TargetName="gd" Property="Background" Value="{DynamicResource SelectedBackground}"></Setter>
 								</Trigger>
 							</ControlTemplate.Triggers>
 						</ControlTemplate>

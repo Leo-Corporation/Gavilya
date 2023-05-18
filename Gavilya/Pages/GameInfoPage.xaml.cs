@@ -335,8 +335,8 @@ public partial class GameInfoPage : Page
 
 		AboutTabBtn.Background = Global.GetSolidColor("Accent"); // Change color
 
-		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
-		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
+		RatingsTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color
+		AchievementsTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color
 
 		AboutPage.Visibility = Visibility.Visible; // Change visibility
 		RatingsPage.Visibility = Visibility.Collapsed; // Change visibility
@@ -349,8 +349,8 @@ public partial class GameInfoPage : Page
 
 		RatingsTabBtn.Background = Global.GetSolidColor("Accent"); // Change color
 
-		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
-		AchievementsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
+		AboutTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color
+		AchievementsTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color
 
 		AboutPage.Visibility = Visibility.Collapsed; // Change visibility
 		RatingsPage.Visibility = Visibility.Visible; // Change visibility 
@@ -459,8 +459,8 @@ public partial class GameInfoPage : Page
 
 		AchievementsTabBtn.Background = Global.GetSolidColor("Accent"); // Change color
 
-		RatingsTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
-		AboutTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color
+		RatingsTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color
+		AboutTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color
 
 		AboutPage.Visibility = Visibility.Collapsed; // Change visibility
 		RatingsPage.Visibility = Visibility.Collapsed; // Change visibility

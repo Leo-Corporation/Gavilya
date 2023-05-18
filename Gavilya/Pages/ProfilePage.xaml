@@ -74,7 +74,7 @@
 					</Button.ToolTip>
 				</Button>
 
-				<Button x:Name="FavoriteTabBtn" Style="{StaticResource TabButtonMiddle}" Click="FavoriteTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
+				<Button x:Name="FavoriteTabBtn" Style="{StaticResource TabButtonMiddle}" Click="FavoriteTabBtn_Click" Padding="10 5" Background="{DynamicResource SelectedBackground}" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF710;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Favorites}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
@@ -85,7 +85,7 @@
 					</Button.ToolTip>
 				</Button>
 
-				<Button x:Name="BadgesTabBtn" Style="{StaticResource TabButtonLast}" Click="BadgesTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
+				<Button x:Name="BadgesTabBtn" Style="{StaticResource TabButtonLast}" Click="BadgesTabBtn_Click" Padding="10 5" Background="{DynamicResource SelectedBackground}" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 					<StackPanel Orientation="Horizontal">
 						<TextBlock Text="&#xF837;" FontSize="15" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Margin="0 0 10 0" VerticalAlignment="Center" />
 						<TextBlock Text="{x:Static lang:Resources.Badges}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />

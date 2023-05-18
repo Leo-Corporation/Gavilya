@@ -97,7 +97,7 @@
 						</Button.ToolTip>
 					</Button>
 
-					<Button x:Name="RatingsTabBtn" Style="{StaticResource TabButtonMiddle}" Click="RatingsTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
+					<Button x:Name="RatingsTabBtn" Style="{StaticResource TabButtonMiddle}" Click="RatingsTabBtn_Click" Padding="10 5" Background="{DynamicResource SelectedBackground}" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="&#xEA2F;" FontSize="15" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.Ratings}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />
@@ -108,7 +108,7 @@
 						</Button.ToolTip>
 					</Button>
 
-					<Button x:Name="AchievementsTabBtn" Style="{StaticResource TabButtonLast}" Click="AchievementsTabBtn_Click" Padding="10 5" Background="#FF28283C" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
+					<Button x:Name="AchievementsTabBtn" Style="{StaticResource TabButtonLast}" Click="AchievementsTabBtn_Click" Padding="10 5" Background="{DynamicResource SelectedBackground}" Foreground="{DynamicResource Foreground}" Cursor="Hand" BorderThickness="0" BorderBrush="{x:Null}">
 						<StackPanel Orientation="Horizontal">
 							<TextBlock Text="&#xeb52;" FontSize="15" FontFamily="..\Fonts\#FluentlyIcons" Margin="0 0 10 0" VerticalAlignment="Center" />
 							<TextBlock Text="{x:Static lang:Resources.Achievements}" FontSize="15" FontWeight="ExtraBold" VerticalAlignment="Center" />

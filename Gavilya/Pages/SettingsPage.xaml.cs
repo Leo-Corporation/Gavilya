@@ -121,7 +121,7 @@ public partial class SettingsPage : Page
 	private void CheckButton(Button button)
 	{
 		button.BorderBrush = Definitions.HomeButtonBackColor; // Set the new border brush
-		button.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
+		button.Background = Global.GetSolidColor("SelectedBackground"); // Check
 	}
 
 	private void UnCheckAll()
