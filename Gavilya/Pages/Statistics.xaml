@@ -18,7 +18,7 @@
 					<RowDefinition />
 				</Grid.RowDefinitions>
 				<StackPanel Grid.Row="0">
-					<TextBlock Text="{x:Static lang:Resources.StatsTimePlayed}" FontSize="16" FontWeight="ExtraBold" Foreground="#FF64648C" />
+					<TextBlock Text="{x:Static lang:Resources.StatsTimePlayed}" FontSize="16" FontWeight="ExtraBold" Foreground="{DynamicResource LightForeground}" />
 					<TextBlock x:Name="TotalTimePlayedTxt" Text="" FontSize="48" FontWeight="ExtraBold" d:Text="150,7h" />
 				</StackPanel>
 
@@ -42,7 +42,7 @@
 							<RowDefinition />
 						</Grid.RowDefinitions>
 						<StackPanel Orientation="Vertical">
-							<TextBlock Text="{x:Static lang:Resources.Top10MostPlayedGames}" FontSize="14" FontWeight="ExtraBold" Foreground="#FF64648C" />
+							<TextBlock Text="{x:Static lang:Resources.Top10MostPlayedGames}" FontSize="14" FontWeight="ExtraBold" Foreground="{DynamicResource LightForeground}" />
 							<Button x:Name="SortBtn" Margin="5" Padding="5" Foreground="{DynamicResource Foreground}" Click="SortBtn_Click" Style="{DynamicResource RegularButton}" Background="#FF323246" HorizontalAlignment="Left">
 								<StackPanel Orientation="Horizontal">
 									<TextBlock x:Name="SortIconTxt" Text="&#xEB3E;" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />

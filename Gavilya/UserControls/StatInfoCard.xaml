@@ -7,7 +7,7 @@
 				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
 
-			<TextBlock x:Name="GamePosTxt" d:Text="#1" FontSize="16" FontWeight="ExtraBold" Foreground="#FF64648C" VerticalAlignment="Center" Margin="0,0,10,0" />
+			<TextBlock x:Name="GamePosTxt" d:Text="#1" FontSize="16" FontWeight="ExtraBold" Foreground="{DynamicResource LightForeground}" VerticalAlignment="Center" Margin="0,0,10,0" />
 			<TextBlock Grid.Column="1" x:Name="GameNameTxt" d:Text="GameNameHere" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="16" Margin="0,0,50,0" />
 			<TextBlock Grid.Column="2" x:Name="GameTimeTxt" d:Text="72,4h" VerticalAlignment="Center" FontWeight="ExtraBold" FontSize="16" Margin="0,0,5,0" />
 		</Grid>
