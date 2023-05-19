@@ -35,19 +35,19 @@
 						</StackPanel>
 					</StackPanel>
 
-                    <Button Click="ImportButton_Click" Margin="10 10 0 10" x:Name="ImportButton" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0 0 5 0" Text="&#xe9ea;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
-                            <TextBlock Text="{x:Static lang:Resources.Import}" FontWeight="ExtraBold" FontSize="13" />
-                        </StackPanel>
+					<Button Click="ImportButton_Click" Margin="10 10 0 10" x:Name="ImportButton" Padding="5" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Center">
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Margin="0 0 5 0" Text="&#xe9ea;" FontFamily="..\..\Fonts\#FluentlyIcons" VerticalAlignment="Center" />
+							<TextBlock Text="{x:Static lang:Resources.Import}" FontWeight="ExtraBold" FontSize="13" />
+						</StackPanel>
 
-                        <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.ImportGames}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" />
-                        </Button.ToolTip>
-                    </Button>
-                    <ComboBox x:Name="ThemesComboBox" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}" BorderThickness="2" Padding="5" VerticalAlignment="Center" Grid.Column="2" />
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.ThemesImport}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+					<ComboBox x:Name="ThemesComboBox" Style="{DynamicResource ComboBoxStyle1}" MinWidth="90" Margin="10" Background="{x:Null}" BorderBrush="{x:Null}" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}" BorderThickness="2" Padding="5" VerticalAlignment="Center" Grid.Column="2" />
 
-                </Grid>
+				</Grid>
 			</Border>
 		</StackPanel>
 
