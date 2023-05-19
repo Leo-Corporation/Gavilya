@@ -65,11 +65,15 @@ public partial class ThemeOptionsPage : Page
 		InstalledThemes = ThemeManager.GetInstalledThemes();
 
 		// 2. Display the available themes
+		int s = 0;
+		var selectedTheme = (Definitions.Settings.ThemePath != "_default") ? ThemeManager.GetThemeInfoFromPath(Definitions.Settings.ThemePath) : null;
+
 		for (int i = 0; i < InstalledThemes.Count; i++)
 		{
 			ThemesComboBox.Items.Add(InstalledThemes[i].Item1.Name);
+			if (InstalledThemes[i].Item1.Equals(selectedTheme)) s = i;
 		}
-
+		ThemesComboBox.SelectedIndex = s;
 		// 3. Change theme when selection changed
 		ThemesComboBox.SelectionChanged += ThemesComboBox_SelectionChanged;
 	}
@@ -87,6 +91,8 @@ public partial class ThemeOptionsPage : Page
 				return;
 			}
 			ThemeManager.ChangeTheme(InstalledThemes[ThemesComboBox.SelectedIndex].Item1, InstalledThemes[ThemesComboBox.SelectedIndex].Item2);
+			Definitions.Settings.ThemePath = InstalledThemes[ThemesComboBox.SelectedIndex].Item2 + $@"\theme.manifest";
+			SettingsSaver.Save();
 		}
 		catch (IndexOutOfRangeException)
 		{

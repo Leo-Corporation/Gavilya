@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Classes;
 using Gavilya.Pages;
 using Gavilya.Windows;
+using System.IO;
 using System.Windows;
 
 namespace Gavilya;
@@ -37,6 +38,16 @@ public partial class App : Application
 	{
 		SettingsSaver.Load(); // Load the settings
 		Global.ChangeLanguage(); // Change the language
+
+		if (!File.Exists(Definitions.Settings.ThemePath))
+		{
+			Definitions.Settings.ThemePath = "_default";
+		}
+
+		if (Definitions.Settings.ThemePath != "_default") // Load the user defined theme
+		{			
+			ThemeManager.ChangeTheme(ThemeManager.GetThemeInfoFromPath(Definitions.Settings.ThemePath), Definitions.Settings.ThemePath.Replace(@"\theme.manifest", ""));
+		}
 
 		Definitions.GameInfoPage = new(); // Create the page
 		Definitions.GameInfoPage2 = new(); // Create the page
@@ -60,7 +71,7 @@ public partial class App : Application
 		Definitions.LibraryPage = new();
 		Definitions.ProfilePage = new();
 		Definitions.SettingsPage = new();
-		Definitions.TagPage = new();
+		Definitions.TagPage = new();		
 
 		if (Definitions.Settings.DefaultGavilyaHomePage is null)
 		{

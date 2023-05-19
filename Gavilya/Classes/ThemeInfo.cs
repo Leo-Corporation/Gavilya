@@ -42,5 +42,13 @@ public class ThemeInfo
 		FilePath = "";
 		RequiredVersion = "";
 	}
+
+	public override bool Equals(object obj)
+	{
+		if (obj == null || GetType() != obj.GetType()) return false;
+
+		ThemeInfo themeInfo = (ThemeInfo)obj;
+		return (Name == themeInfo.Name) && (FilePath == themeInfo.FilePath) && (RequiredVersion == themeInfo.RequiredVersion);
+	}
 }
 

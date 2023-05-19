@@ -86,4 +86,11 @@ public static class ThemeManager
 		string guid = GuidGen.Generate(new GuidOptions(32, false, false, false));
 		ZipFile.ExtractToDirectory(path, $@"{FileSys.AppDataPath}\Gavilya\Themes\{guid}");
 	}
+
+	public static ThemeInfo GetThemeInfoFromPath(string path)
+	{
+		var xmlSerializer = new XmlSerializer(typeof(ThemeInfo));
+		StreamReader streamReader = new(path);
+		return (ThemeInfo)xmlSerializer.Deserialize(streamReader);
+	}
 }
