@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using Gavilya.Windows;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -139,7 +140,6 @@ public partial class LibraryPage : Page
 	{
 		Random random = new();
 		int i = random.Next(0, Definitions.Games.Count - 1);
-		Definitions.GameInfoPage.InitializeUI(Definitions.Games[i]);
-		Definitions.MainWindow.PageContent.Navigate(Definitions.GameInfoPage);
+		new RandomGameWindow(Definitions.Games[i], i).Show();
 	}
 }

@@ -189,7 +189,7 @@ public partial class GameInfoPage : Page
 
 	bool gameStarted = false;
 
-	private void PlayBtn_Click(object sender, RoutedEventArgs e)
+	internal void PlayBtn_Click(object sender, RoutedEventArgs e)
 	{
 		if (GameInfo.IsSteam && !Global.CanLaunchSteamGame())
 		{
