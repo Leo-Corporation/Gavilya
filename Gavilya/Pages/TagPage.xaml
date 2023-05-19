@@ -5,7 +5,7 @@
 	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 	  xmlns:local="clr-namespace:Gavilya.Pages"
 	  xmlns:lang="clr-namespace:Gavilya.Properties"
-	  mc:Ignorable="d" Foreground="#FFF" FontFamily="..\Fonts\#Hauora"
+	  mc:Ignorable="d" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#Hauora"
 	  d:DesignHeight="450" d:DesignWidth="800"
 	  Title="TagPage" Margin="10">
 

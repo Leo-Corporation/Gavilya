@@ -123,6 +123,11 @@ public class Settings
 	/// The position of the sidebar.
 	/// </summary>
 	public Position? SidebarPosition { get; set; }
+
+	/// <summary>
+	/// The path of the theme to load.
+	/// </summary>
+	public string? ThemePath { get; set; }
 }
 
 public static class SettingsSaver
@@ -149,6 +154,7 @@ public static class SettingsSaver
 			Definitions.Settings.UnusedGameNotification ??= true;
 			Definitions.Settings.GameTags ??= new();
 			Definitions.Settings.SidebarPosition ??= Position.Left;
+			Definitions.Settings.ThemePath ??= "_default";
 
 			streamReader.Dispose();
 		}
@@ -173,7 +179,8 @@ public static class SettingsSaver
 				UpdatesAvNotification = true,
 				UnusedGameNotification = true,
 				GameTags = new(),
-				SidebarPosition = Position.Left
+				SidebarPosition = Position.Left,
+				ThemePath = "_default"
 			};
 			Save();
 		}

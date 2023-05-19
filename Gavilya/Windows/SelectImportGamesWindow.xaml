@@ -14,7 +14,7 @@
 			</Style.Triggers>
 		</Style>
 		<Style x:Key="TitleBarButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -27,10 +27,10 @@
 						</Border>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="true">
-								<Setter TargetName="border" Property="Background" Value="#28283C" />
+								<Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedBackground}" />
 							</Trigger>
 							<Trigger Property="IsPressed" Value="true">
-								<Setter TargetName="border" Property="Background" Value="#28283C" />
+								<Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedBackground}" />
 							</Trigger>
 						</ControlTemplate.Triggers>
 					</ControlTemplate>
@@ -39,7 +39,7 @@
 		</Style>
 
 		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -66,7 +66,7 @@
 		</Style>
 	</Window.Resources>
 
-	<Border Margin="10" CornerRadius="10" Background="#FF0A0A1E">
+	<Border Margin="10" CornerRadius="10" Background="{DynamicResource Background}">
 		<Border.Effect>
 			<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
 		</Border.Effect>
@@ -84,13 +84,13 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 
-				<Rectangle Fill="#FF000013" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+				<Rectangle Fill="{DynamicResource Background}" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
 					<Rectangle.Effect>
 						<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0" />
 					</Rectangle.Effect>
 				</Rectangle>
 
-				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.ImportGames}" FontWeight="ExtraBold" Foreground="White">
+				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.ImportGames}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}">
 					<TextBlock.Style>
 						<Style TargetType="TextBlock">
 							<Style.Triggers>
@@ -114,17 +114,17 @@
 					<RowDefinition Height="Auto" />
 				</Grid.RowDefinitions>
 
-				<TextBlock Grid.Row="0" Text="{x:Static lang:Resources.SelectGamesImport}" TextWrapping="Wrap" FontSize="13" Foreground="White" Margin="10 5 10 5" />
+				<TextBlock Grid.Row="0" Text="{x:Static lang:Resources.SelectGamesImport}" TextWrapping="Wrap" FontSize="13" Foreground="{DynamicResource Foreground}" Margin="10 5 10 5" />
 
 				<ScrollViewer Template="{DynamicResource ScrollViewerTemplate1}" Grid.Row="1" HorizontalScrollBarVisibility="Disabled">
 					<StackPanel Name="GamePresenter" Grid.Row="1"></StackPanel>
 				</ScrollViewer>
 
-				<Button x:Name="FinishBtn" Click="FinishBtn_Click" Padding="10 7 10 7" Margin="10" Grid.Row="2" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" Background="#6600FF">
+				<Button x:Name="FinishBtn" Click="FinishBtn_Click" Padding="10 7 10 7" Margin="10" Grid.Row="2" Cursor="Hand" Style="{StaticResource RegularButton}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" Background="{DynamicResource Accent}">
 
 					<StackPanel Orientation="Horizontal" Grid.Row="2">
-						<TextBlock FontSize="12" FontWeight="ExtraBold" Text="{x:Static lang:Resources.Finish}" Foreground="White" VerticalAlignment="Center" />
-						<TextBlock FontSize="10" FontFamily="..\Fonts\#FluentlyIcons" Text="&#xE919;" Foreground="White" VerticalAlignment="Center" Margin="10,0,0,0" />
+						<TextBlock FontSize="12" FontWeight="ExtraBold" Text="{x:Static lang:Resources.Finish}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" />
+						<TextBlock FontSize="10" FontFamily="..\Fonts\#FluentlyIcons" Text="&#xE919;" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" Margin="10,0,0,0" />
 					</StackPanel>
 				</Button>
 			</Grid>

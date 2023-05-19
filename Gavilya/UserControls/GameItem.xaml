@@ -15,13 +15,13 @@
 					<ColumnDefinition Width="Auto"/>
 				</Grid.ColumnDefinitions>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Width="200" Name="GameName" Grid.Row="0" d:Text="Game Name" FontSize="14" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
-                    <TextBlock x:Name="FavIconTxt" Text="&#xF719;" Margin="10 0 0 0" FontSize="14" FontFamily="../Fonts/#FluentSystemIcons-Filled" Foreground="White" VerticalAlignment="Center"/>
+                    <TextBlock Width="200" Name="GameName" Grid.Row="0" d:Text="Game Name" FontSize="14" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                    <TextBlock x:Name="FavIconTxt" Text="&#xF719;" Margin="10 0 0 0" FontSize="14" FontFamily="../Fonts/#FluentSystemIcons-Filled" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center"/>
                 </StackPanel>
-                <Button x:Name="PlayBtn" Click="PlayBtn_Click" Padding="5" Grid.Column="1" Content="&#xF610;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" Style="{DynamicResource PlayButton}" Foreground="White" Width="22" Height="22" VerticalAlignment="Center" Margin="10,0,0,0" Visibility="Hidden"/>
+                <Button x:Name="PlayBtn" Click="PlayBtn_Click" Padding="5" Grid.Column="1" Content="&#xF610;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" Style="{DynamicResource PlayButton}" Foreground="{DynamicResource HoverForeground}" Width="22" Height="22" VerticalAlignment="Center" Margin="10,0,0,0" Visibility="Hidden"/>
 			</Grid>
 			<Button.ToolTip>
-				<ToolTip Name="GameNameToolTip" Background="#000014" Foreground="White"/>
+				<ToolTip Name="GameNameToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}"/>
 			</Button.ToolTip>
 
 		</Button>

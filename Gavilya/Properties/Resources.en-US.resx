@@ -972,4 +972,13 @@
   <data name="Right" xml:space="preserve">
     <value>Right</value>
   </data>
+  <data name="Themes" xml:space="preserve">
+    <value>Themes</value>
+  </data>
+  <data name="ThemesDesc" xml:space="preserve">
+    <value>Set the theme of Gavilya.</value>
+  </data>
+  <data name="ThemesImport" xml:space="preserve">
+    <value>Import a theme</value>
+  </data>
 </root>

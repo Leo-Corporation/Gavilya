@@ -44,6 +44,7 @@ public partial class SettingsPage : Page
 	readonly AboutPage aboutPage = new();
 	readonly NotifOptionsPage notifOptionsPage = new();
 	readonly GamesOptionsPage gamesOptionsPage = new();
+	readonly ThemeOptionsPage themeOptionsPage = new();
 
 	public SettingsPage()
 	{
@@ -115,13 +116,19 @@ public partial class SettingsPage : Page
 
 				OptionsDisplayer.Navigate(gamesOptionsPage); // Navigate
 				break;
+			case Enums.SettingsPages.Themes:
+				UnCheckAll(); // Uncheck all buttons
+				CheckButton(ThemeOptions); // Show the page
+
+				OptionsDisplayer.Navigate(themeOptionsPage); // Navigate
+				break;
 		}
 	}
 
 	private void CheckButton(Button button)
 	{
 		button.BorderBrush = Definitions.HomeButtonBackColor; // Set the new border brush
-		button.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
+		button.Background = Global.GetSolidColor("SelectedBackground"); // Check
 	}
 
 	private void UnCheckAll()
@@ -136,6 +143,7 @@ public partial class SettingsPage : Page
 		About.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		Notifications.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		GameOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		ThemeOptions.Background = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 
 		SaveOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		LanguageOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
@@ -147,6 +155,7 @@ public partial class SettingsPage : Page
 		About.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		Notifications.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 		GameOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
+		ThemeOptions.BorderBrush = new SolidColorBrush { Color = Colors.Transparent }; // Remove the background
 	}
 
 	private void SaveOptions_Click(object sender, RoutedEventArgs e)
@@ -157,6 +166,11 @@ public partial class SettingsPage : Page
 	private void LanguageOptions_Click(object sender, RoutedEventArgs e)
 	{
 		NavigateToPage(Enums.SettingsPages.Languages); // Show the "Languages" page
+	}
+
+	private void ThemeOptions_Click(object sender, RoutedEventArgs e)
+	{
+		NavigateToPage(Enums.SettingsPages.Themes); // Show the "Startup" page
 	}
 
 	private void StartupOptions_Click(object sender, RoutedEventArgs e)
@@ -218,6 +232,9 @@ public partial class SettingsPage : Page
 				break;
 			case GamesOptionsPage:
 				CheckButton(GameOptions);
+				break;
+			case ThemeOptionsPage:
+				CheckButton(ThemeOptions);
 				break;
 		}
 	}

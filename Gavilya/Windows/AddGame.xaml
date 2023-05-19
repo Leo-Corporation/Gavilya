@@ -15,7 +15,7 @@
 			</Style.Triggers>
 		</Style>
 		<Style x:Key="TitleBarButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -28,10 +28,10 @@
 						</Border>
 						<ControlTemplate.Triggers>
 							<Trigger Property="IsMouseOver" Value="true">
-								<Setter TargetName="border" Property="Background" Value="#28283C" />
+								<Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedBackground}" />
 							</Trigger>
 							<Trigger Property="IsPressed" Value="true">
-								<Setter TargetName="border" Property="Background" Value="#28283C" />
+								<Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedBackground}" />
 							</Trigger>
 						</ControlTemplate.Triggers>
 					</ControlTemplate>
@@ -40,7 +40,7 @@
 		</Style>
 
 		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -67,7 +67,7 @@
 		</Style>
 	</Window.Resources>
 
-	<Border Margin="10" CornerRadius="10" Background="#FF0A0A1E">
+	<Border Margin="10" CornerRadius="10" Background="{DynamicResource Background}">
 		<Border.Effect>
 			<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
 		</Border.Effect>
@@ -86,13 +86,11 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 
-				<Rectangle Fill="#FF000013" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
-					<Rectangle.Effect>
-						<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0" />
-					</Rectangle.Effect>
+				<Rectangle Fill="{DynamicResource Background}" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+					
 				</Rectangle>
 
-				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.AddGame}" FontWeight="ExtraBold" Foreground="White">
+				<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.AddGame}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}">
 					<TextBlock.Style>
 						<Style TargetType="TextBlock">
 							<Style.Triggers>
@@ -110,35 +108,35 @@
 			</Grid>
 
 			<StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
-				<Button Foreground="#FF6600FF" Click="Page1Btn_Click" Background="Transparent" x:Name="Page1Btn" Padding="0" Style="{DynamicResource RegularButton}">
+				<Button Foreground="{DynamicResource Accent}" Click="Page1Btn_Click" Background="Transparent" x:Name="Page1Btn" Padding="0" Style="{DynamicResource RegularButton}">
 					<Grid Margin="10 10 0 10">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="Auto"/>
 							<ColumnDefinition/>
 						</Grid.ColumnDefinitions>
 						<StackPanel>
-							<Border CornerRadius="10" Width="20" Height="20" Background="#6600FF">
+							<Border CornerRadius="10" Width="20" Height="20" Background="{DynamicResource Accent}">
 								<Grid>
-									<TextBlock x:Name="_1Txt" Text="1" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
-									<TextBlock x:Name="CheckTxt" Text="&#xF299;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" Visibility="Collapsed" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+									<TextBlock x:Name="_1Txt" Text="1" FontWeight="Bold" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+									<TextBlock x:Name="CheckTxt" Text="&#xF299;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" Visibility="Collapsed" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
 								</Grid>
 							</Border>
 							<TextBlock Text="{x:Static lang:Resources.Infos}" FontWeight="Bold"/>
 						</StackPanel>
-						<Border Grid.Column="1" Background="#6600FF" Width="75" VerticalAlignment="Center" Height="2" CornerRadius="1 0 0 1"/>
+						<Border Grid.Column="1" Background="{DynamicResource Accent}" Width="75" VerticalAlignment="Center" Height="2" CornerRadius="1 0 0 1"/>
 					</Grid>
 				</Button>
-				<Button Foreground="#323246" Click="Page2Btn_Click" Background="Transparent" x:Name="Page2Btn" Padding="0" Style="{DynamicResource RegularButton}">
+				<Button Foreground="{DynamicResource LightForeground}" Click="Page2Btn_Click" Background="Transparent" x:Name="Page2Btn" Padding="0" Style="{DynamicResource RegularButton}">
 					<Grid Margin="0 10 10 10">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition/>
 							<ColumnDefinition Width="Auto"/>
 						</Grid.ColumnDefinitions>
-						<Border x:Name="LineBorder" Grid.Column="0" Background="#323246" Width="75" VerticalAlignment="Center" Height="2" CornerRadius="1 0 0 1"/>
+						<Border x:Name="LineBorder" Grid.Column="0" Background="{DynamicResource LightForeground}" Width="75" VerticalAlignment="Center" Height="2" CornerRadius="1 0 0 1"/>
 
 						<StackPanel Grid.Column="1">
-							<Border x:Name="NumberBorder" CornerRadius="10" Width="20" Height="20" Background="#323246">
-								<TextBlock Text="2" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
+							<Border x:Name="NumberBorder" CornerRadius="10" Width="20" Height="20" Background="{DynamicResource LightForeground}">
+								<TextBlock Text="2" FontWeight="Bold" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" />
 							</Border>
 							<TextBlock Text="{x:Static lang:Resources.Integrations}" FontWeight="Bold"/>
 						</StackPanel>

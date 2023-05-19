@@ -200,8 +200,8 @@ public partial class MainWindow : Window
 		BackBtn.IsEnabled = PageContent.CanGoBack; // Enable or not the button
 		ForwardBtn.IsEnabled = PageContent.CanGoForward; // Enable or not the button
 
-		BackBtn.Foreground = BackBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
-		ForwardBtn.Foreground = ForwardBtn.IsEnabled ? new SolidColorBrush { Color = Colors.White } : new SolidColorBrush { Color = Color.FromRgb(198, 198, 198) }; // Define the color
+		BackBtn.Foreground = BackBtn.IsEnabled ? Global.GetSolidColor("Foreground") : Global.GetSolidColor("Gray"); // Define the color
+		ForwardBtn.Foreground = ForwardBtn.IsEnabled ? Global.GetSolidColor("Foreground") : Global.GetSolidColor("Gray") ; // Define the color
 
 	}
 
@@ -622,8 +622,8 @@ public partial class MainWindow : Window
 		Button button = (Button)sender; // Get the button
 		if (button == CheckedTabButton)
 		{
-			button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) };
-			CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
+			button.BorderBrush = Global.GetSolidColor("Accent");
+			CheckedTabButton.Background = Global.GetSolidColor("SelectedBackground"); // Check
 		}
 	}
 
@@ -642,8 +642,8 @@ public partial class MainWindow : Window
 		RecentTabBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 		SettingsBtn.Background = new SolidColorBrush { Color = Colors.Transparent }; // Reset the background color
 
-		CheckedTabButton.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Check
-		CheckedTabButton.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Check
+		CheckedTabButton.BorderBrush = Global.GetSolidColor("Accent"); // Check
+		CheckedTabButton.Background = Global.GetSolidColor("SelectedBackground"); // Check
 	}
 
 	private void NotificationsBtn_Click(object sender, RoutedEventArgs e)

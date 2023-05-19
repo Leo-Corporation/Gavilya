@@ -77,5 +77,10 @@ public enum SettingsPages
 	/// <summary>
 	/// The <see cref="Pages.SettingsPages.GamesOptionsPage"/> page.
 	/// </summary>
-	GamesOptions
+	GamesOptions,
+
+	/// <summary>
+	/// The <see cref="Pages.SettingsPages.ThemeOptionsPage"/> page.
+	/// </summary>
+	Themes
 }

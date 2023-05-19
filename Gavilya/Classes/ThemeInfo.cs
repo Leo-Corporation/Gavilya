@@ -21,55 +21,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.Classes;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
-namespace Gavilya.UserControls;
-
-/// <summary>
-/// Interaction logic for StatGraph.xaml
-/// </summary>
-public partial class StatGraph : UserControl
+namespace Gavilya.Classes;
+public class ThemeInfo
 {
-	List<GameInfo> Games { get; init; }
-	public StatGraph(List<GameInfo> gameInfos)
-	{
-		InitializeComponent();
-		Games = gameInfos; // Set
+	public string Name { get; set; }
+	public string FilePath { get; set; }
+	public string RequiredVersion { get; set; }
 
-		InitUI(); // Load the UI
+	public ThemeInfo(string name, string filePath, string requiredVersion)
+	{
+		Name = name;
+		FilePath = filePath;
+		RequiredVersion = requiredVersion;
 	}
 
-	private void InitUI()
+	public ThemeInfo()
 	{
-		GraphPanel.Children.Clear(); // Clear
-		int longestPlayed = Games[0].TotalTimePlayed;
-
-		for (int i = 0; i < Games.Count; i++)
-		{
-			double h = Games[i].TotalTimePlayed * GraphPanel.Height / longestPlayed;
-
-			Rectangle rectangle = new()
-			{
-				Margin = new(10, 0, 10, 0),
-				Fill = Global.GetSolidColor("Graph"),
-				Height = h,
-				Width = 50,
-				RadiusX = 5,
-				RadiusY = 5,
-				VerticalAlignment = VerticalAlignment.Bottom
-			};
-
-			GraphPanel.Children.Add(rectangle); // Add bar
-		}
+		Name = "";
+		FilePath = "";
+		RequiredVersion = "";
 	}
 
-	private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+	public override bool Equals(object obj)
 	{
-		InitUI();
+		if (obj == null || GetType() != obj.GetType()) return false;
+
+		ThemeInfo themeInfo = (ThemeInfo)obj;
+		return (Name == themeInfo.Name) && (FilePath == themeInfo.FilePath) && (RequiredVersion == themeInfo.RequiredVersion);
 	}
 }
+

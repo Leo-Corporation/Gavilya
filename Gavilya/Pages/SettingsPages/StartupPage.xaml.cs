@@ -60,7 +60,7 @@ public partial class StartupPage : Page
 	private void Border_MouseEnter(object sender, MouseEventArgs e)
 	{
 		Border border = (Border)sender;
-		border.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
+		border.BorderBrush = Global.GetSolidColor("Accent"); // Set color
 	}
 
 	private void Border_MouseLeave(object sender, MouseEventArgs e)
@@ -125,7 +125,7 @@ public partial class StartupPage : Page
 		CardsPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 		ListPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 
-		CheckedBorder.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
+		CheckedBorder.BorderBrush = Global.GetSolidColor("Accent"); // Set color
 	}
 
 	private void RefreshPageBorders()
@@ -135,7 +135,7 @@ public partial class StartupPage : Page
 		ProfilePageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 		RecentPageBorder.BorderBrush = new SolidColorBrush() { Color = Colors.Transparent }; // Set color 
 
-		PageCheckedBorder.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
+		PageCheckedBorder.BorderBrush = Global.GetSolidColor("Accent"); // Set color
 	}
 
 	private void HomePageBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -189,7 +189,7 @@ public partial class StartupPage : Page
 	private void Border_MouseEnter_1(object sender, MouseEventArgs e)
 	{
 		Border border = (Border)sender;
-		border.BorderBrush = new SolidColorBrush() { Color = Color.FromRgb(102, 0, 255) }; // Set color
+		border.BorderBrush = Global.GetSolidColor("Accent"); // Set color
 	}
 
 	private void Border_MouseLeave_1(object sender, MouseEventArgs e)

@@ -15,7 +15,7 @@
             </Style.Triggers>
         </Style>
         <Style x:Key="TitleBarButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="Height" Value="32" />
             <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -28,10 +28,10 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#28283C" />
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedBackground}" />
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter TargetName="border" Property="Background" Value="#28283C" />
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedBackground}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -40,7 +40,7 @@
         </Style>
 
         <Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
             <Setter Property="Height" Value="32" />
             <Setter Property="Padding" Value="0" />
             <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -67,7 +67,7 @@
         </Style>
     </Window.Resources>
 
-    <Border Margin="10" CornerRadius="10" Background="#FF0A0A1E">
+    <Border Margin="10" CornerRadius="10" Background="{DynamicResource Background}">
         <Border.Effect>
             <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
         </Border.Effect>
@@ -85,13 +85,13 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Rectangle Fill="#FF000013" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
+                <Rectangle Fill="{DynamicResource Background}" Grid.ColumnSpan="10" RadiusX="5" RadiusY="5">
                     <Rectangle.Effect>
                         <DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0" />
                     </Rectangle.Effect>
                 </Rectangle>
 
-                <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.EditGameDescription}" FontWeight="ExtraBold" Foreground="White">
+                <TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="16" Text="{x:Static lang:Resources.EditGameDescription}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}">
                     <TextBlock.Style>
                         <Style TargetType="TextBlock">
                             <Style.Triggers>
@@ -115,28 +115,28 @@
                 </Grid.RowDefinitions>
 
                 <ScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Auto">
-                    <TextBox d:Text="Content here" Grid.Row="0" FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="White" Background="#FF0A0A1E" Style="{DynamicResource MultiLineTextBox}" BorderBrush="#1E1E32" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="490" VerticalContentAlignment="Top" />
+                    <TextBox d:Text="Content here" Grid.Row="0" FontSize="15" Name="descriptionTxt" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background}" Style="{DynamicResource MultiLineTextBox}" BorderBrush="{DynamicResource Background2}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="490" VerticalContentAlignment="Top" />
                 </ScrollViewer>
 
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10" HorizontalAlignment="Center">
-                    <Button x:Name="ApplyBtn" Cursor="Hand" FontFamily="..\Fonts\#Hauora" Padding="7" Click="ApplyBtn_Click" Style="{DynamicResource PlayButton}" Foreground="White" Background="#FF141428" Margin="0,0,10,0" FontWeight="ExtraBold">
+                    <Button x:Name="ApplyBtn" Cursor="Hand" FontFamily="..\Fonts\#Hauora" Padding="7" Click="ApplyBtn_Click" Style="{DynamicResource PlayButton}" Foreground="{DynamicResource HoverForeground}" Background="{DynamicResource Background2}" Margin="0,0,10,0" FontWeight="ExtraBold">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xe98e;" FontSize="10" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="Normal" />
                             <TextBlock Text="{x:Static lang:Resources.Apply}" FontSize="12" VerticalAlignment="Center" />
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Apply}" Background="#000014" Foreground="White" />
+                            <ToolTip Content="{x:Static lang:Resources.Apply}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
-                    <Button x:Name="CancelBtn" FontFamily="..\Fonts\#Hauora" Padding="7" Click="CancelBtn_Click" Style="{DynamicResource RegularButton}" Foreground="White" Background="#FF141428" FontWeight="ExtraBold">
+                    <Button x:Name="CancelBtn" FontFamily="..\Fonts\#Hauora" Padding="7" Click="CancelBtn_Click" Style="{DynamicResource RegularButton}" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" FontWeight="ExtraBold">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xe9d8;" FontSize="10" FontFamily="..\Fonts\#FluentlyIcons" VerticalAlignment="Center" Margin="0,0,5,0" FontWeight="Normal" />
                             <TextBlock Text="{x:Static lang:Resources.Cancel}" FontSize="12" VerticalAlignment="Center" />
                         </StackPanel>
 
                         <Button.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="#000014" Foreground="White" />
+                            <ToolTip Content="{x:Static lang:Resources.Cancel}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
                 </StackPanel>

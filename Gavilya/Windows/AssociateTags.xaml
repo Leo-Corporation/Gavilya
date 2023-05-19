@@ -15,7 +15,7 @@
 		Background="Transparent">
 	<Window.Resources>
 		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
-			<Setter Property="Foreground" Value="White" />
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
 			<Setter Property="Height" Value="32" />
 			<Setter Property="Padding" Value="0" />
 			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
@@ -46,7 +46,7 @@
 		<WindowChrome CaptionHeight="45"></WindowChrome>
 	</WindowChrome.WindowChrome>
 
-	<Border Margin="10" CornerRadius="10" Background="#FF000011">
+	<Border Margin="10" CornerRadius="10" Background="{DynamicResource Background}">
 		<Border.Effect>
 			<DropShadowEffect Color="Gray" ShadowDepth="0" BlurRadius="15" Opacity="0.5" />
 		</Border.Effect>
@@ -62,7 +62,7 @@
 				<RowDefinition />
 			</Grid.RowDefinitions>
 
-			<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="15" Text="{x:Static lang:Resources.AssociateTags}" FontWeight="ExtraBold" Foreground="White">
+			<TextBlock Grid.Column="0" Margin="10 0 0 0" VerticalAlignment="Center" FontSize="15" Text="{x:Static lang:Resources.AssociateTags}" FontWeight="ExtraBold" Foreground="{DynamicResource Foreground}">
 				<TextBlock.Style>
 					<Style TargetType="TextBlock">
 						<Style.Triggers>
@@ -85,9 +85,9 @@
 					<StackPanel x:Name="TagsDisplayer"></StackPanel>
 				</ScrollViewer>
 
-				<Button FontSize="13" Cursor="Hand" x:Name="SelectBtn" Click="SelectBtn_Click" Style="{DynamicResource PlayButton}" Margin="10" Foreground="White" Padding="7" Content="{x:Static lang:Resources.Select}" FontWeight="ExtraBold" Grid.Row="1" HorizontalAlignment="Center">
+				<Button FontSize="13" Cursor="Hand" x:Name="SelectBtn" Click="SelectBtn_Click" Style="{DynamicResource PlayButton}" Margin="10" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Select}" FontWeight="ExtraBold" Grid.Row="1" HorizontalAlignment="Center">
 					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Select}" Background="#000014" Foreground="White" />
+						<ToolTip Content="{x:Static lang:Resources.Select}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 					</Button.ToolTip>
 				</Button>
 			</Grid>

@@ -1,29 +1,29 @@
 ﻿<UserControl x:Class="Gavilya.UserControls.FavoriteGameCard"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Gavilya.UserControls"
-             xmlns:lang="clr-namespace:Gavilya.Properties"
-             mc:Ignorable="d" 
-             FontFamily="../Fonts/#Hauora"
-             Height="85" Width="150" Margin="5">
-    <Border CornerRadius="10">
-        <Border.ToolTip>
-            <ToolTip Name="GameNameToolTip" Background="#000014" Foreground="White"/>
-        </Border.ToolTip>
+			 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:local="clr-namespace:Gavilya.UserControls"
+			 xmlns:lang="clr-namespace:Gavilya.Properties"
+			 mc:Ignorable="d" 
+			 FontFamily="../Fonts/#Hauora"
+			 Height="85" Width="150" Margin="5">
+	<Border CornerRadius="10">
+		<Border.ToolTip>
+			<ToolTip Name="GameNameToolTip" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}"/>
+		</Border.ToolTip>
 
-        <Border.Background>
-            <ImageBrush x:Name="GameIcon" Stretch="UniformToFill">
-            </ImageBrush>
-        </Border.Background>
+		<Border.Background>
+			<ImageBrush x:Name="GameIcon" Stretch="UniformToFill">
+			</ImageBrush>
+		</Border.Background>
 
-        <Grid>
-			<Button Cursor="Hand" Name="PlayBtn" Click="PlayBtn_Click" Content="&#xF610;" Height="35" Width="35" Style="{StaticResource PlayButton}" Foreground="#fff" FontFamily="..\Fonts\#FluentSystemIcons-Filled" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom">
-                <Button.ToolTip>
-                    <ToolTip Name="ToolTipGamePlay" Content="{x:Static lang:Resources.PlayLowerCase}" Background="#000014" Foreground="White"/>
-                </Button.ToolTip>
-            </Button>
-        </Grid>    
-    </Border>
+		<Grid>
+			<Button Cursor="Hand" Name="PlayBtn" Click="PlayBtn_Click" Content="&#xF610;" Height="35" Width="35" Style="{StaticResource PlayButton}" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Filled" HorizontalAlignment="Right" Margin="0,0,20,20" VerticalAlignment="Bottom">
+				<Button.ToolTip>
+					<ToolTip Name="ToolTipGamePlay" Content="{x:Static lang:Resources.PlayLowerCase}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}"/>
+				</Button.ToolTip>
+			</Button>
+		</Grid>    
+	</Border>
 </UserControl>

@@ -2439,6 +2439,33 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Themes.
+        /// </summary>
+        public static string Themes {
+            get {
+                return ResourceManager.GetString("Themes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the theme of Gavilya..
+        /// </summary>
+        public static string ThemesDesc {
+            get {
+                return ResourceManager.GetString("ThemesDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import a theme.
+        /// </summary>
+        public static string ThemesImport {
+            get {
+                return ResourceManager.GetString("ThemesImport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Start.
         /// </summary>
         public static string TheStart {

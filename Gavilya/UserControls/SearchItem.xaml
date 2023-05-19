@@ -6,6 +6,6 @@
 		</Grid.ColumnDefinitions>
 
 		<Image x:Name="GameImg" Width="80" Stretch="Fill" />
-		<TextBlock x:Name="GameName" d:Text="Game Name" Foreground="#fff" FontSize="20" Margin="7,0,0,0" Grid.Column="1" VerticalAlignment="Center" FontWeight="ExtraBold" />
+		<TextBlock x:Name="GameName" d:Text="Game Name" Foreground="{DynamicResource Foreground}" FontSize="20" Margin="7,0,0,0" Grid.Column="1" VerticalAlignment="Center" FontWeight="ExtraBold" />
 	</Grid>
 </UserControl>

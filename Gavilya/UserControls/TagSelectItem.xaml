@@ -4,10 +4,10 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:local="clr-namespace:Gavilya.UserControls"
-			 mc:Ignorable="d" Foreground="#FFF" 
+			 mc:Ignorable="d" Foreground="{DynamicResource Foreground}" 
 			 FontFamily="..\Fonts\#Hauora"
 			 Height="50" Width="300" Margin="0 2">
-	<Border CornerRadius="10" Background="#FF141428">
+	<Border CornerRadius="10" Background="{DynamicResource Background2}">
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="Auto" />
@@ -20,10 +20,10 @@
 							<ScaleTransform ScaleX="1.75" ScaleY="1.75" />
 						</TransformGroup>
 					</Grid.RenderTransform>
-					<CheckBox x:FieldModifier="public" x:Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="#FF141428" Cursor="Hand" />
+					<CheckBox x:FieldModifier="public" x:Name="GameCheck" Margin="5 5 5 0" Style="{StaticResource CheckBoxStyle1}" Background="{DynamicResource Background2}" Cursor="Hand" />
 				</Grid>
 				<Rectangle x:Name="ColorDot" d:Fill="#10F15F" RadiusX="15" RadiusY="15" Margin="10 0 0 0" Height="15" Width="15"/>
-				<TextBlock d:Text="TagName" Margin="10 0 0 0" x:Name="TagNameTxt" FontSize="20" FontWeight="ExtraBold" Text="" Foreground="White" VerticalAlignment="Center">
+				<TextBlock d:Text="TagName" Margin="10 0 0 0" x:Name="TagNameTxt" FontSize="20" FontWeight="ExtraBold" Text="" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
 				</TextBlock>
 			</StackPanel>            
 		</Grid>

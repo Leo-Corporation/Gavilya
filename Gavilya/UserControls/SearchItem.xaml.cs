@@ -90,7 +90,7 @@ public partial class SearchItem : UserControl
 	{
 		if (focused)
 		{
-			MainGrid.Background = new SolidColorBrush(Color.FromRgb(20, 20, 40));
+			MainGrid.Background = Global.GetSolidColor("Background2");
 		}
 		else
 		{

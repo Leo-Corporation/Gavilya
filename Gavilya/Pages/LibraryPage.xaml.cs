@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Classes;
+using Gavilya.Windows;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -70,9 +71,9 @@ public partial class LibraryPage : Page
 	internal Button CheckedButton { get; set; }
 	internal void RefreshTabUI()
 	{
-		GameCardTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
-		GameListTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
-		GameTagTabBtn.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Change color 
+		GameCardTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
+		GameListTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
+		GameTagTabBtn.Background = Global.GetSolidColor("SelectedBackground"); // Change color 
 
 		if (PageDisplayer.Content is GamesCardsPages)
 		{
@@ -86,14 +87,14 @@ public partial class LibraryPage : Page
 		{
 			CheckedButton = GameTagTabBtn;
 		}
-		CheckedButton.Background = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		CheckedButton.Background = Global.GetSolidColor("Accent"); // Change color
 	}
 
 	private void GameCardTabBtn_MouseEnter(object sender, MouseEventArgs e)
 	{
 		Button button = (Button)sender; // Create button
 
-		button.BorderBrush = new SolidColorBrush { Color = Color.FromRgb(102, 0, 255) }; // Change color
+		button.BorderBrush = Global.GetSolidColor("Accent"); // Change color
 	}
 
 	private void GameCardTabBtn_MouseLeave(object sender, MouseEventArgs e)
@@ -116,14 +117,14 @@ public partial class LibraryPage : Page
 		Global.SortGames();
 		Global.ReloadAllPages();
 		SortAlpha.Background = Definitions.HomeButtonBackColor;
-		SortReverse.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
+		SortReverse.Background = Global.GetSolidColor("SelectedBackground");
 	}
 
 	private void SortReverse_Click(object sender, RoutedEventArgs e)
 	{
 		Global.SortGames(false);
 		Global.ReloadAllPages();
-		SortAlpha.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) };
+		SortAlpha.Background = Global.GetSolidColor("SelectedBackground");
 		SortReverse.Background = Definitions.HomeButtonBackColor;
 	}
 
@@ -139,7 +140,6 @@ public partial class LibraryPage : Page
 	{
 		Random random = new();
 		int i = random.Next(0, Definitions.Games.Count - 1);
-		Definitions.GameInfoPage.InitializeUI(Definitions.Games[i]);
-		Definitions.MainWindow.PageContent.Navigate(Definitions.GameInfoPage);
+		new RandomGameWindow(Definitions.Games[i], i).Show();
 	}
 }

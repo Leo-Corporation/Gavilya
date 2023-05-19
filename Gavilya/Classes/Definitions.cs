@@ -37,7 +37,7 @@ public static class Definitions
 	/// <summary>
 	/// The gradient for the "HomeButtonBackColor".
 	/// </summary>
-	public static SolidColorBrush HomeButtonBackColor => new(Color.FromRgb(102, 0, 255)); // Gradient to return
+	public static SolidColorBrush HomeButtonBackColor => Global.GetSolidColor("Accent"); // Gradient to return
 
 	/// <summary>
 	/// The <see cref="UserControls.StatGameInfoControl"/> control.
@@ -52,7 +52,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "3.4.0.2304";
+	public static string Version => "3.5.0.2305";
 
 	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)

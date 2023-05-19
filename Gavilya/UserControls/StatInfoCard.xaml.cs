@@ -56,7 +56,7 @@ public partial class StatInfoCard : UserControl
 		isChecked = pos == 1; // Set
 		if (isChecked)
 		{
-			ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color 
+			ItemBorder.Background = Global.GetSolidColor("SelectedItem"); // Set background color 
 			Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
 		}
 	}
@@ -64,14 +64,14 @@ public partial class StatInfoCard : UserControl
 	private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
 		Definitions.Statistics.UnCheckAllStatItems(); // Clear
-		ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color
+		ItemBorder.Background = Global.GetSolidColor("SelectedItem"); // Set background color
 		isChecked = true;
 		Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
 	}
 
 	private void ItemBorder_MouseEnter(object sender, MouseEventArgs e)
 	{
-		ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(40, 40, 60) }; // Set background color
+		ItemBorder.Background = Global.GetSolidColor("SelectedBackground"); // Set background color
 	}
 
 	private void ItemBorder_MouseLeave(object sender, MouseEventArgs e)
@@ -82,7 +82,7 @@ public partial class StatInfoCard : UserControl
 		}
 		else
 		{
-			ItemBorder.Background = new SolidColorBrush { Color = Color.FromRgb(60, 60, 80) }; // Set background color
+			ItemBorder.Background = Global.GetSolidColor("SelectedItem"); // Set background color
 		}
 	}
 
