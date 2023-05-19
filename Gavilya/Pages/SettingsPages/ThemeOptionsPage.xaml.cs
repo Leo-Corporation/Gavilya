@@ -88,6 +88,9 @@ public partial class ThemeOptionsPage : Page
 				ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
 				resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
 				App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+
+				Definitions.Settings.ThemePath = "_default";
+				SettingsSaver.Save();
 				return;
 			}
 			ThemeManager.ChangeTheme(InstalledThemes[ThemesComboBox.SelectedIndex].Item1, InstalledThemes[ThemesComboBox.SelectedIndex].Item2);
