@@ -972,4 +972,13 @@
   <data name="Right" xml:space="preserve">
     <value>对</value>
   </data>
+  <data name="ThemesImport" xml:space="preserve">
+    <value>导入一个主题</value>
+  </data>
+  <data name="Themes" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="ThemesDesc" xml:space="preserve">
+    <value>设定加维利亚的主题。</value>
+  </data>
 </root>

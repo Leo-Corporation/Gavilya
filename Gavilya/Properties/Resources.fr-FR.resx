@@ -975,4 +975,13 @@
   <data name="Right" xml:space="preserve">
     <value>Droite</value>
   </data>
+  <data name="Themes" xml:space="preserve">
+    <value>Thèmes</value>
+  </data>
+  <data name="ThemesDesc" xml:space="preserve">
+    <value>Définir le thème de Gavilya.</value>
+  </data>
+  <data name="ThemesImport" xml:space="preserve">
+    <value>Importer un thème</value>
+  </data>
 </root>
