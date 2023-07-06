@@ -1057,8 +1057,6 @@
 			</Style>
 			<SolidColorBrush x:Key="Button.Static.Background6" Color="#FFDDDDDD" />
 			<SolidColorBrush x:Key="Button.Static.Border6" Color="#FF707070" />
-			<SolidColorBrush x:Key="Button.MouseOver.Background6" Color="{DynamicResource Background}" />
-			<SolidColorBrush x:Key="Button.Pressed.Background6" Color="{DynamicResource Background}" />
 			<SolidColorBrush x:Key="Button.Disabled.Background6" Color="#FFF4F4F4" />
 			<SolidColorBrush x:Key="Button.Disabled.Border6" Color="#FFADB2B5" />
 			<SolidColorBrush x:Key="Button.Disabled.Foreground6" Color="#FF838383" />
@@ -1082,11 +1080,11 @@
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
 								</Trigger>
 								<Trigger Property="IsMouseOver" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background6}" />
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource Background}" />
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent}" />
 								</Trigger>
 								<Trigger Property="IsPressed" Value="true">
-									<Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background6}" />
+									<Setter Property="Background" TargetName="border" Value="{DynamicResource Background}" />
 									<Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource Accent}" />
 								</Trigger>
 								<Trigger Property="IsEnabled" Value="false">
