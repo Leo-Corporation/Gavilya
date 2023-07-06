@@ -264,8 +264,8 @@ public partial class MainWindow : Window
 
 		double factor = scaling / 100d; // Calculate factor
 
-		MaxHeight = currentScreen.WorkingArea.Height / factor; // Set max size
-		MaxWidth = currentScreen.WorkingArea.Width / factor; // Set max size
+		MaxHeight = currentScreen.WorkingArea.Height / factor + 8; // Set max size
+		MaxWidth = currentScreen.WorkingArea.Width / factor + 8; // Set max size
 	}
 
 	private void Window_StateChanged(object sender, EventArgs e)
@@ -319,7 +319,7 @@ public partial class MainWindow : Window
 			MaximizeButton.Visibility = Visibility.Visible; // Show
 			RestoreButton.Visibility = Visibility.Collapsed; // Hide
 		}
-		WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
+		WindowBorder.Margin = WindowState == WindowState.Maximized ? new(0) : new(10); // Set
 	}
 
 	/// <summary>
