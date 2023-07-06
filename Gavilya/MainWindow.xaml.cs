@@ -393,7 +393,7 @@ public partial class MainWindow : Window
 					{
 						gameCard.CheckBox.Visibility = Visibility.Visible; // The checkbox is visible
 						gameCard.GameCardBorder.BorderThickness = gameCard.CheckBox.IsChecked ?? false ? new(3) : new(0); // Set the border thickness; // Show the controls
-						ColorElement(SelectBtn, Definitions.HomeButtonBackColor); // Change the background
+						ColorElement(SelectBtn, Global.GetSolidColor("Accent")); // Change the background
 						ShadowElement(SelectBtn); // Shadow
 					}
 					gameCard.SelectModeToggled = !gameCard.SelectModeToggled;
@@ -734,7 +734,7 @@ public partial class MainWindow : Window
 		IsSearchVisible = !IsSearchVisible; // Toggle
 		if (IsSearchVisible)
 		{
-			ColorElement(SearchBtn, Definitions.HomeButtonBackColor); // Change the background
+			ColorElement(SearchBtn, Global.GetSolidColor("Accent")); // Change the background
 			SearchPanel.Visibility = Visibility.Visible; // Show
 		}
 		else

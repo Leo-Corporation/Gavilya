@@ -71,9 +71,9 @@ public partial class AddGame : Window
 
 		if (id == 1)
 		{
-			LineBorder.Background = Definitions.HomeButtonBackColor;
-			NumberBorder.Background = Definitions.HomeButtonBackColor;
-			Page2Btn.Foreground = Definitions.HomeButtonBackColor;
+			LineBorder.Background = Global.GetSolidColor("Accent");
+			NumberBorder.Background = Global.GetSolidColor("Accent");
+			Page2Btn.Foreground = Global.GetSolidColor("Accent");
 
 			_1Txt.Visibility = Visibility.Collapsed;
 			CheckTxt.Visibility = Visibility.Visible;

@@ -35,11 +35,6 @@ namespace Gavilya.Classes;
 public static class Definitions
 {
 	/// <summary>
-	/// The gradient for the "HomeButtonBackColor".
-	/// </summary>
-	public static SolidColorBrush HomeButtonBackColor => Global.GetSolidColor("Accent"); // Gradient to return
-
-	/// <summary>
 	/// The <see cref="UserControls.StatGameInfoControl"/> control.
 	/// </summary>
 	internal static StatGameInfoControl StatGameInfoControl { get; set; }
@@ -150,11 +145,6 @@ public static class Definitions
 	/// The link of the last version <see cref="string"/>.
 	/// </summary>
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Version.txt";
-
-	/// <summary>
-	/// True if the menu is shown
-	/// </summary>
-	public static bool IsMenuShown { get; set; }
 
 	public static Dictionary<string, int> GuidIndex
 	{

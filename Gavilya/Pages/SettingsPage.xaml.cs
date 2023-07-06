@@ -127,7 +127,7 @@ public partial class SettingsPage : Page
 
 	private void CheckButton(Button button)
 	{
-		button.BorderBrush = Definitions.HomeButtonBackColor; // Set the new border brush
+		button.BorderBrush = Global.GetSolidColor("Accent"); // Set the new border brush
 		button.Background = Global.GetSolidColor("SelectedBackground"); // Check
 	}
 

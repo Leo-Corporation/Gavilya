@@ -116,7 +116,7 @@ public partial class LibraryPage : Page
 	{
 		Global.SortGames();
 		Global.ReloadAllPages();
-		SortAlpha.Background = Definitions.HomeButtonBackColor;
+		SortAlpha.Background = Global.GetSolidColor("Accent");
 		SortReverse.Background = Global.GetSolidColor("SelectedBackground");
 	}
 
@@ -125,7 +125,7 @@ public partial class LibraryPage : Page
 		Global.SortGames(false);
 		Global.ReloadAllPages();
 		SortAlpha.Background = Global.GetSolidColor("SelectedBackground");
-		SortReverse.Background = Definitions.HomeButtonBackColor;
+		SortReverse.Background = Global.GetSolidColor("Accent");
 	}
 
 	private void GameTagTabBtn_Click(object sender, RoutedEventArgs e)
