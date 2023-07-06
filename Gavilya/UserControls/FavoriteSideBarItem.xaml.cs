@@ -50,7 +50,7 @@ namespace Gavilya.UserControls
 		private void InitUI(GameInfo gameInfo)
 		{
 			// Visibility
-			Visibility = !Definitions.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+			Visibility = !Global.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
 
 			// Tooltip
 			GameNameToolTip.Content = gameInfo.Name;

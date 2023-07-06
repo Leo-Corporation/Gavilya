@@ -49,7 +49,7 @@ public partial class GamesListPage : Page
 		{
 			GameList.Children.Clear();
 			FavGameList.Children.Clear();
-			foreach (GameInfo gameInfo in Definitions.Games) // For each game
+			foreach (GameInfo gameInfo in Global.Games) // For each game
 			{
 				if (gameInfo.IsFavorite)
 				{

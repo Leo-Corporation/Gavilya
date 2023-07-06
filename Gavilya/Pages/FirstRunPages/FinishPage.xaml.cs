@@ -44,7 +44,7 @@ public partial class FinishPage : Page
 	{
 		new MainWindow().Show(); // Show the main window
 		FirstRun.Close(); // Close the window
-		Definitions.Settings.IsFirstRun = false; // Set the FirstRun Settings to false
+		Global.Settings.IsFirstRun = false; // Set the FirstRun Settings to false
 		SettingsSaver.Save();
 	}
 

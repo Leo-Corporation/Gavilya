@@ -38,13 +38,13 @@ public partial class AboutPage : Page
 	public AboutPage()
 	{
 		InitializeComponent();
-		VersionTxt.Text = !Definitions.IsBeta ? Definitions.Version : Definitions.BetaVersion; // Display the current version
+		VersionTxt.Text = !Global.IsBeta ? Global.Version : Global.BetaVersion; // Display the current version
 	}
 
 	private async void UpdateBtn_Click(object sender, RoutedEventArgs e)
 	{
-		string lastVersion = await Update.GetLastVersionAsync(Definitions.LastVersionLink); // Last version of Gavilya
-		if (Update.IsAvailable(Definitions.Version, lastVersion)) // If updates are available
+		string lastVersion = await Update.GetLastVersionAsync(Global.LastVersionLink); // Last version of Gavilya
+		if (Update.IsAvailable(Global.Version, lastVersion)) // If updates are available
 		{
 			new UpdateAvailable().Show(); // Show the updates available window
 		}

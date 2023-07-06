@@ -75,11 +75,11 @@ public partial class GameProperties : Window
 	{
 		if (GameInfo.ProcessName != GameProcessName.Text) // If different
 		{
-			Definitions.Games[Definitions.Games.IndexOf(GameInfo)].ProcessName = GameProcessName.Text; // Set the new value
+			Global.Games[Global.Games.IndexOf(GameInfo)].ProcessName = GameProcessName.Text; // Set the new value
 		}
 
-		Definitions.Games[Definitions.Games.IndexOf(GameInfo)].AlwaysCheckIfRunning = AlwaysCheckGameRunningChk.IsChecked.Value; // Set
-		GameSaver.Save(Definitions.Games); // Save the changes
+		Global.Games[Global.Games.IndexOf(GameInfo)].AlwaysCheckIfRunning = AlwaysCheckGameRunningChk.IsChecked.Value; // Set
+		GameSaver.Save(Global.Games); // Save the changes
 	}
 
 	private void CancelBtn_Click(object sender, RoutedEventArgs e)

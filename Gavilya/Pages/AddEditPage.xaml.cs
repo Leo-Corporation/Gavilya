@@ -116,7 +116,7 @@ public partial class AddEditPage : Page
 			{
 				if (!isUWP)
 				{
-					Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(GameCard.GameInfo.FileLocation); // Grab the icon of the game
+					Icon icon = Icon.ExtractAssociatedIcon(GameCard.GameInfo.FileLocation); // Grab the icon of the game
 					Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image 
 				}
 			}
@@ -249,13 +249,13 @@ public partial class AddEditPage : Page
 		{
 			string[] files = (string[])e.Data.GetData(DataFormats.FileDrop); // Get all the files droped
 
-			if (System.IO.Path.GetExtension(files[0]) == ".exe")
+			if (Path.GetExtension(files[0]) == ".exe")
 			{
 				FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(files[0]);
 
 				VersionTextBox.Text = fileVersionInfo.FileVersion; // Get the version
 				LocationTxt.Text = files[0];
-				NameTextBox.Text = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(files[0]) : fileVersionInfo.ProductName;
+				NameTextBox.Text = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? Path.GetFileNameWithoutExtension(files[0]) : fileVersionInfo.ProductName;
 
 				GameLocation = files[0]; // Set
 				if (isFromAdd)
@@ -268,11 +268,11 @@ public partial class AddEditPage : Page
 				{
 					try
 					{
-						GameIconLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(files[0]) : fileVersionInfo.ProductName);
+						GameIconLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? Path.GetFileNameWithoutExtension(files[0]) : fileVersionInfo.ProductName);
 
 						if (GameIconLocation == string.Empty)
 						{
-							Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(files[0]); // Grab the icon of the game
+							Icon icon = Icon.ExtractAssociatedIcon(files[0]); // Grab the icon of the game
 							Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
 						}
 						else
@@ -328,7 +328,7 @@ public partial class AddEditPage : Page
 		{
 			FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(openFileDialog.FileName); // Get the version
 
-			NameTextBox.Text = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName; // Name of the file
+			NameTextBox.Text = string.IsNullOrEmpty(fileVersionInfo.ProductName) ? Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName; // Name of the file
 			VersionTextBox.Text = fileVersionInfo.FileVersion; // Version of the file
 			LocationTxt.Text = openFileDialog.FileName; // Location of the file
 
@@ -337,12 +337,12 @@ public partial class AddEditPage : Page
 			{
 				try
 				{
-					GameIconLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName);
-					RAWGID = await Global.GetGameId(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName);
+					GameIconLocation = await Global.GetCoverImageAsync(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName);
+					RAWGID = await Global.GetGameId(string.IsNullOrEmpty(fileVersionInfo.ProductName) ? Path.GetFileNameWithoutExtension(openFileDialog.FileName) : fileVersionInfo.ProductName);
 
 					if (GameIconLocation == string.Empty)
 					{
-						Icon icon = System.Drawing.Icon.ExtractAssociatedIcon(openFileDialog.FileName); // Grab the icon of the game
+						Icon icon = Icon.ExtractAssociatedIcon(openFileDialog.FileName); // Grab the icon of the game
 						Image.ImageSource = System.Windows.Interop.Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions()); // Show the image
 					}
 					else

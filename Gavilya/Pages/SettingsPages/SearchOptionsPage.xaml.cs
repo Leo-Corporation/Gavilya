@@ -42,31 +42,31 @@ public partial class SearchOptionsPage : Page
 
 	private void InitUI()
 	{
-		HideSearchBarChk.IsChecked = Definitions.Settings.HideSearchBar; // Set the Checked state
-		SearchResultsTextBox.Text = Definitions.Settings.NumberOfSearchResultsToDisplay.Value.ToString();
+		HideSearchBarChk.IsChecked = Global.Settings.HideSearchBar; // Set the Checked state
+		SearchResultsTextBox.Text = Global.Settings.NumberOfSearchResultsToDisplay.Value.ToString();
 	}
 
 	private void HideSearchBarChk_Checked(object sender, RoutedEventArgs e)
 	{
-		Definitions.Settings.HideSearchBar = HideSearchBarChk.IsChecked; // Set settings value
+		Global.Settings.HideSearchBar = HideSearchBarChk.IsChecked; // Set settings value
 		SettingsSaver.Save(); // Save changes
 
 		// Hide search bar in MainWindow
-		if (Definitions.MainWindow is null) return;
-		Definitions.MainWindow.SearchPanel.Visibility = HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
-		Definitions.MainWindow.SearchBtn.Visibility = !HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		if (Global.MainWindow is null) return;
+		Global.MainWindow.SearchPanel.Visibility = HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		Global.MainWindow.SearchBtn.Visibility = !HideSearchBarChk.IsChecked.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
 
 		// Reset toggle search button state
-		Definitions.MainWindow.SearchBtn.Background = new SolidColorBrush(Colors.Transparent); // Set default background color
-		Definitions.MainWindow.IsSearchVisible = false; // Reset to default value
+		Global.MainWindow.SearchBtn.Background = new SolidColorBrush(Colors.Transparent); // Set default background color
+		Global.MainWindow.IsSearchVisible = false; // Reset to default value
 	}
 
 	private void SaveButton_Click(object sender, RoutedEventArgs e)
 	{
-		Definitions.Settings.NumberOfSearchResultsToDisplay = int.Parse(SearchResultsTextBox.Text); // Set settings value
+		Global.Settings.NumberOfSearchResultsToDisplay = int.Parse(SearchResultsTextBox.Text); // Set settings value
 		SettingsSaver.Save(); // Save changes
 
-		Definitions.MainWindow.SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45 + 36; // Set max drop down height
+		Global.MainWindow.SearchPopup.Height = Global.Settings.NumberOfSearchResultsToDisplay.Value * 45 + 36; // Set max drop down height
 	}
 
 	private void SearchResultsTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)

@@ -55,7 +55,7 @@ public class Settings
 	public int PageId { get; set; }
 
 	/// <summary>
-	/// The current profile index in <see cref="Definitions.Profiles"/>.
+	/// The current profile index in <see cref="Global.Profiles"/>.
 	/// </summary>
 	public int CurrentProfileIndex { get; set; }
 
@@ -133,7 +133,7 @@ public class Settings
 public static class SettingsSaver
 {
 	/// <summary>
-	/// Loads the settings into <see cref="Definitions.Settings"/>.
+	/// Loads the settings into <see cref="Global.Settings"/>.
 	/// </summary>
 	public static void Load()
 	{
@@ -143,24 +143,24 @@ public static class SettingsSaver
 			XmlSerializer xmlSerializer = new(typeof(Settings)); // XML Serializer
 			StreamReader streamReader = new(AppDataPath + @"\Gavilya\Settings.gavsettings"); // Where the file is going to be read
 
-			Definitions.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
+			Global.Settings = (Settings)xmlSerializer.Deserialize(streamReader); // Read
 
-			Definitions.Settings.MaxNumberRecentGamesShown ??= 4;
-			Definitions.Settings.ShowMoreUnplayedGamesRecommanded ??= true;
-			Definitions.Settings.HideSearchBar ??= false;
-			Definitions.Settings.NumberOfSearchResultsToDisplay ??= 3;
-			Definitions.Settings.FpsCounterOpacity ??= 1;
-			Definitions.Settings.UpdatesAvNotification ??= true;
-			Definitions.Settings.UnusedGameNotification ??= true;
-			Definitions.Settings.GameTags ??= new();
-			Definitions.Settings.SidebarPosition ??= Position.Left;
-			Definitions.Settings.ThemePath ??= "_default";
+			Global.Settings.MaxNumberRecentGamesShown ??= 4;
+			Global.Settings.ShowMoreUnplayedGamesRecommanded ??= true;
+			Global.Settings.HideSearchBar ??= false;
+			Global.Settings.NumberOfSearchResultsToDisplay ??= 3;
+			Global.Settings.FpsCounterOpacity ??= 1;
+			Global.Settings.UpdatesAvNotification ??= true;
+			Global.Settings.UnusedGameNotification ??= true;
+			Global.Settings.GameTags ??= new();
+			Global.Settings.SidebarPosition ??= Position.Left;
+			Global.Settings.ThemePath ??= "_default";
 
 			streamReader.Dispose();
 		}
 		else
 		{
-			Definitions.Settings = new Settings
+			Global.Settings = new Settings
 			{
 				Language = "_default",
 				IsFirstRun = true,
@@ -192,7 +192,7 @@ public static class SettingsSaver
 	public static void Save()
 	{
 		string AppDataPath = FileSys.AppDataPath; // Get %APPDATA% folder
-		XmlSerializer xmlSerializer = new(Definitions.Settings.GetType()); // XML Serializer
+		XmlSerializer xmlSerializer = new(Global.Settings.GetType()); // XML Serializer
 
 		if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
 		{
@@ -200,7 +200,7 @@ public static class SettingsSaver
 		}
 
 		StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Settings.gavsettings"); // The place where the file is going to be written
-		xmlSerializer.Serialize(streamWriter, Definitions.Settings);
+		xmlSerializer.Serialize(streamWriter, Global.Settings);
 
 		streamWriter.Dispose();
 	}

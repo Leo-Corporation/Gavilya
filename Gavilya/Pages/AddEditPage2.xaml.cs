@@ -107,13 +107,13 @@ public partial class AddEditPage2 : Page
 		{
 			if (isFromAdd)
 			{
-				AddGame.GameInfo.Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms; // Get platforms
+				AddGame.GameInfo.Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Global.DefaultPlatform } : Platforms; // Get platforms
 				AddGame.GameInfo.Stores = Stores;
 				AddGame.GameInfo.AssociatedTags = Tags;
 				AddGame.GameInfo.Description = DescriptionTextBox.Text;
-				Definitions.Games.Add(AddGame.GameInfo);
+				Global.Games.Add(AddGame.GameInfo);
 
-				GameSaver.Save(Definitions.Games); // Save
+				GameSaver.Save(Global.Games); // Save
 				Global.ReloadAllPages(); // Refresh UI
 
 				AddGame.Close();
@@ -131,8 +131,8 @@ public partial class AddEditPage2 : Page
 					ConvertSteamBtn_Click(this, null);
 				}
 
-				Definitions.Games[Definitions.Games.IndexOf(old)] = GameCard.GameInfo; // Update
-				GameSaver.Save(Definitions.Games); // Save
+				Global.Games[Global.Games.IndexOf(old)] = GameCard.GameInfo; // Update
+				GameSaver.Save(Global.Games); // Save
 
 				Global.ReloadAllPages(); // Refresh UI
 
@@ -202,8 +202,8 @@ public partial class AddEditPage2 : Page
 				GameCard.GameInfo.Platforms = Platforms; // Set
 				GameCard.GameInfo.Stores = Stores; // Set
 
-				Definitions.Games[Definitions.Games.IndexOf(old)] = GameCard.GameInfo; // Update
-				GameSaver.Save(Definitions.Games); // Save
+				Global.Games[Global.Games.IndexOf(old)] = GameCard.GameInfo; // Update
+				GameSaver.Save(Global.Games); // Save
 
 				Global.ReloadAllPages(); // Refresh UI
 

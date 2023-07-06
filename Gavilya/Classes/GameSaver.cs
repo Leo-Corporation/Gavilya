@@ -37,7 +37,7 @@ internal static class GameSaver
 	/// <param name="games">The games to save.</param>
 	internal static void Save(List<GameInfo> games)
 	{
-		string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
+		string filePath = Global.Profiles[Global.Settings.CurrentProfileIndex].SaveFilePath;
 
 		List<GameInfo> gameInfos = games;
 		XmlSerializer xmlSerializer = new(gameInfos.GetType()); // XML Serializer
@@ -88,15 +88,15 @@ internal static class GameSaver
 				XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
 				StreamReader streamReader = new(path); // The path of the file
 
-				Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each GameInfo
+				Global.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each GameInfo
 				streamReader.Dispose();
 
-				Save(Definitions.Games); // Save the games
+				Save(Global.Games); // Save the games
 
 				if (!isFirstRun)
 				{
 					Global.ReloadAllPages(); // Reload all the pages
-					Definitions.MainWindow.PageContent.Content = Definitions.GamesCardsPages; // Change page
+					Global.MainWindow.PageContent.Content = Global.GamesCardsPages; // Change page
 				}
 
 				MessageBox.Show(Properties.Resources.ImportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
@@ -113,18 +113,18 @@ internal static class GameSaver
 	/// </summary>
 	internal static void Load()
 	{
-		string filePath = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].SaveFilePath;
+		string filePath = Global.Profiles[Global.Settings.CurrentProfileIndex].SaveFilePath;
 		if (File.Exists(filePath)) // If there is a save file
 		{
 			XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
 			StreamReader streamReader = new(filePath); // The place where the file is gonna be read
 
-			Definitions.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
+			Global.Games = (List<GameInfo>)xmlSerializer.Deserialize(streamReader); // Re-create each game info
 			streamReader.Dispose();
 		}
 		else
 		{
-			Save(Definitions.Games ?? (new()));
+			Save(Global.Games ?? (new()));
 		}
 	}
 

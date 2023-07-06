@@ -57,7 +57,7 @@ public partial class RecentGamesPage : Page
 				MonthGamePresenter.Children.Clear(); // Clear the games
 				OtherGamePresenter.Children.Clear(); // Clear the games
 
-				if (Definitions.Games.Count > 0) // If there is games
+				if (Global.Games.Count > 0) // If there is games
 				{
 					TodaySection.Visibility = Visibility.Visible; // Visible
 					YesterdaySection.Visibility = Visibility.Visible; // Visible
@@ -67,7 +67,7 @@ public partial class RecentGamesPage : Page
 
 					Dictionary<GameInfo, int> keyValuePairs = new(); // Create a dictionnary
 
-					foreach (GameInfo gameInfo in Definitions.Games) // For each games
+					foreach (GameInfo gameInfo in Global.Games) // For each games
 					{
 						if (!keyValuePairs.ContainsKey(gameInfo))
 						{
@@ -78,11 +78,11 @@ public partial class RecentGamesPage : Page
 					var items = from pair in keyValuePairs orderby pair.Value descending select pair; // Sort
 
 					int c = 0;
-					Definitions.HomePage.RecentBar.Children.Clear(); // Clear all items
+					Global.HomePage.RecentBar.Children.Clear(); // Clear all items
 					foreach (KeyValuePair<GameInfo, int> pair1 in items) // For each item
 					{
 						var gameCard = new GameCard(pair1.Key, GavilyaPages.Recent, true);
-						if (Definitions.Settings.PageId != 1)
+						if (Global.Settings.PageId != 1)
 						{
 							if (Global.IsSameDate(Time.UnixTimeToDateTime(pair1.Key.LastTimePlayed), DateTime.Now))
 							{
@@ -106,14 +106,14 @@ public partial class RecentGamesPage : Page
 							MonthSection.Visibility = MonthGamePresenter.Children.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
 							OtherSection.Visibility = OtherGamePresenter.Children.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
 						}
-						if (c < Definitions.Settings.MaxNumberRecentGamesShown.Value)
+						if (c < Global.Settings.MaxNumberRecentGamesShown.Value)
 						{
-							Definitions.HomePage.RecentBar.Children.Add(new FavoriteGameCard(pair1.Key, gameCard));
+							Global.HomePage.RecentBar.Children.Add(new FavoriteGameCard(pair1.Key, gameCard));
 						}
 						c++;
 					}
 
-					if (Definitions.Games.Count >= 5) // If there are more than 5 games
+					if (Global.Games.Count >= 5) // If there are more than 5 games
 					{
 						// Show a notification about the least used game
 						var gameInfo = items.Last().Key;
@@ -126,14 +126,14 @@ public partial class RecentGamesPage : Page
 
 						var gameCard = cards.FirstOrDefault(x => x.GameInfo == gameInfo);
 
-						Definitions.LeastUsedGames = new()
+						Global.LeastUsedGames = new()
 						{
 							{ gameInfo, gameCard } // Add the game info and the game card
 						}; // Create a new list
 					}
 
-					Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
-					Definitions.HomePage.RecentBar.Visibility = Visibility.Visible;
+					Global.HomePage.RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
+					Global.HomePage.RecentBar.Visibility = Visibility.Visible;
 				}
 				else
 				{
@@ -144,8 +144,8 @@ public partial class RecentGamesPage : Page
 					WelcomeHost.Visibility = Visibility.Visible; // Visible
 
 					WelcomeHost.Children.Add(new WelcomeRecentGames()); // Add "WelcomeRecentGames"
-					Definitions.HomePage.RecentBar.Visibility = Visibility.Collapsed; // Hide
-					Definitions.HomePage.RecentPlaceholder.Visibility = Visibility.Visible; // Show
+					Global.HomePage.RecentBar.Visibility = Visibility.Collapsed; // Hide
+					Global.HomePage.RecentPlaceholder.Visibility = Visibility.Visible; // Show
 				}
 			}
 			catch { }

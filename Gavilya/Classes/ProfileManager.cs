@@ -38,9 +38,9 @@ public static class ProfileManager
 	/// </summary>
 	public static void CreateDefaultProfile()
 	{
-		if (Definitions.Profiles is not null) // If not null
+		if (Global.Profiles is not null) // If not null
 		{
-			Definitions.Profiles.Add(
+			Global.Profiles.Add(
 				new Profile
 				{
 					Name = Global.UserName,
@@ -50,7 +50,7 @@ public static class ProfileManager
 		}
 		else
 		{
-			Definitions.Profiles = new()
+			Global.Profiles = new()
 			{
 				new Profile
 				{
@@ -68,7 +68,7 @@ public static class ProfileManager
 	public static void SaveProfiles()
 	{
 		string AppDataPath = FileSys.AppDataPath; // Get %APPDATA% folder
-		XmlSerializer xmlSerializer = new(Definitions.Profiles.GetType()); // XML Serializer
+		XmlSerializer xmlSerializer = new(Global.Profiles.GetType()); // XML Serializer
 
 		if (!Directory.Exists(AppDataPath + @"\Gavilya")) // If the directory doesn't exist
 		{
@@ -76,7 +76,7 @@ public static class ProfileManager
 		}
 
 		StreamWriter streamWriter = new(AppDataPath + @"\Gavilya\Profiles.gavprofiles"); // The place where the file is going to be written
-		xmlSerializer.Serialize(streamWriter, Definitions.Profiles);
+		xmlSerializer.Serialize(streamWriter, Global.Profiles);
 
 		streamWriter.Dispose();
 	}
@@ -92,7 +92,7 @@ public static class ProfileManager
 			XmlSerializer xmlSerializer = new(typeof(List<Profile>)); // XML Serializer
 			StreamReader streamReader = new(AppDataPath + @"\Gavilya\Profiles.gavprofiles"); // Where the file is going to be read
 
-			Definitions.Profiles = (List<Profile>)xmlSerializer.Deserialize(streamReader); // Read
+			Global.Profiles = (List<Profile>)xmlSerializer.Deserialize(streamReader); // Read
 
 			streamReader.Dispose();
 		}

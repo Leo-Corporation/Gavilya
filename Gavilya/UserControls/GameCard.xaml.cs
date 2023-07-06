@@ -75,7 +75,7 @@ public partial class GameCard : UserControl
 	internal void InitializeUI(GameInfo gameInfo, GavilyaPages gavilyaPages, bool isFromEdit = false, bool recommanded = false)
 	{
 		// Visibility
-		Visibility = !Definitions.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+		Visibility = !Global.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
 
 		// Tooltip
 		PlayToolTip.Content = Properties.Resources.PlayLowerCase + " " + Properties.Resources.PlayTo + gameInfo.Name;
@@ -125,20 +125,20 @@ public partial class GameCard : UserControl
 		if (gameInfo.IsFavorite && !isFromEdit) // If the game is a favorite
 		{
 			FavoriteGameCard = new FavoriteGameCard(gameInfo, this);
-			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
+			Global.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add the game to the favorite bar
 			FavBtn.Content = "\uF71B"; // Change icon
 			FavoriteSideBarItem = new FavoriteSideBarItem(gameInfo, this);
 
-			Definitions.MainWindow.FavoriteSideBar.Children.Add(FavoriteSideBarItem);
+			Global.MainWindow.FavoriteSideBar.Children.Add(FavoriteSideBarItem);
 		}
 
 		if (recommanded)
 		{
-			Definitions.HomePage.RecommandedBar.Children.Add(new FavoriteGameCard(gameInfo, this)); // Add the game to the recommanded bar
+			Global.HomePage.RecommandedBar.Children.Add(new FavoriteGameCard(gameInfo, this)); // Add the game to the recommanded bar
 		}
 
 		// Checkbox visibility
-		if (Definitions.IsGamesCardsPagesCheckBoxesVisible) // If the checkboxes are visibles
+		if (Global.IsGamesCardsPagesCheckBoxesVisible) // If the checkboxes are visibles
 		{
 			CheckBox.Visibility = Visibility.Visible; // Visible
 		}
@@ -196,8 +196,8 @@ public partial class GameCard : UserControl
 
 				Timer.Start(); // Start the timer
 
-				Definitions.RecentGamesPage.LoadGames(); // Reload the games
-				GameSaver.Save(Definitions.Games); // Save the changes
+				Global.RecentGamesPage.LoadGames(); // Reload the games
+				GameSaver.Save(Global.Games); // Save the changes
 			}
 		}
 		else
@@ -212,8 +212,8 @@ public partial class GameCard : UserControl
 
 			Timer.Start(); // Start the timer
 
-			Definitions.RecentGamesPage.LoadGames(); // Reload the games
-			GameSaver.Save(Definitions.Games); // Save the changes
+			Global.RecentGamesPage.LoadGames(); // Reload the games
+			GameSaver.Save(Global.Games); // Save the changes
 		}
 	}
 
@@ -230,8 +230,8 @@ public partial class GameCard : UserControl
 			processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : location;
 		}
 
-		Definitions.GameInfoPage.DisplayTotalTimePlayed((Definitions.GameInfoPage.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage.GameInfo.TotalTimePlayed); // Refresh
-		Definitions.GameInfoPage2.DisplayTotalTimePlayed((Definitions.GameInfoPage2.GameInfo == null) ? GameInfo.TotalTimePlayed : Definitions.GameInfoPage2.GameInfo.TotalTimePlayed); // Refresh
+		Global.GameInfoPage.DisplayTotalTimePlayed((Global.GameInfoPage.GameInfo == null) ? GameInfo.TotalTimePlayed : Global.GameInfoPage.GameInfo.TotalTimePlayed); // Refresh
+		Global.GameInfoPage2.DisplayTotalTimePlayed((Global.GameInfoPage2.GameInfo == null) ? GameInfo.TotalTimePlayed : Global.GameInfoPage2.GameInfo.TotalTimePlayed); // Refresh
 
 		if (Global.IsProcessRunning(processName)) // If the game is running
 		{
@@ -242,7 +242,7 @@ public partial class GameCard : UserControl
 		{
 			if (gameStarted) // If the game has been started
 			{
-				GameSaver.Save(Definitions.Games); // Save
+				GameSaver.Save(Global.Games); // Save
 				if (!GameInfo.AlwaysCheckIfRunning)
 				{
 					Timer.Stop(); // Stop 
@@ -271,8 +271,8 @@ public partial class GameCard : UserControl
 		if (GameInfo.IsFavorite) // If the game is a favorite
 		{
 			GameInfo.IsFavorite = false; // The game is no longer a favorite
-			Definitions.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
-			Definitions.MainWindow.FavoriteSideBar.Children.Remove(FavoriteSideBarItem);
+			Global.HomePage.FavoriteBar.Children.Remove(FavoriteGameCard); // Remove from favorite bar
+			Global.MainWindow.FavoriteSideBar.Children.Remove(FavoriteSideBarItem);
 
 			FavBtn.Content = "\uF710"; // Change icon
 			GameCardBorder.BorderBrush = Global.GetSolidColor("Accent"); // Set the border color			
@@ -281,13 +281,13 @@ public partial class GameCard : UserControl
 		{
 			GameInfo.IsFavorite = true; // Set the game to be a favorite
 			FavoriteGameCard = new FavoriteGameCard(GameInfo, this);
-			Definitions.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
+			Global.HomePage.FavoriteBar.Children.Add(FavoriteGameCard); // Add to favorite bar
 			FavoriteSideBarItem = new FavoriteSideBarItem(GameInfo, this);
-			Definitions.MainWindow.FavoriteSideBar.Children.Add(FavoriteSideBarItem);
+			Global.MainWindow.FavoriteSideBar.Children.Add(FavoriteSideBarItem);
 			FavBtn.Content = "\uF71B"; // Change icon
 			GameCardBorder.BorderBrush = new SolidColorBrush(Color.FromRgb(55, 121, 238)); // Set the border color
 		}
-		GameSaver.Save(Definitions.Games); // Save the changes
+		GameSaver.Save(Global.Games); // Save the changes
 	}
 
 	private void EditBtn_Click(object sender, RoutedEventArgs e)
@@ -299,8 +299,8 @@ public partial class GameCard : UserControl
 	{
 		try
 		{
-			Definitions.GameInfoPage.InitializeUI(GameInfo, this);
-			Definitions.MainWindow.PageContent.Content = Definitions.GameInfoPage;
+			Global.GameInfoPage.InitializeUI(GameInfo, this);
+			Global.MainWindow.PageContent.Content = Global.GameInfoPage;
 		}
 		catch { }
 	}
@@ -323,8 +323,8 @@ public partial class GameCard : UserControl
 
 					Timer.Start(); // Start the timer
 
-					Definitions.RecentGamesPage.LoadGames(); // Reload the games
-					GameSaver.Save(Definitions.Games); // Save the changes
+					Global.RecentGamesPage.LoadGames(); // Reload the games
+					GameSaver.Save(Global.Games); // Save the changes
 				}
 			}
 			else

@@ -35,10 +35,10 @@ public static class ThemeManager
 {
 	public static void ChangeTheme(ThemeInfo themeInfo, string path)
 	{
-		App.Current.Resources.MergedDictionaries.Clear();
+		Application.Current.Resources.MergedDictionaries.Clear();
 		ResourceDictionary resourceDictionary = new();
 		resourceDictionary.Source = new($@"{path}\{themeInfo.FilePath}");
-		App.Current.Resources.MergedDictionaries.Add(resourceDictionary);
+		Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
 	}
 
 	/// <summary>
@@ -54,13 +54,13 @@ public static class ThemeManager
 			Directory.CreateDirectory(themePath);
 			return new()
 			{
-				(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Definitions.Version), "")
+				(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Global.Version), "")
 			};
 		}
 
 		List<(ThemeInfo, string)> installedThemes = new()
 		{
-			(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Definitions.Version), "")
+			(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Global.Version), "")
 		};
 		// If there are themes installed
 		foreach (var subdir in Directory.GetDirectories(themePath))

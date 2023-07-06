@@ -39,47 +39,47 @@ public partial class App : Application
 		SettingsSaver.Load(); // Load the settings
 		Global.ChangeLanguage(); // Change the language
 
-		if (!File.Exists(Definitions.Settings.ThemePath))
+		if (!File.Exists(Global.Settings.ThemePath))
 		{
-			Definitions.Settings.ThemePath = "_default";
+			Global.Settings.ThemePath = "_default";
 		}
 
-		if (Definitions.Settings.ThemePath != "_default") // Load the user defined theme
+		if (Global.Settings.ThemePath != "_default") // Load the user defined theme
 		{			
-			ThemeManager.ChangeTheme(ThemeManager.GetThemeInfoFromPath(Definitions.Settings.ThemePath), Definitions.Settings.ThemePath.Replace(@"\theme.manifest", ""));
+			ThemeManager.ChangeTheme(ThemeManager.GetThemeInfoFromPath(Global.Settings.ThemePath), Global.Settings.ThemePath.Replace(@"\theme.manifest", ""));
 		}
 
-		Definitions.GameInfoPage = new(); // Create the page
-		Definitions.GameInfoPage2 = new(); // Create the page
+		Global.GameInfoPage = new(); // Create the page
+		Global.GameInfoPage2 = new(); // Create the page
 
 		ProfileManager.LoadProfiles(); // Load profiles
 		GameSaver.Load(); // Load the .gav file in the Definitions class
 
-		Definitions.StatGameInfoControl = new(); // New control
-		Definitions.Statistics = new(); // New page
+		Global.StatGameInfoControl = new(); // New control
+		Global.Statistics = new(); // New page
 
-		Definitions.HomePage = new();
+		Global.HomePage = new();
 
 		RecentGamesPage recentGamesPage = new(); // RecentGamesPage
-		Definitions.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
-		Definitions.RecentGamesPage.LoadGames(); // Load the games
+		Global.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
+		Global.RecentGamesPage.LoadGames(); // Load the games
 
 		GamesListPage gamesListPage = new(); // GamesListPage
-		Definitions.GamesListPage = gamesListPage; // Define the GamesListPage
-		Definitions.GamesListPage.LoadGames(); // Load the games
+		Global.GamesListPage = gamesListPage; // Define the GamesListPage
+		Global.GamesListPage.LoadGames(); // Load the games
 
-		Definitions.LibraryPage = new();
-		Definitions.ProfilePage = new();
-		Definitions.SettingsPage = new();
-		Definitions.TagPage = new();		
+		Global.LibraryPage = new();
+		Global.ProfilePage = new();
+		Global.SettingsPage = new();
+		Global.TagPage = new();		
 
-		if (Definitions.Settings.DefaultGavilyaHomePage is null)
+		if (Global.Settings.DefaultGavilyaHomePage is null)
 		{
-			Definitions.Settings.DefaultGavilyaHomePage = Enums.GavilyaWindowPages.Home; // Set default value
+			Global.Settings.DefaultGavilyaHomePage = Enums.GavilyaWindowPages.Home; // Set default value
 			SettingsSaver.Save(); // Save changes
 		}
 
-		if (Definitions.Settings.IsFirstRun) // If it is the app first run
+		if (Global.Settings.IsFirstRun) // If it is the app first run
 		{
 			new FirstRun().Show(); // Show the first run experience
 		}

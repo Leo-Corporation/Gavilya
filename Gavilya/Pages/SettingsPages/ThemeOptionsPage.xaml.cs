@@ -66,7 +66,7 @@ public partial class ThemeOptionsPage : Page
 
 		// 2. Display the available themes
 		int s = 0;
-		var selectedTheme = (Definitions.Settings.ThemePath != "_default") ? ThemeManager.GetThemeInfoFromPath(Definitions.Settings.ThemePath) : null;
+		var selectedTheme = (Global.Settings.ThemePath != "_default") ? ThemeManager.GetThemeInfoFromPath(Global.Settings.ThemePath) : null;
 
 		for (int i = 0; i < InstalledThemes.Count; i++)
 		{
@@ -84,17 +84,17 @@ public partial class ThemeOptionsPage : Page
 		{
 			if (ThemesComboBox.SelectedIndex == 0) // If the default theme is selected
 			{
-				App.Current.Resources.MergedDictionaries.Clear();
+				Application.Current.Resources.MergedDictionaries.Clear();
 				ResourceDictionary resourceDictionary = new(); // Create a resource dictionary
 				resourceDictionary.Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative); // Add source
-				App.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
+				Application.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
 
-				Definitions.Settings.ThemePath = "_default";
+				Global.Settings.ThemePath = "_default";
 				SettingsSaver.Save();
 				return;
 			}
 			ThemeManager.ChangeTheme(InstalledThemes[ThemesComboBox.SelectedIndex].Item1, InstalledThemes[ThemesComboBox.SelectedIndex].Item2);
-			Definitions.Settings.ThemePath = InstalledThemes[ThemesComboBox.SelectedIndex].Item2 + $@"\theme.manifest";
+			Global.Settings.ThemePath = InstalledThemes[ThemesComboBox.SelectedIndex].Item2 + $@"\theme.manifest";
 			SettingsSaver.Save();
 		}
 		catch (IndexOutOfRangeException)

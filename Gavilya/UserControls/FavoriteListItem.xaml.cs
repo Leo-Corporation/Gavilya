@@ -49,7 +49,7 @@ public partial class FavoriteListItem : UserControl
 	private void InitUI()
 	{
 		// Visibility
-		Visibility = !Definitions.DisplayHiddenGames && (GameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+		Visibility = !Global.DisplayHiddenGames && (GameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
 
 		DateTime lastTimePlayed = Global.UnixTimeToDateTime(GameInfo.LastTimePlayed); // Get the date time
 

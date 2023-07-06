@@ -21,7 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Pages;
 using Gavilya.SDK.RAWG;
+using Gavilya.UserControls;
 using Microsoft.Win32;
 using PeyrSharp.Env;
 using RestSharp;
@@ -46,6 +48,160 @@ namespace Gavilya.Classes;
 /// </summary>
 public static class Global
 {
+	/// <summary>
+	/// The <see cref="UserControls.StatGameInfoControl"/> control.
+	/// </summary>
+	internal static StatGameInfoControl StatGameInfoControl { get; set; }
+
+	/// <summary>
+	/// The default platform of a game.
+	/// </summary>
+	public static SDK.RAWG.Platform DefaultPlatform => new() { id = 4, name = "PC", slug = "pc" };
+
+	/// <summary>
+	/// Version of the software (Gavilya).
+	/// </summary>
+	public static string Version => "3.6.0.2307-pre1";
+
+	/// <summary>
+	/// True if the Fps Counter is visible. (default: false)
+	/// </summary>
+	public static bool IsFpsToggled { get; set; } = false;
+
+	/// <summary>
+	/// Contains the least used game(s).
+	/// </summary>
+	public static Dictionary<GameInfo, GameCard> LeastUsedGames { get; set; }
+
+	public static string CurrentAppDirectory => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+
+	public static string BetaVersion
+	{
+		get
+		{
+			FileInfo fileInfo = new(Directory.GetCurrentDirectory() + @"\Gavilya.exe");
+			return $"vNext.{fileInfo.LastWriteTimeUtc.Year.ToString()[2..4]}{fileInfo.LastWriteTime:MM}-{fileInfo.LastWriteTime.Day}-{fileInfo.LastWriteTime.Hour}{fileInfo.LastWriteTime.Minute}";
+		}
+	}
+
+	/// <summary>
+	/// Define if the current build is a preversion of Gavilya, not made for production nor Pre-Release.
+	/// </summary>
+	public static bool IsBeta => false;
+
+
+	/// <summary>
+	/// Gavilya profiles
+	/// </summary>
+	public static List<Profile> Profiles { get; set; }
+
+	/// <summary>
+	/// The Main <see cref="System.Windows.Window"/> of the App.
+	/// </summary>
+	public static MainWindow MainWindow { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.GamesCardsPages"/> of the <see cref="MainWindow"/>.
+	/// </summary>
+	public static GamesCardsPages GamesCardsPages { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.GamesListPage"/> of the <see cref="MainWindow"/>.
+	/// </summary>
+	public static GamesListPage GamesListPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.RecentGamesPage"/> of the <see cref="MainWindow"/>.
+	/// </summary>
+	public static RecentGamesPage RecentGamesPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.Statistics"/> page.
+	/// </summary>
+	public static Statistics Statistics { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.HomePage"/> page.
+	/// </summary>
+	public static HomePage HomePage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.LibraryPage"/> page.
+	/// </summary>
+	public static LibraryPage LibraryPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.ProfilePage"/> page.
+	/// </summary>
+	public static ProfilePage ProfilePage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.SettingsPage"/> page.
+	/// </summary>
+	public static SettingsPage SettingsPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.TagPage"/> page.
+	/// </summary>
+	public static TagPage TagPage { get; set; }
+
+	/// <summary>
+	/// The state of the checkboxes of all the <see cref="UserControls.GameCard"/>.
+	/// </summary>
+	public static bool IsGamesCardsPagesCheckBoxesVisible { get; set; }
+
+	/// <summary>
+	/// The games that are added to the <see cref="MainWindow"/>.
+	/// </summary>
+	public static List<GameInfo> Games { get; set; } = new();
+
+	/// <summary>
+	/// The link of the last version <see cref="string"/>.
+	/// </summary>
+	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Version.txt";
+
+	public static Dictionary<string, int> GuidIndex
+	{
+		get
+		{
+			Dictionary<string, int> gIndex = new();
+			for (int i = 0; i < Settings.GameTags.Count; i++)
+			{
+				gIndex.Add(Settings.GameTags[i].Guid, i);
+			}
+			return gIndex;
+		}
+	}
+
+
+	/// <summary>
+	/// The <see cref="Pages.GameInfoPage"/> of any games.
+	/// </summary>
+	public static GameInfoPage GameInfoPage { get; set; }
+
+	/// <summary>
+	/// The <see cref="Pages.GameInfoPage"/> of any games.
+	/// </summary>
+	public static GameInfoPage GameInfoPage2 { get; set; }
+
+	/// <summary>
+	/// The languages that are available in Gavilya.
+	/// </summary>
+	public static List<string> Languages => new() { "English (United States)", "Français (France)", "中文（简体）" };
+
+	/// <summary>
+	/// The languages codes based on the languages that are available in Gavilya.
+	/// </summary>
+	public static List<string> LanguagesCodes => new() { "en-US", "fr-FR", "zh-CN" };
+
+	public static Settings Settings { get; set; }
+
+	/// <summary>
+	/// <see langword="true"/> if hidden games should display despite being hidden.
+	/// </summary>
+	public static bool DisplayHiddenGames { get; set; } = false;
+
+
 	/// <summary>
 	/// Sets the window icon using <c>\Gavilya.ico</c>.
 	/// </summary>
@@ -510,11 +666,11 @@ public static class Global
 	/// </summary>
 	internal static void ReloadAllPages()
 	{
-		Definitions.MainWindow.FavoriteSideBar.Children.Clear();
-		Definitions.GamesCardsPages.LoadGames(); // Reload the page
-		Definitions.GamesListPage.LoadGames(); // Reload the page
-		Definitions.RecentGamesPage.LoadGames(); // Reload the page
-		Definitions.TagPage.InitUI(); // Reload the page
+		MainWindow.FavoriteSideBar.Children.Clear();
+		GamesCardsPages.LoadGames(); // Reload the page
+		GamesListPage.LoadGames(); // Reload the page
+		RecentGamesPage.LoadGames(); // Reload the page
+		TagPage.InitUI(); // Reload the page
 	}
 
 	/// <summary>
@@ -522,7 +678,7 @@ public static class Global
 	/// </summary>
 	internal static void ChangeLanguage()
 	{
-		switch (Definitions.Settings.Language) // For each case
+		switch (Settings.Language) // For each case
 		{
 			case "_default": // No language
 				break;
@@ -547,8 +703,8 @@ public static class Global
 	/// </summary>
 	internal static void RemoveWelcomeScreen()
 	{
-		Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hide
-		Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
+		GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hide
+		GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
 	}
 
 	/// <summary>
@@ -560,9 +716,9 @@ public static class Global
 		{
 			List<string> gamesNames = new(); // New list
 
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Games.Count; i++)
 			{
-				gamesNames.Add(Definitions.Games[i].Name);
+				gamesNames.Add(Games[i].Name);
 			}
 
 			List<string> sortedGames = new(); // New list
@@ -571,11 +727,11 @@ public static class Global
 			sortedGames.Sort(); // Sort the games
 
 			List<GameInfo> sortedFinal = new(); // Create a new list
-			sortedFinal.AddRange(Definitions.Games); // Assign the list
+			sortedFinal.AddRange(Games); // Assign the list
 
 			for (int i = 0; i < sortedGames.Count; i++)
 			{
-				sortedFinal[i] = Definitions.Games[gamesNames.IndexOf(sortedGames[i])]; // Add the game
+				sortedFinal[i] = Games[gamesNames.IndexOf(sortedGames[i])]; // Add the game
 			}
 
 			if (!alpha)
@@ -583,8 +739,8 @@ public static class Global
 				sortedFinal.Reverse();
 			}
 
-			Definitions.Games = sortedFinal; // Save the changes
-			GameSaver.Save(Definitions.Games); // Save in file
+			Games = sortedFinal; // Save the changes
+			GameSaver.Save(Games); // Save in file
 		}
 		catch (Exception ex)
 		{
@@ -598,12 +754,12 @@ public static class Global
 	/// <returns></returns>
 	internal static int GetTotalTimePlayed()
 	{
-		if (Definitions.Games.Count > 0)
+		if (Games.Count > 0)
 		{
 			int result = 0;
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Games.Count; i++)
 			{
-				result += Definitions.Games[i].TotalTimePlayed; // Add time played
+				result += Games[i].TotalTimePlayed; // Add time played
 			}
 
 			return result; // Return the total
@@ -650,15 +806,15 @@ public static class Global
 	{
 		try
 		{
-			if (!Directory.Exists(Definitions.Settings.SavePath))
+			if (!Directory.Exists(Settings.SavePath))
 			{
-				Directory.CreateDirectory(Definitions.Settings.SavePath); // Create directory
+				Directory.CreateDirectory(Settings.SavePath); // Create directory
 			}
 
 			bool autoSaveAlreadyDone = false; // True if the save was already done
-			int dayOfSave = (Definitions.Settings.AutoSaveDay > DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)) ? DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) : Definitions.Settings.AutoSaveDay.Value;
+			int dayOfSave = (Settings.AutoSaveDay > DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month)) ? DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) : Settings.AutoSaveDay.Value;
 
-			foreach (string file in Directory.GetFiles(Definitions.Settings.SavePath))
+			foreach (string file in Directory.GetFiles(Settings.SavePath))
 			{
 				var dC = File.GetCreationTime(file);
 				if (dC.Year == DateTime.Now.Year && dC.Month == DateTime.Now.Month && dC.Day == dayOfSave)
@@ -675,10 +831,10 @@ public static class Global
 			{
 				if (dayOfSave == DateTime.Now.Day)
 				{
-					if (Definitions.Games.Count > 0 && Directory.Exists(Definitions.Settings.SavePath))
+					if (Games.Count > 0 && Directory.Exists(Settings.SavePath))
 					{
-						string fL = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
-						GameSaver.Export(Definitions.Games, fL); // Export 
+						string fL = $@"{Settings.SavePath}\GavilyaGames_{Profiles[Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
+						GameSaver.Export(Games, fL); // Export 
 					}
 				}
 			}
@@ -692,19 +848,19 @@ public static class Global
 	internal static void CreateJumpLists()
 	{
 		JumpList jumpList = new();
-		for (int i = 0; i < Definitions.Games.Count; i++)
+		for (int i = 0; i < Games.Count; i++)
 		{
-			if (Definitions.Games[i].IsFavorite)
+			if (Games[i].IsFavorite)
 			{
-				bool isExe = !Definitions.Games[i].IsSteam && !Definitions.Games[i].IsUWP;
+				bool isExe = !Games[i].IsSteam && !Games[i].IsUWP;
 
 				JumpTask task = new()
 				{
-					Title = Definitions.Games[i].Name,
-					Arguments = $"{Definitions.Games[i].FileLocation}",
-					Description = Definitions.Games[i].FileLocation,
+					Title = Games[i].Name,
+					Arguments = $"{Games[i].FileLocation}",
+					Description = Games[i].FileLocation,
 					CustomCategory = Properties.Resources.Favorites,
-					IconResourcePath = isExe ? Definitions.Games[i].FileLocation : Assembly.GetEntryAssembly().Location,
+					IconResourcePath = isExe ? Games[i].FileLocation : Assembly.GetEntryAssembly().Location,
 					ApplicationPath = "explorer.exe"
 				};
 
@@ -755,9 +911,9 @@ public static class Global
 	{
 		int favorites = 0;
 
-		for (int i = 0; i < Definitions.Games.Count; i++)
+		for (int i = 0; i < Games.Count; i++)
 		{
-			if (Definitions.Games[i].IsFavorite)
+			if (Games[i].IsFavorite)
 			{
 				favorites++;
 			}
@@ -826,19 +982,19 @@ public static class Global
 		{
 			Dictionary<int, int> gameScores = new();
 
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Games.Count; i++)
 			{
-				gameScores.Add(i, Definitions.Games[i].LastTimePlayed / Definitions.Games[i].TotalTimePlayed);
+				gameScores.Add(i, Games[i].LastTimePlayed / Games[i].TotalTimePlayed);
 			}
 
-			var sort = Definitions.Settings.ShowMoreUnplayedGamesRecommanded.Value
+			var sort = Settings.ShowMoreUnplayedGamesRecommanded.Value
 				? from pair in gameScores orderby pair.Value descending select pair
 				: from pair in gameScores orderby pair.Value ascending select pair; // Sort
 			List<GameInfo> recommandedGames = new();
 
 			foreach (KeyValuePair<int, int> keyValuePair in sort)
 			{
-				recommandedGames.Add(Definitions.Games[keyValuePair.Key]);
+				recommandedGames.Add(Games[keyValuePair.Key]);
 			}
 
 			return recommandedGames.Count > 5

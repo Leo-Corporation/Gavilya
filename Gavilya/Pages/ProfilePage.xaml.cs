@@ -49,7 +49,7 @@ public partial class ProfilePage : Page
 	public ProfilePage()
 	{
 		InitializeComponent();
-		CurrentProfile = Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]; // Current profile
+		CurrentProfile = Global.Profiles[Global.Settings.CurrentProfileIndex]; // Current profile
 
 		CheckedButton = SpotlightTabBtn;
 		InitUI();
@@ -86,16 +86,16 @@ public partial class ProfilePage : Page
 		}
 
 		ProfileNameTxt.Text = CurrentProfile.Name; // Show name
-		TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort} • {Definitions.Games.Count} {(Definitions.Games.Count > 1 ? Properties.Resources.GamesL : Properties.Resources.GameL)}"; // Set text
+		TotalTimePlayedTxt.Text = $"{Global.GetTotalTimePlayed() / 3600}{Properties.Resources.HourShort} • {Global.Games.Count} {(Global.Games.Count > 1 ? Properties.Resources.GamesL : Properties.Resources.GameL)}"; // Set text
 
 		// Get top 3 most played games
 		// Values
 		Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
 
-		for (int i = 0; i < Definitions.Games.Count; i++)
+		for (int i = 0; i < Global.Games.Count; i++)
 		{
-			if (Definitions.Games[i].IsHidden ?? false && !Definitions.DisplayHiddenGames) continue;
-			gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
+			if (Global.Games[i].IsHidden ?? false && !Global.DisplayHiddenGames) continue;
+			gameTimes.Add(Global.Games[i], Global.Games[i].TotalTimePlayed); // Add item
 		}
 
 		var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort
@@ -179,11 +179,11 @@ public partial class ProfilePage : Page
 			// Favorites tab
 			FavoritesTab.Children.Clear();
 
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Global.Games.Count; i++)
 			{
-				if (Definitions.Games[i].IsFavorite)
+				if (Global.Games[i].IsFavorite)
 				{
-					favorites.Add(Definitions.Games[i]); // Add to favorites
+					favorites.Add(Global.Games[i]); // Add to favorites
 				}
 			}
 
@@ -206,17 +206,17 @@ public partial class ProfilePage : Page
 	{
 		ProfileDisplayer.Children.Clear();
 
-		ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[Definitions.Settings.CurrentProfileIndex])); // Add profile 
+		ProfileDisplayer.Children.Add(new ProfileItem(Global.Profiles[Global.Settings.CurrentProfileIndex])); // Add profile 
 
 
 		// Load the profile displayer
-		if (Definitions.Profiles.Count > 1) // If there is more than one profile
+		if (Global.Profiles.Count > 1) // If there is more than one profile
 		{
-			for (int i = 0; i < Definitions.Profiles.Count; i++)
+			for (int i = 0; i < Global.Profiles.Count; i++)
 			{
-				if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex] != Definitions.Profiles[i]) // If not the current profile
+				if (Global.Profiles[Global.Settings.CurrentProfileIndex] != Global.Profiles[i]) // If not the current profile
 				{
-					ProfileDisplayer.Children.Add(new ProfileItem(Definitions.Profiles[i])); // Add profile 
+					ProfileDisplayer.Children.Add(new ProfileItem(Global.Profiles[i])); // Add profile 
 				}
 			}
 		}
@@ -269,7 +269,7 @@ public partial class ProfilePage : Page
 	{
 		HideAllBadges(); // Reset badges
 
-		if (Definitions.Games.Count > 0)
+		if (Global.Games.Count > 0)
 		{
 			TheStartImg.Visibility = Visibility.Visible; // Show
 			VisibleBadges++; // Increment by 1
@@ -321,13 +321,13 @@ public partial class ProfilePage : Page
 
 		LegendaryProgressTxt.Text = $"{Properties.Resources.Progress} {(Global.GetTotalTimePlayed() / 3600 > 5000 ? 1 : Global.GetTotalTimePlayed() / 3600d / 5000d) * 100d:0.00}%"; // Set text
 
-		if (Definitions.Games.Count >= 50)
+		if (Global.Games.Count >= 50)
 		{
 			NeedSpaceOnTheShelvesImg.Visibility = Visibility.Visible; // Show
 			VisibleBadges++; // Increment by 1
 		}
 
-		ShelvesProgressTxt.Text = $"{Properties.Resources.Progress} {(Definitions.Games.Count >= 50 ? 1 : Definitions.Games.Count / 50d) * 100d:0.00}%"; // Set text
+		ShelvesProgressTxt.Text = $"{Properties.Resources.Progress} {(Global.Games.Count >= 50 ? 1 : Global.Games.Count / 50d) * 100d:0.00}%"; // Set text
 
 		MyBadgesTxt.Visibility = (VisibleBadges == 0) ? Visibility.Collapsed : Visibility.Visible;
 	}

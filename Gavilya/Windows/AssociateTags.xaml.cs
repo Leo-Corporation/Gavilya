@@ -48,15 +48,15 @@ public partial class AssociateTags : Window
 
 	private void InitUI()
 	{
-		for (int i = 0; i < Definitions.Settings.GameTags.Count; i++)
+		for (int i = 0; i < Global.Settings.GameTags.Count; i++)
 		{
 			bool check = false;
 			for (int j = 0; j < NewTags.Count; j++)
 			{
-				check = NewTags[j].Guid == Definitions.Settings.GameTags[i].Guid;
+				check = NewTags[j].Guid == Global.Settings.GameTags[i].Guid;
 				if (check) break;
 			}
-			TagsDisplayer.Children.Add(new TagSelectItem(Definitions.Settings.GameTags[i], check));
+			TagsDisplayer.Children.Add(new TagSelectItem(Global.Settings.GameTags[i], check));
 		}
 	}
 

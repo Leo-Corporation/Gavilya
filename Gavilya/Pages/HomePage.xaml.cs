@@ -46,17 +46,17 @@ public partial class HomePage : Page
 	internal void InitUI()
 	{
 		// Welcome message
-		HelloTxt.Text = $"{Properties.Resources.Hello} {Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}{Properties.Resources.ExclamationMark}"; // Set text
+		HelloTxt.Text = $"{Properties.Resources.Hello} {Global.Profiles[Global.Settings.CurrentProfileIndex].Name}{Properties.Resources.ExclamationMark}"; // Set text
 
 		// Load "Statistics" page
-		Statistics.Content = Definitions.Statistics; // Set content to Statistics page
+		Statistics.Content = Global.Statistics; // Set content to Statistics page
 
 		// Place holder
 		RecentPlaceholder.Children.Add(new WelcomeRecentGames() { VerticalAlignment = VerticalAlignment.Center });
 		RecentPlaceholder.Visibility = Visibility.Collapsed; // Hide
 		RecentBar.Visibility = Visibility.Visible;
 
-		if (Definitions.Games.Count < 3)
+		if (Global.Games.Count < 3)
 		{
 			RandomGameBtn.Visibility = Visibility.Collapsed;
 		}
@@ -72,7 +72,7 @@ public partial class HomePage : Page
 	private void RandomGameBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Random random = new();
-		int i = random.Next(0, Definitions.Games.Count - 1);
-		new RandomGameWindow(Definitions.Games[i], i).Show();
+		int i = random.Next(0, Global.Games.Count - 1);
+		new RandomGameWindow(Global.Games[i], i).Show();
     }
 }

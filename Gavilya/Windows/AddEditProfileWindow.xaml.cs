@@ -88,7 +88,7 @@ public partial class AddEditProfileWindow : Window
 			if (EditMode == EditMode.Edit) // If edit
 			{
 				EditProfile.Name = nameTxt.Text; // Set name
-				Definitions.Profiles[Definitions.Profiles.IndexOf(BaseProfile)] = EditProfile; // Edit profile
+				Global.Profiles[Global.Profiles.IndexOf(BaseProfile)] = EditProfile; // Edit profile
 			}
 			else
 			{
@@ -100,12 +100,12 @@ public partial class AddEditProfileWindow : Window
 				Random random = new();
 				CurrentProfile.Name = nameTxt.Text;
 				CurrentProfile.SaveFilePath = $@"{FileSys.AppDataPath}\Gavilya\Games-{CurrentProfile.Name}-{random.Next(0, 9999999)}.gav";
-				Definitions.Profiles.Add(CurrentProfile); // Add profile
+				Global.Profiles.Add(CurrentProfile); // Add profile
 			}
 			ProfileManager.SaveProfiles();
 
-			Definitions.MainWindow.LoadProfilesUI(); // Refresh
-			Definitions.ProfilePage.InitUI();
+			Global.MainWindow.LoadProfilesUI(); // Refresh
+			Global.ProfilePage.InitUI();
 			Close(); // Closes the window 
 		}
 	}
