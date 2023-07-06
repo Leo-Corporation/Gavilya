@@ -202,24 +202,3 @@ public static class Definitions
 	/// </summary>
 	public static bool DisplayHiddenGames { get; set; } = false;
 }
-
-/// <summary>
-/// The actions when a <see cref="Windows.SearchGameCover"/> window is opened.
-/// </summary>
-public enum GameAssociationActions
-{
-	/// <summary>
-	/// Search for a game.
-	/// </summary>
-	Search,
-
-	/// <summary>
-	/// Associate a game.
-	/// </summary>
-	Associate,
-
-	/// <summary>
-	/// Search the cover and associate the game ID to it.
-	/// </summary>
-	Both
-}
