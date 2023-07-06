@@ -47,7 +47,7 @@ public static class Definitions
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "3.5.0.2305";
+	public static string Version => "3.6.0.2307-pre1";
 
 	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)
