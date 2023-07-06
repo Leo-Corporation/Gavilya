@@ -56,8 +56,8 @@ public partial class AddEditPage : Page
 		InitializeComponent();
 		AddGame = addGame; // Set
 		isFromAdd = true; // Set
-		isUWP = addGame.IsUWP; // Set
-		isSteam = addGame.IsSteam; // Set
+		isUWP = addGame.GameInfo.IsUWP; // Set
+		isSteam = addGame.GameInfo.IsSteam; // Set
 		RAWGID = -1; // -1 => Default value, no assigned RAWG ID.
 		AddEditPage2 = addEditPage2;
 
@@ -164,24 +164,24 @@ public partial class AddEditPage : Page
 
 		if (isFromAdd)
 		{
-			AddGame.RAWGID = RAWGID; // Set
-			AddGame.GameVersion = VersionTextBox.Text; // Set
-			AddGame.GameName = NameTextBox.Text; // Set
+			AddGame.GameInfo.RAWGID = RAWGID; // Set
+			AddGame.GameInfo.Version = VersionTextBox.Text; // Set
+			AddGame.GameInfo.Name = NameTextBox.Text; // Set
 			if (isUWP)
 			{
-				AddGame.GameLocation = $@"shell:appsFolder\{PackageFamilyNameTextBox.Text}!{AppIdTextBox.Text}"; // Set
+				AddGame.GameInfo.FileLocation = $@"shell:appsFolder\{PackageFamilyNameTextBox.Text}!{AppIdTextBox.Text}"; // Set
 			}
 			else if (isSteam)
 			{
-				AddGame.GameLocation = $"steam://rungameid/{SteamAppIdTextBox.Text}"; // Set
+				AddGame.GameInfo.FileLocation = $"steam://rungameid/{SteamAppIdTextBox.Text}"; // Set
 			}
 			else
 			{
-				AddGame.GameLocation = GameLocation; // Set
+				AddGame.GameInfo.FileLocation = GameLocation; // Set
 			}
 
 
-			AddGame.GameIconLocation = GameIconLocation; // Set
+			AddGame.GameInfo.IconFileLocation = GameIconLocation; // Set
 			AddGame.ChangePage(1); // Change page
 		}
 		else
@@ -260,7 +260,7 @@ public partial class AddEditPage : Page
 				GameLocation = files[0]; // Set
 				if (isFromAdd)
 				{
-					AddGame.GameDescription = string.Empty; // Reset
+					AddGame.GameInfo.Description = string.Empty; // Reset
 					GameIconLocation = string.Empty; // Reset 
 				}
 
@@ -309,7 +309,7 @@ public partial class AddEditPage : Page
 	{
 		if (isFromAdd)
 		{
-			AddGame.Hidden = HideChk.IsChecked;
+			AddGame.GameInfo.IsHidden = HideChk.IsChecked;
 		}
 		else
 		{

@@ -35,25 +35,36 @@ namespace Gavilya.Windows;
 /// </summary>
 public partial class AddGame : Window
 {
-	public string GameIconLocation = string.Empty;
-	public string GameDescription = string.Empty; // The description of the game
-	public List<SDK.RAWG.Platform> Platforms = new();
-	public List<SDK.RAWG.Store> Stores = new();
-	public int RAWGID = -1;
-	public string GameName = string.Empty;
-	public string GameVersion = string.Empty;
-	public string GameLocation = string.Empty;
-	internal bool? Hidden { get; set; }
-	public bool IsUWP { get; set; }
-	public bool IsSteam { get; set; }
+	public GameInfo GameInfo { get; set; }
 
 	readonly AddEditPage AddEditPage;
 	readonly AddEditPage2 AddEditPage2;
 	public AddGame(bool isUWP, bool isSteam)
 	{
 		InitializeComponent();
-		IsUWP = isUWP; // Set
-		IsSteam = isSteam; // Set
+
+		GameInfo = new()
+		{
+			IsUWP = isUWP,
+			IsSteam = isSteam,
+			IsHidden = false,
+			IconFileLocation = string.Empty,
+			Description = string.Empty,
+			Platforms = new(),
+			Stores = new(),
+			Name = string.Empty,
+			Version = string.Empty,
+			FileLocation = string.Empty,
+			IsFavorite = false,
+			RAWGID = -1,
+			AssociatedTags = new(),
+			ProcessName = string.Empty,
+			TotalTimePlayed = 0,
+			LastTimePlayed = 0,
+			AlwaysCheckIfRunning = false
+		};
+
+
 		AddEditPage2 = new(this);
 		AddEditPage = new(this, AddEditPage2);
 

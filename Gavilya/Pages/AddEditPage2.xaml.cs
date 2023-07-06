@@ -58,7 +58,7 @@ public partial class AddEditPage2 : Page
 		isFromAdd = true;
 		Platforms = new();
 		Stores = new();
-		RAWGID = AddGame.RAWGID;
+		RAWGID = AddGame.GameInfo.RAWGID;
 		Tags = new();
 	}
 
@@ -107,26 +107,11 @@ public partial class AddEditPage2 : Page
 		{
 			if (isFromAdd)
 			{
-				Definitions.Games.Add(new()
-				{
-					Name = AddGame.GameName, // Set value
-					Version = AddGame.GameVersion, // Set value
-					Description = DescriptionTextBox.Text, // Set value
-					FileLocation = AddGame.GameLocation, // Set value
-					IconFileLocation = AddGame.GameIconLocation, // Set value
-					IsFavorite = false, // Set value
-					RAWGID = RAWGID, // Set value
-					LastTimePlayed = 0, // Set value
-					TotalTimePlayed = 0, // Set value
-					ProcessName = "", // Set value
-					Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
-					Stores = Stores,
-					AlwaysCheckIfRunning = false,
-					IsUWP = AddGame.IsUWP,
-					IsSteam = AddGame.IsSteam,
-					IsHidden = AddGame.Hidden,
-					AssociatedTags = Tags
-				});
+				AddGame.GameInfo.Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms; // Get platforms
+				AddGame.GameInfo.Stores = Stores;
+				AddGame.GameInfo.AssociatedTags = Tags;
+				AddGame.GameInfo.Description = DescriptionTextBox.Text;
+				Definitions.Games.Add(AddGame.GameInfo);
 
 				GameSaver.Save(Definitions.Games); // Save
 				Global.ReloadAllPages(); // Refresh UI
