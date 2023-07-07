@@ -306,6 +306,7 @@
 						</StackPanel>
 
 						<WrapPanel x:Name="AchievementsDisplayer" />
+						<uc:NoAchievementsItem x:Name="NoAchievements" Visibility="Collapsed"/>
 					</StackPanel>
 				</Grid>
 			</Grid>

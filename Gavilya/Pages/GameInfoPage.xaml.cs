@@ -434,10 +434,14 @@ public partial class GameInfoPage : Page
 			{
 				AchievementsDisplayer.Children.Add(new AchievementItem(achievement)); // Add new achievement
 			}
+
+			NoAchievements.Visibility = Visibility.Collapsed;
+			AchievementsDisplayer.Visibility = Visibility.Visible;
 		}
 		else
 		{
-			AchievementsDisplayer.Children.Add(new NoAchievementsItem()); // Add a message
+			NoAchievements.Visibility = Visibility.Visible;
+			AchievementsDisplayer.Visibility = Visibility.Collapsed;
 		}
 	}
 
