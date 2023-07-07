@@ -101,7 +101,7 @@ public partial class AddEditPage2 : Page
 		}
 	}
 
-	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	internal void NextBtn_Click(object sender, RoutedEventArgs e)
 	{
 		try
 		{
@@ -111,12 +111,7 @@ public partial class AddEditPage2 : Page
 				AddGame.GameInfo.Stores = Stores;
 				AddGame.GameInfo.AssociatedTags = Tags;
 				AddGame.GameInfo.Description = DescriptionTextBox.Text;
-				Global.Games.Add(AddGame.GameInfo);
-
-				GameSaver.Save(Global.Games); // Save
-				Global.ReloadAllPages(); // Refresh UI
-
-				AddGame.Close();
+				AddGame.ChangePage(2); // Change page				
 			}
 			else
 			{
@@ -131,12 +126,7 @@ public partial class AddEditPage2 : Page
 					ConvertSteamBtn_Click(this, null);
 				}
 
-				Global.Games[Global.Games.IndexOf(old)] = GameCard.GameInfo; // Update
-				GameSaver.Save(Global.Games); // Save
-
-				Global.ReloadAllPages(); // Refresh UI
-
-				EditGame.Close();
+				EditGame.ChangePage(2);
 			}
 		}
 		catch (Exception ex)

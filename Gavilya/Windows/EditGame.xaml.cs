@@ -49,6 +49,7 @@ public partial class EditGame : Window
 
 	readonly AddEditPage AddEditPage;
 	readonly AddEditPage2 AddEditPage2;
+	readonly AddEditPage3 AddEditPage3;
 
 	/// <summary>
 	/// Window where the user can edit a game
@@ -59,6 +60,7 @@ public partial class EditGame : Window
 		GameCard = gameCard; // Pass the arg
 
 		AddEditPage2 = new(this, GameCard);
+		AddEditPage3 = new(this, GameCard);
 		AddEditPage = new(this, GameCard, AddEditPage2);
 
 		ChangePage(0);
@@ -70,26 +72,62 @@ public partial class EditGame : Window
 		{
 			0 => AddEditPage,
 			1 => AddEditPage2,
+			2 => AddEditPage3,
 			_ => AddEditPage
 		}; // Set
 
-		if (id == 1)
+		if (id == 0)
 		{
+			LineBorder.Background = Global.GetSolidColor("LightForeground");
+			NumberBorder.Background = Global.GetSolidColor("LightForeground");
+			Page2Btn.Foreground = Global.GetSolidColor("LightForeground");
+
+			LineBorder2.Background = Global.GetSolidColor("LightForeground");
+			LineBorder3.Background = Global.GetSolidColor("LightForeground");
+			NumberBorder3.Background = Global.GetSolidColor("LightForeground");
+			Page3Btn.Foreground = Global.GetSolidColor("LightForeground");
+
+
+			_1Txt.Visibility = Visibility.Visible;
+			CheckTxt.Visibility = Visibility.Collapsed;
+
+			_2Txt.Visibility = Visibility.Visible;
+			CheckTxt2.Visibility = Visibility.Collapsed;
+
+		}
+		else if (id == 1)
+		{
+			LineBorder2.Background = Global.GetSolidColor("LightForeground");
+			LineBorder3.Background = Global.GetSolidColor("LightForeground");
+			NumberBorder3.Background = Global.GetSolidColor("LightForeground");
+			Page3Btn.Foreground = Global.GetSolidColor("LightForeground");
+
 			LineBorder.Background = Global.GetSolidColor("Accent");
 			NumberBorder.Background = Global.GetSolidColor("Accent");
 			Page2Btn.Foreground = Global.GetSolidColor("Accent");
 
 			_1Txt.Visibility = Visibility.Collapsed;
 			CheckTxt.Visibility = Visibility.Visible;
+
+			_2Txt.Visibility = Visibility.Visible;
+			CheckTxt2.Visibility = Visibility.Collapsed;
 		}
 		else
 		{
-			LineBorder.Background = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
-			NumberBorder.Background = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
-			Page2Btn.Foreground = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
+			LineBorder.Background = Global.GetSolidColor("Accent");
+			NumberBorder.Background = Global.GetSolidColor("Accent");
+			Page2Btn.Foreground = Global.GetSolidColor("Accent");
 
-			_1Txt.Visibility = Visibility.Visible;
-			CheckTxt.Visibility = Visibility.Collapsed;
+			LineBorder2.Background = Global.GetSolidColor("Accent");
+			LineBorder3.Background = Global.GetSolidColor("Accent");
+			NumberBorder3.Background = Global.GetSolidColor("Accent");
+			Page3Btn.Foreground = Global.GetSolidColor("Accent");
+
+			_1Txt.Visibility = Visibility.Collapsed;
+			CheckTxt.Visibility = Visibility.Visible;
+
+			_2Txt.Visibility = Visibility.Collapsed;
+			CheckTxt2.Visibility = Visibility.Visible;
 		}
 	}
 
@@ -111,5 +149,10 @@ public partial class EditGame : Window
 	private void Page1Btn_Click(object sender, RoutedEventArgs e)
 	{
 		ChangePage(0);
+	}
+
+	private void Page3Btn_Click(object sender, RoutedEventArgs e)
+	{
+		AddEditPage2.NextBtn_Click(this, e);
 	}
 }
