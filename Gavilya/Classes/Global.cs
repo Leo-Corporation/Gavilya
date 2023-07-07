@@ -984,7 +984,7 @@ public static class Global
 
 			for (int i = 0; i < Games.Count; i++)
 			{
-				gameScores.Add(i, Games[i].LastTimePlayed / Games[i].TotalTimePlayed);
+				gameScores.Add(i, Games[i].LastTimePlayed / (Games[i].TotalTimePlayed + 1));
 			}
 
 			var sort = Settings.ShowMoreUnplayedGamesRecommanded.Value
