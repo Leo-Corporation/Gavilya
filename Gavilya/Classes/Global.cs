@@ -61,7 +61,7 @@ public static class Global
 	/// <summary>
 	/// Version of the software (Gavilya).
 	/// </summary>
-	public static string Version => "3.6.0.2307-pre1";
+	public static string Version => "3.6.0.2307-rc1";
 
 	/// <summary>
 	/// True if the Fps Counter is visible. (default: false)
