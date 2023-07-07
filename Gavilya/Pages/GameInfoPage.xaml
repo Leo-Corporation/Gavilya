@@ -305,7 +305,7 @@
 							</Button>
 						</StackPanel>
 
-						<StackPanel x:Name="AchievementsDisplayer" />
+						<WrapPanel x:Name="AchievementsDisplayer" />
 					</StackPanel>
 				</Grid>
 			</Grid>

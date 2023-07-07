@@ -52,7 +52,7 @@ public partial class AchievementItem : UserControl
 			var image = new BitmapImage();
 			image.BeginInit();
 			image.UriSource = new Uri(achievement.image);
-			image.DecodePixelWidth = 50;
+			image.DecodePixelWidth = 100;
 			image.EndInit();
 
 			AchievementImg.Source = image; // Set the image
