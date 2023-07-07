@@ -981,4 +981,7 @@
   <data name="ThemesImport" xml:space="preserve">
     <value>Import a theme</value>
   </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
 </root>

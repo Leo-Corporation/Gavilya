@@ -45,23 +45,23 @@ public partial class Statistics : Page
 
 	internal void InitUI()
 	{
-		if (Definitions.Games.Count > 0)
+		if (Global.Games.Count > 0)
 		{
 			BorderContent.Visibility = Visibility.Visible; // Show
 			PlaceholderBorder.Visibility = Visibility.Collapsed; // Hide
 
 			// Controls
-			Definitions.StatGameInfoControl = (StatGameInfoControl)GameInfoDisplayer.Children[0]; // Set content
+			Global.StatGameInfoControl = (StatGameInfoControl)GameInfoDisplayer.Children[0]; // Set content
 			GamesInfoDisplayer.Children.Clear();
 
 			// Values
 			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
 			List<GameInfo> mostPlayed = new(); // Create list
 
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Global.Games.Count; i++)
 			{
-				if (Definitions.Games[i].IsHidden ?? false && !Definitions.DisplayHiddenGames) continue;
-				gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
+				if (Global.Games[i].IsHidden ?? false && !Global.DisplayHiddenGames) continue;
+				gameTimes.Add(Global.Games[i], Global.Games[i].TotalTimePlayed); // Add item
 			}
 
 			var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort
@@ -117,7 +117,7 @@ public partial class Statistics : Page
 	bool isDescending = true;
 	private void SortBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Definitions.Games.Count > 0)
+		if (Global.Games.Count > 0)
 		{
 			GamesInfoDisplayer.Children.Clear(); // Clear
 			isDescending = !isDescending; // Set
@@ -127,9 +127,9 @@ public partial class Statistics : Page
 			Dictionary<GameInfo, int> gameTimes = new(); // Create dictionnary
 			List<GameInfo> mostPlayed = new(); // Create list
 
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Global.Games.Count; i++)
 			{
-				gameTimes.Add(Definitions.Games[i], Definitions.Games[i].TotalTimePlayed); // Add item
+				gameTimes.Add(Global.Games[i], Global.Games[i].TotalTimePlayed); // Add item
 			}
 
 			var items = from pair in gameTimes orderby pair.Value descending select pair; // Sort

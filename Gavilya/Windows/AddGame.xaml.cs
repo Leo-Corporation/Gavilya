@@ -35,27 +35,40 @@ namespace Gavilya.Windows;
 /// </summary>
 public partial class AddGame : Window
 {
-	public string GameIconLocation = string.Empty;
-	public string GameDescription = string.Empty; // The description of the game
-	public List<SDK.RAWG.Platform> Platforms = new();
-	public List<SDK.RAWG.Store> Stores = new();
-	public int RAWGID = -1;
-	public string GameName = string.Empty;
-	public string GameVersion = string.Empty;
-	public string GameLocation = string.Empty;
-	internal bool? Hidden { get; set; }
-	public bool IsUWP { get; set; }
-	public bool IsSteam { get; set; }
+	public GameInfo GameInfo { get; set; }
 
 	readonly AddEditPage AddEditPage;
 	readonly AddEditPage2 AddEditPage2;
+	readonly AddEditPage3 AddEditPage3;
 	public AddGame(bool isUWP, bool isSteam)
 	{
 		InitializeComponent();
-		IsUWP = isUWP; // Set
-		IsSteam = isSteam; // Set
+
+		GameInfo = new()
+		{
+			IsUWP = isUWP,
+			IsSteam = isSteam,
+			IsHidden = false,
+			IconFileLocation = string.Empty,
+			Description = string.Empty,
+			Platforms = new(),
+			Stores = new(),
+			Name = string.Empty,
+			Version = string.Empty,
+			FileLocation = string.Empty,
+			IsFavorite = false,
+			RAWGID = -1,
+			AssociatedTags = new(),
+			ProcessName = string.Empty,
+			TotalTimePlayed = 0,
+			LastTimePlayed = 0,
+			AlwaysCheckIfRunning = false
+		};
+
+
 		AddEditPage2 = new(this);
 		AddEditPage = new(this, AddEditPage2);
+		AddEditPage3 = new(this);
 
 		ChangePage(0);
 	}
@@ -66,26 +79,62 @@ public partial class AddGame : Window
 		{
 			0 => AddEditPage,
 			1 => AddEditPage2,
+			2 => AddEditPage3,
 			_ => AddEditPage
 		}; // Set
 
-		if (id == 1)
+		if (id == 0)
 		{
-			LineBorder.Background = Definitions.HomeButtonBackColor;
-			NumberBorder.Background = Definitions.HomeButtonBackColor;
-			Page2Btn.Foreground = Definitions.HomeButtonBackColor;
+			LineBorder.Background = Global.GetSolidColor("LightForeground");
+			NumberBorder.Background = Global.GetSolidColor("LightForeground");
+			Page2Btn.Foreground = Global.GetSolidColor("LightForeground");
 
-			_1Txt.Visibility = Visibility.Collapsed;
-			CheckTxt.Visibility = Visibility.Visible;
-		}
-		else
-		{
-			LineBorder.Background = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
-			NumberBorder.Background = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
-			Page2Btn.Foreground = new SolidColorBrush { Color = Color.FromRgb(50, 50, 70) };
+			LineBorder2.Background = Global.GetSolidColor("LightForeground");
+			LineBorder3.Background = Global.GetSolidColor("LightForeground");
+			NumberBorder3.Background = Global.GetSolidColor("LightForeground");
+			Page3Btn.Foreground = Global.GetSolidColor("LightForeground");
+
 
 			_1Txt.Visibility = Visibility.Visible;
 			CheckTxt.Visibility = Visibility.Collapsed;
+
+			_2Txt.Visibility = Visibility.Visible;
+			CheckTxt2.Visibility = Visibility.Collapsed;
+
+		}
+		else if (id == 1)
+		{
+			LineBorder2.Background = Global.GetSolidColor("LightForeground");
+			LineBorder3.Background = Global.GetSolidColor("LightForeground");
+			NumberBorder3.Background = Global.GetSolidColor("LightForeground");
+			Page3Btn.Foreground = Global.GetSolidColor("LightForeground");
+
+			LineBorder.Background = Global.GetSolidColor("Accent");
+			NumberBorder.Background = Global.GetSolidColor("Accent");
+			Page2Btn.Foreground = Global.GetSolidColor("Accent");
+
+			_1Txt.Visibility = Visibility.Collapsed;
+			CheckTxt.Visibility = Visibility.Visible;
+
+			_2Txt.Visibility = Visibility.Visible;
+			CheckTxt2.Visibility = Visibility.Collapsed;
+		}
+		else
+		{
+			LineBorder.Background = Global.GetSolidColor("Accent");
+			NumberBorder.Background = Global.GetSolidColor("Accent");
+			Page2Btn.Foreground = Global.GetSolidColor("Accent");
+
+			LineBorder2.Background = Global.GetSolidColor("Accent");
+			LineBorder3.Background = Global.GetSolidColor("Accent");
+			NumberBorder3.Background = Global.GetSolidColor("Accent");
+			Page3Btn.Foreground = Global.GetSolidColor("Accent");
+
+			_1Txt.Visibility = Visibility.Collapsed;
+			CheckTxt.Visibility = Visibility.Visible;
+
+			_2Txt.Visibility = Visibility.Collapsed;
+			CheckTxt2.Visibility = Visibility.Visible;
 		}
 	}
 
@@ -120,5 +169,9 @@ public partial class AddGame : Window
 	private void Page1Btn_Click(object sender, RoutedEventArgs e)
 	{
 		ChangePage(0);
+	}
+	private void Page3Btn_Click(object sender, RoutedEventArgs e)
+	{
+		AddEditPage2.NextBtn_Click(this, e);
 	}
 }

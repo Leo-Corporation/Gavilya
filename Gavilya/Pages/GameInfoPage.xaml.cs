@@ -159,7 +159,7 @@ public partial class GameInfoPage : Page
 			if (gameInfo.Stores.Count == 0)
 			{
 				gameInfo.Stores = await Global.GetStoresAsync(gameInfo.RAWGID);
-				GameSaver.Save(Definitions.Games); // Save
+				GameSaver.Save(Global.Games); // Save
 			}
 
 			for (int i = 0; i < gameInfo.Stores.Count; i++)
@@ -208,7 +208,7 @@ public partial class GameInfoPage : Page
 				if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 				{
 					gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
-					GameSaver.Save(Definitions.Games); // Save the changes
+					GameSaver.Save(Global.Games); // Save the changes
 
 					gameCard.Timer.Start(); // Start the timer
 
@@ -218,8 +218,8 @@ public partial class GameInfoPage : Page
 				else if (parentUIElement is GameItem gameItem) // Create a game item
 				{
 					gameItem.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
-					Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
-					GameSaver.Save(Definitions.Games); // Save the changes
+					Global.Games[Global.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
+					GameSaver.Save(Global.Games); // Save the changes
 
 					gameItem.Timer.Start();
 
@@ -227,7 +227,7 @@ public partial class GameInfoPage : Page
 					LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
 				}
 
-				Definitions.RecentGamesPage.LoadGames(); // Reload the games
+				Global.RecentGamesPage.LoadGames(); // Reload the games
 			}
 		}
 		else // If is UWP
@@ -238,7 +238,7 @@ public partial class GameInfoPage : Page
 			if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 			{
 				gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
-				GameSaver.Save(Definitions.Games); // Save the changes
+				GameSaver.Save(Global.Games); // Save the changes
 
 				gameCard.Timer.Start(); // Start the timer
 
@@ -248,8 +248,8 @@ public partial class GameInfoPage : Page
 			else if (parentUIElement is GameItem gameItem) // Create a game item
 			{
 				gameItem.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
-				Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
-				GameSaver.Save(Definitions.Games); // Save the changes
+				Global.Games[Global.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
+				GameSaver.Save(Global.Games); // Save the changes
 
 				gameItem.Timer.Start();
 
@@ -257,13 +257,13 @@ public partial class GameInfoPage : Page
 				LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
 			}
 
-			Definitions.RecentGamesPage.LoadGames(); // Reload the games
+			Global.RecentGamesPage.LoadGames(); // Reload the games
 		}
 	}
 
 	private void Timer_Tick(object sender, EventArgs e)
 	{
-		string processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : System.IO.Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
+		string processName = (!string.IsNullOrEmpty(GameInfo.ProcessName)) ? GameInfo.ProcessName : Path.GetFileNameWithoutExtension(GameInfo.FileLocation); // Get the process name
 
 		if (Global.IsProcessRunning(processName)) // If the game is running
 		{
@@ -275,7 +275,7 @@ public partial class GameInfoPage : Page
 		{
 			if (gameStarted) // If the game has been started
 			{
-				GameSaver.Save(Definitions.Games); // Save
+				GameSaver.Save(Global.Games); // Save
 				DisplayTotalTimePlayed(GameInfo.TotalTimePlayed); // Update the text
 			}
 		}
@@ -320,12 +320,12 @@ public partial class GameInfoPage : Page
 	private void FavBtn_Click(object sender, RoutedEventArgs e)
 	{
 		GameInfo.IsFavorite = !GameInfo.IsFavorite;
-		Definitions.Games[Definitions.Games.IndexOf(GameInfo)] = GameInfo;
+		Global.Games[Global.Games.IndexOf(GameInfo)] = GameInfo;
 
 		FavBtn.Content = GameInfo.IsFavorite ? "\uF71B" : "\uF710"; // Set text
 
-		GameSaver.Save(Definitions.Games); // Save changes
-		Definitions.GamesCardsPages.LoadGames();
+		GameSaver.Save(Global.Games); // Save changes
+		Global.GamesCardsPages.LoadGames();
 	}
 
 
@@ -434,10 +434,14 @@ public partial class GameInfoPage : Page
 			{
 				AchievementsDisplayer.Children.Add(new AchievementItem(achievement)); // Add new achievement
 			}
+
+			NoAchievements.Visibility = Visibility.Collapsed;
+			AchievementsDisplayer.Visibility = Visibility.Visible;
 		}
 		else
 		{
-			AchievementsDisplayer.Children.Add(new NoAchievementsItem()); // Add a message
+			NoAchievements.Visibility = Visibility.Visible;
+			AchievementsDisplayer.Visibility = Visibility.Collapsed;
 		}
 	}
 
@@ -493,7 +497,7 @@ public partial class GameInfoPage : Page
 					if (parentUIElement is GameCard gameCard) // If the parent element is a game card
 					{
 						gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
-						GameSaver.Save(Definitions.Games); // Save the changes
+						GameSaver.Save(Global.Games); // Save the changes
 
 						gameCard.Timer.Start(); // Start the timer
 
@@ -503,8 +507,8 @@ public partial class GameInfoPage : Page
 					else if (parentUIElement is GameItem gameItem) // Create a game item
 					{
 						gameItem.GameInfo.LastTimePlayed = Sys.UnixTime; // Set the last time played
-						Definitions.Games[Definitions.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
-						GameSaver.Save(Definitions.Games); // Save the changes
+						Global.Games[Global.Games.IndexOf(gameItem.GameInfo)].LastTimePlayed = gameItem.GameInfo.LastTimePlayed; // Update the games
+						GameSaver.Save(Global.Games); // Save the changes
 
 						gameItem.Timer.Start();
 
@@ -512,7 +516,7 @@ public partial class GameInfoPage : Page
 						LastTimePlayedTxt.Text = $"{LastTimePlayed.Day} {Global.NumberToMonth(LastTimePlayed.Month)} {LastTimePlayed.Year}"; // Last time played
 					}
 
-					Definitions.RecentGamesPage.LoadGames(); // Reload the games
+					Global.RecentGamesPage.LoadGames(); // Reload the games
 				}
 			}
 			else

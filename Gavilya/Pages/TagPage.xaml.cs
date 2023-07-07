@@ -42,13 +42,13 @@ public partial class TagPage : Page
 	internal void InitUI()
 	{
 		SectionDisplayer.Children.Clear();
-		for (int i = 0; i < Definitions.Settings.GameTags.Count; i++)
+		for (int i = 0; i < Global.Settings.GameTags.Count; i++)
 		{
-			SectionDisplayer.Children.Add(new TagCategory(Definitions.Settings.GameTags[i]));
+			SectionDisplayer.Children.Add(new TagCategory(Global.Settings.GameTags[i]));
 		}
 		SectionDisplayer.Children.Add(new TagCategory(new(Properties.Resources.Other, "#eeeeee")));
 
-		if (Definitions.Games.Count == 0)
+		if (Global.Games.Count == 0)
 		{
 			WelcomeAddGames welcomeAddGames = new()
 			{
@@ -61,9 +61,9 @@ public partial class TagPage : Page
 			return;
 		}
 
-		for (int i = 0; i < Definitions.Games.Count; i++)
+		for (int i = 0; i < Global.Games.Count; i++)
 		{
-			Add(Definitions.Games[i]);
+			Add(Global.Games[i]);
 		}
 	}
 
@@ -80,7 +80,7 @@ public partial class TagPage : Page
 		{
 			try
 			{
-				((TagCategory)SectionDisplayer.Children[Definitions.GuidIndex[gameInfo.AssociatedTags[i].Guid]]).GamePresenter.Children.Add(new GameCard(gameInfo, Enums.GavilyaPages.Tags, true));
+				((TagCategory)SectionDisplayer.Children[Global.GuidIndex[gameInfo.AssociatedTags[i].Guid]]).GamePresenter.Children.Add(new GameCard(gameInfo, Enums.GavilyaPages.Tags, true));
 			}
 			catch { }
 		}

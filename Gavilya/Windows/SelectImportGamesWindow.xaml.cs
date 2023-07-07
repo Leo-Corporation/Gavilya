@@ -41,11 +41,11 @@ public partial class SelectImportGamesWindow : Window
 
 	private void InitUI()
 	{
-		if (Definitions.Games.Count > 0)
+		if (Global.Games.Count > 0)
 		{
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Global.Games.Count; i++)
 			{
-				GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i])); // Add item
+				GamePresenter.Children.Add(new ImportGameItem(Global.Games[i])); // Add item
 			}
 		}
 	}
@@ -75,8 +75,8 @@ public partial class SelectImportGamesWindow : Window
 				}
 			}
 
-			Definitions.Games = gameInfos; // Set
-			GameSaver.Save(Definitions.Games); // Save changes
+			Global.Games = gameInfos; // Set
+			GameSaver.Save(Global.Games); // Save changes
 		}
 
 		Global.ReloadAllPages(); // Refresh

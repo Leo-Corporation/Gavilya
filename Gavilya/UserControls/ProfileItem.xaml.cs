@@ -67,7 +67,7 @@ public partial class ProfileItem : UserControl
 			}
 		}
 
-		if (CurrentProfile == Definitions.Profiles[Definitions.Settings.CurrentProfileIndex]) // If this is the current profile
+		if (CurrentProfile == Global.Profiles[Global.Settings.CurrentProfileIndex]) // If this is the current profile
 		{
 			DeleteBtn.Visibility = Visibility.Collapsed; // Hide buttons
 			SwitchBtn.Visibility = Visibility.Collapsed; // Hide buttons
@@ -87,15 +87,15 @@ public partial class ProfileItem : UserControl
 	{
 		if (MessageBox.Show(Properties.Resources.DeleteProfileMsg, Properties.Resources.Profiles, MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
 		{
-			Definitions.Profiles.Remove(CurrentProfile); // Remove
+			Global.Profiles.Remove(CurrentProfile); // Remove
 			ProfileManager.SaveProfiles(); // Save changes
-			Definitions.ProfilePage.LoadProfileUI();
+			Global.ProfilePage.LoadProfileUI();
 		}
 	}
 
 	private void SwitchBtn_Click(object sender, RoutedEventArgs e)
 	{
-		Definitions.Settings.CurrentProfileIndex = Definitions.Profiles.IndexOf(CurrentProfile); // Set the new profile
+		Global.Settings.CurrentProfileIndex = Global.Profiles.IndexOf(CurrentProfile); // Set the new profile
 		SettingsSaver.Save(); // Save
 
 		Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe"); // Start Gavilya

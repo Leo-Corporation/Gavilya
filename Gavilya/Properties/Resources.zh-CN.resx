@@ -981,4 +981,7 @@
   <data name="ThemesDesc" xml:space="preserve">
     <value>设定加维利亚的主题。</value>
   </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>高级</value>
+  </data>
 </root>

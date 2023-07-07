@@ -19,51 +19,27 @@ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+SOFTWARE. 
 */
-using Gavilya.Classes;
-using Gavilya.UserControls;
-using System;
-using System.Windows.Controls;
 
-namespace Gavilya.Pages;
-
+namespace Gavilya.Enums;
 /// <summary>
-/// Logique d'interaction pour GamesListPage.xaml
+/// The actions when a <see cref="Windows.SearchGameCover"/> window is opened.
 /// </summary>
-public partial class GamesListPage : Page
+public enum GameAssociationActions
 {
-	public GamesListPage()
-	{
-		InitializeComponent();
-		GamePage.Navigate(new SelectGame());
-		LoadGames(); // Load the games
-	}
+	/// <summary>
+	/// Search for a game.
+	/// </summary>
+	Search,
 
 	/// <summary>
-	/// Loads the games.
+	/// Associate a game.
 	/// </summary>
-	public void LoadGames()
-	{
-		Dispatcher.Invoke(new Action(() =>
-		{
-			GameList.Children.Clear();
-			FavGameList.Children.Clear();
-			foreach (GameInfo gameInfo in Global.Games) // For each game
-			{
-				if (gameInfo.IsFavorite)
-				{
-					FavGameList.Children.Add(new GameItem(gameInfo)); // Add a game
-				}
-				else
-				{
-					GameList.Children.Add(new GameItem(gameInfo)); // Add a game
-				}
-			}
+	Associate,
 
-			FavTxt.Text = $"{Properties.Resources.Favorites} ({FavGameList.Children.Count})";
-			GamesTxt.Text = $"{Properties.Resources.Games} ({GameList.Children.Count})";
-			GamePage.Navigate(new SelectGame()); // Default message
-		}));
-	}
+	/// <summary>
+	/// Search the cover and associate the game ID to it.
+	/// </summary>
+	Both
 }

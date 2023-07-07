@@ -46,13 +46,13 @@ public partial class StartupPage : Page
 	/// </summary>
 	private void InitUI()
 	{
-		CardsPageRadioBtn.IsChecked = Definitions.Settings.PageId == 0; // Check if the page ID is equal to 0
-		ListPageRadioBtn.IsChecked = Definitions.Settings.PageId == 2; // Check if the page ID is equal to 2
+		CardsPageRadioBtn.IsChecked = Global.Settings.PageId == 0; // Check if the page ID is equal to 0
+		ListPageRadioBtn.IsChecked = Global.Settings.PageId == 2; // Check if the page ID is equal to 2
 
-		HomePageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Home; // Check
-		LibraryPageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Library; // Check
-		ProfilePageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Profile; // Check
-		RecentPageRadioBtn.IsChecked = Definitions.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Recent; // Check if the page ID is equal to 1
+		HomePageRadioBtn.IsChecked = Global.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Home; // Check
+		LibraryPageRadioBtn.IsChecked = Global.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Library; // Check
+		ProfilePageRadioBtn.IsChecked = Global.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Profile; // Check
+		RecentPageRadioBtn.IsChecked = Global.Settings.DefaultGavilyaHomePage == GavilyaWindowPages.Recent; // Check if the page ID is equal to 1
 	}
 
 	Border CheckedBorder { get; set; }
@@ -78,7 +78,7 @@ public partial class StartupPage : Page
 		CheckedBorder = CardsPageBorder; // Set checked border
 		RefreshBorders(); // Refresh
 
-		Definitions.Settings.PageId = 0; // Set the startup page
+		Global.Settings.PageId = 0; // Set the startup page
 		SettingsSaver.Save(); // Save changes
 	}
 
@@ -88,7 +88,7 @@ public partial class StartupPage : Page
 		PageCheckedBorder = RecentPageBorder; // Set checked border
 		RefreshPageBorders(); // Refresh
 
-		Definitions.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Recent; // Set the startup page
+		Global.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Recent; // Set the startup page
 		SettingsSaver.Save(); // Save changes
 	}
 
@@ -116,7 +116,7 @@ public partial class StartupPage : Page
 		CheckedBorder = ListPageBorder; // Set checked border
 		RefreshBorders(); // Refresh
 
-		Definitions.Settings.PageId = 2; // Set the startup page
+		Global.Settings.PageId = 2; // Set the startup page
 		SettingsSaver.Save(); // Save changes
 	}
 
@@ -144,7 +144,7 @@ public partial class StartupPage : Page
 		PageCheckedBorder = HomePageBorder; // Set checked border
 		RefreshPageBorders(); // Refresh
 
-		Definitions.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Home;
+		Global.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Home;
 		SettingsSaver.Save(); // Save changes
 	}
 
@@ -154,7 +154,7 @@ public partial class StartupPage : Page
 		PageCheckedBorder = LibraryPageBorder; // Set checked border
 		RefreshPageBorders(); // Refresh
 
-		Definitions.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Library;
+		Global.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Library;
 		SettingsSaver.Save(); // Save changes
 	}
 
@@ -164,7 +164,7 @@ public partial class StartupPage : Page
 		PageCheckedBorder = ProfilePageBorder; // Set checked border
 		RefreshPageBorders(); // Refresh
 
-		Definitions.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Profile;
+		Global.Settings.DefaultGavilyaHomePage = GavilyaWindowPages.Profile;
 		SettingsSaver.Save(); // Save changes
 	}
 

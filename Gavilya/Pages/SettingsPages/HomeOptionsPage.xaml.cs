@@ -42,16 +42,16 @@ public partial class HomeOptionsPage : Page
 
 	private void InitUI()
 	{
-		NumberRecentGamesTextBox.Text = Definitions.Settings.MaxNumberRecentGamesShown.Value.ToString();
-		DisplayedUnusedGamesChk.IsChecked = Definitions.Settings.ShowMoreUnplayedGamesRecommanded; // Change the check state
-		PositionCombobox.SelectedIndex = (int)Definitions.Settings.SidebarPosition;
+		NumberRecentGamesTextBox.Text = Global.Settings.MaxNumberRecentGamesShown.Value.ToString();
+		DisplayedUnusedGamesChk.IsChecked = Global.Settings.ShowMoreUnplayedGamesRecommanded; // Change the check state
+		PositionCombobox.SelectedIndex = (int)Global.Settings.SidebarPosition;
 	}
 
 	private void SaveButton_Click(object sender, RoutedEventArgs e)
 	{
-		if (Definitions.Settings.MaxNumberRecentGamesShown.Value > 0)
+		if (Global.Settings.MaxNumberRecentGamesShown.Value > 0)
 		{
-			Definitions.Settings.MaxNumberRecentGamesShown = int.Parse(NumberRecentGamesTextBox.Text);
+			Global.Settings.MaxNumberRecentGamesShown = int.Parse(NumberRecentGamesTextBox.Text);
 		}
 		else
 		{
@@ -67,16 +67,16 @@ public partial class HomeOptionsPage : Page
 
 	private void DisplayedUnusedGamesChk_Checked(object sender, RoutedEventArgs e)
 	{
-		Definitions.Settings.ShowMoreUnplayedGamesRecommanded = DisplayedUnusedGamesChk.IsChecked; // Set value
+		Global.Settings.ShowMoreUnplayedGamesRecommanded = DisplayedUnusedGamesChk.IsChecked; // Set value
 		SettingsSaver.Save(); // Save the settings
 	}
 
 	private void PositionCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
 	{
-		Definitions.Settings.SidebarPosition = (Position)PositionCombobox.SelectedIndex;
+		Global.Settings.SidebarPosition = (Position)PositionCombobox.SelectedIndex;
 		SettingsSaver.Save();
-		if (Definitions.MainWindow is null) return;
-		Grid.SetColumn(Definitions.MainWindow.Sidebar, Definitions.Settings.SidebarPosition switch
+		if (Global.MainWindow is null) return;
+		Grid.SetColumn(Global.MainWindow.Sidebar, Global.Settings.SidebarPosition switch
 		{
 			Position.Right => 3,
 			_ => 0

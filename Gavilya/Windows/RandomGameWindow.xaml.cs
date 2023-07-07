@@ -97,10 +97,10 @@ public partial class RandomGameWindow : Window
 	{
 		try
 		{
-			GameCard? gameCard = Definitions.GamesCardsPages.GamePresenter.Children[Index] as GameCard;
-			Definitions.GameInfoPage.InitializeUI(GameInfo, gameCard);
-			Definitions.MainWindow.PageContent.Navigate(Definitions.GameInfoPage);
-			Definitions.GameInfoPage.PlayBtn_Click(this, e);
+			GameCard? gameCard = Global.GamesCardsPages.GamePresenter.Children[Index] as GameCard;
+			Global.GameInfoPage.InitializeUI(GameInfo, gameCard);
+			Global.MainWindow.PageContent.Navigate(Global.GameInfoPage);
+			Global.GameInfoPage.PlayBtn_Click(this, e);
 			Close();
 		}
 		catch { }

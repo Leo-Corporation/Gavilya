@@ -59,7 +59,7 @@ public partial class FavoriteGameCard : UserControl
 	private void InitUI(GameInfo gameInfo)
 	{
 		// Visibility
-		Visibility = !Definitions.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+		Visibility = !Global.DisplayHiddenGames && (gameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
 
 		// Tooltip
 		GameNameToolTip.Content = gameInfo.Name;
@@ -118,15 +118,15 @@ public partial class FavoriteGameCard : UserControl
 				if (parentElement is GameCard gameCard)
 				{
 					gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Get the current unix time
-					GameSaver.Save(Definitions.Games); // Save the changes
+					GameSaver.Save(Global.Games); // Save the changes
 
-					Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
-					Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+					Global.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+					Global.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
 
 					gameCard.Timer.Start(); // Start the timer
 				}
 
-				Definitions.RecentGamesPage.LoadGames(); // Reload the games
+				Global.RecentGamesPage.LoadGames(); // Reload the games
 			}
 		}
 		else
@@ -137,15 +137,15 @@ public partial class FavoriteGameCard : UserControl
 			if (parentElement is GameCard gameCard)
 			{
 				gameCard.GameInfo.LastTimePlayed = Sys.UnixTime; // Get the current unix time
-				GameSaver.Save(Definitions.Games); // Save the changes
+				GameSaver.Save(Global.Games); // Save the changes
 
-				Definitions.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
-				Definitions.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+				Global.GameInfoPage.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
+				Global.GameInfoPage2.UpdateLastTimePlayed(GameInfo.LastTimePlayed); // Update informations
 
 				gameCard.Timer.Start(); // Start the timer
 			}
 
-			Definitions.RecentGamesPage.LoadGames(); // Reload the games
+			Global.RecentGamesPage.LoadGames(); // Reload the games
 		}
 	}
 }

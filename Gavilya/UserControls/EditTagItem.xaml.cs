@@ -66,21 +66,21 @@ public partial class EditTagItem : UserControl
 		}
 		GameTag.Name = NameTextBox.Text;
 
-		Definitions.Settings.GameTags[ID] = GameTag;
+		Global.Settings.GameTags[ID] = GameTag;
 		SettingsSaver.Save();
 
-		for (int i = 0; i < Definitions.Games.Count; i++)
+		for (int i = 0; i < Global.Games.Count; i++)
 		{
-			for (int j = 0; j < Definitions.Games[i].AssociatedTags.Count; j++)
+			for (int j = 0; j < Global.Games[i].AssociatedTags.Count; j++)
 			{
-				if (Definitions.Games[i].AssociatedTags[j].Guid == Definitions.Settings.GameTags[ID].Guid)
+				if (Global.Games[i].AssociatedTags[j].Guid == Global.Settings.GameTags[ID].Guid)
 				{
-					Definitions.Games[i].AssociatedTags[j] = GameTag;
+					Global.Games[i].AssociatedTags[j] = GameTag;
 					break;
 				}
 			}
 		}
-		GameSaver.Save(Definitions.Games);
+		GameSaver.Save(Global.Games);
 
 		Parent.InitUI();
 	}
@@ -107,23 +107,23 @@ public partial class EditTagItem : UserControl
 	{
 		if (MessageBox.Show(Properties.Resources.DeleteTagMsg, Properties.Resources.DeleteTag, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Global.Games.Count; i++)
 			{
-				for (int j = 0; j < Definitions.Games[i].AssociatedTags.Count; j++)
+				for (int j = 0; j < Global.Games[i].AssociatedTags.Count; j++)
 				{
-					if (Definitions.Games[i].AssociatedTags[j].Guid == Definitions.Settings.GameTags[ID].Guid)
+					if (Global.Games[i].AssociatedTags[j].Guid == Global.Settings.GameTags[ID].Guid)
 					{
-						Definitions.Games[i].AssociatedTags.RemoveAt(j);
+						Global.Games[i].AssociatedTags.RemoveAt(j);
 						break;
 					}
 				}
 			}
 
-			Definitions.Settings.GameTags.RemoveAt(ID);
+			Global.Settings.GameTags.RemoveAt(ID);
 			SettingsSaver.Save();
-			GameSaver.Save(Definitions.Games);
+			GameSaver.Save(Global.Games);
 			Parent.InitUI();
-			Definitions.TagPage.InitUI();
+			Global.TagPage.InitUI();
 		}
 	}
 }

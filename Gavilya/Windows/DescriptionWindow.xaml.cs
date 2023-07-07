@@ -63,7 +63,7 @@ public partial class DescriptionWindow : Window
 	{
 		if (!isFromEdit) // Is from Add
 		{
-			AddGame.GameDescription = descriptionTxt.Text; // Set to the description text
+			AddGame.GameInfo.Description = descriptionTxt.Text; // Set to the description text
 		}
 		else
 		{

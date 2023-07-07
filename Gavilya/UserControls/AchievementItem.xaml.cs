@@ -21,9 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Classes;
 using Gavilya.SDK.RAWG;
 using System;
+using System.Globalization;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Gavilya.UserControls;
@@ -48,11 +52,17 @@ public partial class AchievementItem : UserControl
 			AchievementDescriptionTxt.Text = achievement.description; // Set text
 			AchievementPourcentTxt.Text = $"{achievement.percent}% {Properties.Resources.AchievementPlayerUnlocked}"; // Set text
 
+			// Rare
+			if (double.Parse(achievement.percent, CultureInfo.InvariantCulture) < 1)
+			{
+				ItemBorder.BorderBrush = (LinearGradientBrush)Application.Current.Resources["GoldGradient"];
+			}
+
 			// Load the image
 			var image = new BitmapImage();
 			image.BeginInit();
 			image.UriSource = new Uri(achievement.image);
-			image.DecodePixelWidth = 50;
+			image.DecodePixelWidth = 100;
 			image.EndInit();
 
 			AchievementImg.Source = image; // Set the image

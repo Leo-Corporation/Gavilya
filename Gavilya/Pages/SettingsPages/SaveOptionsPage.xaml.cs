@@ -46,19 +46,19 @@ public partial class SaveOptionsPage : Page
 	private void InitUI()
 	{
 		// Load auto save settings
-		if (Definitions.Settings.MakeAutoSave is null)
+		if (Global.Settings.MakeAutoSave is null)
 		{
-			Definitions.Settings.MakeAutoSave = true; // Set value
+			Global.Settings.MakeAutoSave = true; // Set value
 		}
 
-		if (Definitions.Settings.AutoSaveDay is null)
+		if (Global.Settings.AutoSaveDay is null)
 		{
-			Definitions.Settings.AutoSaveDay = 1; // Set value
+			Global.Settings.AutoSaveDay = 1; // Set value
 		}
 
-		if (Definitions.Settings.SavePath is null)
+		if (Global.Settings.SavePath is null)
 		{
-			Definitions.Settings.SavePath = $@"{FileSys.AppDataPath}\Gavilya\Backups"; // Set value
+			Global.Settings.SavePath = $@"{FileSys.AppDataPath}\Gavilya\Backups"; // Set value
 		}
 
 		SettingsSaver.Save(); // Save changes
@@ -70,11 +70,11 @@ public partial class SaveOptionsPage : Page
 			SaveTime.Items.Add(i); // Add item
 		}
 
-		SaveTime.SelectedIndex = Definitions.Settings.AutoSaveDay.Value - 1; // Set
+		SaveTime.SelectedIndex = Global.Settings.AutoSaveDay.Value - 1; // Set
 
-		MakeAutoSavesChk.IsChecked = Definitions.Settings.MakeAutoSave.Value; // Check/Uncheck
+		MakeAutoSavesChk.IsChecked = Global.Settings.MakeAutoSave.Value; // Check/Uncheck
 
-		PathTxt.Text = Definitions.Settings.SavePath is null ? Properties.Resources.SelectADirectory : Definitions.Settings.SavePath; // Set
+		PathTxt.Text = Global.Settings.SavePath is null ? Properties.Resources.SelectADirectory : Global.Settings.SavePath; // Set
 		HandleCheckbox();
 	}
 
@@ -108,7 +108,7 @@ public partial class SaveOptionsPage : Page
 	{
 		SaveFileDialog saveFileDialog = new()
 		{
-			FileName = $"GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}.gav", // File name
+			FileName = $"GavilyaGames_{Global.Profiles[Global.Settings.CurrentProfileIndex].Name}.gav", // File name
 			Filter = $"{Properties.Resources.GavFiles}|*.gav", // Extension
 			Title = Properties.Resources.ExportGames // Title
 		}; // Create a SaveFileDialog
@@ -116,30 +116,30 @@ public partial class SaveOptionsPage : Page
 		if (saveFileDialog.ShowDialog() ?? true)
 		{
 			string fileLocation = saveFileDialog.FileName; // Location of the file
-			GameSaver.Export(Definitions.Games, fileLocation); // Export the games
+			GameSaver.Export(Global.Games, fileLocation); // Export the games
 		}
 	}
 
 	private void MakeAutoSavesChk_Checked(object sender, RoutedEventArgs e)
 	{
 		HandleCheckbox(); // Handle
-		Definitions.Settings.MakeAutoSave = MakeAutoSavesChk.IsChecked.Value; // Set
+		Global.Settings.MakeAutoSave = MakeAutoSavesChk.IsChecked.Value; // Set
 		SettingsSaver.Save(); // Save changes
 	}
 
 	private void MakeAutoSavesChk_Unchecked(object sender, RoutedEventArgs e)
 	{
 		HandleCheckbox(); // Handle
-		Definitions.Settings.MakeAutoSave = MakeAutoSavesChk.IsChecked.Value; // Set
+		Global.Settings.MakeAutoSave = MakeAutoSavesChk.IsChecked.Value; // Set
 		SettingsSaver.Save(); // Save changes
 	}
 
 	private void SaveNowBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Definitions.Games.Count > 0 && Directory.Exists(Definitions.Settings.SavePath))
+		if (Global.Games.Count > 0 && Directory.Exists(Global.Settings.SavePath))
 		{
-			string fL = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
-			GameSaver.Export(Definitions.Games, fL); // Export 
+			string fL = $@"{Global.Settings.SavePath}\GavilyaGames_{Global.Profiles[Global.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav";
+			GameSaver.Export(Global.Games, fL); // Export 
 		}
 	}
 
@@ -149,15 +149,15 @@ public partial class SaveOptionsPage : Page
 		{
 			SaveFileDialog saveFileDialog = new()
 			{
-				FileName = $@"{Definitions.Settings.SavePath}\GavilyaGames_{Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav", // File name
+				FileName = $@"{Global.Settings.SavePath}\GavilyaGames_{Global.Profiles[Global.Settings.CurrentProfileIndex].Name}_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.gav", // File name
 				Filter = $"{Properties.Resources.GavFiles}|*.gav", // Extension
 				Title = Properties.Resources.SaveLocation // Title
 			}; // Create a SaveFileDialog
 
 			if (saveFileDialog.ShowDialog() ?? true)
 			{
-				string fileLocation = System.IO.Path.GetDirectoryName(saveFileDialog.FileName); // Location of the file
-				Definitions.Settings.SavePath = fileLocation; // Set
+				string fileLocation = Path.GetDirectoryName(saveFileDialog.FileName); // Location of the file
+				Global.Settings.SavePath = fileLocation; // Set
 				SettingsSaver.Save();
 				InitUI();
 			}
@@ -172,7 +172,7 @@ public partial class SaveOptionsPage : Page
 	{
 		try
 		{
-			Definitions.Settings.AutoSaveDay = (int)SaveTime.SelectedItem; // Set
+			Global.Settings.AutoSaveDay = (int)SaveTime.SelectedItem; // Set
 			SettingsSaver.Save();
 		}
 		catch { }

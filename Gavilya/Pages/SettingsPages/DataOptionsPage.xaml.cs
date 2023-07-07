@@ -47,7 +47,7 @@ public partial class DataOptionsPage : Page
 	{
 		if (MessageBox.Show(Properties.Resources.ResetSettingsMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
-			Definitions.Settings = new()
+			Global.Settings = new()
 			{
 				Language = "_default",
 				IsFirstRun = false, // Default is true but there is no need to show the "Welcome" prompt to the user again.

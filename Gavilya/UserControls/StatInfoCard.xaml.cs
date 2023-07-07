@@ -57,16 +57,16 @@ public partial class StatInfoCard : UserControl
 		if (isChecked)
 		{
 			ItemBorder.Background = Global.GetSolidColor("SelectedItem"); // Set background color 
-			Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
+			Global.StatGameInfoControl.InitUI(GameInfo); // Load UI
 		}
 	}
 
 	private void Border_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
 	{
-		Definitions.Statistics.UnCheckAllStatItems(); // Clear
+		Global.Statistics.UnCheckAllStatItems(); // Clear
 		ItemBorder.Background = Global.GetSolidColor("SelectedItem"); // Set background color
 		isChecked = true;
-		Definitions.StatGameInfoControl.InitUI(GameInfo); // Load UI
+		Global.StatGameInfoControl.InitUI(GameInfo); // Load UI
 	}
 
 	private void ItemBorder_MouseEnter(object sender, MouseEventArgs e)

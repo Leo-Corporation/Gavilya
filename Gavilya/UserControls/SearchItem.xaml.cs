@@ -50,7 +50,7 @@ public partial class SearchItem : UserControl
 		try
 		{
 			// Visibility
-			Visibility = !Definitions.DisplayHiddenGames && (ParentGameCard.GameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
+			Visibility = !Global.DisplayHiddenGames && (ParentGameCard.GameInfo.IsHidden ?? false) ? Visibility.Collapsed : Visibility.Visible;
 
 			// Load the Image
 			if (ParentGameCard.GameInfo.IconFileLocation != string.Empty && ParentGameCard.GameInfo.IconFileLocation != null) // If a custom image is used
@@ -106,6 +106,6 @@ public partial class SearchItem : UserControl
 	internal void UserControl_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
 	{
 		ParentGameCard.GameCardBorder_MouseLeftButtonUp(this, e);
-		Definitions.MainWindow.SearchPopup.IsOpen = false;
+		Global.MainWindow.SearchPopup.IsOpen = false;
 	}
 }

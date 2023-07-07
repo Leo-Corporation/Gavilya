@@ -42,7 +42,7 @@ public partial class FpsOptionsPage : Page
 	private void InitUI()
 	{
 		FpsShortcutTxt.Text = string.Format(Properties.Resources.OpenFpsCounter, "Ctrl+Shift+F");
-		OpacitySlider.Value = (Definitions.Settings.FpsCounterOpacity ?? 1) * 100;
+		OpacitySlider.Value = (Global.Settings.FpsCounterOpacity ?? 1) * 100;
 	}
 
 	private void OpacitySlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -52,10 +52,10 @@ public partial class FpsOptionsPage : Page
 
 	private void SaveButton_Click(object sender, RoutedEventArgs e)
 	{
-		Definitions.Settings.FpsCounterOpacity = OpacitySlider.Value / 100d;
+		Global.Settings.FpsCounterOpacity = OpacitySlider.Value / 100d;
 		SettingsSaver.Save();
 
-		if (Definitions.IsFpsToggled)
+		if (Global.IsFpsToggled)
 		{
 			// End the process
 			var proc = new Process();
@@ -68,11 +68,11 @@ public partial class FpsOptionsPage : Page
 			// Restart the app
 			var proc2 = new Process();
 			proc2.StartInfo.FileName = "cmd.exe";
-			proc2.StartInfo.Arguments = $"/c \"{Definitions.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}";
+			proc2.StartInfo.Arguments = $"/c \"{Global.CurrentAppDirectory}/Gavilya.Fps.exe\" {Global.Settings.FpsCounterOpacity}";
 			proc2.StartInfo.UseShellExecute = false;
 			proc2.StartInfo.CreateNoWindow = true;
 			proc2.Start();
-			Definitions.IsFpsToggled = !Definitions.IsFpsToggled;
+			Global.IsFpsToggled = !Global.IsFpsToggled;
 		}
 	}
 }

@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Classes;
+using Gavilya.Enums;
 using Gavilya.SDK.RAWG;
 using Gavilya.UserControls;
 using Gavilya.Windows;
@@ -57,7 +58,7 @@ public partial class AddEditPage2 : Page
 		isFromAdd = true;
 		Platforms = new();
 		Stores = new();
-		RAWGID = AddGame.RAWGID;
+		RAWGID = AddGame.GameInfo.RAWGID;
 		Tags = new();
 	}
 
@@ -100,37 +101,17 @@ public partial class AddEditPage2 : Page
 		}
 	}
 
-	private void NextBtn_Click(object sender, RoutedEventArgs e)
+	internal void NextBtn_Click(object sender, RoutedEventArgs e)
 	{
 		try
 		{
 			if (isFromAdd)
 			{
-				Definitions.Games.Add(new()
-				{
-					Name = AddGame.GameName, // Set value
-					Version = AddGame.GameVersion, // Set value
-					Description = DescriptionTextBox.Text, // Set value
-					FileLocation = AddGame.GameLocation, // Set value
-					IconFileLocation = AddGame.GameIconLocation, // Set value
-					IsFavorite = false, // Set value
-					RAWGID = RAWGID, // Set value
-					LastTimePlayed = 0, // Set value
-					TotalTimePlayed = 0, // Set value
-					ProcessName = "", // Set value
-					Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform } : Platforms, // Get platforms
-					Stores = Stores,
-					AlwaysCheckIfRunning = false,
-					IsUWP = AddGame.IsUWP,
-					IsSteam = AddGame.IsSteam,
-					IsHidden = AddGame.Hidden,
-					AssociatedTags = Tags
-				});
-
-				GameSaver.Save(Definitions.Games); // Save
-				Global.ReloadAllPages(); // Refresh UI
-
-				AddGame.Close();
+				AddGame.GameInfo.Platforms = (Platforms.Count == 0) ? new List<SDK.RAWG.Platform> { Global.DefaultPlatform } : Platforms; // Get platforms
+				AddGame.GameInfo.Stores = Stores;
+				AddGame.GameInfo.AssociatedTags = Tags;
+				AddGame.GameInfo.Description = DescriptionTextBox.Text;
+				AddGame.ChangePage(2); // Change page				
 			}
 			else
 			{
@@ -145,12 +126,7 @@ public partial class AddEditPage2 : Page
 					ConvertSteamBtn_Click(this, null);
 				}
 
-				Definitions.Games[Definitions.Games.IndexOf(old)] = GameCard.GameInfo; // Update
-				GameSaver.Save(Definitions.Games); // Save
-
-				Global.ReloadAllPages(); // Refresh UI
-
-				EditGame.Close();
+				EditGame.ChangePage(2);
 			}
 		}
 		catch (Exception ex)
@@ -216,8 +192,8 @@ public partial class AddEditPage2 : Page
 				GameCard.GameInfo.Platforms = Platforms; // Set
 				GameCard.GameInfo.Stores = Stores; // Set
 
-				Definitions.Games[Definitions.Games.IndexOf(old)] = GameCard.GameInfo; // Update
-				GameSaver.Save(Definitions.Games); // Save
+				Global.Games[Global.Games.IndexOf(old)] = GameCard.GameInfo; // Update
+				GameSaver.Save(Global.Games); // Save
 
 				Global.ReloadAllPages(); // Refresh UI
 

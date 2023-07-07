@@ -46,7 +46,7 @@ public partial class LibraryPage : Page
 
 	private void InitUI()
 	{
-		if (Definitions.Games.Count < 3)
+		if (Global.Games.Count < 3)
 		{
 			RandomGameBtn.Visibility = Visibility.Collapsed;
 		}
@@ -57,7 +57,7 @@ public partial class LibraryPage : Page
 		CheckedButton = GameCardTabBtn; // Set
 		RefreshTabUI();
 
-		PageDisplayer.Content = Definitions.GamesCardsPages; // Set page content
+		PageDisplayer.Content = Global.GamesCardsPages; // Set page content
 	}
 
 	private void GameListTabBtn_Click(object sender, RoutedEventArgs e)
@@ -65,7 +65,7 @@ public partial class LibraryPage : Page
 		CheckedButton = GameListTabBtn; // Set
 		RefreshTabUI();
 
-		PageDisplayer.Content = Definitions.GamesListPage; // Set page content
+		PageDisplayer.Content = Global.GamesListPage; // Set page content
 	}
 
 	internal Button CheckedButton { get; set; }
@@ -116,7 +116,7 @@ public partial class LibraryPage : Page
 	{
 		Global.SortGames();
 		Global.ReloadAllPages();
-		SortAlpha.Background = Definitions.HomeButtonBackColor;
+		SortAlpha.Background = Global.GetSolidColor("Accent");
 		SortReverse.Background = Global.GetSolidColor("SelectedBackground");
 	}
 
@@ -125,21 +125,21 @@ public partial class LibraryPage : Page
 		Global.SortGames(false);
 		Global.ReloadAllPages();
 		SortAlpha.Background = Global.GetSolidColor("SelectedBackground");
-		SortReverse.Background = Definitions.HomeButtonBackColor;
+		SortReverse.Background = Global.GetSolidColor("Accent");
 	}
 
 	private void GameTagTabBtn_Click(object sender, RoutedEventArgs e)
 	{
 		CheckedButton = GameTagTabBtn; // Set
 
-		PageDisplayer.Content = Definitions.TagPage; // Set page content
+		PageDisplayer.Content = Global.TagPage; // Set page content
 		RefreshTabUI();
 	}
 
 	private void RandomGameBtn_Click(object sender, RoutedEventArgs e)
 	{
 		Random random = new();
-		int i = random.Next(0, Definitions.Games.Count - 1);
-		new RandomGameWindow(Definitions.Games[i], i).Show();
+		int i = random.Next(0, Global.Games.Count - 1);
+		new RandomGameWindow(Global.Games[i], i).Show();
 	}
 }

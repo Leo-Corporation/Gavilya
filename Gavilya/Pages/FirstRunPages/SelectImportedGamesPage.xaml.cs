@@ -46,11 +46,11 @@ public partial class SelectImportedGamesPage : Page
 
 	private void InitUI()
 	{
-		if (Definitions.Games.Count > 0) // If there are games
+		if (Global.Games.Count > 0) // If there are games
 		{
-			for (int i = 0; i < Definitions.Games.Count; i++)
+			for (int i = 0; i < Global.Games.Count; i++)
 			{
-				GamePresenter.Children.Add(new ImportGameItem(Definitions.Games[i])); // Add item
+				GamePresenter.Children.Add(new ImportGameItem(Global.Games[i])); // Add item
 			}
 		}
 	}
@@ -70,8 +70,8 @@ public partial class SelectImportedGamesPage : Page
 				}
 			}
 
-			Definitions.Games = gameInfos; // Set
-			GameSaver.Save(Definitions.Games); // Save changes
+			Global.Games = gameInfos; // Set
+			GameSaver.Save(Global.Games); // Save changes
 		}
 
 		FirstRun.ChangePage(Enums.FirstRunPages.Finish); // Change page

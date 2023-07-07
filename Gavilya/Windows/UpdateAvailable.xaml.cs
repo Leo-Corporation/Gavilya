@@ -42,7 +42,7 @@ public partial class UpdateAvailable : Window
 
 	private async void DisplayLastVersion()
 	{
-		VersionTxt.Text = $"{Properties.Resources.UpdateVersion} {await Update.GetLastVersionAsync(Definitions.LastVersionLink)}"; // Show the last version
+		VersionTxt.Text = $"{Properties.Resources.UpdateVersion} {await Update.GetLastVersionAsync(Global.LastVersionLink)}"; // Show the last version
 	}
 
 	private void CloseBtn_Click(object sender, RoutedEventArgs e)

@@ -40,32 +40,32 @@ public partial class GamesCardsPages : Page
 	public GamesCardsPages()
 	{
 		InitializeComponent();
-		Definitions.GamesCardsPages = this; // Define the GamesCardsPages
+		Global.GamesCardsPages = this; // Define the GamesCardsPages
 	}
 
 	public void LoadGames()
 	{
 		Dispatcher.Invoke(new Action(() =>
 		{
-			Definitions.HomePage.FavoriteBar.Children.Clear();
-			Definitions.HomePage.RecommandedBar.Children.Clear();
-			Definitions.MainWindow.SearchDisplayer.Children.Clear();
+			Global.HomePage.FavoriteBar.Children.Clear();
+			Global.HomePage.RecommandedBar.Children.Clear();
+			Global.MainWindow.SearchDisplayer.Children.Clear();
 			GamePresenter.Children.Clear(); // Remove all the games
 
 			var recommandedGames = Global.GetRecommandedGames();
 
-			Definitions.HomePage.RecommandedPlaceholder.Visibility = recommandedGames.Count <= 0 ? Visibility.Visible : Visibility.Collapsed;
+			Global.HomePage.RecommandedPlaceholder.Visibility = recommandedGames.Count <= 0 ? Visibility.Visible : Visibility.Collapsed;
 
 
-			if (Definitions.Games.Count > 0)
+			if (Global.Games.Count > 0)
 			{
 				GamePresenter.Visibility = Visibility.Visible; // Visible
 				WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
-				foreach (GameInfo gameInfo in Definitions.Games) // For each game
+				foreach (GameInfo gameInfo in Global.Games) // For each game
 				{
 					var game = new GameCard(gameInfo, GavilyaPages.Cards, false, recommandedGames.Contains(gameInfo));
 					GamePresenter.Children.Add(game); // Add the game
-					Definitions.MainWindow.SearchDisplayer.Children.Add(new SearchItem(game));
+					Global.MainWindow.SearchDisplayer.Children.Add(new SearchItem(game));
 				}
 			}
 			else
@@ -86,7 +86,7 @@ public partial class GamesCardsPages : Page
 	{
 		try
 		{
-			if (Definitions.Games.Count <= 0)
+			if (Global.Games.Count <= 0)
 			{
 				Global.RemoveWelcomeScreen(); // Remove the "Welcome" screen
 			}
@@ -119,17 +119,17 @@ public partial class GamesCardsPages : Page
 						RAWGID = id, // Set the id
 						ProcessName = "", // Set the ProcessName: "" => Default
 						Description = (id != -1) ? await Global.GetGameDescriptionAsync(id) : "", // Get the description
-						Platforms = (id != -1) ? await Global.GetGamePlatformsAsync(id) : new List<SDK.RAWG.Platform> { Definitions.DefaultPlatform }, // Get platforms
+						Platforms = (id != -1) ? await Global.GetGamePlatformsAsync(id) : new List<SDK.RAWG.Platform> { Global.DefaultPlatform }, // Get platforms
 						Stores = (id != -1) ? await Global.GetStoresAsync(id) : new(), // Get
 						Version = fileVersionInfo.FileVersion // Get the version
 					};
-					Definitions.Games.Add(gameInfo); // Add the games to the List<GameInfo>
-					Definitions.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the games to the GamePresenter
-					GameSaver.Save(Definitions.Games); // Save the added games
+					Global.Games.Add(gameInfo); // Add the games to the List<GameInfo>
+					Global.GamesCardsPages.GamePresenter.Children.Add(new GameCard(gameInfo, GavilyaPages.Cards)); // Add the games to the GamePresenter
+					GameSaver.Save(Global.Games); // Save the added games
 					Global.SortGames(); // Sort
-					Definitions.GamesCardsPages.LoadGames(); // Reload the page
-					Definitions.RecentGamesPage.LoadGames(); // Reload the page
-					Definitions.GamesListPage.LoadGames(); // Reload the page
+					Global.GamesCardsPages.LoadGames(); // Reload the page
+					Global.RecentGamesPage.LoadGames(); // Reload the page
+					Global.GamesListPage.LoadGames(); // Reload the page
 				}
 			}
 		}

@@ -49,9 +49,9 @@ public partial class GamesOptionsPage : Page
 		// Load tags
 		TagsDisplayer.Children.Clear();
 		NameTextBox.Text = "";
-		for (int i = 0; i < Definitions.Settings.GameTags.Count; i++)
+		for (int i = 0; i < Global.Settings.GameTags.Count; i++)
 		{
-			TagsDisplayer.Children.Add(new EditTagItem(Definitions.Settings.GameTags[i], i, this));
+			TagsDisplayer.Children.Add(new EditTagItem(Global.Settings.GameTags[i], i, this));
 		}
 
 		// Generate a random color
@@ -70,11 +70,11 @@ public partial class GamesOptionsPage : Page
 			MessageBox.Show(Properties.Resources.NameNeededMsg, Properties.Resources.ManageGameTags, MessageBoxButton.OK, MessageBoxImage.Information);
 			return;
 		}
-		Definitions.Settings.GameTags.Add(new(NameTextBox.Text, hexColor));
+		Global.Settings.GameTags.Add(new(NameTextBox.Text, hexColor));
 		SettingsSaver.Save();
 
 		InitUI();
-		Definitions.TagPage.InitUI();
+		Global.TagPage.InitUI();
 	}
 
 	private void ForegroundBorder_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -107,9 +107,9 @@ public partial class GamesOptionsPage : Page
 
 	private void DisplayHiddenChk_Unchecked(object sender, RoutedEventArgs e)
 	{
-		Definitions.DisplayHiddenGames = DisplayHiddenChk.IsChecked ?? false;
+		Global.DisplayHiddenGames = DisplayHiddenChk.IsChecked ?? false;
 		Global.ReloadAllPages();
-		Definitions.ProfilePage.InitUI();
-		Definitions.HomePage.InitUI();
+		Global.ProfilePage.InitUI();
+		Global.HomePage.InitUI();
 	}
 }

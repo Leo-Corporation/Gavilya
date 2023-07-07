@@ -58,32 +58,32 @@ public partial class MainWindow : Window
 		Global.SetWindowIcon(this); // Set the icon of the window
 
 		GamesCardsPages gamesCardsPages = new(); // GamesCardsPage
-		Definitions.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
+		Global.GamesCardsPages = gamesCardsPages; // Define the GamesCardsPage
 
-		Definitions.LibraryPage.PageDisplayer.Content = Definitions.Settings.PageId switch
+		Global.LibraryPage.PageDisplayer.Content = Global.Settings.PageId switch
 		{
-			0 => Definitions.GamesCardsPages,
-			2 => Definitions.GamesListPage,
-			_ => Definitions.GamesCardsPages
+			0 => Global.GamesCardsPages,
+			2 => Global.GamesListPage,
+			_ => Global.GamesCardsPages
 		}; // Show the page
 
-		Definitions.LibraryPage.CheckedButton = Definitions.Settings.PageId switch
+		Global.LibraryPage.CheckedButton = Global.Settings.PageId switch
 		{
-			0 => Definitions.LibraryPage.GameCardTabBtn,
-			2 => Definitions.LibraryPage.GameListTabBtn,
-			_ => Definitions.LibraryPage.GameCardTabBtn
+			0 => Global.LibraryPage.GameCardTabBtn,
+			2 => Global.LibraryPage.GameListTabBtn,
+			_ => Global.LibraryPage.GameCardTabBtn
 		}; // Check
 
-		Definitions.LibraryPage.RefreshTabUI();
+		Global.LibraryPage.RefreshTabUI();
 
-		Definitions.MainWindow = this; // Define the Main Window
+		Global.MainWindow = this; // Define the Main Window
 		Global.SortGames();
 
 		new System.Threading.Thread(delegate ()
 		{
 			LoadGames();
 		}).Start();
-		WindowState = Definitions.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal; // Set the window state
+		WindowState = Global.Settings.IsMaximized ? WindowState.Maximized : WindowState.Normal; // Set the window state
 		RefreshMaximizeRestoreButton(); // Refresh
 
 		RefreshNavigationsButton(); // Refresh the navigations button state
@@ -93,7 +93,7 @@ public partial class MainWindow : Window
 		CheckUpdateOnStart(); // Check update on start
 
 		// Sidebar
-		Grid.SetColumn(Sidebar, Definitions.Settings.SidebarPosition switch
+		Grid.SetColumn(Sidebar, Global.Settings.SidebarPosition switch
 		{
 			Position.Right => 3,
 			_ => 0
@@ -101,15 +101,15 @@ public partial class MainWindow : Window
 
 		// Tabs
 
-		PageContent.Navigate((startupPage ?? Definitions.Settings.DefaultGavilyaHomePage) switch
+		PageContent.Navigate((startupPage ?? Global.Settings.DefaultGavilyaHomePage) switch
 		{
-			GavilyaWindowPages.Home => Definitions.HomePage,
-			GavilyaWindowPages.Library => Definitions.LibraryPage,
-			GavilyaWindowPages.Profile => Definitions.ProfilePage,
-			GavilyaWindowPages.Recent => Definitions.RecentGamesPage,
-			_ => Definitions.HomePage
+			GavilyaWindowPages.Home => Global.HomePage,
+			GavilyaWindowPages.Library => Global.LibraryPage,
+			GavilyaWindowPages.Profile => Global.ProfilePage,
+			GavilyaWindowPages.Recent => Global.RecentGamesPage,
+			_ => Global.HomePage
 		});
-		CheckedTabButton = (startupPage ?? Definitions.Settings.DefaultGavilyaHomePage) switch
+		CheckedTabButton = (startupPage ?? Global.Settings.DefaultGavilyaHomePage) switch
 		{
 			GavilyaWindowPages.Home => HomeTabBtn,
 			GavilyaWindowPages.Library => LibraryTabBtn,
@@ -121,9 +121,9 @@ public partial class MainWindow : Window
 		DisplayNotifications();
 
 		// Search box
-		SearchPanel.Visibility = Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
-		SearchBtn.Visibility = !Definitions.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
-		SearchPopup.Height = Definitions.Settings.NumberOfSearchResultsToDisplay.Value * 45 + 36; // Set the max drop down height (45 = height of SearchItem)
+		SearchPanel.Visibility = Global.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		SearchBtn.Visibility = !Global.Settings.HideSearchBar.Value ? Visibility.Collapsed : Visibility.Visible; // Hide
+		SearchPopup.Height = Global.Settings.NumberOfSearchResultsToDisplay.Value * 45 + 36; // Set the max drop down height (45 = height of SearchItem)
 
 		// FPS
 		var fps = Combination.FromString("Control+Shift+F");
@@ -132,11 +132,11 @@ public partial class MainWindow : Window
 		{
 			var proc = new Process();
 			proc.StartInfo.FileName = "cmd.exe";
-			proc.StartInfo.Arguments = !Definitions.IsFpsToggled ? $"/c \"{Definitions.CurrentAppDirectory}/Gavilya.Fps.exe\" {Definitions.Settings.FpsCounterOpacity}" : "/c taskkill /f /im Gavilya.Fps.exe";
+			proc.StartInfo.Arguments = !Global.IsFpsToggled ? $"/c \"{Global.CurrentAppDirectory}/Gavilya.Fps.exe\" {Global.Settings.FpsCounterOpacity}" : "/c taskkill /f /im Gavilya.Fps.exe";
 			proc.StartInfo.UseShellExecute = false;
 			proc.StartInfo.CreateNoWindow = true;
 			proc.Start();
-			Definitions.IsFpsToggled = !Definitions.IsFpsToggled;
+			Global.IsFpsToggled = !Global.IsFpsToggled;
 		};
 		var assignment = new Dictionary<Combination, Action>
 		{
@@ -159,19 +159,19 @@ public partial class MainWindow : Window
 	private void DisplayNotifications()
 	{
 		// Unused games notification
-		if (Definitions.Settings.UnusedGameNotification.Value && Definitions.LeastUsedGames is not null)
+		if (Global.Settings.UnusedGameNotification.Value && Global.LeastUsedGames is not null)
 		{
 			NotificationPanel.Children.Add(
 				new NotificationItem(Properties.Resources.UnusedGameNotification,
-				string.Format(Properties.Resources.UnusedGame, Definitions.LeastUsedGames.Keys.ElementAt(0).Name),
+				string.Format(Properties.Resources.UnusedGame, Global.LeastUsedGames.Keys.ElementAt(0).Name),
 				"\uF451", Properties.Resources.Show, Properties.Resources.Close,
-				() => { Definitions.GameInfoPage.InitializeUI(Definitions.LeastUsedGames.Keys.ElementAt(0), Definitions.LeastUsedGames.Values.ElementAt(0)); Definitions.MainWindow.PageContent.Navigate(Definitions.GameInfoPage); }, null));
+				() => { Global.GameInfoPage.InitializeUI(Global.LeastUsedGames.Keys.ElementAt(0), Global.LeastUsedGames.Values.ElementAt(0)); Global.MainWindow.PageContent.Navigate(Global.GameInfoPage); }, null));
 		}
 	}
 
 	private async void CheckUpdateOnStart()
 	{
-		if (!(Definitions.Settings.UpdatesAvNotification ?? true)) return;
+		if (!(Global.Settings.UpdatesAvNotification ?? true)) return;
 
 		if (await Internet.IsAvailableAsync())
 		{
@@ -181,7 +181,7 @@ public partial class MainWindow : Window
 				new UpdateAvailable().Show();
 			};
 
-			if (Update.IsAvailable(await Update.GetLastVersionAsync(Definitions.LastVersionLink), Definitions.Version))
+			if (Update.IsAvailable(await Update.GetLastVersionAsync(Global.LastVersionLink), Global.Version))
 			{
 				notifyIcon.Visible = true; // Show
 				notifyIcon.ShowBalloonTip(5000, Properties.Resources.MainWindowTitle, Properties.Resources.UpdateAvMessageNotify, System.Windows.Forms.ToolTipIcon.Info);
@@ -207,12 +207,12 @@ public partial class MainWindow : Window
 
 	internal void LoadProfilesUI()
 	{
-		if (Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].PictureFilePath != "_default")
+		if (Global.Profiles[Global.Settings.CurrentProfileIndex].PictureFilePath != "_default")
 		{
-			if (File.Exists(Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].PictureFilePath))
+			if (File.Exists(Global.Profiles[Global.Settings.CurrentProfileIndex].PictureFilePath))
 			{
 				var bitmap = new BitmapImage();
-				var stream = File.OpenRead(Definitions.Profiles[Definitions.Settings.CurrentProfileIndex].PictureFilePath);
+				var stream = File.OpenRead(Global.Profiles[Global.Settings.CurrentProfileIndex].PictureFilePath);
 
 				bitmap.BeginInit();
 				bitmap.CacheOption = BitmapCacheOption.OnLoad;
@@ -234,9 +234,9 @@ public partial class MainWindow : Window
 
 	private static void LoadGames()
 	{
-		Definitions.GamesCardsPages.LoadGames(); // Load the games
-		Definitions.RecentGamesPage.LoadGames(); // Load the games
-		Definitions.GamesListPage.LoadGames(); // Load the games
+		Global.GamesCardsPages.LoadGames(); // Load the games
+		Global.RecentGamesPage.LoadGames(); // Load the games
+		Global.GamesListPage.LoadGames(); // Load the games
 	}
 
 	private void DefineMaximumSize()
@@ -264,15 +264,15 @@ public partial class MainWindow : Window
 
 		double factor = scaling / 100d; // Calculate factor
 
-		MaxHeight = currentScreen.WorkingArea.Height / factor; // Set max size
-		MaxWidth = currentScreen.WorkingArea.Width / factor; // Set max size
+		MaxHeight = currentScreen.WorkingArea.Height / factor + 8; // Set max size
+		MaxWidth = currentScreen.WorkingArea.Width / factor + 8; // Set max size
 	}
 
 	private void Window_StateChanged(object sender, EventArgs e)
 	{
 		RefreshMaximizeRestoreButton(); // Refresh
 		DefineMaximumSize();
-		Definitions.Settings.IsMaximized = WindowState switch
+		Global.Settings.IsMaximized = WindowState switch
 		{
 			WindowState.Maximized => true,
 			WindowState.Normal => false,
@@ -319,7 +319,7 @@ public partial class MainWindow : Window
 			MaximizeButton.Visibility = Visibility.Visible; // Show
 			RestoreButton.Visibility = Visibility.Collapsed; // Hide
 		}
-		WindowBorder.Margin = WindowState == WindowState.Maximized ? new(10, 10, 0, 0) : new(10); // Set
+		WindowBorder.Margin = WindowState == WindowState.Maximized ? new(0) : new(10); // Set
 	}
 
 	/// <summary>
@@ -376,11 +376,11 @@ public partial class MainWindow : Window
 
 	private void SelectBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (PageContent.Content is LibraryPage && Definitions.LibraryPage.PageDisplayer.Content is GamesCardsPages && Definitions.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
+		if (PageContent.Content is LibraryPage && Global.LibraryPage.PageDisplayer.Content is GamesCardsPages && Global.GamesCardsPages.GamePresenter.Children.Count > 0) // If there is game(s)
 		{
-			for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
+			for (int i = 0; i < Global.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
 			{
-				if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard gameCard) // If the element is a GameCard
+				if (Global.GamesCardsPages.GamePresenter.Children[i] is GameCard gameCard) // If the element is a GameCard
 				{
 					if (gameCard.SelectModeToggled) // If the check box is visible
 					{
@@ -393,17 +393,17 @@ public partial class MainWindow : Window
 					{
 						gameCard.CheckBox.Visibility = Visibility.Visible; // The checkbox is visible
 						gameCard.GameCardBorder.BorderThickness = gameCard.CheckBox.IsChecked ?? false ? new(3) : new(0); // Set the border thickness; // Show the controls
-						ColorElement(SelectBtn, Definitions.HomeButtonBackColor); // Change the background
+						ColorElement(SelectBtn, Global.GetSolidColor("Accent")); // Change the background
 						ShadowElement(SelectBtn); // Shadow
 					}
 					gameCard.SelectModeToggled = !gameCard.SelectModeToggled;
-					Definitions.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
+					Global.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
 				}
 			}
 		}
 		else
 		{
-			Definitions.IsGamesCardsPagesCheckBoxesVisible = false; // Hide all checkboxes
+			Global.IsGamesCardsPagesCheckBoxesVisible = false; // Hide all checkboxes
 			HideAllCheckboxes(); // Hide all checkboxes
 			ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
 		}
@@ -411,15 +411,15 @@ public partial class MainWindow : Window
 
 	private void HideAllCheckboxes()
 	{
-		for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
+		for (int i = 0; i < Global.GamesCardsPages.GamePresenter.Children.Count; i++) // For each element
 		{
-			if (Definitions.GamesCardsPages.GamePresenter.Children[i] is GameCard gameCard) // If the element is a GameCard
+			if (Global.GamesCardsPages.GamePresenter.Children[i] is GameCard gameCard) // If the element is a GameCard
 			{
 				gameCard.CheckBox.Visibility = Visibility.Hidden; // The checkbox isn't visible
 				ColorElement(SelectBtn, new SolidColorBrush { Color = Colors.Transparent }); // Change the background
 				RemoveShadowElement(SelectBtn); // Remove shadow
 
-				Definitions.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
+				Global.IsGamesCardsPagesCheckBoxesVisible = gameCard.CheckBox.IsVisible; // Set the property
 			}
 		}
 	}
@@ -430,9 +430,9 @@ public partial class MainWindow : Window
 	/// <returns></returns>
 	private static bool IsGameCardsSelected()
 	{
-		for (int i = 0; i < Definitions.GamesCardsPages.GamePresenter.Children.Count; i++)
+		for (int i = 0; i < Global.GamesCardsPages.GamePresenter.Children.Count; i++)
 		{
-			var game = (GameCard)Definitions.GamesCardsPages.GamePresenter.Children[i];
+			var game = (GameCard)Global.GamesCardsPages.GamePresenter.Children[i];
 			if (game.CheckBox.IsChecked.Value && game.SelectModeToggled)
 			{
 				return true;
@@ -443,15 +443,15 @@ public partial class MainWindow : Window
 
 	private void DeleteBtn_Click(object sender, RoutedEventArgs e)
 	{
-		if (Definitions.GamesCardsPages.GamePresenter.Children.Count > 0 && IsGameCardsSelected())
+		if (Global.GamesCardsPages.GamePresenter.Children.Count > 0 && IsGameCardsSelected())
 		{
 			if (MessageBox.Show(Properties.Resources.DeleteConfirmMessage, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 			{
-				Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
-				Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
+				Global.GamesCardsPages.WelcomeHost.Visibility = Visibility.Collapsed; // Hidden
+				Global.GamesCardsPages.GamePresenter.Visibility = Visibility.Visible; // Visible
 				List<GameCard> games = new(); // List of all the games
 
-				foreach (UIElement uIElement in Definitions.GamesCardsPages.GamePresenter.Children) // Foreach elements
+				foreach (UIElement uIElement in Global.GamesCardsPages.GamePresenter.Children) // Foreach elements
 				{
 					// Convert the element to a GameCard
 					if (uIElement is GameCard gameCard) // If the element is a GameCard
@@ -469,7 +469,7 @@ public partial class MainWindow : Window
 					{
 						List<FavoriteGameCard> favoriteGameCards = new();
 						List<FavoriteSideBarItem> favoriteSideBarItems = new();
-						foreach (FavoriteGameCard favoriteGameCard in Definitions.HomePage.FavoriteBar.Children) // Foreach favorite
+						foreach (FavoriteGameCard favoriteGameCard in Global.HomePage.FavoriteBar.Children) // Foreach favorite
 						{
 							favoriteGameCards.Add(favoriteGameCard); // Add to the list
 						}
@@ -478,11 +478,11 @@ public partial class MainWindow : Window
 						{
 							if (favoriteGameCard1.GameInfo == gameCard1.GameInfo) // If the favorite is corresponding to the game
 							{
-								Definitions.HomePage.FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
+								Global.HomePage.FavoriteBar.Children.Remove(favoriteGameCard1); // Remove the favorite
 							}
 						}
 
-						foreach (FavoriteSideBarItem favoriteSideBarItem in Definitions.MainWindow.FavoriteSideBar.Children)
+						foreach (FavoriteSideBarItem favoriteSideBarItem in Global.MainWindow.FavoriteSideBar.Children)
 						{
 							favoriteSideBarItems.Add(favoriteSideBarItem); // Add to the list
 
@@ -491,7 +491,7 @@ public partial class MainWindow : Window
 						{
 							if (favoriteSideBarItem1.Parent is GameCard card && card == gameCard1)
 							{
-								Definitions.MainWindow.FavoriteSideBar.Children.Remove(favoriteSideBarItem1);
+								Global.MainWindow.FavoriteSideBar.Children.Remove(favoriteSideBarItem1);
 							}
 						}
 					}
@@ -512,23 +512,23 @@ public partial class MainWindow : Window
 					}
 					visIndex = Enumerable.Range(0, SearchDisplayer.Children.Count).ToList();
 
-					Definitions.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
-					Definitions.Games.Remove(gameCard1.GameInfo); // Remove the game
-					GameSaver.Save(Definitions.Games); // Update the save file
-					Definitions.RecentGamesPage.LoadGames(); // Reload the games
-					Definitions.GamesListPage.LoadGames(); // Reload the page
+					Global.GamesCardsPages.GamePresenter.Children.Remove(gameCard1); // Remove the game
+					Global.Games.Remove(gameCard1.GameInfo); // Remove the game
+					GameSaver.Save(Global.Games); // Update the save file
+					Global.RecentGamesPage.LoadGames(); // Reload the games
+					Global.GamesListPage.LoadGames(); // Reload the page
 				}
 
-				if (Definitions.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
+				if (Global.GamesCardsPages.GamePresenter.Children.Count <= 0) // If there is no items
 				{
 					WelcomeAddGames welcomeAddGames = new()
 					{
 						VerticalAlignment = VerticalAlignment.Stretch, // Center
 						HorizontalAlignment = HorizontalAlignment.Stretch // Center
 					}; // New WelcomeAddGames
-					Definitions.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
-					Definitions.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
-					Definitions.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
+					Global.GamesCardsPages.WelcomeHost.Visibility = Visibility.Visible; // Visible
+					Global.GamesCardsPages.GamePresenter.Visibility = Visibility.Collapsed; // Hidden
+					Global.GamesCardsPages.WelcomeHost.Children.Add(welcomeAddGames); // Add the welcome screen
 				}
 			}
 		}
@@ -595,8 +595,8 @@ public partial class MainWindow : Window
 		CheckedTabButton = ProfileBtn; // Set the checked button
 		CheckButton(); // Update the UI
 
-		Definitions.ProfilePage.InitUI(); // Refresh the content
-		PageContent.Navigate(Definitions.ProfilePage); // Show the Library page
+		Global.ProfilePage.InitUI(); // Refresh the content
+		PageContent.Navigate(Global.ProfilePage); // Show the Library page
 	}
 
 	Button CheckedTabButton { get; set; }
@@ -605,8 +605,8 @@ public partial class MainWindow : Window
 		CheckedTabButton = HomeTabBtn; // Set the checked button
 		CheckButton(); // Update the UI
 
-		Definitions.Statistics.InitUI(); // Refresh
-		PageContent.Navigate(Definitions.HomePage); // Show the Home page
+		Global.Statistics.InitUI(); // Refresh
+		PageContent.Navigate(Global.HomePage); // Show the Home page
 	}
 
 	private void LibraryTabBtn_Click(object sender, RoutedEventArgs e)
@@ -614,7 +614,7 @@ public partial class MainWindow : Window
 		CheckedTabButton = LibraryTabBtn; // Set the checked button
 		CheckButton(); // Update the UI
 
-		PageContent.Navigate(Definitions.LibraryPage); // Show the Library page
+		PageContent.Navigate(Global.LibraryPage); // Show the Library page
 	}
 
 	private void HomeTabBtn_MouseLeave(object sender, MouseEventArgs e)
@@ -711,7 +711,7 @@ public partial class MainWindow : Window
 			case Key.Down when selectedIndex < visIndex.Count - 1:
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex < 0 ? 0 : selectedIndex] + (selectedIndex < 0 ? 1 : 0)]).SetFocusState(false);
 				selectedIndex++;
-				offset += selectedIndex - Definitions.Settings.NumberOfSearchResultsToDisplay >= 0 ? 45 : 0;
+				offset += selectedIndex - Global.Settings.NumberOfSearchResultsToDisplay >= 0 ? 45 : 0;
 				((SearchItem)SearchDisplayer.Children[visIndex[selectedIndex]]).SetFocusState(true);
 				SearchScroller.ScrollToVerticalOffset(offset);
 				break;
@@ -734,7 +734,7 @@ public partial class MainWindow : Window
 		IsSearchVisible = !IsSearchVisible; // Toggle
 		if (IsSearchVisible)
 		{
-			ColorElement(SearchBtn, Definitions.HomeButtonBackColor); // Change the background
+			ColorElement(SearchBtn, Global.GetSolidColor("Accent")); // Change the background
 			SearchPanel.Visibility = Visibility.Visible; // Show
 		}
 		else
@@ -754,7 +754,7 @@ public partial class MainWindow : Window
 		CheckedTabButton = RecentTabBtn; // Set the checked button
 		CheckButton(); // Update the UI
 
-		PageContent.Navigate(Definitions.RecentGamesPage); // Show the Home page
+		PageContent.Navigate(Global.RecentGamesPage); // Show the Home page
 	}
 
 	private void SettingsBtn_Click(object sender, RoutedEventArgs e)
@@ -762,7 +762,7 @@ public partial class MainWindow : Window
 		CheckedTabButton = SettingsBtn; // Set the checked button
 		CheckButton(); // Update the UI
 
-		PageContent.Navigate(Definitions.SettingsPage); // Show the Home page
+		PageContent.Navigate(Global.SettingsPage); // Show the Home page
 	}
 
 	private void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -855,9 +855,9 @@ public partial class MainWindow : Window
 	private void LoadTagsSearchUI()
 	{
 		TagsDisplayer.Children.Clear();
-		for (int i = 0; i < Definitions.Settings.GameTags.Count; i++)
+		for (int i = 0; i < Global.Settings.GameTags.Count; i++)
 		{
-			TagsDisplayer.Children.Add(new TagSelectItem(Definitions.Settings.GameTags[i], false));
+			TagsDisplayer.Children.Add(new TagSelectItem(Global.Settings.GameTags[i], false));
 		}
 	}
 	

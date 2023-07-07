@@ -40,19 +40,19 @@ public partial class NotifOptionsPage : Page
 
 	private void InitUI()
 	{
-		UpdatesChk.IsChecked = Definitions.Settings.UpdatesAvNotification;
-		UnusedGameChk.IsChecked = Definitions.Settings.UnusedGameNotification;
+		UpdatesChk.IsChecked = Global.Settings.UpdatesAvNotification;
+		UnusedGameChk.IsChecked = Global.Settings.UnusedGameNotification;
 	}
 
 	private void UpdatesChk_Checked(object sender, RoutedEventArgs e)
 	{
-		Definitions.Settings.UpdatesAvNotification = UpdatesChk.IsChecked;
+		Global.Settings.UpdatesAvNotification = UpdatesChk.IsChecked;
 		SettingsSaver.Save();
 	}
 
 	private void UnusedGameChk_Checked(object sender, RoutedEventArgs e)
 	{
-		Definitions.Settings.UnusedGameNotification = UnusedGameChk.IsChecked;
+		Global.Settings.UnusedGameNotification = UnusedGameChk.IsChecked;
 		SettingsSaver.Save();
 	}
 }

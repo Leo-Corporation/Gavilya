@@ -49,4 +49,8 @@
 		<GradientStop Color="#FF008328" />
 		<GradientStop Color="#04B63A" Offset="1" />
 	</LinearGradientBrush>
+    <LinearGradientBrush x:Key="GoldGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Offset="0" Color="#FFD700"/>
+        <GradientStop Offset="1" Color="#FF8C00"/>
+    </LinearGradientBrush>
 </ResourceDictionary>
