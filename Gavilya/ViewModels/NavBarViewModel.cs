@@ -51,6 +51,6 @@ public class NavBarViewModel : ViewModelBase
 
     private void LibraryPage(object? obj)
     {
-		_mainViewModel.CurrentViewModel = new GamePageViewModel();
+		_mainViewModel.CurrentViewModel = new LibPageViewModel();
 	}
 }

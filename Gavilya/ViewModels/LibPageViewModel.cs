@@ -28,7 +28,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Gavilya.ViewModels;
-internal class GamePageViewModel : ViewModelBase
+internal class LibPageViewModel : ViewModelBase
 {
 
 }

@@ -38,11 +38,11 @@ using System.Windows.Shapes;
 
 namespace Gavilya.Views;
 /// <summary>
-/// Interaction logic for GamePageView.xaml
+/// Interaction logic for LibPageView.xaml
 /// </summary>
-public partial class GamePageView : UserControl
+public partial class LibPageView : UserControl
 {
-	public GamePageView()
+	public LibPageView()
 	{
 		InitializeComponent();
 	}

@@ -60,7 +60,7 @@
             </Style>
 
             <Style x:Key="NavBarBtn" TargetType="RadioButton">
-                <Setter Property="Foreground" Value="{DynamicResource Foreground1}"/>
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="RadioButton">
@@ -82,6 +82,62 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <Style x:Key="RegularButton" TargetType="Button">
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="ButtonBorder" MinHeight="20" Background="{TemplateBinding Background}" BorderThickness="2 0 0 0" BorderBrush="Transparent" CornerRadius="5" Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource SelectedBackground}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource SelectedBackground}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="TabButton" TargetType="RadioButton">
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border x:Name="border" Background="{DynamicResource SelectedBackground}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true" CornerRadius="{TemplateBinding Border.CornerRadius}" Cursor="Hand">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource DarkAccent}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource DarkAccent}" />
+                                </Trigger>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Background" TargetName="border" Value="{DynamicResource Accent}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style TargetType="RadioButton" x:Key="TabButtonFirst" BasedOn="{StaticResource TabButton}">
+                <Setter Property="Border.CornerRadius" Value="5,0,0,5" />
+            </Style>
+
+            <Style TargetType="RadioButton" x:Key="TabButtonMiddle" BasedOn="{StaticResource TabButton}">
+                <Setter Property="Border.CornerRadius" Value="0" />
+            </Style>
+            <Style TargetType="RadioButton" x:Key="TabButtonLast" BasedOn="{StaticResource TabButton}">
+                <Setter Property="Border.CornerRadius" Value="0,5,5,0" />
             </Style>
         </ResourceDictionary>
     </Application.Resources>

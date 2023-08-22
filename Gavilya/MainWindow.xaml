@@ -59,8 +59,8 @@
 			</Grid>
 			<Grid Grid.Row="1">
 				<Grid.Resources>
-					<DataTemplate DataType="{x:Type viewmodels:GamePageViewModel}">
-						<views:GamePageView/>
+					<DataTemplate DataType="{x:Type viewmodels:LibPageViewModel}">
+						<views:LibPageView/>
 					</DataTemplate>
 				</Grid.Resources>
 				<Grid.ColumnDefinitions>
