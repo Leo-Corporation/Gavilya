@@ -59,20 +59,24 @@
                 </Setter>
             </Style>
 
-            <Style x:Key="NavBarBtn" TargetType="ToggleButton">
+            <Style x:Key="NavBarBtn" TargetType="RadioButton">
                 <Setter Property="Foreground" Value="{DynamicResource Foreground1}"/>
                 <Setter Property="Template">
                     <Setter.Value>
-                        <ControlTemplate TargetType="ToggleButton">
-                            <Border x:Name="ButtonBorder" MinHeight="20" Background="Transparent" BorderThickness="2 0 0 0" BorderBrush="Transparent" CornerRadius="5" Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
-                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <ControlTemplate TargetType="RadioButton">
+                            <Border x:Name="ButtonBorder" MinHeight="20" MinWidth="40" BorderThickness="2 0 0 0" BorderBrush="Transparent" CornerRadius="5" Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{DynamicResource SelectedBackground}"/>
+                                    <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource SelectedBackground}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource SelectedBackground}"/>
                                 </Trigger>
                                 <Trigger Property="IsChecked" Value="True">
                                     <Setter Property="BorderBrush" TargetName="ButtonBorder" Value="{DynamicResource Accent}"/>
+                                    <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource SelectedBackground}"/>
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>

@@ -5,7 +5,7 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:local="clr-namespace:Gavilya.Components"
 			 mc:Ignorable="d" xmlns:lang="clr-namespace:Gavilya.Properties"
-			 d:DesignHeight="450" Width="50">
+			 d:DesignHeight="450" Width="Auto">
 	<Grid x:Name="Sidebar">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="Auto"/>
@@ -19,21 +19,21 @@
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
 
-		<ToggleButton Command="{Binding HomePageCommand}" BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="HomeTabBtn" Content="&#xF488;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  FontFamily="..\Fonts\#FluentSystemIcons-Filled">
-			<ToggleButton.ToolTip>
+		<RadioButton Command="{Binding HomePageCommand}" BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="HomeTabBtn" Content="&#xF488;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  FontFamily="..\Fonts\#FluentSystemIcons-Filled">
+			<RadioButton.ToolTip>
 				<ToolTip Content="{x:Static lang:Resources.Home}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-			</ToggleButton.ToolTip>
-		</ToggleButton>
-		<ToggleButton Command="{Binding LibraryPageCommand}" BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Content="&#xFE7B;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  Grid.Row="1" FontFamily="..\Fonts\#FluentSystemIcons-Filled">
-			<ToggleButton.ToolTip>
+			</RadioButton.ToolTip>
+		</RadioButton>
+		<RadioButton Command="{Binding LibraryPageCommand}" BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Content="&#xFE7B;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  Grid.Row="1" FontFamily="..\Fonts\#FluentSystemIcons-Filled">
+			<RadioButton.ToolTip>
 				<ToolTip Content="{x:Static lang:Resources.Library}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-			</ToggleButton.ToolTip>
-		</ToggleButton>
-		<ToggleButton BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="RecentTabBtn" Content="&#xF486;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  Grid.Row="2" FontFamily="..\Fonts\#FluentSystemIcons-Filled">
-			<ToggleButton.ToolTip>
+			</RadioButton.ToolTip>
+		</RadioButton>
+		<RadioButton BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="RecentTabBtn" Content="&#xF486;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  Grid.Row="2" FontFamily="..\Fonts\#FluentSystemIcons-Filled">
+			<RadioButton.ToolTip>
 				<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-			</ToggleButton.ToolTip>
-		</ToggleButton>
+			</RadioButton.ToolTip>
+		</RadioButton>
 	 
 
 		<TextBlock Grid.Row="5" Text="&#xF4E0;" FontSize="25" Foreground="{DynamicResource SelectedBackground}" Background="Transparent" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
@@ -44,20 +44,20 @@
 			</StackPanel>
 		</ScrollViewer>
 
-		<ToggleButton BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="NotificationsBtn" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5,2,5,5" Cursor="Hand"  Grid.Row="7" FontFamily="..\Fonts\#FluentSystemIcons-Filled" BorderBrush="Transparent">
+		<RadioButton BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="NotificationsBtn" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5,2,5,5" Cursor="Hand"  Grid.Row="7" FontFamily="..\Fonts\#FluentSystemIcons-Filled" BorderBrush="Transparent">
 			<Grid>
 				<TextBlock Text="&#xF115;" />
 				<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top" />
 			</Grid>
-			<ToggleButton.ToolTip>
+			<RadioButton.ToolTip>
 				<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-			</ToggleButton.ToolTip>
-		</ToggleButton>
+			</RadioButton.ToolTip>
+		</RadioButton>
 
-		<ToggleButton BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="SettingsBtn" Content="&#xF6B3;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  Grid.Row="8" FontFamily="..\Fonts\#FluentSystemIcons-Filled">
-			<ToggleButton.ToolTip>
+		<RadioButton BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="SettingsBtn" Content="&#xF6B3;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  Grid.Row="8" FontFamily="..\Fonts\#FluentSystemIcons-Filled">
+			<RadioButton.ToolTip>
 				<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-			</ToggleButton.ToolTip>
-		</ToggleButton>
+			</RadioButton.ToolTip>
+		</RadioButton>
 	</Grid>
 </UserControl>
