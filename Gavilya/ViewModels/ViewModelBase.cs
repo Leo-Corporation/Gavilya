@@ -21,28 +21,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
+using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
-namespace Gavilya;
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
-public partial class App : Application
+namespace Gavilya.ViewModels;
+public class ViewModelBase : INotifyPropertyChanged, IDisposable
 {
-	protected override void OnStartup(StartupEventArgs e)
+	public event PropertyChangedEventHandler PropertyChanged;
+
+	protected void OnPropertyChanged(string propertyName = null)
 	{
-		MainWindow = new MainWindow()
-		{
-			DataContext = new MainViewModel()
-		};
-		MainWindow.Show();
-		base.OnStartup(e);
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 	}
+
+	public virtual void Dispose() { }
 }
+

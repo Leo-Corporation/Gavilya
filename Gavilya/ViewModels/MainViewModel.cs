@@ -21,28 +21,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 
-namespace Gavilya;
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
-public partial class App : Application
+namespace Gavilya.ViewModels;
+public class MainViewModel : ViewModelBase
 {
-	protected override void OnStartup(StartupEventArgs e)
+	private object _currentView;
+	public object CurrentViewModel
 	{
-		MainWindow = new MainWindow()
-		{
-			DataContext = new MainViewModel()
-		};
-		MainWindow.Show();
-		base.OnStartup(e);
+		get { return _currentView; }
+		set { _currentView = value; OnPropertyChanged(); }
 	}
 }
