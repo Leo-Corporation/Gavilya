@@ -45,7 +45,7 @@
 				</Button.ToolTip>
 			</Button>
 
-			<Grid Background="{DynamicResource GameCardGradient2}" VerticalAlignment="Bottom" Grid.Row="1" x:Name="InfoGrid" Grid.Column="0" Grid.ColumnSpan="6">
+            <Grid Visibility="{Binding MouseHoverVis}" Background="{DynamicResource GameCardGradient2}" VerticalAlignment="Bottom" Grid.Row="1" x:Name="InfoGrid" Grid.Column="0" Grid.ColumnSpan="6">
 
 
 				<Grid.ColumnDefinitions>

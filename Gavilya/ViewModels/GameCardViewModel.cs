@@ -137,6 +137,9 @@ namespace Gavilya.ViewModels
 			}
 		}
 
+		private Visibility _mouseHoverVis = Visibility.Hidden;
+		public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
+
 		public ICommand MouseHoverCommand { get; }
 
 		public ICommand PlayCommand { get; }
@@ -154,12 +157,11 @@ namespace Gavilya.ViewModels
 			IsHidden = game.IsHidden;
 
 			MouseHoverCommand = new RelayCommand(HandleMouseHover);
-			PlayCommand = new RelayCommand(HandleMouseHover);
 		}
 
 		private void HandleMouseHover(object parameter)
 		{
-			MessageBox.Show("Hover");
+			MouseHoverVis = MouseHoverVis == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
 		}
 	}
 }
