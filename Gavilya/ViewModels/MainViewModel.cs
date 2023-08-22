@@ -65,7 +65,7 @@ public class MainViewModel : ViewModelBase
 	private double _maxWidth;
 
 	public double MaxHeight { get => _maxHeight; set { _maxHeight = value; OnPropertyChanged(nameof(MaxHeight)); } }
-	public double MawWidth { get => _maxWidth; set { _maxWidth = value; OnPropertyChanged(nameof(MawWidth)); } }
+	public double MaxWidth { get => _maxWidth; set { _maxWidth = value; OnPropertyChanged(nameof(MaxWidth)); } }
 
 	private Thickness _borderMargin;
 	public Thickness BorderMargin { get => _borderMargin; set { _borderMargin = value; OnPropertyChanged(nameof(BorderMargin)); } }
@@ -84,11 +84,11 @@ public class MainViewModel : ViewModelBase
 		MaximizeRestoreCommand = new RelayCommand(Maximize);
 		CloseCommand = new RelayCommand(Close);
 
-		(MaxHeight, MawWidth) = _windowHelper.GetMaximumSize();
+		(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
 
 		_window.StateChanged += (o, e) =>
 		{
-			(MaxHeight, MawWidth) = _windowHelper.GetMaximumSize();
+			(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
 			MaxiIcon = _window.WindowState == WindowState.Maximized ? "\uF670" : "\uFA40";
 			MaxiIconFontSize = _window.WindowState == WindowState.Maximized ? 16 : 12;
 			BorderMargin = _window.WindowState == WindowState.Maximized ? new(0) : new(10); // Set
@@ -96,7 +96,7 @@ public class MainViewModel : ViewModelBase
 
 		_window.LocationChanged += (o, e) =>
 		{
-			(MaxHeight, MawWidth) = _windowHelper.GetMaximumSize();
+			(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
 		};
 	}
 
@@ -115,7 +115,7 @@ public class MainViewModel : ViewModelBase
 		}
 		else
 		{
-			(MaxHeight, MawWidth) = _windowHelper.GetMaximumSize();
+			(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
 			_window.WindowState = WindowState.Maximized;
 			MaxiIcon = "\uF670";
 			MaxiIconFontSize = 16;
