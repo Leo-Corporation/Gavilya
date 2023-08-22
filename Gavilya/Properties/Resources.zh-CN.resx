@@ -1,0 +1,987 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="YourGames" xml:space="preserve">
+    <value>您的游戏</value>
+  </data>
+  <data name="MainWindowTitle" xml:space="preserve">
+    <value>Gavilya</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="AddGame" xml:space="preserve">
+    <value>添加一个游戏</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>浏览</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>图像</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>版本</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="GameFieldsEmpty" xml:space="preserve">
+    <value>请填写游戏信息。</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>喜欢</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="EditGame" xml:space="preserve">
+    <value>编辑游戏</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Gavilya</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="UpdateAv" xml:space="preserve">
+    <value>更新可用</value>
+  </data>
+  <data name="UpdateUn" xml:space="preserve">
+    <value>没有可用的更新</value>
+  </data>
+  <data name="UpdateAvMessage" xml:space="preserve">
+    <value>Gavily 有更新：</value>
+  </data>
+  <data name="UpdateVersion" xml:space="preserve">
+    <value>版本：</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>安装</value>
+  </data>
+  <data name="ContinueInstall" xml:space="preserve">
+    <value>你要继续吗？</value>
+  </data>
+  <data name="UpdateUnMessage" xml:space="preserve">
+    <value>当前没有可用的更新。</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="XUDoesNotExist" xml:space="preserve">
+    <value>Xalyus 更新程序不存在，请重新安装 Gavily。</value>
+  </data>
+  <data name="CoverSearch" xml:space="preserve">
+    <value>搜索游戏封面</value>
+  </data>
+  <data name="SelectGame" xml:space="preserve">
+    <value>选择一个游戏</value>
+  </data>
+  <data name="RAWGPowered" xml:space="preserve">
+    <value>Powered by RAWG.io</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="PlayLowerCase" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="FavoriteButton" xml:space="preserve">
+    <value>喜欢/不喜欢</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删除所选游戏</value>
+  </data>
+  <data name="SelectGames" xml:space="preserve">
+    <value>选择游戏</value>
+  </data>
+  <data name="RecentGames" xml:space="preserve">
+    <value>最近玩的游戏</value>
+  </data>
+  <data name="GameList" xml:space="preserve">
+    <value>列表视图</value>
+  </data>
+  <data name="GameCard" xml:space="preserve">
+    <value>卡片视图</value>
+  </data>
+  <data name="LastTimePlayed" xml:space="preserve">
+    <value>最后使用</value>
+  </data>
+  <data name="Platforms" xml:space="preserve">
+    <value>平台</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>描述</value>
+  </data>
+  <data name="AssociateGame" xml:space="preserve">
+    <value>关联游戏</value>
+  </data>
+  <data name="Never" xml:space="preserve">
+    <value>从不</value>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月</value>
+  </data>
+  <data name="TotalTimePlayed" xml:space="preserve">
+    <value>已玩时间</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="Second" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="HourMin" xml:space="preserve">
+    <value>小时</value>
+  </data>
+  <data name="MinuteMin" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="SecondMin" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="SelectGameStart" xml:space="preserve">
+    <value>选择一个游戏开始</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="SaveOptions" xml:space="preserve">
+    <value>保存选项</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="ExportGames" xml:space="preserve">
+    <value>导出您的游戏</value>
+  </data>
+  <data name="ImportGames" xml:space="preserve">
+    <value>导入您的游戏</value>
+  </data>
+  <data name="ExportGamesDescription" xml:space="preserve">
+    <value>将您在 Gavilya 中的游戏导出为 .gav 保存文件。</value>
+  </data>
+  <data name="ImportGamesDescription" xml:space="preserve">
+    <value>在 Gavilya 中导入 .gav 保存文件。 当前的保存文件将被新的文件替换。</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>导出</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>导入</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>发生了错误</value>
+  </data>
+  <data name="ExportSuccess" xml:space="preserve">
+    <value>您的游戏已成功导出。</value>
+  </data>
+  <data name="GavFiles" xml:space="preserve">
+    <value>GAV 文件</value>
+  </data>
+  <data name="ImportConfirmMsg" xml:space="preserve">
+    <value>当前游戏将被新游戏替换，您无法还原此操作。 你想继续吗？</value>
+  </data>
+  <data name="ImportSuccess" xml:space="preserve">
+    <value>您的游戏已成功导入。</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>更改语言</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>语言</value>
+  </data>
+  <data name="ChangeLanguageDescription" xml:space="preserve">
+    <value>更改 Gavily 的当前语言。</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>默认</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>保存更改</value>
+  </data>
+  <data name="GameProperties" xml:space="preserve">
+    <value>游戏属性</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>属性</value>
+  </data>
+  <data name="Infos" xml:space="preserve">
+    <value>信息</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>其它</value>
+  </data>
+  <data name="Misc" xml:space="preserve">
+    <value>杂项</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>打开</value>
+  </data>
+  <data name="GameProcess" xml:space="preserve">
+    <value>游戏进程</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>帮助</value>
+  </data>
+  <data name="ProcessNameHelp" xml:space="preserve">
+    <value>游戏运行时要查找的进程。 它允许计算您玩游戏的时间。 将该字段留空以使用默认的可执行文件。</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>欢迎使用 Gavilya</value>
+  </data>
+  <data name="GameGathered" xml:space="preserve">
+    <value>你所有的游戏都聚集在这里。</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>开始使用</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="FirstRunAddGamesDescription" xml:space="preserve">
+    <value>您可以通过单击主页上的“添加”按钮或在主页中拖入可执行文件来添加游戏。</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>跳过</value>
+  </data>
+  <data name="SkipStep" xml:space="preserve">
+    <value>跳过此步骤</value>
+  </data>
+  <data name="RAWGIntegration" xml:space="preserve">
+    <value>RAWG 数据库集成</value>
+  </data>
+  <data name="RAWGDescriptionFirstRun" xml:space="preserve">
+    <value>Gavilan 与 RAWG.io 数据库集成，这意味着 Gavilan 可以自动查找游戏的封面、描述和其他信息。</value>
+  </data>
+  <data name="ImportGamesFirstRunDescription" xml:space="preserve">
+    <value>如果您是以前的用户，您可能想要导入现有的“.gav”保存文件。</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>完成！</value>
+  </data>
+  <data name="ReadyFirstRun" xml:space="preserve">
+    <value>您现在可以使用 Gavily 了。</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+    <value>开始！</value>
+  </data>
+  <data name="StartAddGame" xml:space="preserve">
+    <value>从添加游戏开始</value>
+  </data>
+  <data name="AddGameWelcome" xml:space="preserve">
+    <value>通过单击“添加”按钮添加游戏或将可执行文件拖放到此处。</value>
+  </data>
+  <data name="WelcomeRecentGames" xml:space="preserve">
+    <value>当您开始玩游戏时，它们会出现在这里。</value>
+  </data>
+  <data name="GoBack" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="GoForward" xml:space="preserve">
+    <value>向前</value>
+  </data>
+  <data name="Startup" xml:space="preserve">
+    <value>启动</value>
+  </data>
+  <data name="OnStartup" xml:space="preserve">
+    <value>启动时</value>
+  </data>
+  <data name="StartupPage" xml:space="preserve">
+    <value>启动时选择启动页面。</value>
+  </data>
+  <data name="PagesNames" xml:space="preserve">
+    <value>你的游戏;最近的游戏;列表视图</value>
+  </data>
+  <data name="DeleteConfirmMessage" xml:space="preserve">
+    <value>您确定要删除这些游戏吗？ 此操作无法取消。</value>
+  </data>
+  <data name="Ratings" xml:space="preserve">
+    <value>评分</value>
+  </data>
+  <data name="NoRatingsAv" xml:space="preserve">
+    <value>该游戏没有评分，因为它没有连接到 RAWG.io，或者因为没有人对该游戏进行评分。</value>
+  </data>
+  <data name="SeeOnRAWG" xml:space="preserve">
+    <value>参见 RAWG</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="EditGameDescription" xml:space="preserve">
+    <value>添加/编辑描述</value>
+  </data>
+  <data name="Achievements" xml:space="preserve">
+    <value>成就</value>
+  </data>
+  <data name="AchievementPlayerUnlocked" xml:space="preserve">
+    <value>的玩家已解锁此成就。</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="SwitchProfile" xml:space="preserve">
+    <value>切换配置文件</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>编辑配置文件</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>配置文件</value>
+  </data>
+  <data name="OtherProfiles" xml:space="preserve">
+    <value>其它配置文件</value>
+  </data>
+  <data name="AddEditProfile" xml:space="preserve">
+    <value>添加/编辑配置文件</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>头像</value>
+  </data>
+  <data name="DeleteProfile" xml:space="preserve">
+    <value>删除配置文件</value>
+  </data>
+  <data name="DeleteProfileMsg" xml:space="preserve">
+    <value>确定要删除此配置文件吗？</value>
+  </data>
+  <data name="AddProfile" xml:space="preserve">
+    <value>添加一个新的配置文件</value>
+  </data>
+  <data name="NoProfilesFound" xml:space="preserve">
+    <value>未找到配置文件。</value>
+  </data>
+  <data name="CreateAProfile" xml:space="preserve">
+    <value>创建一个配置文件并开始。</value>
+  </data>
+  <data name="GameNoAchievements" xml:space="preserve">
+    <value>这个游戏没有成就。</value>
+  </data>
+  <data name="NoAchivementsMsg" xml:space="preserve">
+    <value>Gavilya 在 RAWG.io 数据库中没有找到任何成就，或者这个游戏与 RAWG 没有关联。</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>统计</value>
+  </data>
+  <data name="StatsTimePlayed" xml:space="preserve">
+    <value>总游戏时间</value>
+  </data>
+  <data name="HourShort" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="Top10MostPlayedGames" xml:space="preserve">
+    <value>前 10 名最常玩的游戏</value>
+  </data>
+  <data name="StatsLastTimePlayed" xml:space="preserve">
+    <value>最后一次使用</value>
+  </data>
+  <data name="MostPlayed" xml:space="preserve">
+    <value>玩得最多</value>
+  </data>
+  <data name="LeastPlayed" xml:space="preserve">
+    <value>玩得最少</value>
+  </data>
+  <data name="Stores" xml:space="preserve">
+    <value>商店</value>
+  </data>
+  <data name="AvailableOn" xml:space="preserve">
+    <value>可用于</value>
+  </data>
+  <data name="Steam" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="EpicGamesStore" xml:space="preserve">
+    <value>Epic Games Store</value>
+  </data>
+  <data name="MicrosoftStore" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
+  <data name="NoGames" xml:space="preserve">
+    <value>没有可显示的信息。</value>
+  </data>
+  <data name="AutoSave" xml:space="preserve">
+    <value>自动备份</value>
+  </data>
+  <data name="SaveLocation" xml:space="preserve">
+    <value>保存文件位置</value>
+  </data>
+  <data name="MakeBackup" xml:space="preserve">
+    <value>立即备份</value>
+  </data>
+  <data name="AutoSaveOnDate" xml:space="preserve">
+    <value>自动保存在</value>
+  </data>
+  <data name="MakeAutoSaves" xml:space="preserve">
+    <value>进行自动保存</value>
+  </data>
+  <data name="SelectADirectory" xml:space="preserve">
+    <value>选择一个目录</value>
+  </data>
+  <data name="OfMonth" xml:space="preserve">
+    <value>本月。</value>
+  </data>
+  <data name="NoRatings" xml:space="preserve">
+    <value>这个游戏没有评分。</value>
+  </data>
+  <data name="SelectGamesImport" xml:space="preserve">
+    <value>选择要导入的游戏。</value>
+  </data>
+  <data name="GetRAWGImage" xml:space="preserve">
+    <value>获取 RAWG 图像</value>
+  </data>
+  <data name="FeatureNeedsInternet" xml:space="preserve">
+    <value>此功能需要 Internet 连接。</value>
+  </data>
+  <data name="FileNotExist" xml:space="preserve">
+    <value>指定的文件不存在。</value>
+  </data>
+  <data name="ImageNotExist" xml:space="preserve">
+    <value>指定的图像不存在。</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>完成</value>
+  </data>
+  <data name="SelectDragDropGame" xml:space="preserve">
+    <value>选择游戏或将其拖放到此处</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>下一步</value>
+  </data>
+  <data name="Integrations" xml:space="preserve">
+    <value>集成</value>
+  </data>
+  <data name="RAWGio" xml:space="preserve">
+    <value>RAWG.io</value>
+  </data>
+  <data name="Associated" xml:space="preserve">
+    <value>已关联</value>
+  </data>
+  <data name="NotAssociated" xml:space="preserve">
+    <value>未关联</value>
+  </data>
+  <data name="UpdateAvMessageNotify" xml:space="preserve">
+    <value>更新可用于 Gavily。</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="GameNeedsName" xml:space="preserve">
+    <value>游戏需要一个可执行文件和一个名称。</value>
+  </data>
+  <data name="AlwaysCheckIfGameRunning" xml:space="preserve">
+    <value>始终检查游戏当前是否正在运行</value>
+  </data>
+  <data name="PackageFamilyName" xml:space="preserve">
+    <value>“PackageFamilyName”属性</value>
+  </data>
+  <data name="ApplicationId" xml:space="preserve">
+    <value>"Application Id" 属性</value>
+  </data>
+  <data name="AddUWPGame" xml:space="preserve">
+    <value>添加 Microsoft Store 游戏</value>
+  </data>
+  <data name="Screenshots" xml:space="preserve">
+    <value>截图</value>
+  </data>
+  <data name="ShowScreenshots" xml:space="preserve">
+    <value>显示截图</value>
+  </data>
+  <data name="SteamAppId" xml:space="preserve">
+    <value>Steam App ID</value>
+  </data>
+  <data name="AddSteamGame" xml:space="preserve">
+    <value>添加 Steam 游戏</value>
+  </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>许可证</value>
+  </data>
+  <data name="SeeLicenses" xml:space="preserve">
+    <value>查看许可证</value>
+  </data>
+  <data name="WhatGameToPlay" xml:space="preserve">
+    <value>你想玩什么游戏？</value>
+  </data>
+  <data name="ExclamationMark" xml:space="preserve">
+    <value>!</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>你好，</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="Library" xml:space="preserve">
+    <value>库</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>我的配置文件</value>
+  </data>
+  <data name="NoStatistics" xml:space="preserve">
+    <value>目前没有可显示的统计数据。</value>
+  </data>
+  <data name="Spotlight" xml:space="preserve">
+    <value>Spotlight</value>
+  </data>
+  <data name="P1" xml:space="preserve">
+    <value>#1</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>#2</value>
+  </data>
+  <data name="P3" xml:space="preserve">
+    <value>#3</value>
+  </data>
+  <data name="DefaultViewMode" xml:space="preserve">
+    <value>库中的默认视图模式</value>
+  </data>
+  <data name="PopupMenu" xml:space="preserve">
+    <value>Gavilya - 菜单</value>
+  </data>
+  <data name="DefaultPage" xml:space="preserve">
+    <value>默认页面</value>
+  </data>
+  <data name="DefaultPageOnStart" xml:space="preserve">
+    <value>启动时的默认页面</value>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>任务</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>数据</value>
+  </data>
+  <data name="ResetSettings" xml:space="preserve">
+    <value>重置设置</value>
+  </data>
+  <data name="ResetSettingsDesc" xml:space="preserve">
+    <value>将设置重置为其默认值。</value>
+  </data>
+  <data name="ResetSettingsMsg" xml:space="preserve">
+    <value>您确定要重置所有设置吗？ 这个操作是不可逆的。</value>
+  </data>
+  <data name="GavilyaNeedsRestartChanges" xml:space="preserve">
+    <value>Gavilya 需要重新启动才能应用更改。</value>
+  </data>
+  <data name="TheStart" xml:space="preserve">
+    <value>在开始</value>
+  </data>
+  <data name="CrazyAboutIt" xml:space="preserve">
+    <value>疯狂玩家</value>
+  </data>
+  <data name="NeedSpaceOnTheShelves" xml:space="preserve">
+    <value>货架上需要空间</value>
+  </data>
+  <data name="NoobPlayer" xml:space="preserve">
+    <value>菜鸟玩家</value>
+  </data>
+  <data name="StarterGamer" xml:space="preserve">
+    <value>新手玩家</value>
+  </data>
+  <data name="AdvancedGamer" xml:space="preserve">
+    <value>高级玩家</value>
+  </data>
+  <data name="TrueGamer" xml:space="preserve">
+    <value>真实玩家</value>
+  </data>
+  <data name="LegendaryGamer" xml:space="preserve">
+    <value>传奇玩家</value>
+  </data>
+  <data name="TheStartDesc" xml:space="preserve">
+    <value>添加游戏。</value>
+  </data>
+  <data name="CrazyAboutItDesc" xml:space="preserve">
+    <value>将游戏标记为喜欢。</value>
+  </data>
+  <data name="NeedSpaceOnTheShelvesDesc" xml:space="preserve">
+    <value>在您的库中拥有超过 50 款游戏。</value>
+  </data>
+  <data name="NoobPlayerDesc" xml:space="preserve">
+    <value>至少玩一小时，不管是哪款游戏。</value>
+  </data>
+  <data name="StarterGamerDesc" xml:space="preserve">
+    <value>至少玩 10 个小时，无论是哪个游戏。</value>
+  </data>
+  <data name="AdvancedGamerDesc" xml:space="preserve">
+    <value>至少玩 100 小时，无论是哪种游戏。</value>
+  </data>
+  <data name="TrueGamerDesc" xml:space="preserve">
+    <value>玩至少 1000 小时，无论是哪个游戏。</value>
+  </data>
+  <data name="LegendaryGamerDesc" xml:space="preserve">
+    <value>至少玩 5000 小时，无论是哪个游戏。</value>
+  </data>
+  <data name="Badges" xml:space="preserve">
+    <value>徽章</value>
+  </data>
+  <data name="MyBadges" xml:space="preserve">
+    <value>我的徽章</value>
+  </data>
+  <data name="AllBadges" xml:space="preserve">
+    <value>所有徽章</value>
+  </data>
+  <data name="ConvertToSteam" xml:space="preserve">
+    <value>转换为 Steam 游戏</value>
+  </data>
+  <data name="ConvertToSteamMsg" xml:space="preserve">
+    <value>将 EXE 游戏转换为 Steam 游戏是不可逆转的，您确定要继续吗？</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>转换</value>
+  </data>
+  <data name="BrowseUWPApps" xml:space="preserve">
+    <value>浏览 UWP 应用</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="MaxNumberOfRecentGames" xml:space="preserve">
+    <value>“最近”部分中显示的最大游戏数。</value>
+  </data>
+  <data name="InvalidGameNumber" xml:space="preserve">
+    <value>游戏数必须大于 0。</value>
+  </data>
+  <data name="RecommandedGames" xml:space="preserve">
+    <value>你可能喜欢...</value>
+  </data>
+  <data name="NoRecommandedGames" xml:space="preserve">
+    <value>我们没有找到您可能喜欢的任何游戏。</value>
+  </data>
+  <data name="AdminMode" xml:space="preserve">
+    <value>管理员模式</value>
+  </data>
+  <data name="LaunchGameAsAdmin" xml:space="preserve">
+    <value>以管理员身份启动游戏。</value>
+  </data>
+  <data name="CannotLaunchAsAdminUWP" xml:space="preserve">
+    <value>无法以管理员身份启动非 Win32 应用程序。</value>
+  </data>
+  <data name="NotificationCenter" xml:space="preserve">
+    <value>通知中心</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="NotificationLower" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="NotificationsLower" xml:space="preserve">
+    <value>通知</value>
+  </data>
+  <data name="YouHave" xml:space="preserve">
+    <value>您有</value>
+  </data>
+  <data name="NoNotifications" xml:space="preserve">
+    <value>您没有任何通知。</value>
+  </data>
+  <data name="UnusedGame" xml:space="preserve">
+    <value>您已经有一段时间没有玩 {0} 了。</value>
+  </data>
+  <data name="UnusedGameNotification" xml:space="preserve">
+    <value>未使用的游戏</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>显示</value>
+  </data>
+  <data name="SteamNotRunning" xml:space="preserve">
+    <value>无法启动游戏：Steam 没有运行。</value>
+  </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="SeeGitHubRepo" xml:space="preserve">
+    <value>参见 GitHub 仓库。</value>
+  </data>
+  <data name="NotLoggedToSteam" xml:space="preserve">
+    <value>您没有登录到 Steam。</value>
+  </data>
+  <data name="ShowMoreUnplayedGames" xml:space="preserve">
+    <value>显示您很久没有玩过的游戏。</value>
+  </data>
+  <data name="RecommandedGamesSection" xml:space="preserve">
+    <value>"您可能喜欢..."部分</value>
+  </data>
+  <data name="SearchF" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="HideSearchBar" xml:space="preserve">
+    <value>隐藏搜索栏</value>
+  </data>
+  <data name="SearchBar" xml:space="preserve">
+    <value>搜索栏</value>
+  </data>
+  <data name="Games" xml:space="preserve">
+    <value>游戏</value>
+  </data>
+  <data name="GamesL" xml:space="preserve">
+    <value>游戏</value>
+  </data>
+  <data name="GameL" xml:space="preserve">
+    <value>游戏</value>
+  </data>
+  <data name="NumberResults" xml:space="preserve">
+    <value>要显示的结果数量</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>结果</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>进度：</value>
+  </data>
+  <data name="FpsCounter" xml:space="preserve">
+    <value>FPS 计数器</value>
+  </data>
+  <data name="Opacity" xml:space="preserve">
+    <value>不透明度</value>
+  </data>
+  <data name="FpsCounterOpacity" xml:space="preserve">
+    <value>FPS 计数器的不透明度。</value>
+  </data>
+  <data name="OpenFpsCounter" xml:space="preserve">
+    <value>按 {0} 打开 FPS 计数器。</value>
+  </data>
+  <data name="SortAlphabetically" xml:space="preserve">
+    <value>按字母顺序排序</value>
+  </data>
+  <data name="SortInverse" xml:space="preserve">
+    <value>按逆序排序</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>当前</value>
+  </data>
+  <data name="AboutYou" xml:space="preserve">
+    <value>关于您</value>
+  </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>保存设置。</value>
+  </data>
+  <data name="RecommandedSettings" xml:space="preserve">
+    <value>与 "你可能喜欢..."部分相关的设置。</value>
+  </data>
+  <data name="SelectNotification" xml:space="preserve">
+    <value>选择你想在通知中心接收的通知。</value>
+  </data>
+  <data name="GameTags" xml:space="preserve">
+    <value>Game tags</value>
+  </data>
+  <data name="ManageGameTags" xml:space="preserve">
+    <value>Create, edit or remove your game tags.</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Add a tag</value>
+  </data>
+  <data name="DeleteTag" xml:space="preserve">
+    <value>Delete this tag</value>
+  </data>
+  <data name="DeleteTagMsg" xml:space="preserve">
+    <value>Are you sure you want to delete this tag? This will remove its association with the assigned games.</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="NameNeededMsg" xml:space="preserve">
+    <value>Please specify a name.</value>
+  </data>
+  <data name="AssociateTags" xml:space="preserve">
+    <value>Associate tags</value>
+  </data>
+  <data name="HideGame" xml:space="preserve">
+    <value>Hide this game</value>
+  </data>
+  <data name="DisplayHiddenGames" xml:space="preserve">
+    <value>Display hidden games</value>
+  </data>
+  <data name="HiddenGames" xml:space="preserve">
+    <value>Hidden games</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Tags</value>
+  </data>
+  <data name="AllFilters" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="RandomGame" xml:space="preserve">
+    <value>随机游戏</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>今天</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>昨日</value>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>这个月</value>
+  </data>
+  <data name="LongTimeAgo" xml:space="preserve">
+    <value>很久以前</value>
+  </data>
+  <data name="Sidebar" xml:space="preserve">
+    <value>侧边栏</value>
+  </data>
+  <data name="SidebarPosition" xml:space="preserve">
+    <value>侧边栏的位置。</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>左边</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>对</value>
+  </data>
+  <data name="ThemesImport" xml:space="preserve">
+    <value>导入一个主题</value>
+  </data>
+  <data name="Themes" xml:space="preserve">
+    <value>主题</value>
+  </data>
+  <data name="ThemesDesc" xml:space="preserve">
+    <value>设定加维利亚的主题。</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>高级</value>
+  </data>
+</root>
