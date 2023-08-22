@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 using Gavilya.Commands;
+using Gavilya.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,6 +39,7 @@ public class MainViewModel : ViewModelBase
 
 	private object _currentView;
 	private readonly Window _window;
+	private readonly WindowHelper _windowHelper;
 
 	public object CurrentViewModel
 	{
@@ -59,6 +61,15 @@ public class MainViewModel : ViewModelBase
 		set { _maxiIconFontSize = value; OnPropertyChanged(nameof(MaxiIconFontSize)); }
 	}
 
+	private double _maxHeight;
+	private double _maxWidth;
+
+	public double MaxHeight { get => _maxHeight; set { _maxHeight = value; OnPropertyChanged(nameof(MaxHeight)); } }
+	public double MawWidth { get => _maxWidth; set { _maxWidth = value; OnPropertyChanged(nameof(MawWidth)); } }
+
+	private Thickness _borderMargin;
+	public Thickness BorderMargin { get => _borderMargin; set { _borderMargin = value; OnPropertyChanged(nameof(BorderMargin)); } }
+
 	public ICommand MinimizeCommand { get; }
 	public ICommand MaximizeRestoreCommand { get; }
 	public ICommand CloseCommand { get; }
@@ -67,9 +78,26 @@ public class MainViewModel : ViewModelBase
 	{
 		_window = window;
 		_navBarViewModel = new(this);
+		_windowHelper = new(window);
+
 		MinimizeCommand = new RelayCommand(Minimize);
 		MaximizeRestoreCommand = new RelayCommand(Maximize);
 		CloseCommand = new RelayCommand(Close);
+
+		(MaxHeight, MawWidth) = _windowHelper.GetMaximumSize();
+
+		_window.StateChanged += (o, e) =>
+		{
+			(MaxHeight, MawWidth) = _windowHelper.GetMaximumSize();
+			MaxiIcon = _window.WindowState == WindowState.Maximized ? "\uF670" : "\uFA40";
+			MaxiIconFontSize = _window.WindowState == WindowState.Maximized ? 16 : 12;
+			BorderMargin = _window.WindowState == WindowState.Maximized ? new(0) : new(10); // Set
+		};
+
+		_window.LocationChanged += (o, e) =>
+		{
+			(MaxHeight, MawWidth) = _windowHelper.GetMaximumSize();
+		};
 	}
 
 	private void Minimize(object parameter)
@@ -87,6 +115,7 @@ public class MainViewModel : ViewModelBase
 		}
 		else
 		{
+			(MaxHeight, MawWidth) = _windowHelper.GetMaximumSize();
 			_window.WindowState = WindowState.Maximized;
 			MaxiIcon = "\uF670";
 			MaxiIconFontSize = 16;

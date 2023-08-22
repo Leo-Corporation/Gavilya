@@ -4,7 +4,7 @@
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:local="clr-namespace:Gavilya" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:components="clr-namespace:Gavilya.Components" xmlns:viewmodels="clr-namespace:Gavilya.ViewModels" xmlns:views="clr-namespace:Gavilya.Views"
-		mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MinHeight="450" MinWidth="840"
+		mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MinHeight="450" MinWidth="840" MaxHeight="{Binding MaxHeight}" MaxWidth="{Binding MaxWidth}"
 		Title="{x:Static lang:Resources.MainWindowTitle}"  Height="700" Width="1185"  Background="Transparent">
 	<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
@@ -14,7 +14,7 @@
 		<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
 	</Window.Effect>
 
-	<Border Margin="10" CornerRadius="5 5 0 0" x:Name="ContentBorder" Background="{DynamicResource Background}">
+	<Border Margin="{Binding BorderMargin}" CornerRadius="5 5 0 0" x:Name="ContentBorder" Background="{DynamicResource Background}">
 		<Grid>
 			<Grid.RowDefinitions>
 				<RowDefinition Height="50"/>
