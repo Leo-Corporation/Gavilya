@@ -60,7 +60,7 @@
                 </StackPanel>
             </Border>
         </Grid>
-        <ItemsControl ItemsSource="{Binding Games}" Grid.Row="1">
+        <ItemsControl ItemsSource="{Binding GamesVm}" Grid.Row="1">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal"/>

@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Commands;
+using Gavilya.Enums;
 using Gavilya.Models;
 using System;
 using System.Collections.Generic;
@@ -37,12 +38,121 @@ namespace Gavilya.ViewModels
     public class GameCardViewModel : ViewModelBase
     {
 
+		private string _name;
+		public string Name
+		{
+			get => _name;
+			set
+			{
+				_name = value;
+				OnPropertyChanged(nameof(Name));
+			}
+		}
+
+		private string _description;
+		public string Description
+		{
+			get => _description;
+			set
+			{
+				_description = value;
+				OnPropertyChanged(nameof(Description));
+			}
+		}
+
+		private string _coverFilePath;
+		public string CoverFilePath
+		{
+			get => _coverFilePath;
+			set
+			{
+				_coverFilePath = value;
+				OnPropertyChanged(nameof(CoverFilePath));
+			}
+		}
+
+		private int _lastTimePlayed;
+		public int LastTimePlayed
+		{
+			get => _lastTimePlayed;
+			set
+			{
+				_lastTimePlayed = value;
+				OnPropertyChanged(nameof(LastTimePlayed));
+			}
+		}
+
+		private int _totalTimePlayed;
+		public int TotalTimePlayed
+		{
+			get => _totalTimePlayed;
+			set
+			{
+				_totalTimePlayed = value;
+				OnPropertyChanged(nameof(TotalTimePlayed));
+			}
+		}
+
+		private string _command;
+		public string Command
+		{
+			get => _command;
+			set
+			{
+				_command = value;
+				OnPropertyChanged(nameof(Command));
+			}
+		}
+
+		private GameType _gameType;
+		public GameType GameType
+		{
+			get => _gameType;
+			set
+			{
+				_gameType = value;
+				OnPropertyChanged(nameof(GameType));
+			}
+		}
+
+		private bool _isFavorite;
+		public bool IsFavorite
+		{
+			get => _isFavorite;
+			set
+			{
+				_isFavorite = value;
+				OnPropertyChanged(nameof(IsFavorite));
+			}
+		}
+
+		private bool _isHidden;
+		public bool IsHidden
+		{
+			get => _isHidden;
+			set
+			{
+				_isHidden = value;
+				OnPropertyChanged(nameof(IsHidden));
+			}
+		}
+
 		public ICommand MouseHoverCommand { get; }
 
 		public ICommand PlayCommand { get; }
 
 		public GameCardViewModel(Game game)
 		{
+			Name = game.Name;
+			Description = game.Description;
+			CoverFilePath = game.CoverFilePath;
+			LastTimePlayed = game.LastTimePlayed;
+			TotalTimePlayed = game.TotalTimePlayed;
+			Command = game.Command;
+			GameType = game.GameType;
+			IsFavorite = game.IsFavorite;
+			IsHidden = game.IsHidden;
+
 			MouseHoverCommand = new RelayCommand(HandleMouseHover);
 			PlayCommand = new RelayCommand(HandleMouseHover);
 		}

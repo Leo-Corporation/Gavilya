@@ -35,7 +35,7 @@ public class Game
 	public string Description { get; set; }
 	public string CoverFilePath { get; set; }
 	public int LastTimePlayed { get; set; }
-	public int TotalTImePlayed { get; set; }
+	public int TotalTimePlayed { get; set; }
 	public string Command { get; set; }
 	public GameType GameType { get; set; }
 	public bool IsFavorite { get; set; }

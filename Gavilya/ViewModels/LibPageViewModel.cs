@@ -33,4 +33,6 @@ internal class LibPageViewModel : ViewModelBase
 {
 	private GameList _games = new() { new() { Name = "Test", CoverFilePath = "https://cdn.lavoz.com.ar/sites/default/files/styles/width_1072/public/nota_periodistica/minecraft-33_1578060758.jpg" } };
 	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
+
+	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g)).ToList();
 }
