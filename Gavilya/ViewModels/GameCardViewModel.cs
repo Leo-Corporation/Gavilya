@@ -21,16 +21,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
+using Gavilya.Commands;
 using Gavilya.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
-namespace Gavilya.ViewModels;
-internal class LibPageViewModel : ViewModelBase
+namespace Gavilya.ViewModels
 {
-	private GameList _games = new() { new() { Name = "Test", CoverFilePath = "https://cdn.lavoz.com.ar/sites/default/files/styles/width_1072/public/nota_periodistica/minecraft-33_1578060758.jpg" } };
-	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
+    public class GameCardViewModel : ViewModelBase
+    {
+
+		public ICommand MouseHoverCommand { get; }
+
+		public ICommand PlayCommand { get; }
+
+		public GameCardViewModel(Game game)
+		{
+			MouseHoverCommand = new RelayCommand(HandleMouseHover);
+			PlayCommand = new RelayCommand(HandleMouseHover);
+		}
+
+		private void HandleMouseHover(object parameter)
+		{
+			MessageBox.Show("Hover");
+		}
+	}
 }

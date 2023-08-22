@@ -21,16 +21,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace Gavilya.ViewModels;
-internal class LibPageViewModel : ViewModelBase
+namespace Gavilya.Components
 {
-	private GameList _games = new() { new() { Name = "Test", CoverFilePath = "https://cdn.lavoz.com.ar/sites/default/files/styles/width_1072/public/nota_periodistica/minecraft-33_1578060758.jpg" } };
-	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
+    /// <summary>
+    /// Interaction logic for GameCardComponent.xaml
+    /// </summary>
+    public partial class GameCardComponent : UserControl
+    {
+        public GameCardComponent()
+        {
+            InitializeComponent();
+        }
+    }
 }
