@@ -21,27 +21,43 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Input;
 
-namespace Gavilya;
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
-public partial class App : Application
+namespace Gavilya.Commands;
+public class RelayCommand : ICommand
 {
-	protected override void OnStartup(StartupEventArgs e)
+	private readonly Action<object> _execute;
+	private readonly Func<object, bool> _canExecute;
+
+	public RelayCommand(Action<object> execute)
+		: this(execute, null)
 	{
-		MainWindow = new MainWindow();
-		MainViewModel mvm = new(MainWindow);
-		MainWindow.DataContext = mvm;
-		MainWindow.Show();
-		base.OnStartup(e);
+	}
+
+	public RelayCommand(Action<object> execute, Func<object, bool> canExecute)
+	{
+		_execute = execute ?? throw new ArgumentNullException(nameof(execute));
+		_canExecute = canExecute;
+	}
+
+	public bool CanExecute(object parameter)
+	{
+		return _canExecute?.Invoke(parameter) ?? true;
+	}
+
+	public void Execute(object parameter)
+	{
+		_execute(parameter);
+	}
+
+	public event EventHandler CanExecuteChanged
+	{
+		add { CommandManager.RequerySuggested += value; }
+		remove { CommandManager.RequerySuggested -= value; }
 	}
 }
