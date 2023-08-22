@@ -3,8 +3,8 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:local="clr-namespace:Gavilya" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:components="clr-namespace:Gavilya.Components" xmlns:viewmodels="clr-namespace:Gavilya.ViewModels"
-		mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MinHeight="450" MinWidth="840"
+		xmlns:local="clr-namespace:Gavilya" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:components="clr-namespace:Gavilya.Components" xmlns:viewmodels="clr-namespace:Gavilya.ViewModels" xmlns:views="clr-namespace:Gavilya.Views"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MinHeight="450" MinWidth="840"
 		Title="{x:Static lang:Resources.MainWindowTitle}"  Height="700" Width="1185"  Background="Transparent">
 	<WindowChrome.WindowChrome>
 		<WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
@@ -42,6 +42,11 @@
 				<Button x:Name="CloseBtn" Command="{Binding CloseCommand}" Grid.Column="12" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 			</Grid>
 			<Grid Grid.Row="1">
+                <Grid.Resources>
+                    <DataTemplate DataType="{x:Type viewmodels:GamePageViewModel}">
+                        <views:GamePageView/>
+                    </DataTemplate>
+                </Grid.Resources>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="Auto" />
@@ -49,11 +54,8 @@
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
 
-				<Grid>
-                    <Grid.DataContext>
-                        <viewmodels:NavBarViewModel/>
-                    </Grid.DataContext>
-					<Grid.Resources>
+                <Grid DataContext="{Binding Nav}">                    
+                    <Grid.Resources>
 						<DataTemplate DataType="{x:Type viewmodels:NavBarViewModel}">
 							<components:NavBarComponent/>
 						</DataTemplate>

@@ -33,6 +33,9 @@ using System.Windows.Input;
 namespace Gavilya.ViewModels;
 public class MainViewModel : ViewModelBase
 {
+	private NavBarViewModel _navBarViewModel;
+	public NavBarViewModel Nav { get => _navBarViewModel; set { _navBarViewModel = value; OnPropertyChanged(); } }
+
 	private object _currentView;
 	private readonly Window _window;
 
@@ -63,6 +66,7 @@ public class MainViewModel : ViewModelBase
 	public MainViewModel(Window window)
 	{
 		_window = window;
+		_navBarViewModel = new(this);
 		MinimizeCommand = new RelayCommand(Minimize);
 		MaximizeRestoreCommand = new RelayCommand(Maximize);
 		CloseCommand = new RelayCommand(Close);

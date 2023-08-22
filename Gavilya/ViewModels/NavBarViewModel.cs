@@ -34,14 +34,23 @@ using System.Windows.Input;
 namespace Gavilya.ViewModels;
 public class NavBarViewModel : ViewModelBase
 {
-    public ICommand HomePageCommand { get; }
-    public NavBarViewModel()
+	private readonly MainViewModel _mainViewModel;
+
+	public ICommand HomePageCommand { get; }
+	public ICommand LibraryPageCommand { get; }
+    public NavBarViewModel(MainViewModel mainViewModel)
     {
         HomePageCommand = new RelayCommand(HomePage);
-    }
+        LibraryPageCommand = new RelayCommand(LibraryPage);
+		_mainViewModel = mainViewModel;
+	}
 
     private void HomePage(object? obj)
     {
-        
     }
+
+    private void LibraryPage(object? obj)
+    {
+		_mainViewModel.CurrentViewModel = new GamePageViewModel();
+	}
 }

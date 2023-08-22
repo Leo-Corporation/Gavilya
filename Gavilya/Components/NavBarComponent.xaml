@@ -24,7 +24,7 @@
 				<ToolTip Content="{x:Static lang:Resources.Home}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 			</ToggleButton.ToolTip>
 		</ToggleButton>
-		<ToggleButton BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Content="&#xFE7B;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  Grid.Row="1" FontFamily="..\Fonts\#FluentSystemIcons-Filled">
+		<ToggleButton Command="{Binding LibraryPageCommand}" BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Content="&#xFE7B;" Style="{DynamicResource NavBarBtn}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand"  Grid.Row="1" FontFamily="..\Fonts\#FluentSystemIcons-Filled">
 			<ToggleButton.ToolTip>
 				<ToolTip Content="{x:Static lang:Resources.Library}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 			</ToggleButton.ToolTip>
