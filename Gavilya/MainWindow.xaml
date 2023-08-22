@@ -3,7 +3,7 @@
 		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 		xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:local="clr-namespace:Gavilya" xmlns:lang="clr-namespace:Gavilya.Properties"
+		xmlns:local="clr-namespace:Gavilya" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:components="clr-namespace:Gavilya.Components" xmlns:viewmodels="clr-namespace:Gavilya.ViewModels"
 		mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" MinHeight="450" MinWidth="840"
 		Title="{x:Static lang:Resources.MainWindowTitle}"  Height="700" Width="1185"  Background="Transparent">
 	<WindowChrome.WindowChrome>
@@ -38,7 +38,7 @@
 				</Grid.ColumnDefinitions>              
 
 				<Button x:Name="MinimizeBtn" Command="{Binding MinimizeCommand}" Grid.Column="10" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
-                <Button x:Name="MaximizeBtn" Command="{Binding MaximizeRestoreCommand}" Grid.Column="11" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="{Binding MaxiIcon}" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="{Binding MaxiIconFontSize}"></Button>
+				<Button x:Name="MaximizeBtn" Command="{Binding MaximizeRestoreCommand}" Grid.Column="11" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="{Binding MaxiIcon}" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="{Binding MaxiIconFontSize}"></Button>
 				<Button x:Name="CloseBtn" Command="{Binding CloseCommand}" Grid.Column="12" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
 			</Grid>
 			<Grid Grid.Row="1">
@@ -48,6 +48,18 @@
 					<ColumnDefinition />
 					<ColumnDefinition Width="Auto" />
 				</Grid.ColumnDefinitions>
+
+				<Grid>
+                    <Grid.DataContext>
+                        <viewmodels:NavBarViewModel/>
+                    </Grid.DataContext>
+					<Grid.Resources>
+						<DataTemplate DataType="{x:Type viewmodels:NavBarViewModel}">
+							<components:NavBarComponent/>
+						</DataTemplate>
+					</Grid.Resources>
+                    <components:NavBarComponent/>
+                </Grid>
 
 				<ContentControl Content="{Binding CurrentViewModel}" Grid.Column="2"/>
 			</Grid>
