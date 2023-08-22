@@ -32,14 +32,14 @@
 				<RowDefinition/>
 			</Grid.RowDefinitions>
 
-			<CheckBox Cursor="Hand" x:Name="CheckBox" Style="{DynamicResource CheckBoxStyle1}" Background="Transparent" Grid.Column="0" x:FieldModifier="public" d:Visibility="Visible" Visibility="Hidden" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,0,0"/>
+			<CheckBox Cursor="Hand" x:Name="CheckBox" Style="{DynamicResource CheckBoxStyle1}" Background="Transparent" Grid.Column="0" x:FieldModifier="public" d:Visibility="Visible" Visibility="Hidden" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,5,0,0"/>
 
-			<Button Name="FavBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF710;" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Margin="5,0,5,0">
+			<Button Visibility="{Binding MouseHoverVis}" Name="FavBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF710;" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="2" FontSize="15" Margin="5,5,5,0">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
 			</Button>
-			<Button Name="EditBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15">
+            <Button Visibility="{Binding MouseHoverVis}" Name="EditBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Margin="0,5,5,0">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.EditGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
