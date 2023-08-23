@@ -21,44 +21,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.Commands;
+
 using Gavilya.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
-internal class LibPageViewModel : ViewModelBase
+public class CardPageViewModel : ViewModelBase
 {
-	private GameList _games = new() { new() { Name = "Test", CoverFilePath = "https://cdn.lavoz.com.ar/sites/default/files/styles/width_1072/public/nota_periodistica/minecraft-33_1578060758.jpg" } };
-	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
-
+	public GameList Games { get; set; }
 	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g)).ToList();
 
-	private ViewModelBase _currentViewModel;
-	public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
-
-	public ICommand CardViewCommand { get; }
-	public ICommand ListViewCommand { get; }
-
-    public LibPageViewModel()
+	public CardPageViewModel(GameList games)
     {
-		_currentViewModel = new CardPageViewModel(Games);
-
-		CardViewCommand = new RelayCommand(CardView);
-		ListViewCommand = new RelayCommand(ListView);
-	}
-
-	private void CardView(object? obj)
-	{
-		CurrentViewModel = new CardPageViewModel(Games);
-	}
-
-	private void ListView(object? obj)
-	{
-		CurrentViewModel = new ListPageViewModel();
-	}
+        Games = games;
+    }
 }

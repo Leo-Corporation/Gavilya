@@ -4,73 +4,72 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:vm="clr-namespace:Gavilya.ViewModels"
 			 xmlns:local="clr-namespace:Gavilya.Views" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:components="clr-namespace:Gavilya.Components"
-             mc:Ignorable="d" FontFamily="..\Fonts\#Hauora" Foreground="{DynamicResource Foreground}"
+			 mc:Ignorable="d" FontFamily="..\Fonts\#Hauora" Foreground="{DynamicResource Foreground}"
 			 d:DesignHeight="450" d:DesignWidth="800">
 	<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-        </Grid.RowDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition />
+		</Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+		<Grid Grid.Row="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition/>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
 
 
-            <StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
-                <TextBlock Text="&#xF4DD;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
-                <TextBlock Text="{x:Static lang:Resources.Library}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
-                <Button Margin="5" Grid.Column="1" x:Name="RandomGameBtn" Padding="5" HorizontalAlignment="Stretch" FontSize="13" Style="{StaticResource RegularButton}" Content="&#xF4D7;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
-                    <Button.ToolTip>
-                        <ToolTip Content="{x:Static lang:Resources.RandomGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-                    </Button.ToolTip>
-                </Button>
-            </StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
+				<TextBlock Text="&#xF4DD;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
+				<TextBlock Text="{x:Static lang:Resources.Library}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
+				<Button Margin="5" Grid.Column="1" x:Name="RandomGameBtn" Padding="5" HorizontalAlignment="Stretch" FontSize="13" Style="{StaticResource RegularButton}" Content="&#xF4D7;" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center">
+					<Button.ToolTip>
+						<ToolTip Content="{x:Static lang:Resources.RandomGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+					</Button.ToolTip>
+				</Button>
+			</StackPanel>
 
-            <Border Background="{DynamicResource Background2}" CornerRadius="5" Padding="5" Margin="10 2" Grid.Column="2" VerticalAlignment="Center">
-                <StackPanel Margin="5 0" Orientation="Horizontal">
-                    <RadioButton GroupName="Sort" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="SortAlpha" Content="&#xFDF2;" VerticalAlignment="Center" FontSize="16">
-                        <RadioButton.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-                        </RadioButton.ToolTip>
-                    </RadioButton>
-                    <RadioButton GroupName="Sort" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="SortReverse" Content="&#xFDF4;" VerticalAlignment="Center" FontSize="16">
-                        <RadioButton.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-                        </RadioButton.ToolTip>
-                    </RadioButton>
-                    <RadioButton GroupName="View" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="GameCardTabBtn" Content="&#xF451;" VerticalAlignment="Center" FontSize="16" Margin="10,0,0,0">
-                        <RadioButton.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-                        </RadioButton.ToolTip>
-                    </RadioButton>
-                    <RadioButton GroupName="View" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonMiddle}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="GameTagTabBtn" Content="&#xF77D;" VerticalAlignment="Center" FontSize="16">
-                        <RadioButton.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.GameTags}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-                        </RadioButton.ToolTip>
-                    </RadioButton>
-                    <RadioButton GroupName="View" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="GameListTabBtn" Content="&#xF138;" VerticalAlignment="Center" FontSize="16">
-                        <RadioButton.ToolTip>
-                            <ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-                        </RadioButton.ToolTip>
-                    </RadioButton>
-                </StackPanel>
-            </Border>
-        </Grid>
-        <ItemsControl ItemsSource="{Binding GamesVm}" Grid.Row="1">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type vm:GameCardViewModel}">
-                    <components:GameCardComponent/>
+			<Border Background="{DynamicResource Background2}" CornerRadius="5" Padding="5" Margin="10 2" Grid.Column="2" VerticalAlignment="Center">
+				<StackPanel Margin="5 0" Orientation="Horizontal">
+					<RadioButton GroupName="Sort" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="SortAlpha" Content="&#xFDF2;" VerticalAlignment="Center" FontSize="16">
+						<RadioButton.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</RadioButton.ToolTip>
+					</RadioButton>
+					<RadioButton GroupName="Sort" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="SortReverse" Content="&#xFDF4;" VerticalAlignment="Center" FontSize="16">
+						<RadioButton.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</RadioButton.ToolTip>
+					</RadioButton>
+					<RadioButton Command="{Binding CardViewCommand}" GroupName="View" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonFirst}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="GameCardTabBtn" Content="&#xF451;" VerticalAlignment="Center" FontSize="16" Margin="10,0,0,0">
+						<RadioButton.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.SortAlphabetically}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</RadioButton.ToolTip>
+					</RadioButton>
+					<RadioButton GroupName="View" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonMiddle}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="GameTagTabBtn" Content="&#xF77D;" VerticalAlignment="Center" FontSize="16">
+						<RadioButton.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.GameTags}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</RadioButton.ToolTip>
+					</RadioButton>
+					<RadioButton Command="{Binding ListViewCommand}" GroupName="View" BorderThickness="0" Padding="5" Style="{DynamicResource TabButtonLast}" Foreground="{DynamicResource Foreground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" x:Name="GameListTabBtn" Content="&#xF138;" VerticalAlignment="Center" FontSize="16">
+						<RadioButton.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.SortInverse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</RadioButton.ToolTip>
+					</RadioButton>
+				</StackPanel>
+			</Border>
+		</Grid>
+		<Grid Grid.Row="1">
+			<Grid.Resources>
+				<DataTemplate DataType="{x:Type vm:CardPageViewModel}">
+					<local:CardPageView/>
+				</DataTemplate>
+                <DataTemplate DataType="{x:Type vm:ListPageViewModel}">
+                    <local:ListPageView/>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-    </Grid>
+            </Grid.Resources>
+			<ContentControl Content="{Binding CurrentViewModel}"/>
+		</Grid>
+	</Grid>
 </UserControl>
