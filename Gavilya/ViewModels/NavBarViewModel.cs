@@ -36,28 +36,56 @@ public class NavBarViewModel : ViewModelBase
 {
 	private readonly MainViewModel _mainViewModel;
 
+	private bool _isPopupOpen = false;
+	public bool IsPopupOpen { get => _isPopupOpen; set { _isPopupOpen = value; OnPropertyChanged(nameof(IsPopupOpen)); } }
+
 	public ICommand HomePageCommand { get; }
 	public ICommand LibraryPageCommand { get; }
 	public ICommand AddCommand { get; }
-    public NavBarViewModel(MainViewModel mainViewModel)
-    {
-        HomePageCommand = new RelayCommand(HomePage);
-        LibraryPageCommand = new RelayCommand(LibraryPage);
-        AddCommand = new RelayCommand(AddGame);
+	public ICommand AddWin32GameCommand { get; }
+	public ICommand AddUwpGameCommand { get; }
+	public ICommand AddSteamGameCommand { get; }
+	public NavBarViewModel(MainViewModel mainViewModel)
+	{
+		HomePageCommand = new RelayCommand(HomePage);
+		LibraryPageCommand = new RelayCommand(LibraryPage);
+		AddCommand = new RelayCommand(AddGame);
+		AddWin32GameCommand = new RelayCommand(AddWin32Game);
+		AddUwpGameCommand = new RelayCommand(AddUwpGame);
+		AddSteamGameCommand = new RelayCommand(AddSteamGame);
+
 		_mainViewModel = mainViewModel;
 	}
 
-    private void HomePage(object? obj)
-    {
-    }
+	private void HomePage(object? obj)
+	{
+	}
 
-    private void LibraryPage(object? obj)
-    {
+	private void LibraryPage(object? obj)
+	{
 		_mainViewModel.CurrentViewModel = new LibPageViewModel();
 	}
 
-    private void AddGame(object? obj)
-    {
+	private void AddGame(object? obj)
+	{
+		IsPopupOpen = true;
+	}
+
+	private void AddWin32Game(object? obj)
+	{
 		_mainViewModel.CurrentViewModel = new GameEditionViewModel();
+		IsPopupOpen = false;
+	}
+
+	private void AddUwpGame(object? obj)
+	{
+		_mainViewModel.CurrentViewModel = new GameEditionViewModel();
+		IsPopupOpen = false;
+	}
+
+	private void AddSteamGame(object? obj)
+	{
+		_mainViewModel.CurrentViewModel = new GameEditionViewModel();
+		IsPopupOpen = false;
 	}
 }

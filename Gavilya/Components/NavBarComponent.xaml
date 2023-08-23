@@ -35,14 +35,63 @@
 			</RadioButton.ToolTip>
 		</RadioButton>
 
-		<Button BorderThickness="2 0 0 0" Padding="5" Height="40" BorderBrush="Transparent" x:Name="AddBtn" Command="{Binding AddCommand}" Content="&#xF10B;" Style="{DynamicResource RegularButton}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" Grid.Row="4" FontFamily="../Fonts/#FluentSystemIcons-Filled">
-			<Button.ToolTip>
-				<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-			</Button.ToolTip>
-		</Button>
+        <Grid Grid.Row="4">
+            <Button Command="{Binding AddCommand}" BorderThickness="2 0 0 0" Padding="5" Height="40" BorderBrush="Transparent" x:Name="AddBtn" Content="&#xF10B;" Style="{DynamicResource RegularButton}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" Grid.Row="4" FontFamily="../Fonts/#FluentSystemIcons-Filled">
+                <Button.ToolTip>
+                    <ToolTip Content="{x:Static lang:Resources.AddGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+                </Button.ToolTip>
+            </Button>
+            <Popup StaysOpen="False" x:Name="AddPopup" IsOpen="{Binding IsPopupOpen}" AllowsTransparency="True" Placement="Left" PlacementTarget="{Binding ElementName=AddBtn}" PopupAnimation="Fade">
+                <Border Padding="5" CornerRadius="5" Background="{DynamicResource Background2}">
+                    <StackPanel>
+                        <Button Grid.Row="1" Command="{Binding AddWin32GameCommand}" x:Name="AddGameBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalContentAlignment="Stretch">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="0 0 5 0" Text="&#xF10D;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" FontSize="18" />
+                                <TextBlock Text="{x:Static lang:Resources.Add}" VerticalAlignment="Center" Grid.Column="1" />
+                            </Grid>
+
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.AddGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+                            </Button.ToolTip>
+                        </Button>
+
+                        <Button Grid.Row="1" Command="{Binding AddUwpGameCommand}" x:Name="AddUWPBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalContentAlignment="Stretch">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="0 0 5 0" Text="&#xF74A;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" FontSize="18" />
+                                <TextBlock Text="{x:Static lang:Resources.AddUWPGame}" VerticalAlignment="Center" Grid.Column="1" />
+                            </Grid>
+
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.AddUWPGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+                            </Button.ToolTip>
+                        </Button>
+                        <Button Command="{Binding AddSteamGameCommand}" Grid.Row="1" x:Name="AddSteamBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalContentAlignment="Stretch">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{x:Static lang:Resources.AddSteamGame}" VerticalAlignment="Center" Grid.Column="1" />
+                            </Grid>
+                            <Button.ToolTip>
+                                <ToolTip Content="{x:Static lang:Resources.AddSteamGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+                            </Button.ToolTip>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </Popup>
+        </Grid>
 
 
-		<TextBlock Grid.Row="5" Text="&#xF4E0;" FontSize="25" Foreground="{DynamicResource SelectedBackground}" Background="Transparent" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
+        <TextBlock Grid.Row="5" Text="&#xF4E0;" FontSize="25" Foreground="{DynamicResource SelectedBackground}" Background="Transparent" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
 
 		<ScrollViewer Grid.Row="6" CanContentScroll="True" VerticalScrollBarVisibility="Hidden">
 			<StackPanel x:Name="FavoriteSideBar">
