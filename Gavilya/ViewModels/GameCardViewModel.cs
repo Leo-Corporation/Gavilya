@@ -145,6 +145,7 @@ namespace Gavilya.ViewModels
 
 		public ICommand PlayCommand { get; }
 		public ICommand EditCommand { get; }
+		public ICommand ClickCommand { get; }
 
 		public GameCardViewModel(Game game, MainViewModel mainViewModel)
 		{

@@ -5,7 +5,7 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:local="clr-namespace:Gavilya.Components" xmlns:lang="clr-namespace:Gavilya.Properties"
 			 mc:Ignorable="d" Margin="5" FontFamily="../Fonts/#Hauora" xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
-			 Height="144" Width="256">
+			 Height="144" Width="256" Cursor="Hand">
 	<i:Interaction.Triggers>
 		<i:EventTrigger EventName="MouseEnter">
 			<i:InvokeCommandAction Command="{Binding MouseHoverCommand}" />
@@ -13,7 +13,10 @@
 		<i:EventTrigger EventName="MouseLeave">
 			<i:InvokeCommandAction Command="{Binding MouseHoverCommand}" />
 		</i:EventTrigger>
-	</i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonUp">
+            <i:InvokeCommandAction Command="{Binding ClickCommand}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 	<Border BorderThickness="0" CornerRadius="5">
 		<Border.Background>
 			<ImageBrush x:Name="GameIcon" ImageSource="{Binding CoverFilePath}" Stretch="UniformToFill"></ImageBrush>
@@ -39,13 +42,13 @@
 					<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
 			</Button>
-            <Button Command="{Binding EditCommand}" Visibility="{Binding MouseHoverVis}" Name="EditBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Margin="0,5,5,0">
+			<Button Command="{Binding EditCommand}" Visibility="{Binding MouseHoverVis}" Name="EditBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Margin="0,5,5,0">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.EditGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
 			</Button>
 
-            <Grid Visibility="{Binding MouseHoverVis}" Background="{DynamicResource GameCardGradient2}" VerticalAlignment="Bottom" Grid.Row="1" x:Name="InfoGrid" Grid.Column="0" Grid.ColumnSpan="6">
+			<Grid Visibility="{Binding MouseHoverVis}" Background="{DynamicResource GameCardGradient2}" VerticalAlignment="Bottom" Grid.Row="1" x:Name="InfoGrid" Grid.Column="0" Grid.ColumnSpan="6">
 
 
 				<Grid.ColumnDefinitions>
