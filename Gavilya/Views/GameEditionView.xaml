@@ -20,8 +20,8 @@
 		</StackPanel>
 		<WrapPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
 			<StackPanel Orientation="Vertical" Margin="10" Width="345" MaxWidth="350">
-				<TextBlock Text="{x:Static lang:Resources.Location}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<StackPanel x:Name="DragWin32Games">
+				<TextBlock Text="{x:Static lang:Resources.Location}" Visibility="{Binding DragAreaVis}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
+				<StackPanel x:Name="DragWin32Games" Visibility="{Binding DragAreaVis}">
 					<Button Command="{Binding BrowseFileCommand}" Cursor="Hand" Style="{DynamicResource EditButton}" Foreground="{DynamicResource Foreground}" Background="Transparent"  HorizontalContentAlignment="Stretch">
 						<Border CornerRadius="5" Background="{DynamicResource Background2}" Padding="10" Cursor="Hand" x:Name="LocationBorder" AllowDrop="True">
 							<StackPanel VerticalAlignment="Center">
@@ -32,6 +32,16 @@
 					</Button>
 					<TextBlock x:Name="LocationTxt" Text="{Binding Command}" d:Text="C:\Games\Game.exe" Margin="5" />
 				</StackPanel>
+
+				<TextBlock Visibility="{Binding SteamFieldsVis}" Text="{x:Static lang:Resources.SteamAppId}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
+				<TextBox Visibility="{Binding SteamFieldsVis}" Text="{Binding SteamId, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+
+				<TextBlock Visibility="{Binding UwpFieldsVis}" Text="{x:Static lang:Resources.PackageFamilyName}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
+				<TextBox Visibility="{Binding UwpFieldsVis}" Text="{Binding PackageFamilyName, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+
+				<TextBlock Visibility="{Binding UwpFieldsVis}" Text="{x:Static lang:Resources.ApplicationId}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
+				<TextBox Visibility="{Binding UwpFieldsVis}" Text="{Binding AppId, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+
 
 				<TextBlock Text="{x:Static lang:Resources.Name}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
 				<TextBox x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
