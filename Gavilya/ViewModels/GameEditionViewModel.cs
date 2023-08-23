@@ -257,7 +257,7 @@ namespace Gavilya.ViewModels
 					GameType.Steam => $"steam://rungameid/{SteamId}",
 					GameType.UWP => $@"shell:appsFolder\{PackageFamilyName}!{AppId}",
 					_ => Command
-				}; ;
+				};
 				Game = new()
 				{
 					Name = Name,
@@ -276,10 +276,15 @@ namespace Gavilya.ViewModels
 				_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _mainViewModel);
 				return;
 			}
-
+			string comm2 = GameType switch
+			{
+				GameType.Steam => $"steam://rungameid/{SteamId}",
+				GameType.UWP => $@"shell:appsFolder\{PackageFamilyName}!{AppId}",
+				_ => Command
+			};
 			Game.Name = Name;
 			Game.Description = Description;
-			Game.Command = Command;
+			Game.Command = comm2;
 			Game.CheckIfRunning = CheckIfRunning;
 			Game.CoverFilePath = CoverFilePath;
 			Game.ProcessName = Process;
