@@ -173,7 +173,9 @@ namespace Gavilya.ViewModels
 			switch (GameType)
 			{
 				case GameType.UWP:
-					
+					string[] appProps = game.Command.Replace(@"shell:appsFolder\", "").Split(new string[] { "!" }, StringSplitOptions.None);
+					PackageFamilyName = appProps[0];
+					AppId = appProps[1];
 					break;
 
 				case GameType.Steam:
@@ -253,8 +255,9 @@ namespace Gavilya.ViewModels
 				string comm = GameType switch
 				{
 					GameType.Steam => $"steam://rungameid/{SteamId}",
+					GameType.UWP => $@"shell:appsFolder\{PackageFamilyName}!{AppId}",
 					_ => Command
-				};
+				}; ;
 				Game = new()
 				{
 					Name = Name,
