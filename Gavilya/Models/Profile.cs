@@ -33,4 +33,11 @@ public class Profile
 	public string Name { get; set; }
 	public string ProfilePictureFilePath { get; set; }
 	public GameList Games { get; set; }
+
+    public Profile(string name)
+    {
+        Name = name;
+        ProfilePictureFilePath = "";
+        Games = new();
+    }
 }

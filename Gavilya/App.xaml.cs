@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Models;
 using Gavilya.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -38,8 +39,9 @@ public partial class App : Application
 {
 	protected override void OnStartup(StartupEventArgs e)
 	{
+		Profile currentProfile = new("Profile");
 		MainWindow = new MainWindow();
-		MainViewModel mvm = new(MainWindow);
+		MainViewModel mvm = new(MainWindow, currentProfile.Games);
 		MainWindow.DataContext = mvm;
 		MainWindow.Show();
 		base.OnStartup(e);

@@ -22,30 +22,29 @@
 			<StackPanel Orientation="Vertical" Margin="10" Width="345" MaxWidth="350">
 				<TextBlock Text="{x:Static lang:Resources.Location}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
 				<StackPanel x:Name="DragWin32Games">
-					<Border CornerRadius="5" Background="{DynamicResource Background2}" Padding="10" Cursor="Hand" x:Name="LocationBorder" AllowDrop="True">
-						<StackPanel VerticalAlignment="Center">
-							<TextBlock Text="&#xF42F;" FontSize="24" FontFamily="..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Center" />
-							<TextBlock Text="{x:Static lang:Resources.SelectDragDropGame}" Margin="10" FontWeight="ExtraBold" HorizontalAlignment="Center" />
-						</StackPanel>
-					</Border>
-					<TextBlock x:Name="LocationTxt" d:Text="C:\Games\Game.exe" Margin="5" />
+					<Button Command="{Binding BrowseFileCommand}" Cursor="Hand" Style="{DynamicResource EditButton}" Foreground="{DynamicResource Foreground}" Background="Transparent"  HorizontalContentAlignment="Stretch">
+						<Border CornerRadius="5" Background="{DynamicResource Background2}" Padding="10" Cursor="Hand" x:Name="LocationBorder" AllowDrop="True">
+							<StackPanel VerticalAlignment="Center">
+								<TextBlock Text="&#xF42F;" FontSize="24" FontFamily="..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Center" />
+								<TextBlock Text="{x:Static lang:Resources.SelectDragDropGame}" Margin="10" FontWeight="ExtraBold" HorizontalAlignment="Center" />
+							</StackPanel>
+						</Border>
+					</Button>
+					<TextBlock x:Name="LocationTxt" Text="{Binding Command}" d:Text="C:\Games\Game.exe" Margin="5" />
 				</StackPanel>
 
 				<TextBlock Text="{x:Static lang:Resources.Name}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<TextBox x:Name="NameTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
-
-				<TextBlock Text="{x:Static lang:Resources.Version}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<TextBox x:Name="VersionTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+				<TextBox x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
 
 				<TextBlock Text="{x:Static lang:Resources.Image}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
 				<Rectangle RadiusX="10" RadiusY="10" Width="250" Height="140" HorizontalAlignment="Center">
 					<Rectangle.Fill>
-						<ImageBrush x:Name="Image" />
+						<ImageBrush x:Name="Image" ImageSource="{Binding ImageSource}" />
 					</Rectangle.Fill>
 				</Rectangle>
 
 				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-					<Button FontSize="13" x:Name="ImageBrowseBtn" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0,5,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Browse}" FontWeight="ExtraBold" HorizontalAlignment="Center">
+					<Button Command="{Binding BrowseImageCommand}" FontSize="13" x:Name="ImageBrowseBtn" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0,5,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Browse}" FontWeight="ExtraBold" HorizontalAlignment="Center">
 						<Button.ToolTip>
 							<ToolTip Content="{x:Static lang:Resources.Browse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 						</Button.ToolTip>
@@ -61,7 +60,7 @@
 
 				<TextBlock Text="{x:Static lang:Resources.Description}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" />
 				<ScrollViewer Height="200" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-					<TextBox Padding="5" d:Text="Content here" Grid.Row="0" FontSize="15" x:Name="DescriptionTextBox" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" Style="{DynamicResource RegularTextBox}" BorderBrush="{DynamicResource Background2}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="470" VerticalContentAlignment="Top" />
+					<TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Padding="5" d:Text="Content here" Grid.Row="0" FontSize="15" x:Name="DescriptionTextBox" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" Style="{DynamicResource RegularTextBox}" BorderBrush="{DynamicResource Background2}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="470" VerticalContentAlignment="Top" />
 				</ScrollViewer>
 
 				<TextBlock Text="{x:Static lang:Resources.Integrations}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
@@ -149,12 +148,12 @@
 						</Button.ToolTip>
 					</Button>
 				</StackPanel>
-				<TextBox x:Name="ProcessTextBox" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
-				<CheckBox x:Name="AlwaysCheckGameRunningChk" Content="{x:Static lang:Resources.AlwaysCheckIfGameRunning}" Foreground="{DynamicResource Foreground}" BorderThickness="2" Style="{DynamicResource CheckBoxStyle1}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" Background="Transparent" BorderBrush="{DynamicResource Accent}" />
+				<TextBox x:Name="ProcessTextBox" Text="{Binding Process, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+				<CheckBox x:Name="AlwaysCheckGameRunningChk" IsChecked="{Binding CheckIfRunning, UpdateSourceTrigger=PropertyChanged}" Content="{x:Static lang:Resources.AlwaysCheckIfGameRunning}" Foreground="{DynamicResource Foreground}" BorderThickness="2" Style="{DynamicResource CheckBoxStyle1}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" Background="Transparent" BorderBrush="{DynamicResource Accent}" />
 
 			</StackPanel>
 		</WrapPanel>
 
-		<Button x:Name="AddBtn" Grid.Row="2" Margin="5" Style="{DynamicResource AccentButton}" Background="{DynamicResource Accent}" Padding="5" Content="{x:Static lang:Resources.AddGame}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"/>
+		<Button x:Name="AddBtn" Command="{Binding AddCommand}" Grid.Row="2" Margin="5" Style="{DynamicResource AccentButton}" Background="{DynamicResource Accent}" Padding="5" Content="{x:Static lang:Resources.AddGame}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"/>
 	</Grid>
 </UserControl>

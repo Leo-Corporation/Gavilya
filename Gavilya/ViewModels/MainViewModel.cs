@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.Commands;
 using Gavilya.Helpers;
+using Gavilya.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,6 +41,8 @@ public class MainViewModel : ViewModelBase
 	private object _currentView;
 	private readonly Window _window;
 	private readonly WindowHelper _windowHelper;
+
+	public GameList Games { get; set; }
 
 	public object CurrentViewModel
 	{
@@ -74,10 +77,12 @@ public class MainViewModel : ViewModelBase
 	public ICommand MaximizeRestoreCommand { get; }
 	public ICommand CloseCommand { get; }
 
-	public MainViewModel(Window window)
+	public MainViewModel(Window window, GameList games)
 	{
 		_window = window;
-		_navBarViewModel = new(this);
+
+		Games = games;
+		_navBarViewModel = new(this, Games);
 		_windowHelper = new(window);
 
 		MinimizeCommand = new RelayCommand(Minimize);

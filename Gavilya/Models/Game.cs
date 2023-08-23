@@ -37,6 +37,8 @@ public class Game
 	public int LastTimePlayed { get; set; }
 	public int TotalTimePlayed { get; set; }
 	public string Command { get; set; }
+	public string? ProcessName { get; set; }
+	public bool CheckIfRunning { get; set; }
 	public GameType GameType { get; set; }
 	public bool IsFavorite { get; set; }
 	public bool IsHidden { get; set; }
