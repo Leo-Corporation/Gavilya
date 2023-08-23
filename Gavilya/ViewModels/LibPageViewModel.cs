@@ -34,9 +34,10 @@ namespace Gavilya.ViewModels;
 internal class LibPageViewModel : ViewModelBase
 {
 	private GameList _games;
+	private readonly MainViewModel _mainViewModel;
 	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
 
-	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g)).ToList();
+	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _mainViewModel)).ToList();
 
 	private ViewModelBase _currentViewModel;
 	public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
@@ -44,10 +45,11 @@ internal class LibPageViewModel : ViewModelBase
 	public ICommand CardViewCommand { get; }
 	public ICommand ListViewCommand { get; }
 
-    public LibPageViewModel(GameList games)
+    public LibPageViewModel(GameList games, MainViewModel mainViewModel)
     {
 		Games = games;
-		_currentViewModel = new CardPageViewModel(Games);
+		_mainViewModel = mainViewModel;
+		_currentViewModel = new CardPageViewModel(Games, _mainViewModel);
 
 		CardViewCommand = new RelayCommand(CardView);
 		ListViewCommand = new RelayCommand(ListView);
@@ -55,7 +57,7 @@ internal class LibPageViewModel : ViewModelBase
 
 	private void CardView(object? obj)
 	{
-		CurrentViewModel = new CardPageViewModel(Games);
+		CurrentViewModel = new CardPageViewModel(Games, _mainViewModel);
 	}
 
 	private void ListView(object? obj)

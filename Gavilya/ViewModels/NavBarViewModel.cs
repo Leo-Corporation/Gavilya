@@ -67,7 +67,7 @@ public class NavBarViewModel : ViewModelBase
 
 	private void LibraryPage(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games);
+		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _mainViewModel);
 	}
 
 	private void AddGame(object? obj)

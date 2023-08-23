@@ -144,12 +144,20 @@ namespace Gavilya.ViewModels
 			BrowseImageCommand = new RelayCommand(BrowseImage);
 
 			// Load properties
+			Name = game.Name;
+			Description = game.Description;
+			Command = game.Command;
+			CheckIfRunning = game.CheckIfRunning;
+			CoverFilePath = game.CoverFilePath;
+			Process = game.ProcessName ?? "";
+			GameType = game.GameType;
+			IsHidden = game.IsHidden;
 		}
 
 		public GameEditionViewModel(GameType gameType, GameList games, MainViewModel mainViewModel)
 		{
 			_mainViewModel = mainViewModel;
-		
+
 			GameType = gameType;
 			Game = null;
 			Games = games;
@@ -216,9 +224,20 @@ namespace Gavilya.ViewModels
 					TotalTimePlayed = 0
 				};
 				Games.Add(Game);
-				_mainViewModel.CurrentViewModel = new LibPageViewModel(Games);
+				_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _mainViewModel);
 				return;
 			}
+
+			Game.Name = Name;
+			Game.Description = Description;
+			Game.Command = Command;
+			Game.CheckIfRunning = CheckIfRunning;
+			Game.CoverFilePath = CoverFilePath;
+			Game.ProcessName = Process;
+			Game.GameType = GameType;
+			Game.IsHidden = IsHidden;
+			Games[Games.IndexOf(Game)] = Game;
+			_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _mainViewModel);
 		}
 	}
 }

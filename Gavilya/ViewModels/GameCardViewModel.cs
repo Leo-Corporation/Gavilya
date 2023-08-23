@@ -37,8 +37,9 @@ namespace Gavilya.ViewModels
 {
     public class GameCardViewModel : ViewModelBase
     {
-
+		readonly MainViewModel _mainViewModel;
 		private string _name;
+		private Game _game;
 		public string Name
 		{
 			get => _name;
@@ -143,9 +144,13 @@ namespace Gavilya.ViewModels
 		public ICommand MouseHoverCommand { get; }
 
 		public ICommand PlayCommand { get; }
+		public ICommand EditCommand { get; }
 
-		public GameCardViewModel(Game game)
+		public GameCardViewModel(Game game, MainViewModel mainViewModel)
 		{
+			_game = game;
+			_mainViewModel = mainViewModel;
+
 			Name = game.Name;
 			Description = game.Description;
 			CoverFilePath = game.CoverFilePath;
@@ -157,11 +162,17 @@ namespace Gavilya.ViewModels
 			IsHidden = game.IsHidden;
 
 			MouseHoverCommand = new RelayCommand(HandleMouseHover);
+			EditCommand = new RelayCommand(Edit);
 		}
 
 		private void HandleMouseHover(object parameter)
 		{
 			MouseHoverVis = MouseHoverVis == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+		}
+
+		private void Edit(object? obj)
+		{
+			_mainViewModel.CurrentViewModel = new GameEditionViewModel(_game, _mainViewModel.Games, _mainViewModel);
 		}
 	}
 }

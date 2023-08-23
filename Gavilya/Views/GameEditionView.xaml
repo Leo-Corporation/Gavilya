@@ -136,7 +136,7 @@
 						</StackPanel>
 					</Grid>
 				</Border>
-				<CheckBox x:Name="HideChk" Content="{x:Static lang:Resources.HideGame}" Foreground="{DynamicResource Foreground}" BorderThickness="2" Style="{DynamicResource CheckBoxStyle1}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" Background="Transparent" BorderBrush="{DynamicResource Accent}"/>
+				<CheckBox x:Name="HideChk" IsChecked="{Binding IsHidden, UpdateSourceTrigger=PropertyChanged}" Content="{x:Static lang:Resources.HideGame}" Foreground="{DynamicResource Foreground}" BorderThickness="2" Style="{DynamicResource CheckBoxStyle1}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" Background="Transparent" BorderBrush="{DynamicResource Accent}"/>
 
 			</StackPanel>
 			<StackPanel Orientation="Vertical" Margin="10" Width="345" MaxWidth="350">

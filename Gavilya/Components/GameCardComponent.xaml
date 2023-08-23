@@ -39,7 +39,7 @@
 					<ToolTip Content="{x:Static lang:Resources.FavoriteButton}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
 			</Button>
-            <Button Visibility="{Binding MouseHoverVis}" Name="EditBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Margin="0,5,5,0">
+            <Button Command="{Binding EditCommand}" Visibility="{Binding MouseHoverVis}" Name="EditBtn" Cursor="Hand" Style="{DynamicResource EditButton}" Content="&#xF3DE;" Foreground="{DynamicResource HoverForeground}" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Height="20" Width="20" Background="Transparent" VerticalAlignment="Center" Grid.Column="3" FontSize="15" Margin="0,5,5,0">
 				<Button.ToolTip>
 					<ToolTip Content="{x:Static lang:Resources.EditGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 				</Button.ToolTip>
