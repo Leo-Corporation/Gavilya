@@ -22,42 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using Gavilya.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 
-namespace Gavilya.ViewModels;
-public class NavBarViewModel : ViewModelBase
+namespace Gavilya.ViewModels
 {
-	private readonly MainViewModel _mainViewModel;
-
-	public ICommand HomePageCommand { get; }
-	public ICommand LibraryPageCommand { get; }
-	public ICommand AddCommand { get; }
-    public NavBarViewModel(MainViewModel mainViewModel)
+    class GameEditionViewModel : ViewModelBase
     {
-        HomePageCommand = new RelayCommand(HomePage);
-        LibraryPageCommand = new RelayCommand(LibraryPage);
-        AddCommand = new RelayCommand(AddGame);
-		_mainViewModel = mainViewModel;
-	}
 
-    private void HomePage(object? obj)
-    {
     }
-
-    private void LibraryPage(object? obj)
-    {
-		_mainViewModel.CurrentViewModel = new LibPageViewModel();
-	}
-
-    private void AddGame(object? obj)
-    {
-		_mainViewModel.CurrentViewModel = new GameEditionViewModel();
-	}
 }

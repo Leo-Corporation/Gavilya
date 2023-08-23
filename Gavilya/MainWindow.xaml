@@ -62,6 +62,9 @@
 					<DataTemplate DataType="{x:Type viewmodels:LibPageViewModel}">
 						<views:LibPageView/>
 					</DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:GameEditionViewModel}">
+                        <views:GameEditionView/>
+                    </DataTemplate>
 				</Grid.Resources>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
@@ -79,8 +82,10 @@
 					<components:NavBarComponent/>
 				</Grid>
 
-				<ContentControl Content="{Binding CurrentViewModel}" Grid.Column="2"/>
-			</Grid>
+                <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <ContentControl Content="{Binding CurrentViewModel}"/>
+                </ScrollViewer>
+            </Grid>
 		</Grid>
 	</Border>
 </Window>

@@ -105,6 +105,27 @@
                 </Setter>
             </Style>
 
+            <Style x:Key="AccentButton" TargetType="Button">
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border x:Name="ButtonBorder" MinWidth="20" Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="Transparent" CornerRadius="5" Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="Center" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource DarkAccent}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" TargetName="ButtonBorder" Value="{DynamicResource DarkAccent}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="TabButton" TargetType="RadioButton">
                 <Setter Property="HorizontalContentAlignment" Value="Center" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -150,13 +171,13 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Border x:Name="checkBoxBorder" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{DynamicResource Foreground}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" CornerRadius="2,2,2,2">
+                                <Border x:Name="checkBoxBorder" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="Center" CornerRadius="2,2,2,2">
                                     <Grid x:Name="markGrid">
                                         <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Fill="{DynamicResource Foreground}" Margin="1" Opacity="0" Stretch="None" />
                                         <Rectangle x:Name="indeterminateMark" Margin="2" Opacity="0" RadiusX="2" RadiusY="2" Fill="{DynamicResource Foreground}" />
                                     </Grid>
                                 </Border>
-                                <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="HasContent" Value="True">
@@ -239,6 +260,31 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <Style x:Key="RegularTextBox" TargetType="{x:Type TextBox}">
+                <Setter Property="KeyboardNavigation.TabNavigation" Value="None" />
+                <Setter Property="HorizontalContentAlignment" Value="Left" />
+                <Setter Property="AllowDrop" Value="true" />
+                <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type TextBox}">
+                            <Border x:Name="border" Background="{TemplateBinding Background}" Padding="3" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="True" CornerRadius="5,5,5,5" Height="{TemplateBinding Height}">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" FontWeight="ExtraBold" FontSize="14" VerticalAlignment="{TemplateBinding VerticalAlignment}"  />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <MultiTrigger>
+                        <MultiTrigger.Conditions>
+                            <Condition Property="IsInactiveSelectionHighlightEnabled" Value="True" />
+                            <Condition Property="IsSelectionActive" Value="False" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}" />
+                    </MultiTrigger>
+                </Style.Triggers>
             </Style>
         </ResourceDictionary>
     </Application.Resources>

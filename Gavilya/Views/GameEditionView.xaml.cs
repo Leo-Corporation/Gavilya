@@ -22,42 +22,29 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using Gavilya.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace Gavilya.ViewModels;
-public class NavBarViewModel : ViewModelBase
+namespace Gavilya.Views;
+/// <summary>
+/// Interaction logic for GameEditionView.xaml
+/// </summary>
+public partial class GameEditionView : UserControl
 {
-	private readonly MainViewModel _mainViewModel;
-
-	public ICommand HomePageCommand { get; }
-	public ICommand LibraryPageCommand { get; }
-	public ICommand AddCommand { get; }
-    public NavBarViewModel(MainViewModel mainViewModel)
-    {
-        HomePageCommand = new RelayCommand(HomePage);
-        LibraryPageCommand = new RelayCommand(LibraryPage);
-        AddCommand = new RelayCommand(AddGame);
-		_mainViewModel = mainViewModel;
-	}
-
-    private void HomePage(object? obj)
-    {
-    }
-
-    private void LibraryPage(object? obj)
-    {
-		_mainViewModel.CurrentViewModel = new LibPageViewModel();
-	}
-
-    private void AddGame(object? obj)
-    {
-		_mainViewModel.CurrentViewModel = new GameEditionViewModel();
+	public GameEditionView()
+	{
+		InitializeComponent();
 	}
 }

@@ -34,7 +34,13 @@
 				<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
 			</RadioButton.ToolTip>
 		</RadioButton>
-	 
+
+		<Button BorderThickness="2 0 0 0" Padding="5" Height="40" BorderBrush="Transparent" x:Name="AddBtn" Command="{Binding AddCommand}" Content="&#xF10B;" Style="{DynamicResource RegularButton}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" Grid.Row="4" FontFamily="../Fonts/#FluentSystemIcons-Filled">
+			<Button.ToolTip>
+				<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+			</Button.ToolTip>
+		</Button>
+
 
 		<TextBlock Grid.Row="5" Text="&#xF4E0;" FontSize="25" Foreground="{DynamicResource SelectedBackground}" Background="Transparent" FontFamily="..\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
 
