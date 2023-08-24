@@ -21,8 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace Gavilya.Models;
@@ -30,15 +30,15 @@ public class GameList : ObservableCollection<Game>
 {
 	public string? Title { get; init; }
 	public string? TagColor { get; init; }
-    public GameList() : base()
-    {
-        
-    }
+	public GameList() : base()
+	{
 
-    public GameList(string title) : base()
-    {
+	}
+
+	public GameList(string title) : base()
+	{
 		Title = title;
-    }
+	}
 
 	public GameList(string title, string tagColor) : this(title)
 	{

@@ -23,11 +23,8 @@ SOFTWARE.
 */
 
 using Gavilya.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gavilya.ViewModels;
 public class CardPageViewModel : ViewModelBase
@@ -39,9 +36,9 @@ public class CardPageViewModel : ViewModelBase
 	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _tags, _mainViewModel)).ToList();
 
 	public CardPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
-    {
+	{
 		_mainViewModel = mainViewModel;
-        Games = games;
+		Games = games;
 		this._tags = tags;
 	}
 }

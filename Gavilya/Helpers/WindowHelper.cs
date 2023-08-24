@@ -23,16 +23,12 @@ SOFTWARE.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Gavilya.Helpers
 {
-    public class WindowHelper
-    {
+	public class WindowHelper
+	{
 		private readonly Window _window;
 
 		/// <summary>
@@ -67,8 +63,8 @@ namespace Gavilya.Helpers
 		}
 
 		public WindowHelper(Window window)
-        {
+		{
 			_window = window;
-        }
-    }
+		}
+	}
 }

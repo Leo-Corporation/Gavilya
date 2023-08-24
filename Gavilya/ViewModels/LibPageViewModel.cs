@@ -23,11 +23,8 @@ SOFTWARE.
 */
 using Gavilya.Commands;
 using Gavilya.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
@@ -47,8 +44,8 @@ internal class LibPageViewModel : ViewModelBase
 	public ICommand CardViewCommand { get; }
 	public ICommand ListViewCommand { get; }
 
-    public LibPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
-    {
+	public LibPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
+	{
 		Games = games;
 		_tags = tags;
 		_mainViewModel = mainViewModel;

@@ -23,11 +23,8 @@ SOFTWARE.
 */
 
 using Gavilya.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gavilya.ViewModels;
 public class ListPageViewModel : ViewModelBase
@@ -41,8 +38,8 @@ public class ListPageViewModel : ViewModelBase
 
 	public ViewModelBase CurrentGameView { get => _viewModelBase; set { _viewModelBase = value; OnPropertyChanged(nameof(CurrentGameView)); } }
 
-    public ListPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
-    {
+	public ListPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
+	{
 		Games = games;
 		_tags = tags;
 		_mainViewModel = mainViewModel;

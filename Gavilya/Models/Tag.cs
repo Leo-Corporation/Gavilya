@@ -23,15 +23,11 @@ SOFTWARE.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gavilya.Models
 {
-    public class Tag
-    {
+	public class Tag
+	{
 		public Tag(string name, string hexColorCode)
 		{
 			Name = name;
@@ -39,7 +35,7 @@ namespace Gavilya.Models
 		}
 
 		public string Name { get; }
-        public string HexColorCode { get; }
+		public string HexColorCode { get; }
 
 		public override bool Equals(object? obj)
 		{

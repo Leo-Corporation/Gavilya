@@ -25,18 +25,14 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Enums;
 using Gavilya.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels
 {
-    public class GameCardViewModel : ViewModelBase
-    {
+	public class GameCardViewModel : ViewModelBase
+	{
 		readonly MainViewModel _mainViewModel;
 		private string _name;
 		private readonly Game _game;

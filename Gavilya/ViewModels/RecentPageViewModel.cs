@@ -23,27 +23,24 @@ SOFTWARE.
 */
 
 using Gavilya.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gavilya.ViewModels
 {
-    public class RecentPageViewModel : ViewModelBase
-    {
+	public class RecentPageViewModel : ViewModelBase
+	{
 		private readonly MainViewModel _mainViewModel;
 		private readonly List<GameList> _sortedGames;
 		private readonly List<Tag> _tags;
 
 		public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel)).ToList();
 
-        public RecentPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
-        {
-            _sortedGames = games.GetSortedGameLists();
+		public RecentPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
+		{
+			_sortedGames = games.GetSortedGameLists();
 			_tags = tags;
 			_mainViewModel = mainViewModel;
 		}
-    }
+	}
 }

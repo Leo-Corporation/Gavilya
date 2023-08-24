@@ -24,9 +24,6 @@ SOFTWARE.
 using Gavilya.Enums;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gavilya.Models;
 public class Game
@@ -45,11 +42,11 @@ public class Game
 	public string Id { get; init; }
 	public List<Tag>? Tags { get; set; }
 
-    public Game()
-    {
+	public Game()
+	{
 		Id = Guid.NewGuid().ToString();
 		Tags = new();
-    }
+	}
 
 	public override bool Equals(object? obj)
 	{
@@ -63,7 +60,7 @@ public class Game
 			Description,
 			CoverFilePath,
 			LastTimePlayed,
-			TotalTimePlayed,			
+			TotalTimePlayed,
 			Id);
 	}
 }

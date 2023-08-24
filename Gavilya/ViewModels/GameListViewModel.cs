@@ -22,20 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using Gavilya.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using System.Windows;
 using Gavilya.Commands;
+using Gavilya.Models;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Gavilya.ViewModels
 {
-    public class GameListViewModel : ViewModelBase
-    {
+	public class GameListViewModel : ViewModelBase
+	{
 		private readonly Game _game;
 		private readonly GameList _games;
 		private readonly ListPageViewModel _listPageViewModel;
@@ -57,7 +53,7 @@ namespace Gavilya.ViewModels
 
 
 		public GameListViewModel(Game game, GameList games, List<Tag> tags, ListPageViewModel listPageViewModel, MainViewModel mainViewModel)
-        {
+		{
 			_game = game;
 			_games = games;
 			_tags = tags;
@@ -78,7 +74,7 @@ namespace Gavilya.ViewModels
 
 		private void Click(object? obj)
 		{
-			_listPageViewModel.CurrentGameView = new GamePageViewModel(_game, _games, _tags, _mainViewModel) ;
+			_listPageViewModel.CurrentGameView = new GamePageViewModel(_game, _games, _tags, _mainViewModel);
 		}
 	}
 }
