@@ -21,47 +21,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.Commands;
-using Gavilya.Models;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 
-namespace Gavilya.ViewModels;
-internal class LibPageViewModel : ViewModelBase
+namespace Gavilya.Components
 {
-	private GameList _games;
-	private readonly MainViewModel _mainViewModel;
-	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
-
-	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _mainViewModel)).ToList();
-
-	private ViewModelBase _currentViewModel;
-	public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
-
-	public ICommand CardViewCommand { get; }
-	public ICommand ListViewCommand { get; }
-
-    public LibPageViewModel(GameList games, MainViewModel mainViewModel)
+    /// <summary>
+    /// Interaction logic for GameListComponent.xaml
+    /// </summary>
+    public partial class GameListComponent : UserControl
     {
-		Games = games;
-		_mainViewModel = mainViewModel;
-		_currentViewModel = new CardPageViewModel(Games, _mainViewModel);
-
-		CardViewCommand = new RelayCommand(CardView);
-		ListViewCommand = new RelayCommand(ListView);
-	}
-
-	private void CardView(object? obj)
-	{
-		CurrentViewModel = new CardPageViewModel(Games, _mainViewModel);
-	}
-
-	private void ListView(object? obj)
-	{
-		CurrentViewModel = new ListPageViewModel(Games, _mainViewModel);
-	}
+        public GameListComponent()
+        {
+            InitializeComponent();
+        }
+    }
 }

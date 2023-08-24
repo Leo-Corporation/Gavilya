@@ -22,6 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,4 +32,17 @@ using System.Threading.Tasks;
 namespace Gavilya.ViewModels;
 public class ListPageViewModel : ViewModelBase
 {
+	public GameList Games { get; set; }
+	public List<GameListViewModel> GamesVm => Games.Select(g => new GameListViewModel(g, Games, this, _mainViewModel)).ToList();
+
+	private ViewModelBase _viewModelBase;
+	private readonly MainViewModel _mainViewModel;
+
+	public ViewModelBase CurrentGameView { get => _viewModelBase; set { _viewModelBase = value; OnPropertyChanged(nameof(CurrentGameView)); } }
+
+    public ListPageViewModel(GameList games, MainViewModel mainViewModel)
+    {
+		Games = games;
+		_mainViewModel = mainViewModel;
+	}
 }

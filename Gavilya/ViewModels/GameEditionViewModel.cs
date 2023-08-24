@@ -169,8 +169,12 @@ namespace Gavilya.ViewModels
 			Process = game.ProcessName ?? "";
 			GameType = game.GameType;
 			IsHidden = game.IsHidden;
-			BitmapImage image = new(new Uri(CoverFilePath)); // Create the image
-			ImageSource = image; // Set the GameImg's source to the image
+
+			if (!string.IsNullOrEmpty(CoverFilePath))
+			{
+				BitmapImage image = new(new Uri(CoverFilePath)); // Create the image
+				ImageSource = image; // Set the GameImg's source to the image 
+			}
 
 			switch (GameType)
 			{
