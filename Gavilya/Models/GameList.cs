@@ -29,6 +29,7 @@ namespace Gavilya.Models;
 public class GameList : ObservableCollection<Game>
 {
 	public string? Title { get; init; }
+	public string? TagColor { get; init; }
     public GameList() : base()
     {
         
@@ -39,7 +40,12 @@ public class GameList : ObservableCollection<Game>
 		Title = title;
     }
 
-    public List<GameList> GetSortedGameLists()
+	public GameList(string title, string tagColor) : this(title)
+	{
+		TagColor = tagColor;
+	}
+
+	public List<GameList> GetSortedGameLists()
 	{
 		DateTime now = DateTime.Now;
 		DateTime todayStart = now.Date;
