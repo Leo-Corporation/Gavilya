@@ -35,10 +35,10 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Margin="0,100,0,0" VerticalAlignment="Bottom">
+                    <StackPanel Margin="0 100 0 0" VerticalAlignment="Bottom">
                         <TextBlock
                             Name="GameNameTxt"
-                            Margin="10,10,10,10"
+                            Margin="10 10 10 10"
                             d:Text="Title"
                             FontSize="25"
                             FontWeight="ExtraBold"
@@ -49,8 +49,8 @@
                             <Button
                                 x:Name="PlayBtn"
                                 Height="37"
-                                Margin="10,0,5,0"
-                                Padding="18,8"
+                                Margin="10 0 5 0"
+                                Padding="18 8"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
                                 Cursor="Hand"
@@ -66,7 +66,7 @@
                                         FontWeight="Normal"
                                         Text="&#xF610;" />
                                     <TextBlock
-                                        Margin="10,0,0,0"
+                                        Margin="10 0 0 0"
                                         VerticalAlignment="Center"
                                         FontSize="15"
                                         FontWeight="ExtraBold"
@@ -84,7 +84,7 @@
                                 x:Name="AdminBtn"
                                 Width="20"
                                 Height="37"
-                                Margin="0,0,10,0"
+                                Margin="0 0 10 0"
                                 HorizontalAlignment="Center"
                                 Background="{DynamicResource Background2}"
                                 Content="&#xF8C0;"
@@ -110,14 +110,14 @@
                                     Text="&#xF47F;" />
                                 <StackPanel VerticalAlignment="Center">
                                     <TextBlock
-                                        Margin="10,0"
+                                        Margin="10 0"
                                         FontSize="18"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource Foreground}"
                                         Text="{x:Static lang:Resources.LastTimePlayed}" />
                                     <TextBlock
                                         Name="LastTimePlayedTxt"
-                                        Margin="10,0"
+                                        Margin="10 0"
                                         d:Text="LastTimePlayedTxt"
                                         FontSize="15"
                                         Foreground="{DynamicResource Foreground}"
@@ -126,7 +126,7 @@
                             </StackPanel>
 
                             <TextBlock
-                                Margin="10,0,20,0"
+                                Margin="10 0 20 0"
                                 VerticalAlignment="Center"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 FontSize="30"
@@ -142,14 +142,14 @@
                                     Text="&#xF2DE;" />
                                 <StackPanel VerticalAlignment="Center">
                                     <TextBlock
-                                        Margin="10,0"
+                                        Margin="10 0"
                                         FontSize="18"
                                         FontWeight="ExtraBold"
                                         Foreground="{DynamicResource Foreground}"
                                         Text="{x:Static lang:Resources.TotalTimePlayed}" />
                                     <TextBlock
                                         Name="TotalTimePlayedTxt"
-                                        Margin="10,0"
+                                        Margin="10 0"
                                         d:Text="TotalTimePlayedTxt"
                                         FontSize="15"
                                         Foreground="{DynamicResource Foreground}"
@@ -167,8 +167,8 @@
                             x:Name="FavBtn"
                             Width="40"
                             Height="40"
-                            Margin="0,0,10,0"
-                            Padding="10.5,8,10.5,8"
+                            Margin="0 0 10 0"
+                            Padding="10.5 8 10.5 8"
                             Background="{DynamicResource Background2}"
                             Content="&#xF710;"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
@@ -188,8 +188,8 @@
                             x:Name="EditBtn"
                             Width="40"
                             Height="40"
-                            Margin="0,0,10,0"
-                            Padding="10.5,8,10.5,8"
+                            Margin="0 0 10 0"
+                            Padding="10.5 8 10.5 8"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Stretch"
                             Background="{DynamicResource Background2}"
@@ -214,11 +214,11 @@
 
         <StackPanel
             Grid.Row="1"
-            Margin="0,0,0,20"
+            Margin="0 0 0 20"
             Background="{DynamicResource Background}">
-            <StackPanel Margin="10,0,0,0" Orientation="Horizontal">
+            <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
                 <TextBlock
-                    Margin="0,0,10,0"
+                    Margin="0 0 10 0"
                     VerticalAlignment="Center"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                     FontSize="18"
@@ -233,13 +233,13 @@
             </StackPanel>
             <TextBlock
                 Name="DescriptionTxt"
-                Margin="10,0,0,0"
+                Margin="10 0 0 0"
                 Foreground="{DynamicResource Foreground}"
                 Text="{Binding Description}"
                 TextWrapping="Wrap" />
-            <StackPanel Margin="10,0,0,0" Orientation="Horizontal">
+            <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
                 <TextBlock
-                    Margin="0,0,10,0"
+                    Margin="0 0 10 0"
                     VerticalAlignment="Center"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                     FontSize="18"
@@ -260,9 +260,9 @@
                 Orientation="Horizontal" />
 
 
-            <StackPanel Margin="10,0" Orientation="Horizontal">
+            <StackPanel Margin="10 0" Orientation="Horizontal">
                 <TextBlock
-                    Margin="0,0,10,0"
+                    Margin="0 0 10 0"
                     VerticalAlignment="Center"
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                     FontSize="18"
@@ -274,7 +274,7 @@
                     Foreground="{DynamicResource Foreground}"
                     Text="{x:Static lang:Resources.Ratings}" />
                 <TextBlock
-                    Margin="10,0,0,0"
+                    Margin="10 0 0 0"
                     VerticalAlignment="Center"
                     FontSize="13"
                     FontStyle="Italic"
@@ -310,7 +310,7 @@
 
                         <StackPanel
                             Grid.Column="1"
-                            Margin="20,0,0,0"
+                            Margin="20 0 0 0"
                             VerticalAlignment="Center">
 
                             <StackPanel Orientation="Horizontal">
@@ -476,7 +476,7 @@
 
                 <Button
                     x:Name="GoToRawg"
-                    Margin="10,0,10,10"
+                    Margin="10 0 10 10"
                     Padding="5"
                     HorizontalAlignment="Left"
                     Background="{DynamicResource Background2}"
@@ -484,7 +484,7 @@
                     Style="{DynamicResource RegularButton}">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock
-                            Margin="0,0,10,0"
+                            Margin="0 0 10 0"
                             VerticalAlignment="Center"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                             FontSize="13"
@@ -499,9 +499,9 @@
             </StackPanel>
             <Grid x:Name="AchievementsPage" Grid.Row="1">
                 <StackPanel>
-                    <StackPanel Margin="10,0" Orientation="Horizontal">
+                    <StackPanel Margin="10 0" Orientation="Horizontal">
                         <TextBlock
-                            Margin="0,0,10,0"
+                            Margin="0 0 10 0"
                             VerticalAlignment="Center"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                             FontSize="18"
@@ -513,7 +513,7 @@
                             Foreground="{DynamicResource Foreground}"
                             Text="{x:Static lang:Resources.Achievements}" />
                         <TextBlock
-                            Margin="10,0,0,0"
+                            Margin="10 0 0 0"
                             VerticalAlignment="Center"
                             FontSize="13"
                             FontStyle="Italic"

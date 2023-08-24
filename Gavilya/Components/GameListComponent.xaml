@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Height="30"
     MinWidth="200"
-    Margin="0,0,5,0"
+    Margin="0 0 5 0"
     FontFamily="..\Fonts\#Hauora"
     mc:Ignorable="d">
     <i:Interaction.Triggers>
@@ -25,8 +25,8 @@
         </Grid.Resources>
         <Button
             x:Name="GameBtn"
-            Margin="0,0,5,0"
-            Padding="5,0,5,0"
+            Margin="0 0 5 0"
+            Padding="5 0 5 0"
             HorizontalAlignment="Center"
             VerticalAlignment="Stretch"
             Background="Transparent"
@@ -51,7 +51,7 @@
                         Text="{Binding Name}" />
                     <TextBlock
                         x:Name="FavIconTxt"
-                        Margin="10,0,0,0"
+                        Margin="10 0 0 0"
                         VerticalAlignment="Center"
                         FontFamily="../Fonts/#FluentSystemIcons-Filled"
                         FontSize="14"
@@ -64,7 +64,7 @@
                     Grid.Column="1"
                     Width="22"
                     Height="22"
-                    Margin="10,0,0,0"
+                    Margin="10 0 0 0"
                     Padding="5"
                     VerticalAlignment="Center"
                     Content="&#xF610;"

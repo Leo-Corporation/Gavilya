@@ -94,7 +94,7 @@
                                 Margin="{TemplateBinding Margin}"
                                 Padding="{TemplateBinding Padding}"
                                 BorderBrush="Transparent"
-                                BorderThickness="2,0,0,0"
+                                BorderThickness="2 0 0 0"
                                 CornerRadius="5">
                                 <ContentPresenter
                                     x:Name="contentPresenter"
@@ -303,7 +303,7 @@
                             </Grid>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="HasContent" Value="True">
-                                    <Setter Property="Padding" Value="4,-1,0,0" />
+                                    <Setter Property="Padding" Value="4 -1 0 0" />
                                 </Trigger>
                                 <Trigger Property="IsMouseOver" Value="True">
                                     <Setter TargetName="checkBoxBorder" Property="Background" Value="Transparent" />
