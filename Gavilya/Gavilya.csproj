@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
+    <PackageReference Include="PeyrSharp.Core" Version="1.8.0.2308" />
   </ItemGroup>
 
   <ItemGroup>

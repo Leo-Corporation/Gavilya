@@ -25,6 +25,7 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Enums;
 using Gavilya.Models;
+using PeyrSharp.Core.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,8 +36,8 @@ using System.Windows.Input;
 namespace Gavilya.ViewModels;
 public class GamePageViewModel : ViewModelBase
 {
-    private Game _game;
-    private GameList _games;
+	private Game _game;
+	private GameList _games;
 	private MainViewModel _mainViewModel;
 
 	private string _name;
@@ -80,6 +81,10 @@ public class GamePageViewModel : ViewModelBase
 		{
 			_lastTimePlayed = value;
 			OnPropertyChanged(nameof(LastTimePlayed));
+			if (value == 0) { LastTimeText = Properties.Resources.Never; return; }
+			var date = Time.UnixTimeToDateTime(value);
+			string[] months = Properties.Resources.Months.Split(new string[] { "," }, StringSplitOptions.None); // Get all the months
+			LastTimeText = $"{date.Day} {months[date.Month - 1]} {date.Year}";
 		}
 	}
 
@@ -91,8 +96,15 @@ public class GamePageViewModel : ViewModelBase
 		{
 			_totalTimePlayed = value;
 			OnPropertyChanged(nameof(TotalTimePlayed));
+			TotalTimeText = TotalTimePlayed == 0 ? Properties.Resources.Never : $"{value}{Properties.Resources.HourShort}";
 		}
 	}
+
+	private string _totalTimeText;
+	public string TotalTimeText { get => _totalTimeText; set { _totalTimeText = value; OnPropertyChanged(nameof(TotalTimeText)); } }
+
+	private string _lastTimeText;
+	public string LastTimeText { get => _lastTimeText; set { _lastTimeText = value; OnPropertyChanged(nameof(LastTimeText)); } }
 
 	private string _command;
 	public string Command
@@ -120,9 +132,9 @@ public class GamePageViewModel : ViewModelBase
 	public ICommand EditCommand { get; }
 
 	public GamePageViewModel(Game game, GameList games, MainViewModel mainViewModel)
-    {
-        _game = game;
-        _games = games;
+	{
+		_game = game;
+		_games = games;
 		_mainViewModel = mainViewModel;
 
 		// Load properties
