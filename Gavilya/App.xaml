@@ -87,11 +87,13 @@
             <Style x:Key="RegularButton" TargetType="Button">
                 <Setter Property="Foreground" Value="{DynamicResource Foreground}"/>
                 <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="Button">
-                            <Border x:Name="ButtonBorder" MinWidth="20" Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="Transparent" CornerRadius="5" Margin="{TemplateBinding Margin}" Padding="{TemplateBinding Padding}">
-                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Center" />
+                            <Border x:Name="ButtonBorder" Background="{TemplateBinding Background}" BorderThickness="0" BorderBrush="{TemplateBinding BorderBrush}" SnapsToDevicePixels="true" CornerRadius="5" Cursor="Hand">
+                                <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">

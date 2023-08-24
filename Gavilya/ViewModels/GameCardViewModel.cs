@@ -164,6 +164,7 @@ namespace Gavilya.ViewModels
 
 			MouseHoverCommand = new RelayCommand(HandleMouseHover);
 			EditCommand = new RelayCommand(Edit);
+			ClickCommand = new RelayCommand(Click);
 		}
 
 		private void HandleMouseHover(object parameter)
@@ -174,6 +175,11 @@ namespace Gavilya.ViewModels
 		private void Edit(object? obj)
 		{
 			_mainViewModel.CurrentViewModel = new GameEditionViewModel(_game, _mainViewModel.Games, _mainViewModel);
+		}
+
+		private void Click(object? obj)
+		{
+			_mainViewModel.CurrentViewModel = new GamePageViewModel(_game, _mainViewModel.Games, _mainViewModel);
 		}
 	}
 }
