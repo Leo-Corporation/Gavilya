@@ -84,4 +84,43 @@ public class GameList : ObservableCollection<Game>
 			todayList, yesterdayList, thisMonthList, otherList
 		};
 	}
+
+	public List<GameList> GetSortedGameByTag()
+	{
+		Dictionary<Tag, List<Game>> tagGamesMap = new Dictionary<Tag, List<Game>>();
+
+		// Associate games with their corresponding tags
+		foreach (var game in this)
+		{
+			if (game.Tags != null)
+			{
+				foreach (var tag in game.Tags)
+				{
+					if (!tagGamesMap.ContainsKey(tag))
+					{
+						tagGamesMap[tag] = new List<Game>();
+					}
+
+					tagGamesMap[tag].Add(game);
+				}
+			}
+		}
+
+		// Create GameList instances for each tag and add associated games
+		List<GameList> sortedGameLists = new List<GameList>();
+		foreach (var kvp in tagGamesMap)
+		{
+			var tag = kvp.Key;
+			var games = kvp.Value;
+
+			var gameList = new GameList(tag.Name, tag.HexColorCode);
+			foreach (var game in games)
+			{
+				gameList.Add(game);
+			}
+			sortedGameLists.Add(gameList);
+		}
+
+		return sortedGameLists;
+	}
 }

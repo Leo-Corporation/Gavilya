@@ -42,6 +42,7 @@ internal class LibPageViewModel : ViewModelBase
 	public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
 
 	public ICommand CardViewCommand { get; }
+	public ICommand TagViewCommand { get; }
 	public ICommand ListViewCommand { get; }
 
 	public LibPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
@@ -52,12 +53,18 @@ internal class LibPageViewModel : ViewModelBase
 		_currentViewModel = new CardPageViewModel(Games, _tags, _mainViewModel);
 
 		CardViewCommand = new RelayCommand(CardView);
+		TagViewCommand = new RelayCommand(TagView);
 		ListViewCommand = new RelayCommand(ListView);
 	}
 
 	private void CardView(object? obj)
 	{
 		CurrentViewModel = new CardPageViewModel(Games, _tags, _mainViewModel);
+	}
+
+	private void TagView(object? obj)
+	{
+		CurrentViewModel = new TagPageViewModel(Games, _tags, _mainViewModel);
 	}
 
 	private void ListView(object? obj)

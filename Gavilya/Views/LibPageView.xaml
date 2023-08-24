@@ -133,6 +133,7 @@
                         Padding="5"
                         VerticalAlignment="Center"
                         BorderThickness="0"
+                        Command="{Binding TagViewCommand}"
                         Content="&#xF77D;"
                         FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                         FontSize="16"
@@ -172,6 +173,9 @@
             <Grid.Resources>
                 <DataTemplate DataType="{x:Type vm:CardPageViewModel}">
                     <local:CardPageView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:TagPageViewModel}">
+                    <local:TagPageView />
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type vm:ListPageViewModel}">
                     <local:ListPageView />
