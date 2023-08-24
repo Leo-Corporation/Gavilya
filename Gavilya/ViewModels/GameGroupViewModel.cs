@@ -39,18 +39,21 @@ namespace Gavilya.ViewModels
 		private readonly MainViewModel _mainViewModel;
 		public string Title { get; }
 		public GameList Games { get; }
-		public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _mainViewModel)).ToList();
+		public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _tags, _mainViewModel)).ToList();
 
 		private SolidColorBrush _tagColor;
 		public SolidColorBrush TagColor { get => _tagColor; set { _tagColor = value; OnPropertyChanged(nameof(TagColor)); } }
 
 		private Visibility _tagVis = Visibility.Collapsed;
+		private List<Tag> _tags;
+
 		public Visibility TagVis { get => _tagVis; set { _tagVis = value; OnPropertyChanged(nameof(TagVis)); } }
 
-		public GameGroupViewModel(string title, GameList games, MainViewModel mainViewModel)
+		public GameGroupViewModel(string title, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 		{
 			Title = title;
 			Games = games;
+			_tags = tags;
 			_mainViewModel = mainViewModel;
 
 			if (Games.TagColor is not null)

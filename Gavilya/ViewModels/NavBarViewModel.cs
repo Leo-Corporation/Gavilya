@@ -37,7 +37,7 @@ namespace Gavilya.ViewModels;
 public class NavBarViewModel : ViewModelBase
 {
 	private readonly MainViewModel _mainViewModel;
-
+	private readonly List<Tag> _tags;
 	private bool _isPopupOpen = false;
 	public bool IsPopupOpen { get => _isPopupOpen; set { _isPopupOpen = value; OnPropertyChanged(nameof(IsPopupOpen)); } }
 	GameList Games { get; set; }
@@ -49,7 +49,7 @@ public class NavBarViewModel : ViewModelBase
 	public ICommand AddWin32GameCommand { get; }
 	public ICommand AddUwpGameCommand { get; }
 	public ICommand AddSteamGameCommand { get; }
-	public NavBarViewModel(MainViewModel mainViewModel, GameList games)
+	public NavBarViewModel(MainViewModel mainViewModel, GameList games, List<Tag> tags)
 	{
 		HomePageCommand = new RelayCommand(HomePage);
 		LibraryPageCommand = new RelayCommand(LibraryPage);
@@ -61,6 +61,7 @@ public class NavBarViewModel : ViewModelBase
 
 		_mainViewModel = mainViewModel;
 		Games = games;
+		_tags = tags;
 	}
 
 	private void HomePage(object? obj)
@@ -69,12 +70,12 @@ public class NavBarViewModel : ViewModelBase
 
 	private void LibraryPage(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _mainViewModel);
+		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _tags, _mainViewModel);
 	}
 
 	private void RecentPage(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new RecentPageViewModel(Games, _mainViewModel);
+		_mainViewModel.CurrentViewModel = new RecentPageViewModel(Games, _tags, _mainViewModel);
 	}
 
 	private void AddGame(object? obj)
@@ -84,19 +85,19 @@ public class NavBarViewModel : ViewModelBase
 
 	private void AddWin32Game(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new GameEditionViewModel(GameType.Win32, Games, _mainViewModel);
+		_mainViewModel.CurrentViewModel = new GameEditionViewModel(GameType.Win32, Games, _tags, _mainViewModel);
 		IsPopupOpen = false;
 	}
 
 	private void AddUwpGame(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new GameEditionViewModel(GameType.UWP, Games, _mainViewModel);
+		_mainViewModel.CurrentViewModel = new GameEditionViewModel(GameType.UWP, Games, _tags, _mainViewModel);
 		IsPopupOpen = false;
 	}
 
 	private void AddSteamGame(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new GameEditionViewModel(GameType.Steam, Games, _mainViewModel);
+		_mainViewModel.CurrentViewModel = new GameEditionViewModel(GameType.Steam, Games, _tags, _mainViewModel);
 		IsPopupOpen = false;
 	}
 }

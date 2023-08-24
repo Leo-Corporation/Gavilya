@@ -35,11 +35,14 @@ namespace Gavilya.ViewModels
     {
 		private readonly MainViewModel _mainViewModel;
 		private List<GameList> _sortedGames;
-        public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _mainViewModel)).ToList();
+		private List<Tag> _tags;
 
-        public RecentPageViewModel(GameList games, MainViewModel mainViewModel)
+		public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel)).ToList();
+
+        public RecentPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
         {
             _sortedGames = games.GetSortedGameLists();
+			_tags = tags;
 			_mainViewModel = mainViewModel;
 		}
     }

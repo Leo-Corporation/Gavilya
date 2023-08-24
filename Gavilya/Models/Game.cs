@@ -43,10 +43,12 @@ public class Game
 	public bool IsFavorite { get; set; }
 	public bool IsHidden { get; set; }
 	public string Id { get; init; }
+	public List<Tag>? Tags { get; set; }
 
     public Game()
     {
 		Id = Guid.NewGuid().ToString();
+		Tags = new();
     }
 
 	public override bool Equals(object? obj)

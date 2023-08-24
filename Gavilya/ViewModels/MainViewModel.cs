@@ -40,6 +40,7 @@ public class MainViewModel : ViewModelBase
 
 	private object _currentView;
 	private readonly Window _window;
+	private readonly List<Tag> tags;
 	private readonly WindowHelper _windowHelper;
 
 	public GameList Games { get; set; }
@@ -77,12 +78,13 @@ public class MainViewModel : ViewModelBase
 	public ICommand MaximizeRestoreCommand { get; }
 	public ICommand CloseCommand { get; }
 
-	public MainViewModel(Window window, GameList games)
+	public MainViewModel(Window window, GameList games, List<Tag> _tags)
 	{
 		_window = window;
 
 		Games = games;
-		_navBarViewModel = new(this, Games);
+		tags = _tags;
+		_navBarViewModel = new(this, Games, _tags);
 		_windowHelper = new(window);
 
 		MinimizeCommand = new RelayCommand(Minimize);

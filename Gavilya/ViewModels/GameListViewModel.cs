@@ -48,16 +48,19 @@ namespace Gavilya.ViewModels
 		public bool IsFavorite { get => _isFavorite; set { _isFavorite = value; OnPropertyChanged(nameof(IsFavorite)); } }
 
 		private Visibility _mouseHoverVis = Visibility.Hidden;
+		private List<Tag> _tags;
+
 		public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
 
 		public ICommand MouseHoverCommand { get; }
 		public ICommand ClickCommand { get; }
 
 
-		public GameListViewModel(Game game, GameList games, ListPageViewModel listPageViewModel, MainViewModel mainViewModel)
+		public GameListViewModel(Game game, GameList games, List<Tag> tags, ListPageViewModel listPageViewModel, MainViewModel mainViewModel)
         {
 			_game = game;
 			_games = games;
+			_tags = tags;
 			_listPageViewModel = listPageViewModel;
 			_mainViewModel = mainViewModel;
 			Name = _game.Name;
@@ -75,7 +78,7 @@ namespace Gavilya.ViewModels
 
 		private void Click(object? obj)
 		{
-			_listPageViewModel.CurrentGameView = new GamePageViewModel(_game, _games, _mainViewModel);
+			_listPageViewModel.CurrentGameView = new GamePageViewModel(_game, _games, _tags, _mainViewModel) ;
 		}
 	}
 }

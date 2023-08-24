@@ -37,19 +37,22 @@ internal class LibPageViewModel : ViewModelBase
 	private readonly MainViewModel _mainViewModel;
 	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
 
-	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _mainViewModel)).ToList();
+	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _tags, _mainViewModel)).ToList();
 
 	private ViewModelBase _currentViewModel;
+	private List<Tag> _tags;
+
 	public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
 
 	public ICommand CardViewCommand { get; }
 	public ICommand ListViewCommand { get; }
 
-    public LibPageViewModel(GameList games, MainViewModel mainViewModel)
+    public LibPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
     {
 		Games = games;
+		_tags = tags;
 		_mainViewModel = mainViewModel;
-		_currentViewModel = new CardPageViewModel(Games, _mainViewModel);
+		_currentViewModel = new CardPageViewModel(Games, _tags, _mainViewModel);
 
 		CardViewCommand = new RelayCommand(CardView);
 		ListViewCommand = new RelayCommand(ListView);
@@ -57,11 +60,11 @@ internal class LibPageViewModel : ViewModelBase
 
 	private void CardView(object? obj)
 	{
-		CurrentViewModel = new CardPageViewModel(Games, _mainViewModel);
+		CurrentViewModel = new CardPageViewModel(Games, _tags, _mainViewModel);
 	}
 
 	private void ListView(object? obj)
 	{
-		CurrentViewModel = new ListPageViewModel(Games, _mainViewModel);
+		CurrentViewModel = new ListPageViewModel(Games, _tags, _mainViewModel);
 	}
 }

@@ -33,12 +33,15 @@ namespace Gavilya.ViewModels;
 public class CardPageViewModel : ViewModelBase
 {
 	public GameList Games { get; set; }
-	readonly MainViewModel _mainViewModel;
-	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _mainViewModel)).ToList();
 
-	public CardPageViewModel(GameList games, MainViewModel mainViewModel)
+	private readonly List<Tag> _tags;
+	readonly MainViewModel _mainViewModel;
+	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _tags, _mainViewModel)).ToList();
+
+	public CardPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
     {
 		_mainViewModel = mainViewModel;
         Games = games;
-    }
+		this._tags = tags;
+	}
 }

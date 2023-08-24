@@ -38,6 +38,7 @@ public class GamePageViewModel : ViewModelBase
 {
 	private Game _game;
 	private GameList _games;
+	private readonly List<Tag> _tags;
 	private MainViewModel _mainViewModel;
 
 	private string _name;
@@ -131,10 +132,11 @@ public class GamePageViewModel : ViewModelBase
 	public ICommand PlayCommand { get; }
 	public ICommand EditCommand { get; }
 
-	public GamePageViewModel(Game game, GameList games, MainViewModel mainViewModel)
+	public GamePageViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_game = game;
 		_games = games;
+		_tags = tags;
 		_mainViewModel = mainViewModel;
 
 		// Load properties
@@ -152,6 +154,6 @@ public class GamePageViewModel : ViewModelBase
 
 	private void Edit(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new GameEditionViewModel(_game, _games, _mainViewModel);
+		_mainViewModel.CurrentViewModel = new GameEditionViewModel(_game, _games, _tags, _mainViewModel);
 	}
 }

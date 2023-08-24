@@ -40,5 +40,10 @@ namespace Gavilya.Models
 
 		public string Name { get; }
         public string HexColorCode { get; }
-    }
+
+		public override bool Equals(object? obj)
+		{
+			return obj is Tag tag && tag.Name == Name;
+		}
+	}
 }

@@ -139,6 +139,8 @@ namespace Gavilya.ViewModels
 		}
 
 		private Visibility _mouseHoverVis = Visibility.Hidden;
+		private List<Tag> _tags;
+
 		public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
 
 		public ICommand MouseHoverCommand { get; }
@@ -147,9 +149,10 @@ namespace Gavilya.ViewModels
 		public ICommand EditCommand { get; }
 		public ICommand ClickCommand { get; }
 
-		public GameCardViewModel(Game game, MainViewModel mainViewModel)
+		public GameCardViewModel(Game game, List<Tag> tags, MainViewModel mainViewModel)
 		{
 			_game = game;
+			_tags = tags;
 			_mainViewModel = mainViewModel;
 
 			Name = game.Name;
@@ -174,12 +177,12 @@ namespace Gavilya.ViewModels
 
 		private void Edit(object? obj)
 		{
-			_mainViewModel.CurrentViewModel = new GameEditionViewModel(_game, _mainViewModel.Games, _mainViewModel);
+			_mainViewModel.CurrentViewModel = new GameEditionViewModel(_game, _mainViewModel.Games, _tags, _mainViewModel);
 		}
 
 		private void Click(object? obj)
 		{
-			_mainViewModel.CurrentViewModel = new GamePageViewModel(_game, _mainViewModel.Games, _mainViewModel);
+			_mainViewModel.CurrentViewModel = new GamePageViewModel(_game, _mainViewModel.Games, _tags, _mainViewModel);
 		}
 	}
 }
