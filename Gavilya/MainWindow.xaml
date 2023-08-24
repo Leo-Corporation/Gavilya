@@ -44,7 +44,7 @@
                 <RowDefinition Height="50" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <Border BorderBrush="{DynamicResource SelectedBackground}" BorderThickness="0,0,0,1">
+            <Border BorderBrush="{DynamicResource SelectedBackground}" BorderThickness="0 0 0 1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -172,6 +172,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type viewmodels:GamePageViewModel}">
                         <views:GamePageView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:RecentPageViewModel}">
+                        <views:RecentPageView />
                     </DataTemplate>
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>

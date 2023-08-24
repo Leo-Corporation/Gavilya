@@ -21,13 +21,61 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
 
 namespace Gavilya.Models;
 public class GameList : ObservableCollection<Game>
 {
+	public string? Title { get; init; }
     public GameList() : base()
     {
         
     }
+
+    public GameList(string title) : base()
+    {
+		Title = title;
+    }
+
+    public List<GameList> GetSortedGameLists()
+	{
+		DateTime now = DateTime.Now;
+		DateTime todayStart = now.Date;
+		DateTime yesterdayStart = todayStart.AddDays(-1);
+		DateTime thisMonthStart = new(now.Year, now.Month, 1);
+
+		GameList todayList = new(Properties.Resources.Today);
+		GameList yesterdayList = new(Properties.Resources.Yesterday);
+		GameList thisMonthList = new(Properties.Resources.ThisMonth);
+		GameList otherList = new(Properties.Resources.LongTimeAgo);
+
+		foreach (Game game in this)
+		{
+			DateTime lastPlayTime = DateTimeOffset.FromUnixTimeSeconds(game.LastTimePlayed).DateTime;
+
+			if (lastPlayTime >= todayStart)
+			{
+				todayList.Add(game);
+			}
+			else if (lastPlayTime >= yesterdayStart)
+			{
+				yesterdayList.Add(game);
+			}
+			else if (lastPlayTime >= thisMonthStart)
+			{
+				thisMonthList.Add(game);
+			}
+			else
+			{
+				otherList.Add(game);
+			}
+		}
+
+		return new List<GameList>
+		{
+			todayList, yesterdayList, thisMonthList, otherList
+		};
+	}
 }

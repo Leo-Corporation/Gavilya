@@ -41,7 +41,7 @@
 
         </StackPanel>
 
-        <ItemsControl ItemsSource="{Binding GamesVm}">
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding GamesVm}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />
