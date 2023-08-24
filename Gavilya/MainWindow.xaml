@@ -20,51 +20,57 @@
 				<RowDefinition Height="50"/>
 				<RowDefinition/>
 			</Grid.RowDefinitions>
-			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="*" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-					<ColumnDefinition Width="Auto" />
-				</Grid.ColumnDefinitions>
+			<Border BorderThickness="0 0 0 1" BorderBrush="{DynamicResource SelectedBackground}">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
 
-				<Button x:Name="SearchBtn" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent" Content="&#xF690;">
-					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Search}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-					</Button.ToolTip>
-				</Button>
-				<Button Name="SelectBtn" Style="{StaticResource TitleBarButtonStyle}" Content="&#xFC56;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent">
-					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-					</Button.ToolTip>
-				</Button>
-				<Button Name="DeleteBtn" Style="{StaticResource TitleBarButtonStyle}" Content="&#xF34D;" FontSize="14" Grid.Column="8" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent">
-					<Button.ToolTip>
-						<ToolTip Content="{x:Static lang:Resources.Delete}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-					</Button.ToolTip>
-				</Button>
+					<Button x:Name="SearchBtn" Style="{StaticResource TitleBarButtonStyle}" FontSize="14" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent" Content="&#xF690;">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Search}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+					<Button Name="SelectBtn" Style="{StaticResource TitleBarButtonStyle}" Content="&#xFC56;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+					<Button Name="DeleteBtn" Style="{StaticResource TitleBarButtonStyle}" Content="&#xF34D;" FontSize="14" Grid.Column="8" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Delete}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+					<TextBlock Text="&#xF370;" FontSize="30" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="{DynamicResource SelectedBackground}" VerticalAlignment="Center" Grid.Column="9" />
 
-				<Button x:Name="MinimizeBtn" Command="{Binding MinimizeCommand}" Grid.Column="10" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
-				<Button x:Name="MaximizeBtn" Command="{Binding MaximizeRestoreCommand}" Grid.Column="11" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="{Binding MaxiIcon}" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="{Binding MaxiIconFontSize}"></Button>
-				<Button x:Name="CloseBtn" Command="{Binding CloseCommand}" Grid.Column="12" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
-			</Grid>
+					<Button x:Name="MinimizeBtn" Command="{Binding MinimizeCommand}" Grid.Column="10" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+					<Button x:Name="MaximizeBtn" Command="{Binding MaximizeRestoreCommand}" Grid.Column="11" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="{Binding MaxiIcon}" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="{Binding MaxiIconFontSize}"></Button>
+					<Button x:Name="CloseBtn" Command="{Binding CloseCommand}" Grid.Column="12" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+				</Grid>
+			</Border>
 			<Grid Grid.Row="1">
 				<Grid.Resources>
 					<DataTemplate DataType="{x:Type viewmodels:LibPageViewModel}">
 						<views:LibPageView/>
 					</DataTemplate>
-                    <DataTemplate DataType="{x:Type viewmodels:GameEditionViewModel}">
-                        <views:GameEditionView/>
-                    </DataTemplate>
+					<DataTemplate DataType="{x:Type viewmodels:GameEditionViewModel}">
+						<views:GameEditionView/>
+					</DataTemplate>
+					<DataTemplate DataType="{x:Type viewmodels:GamePageViewModel}">
+						<views:GamePageView/>
+					</DataTemplate>
 				</Grid.Resources>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="Auto" />
@@ -82,10 +88,10 @@
 					<components:NavBarComponent/>
 				</Grid>
 
-                <ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                    <ContentControl Content="{Binding CurrentViewModel}"/>
-                </ScrollViewer>
-            </Grid>
+				<ScrollViewer Grid.Column="2" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+					<ContentControl Content="{Binding CurrentViewModel}"/>
+				</ScrollViewer>
+			</Grid>
 		</Grid>
 	</Border>
 </Window>
