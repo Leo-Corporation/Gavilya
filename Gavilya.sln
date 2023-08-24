@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gavilya", "Gavilya\Gavilya.csproj", "{C94920A4-E41E-44E4-BB54-81D08AD03899}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gavilya", "Gavilya\Gavilya.csproj", "{C94920A4-E41E-44E4-BB54-81D08AD03899}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1D24D554-2EC0-44ED-AD68-A8C5451346E3}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

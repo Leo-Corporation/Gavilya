@@ -36,7 +36,7 @@ public class ListPageViewModel : ViewModelBase
 	public List<GameListViewModel> GamesVm => Games.Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
 
 	private ViewModelBase _viewModelBase;
-	private List<Tag> _tags;
+	private readonly List<Tag> _tags;
 	private readonly MainViewModel _mainViewModel;
 
 	public ViewModelBase CurrentGameView { get => _viewModelBase; set { _viewModelBase = value; OnPropertyChanged(nameof(CurrentGameView)); } }

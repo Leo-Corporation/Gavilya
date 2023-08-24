@@ -33,7 +33,7 @@ namespace Gavilya.Helpers
 {
     public class WindowHelper
     {
-		private Window _window;
+		private readonly Window _window;
 
 		/// <summary>
 		/// The first value is the maximum height, and the seconde one is the maximum width.

@@ -36,10 +36,10 @@ using System.Windows.Input;
 namespace Gavilya.ViewModels;
 public class GamePageViewModel : ViewModelBase
 {
-	private Game _game;
-	private GameList _games;
+	private readonly Game _game;
+	private readonly GameList _games;
 	private readonly List<Tag> _tags;
-	private MainViewModel _mainViewModel;
+	private readonly MainViewModel _mainViewModel;
 
 	private string _name;
 	public string Name

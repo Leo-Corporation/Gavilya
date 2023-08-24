@@ -39,7 +39,7 @@ namespace Gavilya.ViewModels
     {
 		readonly MainViewModel _mainViewModel;
 		private string _name;
-		private Game _game;
+		private readonly Game _game;
 		public string Name
 		{
 			get => _name;
@@ -139,7 +139,7 @@ namespace Gavilya.ViewModels
 		}
 
 		private Visibility _mouseHoverVis = Visibility.Hidden;
-		private List<Tag> _tags;
+		private readonly List<Tag> _tags;
 
 		public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
 

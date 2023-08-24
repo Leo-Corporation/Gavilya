@@ -23,7 +23,6 @@ SOFTWARE.
 */
 
 using Gavilya.Commands;
-using Gavilya.EventArguments;
 using Gavilya.Models;
 using System;
 using System.Collections.Generic;

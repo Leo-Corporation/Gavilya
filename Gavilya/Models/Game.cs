@@ -55,4 +55,15 @@ public class Game
 	{
 		return obj is Game game && Id == game.Id;
 	}
+
+	public override int GetHashCode()
+	{
+		return HashCode.Combine(
+			Name,
+			Description,
+			CoverFilePath,
+			LastTimePlayed,
+			TotalTimePlayed,			
+			Id);
+	}
 }

@@ -45,7 +45,7 @@ namespace Gavilya.ViewModels
 		public SolidColorBrush TagColor { get => _tagColor; set { _tagColor = value; OnPropertyChanged(nameof(TagColor)); } }
 
 		private Visibility _tagVis = Visibility.Collapsed;
-		private List<Tag> _tags;
+		private readonly List<Tag> _tags;
 
 		public Visibility TagVis { get => _tagVis; set { _tagVis = value; OnPropertyChanged(nameof(TagVis)); } }
 

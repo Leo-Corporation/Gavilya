@@ -45,5 +45,10 @@ namespace Gavilya.Models
 		{
 			return obj is Tag tag && tag.Name == Name;
 		}
+
+		public override int GetHashCode()
+		{
+			return HashCode.Combine(Name, HexColorCode);
+		}
 	}
 }

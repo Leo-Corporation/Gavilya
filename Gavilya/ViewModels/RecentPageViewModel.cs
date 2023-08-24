@@ -34,8 +34,8 @@ namespace Gavilya.ViewModels
     public class RecentPageViewModel : ViewModelBase
     {
 		private readonly MainViewModel _mainViewModel;
-		private List<GameList> _sortedGames;
-		private List<Tag> _tags;
+		private readonly List<GameList> _sortedGames;
+		private readonly List<Tag> _tags;
 
 		public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel)).ToList();
 

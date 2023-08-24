@@ -48,7 +48,7 @@ namespace Gavilya.ViewModels
 		public bool IsFavorite { get => _isFavorite; set { _isFavorite = value; OnPropertyChanged(nameof(IsFavorite)); } }
 
 		private Visibility _mouseHoverVis = Visibility.Hidden;
-		private List<Tag> _tags;
+		private readonly List<Tag> _tags;
 
 		public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
 
