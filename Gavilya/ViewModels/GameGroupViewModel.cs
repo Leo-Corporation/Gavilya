@@ -29,6 +29,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Media;
 
 namespace Gavilya.ViewModels
 {
@@ -39,11 +41,23 @@ namespace Gavilya.ViewModels
 		public GameList Games { get; }
 		public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _mainViewModel)).ToList();
 
+		private SolidColorBrush _tagColor;
+		public SolidColorBrush TagColor { get => _tagColor; set { _tagColor = value; OnPropertyChanged(nameof(TagColor)); } }
+
+		private Visibility _tagVis = Visibility.Collapsed;
+		public Visibility TagVis { get => _tagVis; set { _tagVis = value; OnPropertyChanged(nameof(TagVis)); } }
+
 		public GameGroupViewModel(string title, GameList games, MainViewModel mainViewModel)
 		{
 			Title = title;
 			Games = games;
 			_mainViewModel = mainViewModel;
+
+			if (Games.TagColor is not null)
+			{
+				TagColor = new() { Color = (Color)ColorConverter.ConvertFromString(Games.TagColor) };
+				TagVis = Visibility.Visible;
+			}
 		}
 	}
 }

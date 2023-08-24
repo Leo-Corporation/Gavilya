@@ -24,10 +24,10 @@
                 Width="10"
                 Height="10"
                 Margin="4 0 0 0"
-                d:Fill="#10F15F"
+                Fill="{Binding TagColor}"
                 RadiusX="15"
                 RadiusY="15"
-                Visibility="Collapsed" />
+                Visibility="{Binding TagVis}" />
             <TextBlock
                 x:Name="GroupName"
                 Grid.Column="1"
