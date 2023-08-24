@@ -42,4 +42,15 @@ public class Game
 	public GameType GameType { get; set; }
 	public bool IsFavorite { get; set; }
 	public bool IsHidden { get; set; }
+	public string Id { get; init; }
+
+    public Game()
+    {
+		Id = Guid.NewGuid().ToString();
+    }
+
+	public override bool Equals(object? obj)
+	{
+		return obj is Game game && Id == game.Id;
+	}
 }
