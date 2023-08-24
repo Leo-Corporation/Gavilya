@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Components
+namespace Gavilya.Components;
+
+/// <summary>
+/// Interaction logic for TagSelectorComponent.xaml
+/// </summary>
+public partial class TagSelectorComponent : UserControl
 {
-	/// <summary>
-	/// Interaction logic for TagSelectorComponent.xaml
-	/// </summary>
-	public partial class TagSelectorComponent : UserControl
+	public TagSelectorComponent()
 	{
-		public TagSelectorComponent()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

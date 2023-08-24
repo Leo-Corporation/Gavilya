@@ -22,18 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace Gavilya.Models.Rawg
+namespace Gavilya.Models.Rawg;
+
+public class ParentStore
 {
-	public class ParentStore
-	{
-		[JsonPropertyName("store")]
-		public Store Store { get; set; }
-	}
+	[JsonPropertyName("store")]
+	public Store Store { get; set; }
 }

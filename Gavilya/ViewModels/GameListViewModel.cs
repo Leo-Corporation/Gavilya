@@ -28,53 +28,52 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Gavilya.ViewModels
+namespace Gavilya.ViewModels;
+
+public class GameListViewModel : ViewModelBase
 {
-	public class GameListViewModel : ViewModelBase
+	private readonly Game _game;
+	private readonly GameList _games;
+	private readonly ListPageViewModel _listPageViewModel;
+	private readonly MainViewModel _mainViewModel;
+	private string _name;
+	public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+
+
+	private bool _isFavorite;
+	public bool IsFavorite { get => _isFavorite; set { _isFavorite = value; OnPropertyChanged(nameof(IsFavorite)); } }
+
+	private Visibility _mouseHoverVis = Visibility.Hidden;
+	private readonly List<Tag> _tags;
+
+	public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
+
+	public ICommand MouseHoverCommand { get; }
+	public ICommand ClickCommand { get; }
+
+
+	public GameListViewModel(Game game, GameList games, List<Tag> tags, ListPageViewModel listPageViewModel, MainViewModel mainViewModel)
 	{
-		private readonly Game _game;
-		private readonly GameList _games;
-		private readonly ListPageViewModel _listPageViewModel;
-		private readonly MainViewModel _mainViewModel;
-		private string _name;
-		public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+		_game = game;
+		_games = games;
+		_tags = tags;
+		_listPageViewModel = listPageViewModel;
+		_mainViewModel = mainViewModel;
+		Name = _game.Name;
+		IsFavorite = _game.IsFavorite;
 
+		// Commands
+		MouseHoverCommand = new RelayCommand(HandleMouseHover);
+		ClickCommand = new RelayCommand(Click);
+	}
 
-		private bool _isFavorite;
-		public bool IsFavorite { get => _isFavorite; set { _isFavorite = value; OnPropertyChanged(nameof(IsFavorite)); } }
+	private void HandleMouseHover(object parameter)
+	{
+		MouseHoverVis = MouseHoverVis == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
+	}
 
-		private Visibility _mouseHoverVis = Visibility.Hidden;
-		private readonly List<Tag> _tags;
-
-		public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
-
-		public ICommand MouseHoverCommand { get; }
-		public ICommand ClickCommand { get; }
-
-
-		public GameListViewModel(Game game, GameList games, List<Tag> tags, ListPageViewModel listPageViewModel, MainViewModel mainViewModel)
-		{
-			_game = game;
-			_games = games;
-			_tags = tags;
-			_listPageViewModel = listPageViewModel;
-			_mainViewModel = mainViewModel;
-			Name = _game.Name;
-			IsFavorite = _game.IsFavorite;
-
-			// Commands
-			MouseHoverCommand = new RelayCommand(HandleMouseHover);
-			ClickCommand = new RelayCommand(Click);
-		}
-
-		private void HandleMouseHover(object parameter)
-		{
-			MouseHoverVis = MouseHoverVis == Visibility.Visible ? Visibility.Hidden : Visibility.Visible;
-		}
-
-		private void Click(object? obj)
-		{
-			_listPageViewModel.CurrentGameView = new GamePageViewModel(_game, _games, _tags, _mainViewModel);
-		}
+	private void Click(object? obj)
+	{
+		_listPageViewModel.CurrentGameView = new GamePageViewModel(_game, _games, _tags, _mainViewModel);
 	}
 }

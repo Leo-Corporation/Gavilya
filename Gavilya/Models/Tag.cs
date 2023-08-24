@@ -24,27 +24,26 @@ SOFTWARE.
 
 using System;
 
-namespace Gavilya.Models
+namespace Gavilya.Models;
+
+public class Tag
 {
-	public class Tag
+	public Tag(string name, string hexColorCode)
 	{
-		public Tag(string name, string hexColorCode)
-		{
-			Name = name;
-			HexColorCode = hexColorCode;
-		}
+		Name = name;
+		HexColorCode = hexColorCode;
+	}
 
-		public string Name { get; }
-		public string HexColorCode { get; }
+	public string Name { get; }
+	public string HexColorCode { get; }
 
-		public override bool Equals(object? obj)
-		{
-			return obj is Tag tag && tag.Name == Name;
-		}
+	public override bool Equals(object? obj)
+	{
+		return obj is Tag tag && tag.Name == Name;
+	}
 
-		public override int GetHashCode()
-		{
-			return HashCode.Combine(Name, HexColorCode);
-		}
+	public override int GetHashCode()
+	{
+		return HashCode.Combine(Name, HexColorCode);
 	}
 }

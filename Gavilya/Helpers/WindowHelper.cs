@@ -25,46 +25,45 @@ SOFTWARE.
 using System;
 using System.Windows;
 
-namespace Gavilya.Helpers
+namespace Gavilya.Helpers;
+
+public class WindowHelper
 {
-	public class WindowHelper
+	private readonly Window _window;
+
+	/// <summary>
+	/// The first value is the maximum height, and the seconde one is the maximum width.
+	/// </summary>
+	/// <returns></returns>
+	public (double, double) GetMaximumSize()
 	{
-		private readonly Window _window;
+		System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(_window).Handle); // The current screen
 
-		/// <summary>
-		/// The first value is the maximum height, and the seconde one is the maximum width.
-		/// </summary>
-		/// <returns></returns>
-		public (double, double) GetMaximumSize()
+		float dpiX;
+		double scaling = 100; // Default scaling = 100%
+
+		using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromHwnd(IntPtr.Zero))
 		{
-			System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(_window).Handle); // The current screen
+			dpiX = graphics.DpiX; // Get the DPI
 
-			float dpiX;
-			double scaling = 100; // Default scaling = 100%
-
-			using (System.Drawing.Graphics graphics = System.Drawing.Graphics.FromHwnd(IntPtr.Zero))
+			scaling = dpiX switch
 			{
-				dpiX = graphics.DpiX; // Get the DPI
-
-				scaling = dpiX switch
-				{
-					96 => 100, // Get the %
-					120 => 125, // Get the %
-					144 => 150, // Get the %
-					168 => 175, // Get the %
-					192 => 200, // Get the % 
-					_ => 100
-				};
-			}
-
-			double factor = scaling / 100d; // Calculate factor
-
-			return (currentScreen.WorkingArea.Height / factor + 8, currentScreen.WorkingArea.Width / factor + 8);
+				96 => 100, // Get the %
+				120 => 125, // Get the %
+				144 => 150, // Get the %
+				168 => 175, // Get the %
+				192 => 200, // Get the % 
+				_ => 100
+			};
 		}
 
-		public WindowHelper(Window window)
-		{
-			_window = window;
-		}
+		double factor = scaling / 100d; // Calculate factor
+
+		return (currentScreen.WorkingArea.Height / factor + 8, currentScreen.WorkingArea.Width / factor + 8);
+	}
+
+	public WindowHelper(Window window)
+	{
+		_window = window;
 	}
 }

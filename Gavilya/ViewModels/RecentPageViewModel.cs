@@ -26,21 +26,20 @@ using Gavilya.Models;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Gavilya.ViewModels
+namespace Gavilya.ViewModels;
+
+public class RecentPageViewModel : ViewModelBase
 {
-	public class RecentPageViewModel : ViewModelBase
+	private readonly MainViewModel _mainViewModel;
+	private readonly List<GameList> _sortedGames;
+	private readonly List<Tag> _tags;
+
+	public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel)).ToList();
+
+	public RecentPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
-		private readonly MainViewModel _mainViewModel;
-		private readonly List<GameList> _sortedGames;
-		private readonly List<Tag> _tags;
-
-		public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel)).ToList();
-
-		public RecentPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
-		{
-			_sortedGames = games.GetSortedGameLists();
-			_tags = tags;
-			_mainViewModel = mainViewModel;
-		}
+		_sortedGames = games.GetSortedGameLists();
+		_tags = tags;
+		_mainViewModel = mainViewModel;
 	}
 }

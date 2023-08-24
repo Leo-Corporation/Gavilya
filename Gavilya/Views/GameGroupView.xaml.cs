@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Views
+namespace Gavilya.Views;
+
+/// <summary>
+/// Interaction logic for GameGroupView.xaml
+/// </summary>
+public partial class GameGroupView : UserControl
 {
-	/// <summary>
-	/// Interaction logic for GameGroupView.xaml
-	/// </summary>
-	public partial class GameGroupView : UserControl
+	public GameGroupView()
 	{
-		public GameGroupView()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

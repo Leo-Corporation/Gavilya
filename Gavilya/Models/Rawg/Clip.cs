@@ -22,27 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace Gavilya.Models.Rawg
+namespace Gavilya.Models.Rawg;
+
+public class Clip
 {
-	public class Clip
-	{
-		[JsonPropertyName("clip")]
-		public string ClipValue { get; set; }
+	[JsonPropertyName("clip")]
+	public string ClipValue { get; set; }
 
-		[JsonPropertyName("clips")]
-		public Clips ClipsValue { get; set; }
+	[JsonPropertyName("clips")]
+	public Clips ClipsValue { get; set; }
 
-		[JsonPropertyName("video")]
-		public string Video { get; set; }
+	[JsonPropertyName("video")]
+	public string Video { get; set; }
 
-		[JsonPropertyName("preview")]
-		public string Preview { get; set; }
-	}
+	[JsonPropertyName("preview")]
+	public string Preview { get; set; }
 }

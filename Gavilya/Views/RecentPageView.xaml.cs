@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Views
+namespace Gavilya.Views;
+
+/// <summary>
+/// Interaction logic for RecentPageView.xaml
+/// </summary>
+public partial class RecentPageView : UserControl
 {
-	/// <summary>
-	/// Interaction logic for RecentPageView.xaml
-	/// </summary>
-	public partial class RecentPageView : UserControl
+	public RecentPageView()
 	{
-		public RecentPageView()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

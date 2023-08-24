@@ -22,27 +22,21 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace Gavilya.Models.Rawg
+namespace Gavilya.Models.Rawg;
+
+public class Rating
 {
-	public class Rating
-	{
-		[JsonPropertyName("id")]
-		public int Id { get; set; }
+	[JsonPropertyName("id")]
+	public int Id { get; set; }
 
-		[JsonPropertyName("title")]
-		public string Title { get; set; }
+	[JsonPropertyName("title")]
+	public string Title { get; set; }
 
-		[JsonPropertyName("count")]
-		public int Count { get; set; }
+	[JsonPropertyName("count")]
+	public int Count { get; set; }
 
-		[JsonPropertyName("percent")]
-		public float Percent { get; set; }
-	}
+	[JsonPropertyName("percent")]
+	public float Percent { get; set; }
 }

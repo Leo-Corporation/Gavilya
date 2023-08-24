@@ -28,35 +28,34 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 
-namespace Gavilya.ViewModels
+namespace Gavilya.ViewModels;
+
+public class GameGroupViewModel : ViewModelBase
 {
-	public class GameGroupViewModel : ViewModelBase
+	private readonly MainViewModel _mainViewModel;
+	public string Title { get; }
+	public GameList Games { get; }
+	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _tags, _mainViewModel)).ToList();
+
+	private SolidColorBrush _tagColor;
+	public SolidColorBrush TagColor { get => _tagColor; set { _tagColor = value; OnPropertyChanged(nameof(TagColor)); } }
+
+	private Visibility _tagVis = Visibility.Collapsed;
+	private readonly List<Tag> _tags;
+
+	public Visibility TagVis { get => _tagVis; set { _tagVis = value; OnPropertyChanged(nameof(TagVis)); } }
+
+	public GameGroupViewModel(string title, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
-		private readonly MainViewModel _mainViewModel;
-		public string Title { get; }
-		public GameList Games { get; }
-		public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _tags, _mainViewModel)).ToList();
+		Title = title;
+		Games = games;
+		_tags = tags;
+		_mainViewModel = mainViewModel;
 
-		private SolidColorBrush _tagColor;
-		public SolidColorBrush TagColor { get => _tagColor; set { _tagColor = value; OnPropertyChanged(nameof(TagColor)); } }
-
-		private Visibility _tagVis = Visibility.Collapsed;
-		private readonly List<Tag> _tags;
-
-		public Visibility TagVis { get => _tagVis; set { _tagVis = value; OnPropertyChanged(nameof(TagVis)); } }
-
-		public GameGroupViewModel(string title, GameList games, List<Tag> tags, MainViewModel mainViewModel)
+		if (Games.TagColor is not null)
 		{
-			Title = title;
-			Games = games;
-			_tags = tags;
-			_mainViewModel = mainViewModel;
-
-			if (Games.TagColor is not null)
-			{
-				TagColor = new() { Color = (Color)ColorConverter.ConvertFromString(Games.TagColor) };
-				TagVis = Visibility.Visible;
-			}
+			TagColor = new() { Color = (Color)ColorConverter.ConvertFromString(Games.TagColor) };
+			TagVis = Visibility.Visible;
 		}
 	}
 }

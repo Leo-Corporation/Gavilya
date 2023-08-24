@@ -27,41 +27,40 @@ using Gavilya.Models;
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace Gavilya.ViewModels
+namespace Gavilya.ViewModels;
+
+public class TagSelectorViewModel : ViewModelBase
 {
-	public class TagSelectorViewModel : ViewModelBase
+	public List<Tag> SelectedTags { get; set; }
+	public Tag Tag { get; }
+
+	public ICommand SelectCommand { get; }
+
+	private bool _selected;
+	public bool Selected { get => _selected; set { _selected = value; OnPropertyChanged(nameof(Selected)); } }
+
+	private string _name;
+	public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+
+	public TagSelectorViewModel(List<Tag> selectedTags, Tag tag, bool selected)
 	{
-		public List<Tag> SelectedTags { get; set; }
-		public Tag Tag { get; }
+		Tag = tag;
+		Selected = selected;
+		SelectedTags = selectedTags;
 
-		public ICommand SelectCommand { get; }
+		Name = tag.Name;
 
-		private bool _selected;
-		public bool Selected { get => _selected; set { _selected = value; OnPropertyChanged(nameof(Selected)); } }
 
-		private string _name;
-		public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+		SelectCommand = new RelayCommand(Select);
+	}
 
-		public TagSelectorViewModel(List<Tag> selectedTags, Tag tag, bool selected)
+	private void Select(object? obj)
+	{
+		if (SelectedTags.Contains(Tag))
 		{
-			Tag = tag;
-			Selected = selected;
-			SelectedTags = selectedTags;
-
-			Name = tag.Name;
-
-
-			SelectCommand = new RelayCommand(Select);
+			SelectedTags.Remove(Tag);
+			return;
 		}
-
-		private void Select(object? obj)
-		{
-			if (SelectedTags.Contains(Tag))
-			{
-				SelectedTags.Remove(Tag);
-				return;
-			}
-			SelectedTags.Add(Tag);
-		}
+		SelectedTags.Add(Tag);
 	}
 }

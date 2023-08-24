@@ -87,7 +87,7 @@ public class GameList : ObservableCollection<Game>
 
 	public List<GameList> GetSortedGameByTag()
 	{
-		Dictionary<Tag, List<Game>> tagGamesMap = new Dictionary<Tag, List<Game>>();
+		Dictionary<Tag, List<Game>> tagGamesMap = new();
 
 		// Associate games with their corresponding tags
 		foreach (var game in this)
@@ -107,7 +107,7 @@ public class GameList : ObservableCollection<Game>
 		}
 
 		// Create GameList instances for each tag and add associated games
-		List<GameList> sortedGameLists = new List<GameList>();
+		List<GameList> sortedGameLists = new();
 		foreach (var kvp in tagGamesMap)
 		{
 			var tag = kvp.Key;

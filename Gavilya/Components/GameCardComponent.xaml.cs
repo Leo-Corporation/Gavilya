@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Components
+namespace Gavilya.Components;
+
+/// <summary>
+/// Interaction logic for GameCardComponent.xaml
+/// </summary>
+public partial class GameCardComponent : UserControl
 {
-	/// <summary>
-	/// Interaction logic for GameCardComponent.xaml
-	/// </summary>
-	public partial class GameCardComponent : UserControl
+	public GameCardComponent()
 	{
-		public GameCardComponent()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }
