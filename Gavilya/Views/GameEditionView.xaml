@@ -181,7 +181,10 @@
                     RadiusX="10"
                     RadiusY="10">
                     <Rectangle.Fill>
-                        <ImageBrush x:Name="Image" ImageSource="{Binding ImageSource}" />
+                        <ImageBrush
+                            x:Name="Image"
+                            ImageSource="{Binding ImageSource}"
+                            Stretch="UniformToFill" />
                     </Rectangle.Fill>
                 </Rectangle>
 
