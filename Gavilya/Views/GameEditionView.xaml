@@ -1,169 +1,544 @@
-﻿<UserControl x:Class="Gavilya.Views.GameEditionView"
-	  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-	  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-	  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-	  xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-	  xmlns:local="clr-namespace:Gavilya.Views"
-	  mc:Ignorable="d" xmlns:lang="clr-namespace:Gavilya.Properties" FontFamily="..\Fonts\#Hauora" Foreground="{DynamicResource Foreground}"
-	  d:DesignHeight="450" d:DesignWidth="800">
+﻿<UserControl
+    x:Class="Gavilya.Views.GameEditionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lang="clr-namespace:Gavilya.Properties"
+    xmlns:local="clr-namespace:Gavilya.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    FontFamily="..\Fonts\#Hauora"
+    Foreground="{DynamicResource Foreground}"
+    mc:Ignorable="d">
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto" />
-			<RowDefinition Height="*" />
-			<RowDefinition Height="Auto" />
-		</Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-		<StackPanel Orientation="Horizontal" Margin="10" Grid.Row="0">
-			<TextBlock Text="&#xF455;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" FontSize="18" VerticalAlignment="Center" />
-			<TextBlock Text="{x:Static lang:Resources.AddGame}" FontSize="18" FontWeight="ExtraBold" Margin="10,0,0,0" VerticalAlignment="Center" />
-		</StackPanel>
-		<WrapPanel Orientation="Horizontal" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-			<StackPanel Orientation="Vertical" Margin="10" Width="345" MaxWidth="350">
-				<TextBlock Text="{x:Static lang:Resources.Location}" Visibility="{Binding DragAreaVis}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<StackPanel x:Name="DragWin32Games" Visibility="{Binding DragAreaVis}">
-					<Button Command="{Binding BrowseFileCommand}" Cursor="Hand" Style="{DynamicResource EditButton}" Foreground="{DynamicResource Foreground}" Background="Transparent"  HorizontalContentAlignment="Stretch">
-						<Border CornerRadius="5" Background="{DynamicResource Background2}" Padding="10" Cursor="Hand" x:Name="LocationBorder" AllowDrop="True">
-							<StackPanel VerticalAlignment="Center">
-								<TextBlock Text="&#xF42F;" FontSize="24" FontFamily="..\Fonts\#FluentSystemIcons-Regular" HorizontalAlignment="Center" />
-								<TextBlock Text="{x:Static lang:Resources.SelectDragDropGame}" Margin="10" FontWeight="ExtraBold" HorizontalAlignment="Center" />
-							</StackPanel>
-						</Border>
-					</Button>
-					<TextBlock x:Name="LocationTxt" Text="{Binding Command}" d:Text="C:\Games\Game.exe" Margin="5" />
-				</StackPanel>
+        <StackPanel
+            Grid.Row="0"
+            Margin="10"
+            Orientation="Horizontal">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontFamily="..\Fonts\#FluentSystemIcons-Filled"
+                FontSize="18"
+                Text="&#xF455;" />
+            <TextBlock
+                Margin="10,0,0,0"
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="ExtraBold"
+                Text="{x:Static lang:Resources.AddGame}" />
+        </StackPanel>
+        <WrapPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
+            <StackPanel
+                Width="345"
+                MaxWidth="350"
+                Margin="10"
+                Orientation="Vertical">
+                <TextBlock
+                    Margin="0,10"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.Location}"
+                    Visibility="{Binding DragAreaVis}" />
+                <StackPanel x:Name="DragWin32Games" Visibility="{Binding DragAreaVis}">
+                    <Button
+                        HorizontalContentAlignment="Stretch"
+                        Background="Transparent"
+                        Command="{Binding BrowseFileCommand}"
+                        Cursor="Hand"
+                        Foreground="{DynamicResource Foreground}"
+                        Style="{DynamicResource EditButton}">
+                        <Border
+                            x:Name="LocationBorder"
+                            Padding="10"
+                            AllowDrop="True"
+                            Background="{DynamicResource Background2}"
+                            CornerRadius="5"
+                            Cursor="Hand">
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="24"
+                                    Text="&#xF42F;" />
+                                <TextBlock
+                                    Margin="10"
+                                    HorizontalAlignment="Center"
+                                    FontWeight="ExtraBold"
+                                    Text="{x:Static lang:Resources.SelectDragDropGame}" />
+                            </StackPanel>
+                        </Border>
+                    </Button>
+                    <TextBlock
+                        x:Name="LocationTxt"
+                        Margin="5"
+                        d:Text="C:\Games\Game.exe"
+                        Text="{Binding Command}" />
+                </StackPanel>
 
-				<TextBlock Visibility="{Binding SteamFieldsVis}" Text="{x:Static lang:Resources.SteamAppId}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<TextBox Visibility="{Binding SteamFieldsVis}" Text="{Binding SteamId, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+                <TextBlock
+                    Margin="0,10"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.SteamAppId}"
+                    Visibility="{Binding SteamFieldsVis}" />
+                <TextBox
+                    Margin="0,5,0,5"
+                    Padding="4"
+                    d:Text="Placeholder"
+                    Background="{DynamicResource Background2}"
+                    BorderThickness="0"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    Style="{DynamicResource RegularTextBox}"
+                    Text="{Binding SteamId, UpdateSourceTrigger=PropertyChanged}"
+                    TextAlignment="Center"
+                    Visibility="{Binding SteamFieldsVis}" />
 
-				<TextBlock Visibility="{Binding UwpFieldsVis}" Text="{x:Static lang:Resources.PackageFamilyName}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<TextBox Visibility="{Binding UwpFieldsVis}" Text="{Binding PackageFamilyName, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+                <TextBlock
+                    Margin="0,10"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.PackageFamilyName}"
+                    Visibility="{Binding UwpFieldsVis}" />
+                <TextBox
+                    Margin="0,5,0,5"
+                    Padding="4"
+                    d:Text="Placeholder"
+                    Background="{DynamicResource Background2}"
+                    BorderThickness="0"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    Style="{DynamicResource RegularTextBox}"
+                    Text="{Binding PackageFamilyName, UpdateSourceTrigger=PropertyChanged}"
+                    TextAlignment="Center"
+                    Visibility="{Binding UwpFieldsVis}" />
 
-				<TextBlock Visibility="{Binding UwpFieldsVis}" Text="{x:Static lang:Resources.ApplicationId}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<TextBox Visibility="{Binding UwpFieldsVis}" Text="{Binding AppId, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+                <TextBlock
+                    Margin="0,10"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.ApplicationId}"
+                    Visibility="{Binding UwpFieldsVis}" />
+                <TextBox
+                    Margin="0,5,0,5"
+                    Padding="4"
+                    d:Text="Placeholder"
+                    Background="{DynamicResource Background2}"
+                    BorderThickness="0"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    Style="{DynamicResource RegularTextBox}"
+                    Text="{Binding AppId, UpdateSourceTrigger=PropertyChanged}"
+                    TextAlignment="Center"
+                    Visibility="{Binding UwpFieldsVis}" />
 
 
-				<TextBlock Text="{x:Static lang:Resources.Name}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<TextBox x:Name="NameTextBox" Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
+                <TextBlock
+                    Margin="0,10"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.Name}" />
+                <TextBox
+                    x:Name="NameTextBox"
+                    Margin="0,5,0,5"
+                    Padding="4"
+                    d:Text="Placeholder"
+                    Background="{DynamicResource Background2}"
+                    BorderThickness="0"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    Style="{DynamicResource RegularTextBox}"
+                    Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"
+                    TextAlignment="Center" />
 
-				<TextBlock Text="{x:Static lang:Resources.Image}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<Rectangle RadiusX="10" RadiusY="10" Width="250" Height="140" HorizontalAlignment="Center">
-					<Rectangle.Fill>
-						<ImageBrush x:Name="Image" ImageSource="{Binding ImageSource}" />
-					</Rectangle.Fill>
-				</Rectangle>
+                <TextBlock
+                    Margin="0,10"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.Image}" />
+                <Rectangle
+                    Width="250"
+                    Height="140"
+                    HorizontalAlignment="Center"
+                    RadiusX="10"
+                    RadiusY="10">
+                    <Rectangle.Fill>
+                        <ImageBrush x:Name="Image" ImageSource="{Binding ImageSource}" />
+                    </Rectangle.Fill>
+                </Rectangle>
 
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-					<Button Command="{Binding BrowseImageCommand}" FontSize="13" x:Name="ImageBrowseBtn" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0,5,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Browse}" FontWeight="ExtraBold" HorizontalAlignment="Center">
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Browse}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-						</Button.ToolTip>
-					</Button>
-					<Button FontSize="13" x:Name="RAWGImageBrowseBtn" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="10,5,0,0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.RAWGio}" FontWeight="ExtraBold" HorizontalAlignment="Center">
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.RAWGio}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-						</Button.ToolTip>
-					</Button>
-				</StackPanel>
-			</StackPanel>
-			<StackPanel Orientation="Vertical" Margin="10" Width="345" MaxWidth="350">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button
+                        x:Name="ImageBrowseBtn"
+                        Margin="0,5,0,0"
+                        Padding="7"
+                        HorizontalAlignment="Center"
+                        Background="{DynamicResource Background2}"
+                        Command="{Binding BrowseImageCommand}"
+                        Content="{x:Static lang:Resources.Browse}"
+                        Cursor="Hand"
+                        FontSize="13"
+                        FontWeight="ExtraBold"
+                        Foreground="{DynamicResource Foreground}"
+                        Style="{DynamicResource RegularButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background}"
+                                Content="{x:Static lang:Resources.Browse}"
+                                Foreground="{DynamicResource Foreground}" />
+                        </Button.ToolTip>
+                    </Button>
+                    <Button
+                        x:Name="RAWGImageBrowseBtn"
+                        Margin="10,5,0,0"
+                        Padding="7"
+                        HorizontalAlignment="Center"
+                        Background="{DynamicResource Background2}"
+                        Content="{x:Static lang:Resources.RAWGio}"
+                        Cursor="Hand"
+                        FontSize="13"
+                        FontWeight="ExtraBold"
+                        Foreground="{DynamicResource Foreground}"
+                        Style="{DynamicResource RegularButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background}"
+                                Content="{x:Static lang:Resources.RAWGio}"
+                                Foreground="{DynamicResource Foreground}" />
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel
+                Width="345"
+                MaxWidth="350"
+                Margin="10"
+                Orientation="Vertical">
 
-				<TextBlock Text="{x:Static lang:Resources.Description}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" />
-				<ScrollViewer Height="200" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Auto">
-					<TextBox Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Padding="5" d:Text="Content here" Grid.Row="0" FontSize="15" x:Name="DescriptionTextBox" BorderThickness="2" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" Style="{DynamicResource RegularTextBox}" BorderBrush="{DynamicResource Background2}" TextWrapping="Wrap" AcceptsReturn="True" AcceptsTab="True" VerticalScrollBarVisibility="Auto" Width="470" VerticalContentAlignment="Top" />
-				</ScrollViewer>
+                <TextBlock
+                    Margin="0,10"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.Description}" />
+                <ScrollViewer
+                    Height="200"
+                    HorizontalScrollBarVisibility="Hidden"
+                    VerticalScrollBarVisibility="Auto">
+                    <TextBox
+                        x:Name="DescriptionTextBox"
+                        Grid.Row="0"
+                        Width="470"
+                        Padding="5"
+                        VerticalContentAlignment="Top"
+                        d:Text="Content here"
+                        AcceptsReturn="True"
+                        AcceptsTab="True"
+                        Background="{DynamicResource Background2}"
+                        BorderBrush="{DynamicResource Background2}"
+                        BorderThickness="2"
+                        FontSize="15"
+                        Foreground="{DynamicResource Foreground}"
+                        Style="{DynamicResource RegularTextBox}"
+                        Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}"
+                        TextWrapping="Wrap"
+                        VerticalScrollBarVisibility="Auto" />
+                </ScrollViewer>
 
-				<TextBlock Text="{x:Static lang:Resources.Integrations}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<Border CornerRadius="5" Background="{DynamicResource Background2}" Padding="10">
-					<Grid>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition />
-							<ColumnDefinition Width="Auto" />
-						</Grid.ColumnDefinitions>
+                <TextBlock
+                    Margin="0,10"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.Integrations}" />
+                <Border
+                    Padding="10"
+                    Background="{DynamicResource Background2}"
+                    CornerRadius="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-						<StackPanel Orientation="Horizontal" Grid.Column="0">
-							<TextBlock Text="{x:Static lang:Resources.RAWGio}" Grid.Column="0" FontWeight="ExtraBold" Margin="0,0,10,0" VerticalAlignment="Center" />
-							<Button FontSize="13" x:Name="AssociateBtn" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.AssociateGame}" FontWeight="ExtraBold" VerticalAlignment="Center">
-								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.AssociateGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-								</Button.ToolTip>
-							</Button>
-						</StackPanel>
-						<StackPanel Orientation="Horizontal" Grid.Column="1">
-							<TextBlock x:Name="AssociateTxt" d:Text="Associated" FontWeight="ExtraBold" VerticalAlignment="Center" />
-							<TextBlock x:Name="AssociateIconTxt" d:Text="" FontFamily="..\Fonts\#FluentlyIcons" HorizontalAlignment="Right" Margin="5,0,0,0" VerticalAlignment="Center" />
-						</StackPanel>
-					</Grid>
-				</Border>
-				<Border x:Name="SteamBorder" Visibility="Collapsed" d:Visibility="Visible" CornerRadius="5" Margin="0 10" Background="{DynamicResource Background2}" Padding="10">
-					<Grid>
-						<Grid.RowDefinitions>
-							<RowDefinition />
-							<RowDefinition Height="Auto" />
-						</Grid.RowDefinitions>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <TextBlock
+                                Grid.Column="0"
+                                Margin="0,0,10,0"
+                                VerticalAlignment="Center"
+                                FontWeight="ExtraBold"
+                                Text="{x:Static lang:Resources.RAWGio}" />
+                            <Button
+                                x:Name="AssociateBtn"
+                                Margin="0"
+                                Padding="7"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource Background2}"
+                                Content="{x:Static lang:Resources.AssociateGame}"
+                                Cursor="Hand"
+                                FontSize="13"
+                                FontWeight="ExtraBold"
+                                Foreground="{DynamicResource Foreground}"
+                                Style="{DynamicResource RegularButton}">
+                                <Button.ToolTip>
+                                    <ToolTip
+                                        Background="{DynamicResource Background}"
+                                        Content="{x:Static lang:Resources.AssociateGame}"
+                                        Foreground="{DynamicResource Foreground}" />
+                                </Button.ToolTip>
+                            </Button>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <TextBlock
+                                x:Name="AssociateTxt"
+                                VerticalAlignment="Center"
+                                d:Text="Associated"
+                                FontWeight="ExtraBold" />
+                            <TextBlock
+                                x:Name="AssociateIconTxt"
+                                Margin="5,0,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                d:Text=""
+                                FontFamily="..\Fonts\#FluentlyIcons" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border
+                    x:Name="SteamBorder"
+                    Margin="0,10"
+                    Padding="10"
+                    d:Visibility="Visible"
+                    Background="{DynamicResource Background2}"
+                    CornerRadius="5"
+                    Visibility="Collapsed">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-						<StackPanel Orientation="Horizontal" Grid.Column="0">
-							<TextBlock Text="{x:Static lang:Resources.Steam}" Grid.Column="0" FontWeight="ExtraBold" Margin="0,0,10,0" VerticalAlignment="Center" />
-							<Button FontSize="13" x:Name="ConvertSteamBtn" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.Convert}" FontWeight="ExtraBold" VerticalAlignment="Center">
-								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.ConvertToSteam}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-								</Button.ToolTip>
-							</Button>
-						</StackPanel>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <TextBlock
+                                Grid.Column="0"
+                                Margin="0,0,10,0"
+                                VerticalAlignment="Center"
+                                FontWeight="ExtraBold"
+                                Text="{x:Static lang:Resources.Steam}" />
+                            <Button
+                                x:Name="ConvertSteamBtn"
+                                Margin="0"
+                                Padding="7"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource Background2}"
+                                Content="{x:Static lang:Resources.Convert}"
+                                Cursor="Hand"
+                                FontSize="13"
+                                FontWeight="ExtraBold"
+                                Foreground="{DynamicResource Foreground}"
+                                Style="{DynamicResource RegularButton}">
+                                <Button.ToolTip>
+                                    <ToolTip
+                                        Background="{DynamicResource Background}"
+                                        Content="{x:Static lang:Resources.ConvertToSteam}"
+                                        Foreground="{DynamicResource Foreground}" />
+                                </Button.ToolTip>
+                            </Button>
+                        </StackPanel>
 
-						<Grid x:Name="ConvertSteamPanel" Grid.Row="1" Visibility="Collapsed">
-							<Grid.ColumnDefinitions>
-								<ColumnDefinition />
-								<ColumnDefinition Width="Auto" />
-							</Grid.ColumnDefinitions>
-							<Grid.RowDefinitions>
-								<RowDefinition Height="Auto" />
-								<RowDefinition Height="Auto" />
-							</Grid.RowDefinitions>
-							<TextBlock Text="{x:Static lang:Resources.SteamAppId}" VerticalAlignment="Center" />
-							<TextBox x:Name="SteamAppIdTextBox" Style="{DynamicResource RegularTextBox}" Background="{x:Null}" Width="200" Margin="10 0" BorderBrush="{DynamicResource Accent}" VerticalAlignment="Center" BorderThickness="2" Grid.Column="1" Foreground="{DynamicResource Foreground}" CaretBrush="{DynamicResource Accent}" />
+                        <Grid
+                            x:Name="ConvertSteamPanel"
+                            Grid.Row="1"
+                            Visibility="Collapsed">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock VerticalAlignment="Center" Text="{x:Static lang:Resources.SteamAppId}" />
+                            <TextBox
+                                x:Name="SteamAppIdTextBox"
+                                Grid.Column="1"
+                                Width="200"
+                                Margin="10,0"
+                                VerticalAlignment="Center"
+                                Background="{x:Null}"
+                                BorderBrush="{DynamicResource Accent}"
+                                BorderThickness="2"
+                                CaretBrush="{DynamicResource Accent}"
+                                Foreground="{DynamicResource Foreground}"
+                                Style="{DynamicResource RegularTextBox}" />
 
-							<TextBlock Text="{x:Static lang:Resources.GameProcess}" VerticalAlignment="Center" Grid.Row="1" Margin="0,10,0,0" />
-							<TextBox x:Name="GameProcessTextBox" Style="{DynamicResource RegularTextBox}" Background="{x:Null}" Width="200" Margin="10,10,10,0" BorderBrush="{DynamicResource Accent}" VerticalAlignment="Center" BorderThickness="2" Grid.Column="1" Grid.Row="1" Foreground="{DynamicResource Foreground}" CaretBrush="{DynamicResource Accent}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Margin="0,10,0,0"
+                                VerticalAlignment="Center"
+                                Text="{x:Static lang:Resources.GameProcess}" />
+                            <TextBox
+                                x:Name="GameProcessTextBox"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Width="200"
+                                Margin="10,10,10,0"
+                                VerticalAlignment="Center"
+                                Background="{x:Null}"
+                                BorderBrush="{DynamicResource Accent}"
+                                BorderThickness="2"
+                                CaretBrush="{DynamicResource Accent}"
+                                Foreground="{DynamicResource Foreground}"
+                                Style="{DynamicResource RegularTextBox}" />
 
-						</Grid>
-					</Grid>
-				</Border>
-				<TextBlock Text="{x:Static lang:Resources.GameTags}" FontWeight="ExtraBold" FontSize="13" Margin="0 10" VerticalAlignment="Center" />
-				<Border x:Name="TagsBorder" Visibility="Visible" CornerRadius="5" Margin="0 10" Background="{DynamicResource Background2}" Padding="10">
-					<Grid>
-						<Grid.RowDefinitions>
-							<RowDefinition />
-							<RowDefinition Height="Auto" />
-						</Grid.RowDefinitions>
+                        </Grid>
+                    </Grid>
+                </Border>
+                <TextBlock
+                    Margin="0,10"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.GameTags}" />
+                <Border
+                    x:Name="TagsBorder"
+                    Margin="0,10"
+                    Padding="10"
+                    Background="{DynamicResource Background2}"
+                    CornerRadius="5"
+                    Visibility="Visible">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-						<StackPanel Orientation="Horizontal" Grid.Column="0">
-							<Button FontSize="13" x:Name="AddTagsBtn" Cursor="Hand" Style="{DynamicResource RegularButton}" Background="{DynamicResource Background2}" Margin="0" Foreground="{DynamicResource Foreground}" Padding="7" Content="{x:Static lang:Resources.AssociateTags}" FontWeight="ExtraBold" VerticalAlignment="Center">
-								<Button.ToolTip>
-									<ToolTip Content="{x:Static lang:Resources.ConvertToSteam}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-								</Button.ToolTip>
-							</Button>
-						</StackPanel>
-					</Grid>
-				</Border>
-				<CheckBox x:Name="HideChk" IsChecked="{Binding IsHidden, UpdateSourceTrigger=PropertyChanged}" Content="{x:Static lang:Resources.HideGame}" Foreground="{DynamicResource Foreground}" BorderThickness="2" Style="{DynamicResource CheckBoxStyle1}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" Background="Transparent" BorderBrush="{DynamicResource Accent}"/>
+                        <StackPanel Grid.Column="0" Orientation="Horizontal">
+                            <Button
+                                x:Name="AddTagsBtn"
+                                Margin="0"
+                                Padding="7"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource Background2}"
+                                Content="{x:Static lang:Resources.AssociateTags}"
+                                Cursor="Hand"
+                                FontSize="13"
+                                FontWeight="ExtraBold"
+                                Foreground="{DynamicResource Foreground}"
+                                Style="{DynamicResource RegularButton}">
+                                <Button.ToolTip>
+                                    <ToolTip
+                                        Background="{DynamicResource Background}"
+                                        Content="{x:Static lang:Resources.ConvertToSteam}"
+                                        Foreground="{DynamicResource Foreground}" />
+                                </Button.ToolTip>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <CheckBox
+                    x:Name="HideChk"
+                    Margin="10,5"
+                    VerticalContentAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource Accent}"
+                    BorderThickness="2"
+                    Content="{x:Static lang:Resources.HideGame}"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    IsChecked="{Binding IsHidden, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource CheckBoxStyle1}" />
 
-			</StackPanel>
-			<StackPanel Orientation="Vertical" Margin="10" Width="345" MaxWidth="350">
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="{x:Static lang:Resources.GameProcess}" FontWeight="ExtraBold" FontSize="13" Margin="2" VerticalAlignment="Center" />
-					<Button x:Name="ProcessHelpBtn" FontFamily="..\Fonts\#FluentSystemIcons-Regular" Content="&#xF63E;" Cursor="Hand" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" VerticalAlignment="Center" Margin="10,0,0,0">
-						<Button.ToolTip>
-							<ToolTip Content="{x:Static lang:Resources.Help}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
-						</Button.ToolTip>
-					</Button>
-				</StackPanel>
-				<TextBox x:Name="ProcessTextBox" Text="{Binding Process, UpdateSourceTrigger=PropertyChanged}" Style="{DynamicResource RegularTextBox}" Padding="4" Margin="0,5,0,5" BorderThickness="0" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" d:Text="Placeholder" FontWeight="ExtraBold" TextAlignment="Center" />
-				<CheckBox x:Name="AlwaysCheckGameRunningChk" IsChecked="{Binding CheckIfRunning, UpdateSourceTrigger=PropertyChanged}" Content="{x:Static lang:Resources.AlwaysCheckIfGameRunning}" Foreground="{DynamicResource Foreground}" BorderThickness="2" Style="{DynamicResource CheckBoxStyle1}" Margin="10 5" VerticalContentAlignment="Center" FontWeight="ExtraBold" Background="Transparent" BorderBrush="{DynamicResource Accent}" />
+            </StackPanel>
+            <StackPanel
+                Width="345"
+                MaxWidth="350"
+                Margin="10"
+                Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="2"
+                        VerticalAlignment="Center"
+                        FontSize="13"
+                        FontWeight="ExtraBold"
+                        Text="{x:Static lang:Resources.GameProcess}" />
+                    <Button
+                        x:Name="ProcessHelpBtn"
+                        Margin="10,0,0,0"
+                        Padding="5"
+                        VerticalAlignment="Center"
+                        Background="{DynamicResource Background2}"
+                        Content="&#xF63E;"
+                        Cursor="Hand"
+                        FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                        FontSize="13"
+                        Foreground="{DynamicResource Foreground}"
+                        Style="{StaticResource RegularButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background}"
+                                Content="{x:Static lang:Resources.Help}"
+                                Foreground="{DynamicResource Foreground}" />
+                        </Button.ToolTip>
+                    </Button>
+                </StackPanel>
+                <TextBox
+                    x:Name="ProcessTextBox"
+                    Margin="0,5,0,5"
+                    Padding="4"
+                    d:Text="Placeholder"
+                    Background="{DynamicResource Background2}"
+                    BorderThickness="0"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    Style="{DynamicResource RegularTextBox}"
+                    Text="{Binding Process, UpdateSourceTrigger=PropertyChanged}"
+                    TextAlignment="Center" />
+                <CheckBox
+                    x:Name="AlwaysCheckGameRunningChk"
+                    Margin="10,5"
+                    VerticalContentAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource Accent}"
+                    BorderThickness="2"
+                    Content="{x:Static lang:Resources.AlwaysCheckIfGameRunning}"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    IsChecked="{Binding CheckIfRunning, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource CheckBoxStyle1}" />
 
-			</StackPanel>
-		</WrapPanel>
+            </StackPanel>
+        </WrapPanel>
 
-		<Button x:Name="AddBtn" Command="{Binding AddCommand}" Grid.Row="2" Margin="5" Style="{DynamicResource AccentButton}" Background="{DynamicResource Accent}" Padding="5" Content="{x:Static lang:Resources.AddGame}" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"/>
-	</Grid>
+        <Button
+            x:Name="AddBtn"
+            Grid.Row="2"
+            Margin="5"
+            Padding="5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="{DynamicResource Accent}"
+            Command="{Binding AddCommand}"
+            Content="{x:Static lang:Resources.AddGame}"
+            Cursor="Hand"
+            FontWeight="Bold"
+            Style="{DynamicResource AccentButton}" />
+    </Grid>
 </UserControl>
