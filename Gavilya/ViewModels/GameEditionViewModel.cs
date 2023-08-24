@@ -46,6 +46,9 @@ namespace Gavilya.ViewModels
 		Game? Game { get; set; }
 		GameType GameType { get; init; }
 		GameList Games { get; set; }
+		public List<Tag> Tags { get; }
+		public List<Tag> SelectedTags { get; set; }
+		public List<TagSelectorViewModel> TagsVm => Tags.Select(t => new TagSelectorViewModel(SelectedTags, t, SelectedTags.Contains(t))).ToList();
 
 		private string _name;
 		public string Name
@@ -124,6 +127,17 @@ namespace Gavilya.ViewModels
 			}
 		}
 
+		private bool _isTagOpen = false;
+		public bool IsTagOpen
+		{
+			get => _isTagOpen;
+			set
+			{
+				_isTagOpen = value;
+				OnPropertyChanged(nameof(IsTagOpen));
+			}
+		}
+
 		private string _steamId;
 		public string SteamId { get => _steamId; set { _steamId = value; OnPropertyChanged(nameof(SteamId)); } }
 
@@ -148,18 +162,20 @@ namespace Gavilya.ViewModels
 		public ICommand AddCommand { get; }
 		public ICommand BrowseFileCommand { get; }
 		public ICommand BrowseImageCommand { get; }
+		public ICommand AssociateTagCommand { get; }
 
-		public GameEditionViewModel(Game game, GameList games, MainViewModel mainViewModel)
+		public GameEditionViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 		{
 			_mainViewModel = mainViewModel;
 
 			Game = game;
 			GameType = game.GameType;
 			Games = games;
-
+			Tags = tags;
 			AddCommand = new RelayCommand(AddGame);
 			BrowseFileCommand = new RelayCommand(BrowseGame);
 			BrowseImageCommand = new RelayCommand(BrowseImage);
+			AssociateTagCommand = new RelayCommand(OpenTagPopup);
 
 			// Load properties
 			Name = game.Name;
@@ -169,6 +185,7 @@ namespace Gavilya.ViewModels
 			Process = game.ProcessName ?? "";
 			GameType = game.GameType;
 			IsHidden = game.IsHidden;
+			SelectedTags = game.Tags ?? new();
 
 			if (!string.IsNullOrEmpty(CoverFilePath))
 			{
@@ -198,22 +215,29 @@ namespace Gavilya.ViewModels
 			SteamFieldsVis = game.GameType == GameType.Steam ? Visibility.Visible : Visibility.Collapsed;
 		}
 
-		public GameEditionViewModel(GameType gameType, GameList games, MainViewModel mainViewModel)
+		public GameEditionViewModel(GameType gameType, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 		{
 			_mainViewModel = mainViewModel;
 
 			GameType = gameType;
 			Game = null;
 			Games = games;
-
+			Tags = tags;
 			AddCommand = new RelayCommand(AddGame);
 			BrowseFileCommand = new RelayCommand(BrowseGame);
 			BrowseImageCommand = new RelayCommand(BrowseImage);
+			AssociateTagCommand = new RelayCommand(OpenTagPopup);
+			SelectedTags = new();
 
 			// Load UI
 			DragAreaVis = gameType == GameType.Win32 ? Visibility.Visible : Visibility.Collapsed;
 			UwpFieldsVis = gameType == GameType.UWP ? Visibility.Visible : Visibility.Collapsed;
 			SteamFieldsVis = gameType == GameType.Steam ? Visibility.Visible : Visibility.Collapsed;
+		}
+
+		private void OpenTagPopup(object? obj)
+		{
+			IsTagOpen = true;
 		}
 
 		private void BrowseGame(object? obj)
@@ -276,10 +300,11 @@ namespace Gavilya.ViewModels
 					IsFavorite = false,
 					IsHidden = IsHidden,
 					LastTimePlayed = 0,
-					TotalTimePlayed = 0
+					TotalTimePlayed = 0,
+					Tags = SelectedTags
 				};
 				Games.Add(Game);
-				_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _mainViewModel);
+				_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, Tags, _mainViewModel);
 				return;
 			}
 			string comm2 = GameType switch
@@ -296,8 +321,9 @@ namespace Gavilya.ViewModels
 			Game.ProcessName = Process;
 			Game.GameType = GameType;
 			Game.IsHidden = IsHidden;
+			Game.Tags = SelectedTags;
 			Games[Games.IndexOf(Game)] = Game;
-			_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _mainViewModel);
+			_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, Tags, _mainViewModel);
 		}
 	}
 }

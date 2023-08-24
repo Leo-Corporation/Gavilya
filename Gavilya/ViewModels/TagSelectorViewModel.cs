@@ -21,35 +21,53 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
+using Gavilya.Commands;
+using Gavilya.EventArguments;
 using Gavilya.Models;
-using Gavilya.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
+using System.Windows.Input;
 
-namespace Gavilya;
-/// <summary>
-/// Interaction logic for App.xaml
-/// </summary>
-public partial class App : Application
+namespace Gavilya.ViewModels
 {
-	protected override void OnStartup(StartupEventArgs e)
+	public class TagSelectorViewModel : ViewModelBase
 	{
-		Profile currentProfile = new("Profile");
-		currentProfile.Tags = new()
+		public List<Tag> SelectedTags { get; set; }
+		public Tag Tag { get; }
+
+		public ICommand SelectCommand { get; }
+
+		private bool _selected;
+		public bool Selected { get => _selected; set { _selected = value; OnPropertyChanged(nameof(Selected)); } }
+
+		private string _name;
+		public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+
+		public TagSelectorViewModel(List<Tag> selectedTags, Tag tag, bool selected)
 		{
-			new("Tag1", "#ff0000"),
-			new("Tag2", "#00ff00"),
-			new("Tag3", "#0000ff")
-		};
-		MainWindow = new MainWindow();
-		MainViewModel mvm = new(MainWindow, currentProfile.Games, currentProfile.Tags);
-		MainWindow.DataContext = mvm;
-		MainWindow.Show();
-		base.OnStartup(e);
+			Tag = tag;
+			Selected = selected;
+			SelectedTags = selectedTags;
+
+			Name = tag.Name;
+
+
+			SelectCommand = new RelayCommand(Select);
+		}
+
+		private void Select(object? obj)
+		{
+			if (SelectedTags.Contains(Tag))
+			{
+				SelectedTags.Remove(Tag);
+				return;
+			}
+			SelectedTags.Add(Tag);
+		}
 	}
 }
