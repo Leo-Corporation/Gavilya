@@ -192,6 +192,8 @@ public class GameEditionViewModel : ViewModelBase
 		BrowseFileCommand = new RelayCommand(BrowseGame);
 		BrowseImageCommand = new RelayCommand(BrowseImage);
 		AssociateTagCommand = new RelayCommand(OpenTagPopup);
+		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
+		RawgSearchCommand = new RelayCommand(SearchRawg);
 
 		// Load properties
 		Name = game.Name;
