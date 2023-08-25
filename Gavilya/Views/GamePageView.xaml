@@ -252,12 +252,24 @@
                     Foreground="{DynamicResource Foreground}"
                     Text="{x:Static lang:Resources.Platforms}" />
             </StackPanel>
-            <WrapPanel
-                Name="PlatformDisplayer"
-                Grid.Row="1"
-                Grid.Column="0"
-                Margin="10"
-                Orientation="Horizontal" />
+            <ItemsControl Margin="10 0" ItemsSource="{Binding Platforms}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Margin="2"
+                            Padding="5 2"
+                            Background="{DynamicResource SelectedBackground}"
+                            CornerRadius="10">
+                            <TextBlock FontWeight="Bold" Text="{Binding Name}" />
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
 
 
             <StackPanel Margin="10 0" Orientation="Horizontal">

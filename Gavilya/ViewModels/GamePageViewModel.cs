@@ -24,9 +24,11 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
+using Gavilya.Models.Rawg;
 using PeyrSharp.Core.Converters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
@@ -36,6 +38,9 @@ public class GamePageViewModel : ViewModelBase
 	private readonly GameList _games;
 	private readonly List<Tag> _tags;
 	private readonly MainViewModel _mainViewModel;
+
+	private List<Platform> _platforms;
+	public List<Platform> Platforms { get => _platforms; set { _platforms = value; OnPropertyChanged(nameof(Platforms)); } }
 
 	private string _name;
 	public string Name
@@ -146,6 +151,13 @@ public class GamePageViewModel : ViewModelBase
 
 		// Commands
 		EditCommand = new RelayCommand(Edit);
+		if (game.RawgId != -1) LoadRawg();
+	}
+
+	private async void LoadRawg()
+	{
+		var rawgGame = await new RawgClient(_game.RawgId).GetGameAsync();
+		Platforms = rawgGame?.Platforms.Select(p => p.Platform).ToList() ?? new();
 	}
 
 	private void Edit(object? obj)

@@ -99,20 +99,27 @@ namespace Gavilya.ViewModels
 
 		private async void Select(object? obj)
 		{
-			if (!_detailsLoaded) LoadDetails();
+			try
+			{
+				if (!_detailsLoaded) LoadDetails();
 
-			_gameEditionViewModel.CoverFilePath = await new CoverImageHelper(SelectedScreen.Item1, SelectedScreen.Item2, _game.Id).Download();
+				_gameEditionViewModel.CoverFilePath = await new CoverImageHelper(SelectedScreen.Item1, SelectedScreen.Item2, _game.Id).Download();
 
-			BitmapImage bmp = new();
-			bmp.BeginInit();
-			bmp.UriSource = new Uri(_gameEditionViewModel.CoverFilePath);
-			bmp.EndInit();
-			bmp.Freeze();
+				BitmapImage bmp = new();
+				bmp.BeginInit();
+				bmp.UriSource = new Uri(_gameEditionViewModel.CoverFilePath);
+				bmp.EndInit();
+				bmp.Freeze();
 
-			_gameEditionViewModel.ImageSource = bmp; // Create the image
-			_gameEditionViewModel.Description = _game.DescriptionRaw;
-			_gameEditionViewModel.RawgId = _game.Id;
-			_gameEditionViewModel.IsRawgOpen = false;
+				_gameEditionViewModel.ImageSource = bmp; // Create the image
+				_gameEditionViewModel.Description = _game.DescriptionRaw;
+				_gameEditionViewModel.RawgId = _game.Id;
+				_gameEditionViewModel.IsRawgOpen = false;
+			}
+			catch
+			{
+
+			}
 		}
 
 		private void Collapse(object? obj)
