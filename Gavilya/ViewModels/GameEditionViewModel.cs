@@ -136,6 +136,9 @@ public class GameEditionViewModel : ViewModelBase
 		}
 	}
 
+	private bool _isRawgOpen = false;
+	public bool IsRawgOpen { get => _isRawgOpen; set { _isRawgOpen = value; OnPropertyChanged(nameof(IsRawgOpen)); } }
+
 	private string _steamId;
 	public string SteamId { get => _steamId; set { _steamId = value; OnPropertyChanged(nameof(SteamId)); } }
 
@@ -161,6 +164,7 @@ public class GameEditionViewModel : ViewModelBase
 	public ICommand BrowseFileCommand { get; }
 	public ICommand BrowseImageCommand { get; }
 	public ICommand AssociateTagCommand { get; }
+	public ICommand AssociateRawgCommand { get; }
 
 	public GameEditionViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
@@ -225,6 +229,7 @@ public class GameEditionViewModel : ViewModelBase
 		BrowseFileCommand = new RelayCommand(BrowseGame);
 		BrowseImageCommand = new RelayCommand(BrowseImage);
 		AssociateTagCommand = new RelayCommand(OpenTagPopup);
+		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
 		SelectedTags = new();
 
 		// Load UI
@@ -236,6 +241,11 @@ public class GameEditionViewModel : ViewModelBase
 	private void OpenTagPopup(object? obj)
 	{
 		IsTagOpen = true;
+	}
+
+	private void OpenRawgPopup(object? obj)
+	{
+		IsRawgOpen = true;
 	}
 
 	private void BrowseGame(object? obj)

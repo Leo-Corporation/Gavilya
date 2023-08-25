@@ -296,6 +296,7 @@
                                 Padding="7"
                                 VerticalAlignment="Center"
                                 Background="{DynamicResource Background2}"
+                                Command="{Binding AssociateRawgCommand}"
                                 Content="{x:Static lang:Resources.AssociateGame}"
                                 Cursor="Hand"
                                 FontSize="13"
@@ -309,6 +310,67 @@
                                         Foreground="{DynamicResource Foreground}" />
                                 </Button.ToolTip>
                             </Button>
+                            <Popup
+                                Height="250"
+                                IsOpen="{Binding IsRawgOpen}"
+                                Placement="Top"
+                                PlacementTarget="{Binding ElementName=AssociateBtn}"
+                                StaysOpen="False">
+                                <Border
+                                    Margin="10"
+                                    Padding="10"
+                                    CornerRadius="10">
+                                    <Border.Effect>
+                                        <DropShadowEffect
+                                            BlurRadius="10"
+                                            Opacity="0.4"
+                                            RenderingBias="Quality"
+                                            ShadowDepth="0"
+                                            Color="Black" />
+                                    </Border.Effect>
+
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBox
+                                                Width="200"
+                                                Margin="2"
+                                                Padding="4"
+                                                d:Text="Placeholder"
+                                                Background="{DynamicResource Background2}"
+                                                BorderThickness="0"
+                                                FontWeight="ExtraBold"
+                                                Foreground="{DynamicResource Foreground}"
+                                                Style="{DynamicResource RegularTextBox}"
+                                                Text="{Binding AppId, UpdateSourceTrigger=PropertyChanged}"
+                                                TextAlignment="Center" />
+                                            <Button
+                                                Grid.Column="1"
+                                                Margin="2"
+                                                Padding="5"
+                                                Background="{DynamicResource SelectedBackground}"
+                                                Content="{x:Static lang:Resources.Search}"
+                                                FontWeight="ExtraBold"
+                                                Style="{DynamicResource RegularButton}" />
+                                        </StackPanel>
+
+                                        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+                                            <ItemsControl>
+                                                <ItemsPanelTemplate>
+                                                    <StackPanel />
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+                                    </Grid>
+                                </Border>
+                            </Popup>
                         </StackPanel>
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                             <TextBlock
