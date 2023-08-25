@@ -380,19 +380,22 @@
                                 </Border>
                             </Popup>
                         </StackPanel>
-                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                        <StackPanel
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            Visibility="{Binding AssociatedVis}">
                             <TextBlock
                                 x:Name="AssociateTxt"
                                 VerticalAlignment="Center"
-                                d:Text="Associated"
-                                FontWeight="ExtraBold" />
+                                FontWeight="ExtraBold"
+                                Text="{x:Static lang:Resources.Associated}" />
                             <TextBlock
                                 x:Name="AssociateIconTxt"
                                 Margin="5 0 0 0"
                                 HorizontalAlignment="Right"
                                 VerticalAlignment="Center"
-                                d:Text=""
-                                FontFamily="..\Fonts\#FluentlyIcons" />
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                Text="&#xF295;" />
                         </StackPanel>
                     </Grid>
                 </Border>

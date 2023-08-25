@@ -51,7 +51,12 @@ public class GameEditionViewModel : ViewModelBase
 
 	private List<RawgResultViewModel> _searchResults;
 	public List<RawgResultViewModel> SearchResults { get => _searchResults; set { _searchResults = value; OnPropertyChanged(nameof(SearchResults)); } }
-	internal int RawgId { get; set; } = -1;
+
+	private int _rawgId = -1;
+	public int RawgId { get => _rawgId; set { _rawgId = value; AssociatedVis = value != -1 ? Visibility.Visible : Visibility.Collapsed; OnPropertyChanged(nameof(RawgId)); } }
+
+	private Visibility _associatedVis = Visibility.Collapsed;
+	public Visibility AssociatedVis { get => _associatedVis; set { _associatedVis = value; OnPropertyChanged(nameof(AssociatedVis)); } }
 
 	private string _name;
 	public string Name
