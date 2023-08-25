@@ -43,6 +43,9 @@ public class GamePageViewModel : ViewModelBase
 	private List<Platform> _platforms;
 	public List<Platform> Platforms { get => _platforms; set { _platforms = value; OnPropertyChanged(nameof(Platforms)); } }
 
+	private List<Achievement> _achievements;
+	public List<Achievement> Achievements { get => _achievements; set { _achievements = value; OnPropertyChanged(nameof(Achievements)); } }
+
 	private string _name;
 	public string Name
 	{
@@ -193,7 +196,8 @@ public class GamePageViewModel : ViewModelBase
 
 	private async void LoadRawg()
 	{
-		var rawgGame = await new RawgClient(_game.RawgId).GetGameAsync();
+		var rawgClient = new RawgClient(_game.RawgId);
+		var rawgGame = await rawgClient.GetGameAsync();
 
 		// Slug
 		_slug = rawgGame?.Slug ?? "";
@@ -205,6 +209,9 @@ public class GamePageViewModel : ViewModelBase
 		rawgGame?.Ratings.ForEach((r) => { totalRatings += r.Count; });
 		rawgGame?.Ratings.ForEach(AssignRating);
 		Rating = $"{rawgGame?.Rating:0.00}";
+
+		// Achievements
+		Achievements = await rawgClient.GetAchievementsAsync();
 	}
 	
 	private void AssignRating(Rating rating)

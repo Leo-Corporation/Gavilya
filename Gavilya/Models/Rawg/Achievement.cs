@@ -42,4 +42,6 @@ public class Achievement
 
 	[JsonPropertyName("percent")]
 	public string Percent { get; set; }
+
+	public string? PercentString => $"{Percent}% {Properties.Resources.AchievementPlayerUnlocked}";
 }

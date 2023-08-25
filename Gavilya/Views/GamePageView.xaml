@@ -543,7 +543,70 @@
                             Text="{x:Static lang:Resources.RAWGPowered}" />
                     </StackPanel>
 
-                    <WrapPanel x:Name="AchievementsDisplayer" />
+                    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+                        <ItemsControl Margin="10 0" ItemsSource="{Binding Achievements}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        x:Name="ItemBorder"
+                                        Width="250"
+                                        Height="350"
+                                        MaxWidth="250"
+                                        Margin="5"
+                                        Background="{DynamicResource Background2}"
+                                        BorderThickness="2"
+                                        CornerRadius="10">
+                                        <Grid MaxWidth="250">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <StackPanel>
+                                                <Image
+                                                    x:Name="AchievementImg"
+                                                    Width="100"
+                                                    Height="100"
+                                                    Margin="10"
+                                                    HorizontalAlignment="Center"
+                                                    Source="{Binding Image}" />
+                                                <TextBlock
+                                                    x:Name="AchievementNameTxt"
+                                                    Margin="0 10 0 0"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="18"
+                                                    FontWeight="ExtraBold"
+                                                    Text="{Binding Name}"
+                                                    TextAlignment="Center"
+                                                    TextWrapping="Wrap" />
+                                                <TextBlock
+                                                    x:Name="AchievementDescriptionTxt"
+                                                    HorizontalAlignment="Center"
+                                                    FontSize="12"
+                                                    Text="{Binding Description}"
+                                                    TextAlignment="Center"
+                                                    TextWrapping="Wrap" />
+                                            </StackPanel>
+                                            <TextBlock
+                                                x:Name="AchievementPercentTxt"
+                                                Grid.Row="1"
+                                                Margin="0 10 0 10"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Bottom"
+                                                FontSize="12"
+                                                Text="{Binding PercentString}"
+                                                TextAlignment="Center"
+                                                TextWrapping="Wrap" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
                 </StackPanel>
             </Grid>
         </StackPanel>
