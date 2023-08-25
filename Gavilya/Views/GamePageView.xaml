@@ -501,6 +501,7 @@
                     Padding="5"
                     HorizontalAlignment="Left"
                     Background="{DynamicResource Background2}"
+                    Command="{Binding SeeOnRawgCommand}"
                     Foreground="{DynamicResource Foreground}"
                     Style="{DynamicResource RegularButton}">
                     <StackPanel Orientation="Horizontal">

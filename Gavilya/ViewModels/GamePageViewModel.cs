@@ -28,6 +28,7 @@ using Gavilya.Models.Rawg;
 using PeyrSharp.Core.Converters;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 
@@ -159,7 +160,9 @@ public class GamePageViewModel : ViewModelBase
 
 	public ICommand PlayCommand { get; }
 	public ICommand EditCommand { get; }
+	public ICommand SeeOnRawgCommand { get; }
 	private int totalRatings = 0;
+	private string _slug;
 	public GamePageViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_game = game;
@@ -178,12 +181,22 @@ public class GamePageViewModel : ViewModelBase
 
 		// Commands
 		EditCommand = new RelayCommand(Edit);
+		SeeOnRawgCommand = new RelayCommand(OpenRawg);
 		if (game.RawgId != -1) LoadRawg();
+	}
+
+
+	private void OpenRawg(object? obj)
+	{
+		Process.Start("explorer.exe", $"https://rawg.io/games/{_slug}");
 	}
 
 	private async void LoadRawg()
 	{
 		var rawgGame = await new RawgClient(_game.RawgId).GetGameAsync();
+
+		// Slug
+		_slug = rawgGame?.Slug ?? "";
 
 		// Platforms section
 		Platforms = rawgGame?.Platforms.Select(p => p.Platform).ToList() ?? new();
@@ -193,7 +206,7 @@ public class GamePageViewModel : ViewModelBase
 		rawgGame?.Ratings.ForEach(AssignRating);
 		Rating = $"{rawgGame?.Rating:0.00}";
 	}
-
+	
 	private void AssignRating(Rating rating)
 	{
 		switch (rating.Id)
