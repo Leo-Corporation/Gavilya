@@ -30,6 +30,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
@@ -161,10 +162,19 @@ public class GamePageViewModel : ViewModelBase
 	private string _skToolTip;
 	public string SkToolTip { get => _skToolTip; set { _skToolTip = value; OnPropertyChanged(nameof(SkToolTip)); } }
 
+	private Visibility _achievmentsVis = Visibility.Collapsed;
+	public Visibility AchievementsVis { get => _achievmentsVis; set { _achievmentsVis = value; OnPropertyChanged(nameof(AchievementsVis)); } }
+
+	private Visibility _ratingVis = Visibility.Collapsed;
+	public Visibility RatingVis { get => _ratingVis; set { _ratingVis = value; OnPropertyChanged(nameof(RatingVis)); } }
+
+	private Visibility _platformVis = Visibility.Collapsed;
+	public Visibility PlatformVis { get => _platformVis; set { _platformVis = value; OnPropertyChanged(nameof(PlatformVis)); } }
+
 	public ICommand PlayCommand { get; }
 	public ICommand EditCommand { get; }
 	public ICommand SeeOnRawgCommand { get; }
-	private int totalRatings = 0;
+	private int _totalRatings = 0;
 	private string _slug;
 	public GamePageViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
@@ -185,7 +195,8 @@ public class GamePageViewModel : ViewModelBase
 		// Commands
 		EditCommand = new RelayCommand(Edit);
 		SeeOnRawgCommand = new RelayCommand(OpenRawg);
-		if (game.RawgId != -1) LoadRawg();
+		if (game.RawgId == -1) return;
+		LoadRawg();
 	}
 
 
@@ -206,33 +217,38 @@ public class GamePageViewModel : ViewModelBase
 		Platforms = rawgGame?.Platforms.Select(p => p.Platform).ToList() ?? new();
 
 		// Ratings section
-		rawgGame?.Ratings.ForEach((r) => { totalRatings += r.Count; });
+		rawgGame?.Ratings.ForEach((r) => { _totalRatings += r.Count; });
 		rawgGame?.Ratings.ForEach(AssignRating);
 		Rating = $"{rawgGame?.Rating:0.00}";
 
 		// Achievements
 		Achievements = await rawgClient.GetAchievementsAsync();
+
+		// Visibility
+		PlatformVis = Platforms is not null && Platforms.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
+		RatingVis = rawgGame?.Ratings is not null && _totalRatings > 0 && rawgGame?.Rating != 0f ? Visibility.Visible : Visibility.Collapsed;
+		AchievementsVis = Achievements is not null && Achievements.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
 	}
-	
+
 	private void AssignRating(Rating rating)
 	{
 		switch (rating.Id)
 		{
 			case 5:
 				Exceptional = rating.Percent;
-				ExToolTip = $"{rating.Count}/{totalRatings} ({rating.Percent}%)";
+				ExToolTip = $"{rating.Count}/{_totalRatings} ({rating.Percent}%)";
 				break;
 			case 4:
 				Recommended = rating.Percent;
-				RecToolTip = $"{rating.Count}/{totalRatings} ({rating.Percent}%)";
+				RecToolTip = $"{rating.Count}/{_totalRatings} ({rating.Percent}%)";
 				break;
 			case 3:
 				Meh = rating.Percent;
-				MehToolTip = $"{rating.Count}/{totalRatings} ({rating.Percent}%)";
+				MehToolTip = $"{rating.Count}/{_totalRatings} ({rating.Percent}%)";
 				break;
 			case 1:
 				Skip = rating.Percent;
-				SkToolTip = $"{rating.Count}/{totalRatings} ({rating.Percent}%)";
+				SkToolTip = $"{rating.Count}/{_totalRatings} ({rating.Percent}%)";
 				break;
 		}
 	}
