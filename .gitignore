@@ -345,3 +345,4 @@ healthchecksdb
 *.exe
 *.config
 Gavilya/Classes/APIKeysLocal.cs
+Gavilya/Models/Rawg/ApiKeysLocal.cs
