@@ -25,6 +25,7 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Enums;
 using Gavilya.Models;
+using Gavilya.Models.Rawg;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -47,6 +48,10 @@ public class GameEditionViewModel : ViewModelBase
 	public List<Tag> Tags { get; }
 	public List<Tag> SelectedTags { get; set; }
 	public List<TagSelectorViewModel> TagsVm => Tags.Select(t => new TagSelectorViewModel(SelectedTags, t, SelectedTags.Contains(t))).ToList();
+
+	private List<RawgResultViewModel> _searchResults;
+	public List<RawgResultViewModel> SearchResults { get => _searchResults; set { _searchResults = value; OnPropertyChanged(nameof(SearchResults)); } }
+	internal int RawgId { get; set; } = -1;
 
 	private string _name;
 	public string Name
@@ -139,6 +144,9 @@ public class GameEditionViewModel : ViewModelBase
 	private bool _isRawgOpen = false;
 	public bool IsRawgOpen { get => _isRawgOpen; set { _isRawgOpen = value; OnPropertyChanged(nameof(IsRawgOpen)); } }
 
+	private string _rawgSearchQuery;
+	public string RawgSearchQuery { get => _rawgSearchQuery; set { _rawgSearchQuery = value; OnPropertyChanged(nameof(RawgSearchQuery)); } }
+
 	private string _steamId;
 	public string SteamId { get => _steamId; set { _steamId = value; OnPropertyChanged(nameof(SteamId)); } }
 
@@ -165,6 +173,7 @@ public class GameEditionViewModel : ViewModelBase
 	public ICommand BrowseImageCommand { get; }
 	public ICommand AssociateTagCommand { get; }
 	public ICommand AssociateRawgCommand { get; }
+	public ICommand RawgSearchCommand { get; }
 
 	public GameEditionViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
@@ -187,6 +196,7 @@ public class GameEditionViewModel : ViewModelBase
 		Process = game.ProcessName ?? "";
 		GameType = game.GameType;
 		IsHidden = game.IsHidden;
+		RawgId = game.RawgId;
 		SelectedTags = game.Tags ?? new();
 
 		if (!string.IsNullOrEmpty(CoverFilePath))
@@ -230,6 +240,7 @@ public class GameEditionViewModel : ViewModelBase
 		BrowseImageCommand = new RelayCommand(BrowseImage);
 		AssociateTagCommand = new RelayCommand(OpenTagPopup);
 		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
+		RawgSearchCommand = new RelayCommand(SearchRawg);
 		SelectedTags = new();
 
 		// Load UI
@@ -246,6 +257,12 @@ public class GameEditionViewModel : ViewModelBase
 	private void OpenRawgPopup(object? obj)
 	{
 		IsRawgOpen = true;
+	}
+
+	private async void SearchRawg(object? obj)
+	{
+		var results = await new RawgClient(RawgSearchQuery).GetResultsAsync();
+		SearchResults = results?.Results.Select(g => new RawgResultViewModel(g, this)).ToList() ?? new();
 	}
 
 	private void BrowseGame(object? obj)
@@ -309,7 +326,8 @@ public class GameEditionViewModel : ViewModelBase
 				IsHidden = IsHidden,
 				LastTimePlayed = 0,
 				TotalTimePlayed = 0,
-				Tags = SelectedTags
+				Tags = SelectedTags,
+				RawgId = RawgId
 			};
 			Games.Add(Game);
 			_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, Tags, _mainViewModel);
@@ -330,6 +348,7 @@ public class GameEditionViewModel : ViewModelBase
 		Game.GameType = GameType;
 		Game.IsHidden = IsHidden;
 		Game.Tags = SelectedTags;
+		Game.RawgId = RawgId;
 		Games[Games.IndexOf(Game)] = Game;
 		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, Tags, _mainViewModel);
 	}
