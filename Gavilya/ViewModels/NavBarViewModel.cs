@@ -61,6 +61,7 @@ public class NavBarViewModel : ViewModelBase
 
 	private void HomePage(object? obj)
 	{
+		_mainViewModel.CurrentViewModel = new HomePageViewModel();
 	}
 
 	private void LibraryPage(object? obj)

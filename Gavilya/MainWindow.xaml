@@ -176,6 +176,9 @@
                     <DataTemplate DataType="{x:Type viewmodels:RecentPageViewModel}">
                         <views:RecentPageView />
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:HomePageViewModel}">
+                        <views:HomePageView />
+                    </DataTemplate>
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
