@@ -40,11 +40,13 @@ public class Game
 	public bool IsFavorite { get; set; }
 	public bool IsHidden { get; set; }
 	public string Id { get; init; }
+	public int RawgId { get; set; }
 	public List<Tag>? Tags { get; set; }
 
 	public Game()
 	{
 		Id = Guid.NewGuid().ToString();
+		RawgId = -1;
 		Tags = new();
 	}
 

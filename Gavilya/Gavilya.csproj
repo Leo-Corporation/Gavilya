@@ -23,6 +23,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.39" />
     <PackageReference Include="PeyrSharp.Core" Version="1.8.0.2308" />
+    <PackageReference Include="PeyrSharp.Env" Version="1.8.0.2308" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
   </ItemGroup>
 

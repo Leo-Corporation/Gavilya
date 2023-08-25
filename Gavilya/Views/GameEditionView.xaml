@@ -349,23 +349,31 @@
                                                 FontWeight="ExtraBold"
                                                 Foreground="{DynamicResource Foreground}"
                                                 Style="{DynamicResource RegularTextBox}"
-                                                Text="{Binding AppId, UpdateSourceTrigger=PropertyChanged}"
+                                                Text="{Binding RawgSearchQuery, UpdateSourceTrigger=PropertyChanged}"
                                                 TextAlignment="Center" />
                                             <Button
                                                 Grid.Column="1"
                                                 Margin="2"
                                                 Padding="5"
                                                 Background="{DynamicResource SelectedBackground}"
+                                                Command="{Binding RawgSearchCommand}"
                                                 Content="{x:Static lang:Resources.Search}"
                                                 FontWeight="ExtraBold"
                                                 Style="{DynamicResource RegularButton}" />
                                         </StackPanel>
 
                                         <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
-                                            <ItemsControl>
-                                                <ItemsPanelTemplate>
-                                                    <StackPanel />
-                                                </ItemsPanelTemplate>
+                                            <ItemsControl ItemsSource="{Binding SearchResults}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate DataType="{x:Type vm:RawgResultViewModel}">
+                                                        <components:RawgResultComponent />
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
                                             </ItemsControl>
                                         </ScrollViewer>
                                     </Grid>

@@ -136,7 +136,7 @@ namespace Gavilya.Models.Rawg
 			}
 		}
 
-		public async Task<GamesResults?> GetResults()
+		public async Task<GamesResults?> GetResultsAsync()
 		{
 			try
 			{
