@@ -22,148 +22,145 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
-using RestSharp;
 
-namespace Gavilya.Models.Rawg
+namespace Gavilya.Models.Rawg;
+
+public class RawgClient
 {
-    public class RawgClient
-    {
-        private string _gameName;
-        private int _gameId;
+	private readonly string _gameName;
+	private int _gameId;
 
-        public RawgClient(string name)
-		{
-			_gameName = name;
-		}
+	public RawgClient(string name)
+	{
+		_gameName = name;
+	}
 
-		public RawgClient(int id)
-		{
-			_gameId = id;
-		}
+	public RawgClient(int id)
+	{
+		_gameId = id;
+	}
 
-		public static async Task<RawgClient> CreateAsync(string name)
-		{
-			var instance = new RawgClient(name);
-			await instance.InitializeAsync();
-			return instance;
-		}
+	public static async Task<RawgClient> CreateAsync(string name)
+	{
+		var instance = new RawgClient(name);
+		await instance.InitializeAsync();
+		return instance;
+	}
 
-		private async Task InitializeAsync()
-		{
-			_gameId = await GetId();
-		}
+	private async Task InitializeAsync()
+	{
+		_gameId = await GetId();
+	}
 
-		public async Task<int> GetId()
+	public async Task<int> GetId()
+	{
+		try
 		{
-			try
+			var client = new RestClient(new Uri("https://api.rawg.io/api/games?")); // Configure the client
+			var request = new RestRequest
 			{
-				var client = new RestClient(new Uri("https://api.rawg.io/api/games?")); // Configure the client
-				var request = new RestRequest
-				{
-					Method = Method.Get
-				}; // Create a request
-				request.AddQueryParameter("search", _gameName); // Config the request
-				request.AddQueryParameter("key", ApiKeys.RawgApiKey);
-				var response = await client.ExecuteAsync(request); // Execute the request and store the result
+				Method = Method.Get
+			}; // Create a request
+			request.AddQueryParameter("search", _gameName); // Config the request
+			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
+			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
-				var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
+			var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
 
-				if (gameResults is not null && gameResults.Count > 0) // If there is results
-				{
-					return gameResults.Results[0].Id; // Return the id
-				}
-				else
-				{
-					return -1; // Return -1 which means that no results has been found
-				}
+			if (gameResults is not null && gameResults.Count > 0) // If there is results
+			{
+				return gameResults.Results[0].Id; // Return the id
 			}
-			catch
+			else
 			{
-				return -1;
-			}
-		}		
-
-		public async Task<RawgGame?> GetGameAsync()
-		{
-			try
-			{
-				var client = new RestClient(new Uri($"https://api.rawg.io/api/games/{_gameId}")); // Configure the client
-				var request = new RestRequest
-				{
-					Method = Method.Get
-				}; // Create a request
-				request.AddQueryParameter("key", ApiKeys.RawgApiKey);
-				var response = await client.ExecuteAsync(request); // Execute the request and store the result
-
-				var game = JsonSerializer.Deserialize<RawgGame>(response.Content); // Deserialize the content of the reponse
-
-				return game;
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
-				return null;
+				return -1; // Return -1 which means that no results has been found
 			}
 		}
-
-		public async Task<List<Achievement>> GetAchievementsAsync()
+		catch
 		{
-			try
-			{
-				var client = new RestClient(new Uri($"https://api.rawg.io/api/games/{_gameId}/achievements?")); // Create a REST Client
-				var request = new RestRequest
-				{
-					Method = Method.Get
-				}; // Create a request
-				request.AddQueryParameter("key", ApiKeys.RawgApiKey);
-				request.AddQueryParameter("page_size", "20");
-				var response = await client.ExecuteAsync(request); // Execute the request and store the result
+			return -1;
+		}
+	}
 
-				var achievementsResults = JsonSerializer.Deserialize<AchievementsResults>(response.Content); // Deserialize the content of the reponse
-				return achievementsResults?.Results ?? new(); // Return the results
-			}
-			catch (Exception ex)
+	public async Task<RawgGame?> GetGameAsync()
+	{
+		try
+		{
+			var client = new RestClient(new Uri($"https://api.rawg.io/api/games/{_gameId}")); // Configure the client
+			var request = new RestRequest
 			{
-				MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
-				return new();
+				Method = Method.Get
+			}; // Create a request
+			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
+			var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+			var game = JsonSerializer.Deserialize<RawgGame>(response.Content); // Deserialize the content of the reponse
+
+			return game;
+		}
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+			return null;
+		}
+	}
+
+	public async Task<List<Achievement>> GetAchievementsAsync()
+	{
+		try
+		{
+			var client = new RestClient(new Uri($"https://api.rawg.io/api/games/{_gameId}/achievements?")); // Create a REST Client
+			var request = new RestRequest
+			{
+				Method = Method.Get
+			}; // Create a request
+			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
+			request.AddQueryParameter("page_size", "20");
+			var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+			var achievementsResults = JsonSerializer.Deserialize<AchievementsResults>(response.Content); // Deserialize the content of the reponse
+			return achievementsResults?.Results ?? new(); // Return the results
+		}
+		catch (Exception ex)
+		{
+			MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+			return new();
+		}
+	}
+
+	public async Task<GamesResults?> GetResultsAsync()
+	{
+		try
+		{
+			var client = new RestClient(new Uri("https://api.rawg.io/api/games?")); // Configure the client
+			var request = new RestRequest
+			{
+				Method = Method.Get
+			}; // Create a request
+			request.AddQueryParameter("search", _gameName); // Config the request
+			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
+			var response = await client.ExecuteAsync(request); // Execute the request and store the result
+
+			var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
+
+			if (gameResults is not null && gameResults.Count > 0) // If there is results
+			{
+				return gameResults; // Return the id
+			}
+			else
+			{
+				return null; // Return -1 which means that no results has been found
 			}
 		}
-
-		public async Task<GamesResults?> GetResultsAsync()
+		catch
 		{
-			try
-			{
-				var client = new RestClient(new Uri("https://api.rawg.io/api/games?")); // Configure the client
-				var request = new RestRequest
-				{
-					Method = Method.Get
-				}; // Create a request
-				request.AddQueryParameter("search", _gameName); // Config the request
-				request.AddQueryParameter("key", ApiKeys.RawgApiKey);
-				var response = await client.ExecuteAsync(request); // Execute the request and store the result
-
-				var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
-
-				if (gameResults is not null && gameResults.Count > 0) // If there is results
-				{
-					return gameResults; // Return the id
-				}
-				else
-				{
-					return null; // Return -1 which means that no results has been found
-				}
-			}
-			catch
-			{
-				return null;
-			}
+			return null;
 		}
 	}
 }

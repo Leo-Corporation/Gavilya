@@ -22,64 +22,57 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using Gavilya.Models;
-using Gavilya.Models.Rawg;
 using PeyrSharp.Env;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 
-namespace Gavilya.Helpers
+namespace Gavilya.Helpers;
+
+public class CoverImageHelper
 {
-    public class CoverImageHelper
-    {
-        private string _url;
-        private int _id;
-		private readonly int _gameId;
+	private readonly string _url;
+	private readonly int _id;
+	private readonly int _gameId;
 
-		public CoverImageHelper(string url, int id, int gameId)
-        {
-            _url = url;
-			_id = id;
-			_gameId = gameId;
+	public CoverImageHelper(string url, int id, int gameId)
+	{
+		_url = url;
+		_id = id;
+		_gameId = gameId;
+	}
+
+	public async Task<string> Download()
+	{
+
+		if (!Directory.Exists(FileSys.AppDataPath + @"\Léo Corporation\Gavilya\Games")) // If the directory doesn't exist
+		{
+			Directory.CreateDirectory(FileSys.AppDataPath + @"\Léo Corporation\Gavilya\Games"); // Create the direspctory
 		}
 
-        public async Task<string> Download()
-        {
-
-			if (!Directory.Exists(FileSys.AppDataPath + @"\Léo Corporation\Gavilya\Games")) // If the directory doesn't exist
+		if (!Directory.Exists(FileSys.AppDataPath + @$"\Léo Corporation\Gavilya\games\{_gameId}")) // If the directory doesn't exist
+		{
+			Directory.CreateDirectory(FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}"); // Create the game directory
+		}
+		else
+		{
+			if (File.Exists(FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg")) // If the image exist
 			{
-				Directory.CreateDirectory(FileSys.AppDataPath + @"\Léo Corporation\Gavilya\Games"); // Create the direspctory
-			}
-
-			if (!Directory.Exists(FileSys.AppDataPath + @$"\Léo Corporation\Gavilya\games\{_gameId}")) // If the directory doesn't exist
-			{
-				Directory.CreateDirectory(FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}"); // Create the game directory
-			}
-			else
-			{
-				if (File.Exists(FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg")) // If the image exist
-				{
-					File.Delete(FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg");
-				}
-				await DownloadFileAsync(new Uri(_url), FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"); // Download the image
-
-				return FileSys.AppDataPath + @$"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"; // Return the result
+				File.Delete(FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg");
 			}
 			await DownloadFileAsync(new Uri(_url), FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"); // Download the image
-			return FileSys.AppDataPath + @$"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"; // Return the path
-		}
 
-		private async Task DownloadFileAsync(Uri uri, string filePath)
-		{
-			using var s = await new HttpClient().GetStreamAsync(uri);
-			using var fs = new FileStream(filePath, FileMode.CreateNew);
-			await s.CopyToAsync(fs);
+			return FileSys.AppDataPath + @$"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"; // Return the result
 		}
-    }
+		await DownloadFileAsync(new Uri(_url), FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"); // Download the image
+		return FileSys.AppDataPath + @$"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"; // Return the path
+	}
+
+	private static async Task DownloadFileAsync(Uri uri, string filePath)
+	{
+		using var s = await new HttpClient().GetStreamAsync(uri);
+		using var fs = new FileStream(filePath, FileMode.CreateNew);
+		await s.CopyToAsync(fs);
+	}
 }

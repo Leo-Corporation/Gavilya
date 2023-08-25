@@ -22,24 +22,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+namespace Gavilya.Models.Rawg;
 
-namespace Gavilya.Models.Rawg
+public static partial class ApiKeys
 {
-	public static partial class ApiKeys
-	{
-		/// <summary>
-		/// The RAWG.io API key. DO NOT SET A VALUE DIRECTLY IN A FILE THAT MIGHT BE PUBLISHED TO GITHUB. 
-		/// It is highyly recommanded that you don't store you API Key as plaintext, but as an encrypted string.
-		/// For security reasons, the encryption system used by official Léo Corporation releases isn't available.
-		/// We recommand that you use AES algorithm.
-		/// <para>YOUR API KEY IS SECRET!</para>
-		/// <para>Define your API keys in a copy of <see cref="ApiKeys"/> called <c>ApiKeysLocal.cs</c></para>
-		/// </summary>
-		public static readonly string RawgApiKey = "";
-	}
+	/// <summary>
+	/// The RAWG.io API key. DO NOT SET A VALUE DIRECTLY IN A FILE THAT MIGHT BE PUBLISHED TO GITHUB. 
+	/// It is highyly recommanded that you don't store you API Key as plaintext, but as an encrypted string.
+	/// For security reasons, the encryption system used by official Léo Corporation releases isn't available.
+	/// We recommand that you use AES algorithm.
+	/// <para>YOUR API KEY IS SECRET!</para>
+	/// <para>Define your API keys in a copy of <see cref="ApiKeys"/> called <c>ApiKeysLocal.cs</c></para>
+	/// </summary>
+	public static readonly string RawgApiKey = "";
 }
