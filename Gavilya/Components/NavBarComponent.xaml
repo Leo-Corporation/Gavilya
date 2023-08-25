@@ -249,40 +249,6 @@
         </ScrollViewer>
 
         <RadioButton
-            x:Name="NotificationsBtn"
-            Grid.Row="7"
-            Height="40"
-            Margin="5 2 5 5"
-            Padding="5"
-            Background="Transparent"
-            BorderBrush="Transparent"
-            BorderThickness="2 0 0 0"
-            Cursor="Hand"
-            FontFamily="..\Fonts\#FluentSystemIcons-Filled"
-            FontSize="18"
-            Foreground="{DynamicResource Foreground}"
-            Style="{DynamicResource NavBarBtn}">
-            <Grid>
-                <TextBlock Text="&#xF115;" />
-                <TextBlock
-                    x:Name="BadgeTxt"
-                    Margin="7 0 0 0"
-                    VerticalAlignment="Top"
-                    FontFamily="..\Fonts\#FluentSystemIcons-Filled"
-                    FontSize="8"
-                    Foreground="Red"
-                    Text="&#xF2BC;"
-                    Visibility="Hidden" />
-            </Grid>
-            <RadioButton.ToolTip>
-                <ToolTip
-                    Background="{DynamicResource Background}"
-                    Content="{x:Static lang:Resources.NotificationCenter}"
-                    Foreground="{DynamicResource Foreground}" />
-            </RadioButton.ToolTip>
-        </RadioButton>
-
-        <RadioButton
             x:Name="SettingsBtn"
             Grid.Row="8"
             Height="40"
