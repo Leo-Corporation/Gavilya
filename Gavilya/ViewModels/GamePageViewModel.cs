@@ -130,9 +130,36 @@ public class GamePageViewModel : ViewModelBase
 		}
 	}
 
+	private string _rating;
+	public string Rating { get => _rating; set { _rating = value; OnPropertyChanged(nameof(Rating)); } }
+
+	private double _exceptional;
+	public double Exceptional { get => _exceptional; set { _exceptional = value; OnPropertyChanged(nameof(Exceptional)); } }
+
+	private double _recommended;
+	public double Recommended { get => _recommended; set { _recommended = value; OnPropertyChanged(nameof(Recommended)); } }
+
+	private double _meh;
+	public double Meh { get => _meh; set { _meh = value; OnPropertyChanged(nameof(Meh)); } }
+
+	private double _skip;
+	public double Skip { get => _skip; set { _skip = value; OnPropertyChanged(nameof(Skip)); } }
+
+	private string _exToolTip;
+	public string ExToolTip { get => _exToolTip; set { _exToolTip = value; OnPropertyChanged(nameof(ExToolTip)); } }
+
+	private string _recToolTip;
+	public string RecToolTip { get => _recToolTip; set { _recToolTip = value; OnPropertyChanged(nameof(RecToolTip)); } }
+
+	private string _mehToolTip;
+	public string MehToolTip { get => _mehToolTip; set { _mehToolTip = value; OnPropertyChanged(nameof(MehToolTip)); } }
+
+	private string _skToolTip;
+	public string SkToolTip { get => _skToolTip; set { _skToolTip = value; OnPropertyChanged(nameof(SkToolTip)); } }
+
 	public ICommand PlayCommand { get; }
 	public ICommand EditCommand { get; }
-
+	private int totalRatings = 0;
 	public GamePageViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_game = game;
@@ -157,7 +184,37 @@ public class GamePageViewModel : ViewModelBase
 	private async void LoadRawg()
 	{
 		var rawgGame = await new RawgClient(_game.RawgId).GetGameAsync();
+
+		// Platforms section
 		Platforms = rawgGame?.Platforms.Select(p => p.Platform).ToList() ?? new();
+
+		// Ratings section
+		rawgGame?.Ratings.ForEach((r) => { totalRatings += r.Count; });
+		rawgGame?.Ratings.ForEach(AssignRating);
+		Rating = $"{rawgGame?.Rating:0.00}";
+	}
+
+	private void AssignRating(Rating rating)
+	{
+		switch (rating.Id)
+		{
+			case 5:
+				Exceptional = rating.Percent;
+				ExToolTip = $"{rating.Count}/{totalRatings} ({rating.Percent}%)";
+				break;
+			case 4:
+				Recommended = rating.Percent;
+				RecToolTip = $"{rating.Count}/{totalRatings} ({rating.Percent}%)";
+				break;
+			case 3:
+				Meh = rating.Percent;
+				MehToolTip = $"{rating.Count}/{totalRatings} ({rating.Percent}%)";
+				break;
+			case 1:
+				Skip = rating.Percent;
+				SkToolTip = $"{rating.Count}/{totalRatings} ({rating.Percent}%)";
+				break;
+		}
 	}
 
 	private void Edit(object? obj)

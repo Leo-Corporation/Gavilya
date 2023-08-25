@@ -318,7 +318,8 @@
                             d:Text="3.5"
                             FontSize="55"
                             FontWeight="ExtraBold"
-                            Foreground="{DynamicResource Foreground}" />
+                            Foreground="{DynamicResource Foreground}"
+                            Text="{Binding Rating}" />
 
                         <StackPanel
                             Grid.Column="1"
@@ -340,7 +341,8 @@
                                     d:Value="28"
                                     Background="{x:Null}"
                                     BorderBrush="{x:Null}"
-                                    Style="{DynamicResource ProgressBarStyle1}">
+                                    Style="{DynamicResource ProgressBarStyle1}"
+                                    Value="{Binding Exceptional}">
                                     <ProgressBar.Foreground>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <LinearGradientBrush.RelativeTransform>
@@ -360,6 +362,7 @@
                                         <ToolTip
                                             x:Name="Pgr4ToolTip"
                                             Background="{DynamicResource Background}"
+                                            Content="{Binding ExToolTip}"
                                             Foreground="{DynamicResource Foreground}" />
                                     </ProgressBar.ToolTip>
                                 </ProgressBar>
@@ -379,7 +382,8 @@
                                     d:Value="19"
                                     Background="{x:Null}"
                                     BorderBrush="{x:Null}"
-                                    Style="{DynamicResource ProgressBarStyle1}">
+                                    Style="{DynamicResource ProgressBarStyle1}"
+                                    Value="{Binding Recommended}">
                                     <ProgressBar.Foreground>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <LinearGradientBrush.RelativeTransform>
@@ -399,6 +403,7 @@
                                         <ToolTip
                                             x:Name="Pgr3ToolTip"
                                             Background="{DynamicResource Background}"
+                                            Content="{Binding RecToolTip}"
                                             Foreground="{DynamicResource Foreground}" />
                                     </ProgressBar.ToolTip>
                                 </ProgressBar>
@@ -418,7 +423,8 @@
                                     d:Value="28"
                                     Background="{x:Null}"
                                     BorderBrush="{x:Null}"
-                                    Style="{DynamicResource ProgressBarStyle1}">
+                                    Style="{DynamicResource ProgressBarStyle1}"
+                                    Value="{Binding Meh}">
                                     <ProgressBar.Foreground>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <LinearGradientBrush.RelativeTransform>
@@ -438,6 +444,7 @@
                                         <ToolTip
                                             x:Name="Pgr2ToolTip"
                                             Background="{DynamicResource Background}"
+                                            Content="{Binding MehToolTip}"
                                             Foreground="{DynamicResource Foreground}" />
                                     </ProgressBar.ToolTip>
                                 </ProgressBar>
@@ -457,7 +464,8 @@
                                     d:Value="8"
                                     Background="{x:Null}"
                                     BorderBrush="{x:Null}"
-                                    Style="{DynamicResource ProgressBarStyle1}">
+                                    Style="{DynamicResource ProgressBarStyle1}"
+                                    Value="{Binding Skip}">
                                     <ProgressBar.Foreground>
                                         <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                             <LinearGradientBrush.RelativeTransform>
@@ -477,6 +485,7 @@
                                         <ToolTip
                                             x:Name="Pgr1ToolTip"
                                             Background="{DynamicResource Background}"
+                                            Content="{Binding SkToolTip}"
                                             Foreground="{DynamicResource Foreground}" />
                                     </ProgressBar.ToolTip>
                                 </ProgressBar>
