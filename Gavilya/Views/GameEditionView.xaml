@@ -250,7 +250,6 @@
                     <TextBox
                         x:Name="DescriptionTextBox"
                         Grid.Row="0"
-                        Width="470"
                         Padding="5"
                         VerticalContentAlignment="Top"
                         d:Text="Content here"

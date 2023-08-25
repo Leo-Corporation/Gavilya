@@ -523,6 +523,53 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <!--  ScrollViewer Template  -->
+            <ControlTemplate x:Key="ScrollViewerTemplate" TargetType="{x:Type ScrollViewer}">
+                <Grid Background="{TemplateBinding Background}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <ScrollContentPresenter CanContentScroll="{TemplateBinding CanContentScroll}" />
+                    <ScrollBar
+                        x:Name="PART_VerticalScrollBar"
+                        Grid.Column="1"
+                        Width="10"
+                        Maximum="{TemplateBinding ScrollableHeight}"
+                        ViewportSize="{TemplateBinding ViewportHeight}"
+                        Value="{TemplateBinding VerticalOffset}">
+                        <ScrollBar.Template>
+                            <ControlTemplate TargetType="{x:Type ScrollBar}">
+                                <Track x:Name="PART_Track" IsDirectionReversed="true">
+                                    <Track.Thumb>
+                                        <Thumb Background="{DynamicResource SelectedBackground}">
+                                            <Thumb.Template>
+                                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                                    <Border
+                                                        Margin="5"
+                                                        Background="{TemplateBinding Background}"
+                                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                                        CornerRadius="4" />
+                                                </ControlTemplate>
+                                            </Thumb.Template>
+                                        </Thumb>
+                                    </Track.Thumb>
+                                </Track>
+                            </ControlTemplate>
+                        </ScrollBar.Template>
+                    </ScrollBar>
+                </Grid>
+            </ControlTemplate>
+
+            <!--  Apply the ScrollViewer Template to ScrollViewer  -->
+            <Style TargetType="{x:Type ScrollViewer}">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Hidden" />
+                <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
+                <Setter Property="Template" Value="{StaticResource ScrollViewerTemplate}" />
+            </Style>
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
