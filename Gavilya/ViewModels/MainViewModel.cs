@@ -67,7 +67,7 @@ public class MainViewModel : ViewModelBase
 	public double MaxHeight { get => _maxHeight; set { _maxHeight = value; OnPropertyChanged(nameof(MaxHeight)); } }
 	public double MaxWidth { get => _maxWidth; set { _maxWidth = value; OnPropertyChanged(nameof(MaxWidth)); } }
 
-	private Thickness _borderMargin;
+	private Thickness _borderMargin = new(10);
 	public Thickness BorderMargin { get => _borderMargin; set { _borderMargin = value; OnPropertyChanged(nameof(BorderMargin)); } }
 
 	public ICommand MinimizeCommand { get; }
