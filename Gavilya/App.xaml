@@ -537,6 +537,7 @@
                         Width="10"
                         Maximum="{TemplateBinding ScrollableHeight}"
                         ViewportSize="{TemplateBinding ViewportHeight}"
+                        Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
                         Value="{TemplateBinding VerticalOffset}">
                         <ScrollBar.Template>
                             <ControlTemplate TargetType="{x:Type ScrollBar}">

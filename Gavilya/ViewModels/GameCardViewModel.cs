@@ -37,6 +37,7 @@ public class GameCardViewModel : ViewModelBase
 	private string _name;
 	private readonly Game _game;
 	private readonly GameList _games;
+
 	public string Name
 	{
 		get => _name;

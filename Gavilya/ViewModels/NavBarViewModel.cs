@@ -26,6 +26,9 @@ using Gavilya.Commands;
 using Gavilya.Enums;
 using Gavilya.Models;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
@@ -36,6 +39,9 @@ public class NavBarViewModel : ViewModelBase
 	private bool _isPopupOpen = false;
 	public bool IsPopupOpen { get => _isPopupOpen; set { _isPopupOpen = value; OnPropertyChanged(nameof(IsPopupOpen)); } }
 	GameList Games { get; set; }
+
+	private List<FavNavBarViewModel> _favVm;
+	public List<FavNavBarViewModel> Favorites { get => _favVm; set { _favVm = value; OnPropertyChanged(nameof(Favorites)); } }
 
 	public ICommand HomePageCommand { get; }
 	public ICommand LibraryPageCommand { get; }
@@ -53,9 +59,12 @@ public class NavBarViewModel : ViewModelBase
 		AddWin32GameCommand = new RelayCommand(AddWin32Game);
 		AddUwpGameCommand = new RelayCommand(AddUwpGame);
 		AddSteamGameCommand = new RelayCommand(AddSteamGame);
-
-		_mainViewModel = mainViewModel;
 		Games = games;
+		Games.CollectionChanged += (o, e) =>
+		{
+			Favorites = new List<FavNavBarViewModel>(Games.Where(g => g.IsFavorite).Select(g => new FavNavBarViewModel(g)));
+		};
+		_mainViewModel = mainViewModel;
 		_tags = tags;
 	}
 
