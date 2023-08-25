@@ -34,7 +34,7 @@ internal class LibPageViewModel : ViewModelBase
 	private readonly MainViewModel _mainViewModel;
 	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
 
-	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, _tags, _mainViewModel)).ToList();
+	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
 
 	private ViewModelBase _currentViewModel;
 	private readonly List<Tag> _tags;

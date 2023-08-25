@@ -36,6 +36,7 @@ public class GameCardViewModel : ViewModelBase
 	readonly MainViewModel _mainViewModel;
 	private string _name;
 	private readonly Game _game;
+	private readonly GameList _games;
 	public string Name
 	{
 		get => _name;
@@ -101,6 +102,17 @@ public class GameCardViewModel : ViewModelBase
 		}
 	}
 
+	private string _favIcon;
+	public string FavIcon
+	{
+		get => _favIcon;
+		set
+		{
+			_favIcon = value;
+			OnPropertyChanged(nameof(FavIcon));
+		}
+	}
+
 	private GameType _gameType;
 	public GameType GameType
 	{
@@ -119,6 +131,7 @@ public class GameCardViewModel : ViewModelBase
 		set
 		{
 			_isFavorite = value;
+			FavIcon = value ? "\uF71B" : "\uF710";
 			OnPropertyChanged(nameof(IsFavorite));
 		}
 	}
@@ -144,10 +157,12 @@ public class GameCardViewModel : ViewModelBase
 	public ICommand PlayCommand { get; }
 	public ICommand EditCommand { get; }
 	public ICommand ClickCommand { get; }
+	public ICommand FavCommand { get; }
 
-	public GameCardViewModel(Game game, List<Tag> tags, MainViewModel mainViewModel)
+	public GameCardViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_game = game;
+		_games = games;
 		_tags = tags;
 		_mainViewModel = mainViewModel;
 
@@ -164,6 +179,7 @@ public class GameCardViewModel : ViewModelBase
 		MouseHoverCommand = new RelayCommand(HandleMouseHover);
 		EditCommand = new RelayCommand(Edit);
 		ClickCommand = new RelayCommand(Click);
+		FavCommand = new RelayCommand(Fav);
 	}
 
 	private void HandleMouseHover(object parameter)
@@ -179,5 +195,12 @@ public class GameCardViewModel : ViewModelBase
 	private void Click(object? obj)
 	{
 		_mainViewModel.CurrentViewModel = new GamePageViewModel(_game, _mainViewModel.Games, _tags, _mainViewModel);
+	}
+
+	private void Fav(object? obj)
+	{
+		IsFavorite = !IsFavorite;
+		_game.IsFavorite = IsFavorite;
+		_games[_games.IndexOf(_game)] = _game;
 	}
 }

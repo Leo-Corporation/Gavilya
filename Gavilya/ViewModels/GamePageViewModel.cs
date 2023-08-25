@@ -131,9 +131,13 @@ public class GamePageViewModel : ViewModelBase
 		set
 		{
 			_isFavorite = value;
+			FavIcon = value ? "\uF71B" : "\uF710";
 			OnPropertyChanged(nameof(IsFavorite));
 		}
 	}
+
+	private string _favIcon;
+	public string FavIcon { get => _favIcon; set { _favIcon = value; OnPropertyChanged(nameof(FavIcon)); } }
 
 	private string _rating;
 	public string Rating { get => _rating; set { _rating = value; OnPropertyChanged(nameof(Rating)); } }
@@ -172,6 +176,7 @@ public class GamePageViewModel : ViewModelBase
 	public Visibility PlatformVis { get => _platformVis; set { _platformVis = value; OnPropertyChanged(nameof(PlatformVis)); } }
 
 	public ICommand PlayCommand { get; }
+	public ICommand FavCommand { get; }
 	public ICommand EditCommand { get; }
 	public ICommand SeeOnRawgCommand { get; }
 	private int _totalRatings = 0;
@@ -195,10 +200,19 @@ public class GamePageViewModel : ViewModelBase
 		// Commands
 		EditCommand = new RelayCommand(Edit);
 		SeeOnRawgCommand = new RelayCommand(OpenRawg);
+		FavCommand = new RelayCommand(Fav);
+
+		// Rawg
 		if (game.RawgId == -1) return;
 		LoadRawg();
 	}
 
+	private void Fav(object? obj)
+	{
+		IsFavorite = !IsFavorite;
+		_game.IsFavorite = IsFavorite;
+		_games[_games.IndexOf(_game)] = _game;
+	}
 
 	private void OpenRawg(object? obj)
 	{
