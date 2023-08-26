@@ -200,11 +200,23 @@ public class GamePageViewModel : ViewModelBase
 		// Commands
 		EditCommand = new RelayCommand(Edit);
 		SeeOnRawgCommand = new RelayCommand(OpenRawg);
-		FavCommand = new RelayCommand(Fav);
+		FavCommand = new RelayCommand(Fav); 
+		PlayCommand = new RelayCommand(Play);
 
 		// Rawg
 		if (game.RawgId == -1) return;
 		LoadRawg();
+	}
+
+	private void Play(object? obj)
+	{
+		_mainViewModel.GameLauncherHelper = new(_game, _games);
+		_mainViewModel.GameLauncherHelper.OnGameUpdatedEvent += (o, e) =>
+		{
+			LastTimePlayed = e.Game.LastTimePlayed;
+			TotalTimePlayed = e.Game.TotalTimePlayed;
+		};
+		_mainViewModel.GameLauncherHelper.Launch();
 	}
 
 	private void Fav(object? obj)

@@ -53,6 +53,7 @@
                                 Padding="18 8"
                                 HorizontalAlignment="Left"
                                 VerticalAlignment="Center"
+                                Command="{Binding PlayCommand}"
                                 Cursor="Hand"
                                 FontSize="16"
                                 FontWeight="ExtraBold"

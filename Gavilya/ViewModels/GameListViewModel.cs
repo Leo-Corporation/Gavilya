@@ -50,6 +50,7 @@ public class GameListViewModel : ViewModelBase
 
 	public ICommand MouseHoverCommand { get; }
 	public ICommand ClickCommand { get; }
+	public ICommand PlayCommand { get; }
 
 
 	public GameListViewModel(Game game, GameList games, List<Tag> tags, ListPageViewModel listPageViewModel, MainViewModel mainViewModel)
@@ -65,6 +66,13 @@ public class GameListViewModel : ViewModelBase
 		// Commands
 		MouseHoverCommand = new RelayCommand(HandleMouseHover);
 		ClickCommand = new RelayCommand(Click);
+		PlayCommand = new RelayCommand(Play);
+	}
+
+	private void Play(object? obj)
+	{
+		_mainViewModel.GameLauncherHelper = new(_game, _games);
+		_mainViewModel.GameLauncherHelper.Launch();
 	}
 
 	private void HandleMouseHover(object parameter)

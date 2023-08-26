@@ -68,6 +68,7 @@
                     Padding="5"
                     VerticalAlignment="Center"
                     Content="&#xF610;"
+                    Command="{Binding PlayCommand}"
                     FontFamily="..\Fonts\#FluentSystemIcons-Filled"
                     Foreground="{DynamicResource HoverForeground}"
                     Style="{DynamicResource PlayButton}"

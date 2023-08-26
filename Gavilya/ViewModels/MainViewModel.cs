@@ -40,6 +40,8 @@ public class MainViewModel : ViewModelBase
 	private readonly List<Tag> _tags;
 	private readonly WindowHelper _windowHelper;
 	private List<ClickableGameViewModel> _searchResults;
+
+	public GameLauncherHelper GameLauncherHelper { get; set; }
 	public List<ClickableGameViewModel> SearchResults { get => _searchResults; set { _searchResults = value; OnPropertyChanged(nameof(SearchResults)); } }
 	public GameList Games { get; set; }
 

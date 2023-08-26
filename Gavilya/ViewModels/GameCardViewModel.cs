@@ -181,6 +181,13 @@ public class GameCardViewModel : ViewModelBase
 		EditCommand = new RelayCommand(Edit);
 		ClickCommand = new RelayCommand(Click);
 		FavCommand = new RelayCommand(Fav);
+		PlayCommand = new RelayCommand(Play);
+	}
+
+	private void Play(object? obj)
+	{
+		_mainViewModel.GameLauncherHelper = new(_game, _games);
+		_mainViewModel.GameLauncherHelper.Launch();
 	}
 
 	private void HandleMouseHover(object parameter)
