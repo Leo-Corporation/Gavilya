@@ -92,9 +92,7 @@
                     Foreground="{DynamicResource Foreground}"
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
-                    <StackPanel
-                        VerticalAlignment="Center"
-                        Orientation="Horizontal">
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                         <TextBlock
                             Margin="0 0 10 0"
                             VerticalAlignment="Center"
@@ -300,6 +298,7 @@
                     HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
+                    Command="{Binding SearchCommand}"
                     Cursor="Hand"
                     FontSize="13"
                     FontWeight="ExtraBold"
@@ -452,6 +451,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:StartupViewModel}">
                         <settingsviews:StartupView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:SearchViewModel}">
+                        <settingsviews:SearchView />
                     </DataTemplate>
                 </Grid.Resources>
                 <ContentControl Content="{Binding CurrentViewModel}" />
