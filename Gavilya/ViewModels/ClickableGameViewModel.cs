@@ -68,6 +68,7 @@ namespace Gavilya.ViewModels
 		private void Click(object? obj)
 		{
 			_mainViewModel.CurrentViewModel = new GamePageViewModel(_game, _games, _tags, _mainViewModel);
+			_mainViewModel.SearchOpen = false;
 		}
 
 		public override string ToString()

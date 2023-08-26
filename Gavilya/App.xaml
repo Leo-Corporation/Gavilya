@@ -158,6 +158,41 @@
                     </Setter.Value>
                 </Setter>
             </Style>
+            <Style x:Key="RegularButton2" TargetType="Button">
+                <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border
+                                x:Name="ButtonBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="0"
+                                CornerRadius="5"
+                                Cursor="Hand"
+                                SnapsToDevicePixels="true">
+                                <ContentPresenter
+                                    x:Name="contentPresenter"
+                                    Margin="{TemplateBinding Padding}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    Focusable="False"
+                                    RecognizesAccessKey="True"
+                                    SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource SelectedBackground}" />
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource SelectedBackground}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
 
             <Style x:Key="AccentButton" TargetType="Button">
                 <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
@@ -569,8 +604,6 @@
                 <Setter Property="VerticalScrollBarVisibility" Value="Visible" />
                 <Setter Property="Template" Value="{StaticResource ScrollViewerTemplate}" />
             </Style>
-
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

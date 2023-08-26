@@ -25,6 +25,7 @@ using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -36,9 +37,10 @@ public class MainViewModel : ViewModelBase
 
 	private object _currentView;
 	private readonly Window _window;
-	private readonly List<Tag> tags;
+	private readonly List<Tag> _tags;
 	private readonly WindowHelper _windowHelper;
-
+	private List<ClickableGameViewModel> _searchResults;
+	public List<ClickableGameViewModel> SearchResults { get => _searchResults; set { _searchResults = value; OnPropertyChanged(nameof(SearchResults)); } }
 	public GameList Games { get; set; }
 
 	public object CurrentViewModel
@@ -52,6 +54,13 @@ public class MainViewModel : ViewModelBase
 	{
 		get => _maxiIcon;
 		set { _maxiIcon = value; OnPropertyChanged(nameof(MaxiIcon)); }
+	}
+
+	private string _query = "";
+	public string Query
+	{
+		get => _query;
+		set { _query = value; SearchOpen = true; SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query)); }
 	}
 
 	private double _maxiIconFontSize = 12;
@@ -70,22 +79,27 @@ public class MainViewModel : ViewModelBase
 	private Thickness _borderMargin = new(10);
 	public Thickness BorderMargin { get => _borderMargin; set { _borderMargin = value; OnPropertyChanged(nameof(BorderMargin)); } }
 
+	private bool _searchOpen;
+	public bool SearchOpen { get => _searchOpen; set { _searchOpen = value; OnPropertyChanged(nameof(SearchOpen)); } }
+
 	public ICommand MinimizeCommand { get; }
 	public ICommand MaximizeRestoreCommand { get; }
 	public ICommand CloseCommand { get; }
+	public ICommand SearchClickCommand { get; }
 
-	public MainViewModel(Window window, GameList games, List<Tag> _tags)
+	public MainViewModel(Window window, GameList games, List<Tag> tags)
 	{
 		_window = window;
 
 		Games = games;
-		tags = _tags;
-		_navBarViewModel = new(this, Games, _tags);
+		_tags = tags;
+		_navBarViewModel = new(this, Games, tags);
 		_windowHelper = new(window);
 
 		MinimizeCommand = new RelayCommand(Minimize);
 		MaximizeRestoreCommand = new RelayCommand(Maximize);
 		CloseCommand = new RelayCommand(Close);
+		SearchClickCommand = new RelayCommand((o) => SearchOpen = !SearchOpen);
 
 		(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
 
@@ -100,6 +114,11 @@ public class MainViewModel : ViewModelBase
 		_window.LocationChanged += (o, e) =>
 		{
 			(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
+		};
+
+		Games.CollectionChanged += (o, e) =>
+		{
+			SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList();
 		};
 	}
 

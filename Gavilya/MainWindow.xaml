@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:Gavilya.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:lang="clr-namespace:Gavilya.Properties"
     xmlns:local="clr-namespace:Gavilya"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -61,7 +62,6 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-
                     <Button
                         x:Name="SearchBtn"
                         Grid.Column="4"
@@ -69,6 +69,7 @@
                         Height="32"
                         Background="Transparent"
                         BorderThickness="0"
+                        Command="{Binding SearchClickCommand}"
                         Content="&#xF690;"
                         FontFamily="Fonts\#FluentSystemIcons-Regular"
                         FontSize="14"
@@ -162,7 +163,8 @@
                         Style="{StaticResource TitleBarCloseButtonStyle}" />
                 </Grid>
             </Border>
-            <Grid Grid.Row="1">
+            <Grid x:Name="ContentGrid" Grid.Row="1">
+
                 <Grid.Resources>
                     <DataTemplate DataType="{x:Type viewmodels:LibPageViewModel}">
                         <views:LibPageView />
@@ -195,7 +197,83 @@
                     </Grid.Resources>
                     <components:NavBarComponent />
                 </Grid>
+                <Popup
+                    Width="400"
+                    AllowsTransparency="True"
+                    IsOpen="{Binding SearchOpen}"
+                    Placement="Center"
+                    PlacementTarget="{Binding ElementName=ContentGrid}"
+                    StaysOpen="False">
+                    <Border
+                        Padding="10"
+                        Background="{DynamicResource Background2}"
+                        CornerRadius="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
 
+                            <TextBox
+                                Margin="0 2"
+                                Padding="10"
+                                Background="{DynamicResource SelectedBackground}"
+                                BorderThickness="0"
+                                FontFamily="Fonts/#Hauora"
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Foreground}"
+                                Style="{DynamicResource RegularTextBox}"
+                                Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}" />
+                            <ScrollViewer
+                                Grid.Row="1"
+                                MaxHeight="150"
+                                HorizontalScrollBarVisibility="Disabled"
+                                VerticalScrollBarVisibility="Auto">
+                                <ItemsControl MinHeight="50" ItemsSource="{Binding SearchResults}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button
+                                                HorizontalContentAlignment="Stretch"
+                                                VerticalContentAlignment="Stretch"
+                                                Background="Transparent"
+                                                Command="{Binding ClickCommand}"
+                                                Style="{DynamicResource RegularButton2}">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Image
+                                                        x:Name="GameImg"
+                                                        Width="80"
+                                                        Height="45"
+                                                        Source="{Binding CoverFilePath}"
+                                                        Stretch="UniformToFill" />
+                                                    <TextBlock
+                                                        x:Name="GameName"
+                                                        Grid.Column="1"
+                                                        Margin="7 0 0 0"
+                                                        VerticalAlignment="Center"
+                                                        FontFamily="/Fonts/#Hauora"
+                                                        FontSize="20"
+                                                        FontWeight="ExtraBold"
+                                                        Foreground="{DynamicResource Foreground}"
+                                                        Text="{Binding Name}" />
+                                                </Grid>
+                                            </Button>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </ScrollViewer>
+                        </Grid>
+                    </Border>
+                </Popup>
                 <ScrollViewer
                     Grid.Column="2"
                     HorizontalScrollBarVisibility="Disabled"
