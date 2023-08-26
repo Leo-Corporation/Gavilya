@@ -37,6 +37,7 @@ public class SettingsPageViewModel : ViewModelBase
 	public ICommand FpsCommand { get; }
 	public ICommand HomeCommand { get; }
 	public ICommand LanguageCommand { get; }
+	public ICommand NotificationsCommand { get; }
 	public ICommand StartupCommand { get; }
 	public ICommand SearchCommand { get; }
 
@@ -47,6 +48,7 @@ public class SettingsPageViewModel : ViewModelBase
 		FpsCommand = new RelayCommand((o) => CurrentViewModel = new FpsViewModel());
 		HomeCommand = new RelayCommand((o) => CurrentViewModel = new HomeOptionsViewModel());
 		LanguageCommand = new RelayCommand((o) => CurrentViewModel = new LanguageViewModel());
+		NotificationsCommand = new RelayCommand((o) => CurrentViewModel = new NotificationsViewModel());
 		StartupCommand = new RelayCommand((o) => CurrentViewModel = new StartupViewModel());
 		SearchCommand = new RelayCommand((o) => CurrentViewModel = new SearchViewModel());
 	}
