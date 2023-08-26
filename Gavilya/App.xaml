@@ -1011,6 +1011,11 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
+            <SolidColorBrush x:Key="SliderThumb.Static.Background" Color="#FFF0F0F0" />
+            <SolidColorBrush x:Key="SliderThumb.Disabled.Background" Color="#FFF0F0F0" />
+            <SolidColorBrush x:Key="SliderThumb.Disabled.Border" Color="#FFD9D9D9" />
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
