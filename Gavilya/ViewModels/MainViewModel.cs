@@ -91,20 +91,26 @@ public class MainViewModel : ViewModelBase
 
 	public MainViewModel(Window window, GameList games, List<Tag> tags)
 	{
-		_window = window;
-
+		// Properties
 		Games = games;
+		CurrentViewModel = new HomePageViewModel(Games, this);
+
+		// Fields
+		_window = window;
 		_tags = tags;
 		_navBarViewModel = new(this, Games, tags);
 		_windowHelper = new(window);
 
+		// Commands
 		MinimizeCommand = new RelayCommand(Minimize);
 		MaximizeRestoreCommand = new RelayCommand(Maximize);
 		CloseCommand = new RelayCommand(Close);
 		SearchClickCommand = new RelayCommand((o) => SearchOpen = !SearchOpen);
 
+		// Window System
 		(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
 
+		// Events
 		_window.StateChanged += (o, e) =>
 		{
 			(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
