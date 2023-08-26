@@ -49,7 +49,7 @@
                     x:Name="SaveOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Cursor="Hand"
@@ -82,7 +82,7 @@
                     x:Name="LanguageOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Command="{Binding LanguageCommand}"
@@ -93,7 +93,6 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -119,7 +118,7 @@
                     x:Name="ThemeOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Cursor="Hand"
@@ -129,7 +128,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -155,7 +154,7 @@
                     x:Name="StartupOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Command="{Binding StartupCommand}"
@@ -166,7 +165,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -192,7 +191,7 @@
                     x:Name="HomeOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Cursor="Hand"
@@ -202,7 +201,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -227,7 +226,7 @@
                     x:Name="GameOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Cursor="Hand"
@@ -237,7 +236,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -262,7 +261,7 @@
                     x:Name="Notifications"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Cursor="Hand"
@@ -272,7 +271,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -298,7 +297,7 @@
                     x:Name="SearchOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Cursor="Hand"
@@ -308,7 +307,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -334,7 +333,7 @@
                     x:Name="FpsOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Cursor="Hand"
@@ -344,7 +343,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -370,7 +369,7 @@
                     x:Name="DataOptions"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Command="{Binding DataCommand}"
@@ -381,7 +380,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
@@ -406,7 +405,7 @@
                     x:Name="About"
                     Margin="0 0 0 1"
                     Padding="5"
-                    HorizontalContentAlignment="Left"
+                    HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
                     Command="{Binding AboutCommand}"
@@ -417,7 +416,7 @@
                     GroupName="SettingsNavBar"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel
-                        HorizontalAlignment="Center"
+                        HorizontalAlignment="Stretch"
                         VerticalAlignment="Center"
                         Orientation="Horizontal">
                         <TextBlock
