@@ -33,7 +33,7 @@ using System.Windows.Input;
 
 namespace Gavilya.ViewModels
 {
-    public class FavNavBarViewModel : ViewModelBase
+    public class ClickableGameViewModel : ViewModelBase
     {
 		private string _coverFilePath;
 		public string CoverFilePath
@@ -48,18 +48,31 @@ namespace Gavilya.ViewModels
 
 		public string Name { get; }
 
-		public ICommand ClickCommand;
+		public ICommand ClickCommand { get; }
+		private readonly Game _game;
+		private readonly GameList _games;
+		private readonly List<Tag> _tags;
+		private readonly MainViewModel _mainViewModel;
 
-		public FavNavBarViewModel(Game game)
+		public ClickableGameViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
         {
 			CoverFilePath = game.CoverFilePath ?? "";
 			Name = game.Name;
 			ClickCommand = new RelayCommand(Click);
+			_game = game;
+			_games = games;
+			_tags = tags;
+			_mainViewModel = mainViewModel;
 		}
 
 		private void Click(object? obj)
 		{
-
+			_mainViewModel.CurrentViewModel = new GamePageViewModel(_game, _games, _tags, _mainViewModel);
 		}
-    }
+
+		public override string ToString()
+		{
+			return Name;
+		}
+	}
 }

@@ -40,8 +40,8 @@ public class NavBarViewModel : ViewModelBase
 	public bool IsPopupOpen { get => _isPopupOpen; set { _isPopupOpen = value; OnPropertyChanged(nameof(IsPopupOpen)); } }
 	GameList Games { get; set; }
 
-	private List<FavNavBarViewModel> _favVm;
-	public List<FavNavBarViewModel> Favorites { get => _favVm; set { _favVm = value; OnPropertyChanged(nameof(Favorites)); } }
+	private List<ClickableGameViewModel> _favVm;
+	public List<ClickableGameViewModel> Favorites { get => _favVm; set { _favVm = value; OnPropertyChanged(nameof(Favorites)); } }
 
 	public ICommand HomePageCommand { get; }
 	public ICommand LibraryPageCommand { get; }
@@ -60,12 +60,12 @@ public class NavBarViewModel : ViewModelBase
 		AddUwpGameCommand = new RelayCommand(AddUwpGame);
 		AddSteamGameCommand = new RelayCommand(AddSteamGame);
 		Games = games;
-		Games.CollectionChanged += (o, e) =>
-		{
-			Favorites = new List<FavNavBarViewModel>(Games.Where(g => g.IsFavorite).Select(g => new FavNavBarViewModel(g)));
-		};
 		_mainViewModel = mainViewModel;
 		_tags = tags;
+		Games.CollectionChanged += (o, e) =>
+		{
+			Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
+		};
 	}
 
 	private void HomePage(object? obj)
