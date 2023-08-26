@@ -40,6 +40,7 @@ public class SettingsPageViewModel : ViewModelBase
 	public ICommand NotificationsCommand { get; }
 	public ICommand StartupCommand { get; }
 	public ICommand SearchCommand { get; }
+	public ICommand ThemeCommand { get; }
 
 	public SettingsPageViewModel()
 	{
@@ -51,5 +52,6 @@ public class SettingsPageViewModel : ViewModelBase
 		NotificationsCommand = new RelayCommand((o) => CurrentViewModel = new NotificationsViewModel());
 		StartupCommand = new RelayCommand((o) => CurrentViewModel = new StartupViewModel());
 		SearchCommand = new RelayCommand((o) => CurrentViewModel = new SearchViewModel());
+		ThemeCommand = new RelayCommand((o) => CurrentViewModel = new ThemeViewModel());
 	}
 }
