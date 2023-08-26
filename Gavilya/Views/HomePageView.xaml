@@ -67,11 +67,18 @@
                 Text="{x:Static lang:Resources.RecentGames}" />
         </StackPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-            <WrapPanel
-                Name="RecentBar"
-                Height="Auto"
-                FlowDirection="LeftToRight"
-                Orientation="Horizontal" />
+            <ItemsControl ItemsSource="{Binding Recents}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:MinimalGameViewModel}">
+                        <components:MinimalGameComponent />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </ScrollViewer>
         <Grid x:Name="RecentPlaceholder" />
 
