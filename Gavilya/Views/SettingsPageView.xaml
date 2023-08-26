@@ -230,6 +230,7 @@
                     HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
+                    Command="{Binding GameOptionsCommand}"
                     Cursor="Hand"
                     FontSize="13"
                     FontWeight="ExtraBold"
@@ -453,6 +454,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:FpsViewModel}">
                         <settingsviews:FpsView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:GameOptionsViewModel}">
+                        <settingsviews:GameOptionsView />
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:HomeOptionsViewModel}">
                         <settingsviews:HomeOptionsView />
