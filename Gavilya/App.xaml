@@ -98,7 +98,7 @@
                                 CornerRadius="5">
                                 <ContentPresenter
                                     x:Name="contentPresenter"
-                                    HorizontalAlignment="Center"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                     VerticalAlignment="Center"
                                     Focusable="False"
                                     RecognizesAccessKey="True"

@@ -28,6 +28,7 @@
             Height="40"
             Margin="5 2"
             Padding="5"
+            HorizontalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="2 0 0 0"
             Command="{Binding HomePageCommand}"
@@ -50,6 +51,7 @@
             Height="40"
             Margin="5 2"
             Padding="5"
+            HorizontalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="2 0 0 0"
             Command="{Binding LibraryPageCommand}"
@@ -72,6 +74,7 @@
             Height="40"
             Margin="5 2"
             Padding="5"
+            HorizontalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="2 0 0 0"
             Command="{Binding RecentPageCommand}"
@@ -271,7 +274,7 @@
                                     ImageSource="{Binding CoverFilePath}"
                                     Stretch="UniformToFill" />
                             </Border.Background>
-                            <i:Interaction.Triggers>                                
+                            <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="MouseLeftButtonUp">
                                     <i:InvokeCommandAction Command="{Binding ClickCommand}" />
                                 </i:EventTrigger>
@@ -288,6 +291,7 @@
             Height="40"
             Margin="5 2"
             Padding="5"
+            HorizontalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="2 0 0 0"
             Content="&#xF6B3;"
