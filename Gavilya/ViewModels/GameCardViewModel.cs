@@ -44,6 +44,7 @@ public class GameCardViewModel : ViewModelBase
 		set
 		{
 			_name = value;
+			PlayText = string.Format(Properties.Resources.PlayTo, Name);
 			OnPropertyChanged(nameof(Name));
 		}
 	}
@@ -152,6 +153,8 @@ public class GameCardViewModel : ViewModelBase
 	private readonly List<Tag> _tags;
 
 	public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
+
+	public string PlayText { get; set; }
 
 	public ICommand MouseHoverCommand { get; }
 

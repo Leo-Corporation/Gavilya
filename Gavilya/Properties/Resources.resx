@@ -994,4 +994,7 @@
   <data name="HoursMin" xml:space="preserve">
     <value>hours</value>
   </data>
+  <data name="PlayTo" xml:space="preserve">
+    <value>Play to {0}</value>
+  </data>
 </root>

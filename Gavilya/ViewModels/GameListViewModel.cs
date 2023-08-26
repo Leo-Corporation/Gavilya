@@ -37,8 +37,9 @@ public class GameListViewModel : ViewModelBase
 	private readonly ListPageViewModel _listPageViewModel;
 	private readonly MainViewModel _mainViewModel;
 	private string _name;
-	public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+	public string Name { get => _name; set { _name = value; PlayText = string.Format(Properties.Resources.PlayTo, Name); OnPropertyChanged(nameof(Name)); } }
 
+	public string PlayText { get; set; }
 
 	private bool _isFavorite;
 	public bool IsFavorite { get => _isFavorite; set { _isFavorite = value; OnPropertyChanged(nameof(IsFavorite)); } }

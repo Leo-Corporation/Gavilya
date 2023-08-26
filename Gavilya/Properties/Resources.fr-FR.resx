@@ -993,4 +993,7 @@
   <data name="HoursMin" xml:space="preserve">
     <value>heures</value>
   </data>
+  <data name="PlayTo" xml:space="preserve">
+    <value>Jouer à {0}</value>
+  </data>
 </root>

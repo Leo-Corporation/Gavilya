@@ -78,6 +78,7 @@
                                     <ToolTip
                                         Name="PlayBtnToolTip"
                                         Background="{DynamicResource Background}"
+                                        Content="{Binding PlayText}"
                                         Foreground="{DynamicResource Foreground}" />
                                 </Button.ToolTip>
                             </Button>

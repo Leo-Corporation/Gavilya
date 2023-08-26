@@ -67,8 +67,8 @@
                 Margin="5 5 5 0"
                 VerticalAlignment="Center"
                 Background="Transparent"
-                Content="{Binding FavIcon}"
                 Command="{Binding FavCommand}"
+                Content="{Binding FavIcon}"
                 Cursor="Hand"
                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                 FontSize="15"
@@ -150,6 +150,7 @@
                         <ToolTip
                             Name="PlayToolTip"
                             Background="{DynamicResource Background}"
+                            Content="{Binding PlayText}"
                             Foreground="{DynamicResource Foreground}" />
                     </Button.ToolTip>
                 </Button>

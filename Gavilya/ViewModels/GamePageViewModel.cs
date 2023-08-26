@@ -54,6 +54,7 @@ public class GamePageViewModel : ViewModelBase
 		set
 		{
 			_name = value;
+			PlayText = string.Format(Properties.Resources.PlayTo, Name);
 			OnPropertyChanged(nameof(Name));
 		}
 	}
@@ -165,6 +166,7 @@ public class GamePageViewModel : ViewModelBase
 
 	private string _skToolTip;
 	public string SkToolTip { get => _skToolTip; set { _skToolTip = value; OnPropertyChanged(nameof(SkToolTip)); } }
+	public string PlayText { get; set; }
 
 	private Visibility _achievmentsVis = Visibility.Collapsed;
 	public Visibility AchievementsVis { get => _achievmentsVis; set { _achievmentsVis = value; OnPropertyChanged(nameof(AchievementsVis)); } }

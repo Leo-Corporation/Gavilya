@@ -67,8 +67,8 @@
                     Margin="10 0 0 0"
                     Padding="5"
                     VerticalAlignment="Center"
-                    Content="&#xF610;"
                     Command="{Binding PlayCommand}"
+                    Content="&#xF610;"
                     FontFamily="..\Fonts\#FluentSystemIcons-Filled"
                     Foreground="{DynamicResource HoverForeground}"
                     Style="{DynamicResource PlayButton}"
@@ -78,6 +78,7 @@
                 <ToolTip
                     Name="GameNameToolTip"
                     Background="{DynamicResource Background}"
+                    Content="{Binding PlayText}"
                     Foreground="{DynamicResource Foreground}" />
             </Button.ToolTip>
 

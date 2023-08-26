@@ -1798,6 +1798,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Play to {game}.
+        /// </summary>
+        public static string PlayTo {
+            get {
+                return ResourceManager.GetString("PlayTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Gavilya - Menu.
         /// </summary>
         public static string PopupMenu {

@@ -805,10 +805,10 @@
     <value>通知</value>
   </data>
   <data name="NotificationLower" xml:space="preserve">
-    <value>通知</value>
+    <value>通知。</value>
   </data>
   <data name="NotificationsLower" xml:space="preserve">
-    <value>通知</value>
+    <value>通知。</value>
   </data>
   <data name="YouHave" xml:space="preserve">
     <value>您有</value>
@@ -992,5 +992,8 @@
   </data>
   <data name="HoursMin" xml:space="preserve">
     <value>时数</value>
+  </data>
+  <data name="PlayTo" xml:space="preserve">
+    <value>播放到 {0}</value>
   </data>
 </root>
