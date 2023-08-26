@@ -157,6 +157,7 @@
                     HorizontalContentAlignment="Left"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
+                    Command="{Binding StartupCommand}"
                     Cursor="Hand"
                     FontSize="13"
                     FontWeight="ExtraBold"
@@ -445,6 +446,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:DataOptionsViewModel}">
                         <settingsviews:DataOptionsView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:StartupViewModel}">
+                        <settingsviews:StartupView />
                     </DataTemplate>
                 </Grid.Resources>
                 <ContentControl Content="{Binding CurrentViewModel}" />

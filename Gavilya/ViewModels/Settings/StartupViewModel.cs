@@ -22,24 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using Gavilya.Commands;
-using Gavilya.ViewModels.Settings;
-using System.Windows.Input;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Gavilya.ViewModels;
-public class SettingsPageViewModel : ViewModelBase
+namespace Gavilya.ViewModels.Settings;
+public class StartupViewModel : ViewModelBase
 {
-	private ViewModelBase _currentViewModel;
-	public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
-
-	public ICommand AboutCommand { get; }
-	public ICommand DataCommand { get; }
-	public ICommand StartupCommand { get; }
-
-	public SettingsPageViewModel()
-	{
-		AboutCommand = new RelayCommand((o) => CurrentViewModel = new AboutViewModel());
-		DataCommand = new RelayCommand((o) => CurrentViewModel = new DataOptionsViewModel());
-		StartupCommand = new RelayCommand((o) => CurrentViewModel = new StartupViewModel());
-	}
 }
