@@ -8,6 +8,7 @@
     xmlns:lang="clr-namespace:Gavilya.Properties"
     xmlns:local="clr-namespace:Gavilya"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:svm="clr-namespace:Gavilya.ViewModels.Settings"
     xmlns:viewmodels="clr-namespace:Gavilya.ViewModels"
     xmlns:views="clr-namespace:Gavilya.Views"
     Title="{x:Static lang:Resources.MainWindowTitle}"
@@ -180,6 +181,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type viewmodels:HomePageViewModel}">
                         <views:HomePageView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:SettingsPageViewModel}">
+                        <views:SettingsPageView />
                     </DataTemplate>
                 </Grid.Resources>
                 <Grid.ColumnDefinitions>

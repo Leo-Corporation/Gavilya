@@ -294,6 +294,7 @@
             HorizontalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="2 0 0 0"
+            Command="{Binding SettingsPageCommand}"
             Content="&#xF6B3;"
             Cursor="Hand"
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
