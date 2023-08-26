@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Gavilya.png" />
     <None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
     <None Remove="Fonts\Hauora-ExtraBold.ttf" />
@@ -28,6 +29,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\Gavilya.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Fonts\FluentSystemIcons-Filled.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
