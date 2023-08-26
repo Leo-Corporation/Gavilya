@@ -57,12 +57,21 @@ public class Game
 
 	public override int GetHashCode()
 	{
-		return HashCode.Combine(
-			Name,
-			Description,
-			CoverFilePath,
-			LastTimePlayed,
-			TotalTimePlayed,
-			Id);
+		HashCode hash = new();
+		hash.Add(Name);
+		hash.Add(Description);
+		hash.Add(CoverFilePath);
+		hash.Add(LastTimePlayed);
+		hash.Add(TotalTimePlayed);
+		hash.Add(Command);
+		hash.Add(ProcessName);
+		hash.Add(CheckIfRunning);
+		hash.Add(GameType);
+		hash.Add(IsFavorite);
+		hash.Add(IsHidden);
+		hash.Add(Id);
+		hash.Add(RawgId);
+		hash.Add(Tags);
+		return hash.ToHashCode();
 	}
 }
