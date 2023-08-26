@@ -22,26 +22,50 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Commands;
 using Gavilya.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
-namespace Gavilya.ViewModels
+namespace Gavilya.ViewModels;
+public class MinimalGameViewModel : ViewModelBase
 {
-    public class HomePageViewModel : ViewModelBase
-    {
-		private readonly GameList _games;
-        private readonly MainViewModel _mainViewModel;
-		public string GreetingMessage => $"{Properties.Resources.Hello} {Environment.UserName}{Properties.Resources.ExclamationMark}";
-        public List<MinimalGameViewModel> Favorites => _games.Where(g => g.IsFavorite).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
+	private Game _game;
+	private GameList _games;
+	private readonly MainViewModel _mainViewModel;
 
-		public HomePageViewModel(GameList games, MainViewModel mainViewModel)
-		{
-			_games = games;
-			_mainViewModel = mainViewModel;
-		}
+	private string _name;
+	public string Name { get => _name; set { _name = value; PlayText = string.Format(Properties.Resources.PlayTo, Name); OnPropertyChanged(nameof(Name)); } }
+	
+	private string _coverFilePath;
+	public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value;OnPropertyChanged(nameof(CoverFilePath)); } }
+
+	public string PlayText { get; set; }
+
+	public ICommand PlayCommand { get; }
+
+	public MinimalGameViewModel(Game game, GameList games, MainViewModel mainViewModel)
+	{
+		// Fields
+		_game = game;
+		_games = games;
+		_mainViewModel = mainViewModel;
+
+		// Properties
+		Name = _game.Name;
+		CoverFilePath = _game.CoverFilePath;
+
+		// Commands
+		PlayCommand = new RelayCommand(Play);
+	}	
+
+	private void Play(object? obj)
+	{
+		_mainViewModel.GameLauncherHelper = new(_game, _games);
+		_mainViewModel.GameLauncherHelper.Launch();
 	}
 }
