@@ -192,6 +192,7 @@
                     HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
+                    Command="{Binding HomeCommand}"
                     Cursor="Hand"
                     FontSize="13"
                     FontWeight="ExtraBold"
@@ -449,6 +450,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:FpsViewModel}">
                         <settingsviews:FpsView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:HomeOptionsViewModel}">
+                        <settingsviews:HomeOptionsView />
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:LanguageViewModel}">
                         <settingsviews:LanguageView />

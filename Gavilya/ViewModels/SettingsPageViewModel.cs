@@ -35,6 +35,7 @@ public class SettingsPageViewModel : ViewModelBase
 	public ICommand AboutCommand { get; }
 	public ICommand DataCommand { get; }
 	public ICommand FpsCommand { get; }
+	public ICommand HomeCommand { get; }
 	public ICommand LanguageCommand { get; }
 	public ICommand StartupCommand { get; }
 	public ICommand SearchCommand { get; }
@@ -44,6 +45,7 @@ public class SettingsPageViewModel : ViewModelBase
 		AboutCommand = new RelayCommand((o) => CurrentViewModel = new AboutViewModel());
 		DataCommand = new RelayCommand((o) => CurrentViewModel = new DataOptionsViewModel());
 		FpsCommand = new RelayCommand((o) => CurrentViewModel = new FpsViewModel());
+		HomeCommand = new RelayCommand((o) => CurrentViewModel = new HomeOptionsViewModel());
 		LanguageCommand = new RelayCommand((o) => CurrentViewModel = new LanguageViewModel());
 		StartupCommand = new RelayCommand((o) => CurrentViewModel = new StartupViewModel());
 		SearchCommand = new RelayCommand((o) => CurrentViewModel = new SearchViewModel());
