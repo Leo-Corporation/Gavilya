@@ -52,6 +52,7 @@
                     HorizontalContentAlignment="Stretch"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
+                    Command="{Binding SaveOptionsCommand}"
                     Cursor="Hand"
                     FontSize="13"
                     FontWeight="ExtraBold"
@@ -464,6 +465,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:StartupViewModel}">
                         <settingsviews:StartupView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:SaveOptionsViewModel}">
+                        <settingsviews:SaveOptionsView />
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:SearchViewModel}">
                         <settingsviews:SearchView />

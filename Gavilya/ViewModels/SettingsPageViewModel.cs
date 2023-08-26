@@ -38,6 +38,7 @@ public class SettingsPageViewModel : ViewModelBase
 	public ICommand HomeCommand { get; }
 	public ICommand LanguageCommand { get; }
 	public ICommand NotificationsCommand { get; }
+	public ICommand SaveOptionsCommand { get; }
 	public ICommand StartupCommand { get; }
 	public ICommand SearchCommand { get; }
 	public ICommand ThemeCommand { get; }
@@ -50,6 +51,7 @@ public class SettingsPageViewModel : ViewModelBase
 		HomeCommand = new RelayCommand((o) => CurrentViewModel = new HomeOptionsViewModel());
 		LanguageCommand = new RelayCommand((o) => CurrentViewModel = new LanguageViewModel());
 		NotificationsCommand = new RelayCommand((o) => CurrentViewModel = new NotificationsViewModel());
+		SaveOptionsCommand = new RelayCommand((o) => CurrentViewModel = new SaveOptionsViewModel());
 		StartupCommand = new RelayCommand((o) => CurrentViewModel = new StartupViewModel());
 		SearchCommand = new RelayCommand((o) => CurrentViewModel = new SearchViewModel());
 		ThemeCommand = new RelayCommand((o) => CurrentViewModel = new ThemeViewModel());
