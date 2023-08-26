@@ -85,6 +85,7 @@
                     HorizontalContentAlignment="Left"
                     Background="{x:Null}"
                     BorderThickness="2 0 0 0"
+                    Command="{Binding LanguageCommand}"
                     Cursor="Hand"
                     FontSize="13"
                     FontWeight="ExtraBold"
@@ -446,6 +447,9 @@
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:DataOptionsViewModel}">
                         <settingsviews:DataOptionsView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:LanguageViewModel}">
+                        <settingsviews:LanguageView />
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type vm:StartupViewModel}">
                         <settingsviews:StartupView />
