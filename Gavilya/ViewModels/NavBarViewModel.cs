@@ -46,6 +46,7 @@ public class NavBarViewModel : ViewModelBase
 	public ICommand HomePageCommand { get; }
 	public ICommand LibraryPageCommand { get; }
 	public ICommand RecentPageCommand { get; }
+	public ICommand SettingsPageCommand { get; }
 	public ICommand AddCommand { get; }
 	public ICommand AddWin32GameCommand { get; }
 	public ICommand AddUwpGameCommand { get; }
@@ -59,9 +60,12 @@ public class NavBarViewModel : ViewModelBase
 		AddWin32GameCommand = new RelayCommand(AddWin32Game);
 		AddUwpGameCommand = new RelayCommand(AddUwpGame);
 		AddSteamGameCommand = new RelayCommand(AddSteamGame);
+		SettingsPageCommand = new RelayCommand(SettingsPage);
+
 		Games = games;
 		_mainViewModel = mainViewModel;
 		_tags = tags;
+
 		Games.CollectionChanged += (o, e) =>
 		{
 			Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
@@ -81,6 +85,11 @@ public class NavBarViewModel : ViewModelBase
 	private void RecentPage(object? obj)
 	{
 		_mainViewModel.CurrentViewModel = new RecentPageViewModel(Games, _tags, _mainViewModel);
+	}
+
+	private void SettingsPage(object? obj)
+	{
+		_mainViewModel.CurrentViewModel = new SettingsPageViewModel();
 	}
 
 	private void AddGame(object? obj)
