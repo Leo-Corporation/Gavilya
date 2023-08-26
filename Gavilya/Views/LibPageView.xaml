@@ -124,7 +124,7 @@
                         <RadioButton.ToolTip>
                             <ToolTip
                                 Background="{DynamicResource Background}"
-                                Content="{x:Static lang:Resources.SortAlphabetically}"
+                                Content="{x:Static lang:Resources.GameCard}"
                                 Foreground="{DynamicResource Foreground}" />
                         </RadioButton.ToolTip>
                     </RadioButton>
@@ -162,7 +162,7 @@
                         <RadioButton.ToolTip>
                             <ToolTip
                                 Background="{DynamicResource Background}"
-                                Content="{x:Static lang:Resources.SortInverse}"
+                                Content="{x:Static lang:Resources.GameList}"
                                 Foreground="{DynamicResource Foreground}" />
                         </RadioButton.ToolTip>
                     </RadioButton>
