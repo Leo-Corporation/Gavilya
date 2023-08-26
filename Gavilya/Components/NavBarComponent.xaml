@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Width="Auto"
     d:DesignHeight="450"
+    FontFamily="..\Fonts\#Hauora"
     mc:Ignorable="d">
     <Grid x:Name="Sidebar">
         <Grid.RowDefinitions>
