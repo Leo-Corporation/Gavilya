@@ -103,7 +103,7 @@ public class GamePageViewModel : ViewModelBase
 		{
 			_totalTimePlayed = value;
 			OnPropertyChanged(nameof(TotalTimePlayed));
-			TotalTimeText = TotalTimePlayed == 0 ? Properties.Resources.Never : $"{value}{Properties.Resources.HourShort}";
+			TotalTimeText = TotalTimePlayed == 0 ? Properties.Resources.Never : GetTimeString(value);
 		}
 	}
 
@@ -283,4 +283,11 @@ public class GamePageViewModel : ViewModelBase
 	{
 		_mainViewModel.CurrentViewModel = new GameEditionViewModel(_game, _games, _tags, _mainViewModel);
 	}
+
+	string GetTimeString(int time) => time switch
+	{
+		< 60 => $"{time} {(time > 1 ? Properties.Resources.SecondsMin : Properties.Resources.Second)}",
+		< 3600 => $"{time / 60d:0.0} {(time > 1 ? Properties.Resources.MinutesMin : Properties.Resources.Minute)}",
+		_ => $"{time /3600d:0.0} {(time > 1 ? Properties.Resources.HoursMin : Properties.Resources.Hour)}"
+	};
 }

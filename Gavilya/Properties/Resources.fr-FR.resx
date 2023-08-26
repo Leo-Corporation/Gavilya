@@ -213,9 +213,6 @@
   <data name="Search" xml:space="preserve">
     <value>Rechercher</value>
   </data>
-  <data name="PlayTo" xml:space="preserve">
-    <value>à </value>
-  </data>
   <data name="PlayLowerCase" xml:space="preserve">
     <value>Jouer</value>
   </data>
@@ -986,5 +983,14 @@
   </data>
   <data name="Advanced" xml:space="preserve">
     <value>Avancé</value>
+  </data>
+  <data name="MinutesMin" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="SecondsMin" xml:space="preserve">
+    <value>secondes</value>
+  </data>
+  <data name="HoursMin" xml:space="preserve">
+    <value>heures</value>
   </data>
 </root>

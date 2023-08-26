@@ -1078,6 +1078,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hours.
+        /// </summary>
+        public static string HoursMin {
+            get {
+                return ResourceManager.GetString("HoursMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string Image {
@@ -1371,6 +1380,15 @@ namespace Gavilya.Properties {
         public static string MinuteMin {
             get {
                 return ResourceManager.GetString("MinuteMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minutes.
+        /// </summary>
+        public static string MinutesMin {
+            get {
+                return ResourceManager.GetString("MinutesMin", resourceCulture);
             }
         }
         
@@ -1780,15 +1798,6 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        public static string PlayTo {
-            get {
-                return ResourceManager.GetString("PlayTo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Gavilya - Menu.
         /// </summary>
         public static string PopupMenu {
@@ -2091,6 +2100,15 @@ namespace Gavilya.Properties {
         public static string SecondMin {
             get {
                 return ResourceManager.GetString("SecondMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seconds.
+        /// </summary>
+        public static string SecondsMin {
+            get {
+                return ResourceManager.GetString("SecondsMin", resourceCulture);
             }
         }
         

@@ -984,4 +984,13 @@
   <data name="Advanced" xml:space="preserve">
     <value>Advanced</value>
   </data>
+  <data name="MinutesMin" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="SecondsMin" xml:space="preserve">
+    <value>seconds</value>
+  </data>
+  <data name="HoursMin" xml:space="preserve">
+    <value>hours</value>
+  </data>
 </root>

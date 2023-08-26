@@ -984,4 +984,13 @@
   <data name="Advanced" xml:space="preserve">
     <value>高级</value>
   </data>
+  <data name="MinutesMin" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="SecondsMin" xml:space="preserve">
+    <value>秒钟</value>
+  </data>
+  <data name="HoursMin" xml:space="preserve">
+    <value>时数</value>
+  </data>
 </root>
