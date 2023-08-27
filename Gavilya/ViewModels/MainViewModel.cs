@@ -90,7 +90,7 @@ public class MainViewModel : ViewModelBase
 	public ICommand CloseCommand { get; }
 	public ICommand SearchClickCommand { get; }
 
-	public MainViewModel(Window window, Profile profile)
+	public MainViewModel(Window window, Profile profile, ProfileData profiles)
 	{
 		// Properties
 		Games = profile.Games;
@@ -100,7 +100,7 @@ public class MainViewModel : ViewModelBase
 		// Fields
 		_window = window;
 		_tags = profile.Tags;
-		_navBarViewModel = new(this, profile);
+		_navBarViewModel = new(this, profile, profiles);
 		_windowHelper = new(window);
 
 		// Commands

@@ -59,6 +59,7 @@
                     Padding="5"
                     HorizontalAlignment="Left"
                     Background="{x:Null}"
+                    Command="{Binding ResetCommand}"
                     Cursor="Hand"
                     FontWeight="ExtraBold"
                     Foreground="{DynamicResource Accent}"

@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Commands;
+using Gavilya.Models;
 using Gavilya.ViewModels.Settings;
 using System.Windows.Input;
 
@@ -44,10 +45,10 @@ public class SettingsPageViewModel : ViewModelBase
 	public ICommand SearchCommand { get; }
 	public ICommand ThemeCommand { get; }
 
-	public SettingsPageViewModel()
+	public SettingsPageViewModel(Profile profile, ProfileData profiles, MainViewModel mainViewModel)
 	{
 		AboutCommand = new RelayCommand((o) => CurrentViewModel = new AboutViewModel());
-		DataCommand = new RelayCommand((o) => CurrentViewModel = new DataOptionsViewModel());
+		DataCommand = new RelayCommand((o) => CurrentViewModel = new DataOptionsViewModel(profile, profiles));
 		FpsCommand = new RelayCommand((o) => CurrentViewModel = new FpsViewModel());
 		GameOptionsCommand = new RelayCommand((o) => CurrentViewModel = new GameOptionsViewModel());
 		HomeCommand = new RelayCommand((o) => CurrentViewModel = new HomeOptionsViewModel());

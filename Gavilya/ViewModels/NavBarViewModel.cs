@@ -35,6 +35,8 @@ namespace Gavilya.ViewModels;
 public class NavBarViewModel : ViewModelBase
 {
 	private readonly MainViewModel _mainViewModel;
+	private Profile _profile;
+	private readonly ProfileData _profiles;
 	private readonly List<Tag> _tags;
 	private bool _isPopupOpen = false;
 	public bool IsPopupOpen { get => _isPopupOpen; set { _isPopupOpen = value; OnPropertyChanged(nameof(IsPopupOpen)); } }
@@ -51,7 +53,7 @@ public class NavBarViewModel : ViewModelBase
 	public ICommand AddWin32GameCommand { get; }
 	public ICommand AddUwpGameCommand { get; }
 	public ICommand AddSteamGameCommand { get; }
-	public NavBarViewModel(MainViewModel mainViewModel, Profile profile)
+	public NavBarViewModel(MainViewModel mainViewModel, Profile profile, ProfileData profiles)
 	{
 		HomePageCommand = new RelayCommand(HomePage);
 		LibraryPageCommand = new RelayCommand(LibraryPage);
@@ -64,6 +66,8 @@ public class NavBarViewModel : ViewModelBase
 
 		Games = profile.Games;
 		_mainViewModel = mainViewModel;
+		_profile = profile;
+		_profiles = profiles;
 		_tags = profile.Tags;
 
 		Games.CollectionChanged += (o, e) =>
@@ -89,7 +93,7 @@ public class NavBarViewModel : ViewModelBase
 
 	private void SettingsPage(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new SettingsPageViewModel();
+		_mainViewModel.CurrentViewModel = new SettingsPageViewModel(_profile, _profiles, _mainViewModel);
 	}
 
 	private void AddGame(object? obj)

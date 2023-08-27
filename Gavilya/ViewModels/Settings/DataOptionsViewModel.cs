@@ -22,13 +22,41 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Commands;
+using Gavilya.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.IO;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
 public class DataOptionsViewModel : ViewModelBase
 {
+	private readonly Profile _profile;
+	private readonly ProfileData _profiles;
+
+	public ICommand ResetCommand { get; }
+
+	public DataOptionsViewModel(Profile profile, ProfileData profiles)
+    {
+		_profile = profile;
+		_profiles = profiles;
+
+		ResetCommand = new RelayCommand(Reset);
+	}
+
+    private void Reset(object? obj)
+    {
+		if (MessageBox.Show(Properties.Resources.ResetSettingsMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+		{
+			_profile.Settings = new() { IsFirstRun = false };
+			_profiles.Profiles[_profiles.Profiles.IndexOf(_profile)] = _profile;
+			_profiles.Save();
+
+			MessageBox.Show(Properties.Resources.GavilyaNeedsRestartChanges, Properties.Resources.ResetSettings, MessageBoxButton.OK, MessageBoxImage.Information);
+			Process.Start(Directory.GetCurrentDirectory() + @"\Gavilya.exe");
+			Environment.Exit(0); // Quit
+		}
+	}
 }
