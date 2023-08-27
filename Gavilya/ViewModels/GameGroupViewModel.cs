@@ -35,7 +35,7 @@ public class GameGroupViewModel : ViewModelBase
 	private readonly MainViewModel _mainViewModel;
 	public string Title { get; }
 	public GameList Games { get; }
-	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
+	public List<GameCardViewModel> GamesVm => Games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
 
 	private SolidColorBrush _tagColor;
 	public SolidColorBrush TagColor { get => _tagColor; set { _tagColor = value; OnPropertyChanged(nameof(TagColor)); } }

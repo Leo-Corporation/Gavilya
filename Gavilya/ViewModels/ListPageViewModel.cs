@@ -30,7 +30,7 @@ namespace Gavilya.ViewModels;
 public class ListPageViewModel : ViewModelBase
 {
 	public GameList Games { get; set; }
-	public List<GameListViewModel> GamesVm => Games.Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
+	public List<GameListViewModel> GamesVm => Games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
 
 	private ViewModelBase _viewModelBase;
 	private readonly List<Tag> _tags;

@@ -101,6 +101,11 @@ namespace Gavilya.Models
 		/// </summary>
 		public string CurrentTheme { get; set; }
 
+		/// <summary>
+		/// True if Games that are hidden by default should be shown anyways.
+		/// </summary>
+		public bool ShowHiddenGames { get; set; }
+
         public Settings()
         {
 			IsFirstRun = true;
@@ -117,6 +122,7 @@ namespace Gavilya.Models
 			DefaultPage = Page.Home;
 			DefaultView = View.Card;
 			CurrentTheme = "";
+			ShowHiddenGames = false;
 		}
     }	
 

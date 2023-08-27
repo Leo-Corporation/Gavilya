@@ -36,8 +36,8 @@ namespace Gavilya.ViewModels
 		private readonly GameList _games;
 		private readonly MainViewModel _mainViewModel;
 		public string GreetingMessage => $"{Properties.Resources.Hello} {Environment.UserName}{Properties.Resources.ExclamationMark}";
-		public List<MinimalGameViewModel> Favorites => _games.Where(g => g.IsFavorite).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
-		public List<MinimalGameViewModel> Recents => _games.OrderByDescending(g => g.LastTimePlayed).Take(_mainViewModel.CurrentSettings.MaxNumberRecentGamesShown).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
+		public List<MinimalGameViewModel> Favorites => _games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
+		public List<MinimalGameViewModel> Recents => _games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).OrderByDescending(g => g.LastTimePlayed).Take(_mainViewModel.CurrentSettings.MaxNumberRecentGamesShown).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
 
 		public HomePageViewModel(GameList games, MainViewModel mainViewModel)
 		{

@@ -86,10 +86,11 @@ public class NavBarViewModel : ViewModelBase
 		IsLibrary = _mainViewModel.CurrentSettings.DefaultPage == Page.Library;
 		IsRecent = _mainViewModel.CurrentSettings.DefaultPage == Page.Recent;
 		IsProfile = _mainViewModel.CurrentSettings.DefaultPage == Page.Profile;
+		Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
 
 		Games.CollectionChanged += (o, e) =>
 		{
-			Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
+			Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
 		};
 	}
 

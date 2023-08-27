@@ -50,6 +50,8 @@ public class GameList : ObservableCollection<Game>
 		TagColor = tagColor;
 	}
 
+	public void Refresh() => OnCollectionChanged(new(System.Collections.Specialized.NotifyCollectionChangedAction.Reset));
+
 	public List<GameList> GetSortedGameLists()
 	{
 		DateTime now = DateTime.Now;

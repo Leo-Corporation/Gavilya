@@ -33,7 +33,7 @@ public class CardPageViewModel : ViewModelBase
 
 	private readonly List<Tag> _tags;
 	readonly MainViewModel _mainViewModel;
-	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
+	public List<GameCardViewModel> GamesVm => Games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
 
 	public CardPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{

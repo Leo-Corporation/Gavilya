@@ -59,9 +59,11 @@
                     Background="Transparent"
                     BorderBrush="{DynamicResource Accent}"
                     BorderThickness="2"
+                    Command="{Binding CheckHiddenGames}"
                     Content="{x:Static lang:Resources.DisplayHiddenGames}"
                     FontWeight="ExtraBold"
                     Foreground="{DynamicResource Foreground}"
+                    IsChecked="{Binding ShowHiddenGames, UpdateSourceTrigger=PropertyChanged}"
                     Style="{DynamicResource CheckBoxStyle1}" />
 
             </Expander>
