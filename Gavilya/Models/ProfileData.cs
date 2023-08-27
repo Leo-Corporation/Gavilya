@@ -25,7 +25,6 @@ SOFTWARE.
 using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -33,10 +32,42 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Gavilya.Models;
-public class ProfileList : ObservableCollection<Profile>
+public class ProfileData
 {
-    public ProfileList() : base()
-    {
-        
-    }    
+	public string SelectedProfileUuid { get; set; }
+	public ProfileList Profiles { get; set; }
+
+	public void Save()
+	{
+		XmlSerializer xmlSerializer = new(GetType());
+		if (!Directory.Exists($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya")) // If the directory doesn't exist
+		{
+			Directory.CreateDirectory($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya"); // Create the directory
+		}
+		StreamWriter streamWriter = new($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Profiles.g4v");
+		xmlSerializer.Serialize(streamWriter, this);
+		streamWriter.Dispose();
+	}
+
+	public void Load()
+	{
+		if (!File.Exists($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Profiles.g4v"))
+		{
+			Profiles = new()
+			{
+				new(Environment.UserName)
+			};
+			SelectedProfileUuid = Profiles[0].ProfileUuid;
+			Save();
+			return;
+		}
+		XmlSerializer xmlSerializer = new(GetType());
+		StreamReader streamReader = new($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Profiles.g4v");
+		ProfileData loadedProfiles = (ProfileData)xmlSerializer.Deserialize(streamReader) ?? new();
+
+		Profiles = loadedProfiles.Profiles;
+		SelectedProfileUuid = loadedProfiles.SelectedProfileUuid;
+
+		streamReader.Dispose();
+	}
 }

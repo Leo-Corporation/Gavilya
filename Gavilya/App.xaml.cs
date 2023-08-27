@@ -34,11 +34,11 @@ public partial class App : Application
 {
 	protected override void OnStartup(StartupEventArgs e)
 	{
-		ProfileList profiles = new();
+		ProfileData profiles = new();
 		profiles.Load();
 		
 		MainWindow = new MainWindow();
-		MainViewModel mvm = new(MainWindow, profiles.Where(p => p.ProfileUuid == profiles.SelectedProfileUuid).First(), profiles);
+		MainViewModel mvm = new(MainWindow, profiles.Profiles.Where(p => p.ProfileUuid == profiles.SelectedProfileUuid).First(), profiles);
 		MainWindow.DataContext = mvm;
 		MainWindow.Show();
 		base.OnStartup(e);
