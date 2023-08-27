@@ -41,6 +41,7 @@ public class MainViewModel : ViewModelBase
 	private readonly WindowHelper _windowHelper;
 	private List<ClickableGameViewModel> _searchResults;
 
+	public ContextHelper ContextHelper { get; set; }
 	public GameLauncherHelper GameLauncherHelper { get; set; }
 	public List<ClickableGameViewModel> SearchResults { get => _searchResults; set { _searchResults = value; OnPropertyChanged(nameof(SearchResults)); } }
 	public GameList Games { get; set; }
@@ -89,16 +90,17 @@ public class MainViewModel : ViewModelBase
 	public ICommand CloseCommand { get; }
 	public ICommand SearchClickCommand { get; }
 
-	public MainViewModel(Window window, GameList games, List<Tag> tags)
+	public MainViewModel(Window window, Profile profile)
 	{
 		// Properties
-		Games = games;
+		Games = profile.Games;
 		CurrentViewModel = new HomePageViewModel(Games, this);
+		ContextHelper = new(profile.Settings);
 
 		// Fields
 		_window = window;
-		_tags = tags;
-		_navBarViewModel = new(this, Games, tags);
+		_tags = profile.Tags;
+		_navBarViewModel = new(this, profile);
 		_windowHelper = new(window);
 
 		// Commands

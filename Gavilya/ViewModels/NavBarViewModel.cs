@@ -51,7 +51,7 @@ public class NavBarViewModel : ViewModelBase
 	public ICommand AddWin32GameCommand { get; }
 	public ICommand AddUwpGameCommand { get; }
 	public ICommand AddSteamGameCommand { get; }
-	public NavBarViewModel(MainViewModel mainViewModel, GameList games, List<Tag> tags)
+	public NavBarViewModel(MainViewModel mainViewModel, Profile profile)
 	{
 		HomePageCommand = new RelayCommand(HomePage);
 		LibraryPageCommand = new RelayCommand(LibraryPage);
@@ -62,9 +62,9 @@ public class NavBarViewModel : ViewModelBase
 		AddSteamGameCommand = new RelayCommand(AddSteamGame);
 		SettingsPageCommand = new RelayCommand(SettingsPage);
 
-		Games = games;
+		Games = profile.Games;
 		_mainViewModel = mainViewModel;
-		_tags = tags;
+		_tags = profile.Tags;
 
 		Games.CollectionChanged += (o, e) =>
 		{

@@ -41,7 +41,7 @@ public partial class App : Application
 			new("Tag3", "#0000ff")
 		};
 		MainWindow = new MainWindow();
-		MainViewModel mvm = new(MainWindow, currentProfile.Games, currentProfile.Tags);
+		MainViewModel mvm = new(MainWindow, currentProfile);
 		MainWindow.DataContext = mvm;
 		MainWindow.Show();
 		base.OnStartup(e);

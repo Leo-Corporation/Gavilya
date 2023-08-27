@@ -30,6 +30,7 @@ public class Profile
 	public string ProfilePictureFilePath { get; set; }
 	public GameList Games { get; set; }
 	public List<Tag> Tags { get; set; }
+	public Settings Settings { get; set; }
 
 	public Profile(string name)
 	{
@@ -37,5 +38,6 @@ public class Profile
 		ProfilePictureFilePath = "";
 		Games = new();
 		Tags = new();
+		Settings = new();
 	}
 }
