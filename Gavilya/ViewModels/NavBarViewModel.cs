@@ -44,6 +44,18 @@ public class NavBarViewModel : ViewModelBase
 
 	private List<ClickableGameViewModel> _favVm;
 	public List<ClickableGameViewModel> Favorites { get => _favVm; set { _favVm = value; OnPropertyChanged(nameof(Favorites)); } }
+	
+	private bool _isHome;
+	public bool IsHome { get => _isHome; set { _isHome = value; OnPropertyChanged(nameof(IsHome)); } }
+
+	private bool _isLibrary;
+	public bool IsLibrary { get => _isLibrary; set { _isLibrary = value; OnPropertyChanged(nameof(IsLibrary)); } }
+
+	private bool _isRecent;
+	public bool IsRecent { get => _isRecent; set { _isRecent = value; OnPropertyChanged(nameof(IsRecent)); } }
+
+	private bool _isProfile;
+	public bool IsProfile { get => _isProfile; set { _isProfile = value; OnPropertyChanged(nameof(IsProfile)); } }
 
 	public ICommand HomePageCommand { get; }
 	public ICommand LibraryPageCommand { get; }
@@ -69,6 +81,11 @@ public class NavBarViewModel : ViewModelBase
 		_profile = profile;
 		_profiles = profiles;
 		_tags = profile.Tags;
+
+		IsHome = _mainViewModel.CurrentSettings.DefaultPage == Page.Home;
+		IsLibrary = _mainViewModel.CurrentSettings.DefaultPage == Page.Library;
+		IsRecent = _mainViewModel.CurrentSettings.DefaultPage == Page.Recent;
+		IsProfile = _mainViewModel.CurrentSettings.DefaultPage == Page.Profile;
 
 		Games.CollectionChanged += (o, e) =>
 		{

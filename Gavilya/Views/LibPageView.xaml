@@ -120,6 +120,7 @@
                         FontSize="16"
                         Foreground="{DynamicResource Foreground}"
                         GroupName="View"
+                        IsChecked="{Binding IsCardSelected}"
                         Style="{DynamicResource TabButtonFirst}">
                         <RadioButton.ToolTip>
                             <ToolTip
@@ -139,6 +140,7 @@
                         FontSize="16"
                         Foreground="{DynamicResource Foreground}"
                         GroupName="View"
+                        IsChecked="{Binding IsTagSelected}"
                         Style="{DynamicResource TabButtonMiddle}">
                         <RadioButton.ToolTip>
                             <ToolTip
@@ -158,6 +160,7 @@
                         FontSize="16"
                         Foreground="{DynamicResource Foreground}"
                         GroupName="View"
+                        IsChecked="{Binding IsListSelected}"
                         Style="{DynamicResource TabButtonLast}">
                         <RadioButton.ToolTip>
                             <ToolTip

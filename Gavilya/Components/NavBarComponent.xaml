@@ -38,6 +38,7 @@
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
             FontSize="18"
             Foreground="{DynamicResource Foreground}"
+            IsChecked="{Binding IsHome}"
             Style="{DynamicResource NavBarBtn}">
             <RadioButton.ToolTip>
                 <ToolTip
@@ -61,6 +62,7 @@
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
             FontSize="18"
             Foreground="{DynamicResource Foreground}"
+            IsChecked="{Binding IsLibrary}"
             Style="{DynamicResource NavBarBtn}">
             <RadioButton.ToolTip>
                 <ToolTip
@@ -84,6 +86,7 @@
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
             FontSize="18"
             Foreground="{DynamicResource Foreground}"
+            IsChecked="{Binding IsRecent}"
             Style="{DynamicResource NavBarBtn}">
             <RadioButton.ToolTip>
                 <ToolTip

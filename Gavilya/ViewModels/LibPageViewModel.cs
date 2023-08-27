@@ -41,6 +41,19 @@ internal class LibPageViewModel : ViewModelBase
 
 	public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
 
+	private bool _isCardSelected;
+	public bool IsCardSelected
+	{
+		get => _isCardSelected; set { _isCardSelected = value; OnPropertyChanged(nameof(IsCardSelected)); }
+	}
+
+	private bool _isTagSelected;
+	public bool IsTagSelected { get => _isTagSelected; set { _isTagSelected = value; OnPropertyChanged(nameof(IsTagSelected)); } }
+
+	private bool _isListSelected;
+	public bool IsListSelected { get => _isListSelected; set { _isListSelected = value; OnPropertyChanged(nameof(IsListSelected)); } }
+
+
 	public ICommand CardViewCommand { get; }
 	public ICommand TagViewCommand { get; }
 	public ICommand ListViewCommand { get; }
@@ -50,7 +63,17 @@ internal class LibPageViewModel : ViewModelBase
 		Games = games;
 		_tags = tags;
 		_mainViewModel = mainViewModel;
-		_currentViewModel = new CardPageViewModel(Games, _tags, _mainViewModel);
+		_currentViewModel = _mainViewModel.CurrentSettings.DefaultView switch
+		{
+			View.List => new ListPageViewModel(Games, _tags, _mainViewModel),
+			View.Tag => new TagPageViewModel(Games, _tags, _mainViewModel),
+			_ => new CardPageViewModel(Games, _tags, _mainViewModel)
+		};
+
+
+		IsCardSelected = _mainViewModel.CurrentSettings.DefaultView == View.Card;
+		IsTagSelected = _mainViewModel.CurrentSettings.DefaultView == View.Tag;
+		IsListSelected = _mainViewModel.CurrentSettings.DefaultView == View.List;
 
 		CardViewCommand = new RelayCommand(CardView);
 		TagViewCommand = new RelayCommand(TagView);

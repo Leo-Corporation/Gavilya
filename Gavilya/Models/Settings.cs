@@ -87,6 +87,16 @@ namespace Gavilya.Models
 		public Position SidebarPosition { get; set; }
 
 		/// <summary>
+		/// The default view to display in the "Library" page.
+		/// </summary>
+		public View DefaultView { get; set; }
+
+		/// <summary>
+		/// The default page to display when starting the app.
+		/// </summary>
+		public Page DefaultPage { get; set; }
+
+		/// <summary>
 		/// The theme of the app. Set null to use default.
 		/// </summary>
 		public Theme? CurrentTheme { get; set; }
@@ -104,9 +114,26 @@ namespace Gavilya.Models
 			FpsCounterOpacity = 1;
 			UpdatesAvNotification = true;
 			SidebarPosition = Position.Left;
+			DefaultPage = Page.Home;
+			DefaultView = View.Card;
 			CurrentTheme = null;
 		}
     }	
+
+	public enum Page
+	{
+		Home,
+		Library,
+		Recent,
+		Profile
+	}
+
+	public enum View
+	{
+		Card,
+		Tag,
+		List
+	}
 
 	public enum Position
 	{

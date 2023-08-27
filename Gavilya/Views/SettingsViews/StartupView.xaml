@@ -57,8 +57,10 @@
                 <StackPanel Orientation="Horizontal">
                     <RadioButton
                         Margin="2 5"
+                        Command="{Binding ViewCommand}"
                         Cursor="Hand"
                         GroupName="ViewRadioGroup"
+                        IsChecked="{Binding IsCardSelected, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
@@ -81,8 +83,36 @@
                     </RadioButton>
                     <RadioButton
                         Margin="2 5"
+                        Command="{Binding ViewCommand}"
                         Cursor="Hand"
                         GroupName="ViewRadioGroup"
+                        IsChecked="{Binding IsTagSelected, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{DynamicResource SelectorBtn}">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock
+                                Padding="20"
+                                HorizontalAlignment="Stretch"
+                                FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="44"
+                                Text="&#xF77D;"
+                                TextAlignment="Center" />
+                            <TextBlock
+                                Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                FontSize="13"
+                                FontWeight="ExtraBold"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{x:Static lang:Resources.GameTags}" />
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton
+                        Margin="2 5"
+                        Command="{Binding ViewCommand}"
+                        Cursor="Hand"
+                        GroupName="ViewRadioGroup"
+                        IsChecked="{Binding IsListSelected, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
@@ -135,8 +165,10 @@
                 <StackPanel Orientation="Horizontal">
                     <RadioButton
                         Margin="2 5"
+                        Command="{Binding PageCommand}"
                         Cursor="Hand"
                         GroupName="StartupPageRadioGroup"
+                        IsChecked="{Binding IsHome, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
@@ -159,8 +191,10 @@
                     </RadioButton>
                     <RadioButton
                         Margin="2 5"
+                        Command="{Binding PageCommand}"
                         Cursor="Hand"
                         GroupName="StartupPageRadioGroup"
+                        IsChecked="{Binding IsLibrary, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
@@ -183,8 +217,10 @@
                     </RadioButton>
                     <RadioButton
                         Margin="2 5"
+                        Command="{Binding PageCommand}"
                         Cursor="Hand"
                         GroupName="StartupPageRadioGroup"
+                        IsChecked="{Binding IsRecent, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
@@ -207,8 +243,10 @@
                     </RadioButton>
                     <RadioButton
                         Margin="2 5"
+                        Command="{Binding PageCommand}"
                         Cursor="Hand"
                         GroupName="StartupPageRadioGroup"
+                        IsChecked="{Binding IsProfile, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock

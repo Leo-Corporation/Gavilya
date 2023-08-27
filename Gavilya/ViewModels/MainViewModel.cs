@@ -98,8 +98,14 @@ public class MainViewModel : ViewModelBase
 	{
 		// Properties
 		Games = profile.Games;
-		CurrentViewModel = new HomePageViewModel(Games, this);
 		CurrentSettings = profile.Settings;
+		CurrentViewModel = profile.Settings.DefaultPage switch
+		{
+			Page.Library => new LibPageViewModel(Games, profile.Tags, this),
+			Page.Recent => new RecentPageViewModel(Games, profile.Tags, this),
+			Page.Profile => new ViewModelBase(),
+			_ => new HomePageViewModel(Games, this)
+		};
 
 		// Fields
 		_window = window;
