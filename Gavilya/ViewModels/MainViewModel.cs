@@ -80,6 +80,9 @@ public class MainViewModel : ViewModelBase
 	public double MaxHeight { get => _maxHeight; set { _maxHeight = value; OnPropertyChanged(nameof(MaxHeight)); } }
 	public double MaxWidth { get => _maxWidth; set { _maxWidth = value; OnPropertyChanged(nameof(MaxWidth)); } }
 
+	private double _searchHeight;
+	public double SearchHeight { get => _searchHeight; set { _searchHeight = value; OnPropertyChanged(nameof(SearchHeight)); } }
+
 	private int _sideBarPosition;
 	public int SideBarPosition { get => _sideBarPosition; set { _sideBarPosition = value; OnPropertyChanged(nameof(SideBarPosition)); } }
 
@@ -117,7 +120,11 @@ public class MainViewModel : ViewModelBase
 		MinimizeCommand = new RelayCommand(Minimize);
 		MaximizeRestoreCommand = new RelayCommand(Maximize);
 		CloseCommand = new RelayCommand(Close);
-		SearchClickCommand = new RelayCommand((o) => SearchOpen = !SearchOpen);
+		SearchClickCommand = new RelayCommand((o) =>
+		{
+			SearchOpen = !SearchOpen;
+			SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45;
+		});
 
 		// Window System
 		(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();

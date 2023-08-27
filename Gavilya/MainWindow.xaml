@@ -233,10 +233,10 @@
                                 Text="{Binding Query, UpdateSourceTrigger=PropertyChanged}" />
                             <ScrollViewer
                                 Grid.Row="1"
-                                MaxHeight="150"
+                                Height="{Binding SearchHeight}"
                                 HorizontalScrollBarVisibility="Disabled"
                                 VerticalScrollBarVisibility="Auto">
-                                <ItemsControl MinHeight="50" ItemsSource="{Binding SearchResults}">
+                                <ItemsControl ItemsSource="{Binding SearchResults}">
                                     <ItemsControl.ItemsPanel>
                                         <ItemsPanelTemplate>
                                             <StackPanel />
