@@ -41,7 +41,8 @@ public class MainViewModel : ViewModelBase
 	private readonly WindowHelper _windowHelper;
 	private List<ClickableGameViewModel> _searchResults;
 
-	public ContextHelper ContextHelper { get; set; }
+	private Models.Settings _currentSettings;
+	public Models.Settings CurrentSettings { get => _currentSettings; set { _currentSettings = value; LoadSettings(value); } }
 	public GameLauncherHelper GameLauncherHelper { get; set; }
 	public List<ClickableGameViewModel> SearchResults { get => _searchResults; set { _searchResults = value; OnPropertyChanged(nameof(SearchResults)); } }
 	public GameList Games { get; set; }
@@ -79,6 +80,9 @@ public class MainViewModel : ViewModelBase
 	public double MaxHeight { get => _maxHeight; set { _maxHeight = value; OnPropertyChanged(nameof(MaxHeight)); } }
 	public double MaxWidth { get => _maxWidth; set { _maxWidth = value; OnPropertyChanged(nameof(MaxWidth)); } }
 
+	private int _sideBarPosition;
+	public int SideBarPosition { get => _sideBarPosition; set { _sideBarPosition = value; OnPropertyChanged(nameof(SideBarPosition)); } }
+
 	private Thickness _borderMargin = new(10);
 	public Thickness BorderMargin { get => _borderMargin; set { _borderMargin = value; OnPropertyChanged(nameof(BorderMargin)); } }
 
@@ -95,7 +99,7 @@ public class MainViewModel : ViewModelBase
 		// Properties
 		Games = profile.Games;
 		CurrentViewModel = new HomePageViewModel(Games, this);
-		ContextHelper = new(profile.Settings);
+		CurrentSettings = profile.Settings;
 
 		// Fields
 		_window = window;
@@ -130,6 +134,15 @@ public class MainViewModel : ViewModelBase
 		{
 			SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList();
 			profiles.Save();
+		};
+	}
+
+	private void LoadSettings(Models.Settings settings)
+	{
+		SideBarPosition = settings.SidebarPosition switch
+		{
+			Position.Right => 3,
+			_ => 0
 		};
 	}
 

@@ -66,6 +66,7 @@
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource Foreground}"
                         Style="{DynamicResource RegularTextBox}"
+                        Text="{Binding MaxGamesText, UpdateSourceTrigger=PropertyChanged}"
                         TextAlignment="Center" />
                     <Button
                         x:Name="SaveButton"
@@ -73,6 +74,7 @@
                         Padding="5"
                         HorizontalAlignment="Left"
                         Background="{DynamicResource Background2}"
+                        Command="{Binding SaveMaxGamesCommand}"
                         Foreground="{DynamicResource Foreground}"
                         Style="{StaticResource RegularButton}">
                         <StackPanel Orientation="Horizontal">
@@ -97,45 +99,6 @@
                 </StackPanel>
             </Expander>
 
-            <Expander
-                Margin="5"
-                Background="{DynamicResource Background2}"
-                Foreground="{DynamicResource Foreground}"
-                Style="{DynamicResource Expander}">
-                <Expander.Header>
-                    <StackPanel Margin="10 15" Orientation="Horizontal">
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
-                            FontSize="22"
-                            Text="&#xF47A;" />
-                        <StackPanel>
-                            <TextBlock
-                                Margin="10 0 0 0"
-                                FontSize="14"
-                                FontWeight="ExtraBold"
-                                Foreground="{DynamicResource Foreground}"
-                                Text="{x:Static lang:Resources.RecommandedGamesSection}" />
-                            <TextBlock
-                                Margin="10 0 0 0"
-                                FontSize="12"
-                                Foreground="{DynamicResource Foreground}"
-                                Text="{x:Static lang:Resources.RecommandedSettings}" />
-                        </StackPanel>
-                    </StackPanel>
-                </Expander.Header>
-                <CheckBox
-                    x:Name="DisplayedUnusedGamesChk"
-                    Margin="10"
-                    VerticalContentAlignment="Center"
-                    Background="Transparent"
-                    BorderBrush="{DynamicResource Accent}"
-                    BorderThickness="2"
-                    Content="{x:Static lang:Resources.ShowMoreUnplayedGames}"
-                    FontWeight="ExtraBold"
-                    Foreground="{DynamicResource Foreground}"
-                    Style="{DynamicResource CheckBoxStyle1}" />
-            </Expander>
 
             <Border
                 Margin="5"
@@ -180,6 +143,7 @@
                         BorderBrush="{x:Null}"
                         BorderThickness="2"
                         Foreground="{DynamicResource Foreground}"
+                        SelectedIndex="{Binding PositionIndex, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource ComboBoxStyle1}">
                         <ComboBoxItem Content="{x:Static lang:Resources.Left}" />
                         <ComboBoxItem Content="{x:Static lang:Resources.Right}" />

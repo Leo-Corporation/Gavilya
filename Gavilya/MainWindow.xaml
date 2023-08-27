@@ -193,13 +193,15 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <Grid DataContext="{Binding Nav}">
-                    <Grid.Resources>
-                        <DataTemplate DataType="{x:Type viewmodels:NavBarViewModel}">
-                            <components:NavBarComponent />
-                        </DataTemplate>
-                    </Grid.Resources>
-                    <components:NavBarComponent />
+                <Grid Grid.Column="{Binding SideBarPosition}">
+                    <Grid DataContext="{Binding Nav}">
+                        <Grid.Resources>
+                            <DataTemplate DataType="{x:Type viewmodels:NavBarViewModel}">
+                                <components:NavBarComponent />
+                            </DataTemplate>
+                        </Grid.Resources>
+                        <components:NavBarComponent />
+                    </Grid>
                 </Grid>
                 <Popup
                     Width="400"

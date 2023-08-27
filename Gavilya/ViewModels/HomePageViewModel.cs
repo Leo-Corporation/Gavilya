@@ -31,13 +31,13 @@ using System.Threading.Tasks;
 
 namespace Gavilya.ViewModels
 {
-    public class HomePageViewModel : ViewModelBase
-    {
+	public class HomePageViewModel : ViewModelBase
+	{
 		private readonly GameList _games;
-        private readonly MainViewModel _mainViewModel;
+		private readonly MainViewModel _mainViewModel;
 		public string GreetingMessage => $"{Properties.Resources.Hello} {Environment.UserName}{Properties.Resources.ExclamationMark}";
-        public List<MinimalGameViewModel> Favorites => _games.Where(g => g.IsFavorite).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
-        public List<MinimalGameViewModel> Recents => _games.OrderByDescending(g => g.LastTimePlayed).Take(4).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
+		public List<MinimalGameViewModel> Favorites => _games.Where(g => g.IsFavorite).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
+		public List<MinimalGameViewModel> Recents => _games.OrderByDescending(g => g.LastTimePlayed).Take(_mainViewModel.CurrentSettings.MaxNumberRecentGamesShown).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
 
 		public HomePageViewModel(GameList games, MainViewModel mainViewModel)
 		{
