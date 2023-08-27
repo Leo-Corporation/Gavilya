@@ -149,6 +149,9 @@ public class GameCardViewModel : ViewModelBase
 		}
 	}
 
+	private bool _isSelected = false;
+	public bool IsSelected { get => _isSelected; set { _isSelected = value; OnPropertyChanged(nameof(IsSelected)); } }
+
 	private Visibility _mouseHoverVis = Visibility.Hidden;
 	private readonly List<Tag> _tags;
 
@@ -162,6 +165,7 @@ public class GameCardViewModel : ViewModelBase
 	public ICommand EditCommand { get; }
 	public ICommand ClickCommand { get; }
 	public ICommand FavCommand { get; }
+	public ICommand CheckCommand { get; }
 
 	public GameCardViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
@@ -184,6 +188,7 @@ public class GameCardViewModel : ViewModelBase
 		EditCommand = new RelayCommand(Edit);
 		ClickCommand = new RelayCommand(Click);
 		FavCommand = new RelayCommand(Fav);
+		CheckCommand = new RelayCommand(Check);
 		PlayCommand = new RelayCommand(Play);
 	}
 
@@ -213,5 +218,16 @@ public class GameCardViewModel : ViewModelBase
 		IsFavorite = !IsFavorite;
 		_game.IsFavorite = IsFavorite;
 		_games[_games.IndexOf(_game)] = _game;
+	}
+
+	private void Check(object? obj)
+	{
+		if (_mainViewModel.ItemsToRemove.Contains(_game))
+		{
+			_mainViewModel.ItemsToRemove.Remove(_game);
+
+			return;
+		}
+		_mainViewModel.ItemsToRemove.Add(_game);
 	}
 }

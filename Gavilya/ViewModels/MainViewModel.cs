@@ -40,6 +40,7 @@ public class MainViewModel : ViewModelBase
 	private readonly List<Tag> _tags;
 	private readonly WindowHelper _windowHelper;
 	private List<ClickableGameViewModel> _searchResults;
+	internal GameList ItemsToRemove { get; set; } = new();
 
 	private Models.Settings _currentSettings;
 	public Models.Settings CurrentSettings { get => _currentSettings; set { _currentSettings = value; LoadSettings(value); } }
@@ -96,6 +97,7 @@ public class MainViewModel : ViewModelBase
 	public ICommand MaximizeRestoreCommand { get; }
 	public ICommand CloseCommand { get; }
 	public ICommand SearchClickCommand { get; }
+	public ICommand DeleteCommand { get; }
 
 	public MainViewModel(Window window, Profile profile, ProfileData profiles)
 	{
@@ -120,6 +122,7 @@ public class MainViewModel : ViewModelBase
 		MinimizeCommand = new RelayCommand(Minimize);
 		MaximizeRestoreCommand = new RelayCommand(Maximize);
 		CloseCommand = new RelayCommand(Close);
+		DeleteCommand = new RelayCommand(DeleteGames);
 		SearchClickCommand = new RelayCommand((o) =>
 		{
 			SearchOpen = !SearchOpen;
@@ -184,5 +187,16 @@ public class MainViewModel : ViewModelBase
 	private void Close(object parameter)
 	{
 		_window.Close();
+	}
+
+	private void DeleteGames(object obj)
+	{
+		if (ItemsToRemove.Count > 0 && MessageBox.Show(Properties.Resources.DeleteConfirmMessage, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+		{
+			foreach (var item in ItemsToRemove)
+			{
+				Games.Remove(item);
+			}
+		}
 	}
 }

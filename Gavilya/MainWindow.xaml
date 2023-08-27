@@ -83,25 +83,7 @@
                                 Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
-                    <Button
-                        Name="SelectBtn"
-                        Grid.Column="7"
-                        Width="32"
-                        Height="32"
-                        Background="Transparent"
-                        BorderThickness="0"
-                        Content="&#xFC56;"
-                        FontFamily="Fonts\#FluentSystemIcons-Regular"
-                        FontSize="14"
-                        Foreground="{DynamicResource Foreground}"
-                        Style="{StaticResource TitleBarButtonStyle}">
-                        <Button.ToolTip>
-                            <ToolTip
-                                Background="{DynamicResource Background}"
-                                Content="{x:Static lang:Resources.SelectGames}"
-                                Foreground="{DynamicResource Foreground}" />
-                        </Button.ToolTip>
-                    </Button>
+
                     <Button
                         Name="DeleteBtn"
                         Grid.Column="8"
@@ -109,6 +91,7 @@
                         Height="32"
                         Background="Transparent"
                         BorderThickness="0"
+                        Command="{Binding DeleteCommand}"
                         Content="&#xF34D;"
                         FontFamily="Fonts\#FluentSystemIcons-Regular"
                         FontSize="14"
