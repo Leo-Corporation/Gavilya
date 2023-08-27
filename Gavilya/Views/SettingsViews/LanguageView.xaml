@@ -68,7 +68,13 @@
                             BorderBrush="{x:Null}"
                             BorderThickness="2"
                             Foreground="{DynamicResource Foreground}"
-                            Style="{DynamicResource ComboBoxStyle1}" />
+                            SelectedIndex="{Binding SelectedIndex}"
+                            Style="{DynamicResource ComboBoxStyle1}">
+                            <ComboBoxItem Content="{x:Static lang:Resources.Default}" />
+                            <ComboBoxItem Content="English (United States)" />
+                            <ComboBoxItem Content="Français (France)" />
+                            <ComboBoxItem Content="中文（简体）" />
+                        </ComboBox>
                         <Button
                             x:Name="SaveButton"
                             Margin="10"
@@ -76,15 +82,16 @@
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Background="{DynamicResource Background2}"
+                            Command="{Binding SaveCommand}"
                             Foreground="{DynamicResource Foreground}"
                             Style="{StaticResource RegularButton}"
-                            Visibility="Collapsed">
+                            Visibility="Visible">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
                                     Margin="0 0 5 0"
                                     VerticalAlignment="Center"
-                                    FontFamily="..\..\Fonts\#FluentlyIcons"
-                                    Text="&#xead3;" />
+                                    FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                                    Text="&#xF680;" />
                                 <TextBlock
                                     FontSize="13"
                                     FontWeight="ExtraBold"

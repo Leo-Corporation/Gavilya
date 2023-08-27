@@ -26,6 +26,7 @@ using Gavilya.ViewModels;
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 
 namespace Gavilya;
@@ -40,13 +41,21 @@ public partial class App : Application
 		profiles.Load();
 		var currentProfile = profiles.Profiles.Where(p => p.ProfileUuid == profiles.SelectedProfileUuid).First();
 
+		if (currentProfile.Settings.Language != Language.Default)
+			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(currentProfile.Settings.Language switch
+			{
+				Language.en_US => "en-US",
+				Language.fr_FR => "fr-FR",
+				Language.zh_CN => "zh-CN",
+			});
+
 		if (currentProfile.Settings.MakeAutoSave && IsSaveDay(currentProfile.Settings.AutoSaveDay) && !File.Exists($@"{currentProfile.Settings.SavePath}\GavilyaProfiles_{DateTime.Now:yyyy_MM_dd}.g4v"))
 		{
 			profiles.Backup(currentProfile.Settings.SavePath);
 		}
 
 		MainWindow = new MainWindow();
-		
+
 		MainViewModel mvm = new(MainWindow, currentProfile, profiles);
 		MainWindow.DataContext = mvm;
 		MainWindow.Show();
@@ -85,4 +94,6 @@ public partial class App : Application
 
 		return false;
 	}
+
+
 }
