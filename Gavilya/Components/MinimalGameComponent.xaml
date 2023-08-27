@@ -15,6 +15,7 @@
             <ToolTip
                 Name="GameNameToolTip"
                 Background="{DynamicResource Background}"
+                Content="{Binding Name}"
                 Foreground="{DynamicResource Foreground}" />
         </Border.ToolTip>
 
