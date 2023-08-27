@@ -22,9 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,12 +49,12 @@ namespace Gavilya.Models
 		/// <summary>
 		/// True if Gavilya should make an autosave.
 		/// </summary>
-		public bool? MakeAutoSave { get; set; }
+		public bool MakeAutoSave { get; set; }
 
 		/// <summary>
 		/// The day when Gavilya should make an auto save.
 		/// </summary>
-		public int? AutoSaveDay { get; set; }
+		public int AutoSaveDay { get; set; }
 
 		/// <summary>
 		/// The save file path.
@@ -62,33 +64,49 @@ namespace Gavilya.Models
 		/// <summary>
 		/// The maximum amount of recent games shown in the home page.
 		/// </summary>
-		public int? MaxNumberRecentGamesShown { get; set; }
+		public int MaxNumberRecentGamesShown { get; set; }
 
 		/// <summary>
 		/// The number of search results to display in the search box. (default = 3)
 		/// </summary>
-		public int? NumberOfSearchResultsToDisplay { get; set; }
+		public int NumberOfSearchResultsToDisplay { get; set; }
 
 		/// <summary>
 		/// The opacity of the FPS Counter (a value between 0 et 1)
 		/// </summary>
-		public double? FpsCounterOpacity { get; set; }
+		public double FpsCounterOpacity { get; set; }
 
 		/// <summary>
 		/// True if Gavilya should show a notification if updates are available.
 		/// </summary>
-		public bool? UpdatesAvNotification { get; set; }
+		public bool UpdatesAvNotification { get; set; }
 
 		/// <summary>
 		/// The position of the sidebar.
 		/// </summary>
-		public Position? SidebarPosition { get; set; }
+		public Position SidebarPosition { get; set; }
 
 		/// <summary>
-		/// The path of the theme to load.
+		/// The theme of the app. Set null to use default.
 		/// </summary>
-		public string? ThemePath { get; set; }
-	}
+		public Theme? CurrentTheme { get; set; }
+
+        public Settings()
+        {
+			IsFirstRun = true;
+			Language = Language.Default;
+			IsMaximized = false;
+			MakeAutoSave = true;
+			AutoSaveDay = 1;
+			SavePath = $@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Backups";
+			MaxNumberRecentGamesShown = 4;
+			NumberOfSearchResultsToDisplay = 3;
+			FpsCounterOpacity = 1;
+			UpdatesAvNotification = true;
+			SidebarPosition = Position.Left;
+			CurrentTheme = null;
+		}
+    }	
 
 	public enum Position
 	{
