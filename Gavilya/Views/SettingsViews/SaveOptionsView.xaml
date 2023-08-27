@@ -61,6 +61,7 @@
                         Padding="5"
                         HorizontalAlignment="Left"
                         Background="{DynamicResource Background2}"
+                        Command="{Binding ImportCommand}"
                         Foreground="{DynamicResource Foreground}"
                         Style="{StaticResource RegularButton}">
                         <StackPanel Orientation="Horizontal">
@@ -121,6 +122,7 @@
                         Padding="5"
                         HorizontalAlignment="Left"
                         Background="{DynamicResource Background2}"
+                        Command="{Binding ExportCommand}"
                         Foreground="{DynamicResource Foreground}"
                         Style="{StaticResource RegularButton}">
                         <StackPanel Orientation="Horizontal">
@@ -181,10 +183,12 @@
                         Background="Transparent"
                         BorderBrush="{DynamicResource Accent}"
                         BorderThickness="2"
+                        Command="{Binding MakeSaveCommand}"
                         Content="{x:Static lang:Resources.MakeAutoSaves}"
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource Foreground}"
-                        Style="{DynamicResource CheckBoxStyle2}" />
+                        IsChecked="{Binding MakeSave, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{DynamicResource CheckBoxStyle1}" />
 
                     <StackPanel x:Name="AutoSaveSection">
                         <TextBlock
@@ -198,13 +202,15 @@
                                 Margin="10 0 10 0"
                                 VerticalAlignment="Center"
                                 d:Text="C:\Windows"
-                                Foreground="{DynamicResource Foreground}" />
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{Binding SaveLocation}" />
                             <Button
                                 x:Name="Browse"
                                 Margin="10 10 0 10"
                                 Padding="5"
                                 HorizontalAlignment="Left"
                                 Background="{DynamicResource Background2}"
+                                Command="{Binding BrowseCommand}"
                                 Foreground="{DynamicResource Foreground}"
                                 Style="{StaticResource RegularButton}">
                                 <StackPanel Orientation="Horizontal">
@@ -246,6 +252,8 @@
                                 BorderBrush="{x:Null}"
                                 BorderThickness="2"
                                 Foreground="{DynamicResource Foreground}"
+                                ItemsSource="{Binding Days}"
+                                SelectedIndex="{Binding MonthDay, UpdateSourceTrigger=PropertyChanged}"
                                 Style="{DynamicResource ComboBoxStyle1}" />
                             <TextBlock
                                 VerticalAlignment="Center"
@@ -259,6 +267,7 @@
                             Padding="5"
                             HorizontalAlignment="Left"
                             Background="{DynamicResource Background2}"
+                            Command="{Binding SaveNowCommand}"
                             Foreground="{DynamicResource Foreground}"
                             Style="{StaticResource RegularButton}">
                             <StackPanel Orientation="Horizontal">

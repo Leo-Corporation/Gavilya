@@ -45,7 +45,7 @@ public class SettingsPageViewModel : ViewModelBase
 	public ICommand SearchCommand { get; }
 	public ICommand ThemeCommand { get; }
 
-	public SettingsPageViewModel(Profile profile, ProfileData profiles, MainViewModel mainViewModel)
+	public SettingsPageViewModel(Profile profile, ProfileData profiles, GameList games, MainViewModel mainViewModel)
 	{
 		AboutCommand = new RelayCommand((o) => CurrentViewModel = new AboutViewModel());
 		DataCommand = new RelayCommand((o) => CurrentViewModel = new DataOptionsViewModel(profile, profiles));
@@ -54,7 +54,7 @@ public class SettingsPageViewModel : ViewModelBase
 		HomeCommand = new RelayCommand((o) => CurrentViewModel = new HomeOptionsViewModel(profile, profiles, mainViewModel));
 		LanguageCommand = new RelayCommand((o) => CurrentViewModel = new LanguageViewModel());
 		NotificationsCommand = new RelayCommand((o) => CurrentViewModel = new NotificationsViewModel());
-		SaveOptionsCommand = new RelayCommand((o) => CurrentViewModel = new SaveOptionsViewModel());
+		SaveOptionsCommand = new RelayCommand((o) => CurrentViewModel = new SaveOptionsViewModel(profile, profiles, games, mainViewModel));
 		StartupCommand = new RelayCommand((o) => CurrentViewModel = new StartupViewModel());
 		SearchCommand = new RelayCommand((o) => CurrentViewModel = new SearchViewModel());
 		ThemeCommand = new RelayCommand((o) => CurrentViewModel = new ThemeViewModel());

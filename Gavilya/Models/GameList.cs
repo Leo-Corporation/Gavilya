@@ -24,6 +24,11 @@ SOFTWARE.
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
+using System.Linq;
+using System.Windows;
+using System.Windows.Shapes;
+using System.Xml.Serialization;
 
 namespace Gavilya.Models;
 public class GameList : ObservableCollection<Game>
@@ -122,5 +127,46 @@ public class GameList : ObservableCollection<Game>
 		}
 
 		return sortedGameLists;
+	}
+
+	public void Export(string filePath)
+	{
+		try
+		{
+			XmlSerializer xmlSerializer = new(GetType()); // XML Serializer
+			StreamWriter streamWriter = new(filePath); // The place where the file is going to be exported
+			xmlSerializer.Serialize(streamWriter, this); // Create the file
+			streamWriter.Dispose();
+			MessageBox.Show(Properties.Resources.ExportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
+		}
+		catch (Exception ex)
+		{
+			MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+		}
+	}
+
+	public void Import(string filePath)
+	{
+		try
+		{
+			if (File.Exists(filePath))
+			{
+				XmlSerializer xmlSerializer = new(GetType()); // XML Serializer
+				StreamReader streamReader = new(filePath); // The path of the file
+
+				var games = (GameList)xmlSerializer.Deserialize(streamReader) ?? new(); // Re-create each GameInfo
+				foreach (Game game in games)
+				{
+					if (!Contains(game)) Add(game);
+				}
+
+				streamReader.Dispose();
+				MessageBox.Show(Properties.Resources.ImportSuccess, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Information); // Success
+			}
+		}
+		catch (Exception ex)
+		{
+			MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+		}
 	}
 }

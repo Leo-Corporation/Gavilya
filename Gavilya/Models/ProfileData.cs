@@ -70,4 +70,16 @@ public class ProfileData
 
 		streamReader.Dispose();
 	}
+
+	public void Backup(string filePath)
+	{
+		XmlSerializer xmlSerializer = new(GetType());
+		if (!Directory.Exists(filePath)) // If the directory doesn't exist
+		{
+			Directory.CreateDirectory(filePath); // Create the directory
+		}
+		StreamWriter streamWriter = new($@"{filePath}\GavilyaProfiles_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.g4v");
+		xmlSerializer.Serialize(streamWriter, this);
+		streamWriter.Dispose();
+	}
 }
