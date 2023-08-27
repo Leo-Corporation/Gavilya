@@ -57,6 +57,6 @@ public class SettingsPageViewModel : ViewModelBase
 		SaveOptionsCommand = new RelayCommand((o) => CurrentViewModel = new SaveOptionsViewModel(profile, profiles, games, mainViewModel));
 		StartupCommand = new RelayCommand((o) => CurrentViewModel = new StartupViewModel(profile, profiles, mainViewModel));
 		SearchCommand = new RelayCommand((o) => CurrentViewModel = new SearchViewModel(profile, profiles, mainViewModel));
-		ThemeCommand = new RelayCommand((o) => CurrentViewModel = new ThemeViewModel());
+		ThemeCommand = new RelayCommand((o) => CurrentViewModel = new ThemeViewModel(profile, profiles, mainViewModel));
 	}
 }

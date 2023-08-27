@@ -25,20 +25,20 @@ SOFTWARE.
 using System;
 
 namespace Gavilya.Models;
-public class Theme
+public class ThemeInfo
 {
 	public string Name { get; set; }
 	public string FilePath { get; set; }
 	public string RequiredVersion { get; set; }
 
-	public Theme(string name, string filePath, string requiredVersion)
+	public ThemeInfo(string name, string filePath, string requiredVersion)
 	{
 		Name = name;
 		FilePath = filePath;
 		RequiredVersion = requiredVersion;
 	}
 
-	public Theme()
+	public ThemeInfo()
 	{
 		Name = "";
 		FilePath = "";
@@ -49,7 +49,7 @@ public class Theme
 	{
 		if (obj == null || GetType() != obj.GetType()) return false;
 
-		Theme theme = (Theme)obj;
+		ThemeInfo theme = (ThemeInfo)obj;
 		return (Name == theme.Name) && (FilePath == theme.FilePath) && (RequiredVersion == theme.RequiredVersion);
 	}
 

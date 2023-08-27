@@ -66,6 +66,7 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Background="{DynamicResource Background2}"
+                        Command="{Binding ImportCommand}"
                         Foreground="{DynamicResource Foreground}"
                         Style="{StaticResource RegularButton}">
                         <StackPanel Orientation="Horizontal">
@@ -99,6 +100,8 @@
                         BorderBrush="{x:Null}"
                         BorderThickness="2"
                         Foreground="{DynamicResource Foreground}"
+                        ItemsSource="{Binding ThemeNames}"
+                        SelectedIndex="{Binding Index, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource ComboBoxStyle1}" />
 
                 </Grid>

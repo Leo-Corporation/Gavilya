@@ -99,7 +99,7 @@ namespace Gavilya.Models
 		/// <summary>
 		/// The theme of the app. Set null to use default.
 		/// </summary>
-		public Theme? CurrentTheme { get; set; }
+		public string CurrentTheme { get; set; }
 
         public Settings()
         {
@@ -116,7 +116,7 @@ namespace Gavilya.Models
 			SidebarPosition = Position.Left;
 			DefaultPage = Page.Home;
 			DefaultView = View.Card;
-			CurrentTheme = null;
+			CurrentTheme = "";
 		}
     }	
 

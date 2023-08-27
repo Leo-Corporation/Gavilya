@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using Gavilya.Helpers;
 using Gavilya.Models;
 using Gavilya.ViewModels;
 using System;
@@ -54,6 +55,10 @@ public partial class App : Application
 			profiles.Backup(currentProfile.Settings.SavePath);
 		}
 
+		if (currentProfile.Settings.CurrentTheme != "")
+		{
+			ThemeHelper.ChangeTheme(ThemeHelper.GetThemeFromPath(currentProfile.Settings.CurrentTheme), currentProfile.Settings.CurrentTheme.Replace(@"\theme.manifest", ""));
+		}
 		MainWindow = new MainWindow();
 
 		MainViewModel mvm = new(MainWindow, currentProfile, profiles);

@@ -34,7 +34,7 @@ using System.Xml.Serialization;
 namespace Gavilya.Helpers;
 public class ThemeHelper
 {
-	public static void ChangeTheme(Theme theme, string path)
+	public static void ChangeTheme(ThemeInfo theme, string path)
 	{
 		Application.Current.Resources.MergedDictionaries.Clear();
 		ResourceDictionary resourceDictionary = new()
@@ -45,25 +45,25 @@ public class ThemeHelper
 	}
 
 	/// <summary>
-	/// Gets a <see cref="List"/> of installed <see cref="Theme"/>.
+	/// Gets a <see cref="List"/> of installed <see cref="ThemeInfo"/>.
 	/// </summary>
 	/// <returns>The installed themes</returns>
-	public static List<(Theme, string)> GetInstalledThemes()
+	public static List<(ThemeInfo, string)> GetInstalledThemes()
 	{
-		string themePath = $@"{FileSys.AppDataPath}\Gavilya\Themes\";
+		string themePath = $@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Themes\";
 		// If there is no themes
 		if (!Directory.Exists(themePath))
 		{
 			Directory.CreateDirectory(themePath);
 			return new()
 			{
-				(new Theme(Properties.Resources.Default, "Dark.xaml", Context.Version), "")
+				(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Context.Version), "")
 			};
 		}
 
-		List<(Theme, string)> installedThemes = new()
+		List<(ThemeInfo, string)> installedThemes = new()
 		{
-			(new Theme(Properties.Resources.Default, "Dark.xaml", Context.Version), "")
+			(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Context.Version), "")
 		};
 		// If there are themes installed
 		foreach (var subdir in Directory.GetDirectories(themePath))
@@ -72,14 +72,15 @@ public class ThemeHelper
 			{
 				try
 				{
-					var xmlSerializer = new XmlSerializer(typeof(Theme));
+					var xmlSerializer = new XmlSerializer(typeof(ThemeInfo));
 					StreamReader streamReader = new($@"{subdir}\theme.manifest");
-					Theme theme = (Theme)xmlSerializer.Deserialize(streamReader);
+					ThemeInfo theme = (ThemeInfo)xmlSerializer.Deserialize(streamReader);
 
 
 					installedThemes.Add((theme, subdir));
 				}
 				catch { }
+
 			}
 		}
 		return installedThemes;
@@ -88,13 +89,13 @@ public class ThemeHelper
 	public static void InstallTheme(string path)
 	{
 		string guid = GuidGen.Generate(new GuidOptions(32, false, false, false));
-		ZipFile.ExtractToDirectory(path, $@"{FileSys.AppDataPath}\Gavilya\Themes\{guid}");
+		ZipFile.ExtractToDirectory(path, $@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Themes\{guid}");
 	}
 
-	public static Theme GetThemeFromPath(string path)
+	public static ThemeInfo GetThemeFromPath(string path)
 	{
-		var xmlSerializer = new XmlSerializer(typeof(Theme));
+		var xmlSerializer = new XmlSerializer(typeof(ThemeInfo));
 		StreamReader streamReader = new(path);
-		return (Theme)xmlSerializer.Deserialize(streamReader);
+		return (ThemeInfo)xmlSerializer.Deserialize(streamReader);
 	}
 }
