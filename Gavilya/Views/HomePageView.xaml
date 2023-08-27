@@ -109,6 +109,18 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-
+        <StackPanel Margin="10" Orientation="Horizontal">
+            <TextBlock
+                VerticalAlignment="Center"
+                FontFamily="..\Fonts\#FluentSystemIcons-Filled"
+                FontSize="18"
+                Text="&#xF342;" />
+            <TextBlock
+                Margin="10 0 0 0"
+                VerticalAlignment="Center"
+                FontSize="18"
+                FontWeight="ExtraBold"
+                Text="{x:Static lang:Resources.Statistics}" />
+        </StackPanel>
     </StackPanel>
 </UserControl>
