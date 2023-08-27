@@ -263,7 +263,8 @@
                             Width="45"
                             Height="45"
                             Margin="2.5"
-                            CornerRadius="5">
+                            CornerRadius="5"
+                            Cursor="Hand">
                             <Border.ToolTip>
                                 <ToolTip
                                     Name="GameNameToolTip"
