@@ -23,6 +23,8 @@ SOFTWARE.
 */
 using Gavilya.Models;
 using Gavilya.ViewModels;
+using System;
+using System.IO;
 using System.Linq;
 using System.Windows;
 
@@ -36,11 +38,51 @@ public partial class App : Application
 	{
 		ProfileData profiles = new();
 		profiles.Load();
-		
+		var currentProfile = profiles.Profiles.Where(p => p.ProfileUuid == profiles.SelectedProfileUuid).First();
+
+		if (currentProfile.Settings.MakeAutoSave && IsSaveDay(currentProfile.Settings.AutoSaveDay) && !File.Exists($@"{currentProfile.Settings.SavePath}\GavilyaProfiles_{DateTime.Now:yyyy_MM_dd}.g4v"))
+		{
+			profiles.Backup(currentProfile.Settings.SavePath);
+		}
+
 		MainWindow = new MainWindow();
-		MainViewModel mvm = new(MainWindow, profiles.Profiles.Where(p => p.ProfileUuid == profiles.SelectedProfileUuid).First(), profiles);
+		
+		MainViewModel mvm = new(MainWindow, currentProfile, profiles);
 		MainWindow.DataContext = mvm;
 		MainWindow.Show();
 		base.OnStartup(e);
+	}
+
+	private bool IsSaveDay(int day)
+	{
+		// Get the current date
+		DateTime currentDate = DateTime.Today;
+
+		// Get the last day of the current month
+		int lastDayOfMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
+
+		// Check if the specified day matches the current day or the last day of the month
+		if (day == currentDate.Day || (day == 31 && day >= lastDayOfMonth))
+		{
+			return true;
+		}
+
+		// Check special case for February
+		if (currentDate.Month == 2)
+		{
+			// If the specified day is 29, 30, or 31, return true
+			if ((day == 29 || day == 30 || day == 31))
+			{
+				return true;
+			}
+
+			// If the specified day is 28 (last day of February), return true
+			if (day == 28)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

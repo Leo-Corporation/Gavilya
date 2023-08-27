@@ -78,7 +78,7 @@ public class ProfileData
 		{
 			Directory.CreateDirectory(filePath); // Create the directory
 		}
-		StreamWriter streamWriter = new($@"{filePath}\GavilyaProfiles_{DateTime.Now:yyyy_MM_dd_HH_mm_ss}.g4v");
+		StreamWriter streamWriter = new($@"{filePath}\GavilyaProfiles_{DateTime.Now:yyyy_MM_dd}.g4v");
 		xmlSerializer.Serialize(streamWriter, this);
 		streamWriter.Dispose();
 	}
