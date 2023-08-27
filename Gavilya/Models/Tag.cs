@@ -34,7 +34,13 @@ public class Tag
 		HexColorCode = hexColorCode;
 	}
 
-	public string Name { get; }
+    public Tag()
+    {
+		Name = "";
+		HexColorCode = "#FF0000";
+    }
+
+    public string Name { get; }
 	public string HexColorCode { get; }
 
 	public override bool Equals(object? obj)

@@ -44,7 +44,17 @@ public class Profile
 		Settings = new();
 	}
 
-	public override bool Equals(object? obj)
+    public Profile()
+    {
+		Name = Environment.UserName;
+		ProfilePictureFilePath = "";
+		ProfileUuid = Guid.NewGuid().ToString();
+		Games = new();
+		Tags = new();
+		Settings = new();
+	}
+
+    public override bool Equals(object? obj)
 	{
 		return obj is Profile profile && ProfileUuid == profile.ProfileUuid;
 	}
