@@ -23,6 +23,7 @@ SOFTWARE.
 */
 using Gavilya.Models;
 using Gavilya.ViewModels;
+using System.Linq;
 using System.Windows;
 
 namespace Gavilya;
@@ -33,15 +34,11 @@ public partial class App : Application
 {
 	protected override void OnStartup(StartupEventArgs e)
 	{
-		Profile currentProfile = new("Profile");
-		currentProfile.Tags = new()
-		{
-			new("Tag1", "#ff0000"),
-			new("Tag2", "#00ff00"),
-			new("Tag3", "#0000ff")
-		};
+		ProfileList profiles = new();
+		profiles.Load();
+		
 		MainWindow = new MainWindow();
-		MainViewModel mvm = new(MainWindow, currentProfile);
+		MainViewModel mvm = new(MainWindow, profiles.Where(p => p.ProfileUuid == profiles.SelectedProfileUuid).First(), profiles);
 		MainWindow.DataContext = mvm;
 		MainWindow.Show();
 		base.OnStartup(e);

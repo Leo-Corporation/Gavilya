@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+using System;
 using System.Collections.Generic;
 
 namespace Gavilya.Models;
@@ -31,13 +32,25 @@ public class Profile
 	public GameList Games { get; set; }
 	public List<Tag> Tags { get; set; }
 	public Settings Settings { get; set; }
+	public string ProfileUuid { get; set; }
 
 	public Profile(string name)
 	{
 		Name = name;
 		ProfilePictureFilePath = "";
+		ProfileUuid = Guid.NewGuid().ToString();
 		Games = new();
 		Tags = new();
 		Settings = new();
+	}
+
+	public override bool Equals(object? obj)
+	{
+		return obj is Profile profile && ProfileUuid == profile.ProfileUuid;
+	}
+
+	public override int GetHashCode()
+	{
+		return HashCode.Combine(Name, ProfilePictureFilePath, Games, Tags, Settings, ProfileUuid);
 	}
 }
