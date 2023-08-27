@@ -316,7 +316,7 @@
     <value>您的游戏已成功导出。</value>
   </data>
   <data name="GavFiles" xml:space="preserve">
-    <value>GAV 文件</value>
+    <value>G4V 文件</value>
   </data>
   <data name="ImportConfirmMsg" xml:space="preserve">
     <value>当前游戏将被新游戏替换，您无法还原此操作。 你想继续吗？</value>
