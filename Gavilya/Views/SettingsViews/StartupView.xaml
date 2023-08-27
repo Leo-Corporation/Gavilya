@@ -55,13 +55,11 @@
                     </StackPanel>
                 </Expander.Header>
                 <StackPanel Orientation="Horizontal">
-                    <Border
-                        x:Name="CardsPageBorder"
-                        Margin="5"
-                        BorderBrush="{x:Null}"
-                        BorderThickness="3"
-                        CornerRadius="10"
-                        Cursor="Hand">
+                    <RadioButton
+                        Margin="2 5"
+                        Cursor="Hand"
+                        GroupName="ViewRadioGroup"
+                        Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
                                 Padding="20"
@@ -70,29 +68,22 @@
                                 FontSize="44"
                                 Text="&#xF451;"
                                 TextAlignment="Center" />
-                            <RadioButton
-                                x:Name="CardsPageRadioBtn"
+                            <TextBlock
                                 Margin="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Background="Transparent"
-                                BorderBrush="{DynamicResource Accent}"
-                                Content="{x:Static lang:Resources.GameCard}"
                                 FontSize="13"
                                 FontWeight="ExtraBold"
                                 Foreground="{DynamicResource Foreground}"
-                                GroupName="StartupPageRadioGroup"
-                                Style="{DynamicResource RadioButtonStyle1}" />
+                                Text="{x:Static lang:Resources.GameCard}" />
                         </StackPanel>
-                    </Border>
-
-                    <Border
-                        x:Name="ListPageBorder"
-                        Margin="5"
-                        BorderBrush="{x:Null}"
-                        BorderThickness="3"
-                        CornerRadius="10"
-                        Cursor="Hand">
+                    </RadioButton>
+                    <RadioButton
+                        Margin="2 5"
+                        Cursor="Hand"
+                        GroupName="ViewRadioGroup"
+                        Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
                                 Padding="20"
@@ -101,21 +92,17 @@
                                 FontSize="44"
                                 Text="&#xF138;"
                                 TextAlignment="Center" />
-                            <RadioButton
-                                x:Name="ListPageRadioBtn"
+                            <TextBlock
                                 Margin="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Background="Transparent"
-                                BorderBrush="{DynamicResource Accent}"
-                                Content="{x:Static lang:Resources.GameList}"
                                 FontSize="13"
                                 FontWeight="ExtraBold"
                                 Foreground="{DynamicResource Foreground}"
-                                GroupName="StartupPageRadioGroup"
-                                Style="{DynamicResource RadioButtonStyle1}" />
+                                Text="{x:Static lang:Resources.GameList}" />
                         </StackPanel>
-                    </Border>
+                    </RadioButton>
                 </StackPanel>
             </Expander>
             <Expander
@@ -146,126 +133,102 @@
                     </StackPanel>
                 </Expander.Header>
                 <StackPanel Orientation="Horizontal">
-                    <Border
-                        x:Name="HomePageBorder"
-                        Margin="5"
-                        BorderBrush="{x:Null}"
-                        BorderThickness="3"
-                        CornerRadius="10"
-                        Cursor="Hand">
+                    <RadioButton
+                        Margin="2 5"
+                        Cursor="Hand"
+                        GroupName="StartupPageRadioGroup"
+                        Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
                                 Padding="20"
                                 HorizontalAlignment="Stretch"
-                                FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                                FontFamily="..\..\Fonts\#FluentSystemIcons-Filled"
                                 FontSize="44"
-                                Text="&#xF481;"
+                                Text="&#xF488;"
                                 TextAlignment="Center" />
-                            <RadioButton
-                                x:Name="HomePageRadioBtn"
+                            <TextBlock
                                 Margin="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Background="Transparent"
-                                BorderBrush="{DynamicResource Accent}"
-                                Content="{x:Static lang:Resources.Home}"
                                 FontSize="13"
                                 FontWeight="ExtraBold"
                                 Foreground="{DynamicResource Foreground}"
-                                GroupName="DefaultStartPageRadioGroup"
-                                Style="{DynamicResource RadioButtonStyle1}" />
+                                Text="{x:Static lang:Resources.Home}" />
                         </StackPanel>
-                    </Border>
-                    <Border
-                        x:Name="LibraryPageBorder"
-                        Margin="5"
-                        BorderBrush="{x:Null}"
-                        BorderThickness="3"
-                        CornerRadius="10"
-                        Cursor="Hand">
+                    </RadioButton>
+                    <RadioButton
+                        Margin="2 5"
+                        Cursor="Hand"
+                        GroupName="StartupPageRadioGroup"
+                        Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
                                 Padding="20"
                                 HorizontalAlignment="Stretch"
-                                FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                                FontFamily="..\..\Fonts\#FluentSystemIcons-Filled"
                                 FontSize="44"
-                                Text="&#xF4D3;"
+                                Text="&#xFE7B;"
                                 TextAlignment="Center" />
-                            <RadioButton
-                                x:Name="LibraryPageRadioBtn"
+                            <TextBlock
                                 Margin="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Background="Transparent"
-                                BorderBrush="{DynamicResource Accent}"
-                                Content="{x:Static lang:Resources.Library}"
                                 FontSize="13"
                                 FontWeight="ExtraBold"
                                 Foreground="{DynamicResource Foreground}"
-                                GroupName="DefaultStartPageRadioGroup"
-                                Style="{DynamicResource RadioButtonStyle1}" />
+                                Text="{x:Static lang:Resources.Library}" />
                         </StackPanel>
-                    </Border>
-                    <Border
-                        x:Name="RecentPageBorder"
-                        Margin="5"
-                        BorderBrush="{x:Null}"
-                        BorderThickness="3"
-                        CornerRadius="10"
-                        Cursor="Hand">
+                    </RadioButton>
+                    <RadioButton
+                        Margin="2 5"
+                        Cursor="Hand"
+                        GroupName="StartupPageRadioGroup"
+                        Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
                                 Padding="20"
                                 HorizontalAlignment="Stretch"
-                                FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                                FontFamily="..\..\Fonts\#FluentSystemIcons-Filled"
                                 FontSize="44"
-                                Text="&#xF47F;"
+                                Text="&#xF486;"
                                 TextAlignment="Center" />
-                            <RadioButton
-                                x:Name="RecentPageRadioBtn"
+                            <TextBlock
                                 Margin="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Background="Transparent"
-                                BorderBrush="{DynamicResource Accent}"
-                                Content="{x:Static lang:Resources.RecentGames}"
                                 FontSize="13"
                                 FontWeight="ExtraBold"
                                 Foreground="{DynamicResource Foreground}"
-                                GroupName="DefaultStartPageRadioGroup"
-                                Style="{DynamicResource RadioButtonStyle1}" />
+                                Text="{x:Static lang:Resources.Recents}" />
                         </StackPanel>
-                    </Border>
-                    <Border
-                        x:Name="ProfilePageBorder"
-                        Margin="5"
-                        BorderBrush="{x:Null}"
-                        BorderThickness="3"
-                        CornerRadius="10"
-                        Cursor="Hand">
+                    </RadioButton>
+                    <RadioButton
+                        Margin="2 5"
+                        Cursor="Hand"
+                        GroupName="StartupPageRadioGroup"
+                        Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">
                             <TextBlock
                                 Padding="20"
                                 HorizontalAlignment="Stretch"
-                                FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                                FontFamily="..\..\Fonts\#FluentSystemIcons-Filled"
                                 FontSize="44"
-                                Text="&#xF5BE;"
+                                Text="&#xF5C8;"
                                 TextAlignment="Center" />
-                            <RadioButton
-                                x:Name="ProfilePageRadioBtn"
+                            <TextBlock
                                 Margin="2"
                                 HorizontalAlignment="Center"
                                 VerticalAlignment="Center"
                                 Background="Transparent"
-                                BorderBrush="{DynamicResource Accent}"
-                                Content="{x:Static lang:Resources.Profile}"
                                 FontSize="13"
                                 FontWeight="ExtraBold"
                                 Foreground="{DynamicResource Foreground}"
-                                GroupName="DefaultStartPageRadioGroup"
-                                Style="{DynamicResource RadioButtonStyle1}" />
+                                Text="{x:Static lang:Resources.Profile}" />
                         </StackPanel>
-                    </Border>
+                    </RadioButton>
                 </StackPanel>
             </Expander>
         </StackPanel>

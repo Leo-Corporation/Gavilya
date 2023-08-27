@@ -934,7 +934,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GAV Files.
+        ///   Looks up a localized string similar to G4V Files.
         /// </summary>
         public static string GavFiles {
             get {
@@ -1798,7 +1798,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Play to {game}.
+        ///   Looks up a localized string similar to Play to {0}.
         /// </summary>
         public static string PlayTo {
             get {
@@ -1929,6 +1929,15 @@ namespace Gavilya.Properties {
         public static string RecentGames {
             get {
                 return ResourceManager.GetString("RecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recents.
+        /// </summary>
+        public static string Recents {
+            get {
+                return ResourceManager.GetString("Recents", resourceCulture);
             }
         }
         

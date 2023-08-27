@@ -996,4 +996,7 @@
   <data name="PlayTo" xml:space="preserve">
     <value>播放到 {0}</value>
   </data>
+  <data name="Recents" xml:space="preserve">
+    <value>近期活动</value>
+  </data>
 </root>

@@ -996,4 +996,7 @@
   <data name="PlayTo" xml:space="preserve">
     <value>Play to {0}</value>
   </data>
+  <data name="Recents" xml:space="preserve">
+    <value>Recents</value>
+  </data>
 </root>
