@@ -129,6 +129,7 @@ public class MainViewModel : ViewModelBase
 		Games.CollectionChanged += (o, e) =>
 		{
 			SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList();
+			profiles.Save();
 		};
 	}
 
