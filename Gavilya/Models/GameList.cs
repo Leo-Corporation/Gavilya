@@ -52,6 +52,17 @@ public class GameList : ObservableCollection<Game>
 
 	public void Refresh() => OnCollectionChanged(new(System.Collections.Specialized.NotifyCollectionChangedAction.Reset));
 
+	public GameList GetRange(int start, int end)
+	{
+		var items = this.Take(start..end);
+		GameList results = new();
+		foreach (var item in items)
+		{
+			results.Add(item);
+		}
+		return results;
+	}
+
 	public List<GameList> GetSortedGameLists()
 	{
 		DateTime now = DateTime.Now;
@@ -169,6 +180,35 @@ public class GameList : ObservableCollection<Game>
 		catch (Exception ex)
 		{
 			MessageBox.Show($"{Properties.Resources.ErrorOccurred}:\n{ex.Message}", Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // Error
+		}
+	}
+
+	public GameList GetRecommandedGames()
+	{
+		try
+		{
+			Dictionary<int, int> gameScores = new();
+
+			for (int i = 0; i < Count; i++)
+			{
+				gameScores.Add(i, this[i].LastTimePlayed / (this[i].TotalTimePlayed + 1));
+			}
+
+			var sort = from pair in gameScores orderby pair.Value descending select pair;		
+			GameList recommandedGames = new();
+
+			foreach (KeyValuePair<int, int> keyValuePair in sort)
+			{
+				recommandedGames.Add(this[keyValuePair.Key]);
+			}
+
+			return recommandedGames.Count > 5
+				? recommandedGames.GetRange(0, 5)
+				: recommandedGames;
+		}
+		catch (DivideByZeroException)
+		{
+			return new();
 		}
 	}
 }

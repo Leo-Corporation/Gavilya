@@ -95,5 +95,20 @@
                 FontWeight="ExtraBold"
                 Text="{x:Static lang:Resources.RecommandedGames}" />
         </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
+            <ItemsControl ItemsSource="{Binding Recommended}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:MinimalGameViewModel}">
+                        <components:MinimalGameComponent />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
     </StackPanel>
 </UserControl>
