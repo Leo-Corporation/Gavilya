@@ -59,6 +59,9 @@ public class NavBarViewModel : ViewModelBase
 	private bool _isProfile;
 	public bool IsProfile { get => _isProfile; set { _isProfile = value; OnPropertyChanged(nameof(IsProfile)); } }
 
+	private string _profilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
+	public string ProfilePicture { get => _profilePicture; set { _profilePicture = value; OnPropertyChanged(nameof(ProfilePicture)); } }
+
 	private Visibility _uwpAllowed;
 	public Visibility UwpAllowed { get => _uwpAllowed; set { _uwpAllowed = value; OnPropertyChanged(nameof(UwpAllowed)); } }
 
@@ -95,6 +98,7 @@ public class NavBarViewModel : ViewModelBase
 		IsProfile = _mainViewModel.CurrentSettings.DefaultPage == Page.Profile;
 		Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
 		UwpAllowed = (Sys.CurrentWindowsVersion == WindowsVersion.Windows10 || Sys.CurrentWindowsVersion == WindowsVersion.Windows11) ? Visibility.Visible : Visibility.Collapsed;
+		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
 
 		Games.CollectionChanged += (o, e) =>
 		{
