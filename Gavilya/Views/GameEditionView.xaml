@@ -531,6 +531,7 @@
                         </StackPanel>
                         <Popup
                             MaxHeight="250"
+                            AllowsTransparency="True"
                             IsOpen="{Binding IsTagOpen}"
                             Placement="Top"
                             PlacementTarget="{Binding ElementName=AddTagsBtn}"
