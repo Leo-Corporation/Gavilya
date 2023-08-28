@@ -47,7 +47,7 @@ public class SettingsPageViewModel : ViewModelBase
 
 	public SettingsPageViewModel(Profile profile, ProfileData profiles, GameList games, MainViewModel mainViewModel)
 	{
-		AboutCommand = new RelayCommand((o) => CurrentViewModel = new AboutViewModel());
+		AboutCommand = new RelayCommand((o) => CurrentViewModel = new AboutViewModel(profiles));
 		DataCommand = new RelayCommand((o) => CurrentViewModel = new DataOptionsViewModel(profile, profiles));
 		FpsCommand = new RelayCommand((o) => CurrentViewModel = new FpsViewModel(profile, profiles, mainViewModel));
 		GameOptionsCommand = new RelayCommand((o) => CurrentViewModel = new GameOptionsViewModel(profile, profiles, mainViewModel));

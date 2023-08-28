@@ -43,13 +43,14 @@
                 Margin="0 0 0 10"
                 FontSize="12"
                 Foreground="{DynamicResource Foreground}"
-                Text=""
+                Text="{Binding Version}"
                 TextAlignment="Center" />
             <StackPanel Orientation="Horizontal">
                 <Button
                     Name="UpdateBtn"
                     Padding="5"
                     Background="{DynamicResource Background2}"
+                    Command="{Binding UpdateCommand}"
                     Cursor="Hand"
                     FontSize="14"
                     FontWeight="ExtraBold"
@@ -71,6 +72,7 @@
                     Margin="10 0 0 0"
                     Padding="10 5"
                     Background="{DynamicResource Background2}"
+                    Command="{Binding LicensesCommand}"
                     Content="&#xF4A4;"
                     Cursor="Hand"
                     FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
@@ -89,6 +91,7 @@
                     Margin="10 0 0 0"
                     Padding="10 5"
                     Background="{DynamicResource Background2}"
+                    Command="{Binding OpenRepoCommand}"
                     Content="&#xFDAB;"
                     Cursor="Hand"
                     FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
