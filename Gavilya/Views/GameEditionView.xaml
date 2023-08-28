@@ -217,6 +217,7 @@
                         Padding="7"
                         HorizontalAlignment="Center"
                         Background="{DynamicResource Background2}"
+                        Command="{Binding AssociateRawgCommand}"
                         Content="{x:Static lang:Resources.RAWGio}"
                         Cursor="Hand"
                         FontSize="13"
@@ -311,6 +312,7 @@
                             </Button>
                             <Popup
                                 Height="250"
+                                AllowsTransparency="True"
                                 IsOpen="{Binding IsRawgOpen}"
                                 Placement="Top"
                                 PlacementTarget="{Binding ElementName=AssociateBtn}"
@@ -318,6 +320,7 @@
                                 <Border
                                     Margin="10"
                                     Padding="10"
+                                    Background="{DynamicResource Background}"
                                     CornerRadius="10">
                                     <Border.Effect>
                                         <DropShadowEffect
@@ -539,6 +542,7 @@
                             <Border
                                 Margin="10"
                                 Padding="10"
+                                Background="{DynamicResource Background}"
                                 CornerRadius="10">
                                 <Border.Effect>
                                     <DropShadowEffect
