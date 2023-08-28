@@ -10,12 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\DefaultPP.png" />
     <None Remove="Assets\Gavilya.png" />
+    <None Remove="Assets\Steam.png" />
     <None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
     <None Remove="Fonts\Hauora-ExtraBold.ttf" />
     <None Remove="Fonts\Hauora-Regular.ttf" />
     <None Remove="Fonts\Hauora-SemiBold.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\DefaultPP.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>

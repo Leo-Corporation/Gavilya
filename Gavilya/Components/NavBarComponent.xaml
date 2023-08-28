@@ -95,7 +95,35 @@
                     Foreground="{DynamicResource Foreground}" />
             </RadioButton.ToolTip>
         </RadioButton>
-
+        <RadioButton
+            Grid.Row="3"
+            Height="40"
+            Margin="5 2"
+            Padding="5"
+            HorizontalContentAlignment="Center"
+            Background="Transparent"
+            BorderThickness="2 0 0 0"
+            Cursor="Hand"
+            FontFamily="..\Fonts\#FluentSystemIcons-Filled"
+            FontSize="18"
+            Foreground="{DynamicResource Foreground}"
+            Style="{DynamicResource NavBarBtn}">
+            <Rectangle
+                Width="25"
+                Height="25"
+                RadiusX="15"
+                RadiusY="15">
+                <Rectangle.Fill>
+                    <ImageBrush x:Name="ProfilePicture" ImageSource="/Assets/DefaultPP.png" />
+                </Rectangle.Fill>
+            </Rectangle>
+            <RadioButton.ToolTip>
+                <ToolTip
+                    Background="{DynamicResource Background}"
+                    Content="{x:Static lang:Resources.RecentGames}"
+                    Foreground="{DynamicResource Foreground}" />
+            </RadioButton.ToolTip>
+        </RadioButton>
         <Grid Grid.Row="4">
             <Button
                 x:Name="AddBtn"
