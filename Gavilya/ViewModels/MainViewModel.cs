@@ -24,6 +24,9 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
+using PeyrSharp.Core;
+using PeyrSharp.Env;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -37,6 +40,8 @@ public class MainViewModel : ViewModelBase
 
 	private object _currentView;
 	private readonly Window _window;
+	private readonly Profile _profile;
+	private readonly ProfileData _profiles;
 	private readonly List<Tag> _tags;
 	private readonly WindowHelper _windowHelper;
 	private List<ClickableGameViewModel> _searchResults;
@@ -123,6 +128,8 @@ public class MainViewModel : ViewModelBase
 
 		// Fields
 		_window = window;
+		_profile = profile;
+		_profiles = profiles;
 		_tags = profile.Tags;
 		_navBarViewModel = new(this, profile, profiles);
 		_windowHelper = new(window);
@@ -160,6 +167,8 @@ public class MainViewModel : ViewModelBase
 			SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList();
 			profiles.Save();
 		};
+
+		CheckUpdateOnStart();
 	}
 
 	private void LoadSettings(Models.Settings settings)
@@ -205,6 +214,23 @@ public class MainViewModel : ViewModelBase
 			foreach (var item in ItemsToRemove)
 			{
 				Games.Remove(item);
+			}
+		}
+	}
+
+	private async void CheckUpdateOnStart()
+	{
+		if (!CurrentSettings.UpdatesAvNotification) return;
+		System.Windows.Forms.NotifyIcon notifyIcon = new();
+		if (await Internet.IsAvailableAsync())
+		{
+			notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe");
+			
+			if (Update.IsAvailable(await Update.GetLastVersionAsync(Context.LastVersionLink), Context.Version))
+			{
+				notifyIcon.Visible = true; // Show
+				notifyIcon.ShowBalloonTip(5000, Properties.Resources.MainWindowTitle, Properties.Resources.UpdateAvMessageNotify, System.Windows.Forms.ToolTipIcon.Info);
+				notifyIcon.Visible = false; // Hide
 			}
 		}
 	}
