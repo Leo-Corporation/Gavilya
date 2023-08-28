@@ -10,7 +10,7 @@
     Margin="0 2"
     FontFamily="..\Fonts\#Hauora"
     mc:Ignorable="d">
-    <Border Background="{DynamicResource Background2}" CornerRadius="10">
+    <Border CornerRadius="10">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -31,7 +31,8 @@
                         x:Name="GameCheck"
                         Margin="5 5 5 0"
                         x:FieldModifier="public"
-                        Background="{DynamicResource Background2}"
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource Foreground}"
                         Command="{Binding SelectCommand}"
                         Cursor="Hand"
                         IsChecked="{Binding Selected, UpdateSourceTrigger=PropertyChanged}"
@@ -42,7 +43,7 @@
                     Width="15"
                     Height="15"
                     Margin="10 0 0 0"
-                    d:Fill="#10F15F"
+                    Fill="{Binding ColorBrush}"
                     RadiusX="15"
                     RadiusY="15" />
                 <TextBlock

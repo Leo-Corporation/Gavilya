@@ -24,8 +24,10 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
+using PeyrSharp.Core.Converters;
 using System.Collections.Generic;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Gavilya.ViewModels;
 
@@ -42,6 +44,8 @@ public class TagSelectorViewModel : ViewModelBase
 	private string _name;
 	public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
 
+	public SolidColorBrush ColorBrush { get; }
+
 	public TagSelectorViewModel(List<Tag> selectedTags, Tag tag, bool selected)
 	{
 		Tag = tag;
@@ -50,6 +54,8 @@ public class TagSelectorViewModel : ViewModelBase
 
 		Name = tag.Name;
 
+		var c = new HEX(tag.HexColorCode).ToRgb().Color;
+		ColorBrush = new SolidColorBrush { Color = Color.FromRgb(c.R, c.G, c.B) };
 
 		SelectCommand = new RelayCommand(Select);
 	}
