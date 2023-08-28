@@ -215,6 +215,14 @@ public class MainViewModel : ViewModelBase
 			{
 				Games.Remove(item);
 			}
+
+			CurrentViewModel = CurrentViewModel switch
+			{
+				HomePageViewModel => new HomePageViewModel(Games, this),
+				RecentPageViewModel => new RecentPageViewModel(Games, _tags, this),
+				LibPageViewModel => new LibPageViewModel(Games, _tags, this),
+				_ => CurrentViewModel
+			};
 		}
 	}
 
