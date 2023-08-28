@@ -2,10 +2,12 @@
     x:Class="Gavilya.Views.SettingsViews.GameOptionsView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:components="clr-namespace:Gavilya.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:lang="clr-namespace:Gavilya.Properties"
     xmlns:local="clr-namespace:Gavilya.Views.SettingsViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Gavilya.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="800"
     FontFamily="..\..\Fonts\#Hauora"
@@ -105,15 +107,22 @@
                             Margin="0 0 10 0"
                             VerticalAlignment="Center"
                             Text="{x:Static lang:Resources.Color}" />
-                        <Border
-                            x:Name="ForegroundBorder"
-                            Width="30"
-                            Height="30"
+                        <Button
                             Margin="0 0 10 0"
                             VerticalAlignment="Center"
-                            Background="MediumPurple"
-                            CornerRadius="5"
-                            Cursor="Hand" />
+                            Background="Transparent"
+                            Command="{Binding ChangeColorCommand}"
+                            Cursor="Hand"
+                            Style="{DynamicResource EditButton}">
+                            <Border
+                                x:Name="ForegroundBorder"
+                                Width="30"
+                                Height="30"
+                                VerticalAlignment="Center"
+                                Background="{Binding SolidColorBrush}"
+                                CornerRadius="5"
+                                Cursor="Hand" />
+                        </Button>
                         <TextBlock
                             Margin="0 0 10 0"
                             VerticalAlignment="Center"
@@ -130,6 +139,7 @@
                             FontWeight="ExtraBold"
                             Foreground="{DynamicResource Foreground}"
                             Style="{DynamicResource RegularTextBox}"
+                            Text="{Binding TagName}"
                             TextAlignment="Center" />
                         <Button
                             x:Name="AddBtn"
@@ -137,6 +147,7 @@
                             Padding="5"
                             HorizontalAlignment="Left"
                             Background="{DynamicResource Background2}"
+                            Command="{Binding AddTagCommand}"
                             Foreground="{DynamicResource Foreground}"
                             Style="{StaticResource RegularButton}">
                             <StackPanel Orientation="Horizontal">
@@ -160,7 +171,18 @@
                         </Button>
                     </StackPanel>
 
-                    <StackPanel x:Name="TagsDisplayer" Grid.Row="1" />
+                    <ItemsControl Grid.Row="1" ItemsSource="{Binding TagsVm}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type vm:TagViewModel}">
+                                <components:TagComponent />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </Grid>
             </Expander>
         </StackPanel>

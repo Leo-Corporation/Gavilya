@@ -22,36 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using System;
+using System.Windows.Controls;
 
-namespace Gavilya.Models;
-
-public class Tag
+namespace Gavilya.Components
 {
-	public Tag(string name, string hexColorCode)
-	{
-		Name = name;
-		HexColorCode = hexColorCode;
-		Uuid = Guid.NewGuid().ToString();
-	}
-
-	public Tag()
-	{
-		Name = "";
-		HexColorCode = "#FF0000";
-		Uuid = Guid.NewGuid().ToString();
-	}
-	public string Uuid { get; }
-	public string Name { get; set; }
-	public string HexColorCode { get; set;  }
-
-	public override bool Equals(object? obj)
-	{
-		return obj is Tag tag && tag.Uuid == Uuid;
-	}
-
-	public override int GetHashCode()
-	{
-		return HashCode.Combine(Uuid, Name, HexColorCode);
-	}
+	/// <summary>
+	/// Interaction logic for TagComponent.xaml
+	/// </summary>
+	public partial class TagComponent : UserControl
+    {
+        public TagComponent()
+        {
+            InitializeComponent();
+        }
+    }
 }
