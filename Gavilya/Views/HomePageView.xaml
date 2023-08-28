@@ -122,5 +122,13 @@
                 FontWeight="ExtraBold"
                 Text="{x:Static lang:Resources.Statistics}" />
         </StackPanel>
+        <Grid>
+            <Grid.Resources>
+                <DataTemplate DataType="{x:Type vm:StatsViewModel}">
+                    <local:StatsView />
+                </DataTemplate>
+            </Grid.Resources>
+            <ContentControl Content="{Binding StatsView}" />
+        </Grid>
     </StackPanel>
 </UserControl>

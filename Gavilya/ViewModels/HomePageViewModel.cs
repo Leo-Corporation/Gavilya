@@ -40,10 +40,14 @@ namespace Gavilya.ViewModels
 		public List<MinimalGameViewModel> Recents => _games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).OrderByDescending(g => g.LastTimePlayed).Take(_mainViewModel.CurrentSettings.MaxNumberRecentGamesShown).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
 		public List<MinimalGameViewModel> Recommended => _games.GetRecommandedGames().Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
 
+		private StatsViewModel _statView;
+		public StatsViewModel StatsView { get => _statView; set { _statView = value; OnPropertyChanged(nameof(StatsView)); } }
 		public HomePageViewModel(GameList games, MainViewModel mainViewModel)
 		{
 			_games = games;
 			_mainViewModel = mainViewModel;
+
+			StatsView = new(_games);
 		}
 	}
 }

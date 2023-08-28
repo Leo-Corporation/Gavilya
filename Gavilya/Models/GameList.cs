@@ -40,6 +40,10 @@ public class GameList : ObservableCollection<Game>
 
 	}
 
+	public GameList(IEnumerable<Game> games) : base(games)
+	{
+	}
+
 	public GameList(string title) : base()
 	{
 		Title = title;
@@ -61,6 +65,22 @@ public class GameList : ObservableCollection<Game>
 			results.Add(item);
 		}
 		return results;
+	}
+
+	public GameList SortByPlayTime(bool sortByMostPlayed)
+	{
+		List<Game> sortedGames;
+
+		if (sortByMostPlayed)
+		{
+			sortedGames = this.OrderByDescending(game => game.TotalTimePlayed).ToList();
+		}
+		else
+		{
+			sortedGames = this.OrderBy(game => game.TotalTimePlayed).ToList();
+		}
+
+		return new GameList(sortedGames);
 	}
 
 	public List<GameList> GetSortedGameLists()
