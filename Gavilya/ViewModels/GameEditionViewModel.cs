@@ -44,7 +44,7 @@ public class GameEditionViewModel : ViewModelBase
 {
 	private readonly MainViewModel _mainViewModel;
 	Game? Game { get; set; }
-	GameType GameType { get; init; }
+	GameType GameType { get; set; }
 	GameList Games { get; set; }
 	public List<Tag> Tags { get; }
 	public List<Tag> SelectedTags { get; set; }
@@ -154,6 +154,12 @@ public class GameEditionViewModel : ViewModelBase
 	private bool _isRawgOpen = false;
 	public bool IsRawgOpen { get => _isRawgOpen; set { _isRawgOpen = value; OnPropertyChanged(nameof(IsRawgOpen)); } }
 
+	private string _convertSteamId;
+	public string ConvertSteamId { get => _convertSteamId; set { _convertSteamId = value; OnPropertyChanged(nameof(ConvertSteamId)); } }
+
+	private string _convertSteamProcess;
+	public string ConvertSteamProcess { get => _convertSteamProcess; set { _convertSteamProcess = value; OnPropertyChanged(nameof(ConvertSteamProcess)); } }
+
 	private string _rawgSearchQuery;
 	public string RawgSearchQuery { get => _rawgSearchQuery; set { _rawgSearchQuery = value; OnPropertyChanged(nameof(RawgSearchQuery)); } }
 
@@ -178,8 +184,24 @@ public class GameEditionViewModel : ViewModelBase
 	private Visibility _uwpFieldsVis = Visibility.Collapsed;
 	public Visibility UwpFieldsVis { get => _uwpFieldsVis; set { _uwpFieldsVis = value; OnPropertyChanged(nameof(UwpFieldsVis)); } }
 
+	/// <summary>
+	/// The section with the Steam App ID.
+	/// </summary>
 	private Visibility _steamFieldsVis = Visibility.Collapsed;
 	public Visibility SteamFieldsVis { get => _steamFieldsVis; set { _steamFieldsVis = value; OnPropertyChanged(nameof(SteamFieldsVis)); } }
+
+
+	/// <summary>
+	/// The section with the Steam Convert Assistant field.
+	/// </summary>
+	private Visibility _convertSteam = Visibility.Collapsed;
+	public Visibility ConvertSteamVis { get => _convertSteam; set { _convertSteam = value; OnPropertyChanged(nameof(ConvertSteamVis)); } }
+
+	/// <summary>
+	/// The section with the Convert Steam  button.
+	/// </summary>
+	private Visibility _steamSectionVis = Visibility.Collapsed;
+	public Visibility SteamSectionVis { get => _steamSectionVis; set { _steamSectionVis = value; OnPropertyChanged(nameof(SteamSectionVis)); } }
 
 	public ICommand AddCommand { get; }
 	public ICommand BrowseFileCommand { get; }
@@ -188,7 +210,15 @@ public class GameEditionViewModel : ViewModelBase
 	public ICommand AssociateTagCommand { get; }
 	public ICommand AssociateRawgCommand { get; }
 	public ICommand RawgSearchCommand { get; }
+	public ICommand ShowConvertSectionCommand { get; }
 
+	/// <summary>
+	/// This constructor is used when editing an exisiting game.
+	/// </summary>
+	/// <param name="game"></param>
+	/// <param name="games"></param>
+	/// <param name="tags"></param>
+	/// <param name="mainViewModel"></param>
 	public GameEditionViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_mainViewModel = mainViewModel;
@@ -204,6 +234,7 @@ public class GameEditionViewModel : ViewModelBase
 		AssociateTagCommand = new RelayCommand(OpenTagPopup);
 		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
 		RawgSearchCommand = new RelayCommand(SearchRawg);
+		ShowConvertSectionCommand = new RelayCommand(ShowConvert);
 
 		// Load properties
 		Name = game.Name;
@@ -235,6 +266,7 @@ public class GameEditionViewModel : ViewModelBase
 				break;
 			default:
 				Command = game.Command;
+				SteamSectionVis = Visibility.Visible;
 				break;
 		}
 
@@ -244,6 +276,13 @@ public class GameEditionViewModel : ViewModelBase
 		SteamFieldsVis = game.GameType == GameType.Steam ? Visibility.Visible : Visibility.Collapsed;
 	}
 
+	/// <summary>
+	/// This constructor is used when adding a game for the first time.
+	/// </summary>
+	/// <param name="gameType"></param>
+	/// <param name="games"></param>
+	/// <param name="tags"></param>
+	/// <param name="mainViewModel"></param>
 	public GameEditionViewModel(GameType gameType, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_mainViewModel = mainViewModel;
@@ -265,6 +304,27 @@ public class GameEditionViewModel : ViewModelBase
 		DragAreaVis = gameType == GameType.Win32 ? Visibility.Visible : Visibility.Collapsed;
 		UwpFieldsVis = gameType == GameType.UWP ? Visibility.Visible : Visibility.Collapsed;
 		SteamFieldsVis = gameType == GameType.Steam ? Visibility.Visible : Visibility.Collapsed;
+	}
+
+	private void ShowConvert(object? obj)
+	{
+		if (ConvertSteamVis == Visibility.Visible && !string.IsNullOrEmpty(ConvertSteamId))
+		{
+			if (MessageBox.Show(Properties.Resources.ConvertToSteamMsg, Properties.Resources.ConvertToSteam, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
+			{
+				SteamId = ConvertSteamId;
+				Process = string.IsNullOrEmpty(ConvertSteamProcess) ? Process : ConvertSteamProcess;
+				GameType = GameType.Steam;
+
+				Game.Command = $"steam://rungameid/{ConvertSteamId}";
+				Game.ProcessName = string.IsNullOrEmpty(ConvertSteamProcess) ? Game.ProcessName : ConvertSteamProcess;
+				Game.GameType = GameType.Steam;
+				SteamSectionVis = Visibility.Collapsed;
+				SteamFieldsVis = Visibility.Visible;
+				DragAreaVis = Visibility.Collapsed;
+			}
+		}
+		ConvertSteamVis = Visibility.Visible;
 	}
 
 	private async void BrowseUwp(object? obj)

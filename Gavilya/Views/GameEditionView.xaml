@@ -466,7 +466,7 @@
                     d:Visibility="Visible"
                     Background="{DynamicResource Background2}"
                     CornerRadius="5"
-                    Visibility="Collapsed">
+                    Visibility="{Binding SteamSectionVis}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
@@ -486,6 +486,7 @@
                                 Padding="7"
                                 VerticalAlignment="Center"
                                 Background="{DynamicResource Background2}"
+                                Command="{Binding ShowConvertSectionCommand}"
                                 Content="{x:Static lang:Resources.Convert}"
                                 Cursor="Hand"
                                 FontSize="13"
@@ -504,7 +505,7 @@
                         <Grid
                             x:Name="ConvertSteamPanel"
                             Grid.Row="1"
-                            Visibility="Collapsed">
+                            Visibility="{Binding ConvertSteamVis}">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
                                 <ColumnDefinition Width="Auto" />
@@ -517,15 +518,14 @@
                             <TextBox
                                 x:Name="SteamAppIdTextBox"
                                 Grid.Column="1"
-                                Width="200"
+                                Width="150"
                                 Margin="10 0"
                                 VerticalAlignment="Center"
-                                Background="{x:Null}"
-                                BorderBrush="{DynamicResource Accent}"
-                                BorderThickness="2"
-                                CaretBrush="{DynamicResource Accent}"
+                                Background="{DynamicResource SelectedBackground}"
+                                BorderThickness="0"
                                 Foreground="{DynamicResource Foreground}"
-                                Style="{DynamicResource RegularTextBox}" />
+                                Style="{DynamicResource RegularTextBox}"
+                                Text="{Binding ConvertSteamId, UpdateSourceTrigger=PropertyChanged}" />
 
                             <TextBlock
                                 Grid.Row="1"
@@ -536,15 +536,14 @@
                                 x:Name="GameProcessTextBox"
                                 Grid.Row="1"
                                 Grid.Column="1"
-                                Width="200"
+                                Width="150"
                                 Margin="10 10 10 0"
                                 VerticalAlignment="Center"
-                                Background="{x:Null}"
-                                BorderBrush="{DynamicResource Accent}"
-                                BorderThickness="2"
-                                CaretBrush="{DynamicResource Accent}"
+                                Background="{DynamicResource SelectedBackground}"
+                                BorderThickness="0"
                                 Foreground="{DynamicResource Foreground}"
-                                Style="{DynamicResource RegularTextBox}" />
+                                Style="{DynamicResource RegularTextBox}"
+                                Text="{Binding ConvertSteamProcess, UpdateSourceTrigger=PropertyChanged}" />
 
                         </Grid>
                     </Grid>
