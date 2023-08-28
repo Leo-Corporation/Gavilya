@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
+using Gavilya.Views;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
 using System;
@@ -121,7 +122,7 @@ public class MainViewModel : ViewModelBase
 		{
 			Page.Library => new LibPageViewModel(Games, profile.Tags, this),
 			Page.Recent => new RecentPageViewModel(Games, profile.Tags, this),
-			Page.Profile => new ViewModelBase(),
+			Page.Profile => new ProfileViewModel(profile, profiles, Games),
 			_ => new HomePageViewModel(Games, this)
 		};
 		Query = "";
