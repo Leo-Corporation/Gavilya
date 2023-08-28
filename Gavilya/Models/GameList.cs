@@ -105,18 +105,19 @@ public class GameList : ObservableCollection<Game>
 
 	public List<GameList> GetSortedGameByTag()
 	{
-		Dictionary<Tag, List<Game>> tagGamesMap = new();
-
+		Dictionary<Tag, GameList> tagGamesMap = new();
+		GameList noTags = new(Properties.Resources.Other, "#dddddd");
 		// Associate games with their corresponding tags
 		foreach (var game in this)
 		{
 			if (game.Tags != null)
 			{
+				if (game.Tags.Count == 0) noTags.Add(game);
 				foreach (var tag in game.Tags)
 				{
 					if (!tagGamesMap.ContainsKey(tag))
 					{
-						tagGamesMap[tag] = new List<Game>();
+						tagGamesMap[tag] = new GameList();
 					}
 
 					tagGamesMap[tag].Add(game);
@@ -131,13 +132,14 @@ public class GameList : ObservableCollection<Game>
 			var tag = kvp.Key;
 			var games = kvp.Value;
 
-			var gameList = new GameList(tag.Name, tag.HexColorCode);
+			var gameList = new GameList(tag.Name, tag.HexColorCode.Contains("#") ? tag.HexColorCode : $"#{tag.HexColorCode}");
 			foreach (var game in games)
 			{
 				gameList.Add(game);
 			}
 			sortedGameLists.Add(gameList);
 		}
+		sortedGameLists.Add(noTags);
 
 		return sortedGameLists;
 	}
