@@ -25,6 +25,8 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Enums;
 using Gavilya.Models;
+using PeyrSharp.Enums;
+using PeyrSharp.Env;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -57,6 +59,9 @@ public class NavBarViewModel : ViewModelBase
 	private bool _isProfile;
 	public bool IsProfile { get => _isProfile; set { _isProfile = value; OnPropertyChanged(nameof(IsProfile)); } }
 
+	private Visibility _uwpAllowed;
+	public Visibility UwpAllowed { get => _uwpAllowed; set { _uwpAllowed = value; OnPropertyChanged(nameof(UwpAllowed)); } }
+
 	public ICommand HomePageCommand { get; }
 	public ICommand LibraryPageCommand { get; }
 	public ICommand RecentPageCommand { get; }
@@ -87,6 +92,7 @@ public class NavBarViewModel : ViewModelBase
 		IsRecent = _mainViewModel.CurrentSettings.DefaultPage == Page.Recent;
 		IsProfile = _mainViewModel.CurrentSettings.DefaultPage == Page.Profile;
 		Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
+		UwpAllowed = (Sys.CurrentWindowsVersion == WindowsVersion.Windows10 || Sys.CurrentWindowsVersion == WindowsVersion.Windows11) ? Visibility.Visible : Visibility.Collapsed;
 
 		Games.CollectionChanged += (o, e) =>
 		{

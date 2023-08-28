@@ -177,7 +177,8 @@
                             Command="{Binding AddUwpGameCommand}"
                             FontSize="13"
                             Foreground="{DynamicResource Foreground}"
-                            Style="{StaticResource RegularButton}">
+                            Style="{StaticResource RegularButton}"
+                            Visibility="{Binding UwpAllowed}">
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
