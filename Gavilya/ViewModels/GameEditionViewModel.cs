@@ -24,6 +24,7 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Enums;
+using Gavilya.Helpers;
 using Gavilya.Models;
 using Gavilya.Models.Rawg;
 using Microsoft.Win32;
@@ -146,6 +147,10 @@ public class GameEditionViewModel : ViewModelBase
 		}
 	}
 
+	private bool _isUwpOpen = false;
+	public bool IsUwpOpen { get => _isUwpOpen; set { _isUwpOpen = value; OnPropertyChanged(nameof(IsUwpOpen)); } }
+
+
 	private bool _isRawgOpen = false;
 	public bool IsRawgOpen { get => _isRawgOpen; set { _isRawgOpen = value; OnPropertyChanged(nameof(IsRawgOpen)); } }
 
@@ -164,6 +169,9 @@ public class GameEditionViewModel : ViewModelBase
 	private ImageSource _imgSrc;
 	public ImageSource ImageSource { get => _imgSrc; set { _imgSrc = value; OnPropertyChanged(nameof(ImageSource)); } }
 
+	private List<UwpSelectorViewModel> _uwpApps;
+	public List<UwpSelectorViewModel> UwpApps { get => _uwpApps; set { _uwpApps = value; OnPropertyChanged(nameof(UwpApps)); } }
+
 	private Visibility _dragAreaVis = Visibility.Collapsed;
 	public Visibility DragAreaVis { get => _dragAreaVis; set { _dragAreaVis = value; OnPropertyChanged(nameof(DragAreaVis)); } }
 
@@ -176,6 +184,7 @@ public class GameEditionViewModel : ViewModelBase
 	public ICommand AddCommand { get; }
 	public ICommand BrowseFileCommand { get; }
 	public ICommand BrowseImageCommand { get; }
+	public ICommand BrowseUwpCommand { get; }
 	public ICommand AssociateTagCommand { get; }
 	public ICommand AssociateRawgCommand { get; }
 	public ICommand RawgSearchCommand { get; }
@@ -191,6 +200,7 @@ public class GameEditionViewModel : ViewModelBase
 		AddCommand = new RelayCommand(AddGame);
 		BrowseFileCommand = new RelayCommand(BrowseGame);
 		BrowseImageCommand = new RelayCommand(BrowseImage);
+		BrowseUwpCommand = new RelayCommand(BrowseUwp);
 		AssociateTagCommand = new RelayCommand(OpenTagPopup);
 		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
 		RawgSearchCommand = new RelayCommand(SearchRawg);
@@ -245,6 +255,7 @@ public class GameEditionViewModel : ViewModelBase
 		AddCommand = new RelayCommand(AddGame);
 		BrowseFileCommand = new RelayCommand(BrowseGame);
 		BrowseImageCommand = new RelayCommand(BrowseImage);
+		BrowseUwpCommand = new RelayCommand(BrowseUwp);
 		AssociateTagCommand = new RelayCommand(OpenTagPopup);
 		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
 		RawgSearchCommand = new RelayCommand(SearchRawg);
@@ -254,6 +265,12 @@ public class GameEditionViewModel : ViewModelBase
 		DragAreaVis = gameType == GameType.Win32 ? Visibility.Visible : Visibility.Collapsed;
 		UwpFieldsVis = gameType == GameType.UWP ? Visibility.Visible : Visibility.Collapsed;
 		SteamFieldsVis = gameType == GameType.Steam ? Visibility.Visible : Visibility.Collapsed;
+	}
+
+	private async void BrowseUwp(object? obj)
+	{
+		IsUwpOpen = true;
+		UwpApps = (await UwpHelper.GetUwpAppsAsync()).Select(a => new UwpSelectorViewModel(a, this)).ToList();
 	}
 
 	private void OpenTagPopup(object? obj)

@@ -149,7 +149,65 @@
                     Text="{Binding AppId, UpdateSourceTrigger=PropertyChanged}"
                     TextAlignment="Center"
                     Visibility="{Binding UwpFieldsVis}" />
+                <Button
+                    x:Name="SelectUWPAppBtn"
+                    Grid.Column="1"
+                    Padding="7"
+                    VerticalAlignment="Center"
+                    Background="{DynamicResource Background2}"
+                    Command="{Binding BrowseUwpCommand}"
+                    Content="{x:Static lang:Resources.BrowseUWPApps}"
+                    Cursor="Hand"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    Style="{DynamicResource RegularButton}"
+                    Visibility="{Binding UwpFieldsVis}">
+                    <Button.ToolTip>
+                        <ToolTip
+                            Background="{DynamicResource Background}"
+                            Content="{x:Static lang:Resources.BrowseUWPApps}"
+                            Foreground="{DynamicResource Foreground}" />
+                    </Button.ToolTip>
+                </Button>
+                <Popup
+                    Width="400"
+                    Height="250"
+                    AllowsTransparency="True"
+                    IsOpen="{Binding IsUwpOpen}"
+                    Placement="Top"
+                    PlacementTarget="{Binding ElementName=SelectUWPAppBtn}"
+                    StaysOpen="False">
+                    <Border
+                        Margin="10"
+                        Padding="10"
+                        Background="{DynamicResource Background}"
+                        CornerRadius="10">
+                        <Border.Effect>
+                            <DropShadowEffect
+                                BlurRadius="10"
+                                Opacity="0.4"
+                                RenderingBias="Quality"
+                                ShadowDepth="0"
+                                Color="Black" />
+                        </Border.Effect>
 
+                        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="2">
+                            <ItemsControl ItemsSource="{Binding UwpApps}">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel />
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate DataType="{x:Type vm:UwpSelectorViewModel}">
+                                        <components:UwpSelectorComponent />
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </ScrollViewer>
+                    </Border>
+                </Popup>
 
                 <TextBlock
                     Margin="0 10"
