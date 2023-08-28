@@ -260,6 +260,23 @@
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
                             </ScrollViewer>
+                            <StackPanel Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding NoResults}">
+                                <TextBlock Foreground="{DynamicResource Foreground}"
+                                    Margin="2"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="26"
+                                    Text="&#xF690;" />
+                                <TextBlock Foreground="{DynamicResource Foreground}"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="Fonts\#Hauora"
+                                    FontWeight="Bold"
+                                    Text="{x:Static lang:Resources.NoItemsFound}" />
+                            </StackPanel>
+
                         </Grid>
                     </Border>
                 </Popup>

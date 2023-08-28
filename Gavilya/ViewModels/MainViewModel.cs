@@ -65,7 +65,12 @@ public class MainViewModel : ViewModelBase
 	public string Query
 	{
 		get => _query;
-		set { _query = value; SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query)); }
+		set 
+		{ 
+			_query = value; 
+			SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query));
+			NoResults = SearchResults.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+		}
 	}
 
 	private double _maxiIconFontSize = 12;
@@ -92,6 +97,9 @@ public class MainViewModel : ViewModelBase
 
 	private bool _searchOpen;
 	public bool SearchOpen { get => _searchOpen; set { _searchOpen = value; OnPropertyChanged(nameof(SearchOpen)); } }
+
+	private Visibility _noResults;
+	public Visibility NoResults { get => _noResults; set { _noResults = value; OnPropertyChanged(nameof(NoResults)); } }
 
 	public ICommand MinimizeCommand { get; }
 	public ICommand MaximizeRestoreCommand { get; }

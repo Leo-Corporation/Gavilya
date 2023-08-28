@@ -1003,4 +1003,7 @@
   <data name="IncorrectValue" xml:space="preserve">
     <value>Please specify a correct value.</value>
   </data>
+  <data name="NoItemsFound" xml:space="preserve">
+    <value>No items found</value>
+  </data>
 </root>

@@ -1002,4 +1002,7 @@
   <data name="IncorrectValue" xml:space="preserve">
     <value>请指定一个正确的值。</value>
   </data>
+  <data name="NoItemsFound" xml:space="preserve">
+    <value>未找到项目</value>
+  </data>
 </root>
