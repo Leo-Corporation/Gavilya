@@ -121,7 +121,7 @@
             <RadioButton.ToolTip>
                 <ToolTip
                     Background="{DynamicResource Background}"
-                    Content="{x:Static lang:Resources.RecentGames}"
+                    Content="{x:Static lang:Resources.Profiles}"
                     Foreground="{DynamicResource Foreground}" />
             </RadioButton.ToolTip>
         </RadioButton>
