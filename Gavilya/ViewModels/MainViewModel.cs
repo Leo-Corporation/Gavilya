@@ -65,7 +65,7 @@ public class MainViewModel : ViewModelBase
 	public string Query
 	{
 		get => _query;
-		set { _query = value; SearchOpen = true; SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query)); }
+		set { _query = value; SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query)); }
 	}
 
 	private double _maxiIconFontSize = 12;
@@ -111,6 +111,7 @@ public class MainViewModel : ViewModelBase
 			Page.Profile => new ViewModelBase(),
 			_ => new HomePageViewModel(Games, this)
 		};
+		Query = "";
 
 		// Fields
 		_window = window;
