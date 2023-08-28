@@ -48,14 +48,18 @@ namespace Gavilya.ViewModels
 		private string _index;
 		public string Index { get => _index; set { _index = value; OnPropertyChanged(nameof(Index)); } }
 
+		private string _coverFilePath;
+		public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value; OnPropertyChanged(nameof(CoverFilePath)); } }
+
 		public ICommand ClickCommand { get; }
 
-		public StatGameViewModel(int i, Game game, StatsViewModel statsViewModel)
+		public StatGameViewModel(int i, Game game, StatsViewModel? statsViewModel)
 		{
 			_game = game;
-			_statsViewModel = statsViewModel;
+			if (statsViewModel is not null) _statsViewModel = statsViewModel;
 
 			Name = _game.Name;
+			CoverFilePath = game.CoverFilePath;
 			Index = $"#{i + 1}";
 			if (_game.TotalTimePlayed != 0)
 			{

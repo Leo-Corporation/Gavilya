@@ -65,6 +65,7 @@ public class NavBarViewModel : ViewModelBase
 	public ICommand HomePageCommand { get; }
 	public ICommand LibraryPageCommand { get; }
 	public ICommand RecentPageCommand { get; }
+	public ICommand ProfilePageCommand { get; }
 	public ICommand SettingsPageCommand { get; }
 	public ICommand AddCommand { get; }
 	public ICommand AddWin32GameCommand { get; }
@@ -75,6 +76,7 @@ public class NavBarViewModel : ViewModelBase
 		HomePageCommand = new RelayCommand(HomePage);
 		LibraryPageCommand = new RelayCommand(LibraryPage);
 		RecentPageCommand = new RelayCommand(RecentPage);
+		ProfilePageCommand = new RelayCommand(ProfilePage);
 		AddCommand = new RelayCommand(AddGame);
 		AddWin32GameCommand = new RelayCommand(AddWin32Game);
 		AddUwpGameCommand = new RelayCommand(AddUwpGame);
@@ -113,6 +115,11 @@ public class NavBarViewModel : ViewModelBase
 	private void RecentPage(object? obj)
 	{
 		_mainViewModel.CurrentViewModel = new RecentPageViewModel(Games, _tags, _mainViewModel);
+	}
+
+	private void ProfilePage(object? obj)
+	{
+		_mainViewModel.CurrentViewModel = new ProfileViewModel(_profile, _profiles, Games);
 	}
 
 	private void SettingsPage(object? obj)

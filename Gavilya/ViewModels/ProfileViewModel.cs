@@ -1,0 +1,106 @@
+﻿/*
+MIT License
+
+Copyright (c) Léo Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE. 
+*/
+
+using Gavilya.Models;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+
+namespace Gavilya.ViewModels
+{
+	public class ProfileViewModel : ViewModelBase
+	{
+		private readonly Profile _profile;
+		private readonly ProfileData _profileData;
+		private readonly GameList _games;
+
+		public ObservableCollection<StatGameViewModel> TopGames { get; set; }
+
+		private double _recHeight1;
+		public double RecHeight1 { get => _recHeight1; set { _recHeight1 = value; OnPropertyChanged(nameof(RecHeight1)); } }
+
+		private double _recHeight2;
+		public double RecHeight2 { get => _recHeight2; set { _recHeight2 = value; OnPropertyChanged(nameof(RecHeight2)); } }
+
+		private double _recHeight3;
+		public double RecHeight3 { get => _recHeight3; set { _recHeight3 = value; OnPropertyChanged(nameof(RecHeight3)); } }
+
+		private string _totalText;
+		public string TotalText { get => _totalText; set { _totalText = value; OnPropertyChanged(nameof(TotalText)); } }
+
+		private string _profilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
+		public string ProfilePicture { get => _profilePicture; set { _profilePicture = value; OnPropertyChanged(nameof(ProfilePicture)); } }
+				
+		private string _profileName;
+		public string ProfileName { get => _profileName; set { _profileName = value; OnPropertyChanged(nameof(ProfileName)); } }
+
+		private bool _isProfileEditorOpen;
+		public bool IsProfileEditorOpen { get => _isProfileEditorOpen; set { _isProfileEditorOpen = value; OnPropertyChanged(nameof(IsProfileEditorOpen)); } }
+
+		private List<ProfileCompViewModel> _profilesVm;
+		public List<ProfileCompViewModel> ProfilesVm { get => _profilesVm; set { _profilesVm = value; OnPropertyChanged(nameof(ProfilesVm)); } }
+
+		public ICommand AddProfileCommand { get; }
+		public ICommand EditCommand { get; }
+
+		public ProfileViewModel(Profile profile, ProfileData profileData, GameList games)
+		{
+			_profile = profile;
+			_profileData = profileData;
+			_games = games;
+
+			int total = 0;
+			for (int i = 0; i < _games.Count; i++)
+			{
+				total += games[i].TotalTimePlayed;
+			}
+			TotalText = $"{total/3600d:0.0}{Properties.Resources.HourShort}";
+			var sortedGames = _games.SortByPlayTime(true);
+
+			TopGames = new(sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null)));
+			ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
+			ProfileName = profile.Name;
+
+			ProfilesVm = _profileData.Profiles.Select(p => new ProfileCompViewModel(_profile, _profileData, this)).ToList();
+
+			// Load graph
+			if (sortedGames.Count < 3)
+			{
+				//TODO: Placeholder
+				return;
+			}
+
+			double max = sortedGames[0].TotalTimePlayed;
+			RecHeight1 = 150;
+			RecHeight2 = sortedGames[1].TotalTimePlayed / max * 150;
+			RecHeight3 = sortedGames[2].TotalTimePlayed / max * 150;
+		}
+	}
+}

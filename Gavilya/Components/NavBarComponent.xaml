@@ -103,6 +103,7 @@
             HorizontalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="2 0 0 0"
+            Command="{Binding ProfilePageCommand}"
             Cursor="Hand"
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
             FontSize="18"
