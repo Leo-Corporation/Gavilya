@@ -54,7 +54,7 @@
                     </StackPanel>
                 </Expander.Header>
                 <StackPanel>
-                    <CheckBox
+                    <CheckBox Command="{Binding UpdateCheckCommand}"
                         x:Name="UpdatesChk"
                         Margin="10"
                         VerticalContentAlignment="Center"
@@ -64,6 +64,7 @@
                         Content="{x:Static lang:Resources.UpdateAv}"
                         FontWeight="ExtraBold"
                         Foreground="{DynamicResource Foreground}"
+                        IsChecked="{Binding UpdateNotificationsEnabled, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource CheckBoxStyle1}" />
                 </StackPanel>
             </Expander>
