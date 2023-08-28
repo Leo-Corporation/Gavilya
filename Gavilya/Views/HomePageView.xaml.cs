@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Views
+namespace Gavilya.Views;
+
+/// <summary>
+/// Interaction logic for HomePageView.xaml
+/// </summary>
+public partial class HomePageView : UserControl
 {
-	/// <summary>
-	/// Interaction logic for HomePageView.xaml
-	/// </summary>
-	public partial class HomePageView : UserControl
+	public HomePageView()
 	{
-		public HomePageView()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

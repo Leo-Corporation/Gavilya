@@ -27,49 +27,48 @@ using Gavilya.Models;
 using System.Collections.Generic;
 using System.Windows.Input;
 
-namespace Gavilya.ViewModels
+namespace Gavilya.ViewModels;
+
+public class ClickableGameViewModel : ViewModelBase
 {
-	public class ClickableGameViewModel : ViewModelBase
+	private string _coverFilePath;
+	public string CoverFilePath
 	{
-		private string _coverFilePath;
-		public string CoverFilePath
+		get => _coverFilePath;
+		set
 		{
-			get => _coverFilePath;
-			set
-			{
-				_coverFilePath = value;
-				OnPropertyChanged(nameof(CoverFilePath));
-			}
+			_coverFilePath = value;
+			OnPropertyChanged(nameof(CoverFilePath));
 		}
+	}
 
-		public string Name { get; }
+	public string Name { get; }
 
-		public ICommand ClickCommand { get; }
-		private readonly Game _game;
-		private readonly GameList _games;
-		private readonly List<Tag> _tags;
-		private readonly MainViewModel _mainViewModel;
+	public ICommand ClickCommand { get; }
+	private readonly Game _game;
+	private readonly GameList _games;
+	private readonly List<Tag> _tags;
+	private readonly MainViewModel _mainViewModel;
 
-		public ClickableGameViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
-		{
-			CoverFilePath = game.CoverFilePath ?? "";
-			Name = game.Name;
-			ClickCommand = new RelayCommand(Click);
-			_game = game;
-			_games = games;
-			_tags = tags;
-			_mainViewModel = mainViewModel;
-		}
+	public ClickableGameViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
+	{
+		CoverFilePath = game.CoverFilePath ?? "";
+		Name = game.Name;
+		ClickCommand = new RelayCommand(Click);
+		_game = game;
+		_games = games;
+		_tags = tags;
+		_mainViewModel = mainViewModel;
+	}
 
-		private void Click(object? obj)
-		{
-			_mainViewModel.CurrentViewModel = new GamePageViewModel(_game, _games, _tags, _mainViewModel);
-			_mainViewModel.SearchOpen = false;
-		}
+	private void Click(object? obj)
+	{
+		_mainViewModel.CurrentViewModel = new GamePageViewModel(_game, _games, _tags, _mainViewModel);
+		_mainViewModel.SearchOpen = false;
+	}
 
-		public override string ToString()
-		{
-			return Name;
-		}
+	public override string ToString()
+	{
+		return Name;
 	}
 }

@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Views
+namespace Gavilya.Views;
+
+/// <summary>
+/// Interaction logic for StatsView.xaml
+/// </summary>
+public partial class StatsView : UserControl
 {
-	/// <summary>
-	/// Interaction logic for StatsView.xaml
-	/// </summary>
-	public partial class StatsView : UserControl
+	public StatsView()
 	{
-		public StatsView()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

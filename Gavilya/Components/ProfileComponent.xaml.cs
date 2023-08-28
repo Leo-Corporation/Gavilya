@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Components
+namespace Gavilya.Components;
+
+/// <summary>
+/// Interaction logic for ProfileComponent.xaml
+/// </summary>
+public partial class ProfileComponent : UserControl
 {
-	/// <summary>
-	/// Interaction logic for ProfileComponent.xaml
-	/// </summary>
-	public partial class ProfileComponent : UserControl
+	public ProfileComponent()
 	{
-		public ProfileComponent()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

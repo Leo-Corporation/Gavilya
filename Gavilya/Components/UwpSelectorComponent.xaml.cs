@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Components
+namespace Gavilya.Components;
+
+/// <summary>
+/// Interaction logic for UwpSelectorComponent.xaml
+/// </summary>
+public partial class UwpSelectorComponent : UserControl
 {
-	/// <summary>
-	/// Interaction logic for UwpSelectorComponent.xaml
-	/// </summary>
-	public partial class UwpSelectorComponent : UserControl
+	public UwpSelectorComponent()
 	{
-		public UwpSelectorComponent()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

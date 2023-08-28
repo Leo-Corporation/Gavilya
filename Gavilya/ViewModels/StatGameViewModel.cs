@@ -27,61 +27,60 @@ using Gavilya.Models;
 using PeyrSharp.Core.Converters;
 using System.Windows.Input;
 
-namespace Gavilya.ViewModels
+namespace Gavilya.ViewModels;
+
+public class StatGameViewModel : ViewModelBase
 {
-	public class StatGameViewModel : ViewModelBase
+	private string _name;
+	public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+
+	private string _totalTimePlayed;
+	private readonly Game _game;
+	private readonly StatsViewModel _statsViewModel;
+
+	public string TotalTimePlayed { get => _totalTimePlayed; set { _totalTimePlayed = value; OnPropertyChanged(nameof(TotalTimePlayed)); } }
+
+	private string _index;
+	public string Index { get => _index; set { _index = value; OnPropertyChanged(nameof(Index)); } }
+
+	private string _coverFilePath;
+	public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value; OnPropertyChanged(nameof(CoverFilePath)); } }
+
+	public ICommand ClickCommand { get; }
+
+	public StatGameViewModel(int i, Game game, StatsViewModel? statsViewModel)
 	{
-		private string _name;
-		public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
+		_game = game;
+		if (statsViewModel is not null) _statsViewModel = statsViewModel;
 
-		private string _totalTimePlayed;
-		private readonly Game _game;
-		private readonly StatsViewModel _statsViewModel;
-
-		public string TotalTimePlayed { get => _totalTimePlayed; set { _totalTimePlayed = value; OnPropertyChanged(nameof(TotalTimePlayed)); } }
-
-		private string _index;
-		public string Index { get => _index; set { _index = value; OnPropertyChanged(nameof(Index)); } }
-
-		private string _coverFilePath;
-		public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value; OnPropertyChanged(nameof(CoverFilePath)); } }
-
-		public ICommand ClickCommand { get; }
-
-		public StatGameViewModel(int i, Game game, StatsViewModel? statsViewModel)
+		Name = _game.Name;
+		CoverFilePath = game.CoverFilePath;
+		Index = $"#{i + 1}";
+		if (_game.TotalTimePlayed != 0)
 		{
-			_game = game;
-			if (statsViewModel is not null) _statsViewModel = statsViewModel;
-
-			Name = _game.Name;
-			CoverFilePath = game.CoverFilePath;
-			Index = $"#{i + 1}";
-			if (_game.TotalTimePlayed != 0)
-			{
-				TotalTimePlayed = $"{_game.TotalTimePlayed / 3600d:0.0}{Properties.Resources.HourShort}";
-			}
-			else
-			{
-				TotalTimePlayed = Properties.Resources.Never;
-			}
-			ClickCommand = new RelayCommand(Click);
+			TotalTimePlayed = $"{_game.TotalTimePlayed / 3600d:0.0}{Properties.Resources.HourShort}";
 		}
-
-		private void Click(object? obj)
+		else
 		{
-			_statsViewModel.Name = _game.Name;
-			_statsViewModel.Description = _game.Description;
-			_statsViewModel.TotalTimePlayed = $"{_game.TotalTimePlayed / 3600d:0.0}{Properties.Resources.HourShort}";
-			_statsViewModel.CoverFilePath = _game.CoverFilePath;
-
-			if (_game.LastTimePlayed == 0)
-			{
-				_statsViewModel.LastTimePlayed = Properties.Resources.Never;
-				return;
-			}
-			var date = Time.UnixTimeToDateTime(_game.LastTimePlayed);
-			string[] months = Properties.Resources.Months.Split(",");
-			_statsViewModel.LastTimePlayed = $"{date.Day} {months[date.Month - 1]} {date.Year}";
+			TotalTimePlayed = Properties.Resources.Never;
 		}
+		ClickCommand = new RelayCommand(Click);
+	}
+
+	private void Click(object? obj)
+	{
+		_statsViewModel.Name = _game.Name;
+		_statsViewModel.Description = _game.Description;
+		_statsViewModel.TotalTimePlayed = $"{_game.TotalTimePlayed / 3600d:0.0}{Properties.Resources.HourShort}";
+		_statsViewModel.CoverFilePath = _game.CoverFilePath;
+
+		if (_game.LastTimePlayed == 0)
+		{
+			_statsViewModel.LastTimePlayed = Properties.Resources.Never;
+			return;
+		}
+		var date = Time.UnixTimeToDateTime(_game.LastTimePlayed);
+		string[] months = Properties.Resources.Months.Split(",");
+		_statsViewModel.LastTimePlayed = $"{date.Day} {months[date.Month - 1]} {date.Year}";
 	}
 }

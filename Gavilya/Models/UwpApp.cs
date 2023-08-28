@@ -22,12 +22,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Models
-{
-	/// <summary>
-	/// Represent a smplified version of an UWP app object.
-	/// </summary>
-	/// <param name="Name">The name of the UWP app.</param>
-	/// <param name="AppID">The App ID in the Package Family Name property.</param>
-	public record UwpApp(string Name, string AppID);
-}
+namespace Gavilya.Models;
+
+/// <summary>
+/// Represent a smplified version of an UWP app object.
+/// </summary>
+/// <param name="Name">The name of the UWP app.</param>
+/// <param name="AppID">The App ID in the Package Family Name property.</param>
+public record UwpApp(string Name, string AppID);

@@ -24,16 +24,15 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Views.SettingsViews
+namespace Gavilya.Views.SettingsViews;
+
+/// <summary>
+/// Interaction logic for GameOptionsView.xaml
+/// </summary>
+public partial class GameOptionsView : UserControl
 {
-	/// <summary>
-	/// Interaction logic for GameOptionsView.xaml
-	/// </summary>
-	public partial class GameOptionsView : UserControl
+	public GameOptionsView()
 	{
-		public GameOptionsView()
-		{
-			InitializeComponent();
-		}
+		InitializeComponent();
 	}
 }

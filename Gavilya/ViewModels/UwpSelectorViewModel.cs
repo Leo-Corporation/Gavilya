@@ -26,35 +26,34 @@ using Gavilya.Commands;
 using Gavilya.Models;
 using System.Windows.Input;
 
-namespace Gavilya.ViewModels
+namespace Gavilya.ViewModels;
+
+public class UwpSelectorViewModel : ViewModelBase
 {
-	public class UwpSelectorViewModel : ViewModelBase
+	private readonly GameEditionViewModel _gameEditionViewModel;
+
+	public string PackageName { get; }
+	public string AppId { get; }
+	public string Name { get; }
+
+	public string InfoText => $"{PackageName} • {AppId}";
+
+	public ICommand ClickCommand { get; }
+	public UwpSelectorViewModel(UwpApp uwpApp, GameEditionViewModel gameEditionViewModel)
 	{
-		private readonly GameEditionViewModel _gameEditionViewModel;
+		_gameEditionViewModel = gameEditionViewModel;
+		var info = uwpApp.AppID.Split("!");
+		PackageName = info[0];
+		AppId = info[1];
+		Name = uwpApp.Name;
 
-		public string PackageName { get; }
-		public string AppId { get; }
-		public string Name { get; }
+		ClickCommand = new RelayCommand(Click);
+	}
 
-		public string InfoText => $"{PackageName} • {AppId}";
-
-		public ICommand ClickCommand { get; }
-		public UwpSelectorViewModel(UwpApp uwpApp, GameEditionViewModel gameEditionViewModel)
-		{
-			_gameEditionViewModel = gameEditionViewModel;
-			var info = uwpApp.AppID.Split("!");
-			PackageName = info[0];
-			AppId = info[1];
-			Name = uwpApp.Name;
-
-			ClickCommand = new RelayCommand(Click);
-		}
-
-		private void Click(object? obj)
-		{
-			_gameEditionViewModel.PackageFamilyName = PackageName;
-			_gameEditionViewModel.AppId = AppId;
-			_gameEditionViewModel.IsUwpOpen = false;
-		}
+	private void Click(object? obj)
+	{
+		_gameEditionViewModel.PackageFamilyName = PackageName;
+		_gameEditionViewModel.AppId = AppId;
+		_gameEditionViewModel.IsUwpOpen = false;
 	}
 }
