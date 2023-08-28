@@ -463,7 +463,7 @@
     <value>Profil</value>
   </data>
   <data name="SwitchProfile" xml:space="preserve">
-    <value>Changer de profile</value>
+    <value>Changer de profil</value>
   </data>
   <data name="EditProfile" xml:space="preserve">
     <value>Modifier le profil</value>

@@ -13,11 +13,156 @@
     FontFamily="..\Fonts\#Hauora"
     Foreground="{DynamicResource Foreground}"
     mc:Ignorable="d">
-    <Grid>
+    <Grid x:Name="PageContent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+
+        <Popup
+            AllowsTransparency="True"
+            IsOpen="{Binding IsProfileEditorOpen}"
+            Placement="Center"
+            PlacementTarget="{Binding ElementName=ProfileHeader}">
+            <Border
+                Margin="10"
+                Padding="10"
+                Background="{DynamicResource Background2}"
+                CornerRadius="10">
+                <StackPanel Margin="10" Orientation="Vertical">
+                    <StackPanel
+                        Margin="0 0 0 10"
+                        VerticalAlignment="Top"
+                        Orientation="Horizontal">
+                        <Rectangle
+                            Width="50"
+                            Height="50"
+                            Margin="10"
+                            HorizontalAlignment="Center"
+                            RadiusX="25"
+                            RadiusY="25">
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="{Binding EditProfilePicture}" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+
+                        <Button
+                            x:Name="BrowseBtn"
+                            Padding="5"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource Background2}"
+                            Command="{Binding PopupBrowseCommand}"
+                            Cursor="Hand"
+                            FontSize="13"
+                            Style="{StaticResource RegularButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0 0 10 0"
+                                    VerticalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Text="&#xF42F;" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Text="{x:Static lang:Resources.Browse}" />
+                            </StackPanel>
+
+                            <Button.ToolTip>
+                                <ToolTip
+                                    Background="{DynamicResource Background}"
+                                    Content="{x:Static lang:Resources.Browse}"
+                                    Foreground="{DynamicResource Foreground}" />
+                            </Button.ToolTip>
+                        </Button>
+
+                        <Button
+                            x:Name="ResetProfilePictureBtn"
+                            Margin="10 0 0 0"
+                            Padding="5"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource Background2}"
+                            Command="{Binding PopupResetCommand}"
+                            Cursor="Hand"
+                            FontSize="13"
+                            Style="{StaticResource RegularButton}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0 0 10 0"
+                                    VerticalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Text="&#xF140;" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontWeight="ExtraBold"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Text="{x:Static lang:Resources.Reset}" />
+                            </StackPanel>
+
+                            <Button.ToolTip>
+                                <ToolTip
+                                    Background="{DynamicResource Background}"
+                                    Content="{x:Static lang:Resources.Reset}"
+                                    Foreground="{DynamicResource Foreground}" />
+                            </Button.ToolTip>
+                        </Button>
+
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontWeight="ExtraBold"
+                            Foreground="{DynamicResource Foreground}"
+                            Text="{x:Static lang:Resources.Name}" />
+                        <TextBox
+                            Name="nameTxt"
+                            Width="250"
+                            Margin="10 0 0 0"
+                            VerticalAlignment="Center"
+                            Background="{DynamicResource SelectedBackground}"
+                            BorderBrush="Transparent"
+                            BorderThickness="0"
+                            FontSize="15"
+                            Foreground="{DynamicResource Foreground}"
+                            Style="{DynamicResource RegularTextBox}"
+                            Text="{Binding EditProfileName, UpdateSourceTrigger=PropertyChanged}" />
+                    </StackPanel>
+                    <StackPanel
+                        Grid.ColumnSpan="5"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                        <Button
+                            x:Name="OKBtn"
+                            MinWidth="50"
+                            Margin="5 5 10 10"
+                            Padding="5"
+                            Background="{DynamicResource Background2}"
+                            Command="{Binding PopupAddCommand}"
+                            Content="{x:Static lang:Resources.Add}"
+                            Cursor="Hand"
+                            FontWeight="ExtraBold"
+                            Foreground="{DynamicResource Foreground}"
+                            Style="{StaticResource RegularButton}" />
+                        <Button
+                            x:Name="CancelBtn"
+                            MinWidth="50"
+                            Margin="5 5 10 10"
+                            Padding="5"
+                            Background="{DynamicResource Background2}"
+                            Command="{Binding PopupCancelCommand}"
+                            Content="{x:Static lang:Resources.Cancel}"
+                            Cursor="Hand"
+                            FontWeight="ExtraBold"
+                            Foreground="{DynamicResource Foreground}"
+                            Style="{StaticResource RegularButton}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </Popup>
 
         <StackPanel Margin="10" Orientation="Horizontal">
             <TextBlock
@@ -96,7 +241,7 @@
                     Text="{x:Static lang:Resources.AboutYou}" />
             </StackPanel>
 
-            <Grid>
+            <Grid x:Name="ProfileHeader">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto" />

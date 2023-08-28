@@ -122,7 +122,7 @@ public class MainViewModel : ViewModelBase
 		{
 			Page.Library => new LibPageViewModel(Games, profile.Tags, this),
 			Page.Recent => new RecentPageViewModel(Games, profile.Tags, this),
-			Page.Profile => new ProfileViewModel(profile, profiles, Games),
+			Page.Profile => new ProfileViewModel(profile, profiles, Games, this),
 			_ => new HomePageViewModel(Games, this)
 		};
 		Query = "";

@@ -123,7 +123,7 @@ public class NavBarViewModel : ViewModelBase
 
 	private void ProfilePage(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new ProfileViewModel(_profile, _profiles, Games);
+		_mainViewModel.CurrentViewModel = new ProfileViewModel(_profile, _profiles, Games, _mainViewModel);
 	}
 
 	private void SettingsPage(object? obj)

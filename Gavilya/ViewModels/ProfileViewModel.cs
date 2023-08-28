@@ -22,15 +22,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Commands;
 using Gavilya.Models;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Media.Imaging;
 
 namespace Gavilya.ViewModels
@@ -40,6 +44,7 @@ namespace Gavilya.ViewModels
 		private readonly Profile _profile;
 		private readonly ProfileData _profileData;
 		private readonly GameList _games;
+		private readonly MainViewModel _mainViewModel;
 
 		public ObservableCollection<StatGameViewModel> TopGames { get; set; }
 
@@ -57,7 +62,7 @@ namespace Gavilya.ViewModels
 
 		private string _profilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
 		public string ProfilePicture { get => _profilePicture; set { _profilePicture = value; OnPropertyChanged(nameof(ProfilePicture)); } }
-				
+
 		private string _profileName;
 		public string ProfileName { get => _profileName; set { _profileName = value; OnPropertyChanged(nameof(ProfileName)); } }
 
@@ -67,28 +72,48 @@ namespace Gavilya.ViewModels
 		private List<ProfileCompViewModel> _profilesVm;
 		public List<ProfileCompViewModel> ProfilesVm { get => _profilesVm; set { _profilesVm = value; OnPropertyChanged(nameof(ProfilesVm)); } }
 
+		private string _editProfilePicture;
+		public string EditProfilePicture { get => _editProfilePicture; set { _editProfilePicture = value; OnPropertyChanged(nameof(EditProfilePicture)); } }
+
+		private string _editProfileName;
+		public string EditProfileName { get => _editProfileName; set { _editProfileName = value; OnPropertyChanged(nameof(EditProfileName)); } }
+
 		public ICommand AddProfileCommand { get; }
 		public ICommand EditCommand { get; }
+		public ICommand PopupAddCommand { get; }
+		public ICommand PopupCancelCommand { get; }
+		public ICommand PopupBrowseCommand { get; }
+		public ICommand PopupResetCommand { get; }
 
-		public ProfileViewModel(Profile profile, ProfileData profileData, GameList games)
+		internal Profile? ProfileToEdit { get; set; }
+		internal bool ProfileAddMode { get; set; }
+
+		public ProfileViewModel(Profile profile, ProfileData profileData, GameList games, MainViewModel mainViewModel)
 		{
 			_profile = profile;
 			_profileData = profileData;
 			_games = games;
+			_mainViewModel = mainViewModel;
 
 			int total = 0;
 			for (int i = 0; i < _games.Count; i++)
 			{
 				total += games[i].TotalTimePlayed;
 			}
-			TotalText = $"{total/3600d:0.0}{Properties.Resources.HourShort}";
+			TotalText = $"{total / 3600d:0.0}{Properties.Resources.HourShort}";
 			var sortedGames = _games.SortByPlayTime(true);
 
 			TopGames = new(sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null)));
 			ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
 			ProfileName = profile.Name;
 
-			ProfilesVm = _profileData.Profiles.Select(p => new ProfileCompViewModel(_profile, _profileData, this)).ToList();
+			Refresh();
+			AddProfileCommand = new RelayCommand(AddProfile);
+			EditCommand = new RelayCommand(Edit);
+			PopupAddCommand = new RelayCommand(PopupAdd);
+			PopupCancelCommand = new RelayCommand(PopupCancel);
+			PopupBrowseCommand = new RelayCommand(PopupBrowse);
+			PopupResetCommand = new RelayCommand(PopupReset);
 
 			// Load graph
 			if (sortedGames.Count < 3)
@@ -96,11 +121,90 @@ namespace Gavilya.ViewModels
 				//TODO: Placeholder
 				return;
 			}
-
 			double max = sortedGames[0].TotalTimePlayed;
 			RecHeight1 = 150;
 			RecHeight2 = sortedGames[1].TotalTimePlayed / max * 150;
 			RecHeight3 = sortedGames[2].TotalTimePlayed / max * 150;
+
+		}
+
+		private void AddProfile(object? obj)
+		{
+			IsProfileEditorOpen = true;
+			ProfileAddMode = true;
+			ProfileToEdit = null;
+			EditProfilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
+		}
+
+		private void Edit(object? obj)
+		{
+			IsProfileEditorOpen = true;
+			ProfileAddMode = false;
+			ProfileToEdit = _profile;
+		}
+
+		private void PopupAdd(object? obj)
+		{
+			if (ProfileAddMode)
+			{
+				_profileData.Profiles.Add(new(_editProfileName) { ProfilePictureFilePath = EditProfilePicture });
+				_profileData.Save();
+			}
+			else
+			{
+				if (ProfileToEdit is not null && _profileData.Profiles.Contains(ProfileToEdit))
+				{
+					_profileData.Profiles[_profileData.Profiles.IndexOf(ProfileToEdit)].Name = EditProfileName;
+					_profileData.Profiles[_profileData.Profiles.IndexOf(ProfileToEdit)].ProfilePictureFilePath = EditProfilePicture == "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" ? "" : EditProfilePicture;
+					_profileData.Save();
+
+					if (ProfileToEdit.ProfileUuid == _profile.ProfileUuid)
+					{
+						ProfileName = EditProfileName;
+						ProfilePicture = EditProfilePicture;
+						_mainViewModel.Nav.ProfilePicture = EditProfilePicture;
+					}
+				}
+			}
+			Refresh();
+			IsProfileEditorOpen = false;
+		}
+
+		internal void  Refresh()
+		{
+			ProfilesVm = _profileData.Profiles.Select(p => new ProfileCompViewModel(p, _profileData, this)).ToList();
+
+		}
+
+		private void PopupCancel(object? obj)
+		{
+			IsProfileEditorOpen = false;
+		}
+
+		private void PopupReset(object? obj)
+		{
+			EditProfilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
+		}
+
+		private void PopupBrowse(object? obj)
+		{
+			OpenFileDialog openFileDialog = new()
+			{
+				Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*" // Filter
+			}; // OpenFileDialog
+
+			if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
+			{
+				try
+				{
+					EditProfilePicture = openFileDialog.FileName;
+
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error); // Show the error
+				}
+			}
 		}
 	}
 }

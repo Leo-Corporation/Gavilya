@@ -24,6 +24,8 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
+using System.Diagnostics;
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -56,12 +58,12 @@ namespace Gavilya.ViewModels
 			_profile = profile;
 			_profiles = profiles;
 			_profileViewModel = profileViewModel;
-			_isCurrent = _profiles.Profiles.Contains(_profile);
+			_isCurrent = _profiles.SelectedProfileUuid == _profile.ProfileUuid;
 
 			CurrentLabelVis = _isCurrent ? Visibility.Visible : Visibility.Collapsed;
 			DeleteVis = _isCurrent ? Visibility.Collapsed : Visibility.Visible;
 			ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
-			ProfileName = profile.Name;
+			ProfileName = _profile.Name;
 
 			SwitchCommand = new RelayCommand(Switch);
 			EditCommand = new RelayCommand(Edit);
@@ -72,12 +74,17 @@ namespace Gavilya.ViewModels
 		{
 			_profiles.SelectedProfileUuid = _profile.ProfileUuid;
 			_profiles.Save();
-			// Restart
+			Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe"); // Start Gavilya
+			Application.Current.Shutdown(0);
 		}
 
 		private void Edit(object? obj)
 		{
 			_profileViewModel.IsProfileEditorOpen = true;
+			_profileViewModel.ProfileAddMode = false;
+			_profileViewModel.ProfileToEdit = _profile;
+			_profileViewModel.EditProfilePicture = string.IsNullOrEmpty(_profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : _profile.ProfilePictureFilePath;
+			_profileViewModel.EditProfileName = _profile.Name;
 		}
 
 		private void Delete(object? obj)
@@ -87,6 +94,7 @@ namespace Gavilya.ViewModels
 				return;
 			}
 			_profiles.Profiles.Remove(_profile);
+			_profileViewModel.Refresh();
 		}
 	}
 }

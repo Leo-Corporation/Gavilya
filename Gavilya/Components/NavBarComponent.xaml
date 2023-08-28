@@ -115,7 +115,7 @@
                 RadiusX="15"
                 RadiusY="15">
                 <Rectangle.Fill>
-                    <ImageBrush x:Name="ProfilePicture" ImageSource="/Assets/DefaultPP.png" />
+                    <ImageBrush x:Name="ProfilePicture" ImageSource="{Binding ProfilePicture}" />
                 </Rectangle.Fill>
             </Rectangle>
             <RadioButton.ToolTip>
