@@ -58,6 +58,7 @@
                     FontWeight="ExtraBold"
                     Foreground="{DynamicResource Foreground}"
                     GroupName="SettingsNavBar"
+                    IsChecked="True"
                     Style="{DynamicResource NavBarBtn}">
                     <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                         <TextBlock
