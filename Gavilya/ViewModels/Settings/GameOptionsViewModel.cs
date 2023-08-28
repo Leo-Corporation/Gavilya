@@ -25,6 +25,7 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Models;
 using PeyrSharp.Core.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
@@ -66,6 +67,9 @@ public class GameOptionsViewModel : ViewModelBase
 		ShowHiddenGames = profile.Settings.ShowHiddenGames;
 		Tags = profile.Tags;
 		TagsVm = Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh)).ToList();
+
+		Random random = new();
+		Color = new RGB(random.Next(255), random.Next(255), random.Next(255)).ToHex().Value;
 
 		CheckHiddenGames = new RelayCommand(HandleCheck);
 		AddTagCommand = new RelayCommand(Add);
