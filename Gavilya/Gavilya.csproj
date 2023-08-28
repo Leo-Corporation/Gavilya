@@ -41,6 +41,9 @@
     <Resource Include="Assets\Gavilya.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Assets\Steam.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Fonts\FluentSystemIcons-Filled.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
