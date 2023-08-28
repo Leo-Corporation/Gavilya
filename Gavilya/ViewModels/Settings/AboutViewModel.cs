@@ -39,19 +39,19 @@ public class AboutViewModel : ViewModelBase
 
 	public string Version => Context.Version;
 
-    public ICommand UpdateCommand { get; }
-    public ICommand LicensesCommand { get; }
-    public ICommand OpenRepoCommand { get; }
-    public AboutViewModel(ProfileData profileData)
-    {
-        UpdateCommand = new RelayCommand(CheckUpdate);
+	public ICommand UpdateCommand { get; }
+	public ICommand LicensesCommand { get; }
+	public ICommand OpenRepoCommand { get; }
+	public AboutViewModel(ProfileData profileData)
+	{
+		UpdateCommand = new RelayCommand(CheckUpdate);
 		LicensesCommand = new RelayCommand(Licenses);
 		OpenRepoCommand = new RelayCommand(OpenRepo);
 		_profileData = profileData;
 	}
 
-    private async void CheckUpdate(object? obj)
-    {
+	private async void CheckUpdate(object? obj)
+	{
 		System.Windows.Forms.NotifyIcon notifyIcon = new();
 		if (await Internet.IsAvailableAsync())
 		{

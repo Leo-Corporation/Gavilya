@@ -48,7 +48,7 @@ namespace Gavilya.ViewModels
 			Name = uwpApp.Name;
 
 			ClickCommand = new RelayCommand(Click);
-		}		
+		}
 
 		private void Click(object? obj)
 		{

@@ -30,10 +30,10 @@ namespace Gavilya.Components
 	/// Interaction logic for ProfileComponent.xaml
 	/// </summary>
 	public partial class ProfileComponent : UserControl
-    {
-        public ProfileComponent()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public ProfileComponent()
+		{
+			InitializeComponent();
+		}
+	}
 }

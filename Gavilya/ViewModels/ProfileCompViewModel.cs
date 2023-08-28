@@ -24,8 +24,8 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
-using System.Diagnostics;
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
 

@@ -36,10 +36,10 @@ public class NotificationsViewModel : ViewModelBase
 	private bool _updateNotificationsEnabled;
 	public bool UpdateNotificationsEnabled { get => _updateNotificationsEnabled; set { _updateNotificationsEnabled = value; OnPropertyChanged(nameof(UpdateNotificationsEnabled)); } }
 
-	public ICommand UpdateCheckCommand { get; } 
+	public ICommand UpdateCheckCommand { get; }
 
 	public NotificationsViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
-    {
+	{
 		_profile = profile;
 		_profileData = profileData;
 		_mainViewModel = mainViewModel;

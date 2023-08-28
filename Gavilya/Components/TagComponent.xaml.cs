@@ -30,10 +30,10 @@ namespace Gavilya.Components
 	/// Interaction logic for TagComponent.xaml
 	/// </summary>
 	public partial class TagComponent : UserControl
-    {
-        public TagComponent()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public TagComponent()
+		{
+			InitializeComponent();
+		}
+	}
 }

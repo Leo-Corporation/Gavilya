@@ -27,12 +27,8 @@ using Gavilya.Models;
 using Microsoft.Win32;
 using PeyrSharp.Env;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -127,5 +123,5 @@ public class GameLauncherHelper
 		{
 			Game = game;
 		}
-    }
+	}
 }

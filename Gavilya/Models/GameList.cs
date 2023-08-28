@@ -27,7 +27,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Shapes;
 using System.Xml.Serialization;
 
 namespace Gavilya.Models;
@@ -216,7 +215,7 @@ public class GameList : ObservableCollection<Game>
 				gameScores.Add(i, this[i].LastTimePlayed / (this[i].TotalTimePlayed + 1));
 			}
 
-			var sort = from pair in gameScores orderby pair.Value descending select pair;		
+			var sort = from pair in gameScores orderby pair.Value descending select pair;
 			GameList recommandedGames = new();
 
 			foreach (KeyValuePair<int, int> keyValuePair in sort)

@@ -24,11 +24,6 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
@@ -40,9 +35,9 @@ public class MinimalGameViewModel : ViewModelBase
 
 	private string _name;
 	public string Name { get => _name; set { _name = value; PlayText = string.Format(Properties.Resources.PlayTo, Name); OnPropertyChanged(nameof(Name)); } }
-	
+
 	private string _coverFilePath;
-	public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value;OnPropertyChanged(nameof(CoverFilePath)); } }
+	public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value; OnPropertyChanged(nameof(CoverFilePath)); } }
 
 	public string PlayText { get; set; }
 
@@ -61,7 +56,7 @@ public class MinimalGameViewModel : ViewModelBase
 
 		// Commands
 		PlayCommand = new RelayCommand(Play);
-	}	
+	}
 
 	private void Play(object? obj)
 	{

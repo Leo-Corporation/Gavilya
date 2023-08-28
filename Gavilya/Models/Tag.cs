@@ -43,7 +43,7 @@ public class Tag
 	}
 	public string Uuid { get; }
 	public string Name { get; set; }
-	public string HexColorCode { get; set;  }
+	public string HexColorCode { get; set; }
 
 	public override bool Equals(object? obj)
 	{

@@ -40,7 +40,7 @@ namespace Gavilya.Helpers
 		/// </summary>
 		/// <returns>A <see cref="List{T}"/> of <see cref="UwpApp"/>.</returns>
 		public static async Task<List<UwpApp>> GetUwpAppsAsync()
-		{			
+		{
 			try
 			{
 				ProcessStartInfo processInfo = new()

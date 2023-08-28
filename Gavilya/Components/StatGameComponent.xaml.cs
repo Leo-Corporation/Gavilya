@@ -30,10 +30,10 @@ namespace Gavilya.Components
 	/// Interaction logic for StatGameComponent.xaml
 	/// </summary>
 	public partial class StatGameComponent : UserControl
-    {
-        public StatGameComponent()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public StatGameComponent()
+		{
+			InitializeComponent();
+		}
+	}
 }

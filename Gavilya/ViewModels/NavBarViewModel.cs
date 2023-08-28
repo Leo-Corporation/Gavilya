@@ -28,7 +28,6 @@ using Gavilya.Models;
 using PeyrSharp.Enums;
 using PeyrSharp.Env;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -46,7 +45,7 @@ public class NavBarViewModel : ViewModelBase
 
 	private List<ClickableGameViewModel> _favVm;
 	public List<ClickableGameViewModel> Favorites { get => _favVm; set { _favVm = value; OnPropertyChanged(nameof(Favorites)); } }
-	
+
 	private bool _isHome;
 	public bool IsHome { get => _isHome; set { _isHome = value; OnPropertyChanged(nameof(IsHome)); } }
 

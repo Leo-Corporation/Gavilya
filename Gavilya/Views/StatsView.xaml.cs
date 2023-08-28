@@ -30,10 +30,10 @@ namespace Gavilya.Views
 	/// Interaction logic for StatsView.xaml
 	/// </summary>
 	public partial class StatsView : UserControl
-    {
-        public StatsView()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public StatsView()
+		{
+			InitializeComponent();
+		}
+	}
 }

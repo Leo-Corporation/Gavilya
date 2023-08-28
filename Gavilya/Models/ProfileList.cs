@@ -22,21 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using PeyrSharp.Env;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace Gavilya.Models;
 public class ProfileList : ObservableCollection<Profile>
 {
-    public ProfileList() : base()
-    {
-        
-    }    
+	public ProfileList() : base()
+	{
+
+	}
 }

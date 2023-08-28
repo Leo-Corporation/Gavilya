@@ -39,15 +39,15 @@ public class DataOptionsViewModel : ViewModelBase
 	public ICommand ResetCommand { get; }
 
 	public DataOptionsViewModel(Profile profile, ProfileData profiles)
-    {
+	{
 		_profile = profile;
 		_profiles = profiles;
 
 		ResetCommand = new RelayCommand(Reset);
 	}
 
-    private void Reset(object? obj)
-    {
+	private void Reset(object? obj)
+	{
 		if (MessageBox.Show(Properties.Resources.ResetSettingsMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNoCancel, MessageBoxImage.Question) == MessageBoxResult.Yes)
 		{
 			_profile.Settings = new() { IsFirstRun = false };

@@ -26,8 +26,8 @@ using Gavilya.Models;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
 using System.Collections.Generic;
-using System.IO.Compression;
 using System.IO;
+using System.IO.Compression;
 using System.Windows;
 using System.Xml.Serialization;
 

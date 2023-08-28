@@ -30,8 +30,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
@@ -43,13 +41,16 @@ public class SaveOptionsViewModel : ViewModelBase
 	private readonly GameList _games;
 	private readonly MainViewModel _mainViewModel;
 	private int _monthDay;
-	public int MonthDay { get => _monthDay; set 
-		{ 
+	public int MonthDay
+	{
+		get => _monthDay; set
+		{
 			_monthDay = value;
 			_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.AutoSaveDay = MonthDay + 1;
 			SaveInfo();
-			OnPropertyChanged(nameof(MonthDay)); 		
-		} }
+			OnPropertyChanged(nameof(MonthDay));
+		}
+	}
 
 	private string _saveLocation;
 	public string SaveLocation { get => _saveLocation; set { _saveLocation = value; OnPropertyChanged(nameof(SaveLocation)); } }
@@ -60,12 +61,12 @@ public class SaveOptionsViewModel : ViewModelBase
 	public IEnumerable<int> Days => Enumerable.Range(1, 31);
 
 	public ICommand ImportCommand { get; }
-    public ICommand ExportCommand { get; }
-    public ICommand BrowseCommand { get; }
-    public ICommand SaveNowCommand { get; }
-    public ICommand MakeSaveCommand { get; }
-    public SaveOptionsViewModel(Profile profile, ProfileData profileData, GameList games,  MainViewModel mainViewModel)
-    {
+	public ICommand ExportCommand { get; }
+	public ICommand BrowseCommand { get; }
+	public ICommand SaveNowCommand { get; }
+	public ICommand MakeSaveCommand { get; }
+	public SaveOptionsViewModel(Profile profile, ProfileData profileData, GameList games, MainViewModel mainViewModel)
+	{
 		_profile = profile;
 		_profileData = profileData;
 		_games = games;
@@ -81,8 +82,8 @@ public class SaveOptionsViewModel : ViewModelBase
 		MakeSaveCommand = new RelayCommand(SetMakeSave);
 	}
 
-    private void Export(object? obj)
-    {
+	private void Export(object? obj)
+	{
 		SaveFileDialog saveFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles}|*.g4vgames", // Extension
@@ -95,7 +96,7 @@ public class SaveOptionsViewModel : ViewModelBase
 		}
 	}
 
-	private	void Import(object? obj)
+	private void Import(object? obj)
 	{
 		OpenFileDialog openFileDialog = new()
 		{

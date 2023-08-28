@@ -24,7 +24,6 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
-using Gavilya.Views;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
 using System;
@@ -71,9 +70,9 @@ public class MainViewModel : ViewModelBase
 	public string Query
 	{
 		get => _query;
-		set 
-		{ 
-			_query = value; 
+		set
+		{
+			_query = value;
 			SearchResults = Games.Where(g => g.Name.ToLower().Contains(Query.ToLower())).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query));
 			NoResults = SearchResults.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
 		}
@@ -226,7 +225,7 @@ public class MainViewModel : ViewModelBase
 		if (await Internet.IsAvailableAsync())
 		{
 			notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe");
-			
+
 			if (Update.IsAvailable(await Update.GetLastVersionAsync(Context.LastVersionLink), Context.Version))
 			{
 				notifyIcon.Visible = true; // Show

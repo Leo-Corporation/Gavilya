@@ -24,17 +24,13 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels
 {
-    public class ClickableGameViewModel : ViewModelBase
-    {
+	public class ClickableGameViewModel : ViewModelBase
+	{
 		private string _coverFilePath;
 		public string CoverFilePath
 		{
@@ -55,7 +51,7 @@ namespace Gavilya.ViewModels
 		private readonly MainViewModel _mainViewModel;
 
 		public ClickableGameViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
-        {
+		{
 			CoverFilePath = game.CoverFilePath ?? "";
 			Name = game.Name;
 			ClickCommand = new RelayCommand(Click);

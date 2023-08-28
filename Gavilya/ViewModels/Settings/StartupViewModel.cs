@@ -24,11 +24,6 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
@@ -40,7 +35,7 @@ public class StartupViewModel : ViewModelBase
 
 	private bool _isCardSelected;
 	public bool IsCardSelected { get => _isCardSelected; set { _isCardSelected = value; if (value) _view = View.Card; OnPropertyChanged(nameof(IsCardSelected)); } }
-	
+
 	private bool _isTagSelected;
 	public bool IsTagSelected { get => _isTagSelected; set { _isTagSelected = value; if (value) _view = View.Tag; OnPropertyChanged(nameof(IsTagSelected)); } }
 
@@ -58,15 +53,15 @@ public class StartupViewModel : ViewModelBase
 
 	private bool _isProfile;
 	public bool IsProfile { get => _isProfile; set { _isProfile = value; if (value) _page = Page.Profile; OnPropertyChanged(nameof(IsProfile)); } }
-	
+
 	private View _view;
 	private Page _page;
 
 	public ICommand ViewCommand { get; }
 	public ICommand PageCommand { get; }
-	
+
 	public StartupViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
-    {
+	{
 		_profile = profile;
 		_profileData = profileData;
 		_mainViewModel = mainViewModel;

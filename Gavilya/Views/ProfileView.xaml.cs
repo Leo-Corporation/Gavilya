@@ -30,10 +30,10 @@ namespace Gavilya.Views
 	/// Interaction logic for ProfileView.xaml
 	/// </summary>
 	public partial class ProfileView : UserControl
-    {
-        public ProfileView()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public ProfileView()
+		{
+			InitializeComponent();
+		}
+	}
 }

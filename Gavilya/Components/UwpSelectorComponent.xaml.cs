@@ -30,10 +30,10 @@ namespace Gavilya.Components
 	/// Interaction logic for UwpSelectorComponent.xaml
 	/// </summary>
 	public partial class UwpSelectorComponent : UserControl
-    {
-        public UwpSelectorComponent()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public UwpSelectorComponent()
+		{
+			InitializeComponent();
+		}
+	}
 }

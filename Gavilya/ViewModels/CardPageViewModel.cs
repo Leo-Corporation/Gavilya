@@ -39,6 +39,6 @@ public class CardPageViewModel : ViewModelBase
 	{
 		_mainViewModel = mainViewModel;
 		Games = games;
-		this._tags = tags;
+		_tags = tags;
 	}
 }

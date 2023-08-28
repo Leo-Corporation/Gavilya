@@ -202,7 +202,7 @@ public class GamePageViewModel : ViewModelBase
 		// Commands
 		EditCommand = new RelayCommand(Edit);
 		SeeOnRawgCommand = new RelayCommand(OpenRawg);
-		FavCommand = new RelayCommand(Fav); 
+		FavCommand = new RelayCommand(Fav);
 		PlayCommand = new RelayCommand(Play);
 
 		// Rawg
@@ -290,6 +290,6 @@ public class GamePageViewModel : ViewModelBase
 	{
 		< 60 => $"{time} {(time > 1 ? Properties.Resources.SecondsMin : Properties.Resources.Second)}",
 		< 3600 => $"{time / 60d:0.0} {(time > 1 ? Properties.Resources.MinutesMin : Properties.Resources.Minute)}",
-		_ => $"{time /3600d:0.0} {(time > 1 ? Properties.Resources.HoursMin : Properties.Resources.Hour)}"
+		_ => $"{time / 3600d:0.0} {(time > 1 ? Properties.Resources.HoursMin : Properties.Resources.Hour)}"
 	};
 }

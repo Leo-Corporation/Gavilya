@@ -30,10 +30,10 @@ namespace Gavilya.Views.SettingsViews
 	/// Interaction logic for GameOptionsView.xaml
 	/// </summary>
 	public partial class GameOptionsView : UserControl
-    {
-        public GameOptionsView()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public GameOptionsView()
+		{
+			InitializeComponent();
+		}
+	}
 }

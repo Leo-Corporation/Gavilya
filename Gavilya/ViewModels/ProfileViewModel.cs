@@ -29,13 +29,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
 
 namespace Gavilya.ViewModels
 {
@@ -170,7 +165,7 @@ namespace Gavilya.ViewModels
 			IsProfileEditorOpen = false;
 		}
 
-		internal void  Refresh()
+		internal void Refresh()
 		{
 			ProfilesVm = _profileData.Profiles.Select(p => new ProfileCompViewModel(p, _profileData, this)).ToList();
 

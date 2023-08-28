@@ -24,42 +24,37 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
 public class SearchViewModel : ViewModelBase
 {
-    private readonly Profile _profile;
-    private readonly ProfileData _profileData;
-    private readonly MainViewModel _mainViewModel;
+	private readonly Profile _profile;
+	private readonly ProfileData _profileData;
+	private readonly MainViewModel _mainViewModel;
 
-    private string _maxResults;
-    public string MaxResults { get => _maxResults; set { _maxResults = value; OnPropertyChanged(nameof(MaxResults)); } }
+	private string _maxResults;
+	public string MaxResults { get => _maxResults; set { _maxResults = value; OnPropertyChanged(nameof(MaxResults)); } }
 
-    public ICommand SaveCommand { get; }
-    public SearchViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
-    {
-        _profile = profile;
-        _profileData = profileData;
-        _mainViewModel = mainViewModel;
+	public ICommand SaveCommand { get; }
+	public SearchViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
+	{
+		_profile = profile;
+		_profileData = profileData;
+		_mainViewModel = mainViewModel;
 
-        MaxResults = profile.Settings.NumberOfSearchResultsToDisplay.ToString();
+		MaxResults = profile.Settings.NumberOfSearchResultsToDisplay.ToString();
 
-        SaveCommand = new RelayCommand(Save);
-    }
+		SaveCommand = new RelayCommand(Save);
+	}
 
-    private void Save(object? obj)
-    {
-        if (int.TryParse(MaxResults, out int amount))
-        {
-            _profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.NumberOfSearchResultsToDisplay = amount;
-            _profileData.Save();
-            _mainViewModel.CurrentSettings = _profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings;
-        }
-    }
+	private void Save(object? obj)
+	{
+		if (int.TryParse(MaxResults, out int amount))
+		{
+			_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.NumberOfSearchResultsToDisplay = amount;
+			_profileData.Save();
+			_mainViewModel.CurrentSettings = _profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings;
+		}
+	}
 }

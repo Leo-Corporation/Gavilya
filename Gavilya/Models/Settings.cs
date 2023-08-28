@@ -23,12 +23,6 @@ SOFTWARE.
 */
 
 using PeyrSharp.Env;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.RightsManagement;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gavilya.Models
 {
@@ -106,8 +100,8 @@ namespace Gavilya.Models
 		/// </summary>
 		public bool ShowHiddenGames { get; set; }
 
-        public Settings()
-        {
+		public Settings()
+		{
 			IsFirstRun = true;
 			Language = Language.Default;
 			IsMaximized = false;
@@ -124,7 +118,7 @@ namespace Gavilya.Models
 			CurrentTheme = "";
 			ShowHiddenGames = false;
 		}
-    }	
+	}
 
 	public enum Page
 	{
