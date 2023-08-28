@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>Xalyus_Updater</RootNamespace>
+    <UseWPF>true</UseWPF>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Xalyus Updater.ico</ApplicationIcon>
+    <Version>4.0.0.2309</Version>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
+    <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <Copyright>© 2023</Copyright>
+    <Company>Léo Corporation</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Xalyus Updater.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\Xalyus Updater.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
