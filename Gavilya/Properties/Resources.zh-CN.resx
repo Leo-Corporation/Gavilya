@@ -999,4 +999,7 @@
   <data name="Recents" xml:space="preserve">
     <value>近期活动</value>
   </data>
+  <data name="IncorrectValue" xml:space="preserve">
+    <value>请指定一个正确的值。</value>
+  </data>
 </root>

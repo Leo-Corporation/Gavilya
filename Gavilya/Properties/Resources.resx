@@ -1000,4 +1000,7 @@
   <data name="Recents" xml:space="preserve">
     <value>Recents</value>
   </data>
+  <data name="IncorrectValue" xml:space="preserve">
+    <value>Please specify a correct value.</value>
+  </data>
 </root>

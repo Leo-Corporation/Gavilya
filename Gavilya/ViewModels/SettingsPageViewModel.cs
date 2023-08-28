@@ -49,7 +49,7 @@ public class SettingsPageViewModel : ViewModelBase
 	{
 		AboutCommand = new RelayCommand((o) => CurrentViewModel = new AboutViewModel());
 		DataCommand = new RelayCommand((o) => CurrentViewModel = new DataOptionsViewModel(profile, profiles));
-		FpsCommand = new RelayCommand((o) => CurrentViewModel = new FpsViewModel());
+		FpsCommand = new RelayCommand((o) => CurrentViewModel = new FpsViewModel(profile, profiles, mainViewModel));
 		GameOptionsCommand = new RelayCommand((o) => CurrentViewModel = new GameOptionsViewModel(profile, profiles, mainViewModel));
 		HomeCommand = new RelayCommand((o) => CurrentViewModel = new HomeOptionsViewModel(profile, profiles, mainViewModel));
 		LanguageCommand = new RelayCommand((o) => CurrentViewModel = new LanguageViewModel(profile, profiles, mainViewModel));

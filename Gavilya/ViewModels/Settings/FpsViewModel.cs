@@ -22,13 +22,47 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Commands;
+using Gavilya.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
 public class FpsViewModel : ViewModelBase
 {
+	private readonly Profile _profile;
+	private readonly ProfileData _profileData;
+	private readonly MainViewModel _mainViewModel;
+
+	private string _opacity;
+	public string Opacity { get => _opacity; set { _opacity = value; OnPropertyChanged(nameof(Opacity)); } }
+
+	public ICommand SaveCommand { get; }
+
+	public FpsViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
+	{
+		_profile = profile;
+		_profileData = profileData;
+		_mainViewModel = mainViewModel;
+
+		Opacity = (profile.Settings.FpsCounterOpacity * 100).ToString();
+		SaveCommand = new RelayCommand(Save);
+	}
+
+	private void Save(object? obj)
+	{
+		if (int.TryParse(Opacity, out int opa) && opa >= 0 && opa <= 100)
+		{
+			_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.FpsCounterOpacity = opa / 100d;
+			_mainViewModel.CurrentSettings = _profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings;
+			_profileData.Save();
+			return;
+		}
+		MessageBox.Show(Properties.Resources.IncorrectValue, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+	}
 }

@@ -1159,6 +1159,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please specify a correct value..
+        /// </summary>
+        public static string IncorrectValue {
+            get {
+                return ResourceManager.GetString("IncorrectValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Infos.
         /// </summary>
         public static string Infos {

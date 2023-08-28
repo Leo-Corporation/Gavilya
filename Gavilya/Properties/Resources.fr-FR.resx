@@ -999,4 +999,7 @@
   <data name="Recents" xml:space="preserve">
     <value>Récents</value>
   </data>
+  <data name="IncorrectValue" xml:space="preserve">
+    <value>Veuillez spécifier une valeur correcte.</value>
+  </data>
 </root>

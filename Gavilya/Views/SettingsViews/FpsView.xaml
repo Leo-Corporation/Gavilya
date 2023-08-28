@@ -80,8 +80,9 @@
                             BorderThickness="0"
                             FontWeight="ExtraBold"
                             Foreground="{DynamicResource Foreground}"
-                            MaxLength="2"
+                            MaxLength="3"
                             Style="{DynamicResource RegularTextBox}"
+                            Text="{Binding Opacity, UpdateSourceTrigger=PropertyChanged}"
                             TextAlignment="Center" />
                         <Button
                             x:Name="SaveButton"
@@ -89,6 +90,7 @@
                             Padding="5"
                             HorizontalAlignment="Left"
                             Background="{DynamicResource Background2}"
+                            Command="{Binding SaveCommand}"
                             Foreground="{DynamicResource Foreground}"
                             Style="{StaticResource RegularButton}">
                             <StackPanel Orientation="Horizontal">
