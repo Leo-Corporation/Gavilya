@@ -65,7 +65,7 @@ public partial class App : Application
 		MainWindow.DataContext = mvm;
 		MainWindow.Show();
 		base.OnStartup(e);
-	}	
+	}
 
 	private bool IsSaveDay(int day)
 	{

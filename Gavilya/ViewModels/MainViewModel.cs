@@ -133,7 +133,7 @@ public class MainViewModel : ViewModelBase
 		_profile = profile;
 		_profiles = profiles;
 		_tags = profile.Tags;
-		_navBarViewModel = new(this, profile, profiles);
+		_navBarViewModel = new(this, _profile, _profiles);
 		_windowHelper = new(window);
 
 		// Commands
