@@ -263,6 +263,9 @@
                                 <Trigger Property="IsPressed" Value="True">
                                     <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource DarkAccent}" />
                                 </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter TargetName="ButtonBorder" Property="Background" Value="{DynamicResource DarkAccent}" />
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>

@@ -67,6 +67,7 @@ public class GameEditionViewModel : ViewModelBase
 		{
 			_name = value;
 			OnPropertyChanged(nameof(Name));
+			CanExecute = !string.IsNullOrEmpty(value);
 		}
 	}
 
@@ -144,6 +145,17 @@ public class GameEditionViewModel : ViewModelBase
 		{
 			_isTagOpen = value;
 			OnPropertyChanged(nameof(IsTagOpen));
+		}
+	}
+
+	private bool _canExecute;
+	public bool CanExecute
+	{
+		get { return _canExecute; }
+		set
+		{
+			_canExecute = value;
+			OnPropertyChanged(nameof(CanExecute));
 		}
 	}
 
@@ -227,7 +239,7 @@ public class GameEditionViewModel : ViewModelBase
 		GameType = game.GameType;
 		Games = games;
 		Tags = tags;
-		AddCommand = new RelayCommand(AddGame);
+		AddCommand = new RelayCommand(AddGame, (o) => CanExecute);
 		BrowseFileCommand = new RelayCommand(BrowseGame);
 		BrowseImageCommand = new RelayCommand(BrowseImage);
 		BrowseUwpCommand = new RelayCommand(BrowseUwp);
