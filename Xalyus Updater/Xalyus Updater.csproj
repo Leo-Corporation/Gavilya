@@ -7,12 +7,13 @@
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Xalyus Updater.ico</ApplicationIcon>
-    <Version>2.2.0.2202</Version>
+    <Version>4.0.0.2309</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <Copyright>© 2021</Copyright>
+    <Copyright>© 2023</Copyright>
+    <Company>Léo Corporation</Company>
   </PropertyGroup>
 
   <ItemGroup>

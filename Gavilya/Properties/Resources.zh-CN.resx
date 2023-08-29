@@ -316,7 +316,7 @@
     <value>您的游戏已成功导出。</value>
   </data>
   <data name="GavFiles" xml:space="preserve">
-    <value>GAV 文件</value>
+    <value>G4V 文件</value>
   </data>
   <data name="ImportConfirmMsg" xml:space="preserve">
     <value>当前游戏将被新游戏替换，您无法还原此操作。 你想继续吗？</value>
@@ -412,7 +412,7 @@
     <value>从添加游戏开始</value>
   </data>
   <data name="AddGameWelcome" xml:space="preserve">
-    <value>通过单击“添加”按钮添加游戏或将可执行文件拖放到此处。</value>
+    <value>点击 "添加 "按钮添加游戏。</value>
   </data>
   <data name="WelcomeRecentGames" xml:space="preserve">
     <value>当您开始玩游戏时，它们会出现在这里。</value>
@@ -805,10 +805,10 @@
     <value>通知</value>
   </data>
   <data name="NotificationLower" xml:space="preserve">
-    <value>通知</value>
+    <value>通知。</value>
   </data>
   <data name="NotificationsLower" xml:space="preserve">
-    <value>通知</value>
+    <value>通知。</value>
   </data>
   <data name="YouHave" xml:space="preserve">
     <value>您有</value>
@@ -983,5 +983,29 @@
   </data>
   <data name="Advanced" xml:space="preserve">
     <value>高级</value>
+  </data>
+  <data name="MinutesMin" xml:space="preserve">
+    <value>分钟</value>
+  </data>
+  <data name="SecondsMin" xml:space="preserve">
+    <value>秒钟</value>
+  </data>
+  <data name="HoursMin" xml:space="preserve">
+    <value>时数</value>
+  </data>
+  <data name="PlayTo" xml:space="preserve">
+    <value>播放到 {0}</value>
+  </data>
+  <data name="Recents" xml:space="preserve">
+    <value>近期活动</value>
+  </data>
+  <data name="IncorrectValue" xml:space="preserve">
+    <value>请指定一个正确的值。</value>
+  </data>
+  <data name="NoItemsFound" xml:space="preserve">
+    <value>未找到项目</value>
+  </data>
+  <data name="MigrateFromV3" xml:space="preserve">
+    <value>从 v3 迁移</value>
   </data>
 </root>

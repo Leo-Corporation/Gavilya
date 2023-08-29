@@ -213,9 +213,6 @@
   <data name="Search" xml:space="preserve">
     <value>Rechercher</value>
   </data>
-  <data name="PlayTo" xml:space="preserve">
-    <value>à </value>
-  </data>
   <data name="PlayLowerCase" xml:space="preserve">
     <value>Jouer</value>
   </data>
@@ -319,7 +316,7 @@
     <value>Vos jeux ont été exportés avec succès.</value>
   </data>
   <data name="GavFiles" xml:space="preserve">
-    <value>Fichiers GAV</value>
+    <value>Fichiers G4V</value>
   </data>
   <data name="ImportConfirmMsg" xml:space="preserve">
     <value>Les jeux actuels vont êtres remplacés par les nouveaux, vous ne pouvez pas annuler cette opération. Voulez-vous continuer ?</value>
@@ -415,7 +412,7 @@
     <value>Commencez par ajouter un jeu</value>
   </data>
   <data name="AddGameWelcome" xml:space="preserve">
-    <value>Ajoutez un jeu en cliquant sur le bouton "Ajouter" ou en glissant un fichier exécutable ici.</value>
+    <value>Ajoutez un jeu en cliquant sur le bouton "Ajouter".</value>
   </data>
   <data name="WelcomeRecentGames" xml:space="preserve">
     <value>Quand vous commencerez à jouer à des jeux, ils s'afficheront ici.</value>
@@ -466,7 +463,7 @@
     <value>Profil</value>
   </data>
   <data name="SwitchProfile" xml:space="preserve">
-    <value>Changer de profile</value>
+    <value>Changer de profil</value>
   </data>
   <data name="EditProfile" xml:space="preserve">
     <value>Modifier le profil</value>
@@ -986,5 +983,29 @@
   </data>
   <data name="Advanced" xml:space="preserve">
     <value>Avancé</value>
+  </data>
+  <data name="MinutesMin" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="SecondsMin" xml:space="preserve">
+    <value>secondes</value>
+  </data>
+  <data name="HoursMin" xml:space="preserve">
+    <value>heures</value>
+  </data>
+  <data name="PlayTo" xml:space="preserve">
+    <value>Jouer à {0}</value>
+  </data>
+  <data name="Recents" xml:space="preserve">
+    <value>Récents</value>
+  </data>
+  <data name="IncorrectValue" xml:space="preserve">
+    <value>Veuillez spécifier une valeur correcte.</value>
+  </data>
+  <data name="NoItemsFound" xml:space="preserve">
+    <value>Aucun élément trouvé</value>
+  </data>
+  <data name="MigrateFromV3" xml:space="preserve">
+    <value>Migrer depuis la v3</value>
   </data>
 </root>

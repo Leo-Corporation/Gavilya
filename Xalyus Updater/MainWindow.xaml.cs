@@ -55,7 +55,7 @@ public partial class MainWindow : Window
 		{
 			case "fr-FR": // If the language is French
 				TitleTxt.Text = "Gavilya"; // Title
-				DescriptionTxt.Text = "Gavilya est un simple lanceur de jeu."; // Description
+				DescriptionTxt.Text = "Gavilya est un lanceur de jeux vidéos."; // Description
 				DownloadTxt.Text = "Téléchargement en cours"; // Download
 				Global.InstallMessage = "Installation en cours"; // Installation message
 				break;

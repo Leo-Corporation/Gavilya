@@ -21,14 +21,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
-using Gavilya.Classes;
-using Gavilya.Pages;
-using Gavilya.Windows;
+using Gavilya.Helpers;
+using Gavilya.Models;
+using Gavilya.ViewModels;
+using Gavilya.Views;
+using System;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Threading;
 using System.Windows;
+using System.Windows.Shell;
 
 namespace Gavilya;
-
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
@@ -36,59 +41,131 @@ public partial class App : Application
 {
 	protected override void OnStartup(StartupEventArgs e)
 	{
-		SettingsSaver.Load(); // Load the settings
-		Global.ChangeLanguage(); // Change the language
+		ProfileData profiles = new();
+		profiles.Load();
+		var currentProfile = profiles.Profiles.Where(p => p.ProfileUuid == profiles.SelectedProfileUuid).First();
 
-		if (!File.Exists(Global.Settings.ThemePath))
+		if (currentProfile.Settings.Language != Language.Default)
+			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(currentProfile.Settings.Language switch
+			{
+				Language.en_US => "en-US",
+				Language.fr_FR => "fr-FR",
+				Language.zh_CN => "zh-CN",
+			});
+
+		if (currentProfile.Settings.MakeAutoSave && IsSaveDay(currentProfile.Settings.AutoSaveDay) && !File.Exists($@"{currentProfile.Settings.SavePath}\GavilyaProfiles_{DateTime.Now:yyyy_MM_dd}.g4v"))
 		{
-			Global.Settings.ThemePath = "_default";
+			profiles.Backup(currentProfile.Settings.SavePath);
 		}
 
-		if (Global.Settings.ThemePath != "_default") // Load the user defined theme
-		{			
-			ThemeManager.ChangeTheme(ThemeManager.GetThemeInfoFromPath(Global.Settings.ThemePath), Global.Settings.ThemePath.Replace(@"\theme.manifest", ""));
+		if (currentProfile.Settings.CurrentTheme != "")
+		{
+			ThemeHelper.ChangeTheme(ThemeHelper.GetThemeFromPath(currentProfile.Settings.CurrentTheme), currentProfile.Settings.CurrentTheme.Replace(@"\theme.manifest", ""));
 		}
 
-		Global.GameInfoPage = new(); // Create the page
-		Global.GameInfoPage2 = new(); // Create the page
-
-		ProfileManager.LoadProfiles(); // Load profiles
-		GameSaver.Load(); // Load the .gav file in the Definitions class
-
-		Global.StatGameInfoControl = new(); // New control
-		Global.Statistics = new(); // New page
-
-		Global.HomePage = new();
-
-		RecentGamesPage recentGamesPage = new(); // RecentGamesPage
-		Global.RecentGamesPage = recentGamesPage; // Define the RecentGamesPage
-		Global.RecentGamesPage.LoadGames(); // Load the games
-
-		GamesListPage gamesListPage = new(); // GamesListPage
-		Global.GamesListPage = gamesListPage; // Define the GamesListPage
-		Global.GamesListPage.LoadGames(); // Load the games
-
-		Global.LibraryPage = new();
-		Global.ProfilePage = new();
-		Global.SettingsPage = new();
-		Global.TagPage = new();		
-
-		if (Global.Settings.DefaultGavilyaHomePage is null)
+		if (!currentProfile.Settings.IsFirstRun)
 		{
-			Global.Settings.DefaultGavilyaHomePage = Enums.GavilyaWindowPages.Home; // Set default value
-			SettingsSaver.Save(); // Save changes
-		}
+			CreateJumpLists(currentProfile.Games);
+			int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
 
-		if (Global.Settings.IsFirstRun) // If it is the app first run
-		{
-			new FirstRun().Show(); // Show the first run experience
+			MainWindow = new MainWindow();
+
+			MainViewModel mvm = new(MainWindow, currentProfile, profiles, pageID == null ? null : (Page)pageID);
+			MainWindow.DataContext = mvm;
+			MainWindow.Show();
 		}
 		else
 		{
-			Global.CreateJumpLists();
+			MainWindow = new FirstRunView();
 
-			int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
-			new MainWindow(pageID == null ? null : (Enums.GavilyaWindowPages)pageID).Show(); // Show the regular main window
+			FirstRunViewModel firstRunViewModel = new(MainWindow, currentProfile, profiles);
+			MainWindow.DataContext = firstRunViewModel;
+			MainWindow.Show();
 		}
+		base.OnStartup(e);
 	}
+
+	private bool IsSaveDay(int day)
+	{
+		// Get the current date
+		DateTime currentDate = DateTime.Today;
+
+		// Get the last day of the current month
+		int lastDayOfMonth = DateTime.DaysInMonth(currentDate.Year, currentDate.Month);
+
+		// Check if the specified day matches the current day or the last day of the month
+		if (day == currentDate.Day || (day == 31 && day >= lastDayOfMonth))
+		{
+			return true;
+		}
+
+		// Check special case for February
+		if (currentDate.Month == 2)
+		{
+			// If the specified day is 29, 30, or 31, return true
+			if ((day == 29 || day == 30 || day == 31))
+			{
+				return true;
+			}
+
+			// If the specified day is 28 (last day of February), return true
+			if (day == 28)
+			{
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	private void CreateJumpLists(GameList games)
+	{
+		JumpList jumpList = new();		
+
+		var gTasks = games.Where(g => g.IsFavorite).Select(g => new JumpTask()
+		{
+			Title = g.Name,
+			Arguments = $"{g.Command}",
+			Description = g.Command,
+			CustomCategory = Gavilya.Properties.Resources.Favorites,
+			IconResourcePath = g.GameType == Enums.GameType.Win32 ? g.Command : Assembly.GetEntryAssembly()?.Location,
+			ApplicationPath = "explorer.exe"
+		});
+
+		jumpList.JumpItems.AddRange(gTasks);
+
+		jumpList.JumpItems.Add(new JumpTask()
+		{
+			Title = Gavilya.Properties.Resources.Home,
+			Arguments = "/page 0",
+			Description = Gavilya.Properties.Resources.Home,
+			CustomCategory = Gavilya.Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly()?.Location
+		});
+
+		jumpList.JumpItems.Add(new JumpTask()
+		{
+			Title = Gavilya.Properties.Resources.Library,
+			Arguments = "/page 1",
+			Description = Gavilya.Properties.Resources.Library,
+			CustomCategory = Gavilya.Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly()?.Location
+		});
+
+		jumpList.JumpItems.Add(new JumpTask()
+		{
+			Title = Gavilya.Properties.Resources.MyProfile,
+			Arguments = "/page 3",
+			Description = Gavilya.Properties.Resources.MyProfile,
+			CustomCategory = Gavilya.Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly()?.Location
+		});
+
+
+		jumpList.ShowFrequentCategory = false;
+		jumpList.ShowRecentCategory = false;
+
+		JumpList.SetJumpList(Current, jumpList);
+	}
+
 }

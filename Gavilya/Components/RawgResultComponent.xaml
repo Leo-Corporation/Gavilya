@@ -1,0 +1,122 @@
+﻿<UserControl
+    x:Class="Gavilya.Components.RawgResultComponent"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lang="clr-namespace:Gavilya.Properties"
+    xmlns:local="clr-namespace:Gavilya.Components"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    MaxWidth="500"
+    d:DesignHeight="250"
+    FontFamily="..\Fonts\#Hauora"
+    Foreground="{DynamicResource Foreground}"
+    mc:Ignorable="d">
+    <Border
+        Margin="10"
+        Padding="10"
+        Background="{DynamicResource SelectedBackground}"
+        CornerRadius="10">
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Name="SsidTxt"
+                    Grid.Column="1"
+                    d:Text="Game Name"
+                    FontSize="16"
+                    FontWeight="ExtraBold"
+                    Text="{Binding Name}" />
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button
+                        x:Name="SelectBtn"
+                        Grid.Row="1"
+                        Margin="0 0 5 0"
+                        Padding="5 2"
+                        HorizontalAlignment="Right"
+                        Background="{DynamicResource Accent}"
+                        Command="{Binding SelectCommand}"
+                        Content="{x:Static lang:Resources.Select}"
+                        Cursor="Hand"
+                        FontWeight="ExtraBold"
+                        Style="{DynamicResource AccentButton}" />
+
+
+                    <Button
+                        x:Name="ExpanderBtn"
+                        Grid.Column="1"
+                        Padding="5"
+                        Background="Transparent"
+                        Command="{Binding CollapseCommand}"
+                        Content="{Binding CollapseIcon}"
+                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground}"
+                        Style="{DynamicResource RegularButton}" />
+                </StackPanel>
+
+
+            </Grid>
+            <Grid
+                x:Name="CollapseGrid"
+                Grid.Row="1"
+                Margin="5"
+                d:Visibility="Visible"
+                Visibility="{Binding CollapseGridVid}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock d:Text="Description" Text="{Binding Description}" />
+                <StackPanel Grid.Row="1" Orientation="Horizontal">
+                    <Button
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource Accent}"
+                        BorderThickness="{Binding Thickness1}"
+                        Command="{Binding SelectFirstScreenCommand}"
+                        Cursor="Hand"
+                        Style="{DynamicResource EditButton}">
+                        <Rectangle
+                            Width="178"
+                            Height="100"
+                            HorizontalAlignment="Center"
+                            RadiusX="5"
+                            RadiusY="5">
+                            <Rectangle.Fill>
+                                <ImageBrush x:Name="Screen1Img" ImageSource="{Binding FirstScreen}" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Button>
+                    <Button
+                        Margin="5 0 0 0"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="{DynamicResource Accent}"
+                        BorderThickness="{Binding Thickness2}"
+                        Command="{Binding SelectSecondScreenCommand}"
+                        Cursor="Hand"
+                        Style="{DynamicResource EditButton}">
+                        <Rectangle
+                            Width="178"
+                            Height="100"
+                            HorizontalAlignment="Center"
+                            RadiusX="5"
+                            RadiusY="5">
+                            <Rectangle.Fill>
+                                <ImageBrush x:Name="Screen2Img" ImageSource="{Binding SecondScreen}" />
+                            </Rectangle.Fill>
+                        </Rectangle>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

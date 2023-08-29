@@ -118,12 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Gavilya" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\gavilya.ico;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Gavilya1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Gavilya.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -219,9 +213,6 @@
   </data>
   <data name="Search" xml:space="preserve">
     <value>Search</value>
-  </data>
-  <data name="PlayTo" xml:space="preserve">
-    <value></value>
   </data>
   <data name="PlayLowerCase" xml:space="preserve">
     <value>Play</value>
@@ -326,7 +317,7 @@
     <value>Your games have been successfully exported.</value>
   </data>
   <data name="GavFiles" xml:space="preserve">
-    <value>GAV Files</value>
+    <value>G4V Files</value>
   </data>
   <data name="ImportConfirmMsg" xml:space="preserve">
     <value>The current games are going to be replaced by the new ones, you cannot revert this operation. Do you wanna continue?</value>
@@ -422,7 +413,7 @@
     <value>Start by adding a game</value>
   </data>
   <data name="AddGameWelcome" xml:space="preserve">
-    <value>Add a game by clicking on the "Add" button or drag and drop an executable file here.</value>
+    <value>Add a game by clicking on the "Add" button.</value>
   </data>
   <data name="WelcomeRecentGames" xml:space="preserve">
     <value>When you will start playing games, they will show up here.</value>
@@ -993,5 +984,29 @@
   </data>
   <data name="Advanced" xml:space="preserve">
     <value>Advanced</value>
+  </data>
+  <data name="MinutesMin" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="SecondsMin" xml:space="preserve">
+    <value>seconds</value>
+  </data>
+  <data name="HoursMin" xml:space="preserve">
+    <value>hours</value>
+  </data>
+  <data name="PlayTo" xml:space="preserve">
+    <value>Play to {0}</value>
+  </data>
+  <data name="Recents" xml:space="preserve">
+    <value>Recents</value>
+  </data>
+  <data name="IncorrectValue" xml:space="preserve">
+    <value>Please specify a correct value.</value>
+  </data>
+  <data name="NoItemsFound" xml:space="preserve">
+    <value>No items found</value>
+  </data>
+  <data name="MigrateFromV3" xml:space="preserve">
+    <value>Migrate from v3</value>
   </data>
 </root>

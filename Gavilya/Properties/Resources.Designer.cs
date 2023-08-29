@@ -934,31 +934,11 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to GAV Files.
+        ///   Looks up a localized string similar to G4V Files.
         /// </summary>
         public static string GavFiles {
             get {
                 return ResourceManager.GetString("GavFiles", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Gavilya {
-            get {
-                object obj = ResourceManager.GetObject("Gavilya", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        public static byte[] Gavilya1 {
-            get {
-                object obj = ResourceManager.GetObject("Gavilya1", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         
@@ -1098,6 +1078,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to hours.
+        /// </summary>
+        public static string HoursMin {
+            get {
+                return ResourceManager.GetString("HoursMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Image.
         /// </summary>
         public static string Image {
@@ -1166,6 +1155,15 @@ namespace Gavilya.Properties {
         public static string ImportSuccess {
             get {
                 return ResourceManager.GetString("ImportSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please specify a correct value..
+        /// </summary>
+        public static string IncorrectValue {
+            get {
+                return ResourceManager.GetString("IncorrectValue", resourceCulture);
             }
         }
         
@@ -1377,6 +1375,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Migrate from v3.
+        /// </summary>
+        public static string MigrateFromV3 {
+            get {
+                return ResourceManager.GetString("MigrateFromV3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minute.
         /// </summary>
         public static string Minute {
@@ -1391,6 +1398,15 @@ namespace Gavilya.Properties {
         public static string MinuteMin {
             get {
                 return ResourceManager.GetString("MinuteMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to minutes.
+        /// </summary>
+        public static string MinutesMin {
+            get {
+                return ResourceManager.GetString("MinutesMin", resourceCulture);
             }
         }
         
@@ -1517,6 +1533,15 @@ namespace Gavilya.Properties {
         public static string NoGames {
             get {
                 return ResourceManager.GetString("NoGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No items found.
+        /// </summary>
+        public static string NoItemsFound {
+            get {
+                return ResourceManager.GetString("NoItemsFound", resourceCulture);
             }
         }
         
@@ -1800,7 +1825,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Play to {0}.
         /// </summary>
         public static string PlayTo {
             get {
@@ -1931,6 +1956,15 @@ namespace Gavilya.Properties {
         public static string RecentGames {
             get {
                 return ResourceManager.GetString("RecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recents.
+        /// </summary>
+        public static string Recents {
+            get {
+                return ResourceManager.GetString("Recents", resourceCulture);
             }
         }
         
@@ -2111,6 +2145,15 @@ namespace Gavilya.Properties {
         public static string SecondMin {
             get {
                 return ResourceManager.GetString("SecondMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to seconds.
+        /// </summary>
+        public static string SecondsMin {
+            get {
+                return ResourceManager.GetString("SecondsMin", resourceCulture);
             }
         }
         

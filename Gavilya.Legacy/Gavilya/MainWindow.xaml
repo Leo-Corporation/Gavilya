@@ -1,0 +1,351 @@
+﻿<Window x:Class="Gavilya.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:pages="clr-namespace:Gavilya.Pages" xmlns:lang="clr-namespace:Gavilya.Properties" xmlns:local="clr-namespace:Gavilya" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:uc="clr-namespace:Gavilya.UserControls" mc:Ignorable="d" FontFamily="/Fonts/#Hauora" Title="Gavilya" Height="700" Width="1185" MinHeight="450" MinWidth="840" WindowStartupLocation="CenterScreen" LocationChanged="Window_LocationChanged" WindowStyle="None" StateChanged="Window_StateChanged" Background="Transparent" AllowsTransparency="True" Loaded="Window_Loaded" Closing="Window_Closing">
+
+	<WindowChrome.WindowChrome>
+		<WindowChrome CaptionHeight="55" ResizeBorderThickness="10" />
+	</WindowChrome.WindowChrome>
+
+	<Window.Resources>
+		<Style x:Key="WindowMainPanelStyle" TargetType="{x:Type Border}">
+			<Setter Property="BorderBrush" Value="{DynamicResource WindowBorderBrush}" />
+			<Setter Property="BorderThickness" Value="1" />
+			<Style.Triggers>
+				<!--<DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}, Path=WindowState}" Value="Maximized">
+					<Setter Property="Margin" Value="6 0 6 0" />
+				</DataTrigger>-->
+			</Style.Triggers>
+		</Style>
+		<Style x:Key="TitleBarButtonStyle" TargetType="Button">
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="Height" Value="32" />
+			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+			<Setter Property="IsTabStop" Value="False" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border x:Name="border" Background="{TemplateBinding Background}" BorderThickness="0" CornerRadius="5" SnapsToDevicePixels="true">
+							<ContentPresenter x:Name="contentPresenter" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" RecognizesAccessKey="True" />
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedBackground}" />
+							</Trigger>
+							<Trigger Property="IsPressed" Value="true">
+								<Setter TargetName="border" Property="Background" Value="{DynamicResource SelectedBackground}" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
+			<Setter Property="Foreground" Value="{DynamicResource Foreground}" />
+			<Setter Property="Height" Value="32" />
+			<Setter Property="Padding" Value="0" />
+			<Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+			<Setter Property="IsTabStop" Value="False" />
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type Button}">
+						<Border x:Name="border" Background="Transparent" BorderThickness="0" CornerRadius="5" SnapsToDevicePixels="true">
+							<ContentPresenter x:Name="contentPresenter" Margin="0" HorizontalAlignment="Center" VerticalAlignment="Center" Focusable="False" RecognizesAccessKey="True" />
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsMouseOver" Value="true">
+								<Setter TargetName="border" Property="Background" Value="Red" />
+								<Setter Property="Foreground" Value="DarkRed" />
+							</Trigger>
+							<Trigger Property="IsPressed" Value="true">
+								<Setter TargetName="border" Property="Background" Value="Red" />
+								<Setter Property="Foreground" Value="DarkRed" />
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+
+	<Window.Effect>
+		<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
+	</Window.Effect>
+	<Border Name="WindowBorder" Margin="10" BorderThickness="0" Background="{DynamicResource Background2}" CornerRadius="5 5 0 0">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="50" />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+
+			<Border Height="50" Style="{StaticResource WindowMainPanelStyle}">
+				<Grid Height="50" VerticalAlignment="Top">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+
+					<Rectangle Fill="{DynamicResource Background}" Grid.ColumnSpan="15" RadiusX="5" RadiusY="5">
+						<Rectangle.Effect>
+							<DropShadowEffect BlurRadius="20" Opacity="0.2" ShadowDepth="0" />
+						</Rectangle.Effect>
+					</Rectangle>
+
+					<Button Name="BackBtn" Click="BackBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe993;" FontSize="14" Grid.Column="0" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.GoBack}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+
+					<Button Name="ForwardBtn" Click="ForwardBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe994;" FontSize="14" Grid.Column="1" Width="37" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.GoForward}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+
+					<StackPanel x:Name="SearchPanel" Orientation="Horizontal" Grid.Column="3" HorizontalAlignment="Center">
+						<Button Visibility="Collapsed" Click="FiltersBtn_Click" x:Name="FiltersBtn" WindowChrome.IsHitTestVisibleInChrome="True" Cursor="Hand" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Padding="7" Style="{DynamicResource RegularButton}" VerticalAlignment="Center" Height="36">
+							<TextBlock Text="&#xF407;" FontSize="15" FontFamily="\Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" />
+
+						</Button>
+						<TextBox PreviewLostKeyboardFocus="TextBox_PreviewLostKeyboardFocus" LostFocus="SearchBox_LostFocus" PreviewMouseLeftButtonUp="SearchBox_PreviewMouseLeftButtonUp" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}" Style="{DynamicResource RegularTextBox}" Width="400" Name="SearchBox" Grid.Column="3" BorderThickness="0" FontWeight="ExtraBold" VerticalAlignment="Stretch" Margin="3 7" WindowChrome.IsHitTestVisibleInChrome="True" TextChanged="SearchBox_TextChanged" KeyUp="SearchBox_KeyUp">
+							
+						</TextBox>
+					</StackPanel>
+
+					<Popup Closed="FiltersPopup_Closed" x:Name="FiltersPopup" StaysOpen="False" AllowsTransparency="True" Placement="Bottom" PopupAnimation="Fade" IsOpen="False" PlacementTarget="{Binding ElementName=FiltersBtn}">
+						<Border Background="{DynamicResource Background}" Padding="10" CornerRadius="5" Margin="8">
+							<StackPanel>
+								<TextBlock Text="{x:Static lang:Resources.Filters}" FontWeight="ExtraBold" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" Foreground="{DynamicResource Foreground}" />
+								<ComboBox SelectedIndex="0" SelectionChanged="FilterComboBox_SelectionChanged" BorderThickness="2" Padding="5" Style="{DynamicResource ComboBoxStyle1}" x:Name="FilterComboBox" Background="Transparent" BorderBrush="{DynamicResource Accent}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Left" Margin="5,5,5,0" VerticalAlignment="Center">
+									<ComboBoxItem Content="{x:Static lang:Resources.AllFilters}"/>
+									<ComboBoxItem Content="{x:Static lang:Resources.Tags}"/>
+								</ComboBox>
+
+								<StackPanel x:Name="TagsFilters" Visibility="Collapsed" Margin="0,10,0,0">
+									<ScrollViewer HorizontalScrollBarVisibility="Disabled" MaxHeight="200">
+										<StackPanel x:Name="TagsDisplayer">
+
+										</StackPanel>
+									</ScrollViewer>
+									<Button Margin="0 5" x:Name="TagsApplyBtn" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" Padding="10,5,10,5" Style="{StaticResource RegularButton}" FontWeight="ExtraBold" Cursor="Hand" VerticalAlignment="Center" Click="TagsApplyBtn_Click" Visibility="Visible" HorizontalAlignment="Center">
+										<StackPanel Orientation="Horizontal">
+											<TextBlock Text="&#xF295;" FontWeight="Regular" FontFamily="\Fonts\#FluentSystemIcons-Regular" Margin="0,0,0,0" VerticalAlignment="Center"/>
+											<TextBlock Text="{x:Static lang:Resources.Apply}" FontWeight="ExtraBold" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Margin="5 0" HorizontalAlignment="Left" />
+										</StackPanel>
+										<Button.ToolTip>
+											<ToolTip Content="{x:Static lang:Resources.Apply}" Foreground="{DynamicResource Foreground}" Background="{DynamicResource Background2}"/>
+										</Button.ToolTip>
+									</Button>
+								</StackPanel>
+							</StackPanel>
+
+							<Border.Effect>
+								<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
+							</Border.Effect>
+						</Border>
+					</Popup>
+
+					<Popup Width="400" StaysOpen="False" x:Name="SearchPopup" AllowsTransparency="True" Placement="Bottom" PopupAnimation="Fade" IsOpen="False" PlacementTarget="{Binding ElementName=SearchBox}">
+						<Border Background="{DynamicResource Background}" Padding="10" CornerRadius="5" Margin="8">
+							<ScrollViewer x:Name="SearchScroller" HorizontalScrollBarVisibility="Disabled" Template="{DynamicResource ScrollViewerTemplate1}">
+								<StackPanel x:Name="SearchDisplayer">
+								</StackPanel>
+							</ScrollViewer>
+
+							<Border.Effect>
+								<DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="10" Opacity="0.4" RenderingBias="Quality" />
+							</Border.Effect>
+						</Border>
+					</Popup>
+
+					<Button x:Name="SearchBtn" Click="SearchBtn_Click" Style="{StaticResource TitleBarButtonStyle}" FontSize="18" Grid.Column="4" Width="32" Height="32" FontFamily="Fonts\#FluentSystemIcons-Regular" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent" Content="&#xF690;">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Search}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+
+					<Button Name="SelectBtn" Click="SelectBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xeadb;" FontSize="14" Grid.Column="7" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.SelectGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+					<Button Name="DeleteBtn" Click="DeleteBtn_Click" Style="{StaticResource TitleBarButtonStyle}" Content="&#xe9cf;" FontSize="14" Grid.Column="8" Width="32" Height="32" FontFamily="Fonts\#FluentlyIcons" Foreground="{DynamicResource Foreground}" BorderThickness="0" Background="Transparent">
+						<Button.ToolTip>
+							<ToolTip Content="{x:Static lang:Resources.Delete}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+						</Button.ToolTip>
+					</Button>
+					<TextBlock Grid.Column="9" Text="&#xe9db;" FontSize="25" Width="10" Foreground="{DynamicResource SelectedBackground}" Background="Transparent" FontFamily="Fonts\#FluentlyIcons" VerticalAlignment="Center" Margin="5,0,0,0" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
+					<Button Grid.Column="10" Click="Button_Click" RenderOptions.EdgeMode="Aliased" Style="{StaticResource TitleBarButtonStyle}" Background="Transparent" Width="46" Height="32" Content="&#xF4E0;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+					<Button x:Name="MaximizeButton" Grid.Column="11" Click="MaximizeButton_Click" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xFA40;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+					<Button x:Name="RestoreButton" Grid.Column="11" Click="RestoreButton_Click" Visibility="Collapsed" Background="Transparent" Style="{StaticResource TitleBarButtonStyle}" Width="46" Height="32" Content="&#xF670;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="16"></Button>
+					<Button Grid.Column="12" Click="Button_Click_2" Style="{StaticResource TitleBarCloseButtonStyle}" Width="46" Height="32" Content="&#xF36A;" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="12"></Button>
+				</Grid>
+			</Border>
+			<Border Grid.Row="1" Style="{StaticResource WindowMainPanelStyle}" Background="{DynamicResource Background}">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition Width="Auto" />
+						<ColumnDefinition />
+						<ColumnDefinition Width="Auto" />
+					</Grid.ColumnDefinitions>
+
+					<Grid x:Name="Sidebar">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="Auto"/>
+						</Grid.RowDefinitions>
+
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="HomeTabBtn" Click="HomeTabBtn_Click" Content="&#xF488;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.Home}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+							</Button.ToolTip>
+						</Button>
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="LibraryTabBtn" Click="LibraryTabBtn_Click" Content="&#xFE7B;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="1" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.Library}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+							</Button.ToolTip>
+						</Button>
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="RecentTabBtn" Click="RecentTabBtn_Click" Content="&#xF486;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="2" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+							</Button.ToolTip>
+						</Button>
+
+						<Button x:Name="ProfileBtn" Padding="5" Style="{StaticResource ButtonMenu}" Margin="5 2" Background="Transparent" Click="ProfileBtn_Click" BorderThickness="2 0 0 0" Grid.Row="3" Height="40" Cursor="Hand">
+							<Rectangle RadiusX="15" RadiusY="15" Width="25" Height="25">
+								<Rectangle.Fill>
+									<ImageBrush x:Name="ProfilePicture" ImageSource="Assets/DefaultPP.png" />
+								</Rectangle.Fill>
+							</Rectangle>
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.Profiles}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+							</Button.ToolTip>
+						</Button>
+						<Grid Grid.Row="4">
+							<Button BorderThickness="2 0 0 0" Padding="5" Height="40" BorderBrush="Transparent" x:Name="AddBtn" Click="AddBtn_Click" Content="&#xF10B;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="4" FontFamily="Fonts/#FluentSystemIcons-Filled">
+								<Button.ToolTip>
+									<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+								</Button.ToolTip>
+							</Button>
+							<Popup StaysOpen="False" x:Name="AddPopup" IsOpen="False" AllowsTransparency="True" Placement="Left" PlacementTarget="{Binding ElementName=AddBtn}" PopupAnimation="Fade">
+								<Border Padding="5" CornerRadius="5" Background="{DynamicResource Background2}">
+									<StackPanel>
+										<Button Click="AddGameBtn_Click" Margin="5" Grid.Row="1" x:Name="AddGameBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalContentAlignment="Stretch">
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="Auto"/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<TextBlock Margin="0 0 5 0" Text="&#xF10D;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" FontSize="18" />
+												<TextBlock Text="{x:Static lang:Resources.Add}" VerticalAlignment="Center" Grid.Column="1" />
+											</Grid>
+
+											<Button.ToolTip>
+												<ToolTip Content="{x:Static lang:Resources.AddGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+											</Button.ToolTip>
+										</Button>
+
+										<Button Click="AddUWPBtn_Click" Margin="5" Grid.Row="1" x:Name="AddUWPBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalContentAlignment="Stretch">
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="Auto"/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<TextBlock Margin="0 0 5 0" Text="&#xF74A;" FontFamily="..\Fonts\#FluentSystemIcons-Filled" VerticalAlignment="Center" FontSize="18" />
+												<TextBlock Text="{x:Static lang:Resources.AddUWPGame}" VerticalAlignment="Center" Grid.Column="1" />
+											</Grid>
+
+											<Button.ToolTip>
+												<ToolTip Content="{x:Static lang:Resources.AddUWPGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+											</Button.ToolTip>
+										</Button>
+										<Button Click="AddSteamBtn_Click" Margin="5" Grid.Row="1" x:Name="AddSteamBtn" Padding="5" FontSize="13" Style="{StaticResource RegularButton}" Background="{DynamicResource Background2}" Foreground="{DynamicResource Foreground}" HorizontalContentAlignment="Stretch">
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="Auto"/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<Image Source="..\Assets\Steam.png" Height="20" Width="20" Margin="0,0,5,0" />
+												<TextBlock Text="{x:Static lang:Resources.AddSteamGame}" VerticalAlignment="Center" Grid.Column="1" />
+											</Grid>
+											<Button.ToolTip>
+												<ToolTip Content="{x:Static lang:Resources.AddSteamGame}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+											</Button.ToolTip>
+										</Button>
+									</StackPanel>
+								</Border>
+							</Popup>
+						</Grid>
+
+						<TextBlock Grid.Row="5" Text="&#xF4E0;" FontSize="25" Foreground="{DynamicResource SelectedBackground}" Background="Transparent" FontFamily="Fonts\#FluentSystemIcons-Regular" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="ExtraLight" TextAlignment="Center" />
+
+						<ScrollViewer Grid.Row="6" CanContentScroll="True" VerticalScrollBarVisibility="Hidden">
+							<StackPanel x:Name="FavoriteSideBar">
+								<!-- Favorite items will display here -->
+							</StackPanel>
+						</ScrollViewer>
+
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="NotificationsBtn" Click="NotificationsBtn_Click" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5,2,5,5" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="7" FontFamily="Fonts/#FluentSystemIcons-Filled" BorderBrush="Transparent">
+							<Grid>
+								<TextBlock Text="&#xF115;" />
+								<TextBlock x:Name="BadgeTxt" Visibility="Hidden" Text="&#xF2BC;" Foreground="Red" FontFamily="Fonts\#FluentSystemIcons-Filled" FontSize="8" Margin="7,0,0,0" VerticalAlignment="Top" />
+							</Grid>
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.NotificationCenter}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+							</Button.ToolTip>
+						</Button>
+
+						<Button BorderThickness="2 0 0 0" Padding="5" Height="40" x:Name="SettingsBtn" Click="SettingsBtn_Click" Content="&#xF6B3;" Style="{DynamicResource ButtonMenu}" FontSize="18" Background="Transparent" Foreground="{DynamicResource Foreground}" Margin="5 2" Cursor="Hand" MouseLeave="HomeTabBtn_MouseLeave" Grid.Row="8" FontFamily="Fonts/#FluentSystemIcons-Filled">
+							<Button.ToolTip>
+								<ToolTip Content="{x:Static lang:Resources.RecentGames}" Background="{DynamicResource Background}" Foreground="{DynamicResource Foreground}" />
+							</Button.ToolTip>
+						</Button>
+					</Grid>
+
+					<Frame Height="Auto" Name="PageContent" NavigationUIVisibility="Hidden" Navigated="PageContent_Navigated" Grid.Column="2"></Frame>
+
+					<!-- Notification center -->
+					<Grid Width="300" Grid.Column="1" x:Name="NotificationCenter" Visibility="Collapsed">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="Auto" />
+							<RowDefinition />
+						</Grid.RowDefinitions>
+
+						<StackPanel Margin="10">
+							<TextBlock Text="{x:Static lang:Resources.Notifications}" Foreground="{DynamicResource Foreground}" FontWeight="ExtraBold" FontSize="22" />
+							<TextBlock x:Name="NotificationStatusTxt" d:Text="You have 1 notification." Foreground="{DynamicResource Foreground}" />
+						</StackPanel>
+
+						<ScrollViewer Grid.Row="1" Template="{DynamicResource ScrollViewerTemplate1}">
+							<StackPanel x:Name="NotificationPanel">
+								<StackPanel Margin="0,70,0,0" x:Name="NotificationPlaceholder" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+									<TextBlock Text="&#xF11D;" Foreground="{DynamicResource Foreground}" FontFamily="Fonts\#FluentSystemIcons-Regular" FontSize="52" HorizontalAlignment="Center" />
+									<TextBlock Text="{x:Static lang:Resources.NoNotifications}" Foreground="{DynamicResource Foreground}" HorizontalAlignment="Center" />
+								</StackPanel>
+							</StackPanel>
+						</ScrollViewer>
+					</Grid>
+				</Grid>
+			</Border>
+		</Grid>
+	</Border>
+</Window>
