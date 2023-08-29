@@ -43,5 +43,6 @@ public class ListPageViewModel : ViewModelBase
 		Games = games;
 		_tags = tags;
 		_mainViewModel = mainViewModel;
+		CurrentGameView = new ListPlaceholder();
 	}
 }

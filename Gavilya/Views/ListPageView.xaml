@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:Gavilya.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lang="clr-namespace:Gavilya.Properties"
     xmlns:local="clr-namespace:Gavilya.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Gavilya.ViewModels"
@@ -34,6 +35,27 @@
             <Grid.Resources>
                 <DataTemplate DataType="{x:Type vm:GamePageViewModel}">
                     <local:GamePageView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type vm:ListPlaceholder}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Width="300"
+                            VerticalAlignment="Center"
+                            Source="..\Assets\selectGames.png" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="10"
+                            VerticalAlignment="Center"
+                            FontSize="14"
+                            FontWeight="Bold"
+                            Foreground="{DynamicResource Foreground}"
+                            Text="{x:Static lang:Resources.SelectGameStart}" />
+                    </Grid>
                 </DataTemplate>
             </Grid.Resources>
 

@@ -19,8 +19,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\addGamesWelcome.png" />
     <None Remove="Assets\DefaultPP.png" />
     <None Remove="Assets\Gavilya.png" />
+    <None Remove="Assets\selectGames.png" />
     <None Remove="Assets\Steam.png" />
     <None Remove="Fonts\FluentSystemIcons-Filled.ttf" />
     <None Remove="Fonts\FluentSystemIcons-Regular.ttf" />
@@ -35,6 +37,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Assets\addGamesWelcome.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\DefaultPP.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -54,6 +59,9 @@
 
   <ItemGroup>
     <Resource Include="Assets\Gavilya.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\selectGames.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Steam.png">

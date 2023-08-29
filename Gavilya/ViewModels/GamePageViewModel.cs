@@ -293,3 +293,5 @@ public class GamePageViewModel : ViewModelBase
 		_ => $"{time / 3600d:0.0} {(time > 1 ? Properties.Resources.HoursMin : Properties.Resources.Hour)}"
 	};
 }
+
+public class ListPlaceholder : ViewModelBase { }
