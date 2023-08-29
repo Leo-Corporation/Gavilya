@@ -1,0 +1,64 @@
+﻿<UserControl
+    x:Class="Gavilya.Views.FirstRunViews.JumpInView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lang="clr-namespace:Gavilya.Properties"
+    xmlns:local="clr-namespace:Gavilya.Views.FirstRunViews"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    FontFamily="../../Fonts/#Hauora"
+    mc:Ignorable="d">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel
+            Grid.Column="1"
+            Margin="10"
+            HorizontalAlignment="Center">
+            <TextBlock
+                Margin="10 10 10 5"
+                HorizontalAlignment="Center"
+                FontSize="16"
+                FontWeight="ExtraBold"
+                Foreground="{DynamicResource Foreground}"
+                Text="{x:Static lang:Resources.Done}" />
+            <TextBlock
+                Margin="10 5 10 5"
+                HorizontalAlignment="Center"
+                FontSize="13"
+                Foreground="{DynamicResource Foreground}"
+                Text="{x:Static lang:Resources.ReadyFirstRun}"
+                TextWrapping="Wrap" />
+        </StackPanel>
+
+        <Button
+            x:Name="NextBtn"
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="10"
+            Padding="10 7 10 7"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="{DynamicResource Accent}"
+            Command="{Binding CloseCommand}"
+            Cursor="Hand"
+            Foreground="{DynamicResource Foreground}"
+            Style="{StaticResource AccentButton}">
+
+            <StackPanel Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontSize="12"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    Text="{x:Static lang:Resources.LetsGo}" />
+                <TextBlock
+                    Margin="10 0 0 0"
+                    VerticalAlignment="Center"
+                    FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                    Foreground="{DynamicResource Foreground}"
+                    Text="&#xF158;" />
+            </StackPanel>
+        </Button>
+    </StackPanel>
+</UserControl>
