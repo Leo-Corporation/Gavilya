@@ -28,7 +28,7 @@
         <Border.Background>
             <ImageBrush
                 x:Name="GameIcon"
-                ImageSource="{Binding CoverFilePath}"
+                ImageSource="{Binding GameImage}"
                 Stretch="UniformToFill" />
         </Border.Background>
 

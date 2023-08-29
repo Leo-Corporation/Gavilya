@@ -245,7 +245,7 @@
                                                         x:Name="GameImg"
                                                         Width="80"
                                                         Height="45"
-                                                        Source="{Binding CoverFilePath}"
+                                                        Source="{Binding GameImage}"
                                                         Stretch="UniformToFill" />
                                                     <TextBlock
                                                         x:Name="GameName"

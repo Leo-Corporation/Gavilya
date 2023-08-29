@@ -26,8 +26,11 @@ using Gavilya.Commands;
 using Gavilya.Enums;
 using Gavilya.Models;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Gavilya.ViewModels;
 
@@ -67,6 +70,16 @@ public class GameCardViewModel : ViewModelBase
 		set
 		{
 			_coverFilePath = value;
+			if (!string.IsNullOrEmpty(value))
+			{
+				BitmapImage bitmapImage = new();
+				bitmapImage.BeginInit();
+				bitmapImage.UriSource = new(value);
+				bitmapImage.DecodePixelWidth = 256;
+				bitmapImage.DecodePixelHeight = 144;
+				bitmapImage.EndInit();
+				GameImage = bitmapImage; 
+			}
 			OnPropertyChanged(nameof(CoverFilePath));
 		}
 	}
@@ -156,6 +169,9 @@ public class GameCardViewModel : ViewModelBase
 	private readonly List<Tag> _tags;
 
 	public Visibility MouseHoverVis { get => _mouseHoverVis; set { _mouseHoverVis = value; OnPropertyChanged(nameof(MouseHoverVis)); } }
+
+	private ImageSource _gameImage;
+	public ImageSource GameImage { get => _gameImage; set { _gameImage = value; OnPropertyChanged(nameof(GameImage)); } }
 
 	public string PlayText { get; set; }
 

@@ -25,6 +25,8 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Models;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Gavilya.ViewModels;
 public class MinimalGameViewModel : ViewModelBase
@@ -37,7 +39,28 @@ public class MinimalGameViewModel : ViewModelBase
 	public string Name { get => _name; set { _name = value; PlayText = string.Format(Properties.Resources.PlayTo, Name); OnPropertyChanged(nameof(Name)); } }
 
 	private string _coverFilePath;
-	public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value; OnPropertyChanged(nameof(CoverFilePath)); } }
+	public string CoverFilePath
+	{
+		get => _coverFilePath;
+		set
+		{
+			_coverFilePath = value;
+			if (!string.IsNullOrEmpty(value))
+			{
+				BitmapImage bitmapImage = new();
+				bitmapImage.BeginInit();
+				bitmapImage.UriSource = new(value);
+				bitmapImage.DecodePixelWidth = 150;
+				bitmapImage.DecodePixelHeight = 85;
+				bitmapImage.EndInit();
+				GameImage = bitmapImage;
+			}
+			OnPropertyChanged(nameof(CoverFilePath));
+		}
+	}
+
+	private ImageSource _gameImage;
+	public ImageSource GameImage { get => _gameImage; set { _gameImage = value; OnPropertyChanged(nameof(GameImage)); } }
 
 	public string PlayText { get; set; }
 

@@ -26,6 +26,8 @@ using Gavilya.Commands;
 using Gavilya.Models;
 using System.Collections.Generic;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace Gavilya.ViewModels;
 
@@ -38,9 +40,21 @@ public class ClickableGameViewModel : ViewModelBase
 		set
 		{
 			_coverFilePath = value;
+			if (!string.IsNullOrEmpty(value))
+			{
+				BitmapImage bitmapImage = new();
+				bitmapImage.BeginInit();
+				bitmapImage.UriSource = new(value);
+				bitmapImage.DecodePixelWidth = 256;
+				bitmapImage.DecodePixelHeight = 144;
+				bitmapImage.EndInit();
+				GameImage = bitmapImage;
+			}
 			OnPropertyChanged(nameof(CoverFilePath));
 		}
 	}
+	private ImageSource _gameImage;
+	public ImageSource GameImage { get => _gameImage; set { _gameImage = value; OnPropertyChanged(nameof(GameImage)); } }
 
 	public string Name { get; }
 

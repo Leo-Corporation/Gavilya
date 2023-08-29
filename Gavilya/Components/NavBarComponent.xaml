@@ -98,7 +98,7 @@
         <RadioButton
             Grid.Row="3"
             Height="40"
-            Margin="5 2" IsChecked="{Binding IsProfile}"
+            Margin="5 2"
             Padding="5"
             HorizontalContentAlignment="Center"
             Background="Transparent"
@@ -108,6 +108,7 @@
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
             FontSize="18"
             Foreground="{DynamicResource Foreground}"
+            IsChecked="{Binding IsProfile}"
             Style="{DynamicResource NavBarBtn}">
             <Rectangle
                 Width="25"
@@ -311,7 +312,7 @@
                             <Border.Background>
                                 <ImageBrush
                                     x:Name="GameIcon"
-                                    ImageSource="{Binding CoverFilePath}"
+                                    ImageSource="{Binding GameImage}"
                                     Stretch="UniformToFill" />
                             </Border.Background>
                             <i:Interaction.Triggers>
