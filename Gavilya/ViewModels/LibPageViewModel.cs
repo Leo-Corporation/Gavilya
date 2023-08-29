@@ -58,12 +58,15 @@ internal class LibPageViewModel : ViewModelBase
 	public ICommand TagViewCommand { get; }
 	public ICommand ListViewCommand { get; }
 
+	public ICommand SortAlphaCommand { get; }
+	public ICommand SortNoAlphaCommand { get; }
+
 	public LibPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		Games = games;
 		_tags = tags;
 		_mainViewModel = mainViewModel;
-		_currentViewModel = _mainViewModel.CurrentSettings.DefaultView switch
+		CurrentViewModel = _mainViewModel.CurrentSettings.DefaultView switch
 		{
 			View.List => new ListPageViewModel(Games, _tags, _mainViewModel),
 			View.Tag => new TagPageViewModel(Games, _tags, _mainViewModel),
@@ -78,6 +81,8 @@ internal class LibPageViewModel : ViewModelBase
 		CardViewCommand = new RelayCommand(CardView);
 		TagViewCommand = new RelayCommand(TagView);
 		ListViewCommand = new RelayCommand(ListView);
+		SortAlphaCommand = new RelayCommand(SortAlpha);
+		SortNoAlphaCommand = new RelayCommand(SortNoAlpha);
 	}
 
 	private void CardView(object? obj)
@@ -93,5 +98,27 @@ internal class LibPageViewModel : ViewModelBase
 	private void ListView(object? obj)
 	{
 		CurrentViewModel = new ListPageViewModel(Games, _tags, _mainViewModel);
+	}
+
+	private void SortAlpha(object? obj)
+	{
+		Games = new(Games.OrderBy(g => g.Name));
+		CurrentViewModel = CurrentViewModel switch
+		{
+			ListPageViewModel => new ListPageViewModel(Games, _tags, _mainViewModel),
+			TagPageViewModel => new TagPageViewModel(Games, _tags, _mainViewModel),
+			_ => new CardPageViewModel(Games, _tags, _mainViewModel)
+		};
+	}
+
+	private void SortNoAlpha(object? obj)
+	{
+		Games = new(Games.OrderByDescending(g => g.Name));
+		CurrentViewModel = CurrentViewModel switch
+		{
+			ListPageViewModel => new ListPageViewModel(Games, _tags, _mainViewModel),
+			TagPageViewModel => new TagPageViewModel(Games, _tags, _mainViewModel),
+			_ => new CardPageViewModel(Games, _tags, _mainViewModel)
+		};
 	}
 }
