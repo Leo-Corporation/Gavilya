@@ -139,6 +139,8 @@ public class ProfileViewModel : ViewModelBase
 		IsProfileEditorOpen = true;
 		ProfileAddMode = false;
 		ProfileToEdit = _profile;
+		EditProfileName = _profile.Name;
+		EditProfilePicture = string.IsNullOrEmpty(_profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : _profile.ProfilePictureFilePath;
 	}
 
 	private void PopupAdd(object? obj)
