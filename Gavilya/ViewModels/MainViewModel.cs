@@ -114,12 +114,12 @@ public class MainViewModel : ViewModelBase
 	public ICommand SearchClickCommand { get; }
 	public ICommand DeleteCommand { get; }
 
-	public MainViewModel(Window window, Profile profile, ProfileData profiles)
+	public MainViewModel(Window window, Profile profile, ProfileData profiles, Page? startupPage = null)
 	{
 		// Properties
 		Games = profile.Games;
 		CurrentSettings = profile.Settings;
-		CurrentViewModel = profile.Settings.DefaultPage switch
+		CurrentViewModel = (startupPage is null ? profile.Settings.DefaultPage : startupPage) switch
 		{
 			Page.Library => new LibPageViewModel(Games, profile.Tags, this),
 			Page.Recent => new RecentPageViewModel(Games, profile.Tags, this),
@@ -133,7 +133,7 @@ public class MainViewModel : ViewModelBase
 		_profile = profile;
 		_profiles = profiles;
 		_tags = profile.Tags;
-		_navBarViewModel = new(this, _profile, _profiles);
+		_navBarViewModel = new(this, _profile, _profiles, startupPage);
 		_windowHelper = new(window);
 
 		// Commands

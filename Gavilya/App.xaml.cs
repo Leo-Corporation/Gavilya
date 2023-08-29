@@ -27,8 +27,10 @@ using Gavilya.ViewModels;
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Windows;
+using System.Windows.Shell;
 
 namespace Gavilya;
 /// <summary>
@@ -59,9 +61,13 @@ public partial class App : Application
 		{
 			ThemeHelper.ChangeTheme(ThemeHelper.GetThemeFromPath(currentProfile.Settings.CurrentTheme), currentProfile.Settings.CurrentTheme.Replace(@"\theme.manifest", ""));
 		}
+
+		CreateJumpLists(currentProfile.Games);
+		int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
+
 		MainWindow = new MainWindow();
 
-		MainViewModel mvm = new(MainWindow, currentProfile, profiles);
+		MainViewModel mvm = new(MainWindow, currentProfile, profiles, pageID == null ? null : (Page)pageID);
 		MainWindow.DataContext = mvm;
 		MainWindow.Show();
 		base.OnStartup(e);
@@ -99,4 +105,55 @@ public partial class App : Application
 
 		return false;
 	}
+
+	private void CreateJumpLists(GameList games)
+	{
+		JumpList jumpList = new();		
+
+		var gTasks = games.Where(g => g.IsFavorite).Select(g => new JumpTask()
+		{
+			Title = g.Name,
+			Arguments = $"{g.Command}",
+			Description = g.Command,
+			CustomCategory = Gavilya.Properties.Resources.Favorites,
+			IconResourcePath = g.GameType == Enums.GameType.Win32 ? g.Command : Assembly.GetEntryAssembly()?.Location,
+			ApplicationPath = "explorer.exe"
+		});
+
+		jumpList.JumpItems.AddRange(gTasks);
+
+		jumpList.JumpItems.Add(new JumpTask()
+		{
+			Title = Gavilya.Properties.Resources.Home,
+			Arguments = "/page 0",
+			Description = Gavilya.Properties.Resources.Home,
+			CustomCategory = Gavilya.Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly()?.Location
+		});
+
+		jumpList.JumpItems.Add(new JumpTask()
+		{
+			Title = Gavilya.Properties.Resources.Library,
+			Arguments = "/page 1",
+			Description = Gavilya.Properties.Resources.Library,
+			CustomCategory = Gavilya.Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly()?.Location
+		});
+
+		jumpList.JumpItems.Add(new JumpTask()
+		{
+			Title = Gavilya.Properties.Resources.MyProfile,
+			Arguments = "/page 3",
+			Description = Gavilya.Properties.Resources.MyProfile,
+			CustomCategory = Gavilya.Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly()?.Location
+		});
+
+
+		jumpList.ShowFrequentCategory = false;
+		jumpList.ShowRecentCategory = false;
+
+		JumpList.SetJumpList(Current, jumpList);
+	}
+
 }

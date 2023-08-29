@@ -73,7 +73,7 @@ public class NavBarViewModel : ViewModelBase
 	public ICommand AddWin32GameCommand { get; }
 	public ICommand AddUwpGameCommand { get; }
 	public ICommand AddSteamGameCommand { get; }
-	public NavBarViewModel(MainViewModel mainViewModel, Profile profile, ProfileData profiles)
+	public NavBarViewModel(MainViewModel mainViewModel, Profile profile, ProfileData profiles, Page? startupPage = null)
 	{
 		HomePageCommand = new RelayCommand(HomePage);
 		LibraryPageCommand = new RelayCommand(LibraryPage);
@@ -91,10 +91,11 @@ public class NavBarViewModel : ViewModelBase
 		_profiles = profiles;
 		_tags = profile.Tags;
 
-		IsHome = _mainViewModel.CurrentSettings.DefaultPage == Page.Home;
-		IsLibrary = _mainViewModel.CurrentSettings.DefaultPage == Page.Library;
-		IsRecent = _mainViewModel.CurrentSettings.DefaultPage == Page.Recent;
-		IsProfile = _mainViewModel.CurrentSettings.DefaultPage == Page.Profile;
+		var defaultPage = startupPage is null ? _mainViewModel.CurrentSettings.DefaultPage : startupPage;
+		IsHome = defaultPage == Page.Home;
+		IsLibrary = defaultPage == Page.Library;
+		IsRecent = defaultPage == Page.Recent;
+		IsProfile = defaultPage == Page.Profile;
 		Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
 		UwpAllowed = (Sys.CurrentWindowsVersion == WindowsVersion.Windows10 || Sys.CurrentWindowsVersion == WindowsVersion.Windows11) ? Visibility.Visible : Visibility.Collapsed;
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;

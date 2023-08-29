@@ -98,7 +98,7 @@
         <RadioButton
             Grid.Row="3"
             Height="40"
-            Margin="5 2"
+            Margin="5 2" IsChecked="{Binding IsProfile}"
             Padding="5"
             HorizontalContentAlignment="Center"
             Background="Transparent"
