@@ -26,6 +26,7 @@ using Gavilya.Commands;
 using Gavilya.Models;
 using Gavilya.Services;
 using Microsoft.Win32;
+using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +61,9 @@ public class ImportViewModel : ViewModelBase
 	{
 		OpenFileDialog openFileDialog = new()
 		{
-			Filter = $"{Properties.Resources.GavFiles}|*.gav", // Extension
+			Filter = $"{Properties.Resources.GavFiles} (v3)|*.gav", // Extension
+			InitialDirectory = $@"{FileSys.AppDataPath}\Gavilya",
+			FileName = "Games.gav",
 			Title = Properties.Resources.ImportGames // Title
 		}; // Create an OpenFileDialog
 		if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
