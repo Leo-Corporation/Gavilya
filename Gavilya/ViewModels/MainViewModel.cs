@@ -24,10 +24,12 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
+using Gma.System.MouseKeyHook;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -168,7 +170,35 @@ public class MainViewModel : ViewModelBase
 			profiles.Save();
 		};
 
+		RegisterKeyBoardShortcuts();
+
 		CheckUpdateOnStart();
+	}
+
+	private bool _isFpsOpen = false;
+	private void RegisterKeyBoardShortcuts()
+	{
+		var openFps = Combination.FromString("Control+Shift+F");
+		Action openFpsAction = () =>
+		{
+			var proc = new Process();
+			proc.StartInfo.FileName = "cmd.exe";
+			proc.StartInfo.Arguments = !_isFpsOpen ? $"/c \"{FileSys.CurrentAppDirectory}/Gavilya.Fps.exe\" {CurrentSettings.FpsCounterOpacity}" : "/c taskkill /f /im Gavilya.Fps.exe";
+			proc.StartInfo.UseShellExecute = false;
+			proc.StartInfo.CreateNoWindow = true;
+			proc.Start();
+			_isFpsOpen = !_isFpsOpen;
+		};
+
+		var openSearch = Combination.FromString("Control+K");
+		Action openSearchAction = () => { SearchOpen = !SearchOpen; SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45; };
+
+		var assignment = new Dictionary<Combination, Action>
+		{
+			{ openFps, openFpsAction },
+			{openSearch, openSearchAction }
+		};
+		Hook.GlobalEvents().OnCombination(assignment);
 	}
 
 	private void LoadSettings(Models.Settings settings)
