@@ -1005,4 +1005,7 @@
   <data name="NoItemsFound" xml:space="preserve">
     <value>No items found</value>
   </data>
+  <data name="MigrateFromV3" xml:space="preserve">
+    <value>Migrate from v3</value>
+  </data>
 </root>

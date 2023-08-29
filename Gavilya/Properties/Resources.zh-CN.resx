@@ -1005,4 +1005,7 @@
   <data name="NoItemsFound" xml:space="preserve">
     <value>未找到项目</value>
   </data>
+  <data name="MigrateFromV3" xml:space="preserve">
+    <value>从 v3 迁移</value>
+  </data>
 </root>

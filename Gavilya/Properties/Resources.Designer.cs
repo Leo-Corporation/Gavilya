@@ -1375,6 +1375,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Migrate from v3.
+        /// </summary>
+        public static string MigrateFromV3 {
+            get {
+                return ResourceManager.GetString("MigrateFromV3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Minute.
         /// </summary>
         public static string Minute {
