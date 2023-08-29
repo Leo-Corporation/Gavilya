@@ -54,7 +54,8 @@
                     FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                     FontSize="13"
                     Foreground="{DynamicResource Foreground}"
-                    Style="{StaticResource RegularButton}">
+                    Style="{StaticResource RegularButton}"
+                    Visibility="Hidden">
                     <Button.ToolTip>
                         <ToolTip
                             Background="{DynamicResource Background}"
