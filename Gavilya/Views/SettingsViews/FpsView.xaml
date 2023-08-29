@@ -37,7 +37,7 @@
                 Margin="10 0 0 0"
                 FontSize="12"
                 Foreground="{DynamicResource Foreground}"
-                Text="{x:Static lang:Resources.OpenFpsCounter}" />
+                Text="{Binding CombinationString}" />
 
             <Expander
                 Margin="5"
