@@ -28,6 +28,7 @@ using PeyrSharp.Core.Converters;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
@@ -92,6 +93,12 @@ public class StatsViewModel : ViewModelBase
 		}
 	}
 
+	private Visibility _statVis = Visibility.Visible;
+	public Visibility StatVis { get => _statVis; set { _statVis = value; OnPropertyChanged(nameof(StatVis)); } }
+	
+	private Visibility _placeholderVis = Visibility.Collapsed;
+	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
+
 	private string _sortIcon = "\uF19C";
 	public string SortIcon { get => _sortIcon; set { _sortIcon = value; OnPropertyChanged(nameof(SortIcon)); } }
 
@@ -114,6 +121,13 @@ public class StatsViewModel : ViewModelBase
 	public StatsViewModel(GameList games)
 	{
 		_games = games;
+
+		if (_games.Count == 0)
+		{
+			StatVis = Visibility.Collapsed;
+			PlaceholderVis = Visibility.Visible;
+			return;
+		}
 		SortedGames = _games.SortByPlayTime(SortByMostPlayed);
 		SortedGamesVm = SortedGames.Take(10).Select((g, i) => new StatGameViewModel(i, g, this)).ToList();
 

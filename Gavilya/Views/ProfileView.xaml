@@ -312,7 +312,8 @@
                 Grid.Row="0"
                 Height="200"
                 HorizontalAlignment="Center"
-                Orientation="Horizontal">
+                Orientation="Horizontal"
+                Visibility="{Binding ContentVis}">
                 <StackPanel VerticalAlignment="Bottom">
                     <Rectangle
                         x:Name="Top2Rect"

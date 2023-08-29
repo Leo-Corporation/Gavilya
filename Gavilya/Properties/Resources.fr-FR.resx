@@ -412,7 +412,7 @@
     <value>Commencez par ajouter un jeu</value>
   </data>
   <data name="AddGameWelcome" xml:space="preserve">
-    <value>Ajoutez un jeu en cliquant sur le bouton "Ajouter" ou en glissant un fichier exécutable ici.</value>
+    <value>Ajoutez un jeu en cliquant sur le bouton "Ajouter".</value>
   </data>
   <data name="WelcomeRecentGames" xml:space="preserve">
     <value>Quand vous commencerez à jouer à des jeux, ils s'afficheront ici.</value>

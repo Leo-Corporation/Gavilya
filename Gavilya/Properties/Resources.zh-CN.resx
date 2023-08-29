@@ -412,7 +412,7 @@
     <value>从添加游戏开始</value>
   </data>
   <data name="AddGameWelcome" xml:space="preserve">
-    <value>通过单击“添加”按钮添加游戏或将可执行文件拖放到此处。</value>
+    <value>点击 "添加 "按钮添加游戏。</value>
   </data>
   <data name="WelcomeRecentGames" xml:space="preserve">
     <value>当您开始玩游戏时，它们会出现在这里。</value>

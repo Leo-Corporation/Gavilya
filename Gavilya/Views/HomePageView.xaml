@@ -25,7 +25,10 @@
             FontSize="14"
             Text="{x:Static lang:Resources.WhatGameToPlay}" />
 
-        <StackPanel Margin="10" Orientation="Horizontal">
+        <StackPanel
+            Margin="10"
+            Orientation="Horizontal"
+            Visibility="{Binding ContentVis}">
             <TextBlock
                 VerticalAlignment="Center"
                 FontFamily="..\Fonts\#FluentSystemIcons-Filled"
@@ -53,7 +56,10 @@
             </ItemsControl>
         </ScrollViewer>
 
-        <StackPanel Margin="10" Orientation="Horizontal">
+        <StackPanel
+            Margin="10"
+            Orientation="Horizontal"
+            Visibility="{Binding ContentVis}">
             <TextBlock
                 VerticalAlignment="Center"
                 FontFamily="..\Fonts\#FluentSystemIcons-Filled"
@@ -80,9 +86,24 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        <Grid x:Name="RecentPlaceholder" />
+        <Grid x:Name="Placeholder" Visibility="{Binding PlaceholderVis}">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Image
+                    Width="400"
+                    HorizontalAlignment="Center"
+                    Source="..\Assets\recentGames.png" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontWeight="Bold"
+                    Foreground="{DynamicResource Foreground}"
+                    Text="{x:Static lang:Resources.WelcomeRecentGames}" />
+            </StackPanel>
+        </Grid>
 
-        <StackPanel Margin="10" Orientation="Horizontal">
+        <StackPanel
+            Margin="10"
+            Orientation="Horizontal"
+            Visibility="{Binding ContentVis}">
             <TextBlock
                 VerticalAlignment="Center"
                 FontFamily="..\Fonts\#FluentSystemIcons-Filled"

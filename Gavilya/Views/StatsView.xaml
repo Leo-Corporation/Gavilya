@@ -20,7 +20,8 @@
             Margin="10"
             Padding="25"
             Background="{DynamicResource Background2}"
-            CornerRadius="10">
+            CornerRadius="10"
+            Visibility="{Binding StatVis}">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -258,9 +259,10 @@
             Grid.Row="1"
             Margin="10"
             Padding="25"
+            d:Visibility="Collapsed"
             Background="{DynamicResource Background2}"
-            CornerRadius="25"
-            Visibility="Collapsed">
+            CornerRadius="10"
+            Visibility="{Binding PlaceholderVis}">
             <StackPanel
                 Margin="20"
                 HorizontalAlignment="Center"

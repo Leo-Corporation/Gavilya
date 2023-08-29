@@ -72,6 +72,9 @@ public class ProfileViewModel : ViewModelBase
 
 	private string _editProfileName;
 	public string EditProfileName { get => _editProfileName; set { _editProfileName = value; OnPropertyChanged(nameof(EditProfileName)); } }
+	
+	private Visibility _contentVis = Visibility.Visible;
+	public Visibility ContentVis { get => _contentVis; set { _contentVis = value; OnPropertyChanged(nameof(ContentVis)); } }
 
 	public ICommand AddProfileCommand { get; }
 	public ICommand EditCommand { get; }
@@ -113,7 +116,7 @@ public class ProfileViewModel : ViewModelBase
 		// Load graph
 		if (sortedGames.Count < 3)
 		{
-			//TODO: Placeholder
+			ContentVis = Visibility.Collapsed;
 			return;
 		}
 		double max = sortedGames[0].TotalTimePlayed;

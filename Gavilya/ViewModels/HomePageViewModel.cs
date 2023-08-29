@@ -22,10 +22,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Commands;
 using Gavilya.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
 
@@ -40,11 +43,22 @@ public class HomePageViewModel : ViewModelBase
 
 	private StatsViewModel _statView;
 	public StatsViewModel StatsView { get => _statView; set { _statView = value; OnPropertyChanged(nameof(StatsView)); } }
+
+	private Visibility _contentVis = Visibility.Visible;
+	public Visibility ContentVis { get => _contentVis; set { _contentVis = value; OnPropertyChanged(nameof(ContentVis)); } }
+	
+	private Visibility _placeholderVis = Visibility.Collapsed;
+	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
 	public HomePageViewModel(GameList games, MainViewModel mainViewModel)
 	{
 		_games = games;
 		_mainViewModel = mainViewModel;
 
+		if (_games.Count == 0)
+		{
+			PlaceholderVis = Visibility.Visible;
+			ContentVis = Visibility.Collapsed;
+		}
 		StatsView = new(_games);
 	}
 }

@@ -412,7 +412,7 @@
     <value>Start by adding a game</value>
   </data>
   <data name="AddGameWelcome" xml:space="preserve">
-    <value>Add a game by clicking on the "Add" button or drag and drop an executable file here.</value>
+    <value>Add a game by clicking on the "Add" button.</value>
   </data>
   <data name="WelcomeRecentGames" xml:space="preserve">
     <value>When you will start playing games, they will show up here.</value>

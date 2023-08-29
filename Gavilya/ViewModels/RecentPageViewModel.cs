@@ -25,6 +25,9 @@ SOFTWARE.
 using Gavilya.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Input;
+using System.Windows;
+using Gavilya.Commands;
 
 namespace Gavilya.ViewModels;
 
@@ -35,11 +38,17 @@ public class RecentPageViewModel : ViewModelBase
 	private readonly List<Tag> _tags;
 
 	public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel)).ToList();
+	private Visibility _placeholderVis;
+	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
 
+	public ICommand AddCommand { get; }
 	public RecentPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_sortedGames = games.GetSortedGameLists();
 		_tags = tags;
 		_mainViewModel = mainViewModel;
+
+		PlaceholderVis = games.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+		AddCommand = new RelayCommand((o) => _mainViewModel.CurrentViewModel = new GameEditionViewModel(Enums.GameType.Win32, games, _tags, _mainViewModel));
 	}
 }

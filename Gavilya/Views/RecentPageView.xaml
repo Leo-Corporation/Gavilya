@@ -48,5 +48,32 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
         </ItemsControl>
+
+        <StackPanel
+            x:Name="Placeholder"
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Visibility="{Binding PlaceholderVis}">
+            <Image
+                Width="400"
+                HorizontalAlignment="Center"
+                Source="..\Assets\addGamesWelcome.png" />
+            <TextBlock
+                HorizontalAlignment="Center"
+                FontWeight="Bold"
+                Foreground="{DynamicResource Foreground}"
+                Text="{x:Static lang:Resources.AddGameWelcome}" />
+            <Button
+                Margin="5"
+                Padding="5"
+                HorizontalAlignment="Center"
+                Background="{DynamicResource Background2}"
+                Command="{Binding AddCommand}"
+                Content="{x:Static lang:Resources.AddGame}"
+                Cursor="Hand"
+                FontWeight="Bold"
+                Style="{DynamicResource RegularButton}" />
+        </StackPanel>
     </Grid>
 </UserControl>
