@@ -24,6 +24,7 @@ SOFTWARE.
 using Gavilya.Helpers;
 using Gavilya.Models;
 using Gavilya.ViewModels;
+using Gavilya.Views;
 using System;
 using System.IO;
 using System.Linq;
@@ -62,14 +63,25 @@ public partial class App : Application
 			ThemeHelper.ChangeTheme(ThemeHelper.GetThemeFromPath(currentProfile.Settings.CurrentTheme), currentProfile.Settings.CurrentTheme.Replace(@"\theme.manifest", ""));
 		}
 
-		CreateJumpLists(currentProfile.Games);
-		int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
+		if (!currentProfile.Settings.IsFirstRun)
+		{
+			CreateJumpLists(currentProfile.Games);
+			int? pageID = (e.Args.Length >= 2 && e.Args[0] == "/page") ? int.Parse(e.Args[1]) : null;
 
-		MainWindow = new MainWindow();
+			MainWindow = new MainWindow();
 
-		MainViewModel mvm = new(MainWindow, currentProfile, profiles, pageID == null ? null : (Page)pageID);
-		MainWindow.DataContext = mvm;
-		MainWindow.Show();
+			MainViewModel mvm = new(MainWindow, currentProfile, profiles, pageID == null ? null : (Page)pageID);
+			MainWindow.DataContext = mvm;
+			MainWindow.Show();
+		}
+		else
+		{
+			MainWindow = new FirstRunView();
+
+			FirstRunViewModel firstRunViewModel = new(MainWindow, currentProfile, profiles);
+			MainWindow.DataContext = firstRunViewModel;
+			MainWindow.Show();
+		}
 		base.OnStartup(e);
 	}
 

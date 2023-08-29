@@ -1,0 +1,99 @@
+﻿<Window
+    x:Class="Gavilya.Views.FirstRunView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:firstrunviews="clr-namespace:Gavilya.Views.FirstRunViews"
+    xmlns:lang="clr-namespace:Gavilya.Properties"
+    xmlns:local="clr-namespace:Gavilya.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:Gavilya.ViewModels.FirstRun"
+    Title="{x:Static lang:Resources.Welcome}"
+    Width="700"
+    Height="450"
+    AllowsTransparency="True"
+    Background="Transparent"
+    FontFamily="../Fonts/#Hauora"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="45" />
+    </WindowChrome.WindowChrome>
+    <Border
+        Margin="10"
+        Background="{DynamicResource Background}"
+        CornerRadius="10">
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="15"
+                Opacity="0.5"
+                ShadowDepth="0"
+                Color="Gray" />
+        </Border.Effect>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="3" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Column="0"
+                Margin="10 0 0 0"
+                VerticalAlignment="Center"
+                FontSize="15"
+                FontWeight="ExtraBold"
+                Foreground="{DynamicResource Foreground}"
+                Text="{x:Static lang:Resources.Welcome}" />
+
+            <Button
+                Grid.Column="1"
+                Width="46"
+                Height="32"
+                Background="Transparent"
+                Command="{Binding MinimizeCommand}"
+                Content="&#xF4E0;"
+                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                FontSize="12"
+                RenderOptions.EdgeMode="Aliased"
+                Style="{StaticResource TitleBarButtonStyle}" />
+
+            <Button
+                Name="CloseBtn"
+                Grid.Column="2"
+                Width="46"
+                Height="32"
+                Background="Transparent"
+                Command="{Binding CloseCommand}"
+                Content="&#xF36A;"
+                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                FontSize="12"
+                Style="{StaticResource TitleBarCloseButtonStyle}" />
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="5">
+                <Grid.Resources>
+                    <DataTemplate DataType="{x:Type vm:WelcomeViewModel}">
+                        <firstrunviews:WelcomeView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:ImportViewModel}">
+                        <firstrunviews:ImportView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vm:JumpInViewModel}">
+                        <firstrunviews:JumpInView />
+                    </DataTemplate>
+                </Grid.Resources>
+                <ContentControl Content="{Binding CurrentViewModel}" />
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
