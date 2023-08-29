@@ -36,32 +36,32 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
+                    <ColumnDefinition Width="30" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        Name="GameName"
-                        Grid.Row="0"
-                        Width="200"
-                        HorizontalAlignment="Stretch"
-                        VerticalAlignment="Center"
-                        d:Text="Game Name"
-                        FontSize="14"
-                        Foreground="{DynamicResource Foreground}"
-                        Text="{Binding Name}" />
-                    <TextBlock
-                        x:Name="FavIconTxt"
-                        Margin="10 0 0 0"
-                        VerticalAlignment="Center"
-                        FontFamily="../Fonts/#FluentSystemIcons-Filled"
-                        FontSize="14"
-                        Foreground="{DynamicResource Foreground}"
-                        Text="&#xF719;"
-                        Visibility="{Binding IsFavorite, Converter={StaticResource BoolVisConv}}" />
-                </StackPanel>
+                <TextBlock
+                    Name="GameName"
+                    Grid.Row="0"
+                    Width="200"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                    d:Text="Game Name"
+                    FontSize="14"
+                    Foreground="{DynamicResource Foreground}"
+                    Text="{Binding Name}" />
+                <TextBlock
+                    x:Name="FavIconTxt"
+                    Grid.Column="1"
+                    Margin="10 0 0 0"
+                    VerticalAlignment="Center"
+                    FontFamily="../Fonts/#FluentSystemIcons-Filled"
+                    FontSize="14"
+                    Foreground="{DynamicResource Foreground}"
+                    Text="&#xF719;"
+                    Visibility="{Binding IsFavorite, Converter={StaticResource BoolVisConv}}" />
                 <Button
                     x:Name="PlayBtn"
-                    Grid.Column="1"
+                    Grid.Column="2"
                     Width="22"
                     Height="22"
                     Margin="10 0 0 0"
