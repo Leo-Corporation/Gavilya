@@ -223,6 +223,7 @@ public class GameEditionViewModel : ViewModelBase
 	public ICommand AssociateRawgCommand { get; }
 	public ICommand RawgSearchCommand { get; }
 	public ICommand ShowConvertSectionCommand { get; }
+	public ICommand ProcessHelpCommand { get; }
 
 	/// <summary>
 	/// This constructor is used when editing an exisiting game.
@@ -247,6 +248,7 @@ public class GameEditionViewModel : ViewModelBase
 		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
 		RawgSearchCommand = new RelayCommand(SearchRawg);
 		ShowConvertSectionCommand = new RelayCommand(ShowConvert);
+		ProcessHelpCommand = new RelayCommand(ShowProcessHelp);
 
 		// Load properties
 		Name = game.Name;
@@ -447,5 +449,10 @@ public class GameEditionViewModel : ViewModelBase
 		Game.RawgId = RawgId;
 		Games[Games.IndexOf(Game)] = Game;
 		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, Tags, _mainViewModel);
+	}
+
+	private void ShowProcessHelp(object? obj)
+	{
+		MessageBox.Show(Properties.Resources.ProcessNameHelp, Properties.Resources.Help, MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 }

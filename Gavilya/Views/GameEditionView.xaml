@@ -666,6 +666,7 @@
                         Padding="5"
                         VerticalAlignment="Center"
                         Background="{DynamicResource Background2}"
+                        Command="{Binding ProcessHelpCommand}"
                         Content="&#xF63E;"
                         Cursor="Hand"
                         FontFamily="..\Fonts\#FluentSystemIcons-Regular"
