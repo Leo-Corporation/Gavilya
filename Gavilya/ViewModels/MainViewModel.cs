@@ -148,7 +148,11 @@ public class MainViewModel : ViewModelBase
 		});
 
 		// Window System
+		_window.WindowState = CurrentSettings.IsMaximized switch { true => WindowState.Maximized, _ => WindowState.Normal };
 		(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
+		MaxiIcon = _window.WindowState == WindowState.Maximized ? "\uF670" : "\uFA40";
+		MaxiIconFontSize = _window.WindowState == WindowState.Maximized ? 16 : 12;
+		BorderMargin = _window.WindowState == WindowState.Maximized ? new(0) : new(10); // Set
 
 		// Events
 		_window.StateChanged += (o, e) =>
@@ -169,6 +173,7 @@ public class MainViewModel : ViewModelBase
 			SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList();
 			profiles.Save();
 		};
+
 
 		RegisterKeyBoardShortcuts();
 
@@ -220,6 +225,10 @@ public class MainViewModel : ViewModelBase
 		if (_window.WindowState == WindowState.Maximized)
 		{
 			_window.WindowState = WindowState.Normal;
+			CurrentSettings.IsMaximized = false;
+			_profiles.Profiles[_profiles.Profiles.IndexOf(_profile)].Settings.IsMaximized = false;
+			_profiles.Save();
+
 			MaxiIcon = "\uFA40";
 			MaxiIconFontSize = 12;
 		}
@@ -227,6 +236,10 @@ public class MainViewModel : ViewModelBase
 		{
 			(MaxHeight, MaxWidth) = _windowHelper.GetMaximumSize();
 			_window.WindowState = WindowState.Maximized;
+			CurrentSettings.IsMaximized = true;
+			_profiles.Profiles[_profiles.Profiles.IndexOf(_profile)].Settings.IsMaximized = true;
+			_profiles.Save();
+
 			MaxiIcon = "\uF670";
 			MaxiIconFontSize = 16;
 		}

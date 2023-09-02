@@ -37,6 +37,7 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Xml.Linq;
 
 namespace Gavilya.ViewModels;
 
@@ -223,6 +224,8 @@ public class GameEditionViewModel : ViewModelBase
 	public ICommand AssociateRawgCommand { get; }
 	public ICommand RawgSearchCommand { get; }
 	public ICommand ShowConvertSectionCommand { get; }
+	public ICommand ProcessHelpCommand { get; }
+	public ICommand DropCommand { get; }
 
 	/// <summary>
 	/// This constructor is used when editing an exisiting game.
@@ -247,6 +250,8 @@ public class GameEditionViewModel : ViewModelBase
 		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
 		RawgSearchCommand = new RelayCommand(SearchRawg);
 		ShowConvertSectionCommand = new RelayCommand(ShowConvert);
+		ProcessHelpCommand = new RelayCommand(ShowProcessHelp);
+		DropCommand = new RelayCommand(ExecuteDrop);
 
 		// Load properties
 		Name = game.Name;
@@ -310,6 +315,9 @@ public class GameEditionViewModel : ViewModelBase
 		AssociateTagCommand = new RelayCommand(OpenTagPopup);
 		AssociateRawgCommand = new RelayCommand(OpenRawgPopup);
 		RawgSearchCommand = new RelayCommand(SearchRawg);
+		ProcessHelpCommand = new RelayCommand(ShowProcessHelp);
+		DropCommand = new RelayCommand(ExecuteDrop);
+
 		SelectedTags = new();
 
 		// Load UI
@@ -337,6 +345,21 @@ public class GameEditionViewModel : ViewModelBase
 			}
 		}
 		ConvertSteamVis = Visibility.Visible;
+	}
+
+	private void ExecuteDrop(object parameter)
+	{
+		IDataObject ido = parameter as IDataObject;
+		if (null == ido) return;
+		string[] files = (string[])ido.GetData("FileName");
+		if (files.Length > 0)
+		{
+			string filePath = files[0]; // Get the first dropped file
+			if (Path.GetExtension(filePath).Equals(".exe", StringComparison.OrdinalIgnoreCase))
+			{
+				Command = filePath;
+			}
+		}
 	}
 
 	private async void BrowseUwp(object? obj)
@@ -447,5 +470,10 @@ public class GameEditionViewModel : ViewModelBase
 		Game.RawgId = RawgId;
 		Games[Games.IndexOf(Game)] = Game;
 		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, Tags, _mainViewModel);
+	}
+
+	private void ShowProcessHelp(object? obj)
+	{
+		MessageBox.Show(Properties.Resources.ProcessNameHelp, Properties.Resources.Help, MessageBoxButton.OK, MessageBoxImage.Information);
 	}
 }
