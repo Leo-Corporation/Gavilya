@@ -89,6 +89,7 @@
                                 Margin="0 0 10 0"
                                 HorizontalAlignment="Center"
                                 Background="{DynamicResource Background2}"
+                                Command="{Binding LaunchAsAdminCommand}"
                                 Content="&#xF8C0;"
                                 FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                                 FontSize="14"

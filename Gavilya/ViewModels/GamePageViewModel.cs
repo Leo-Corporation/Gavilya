@@ -181,6 +181,8 @@ public class GamePageViewModel : ViewModelBase
 	public ICommand FavCommand { get; }
 	public ICommand EditCommand { get; }
 	public ICommand SeeOnRawgCommand { get; }
+	public ICommand LaunchAsAdminCommand { get; }
+
 	private int _totalRatings = 0;
 	private string _slug;
 	public GamePageViewModel(Game game, GameList games, List<Tag> tags, MainViewModel mainViewModel)
@@ -204,6 +206,7 @@ public class GamePageViewModel : ViewModelBase
 		SeeOnRawgCommand = new RelayCommand(OpenRawg);
 		FavCommand = new RelayCommand(Fav);
 		PlayCommand = new RelayCommand(Play);
+		LaunchAsAdminCommand = new RelayCommand(LaunchAsAdmin);
 
 		// Rawg
 		if (game.RawgId == -1) return;
@@ -231,6 +234,17 @@ public class GamePageViewModel : ViewModelBase
 	private void OpenRawg(object? obj)
 	{
 		Process.Start("explorer.exe", $"https://rawg.io/games/{_slug}");
+	}
+
+	private void LaunchAsAdmin(object? obj)
+	{
+		_mainViewModel.GameLauncherHelper = new(_game, _games);
+		_mainViewModel.GameLauncherHelper.OnGameUpdatedEvent += (o, e) =>
+		{
+			LastTimePlayed = e.Game.LastTimePlayed;
+			TotalTimePlayed = e.Game.TotalTimePlayed;
+		};
+		_mainViewModel.GameLauncherHelper.LaunchAsAdmin();
 	}
 
 	private async void LoadRawg()

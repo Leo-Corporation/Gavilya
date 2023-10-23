@@ -87,6 +87,26 @@ public class GameLauncherHelper
 		return true;
 	}
 
+	/// <summary>
+	/// This method only works on Win32 Games.
+	/// </summary>
+	/// <returns></returns>
+	public bool LaunchAsAdmin()
+	{
+		// Check location if the game is a Win32 app
+		if (_game.GameType != GameType.Win32) return false;
+		if (!File.Exists(_game.Command)) return false; // Abort
+
+		_game.LastTimePlayed = Sys.UnixTime;
+		OnGameUpdatedEvent?.Invoke(this, new(_game));
+
+		_games[_games.IndexOf(_game)] = _game;
+		Sys.ExecuteAsAdmin(_game.Command);
+		_dispatcherTimer.Start();
+
+		return true;
+	}
+
 	private static bool CanLaunchSteamGame()
 	{
 		try
