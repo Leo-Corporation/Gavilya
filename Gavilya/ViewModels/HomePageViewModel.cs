@@ -59,6 +59,6 @@ public class HomePageViewModel : ViewModelBase
 			PlaceholderVis = Visibility.Visible;
 			ContentVis = Visibility.Collapsed;
 		}
-		StatsView = new(_games);
+		StatsView = new(_games, _mainViewModel.CurrentSettings.ShowHiddenGames);
 	}
 }
