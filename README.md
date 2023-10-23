@@ -31,7 +31,7 @@
 
 
 Gavilya is a user-friendly game launcher built using C# and WPF, following the MVVM (Model-View-ViewModel) architectural pattern. The launcher aims to simplify the process of managing and launching games from various sources, providing an organized and personalized gaming experience.
-[Click here](https:/gavilya.leocorporation.dev) to visit Gavilya's website.
+[Click here](https://gavilya.leocorporation.dev) to visit Gavilya's website.
 
 ## Features
 
@@ -66,7 +66,7 @@ Gavilya is a user-friendly game launcher built using C# .NET 6 and WPF, designed
    
 **_And more..._**
 
-In conclusion, Gavilya presents itself as a user-centric game launcher, combining simplicity with a powerful set of features. By seamlessly integrating games from various sources, offering profile support, providing customization options, and supplying insightful statistics, Gavilya elevates the gaming experience for enthusiasts who appreciate organization and efficiency. [Click here](https:/gavilya.leocorporation.dev) to visit Gavilya's website and explore its features firsthand.
+In conclusion, Gavilya presents itself as a user-centric game launcher, combining simplicity with a powerful set of features. By seamlessly integrating games from various sources, offering profile support, providing customization options, and supplying insightful statistics, Gavilya elevates the gaming experience for enthusiasts who appreciate organization and efficiency. [Click here](https://gavilya.leocorporation.dev) to visit Gavilya's website and explore its features firsthand.
 
 ## Download
 [Click here](https://bit.ly/Gavilya) to download Gavilya.
@@ -118,4 +118,4 @@ This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-Visit the [Gavilya website](https:/gavilya.leocorporation.dev) to learn more about the game launcher.
+Visit the [Gavilya website](https://gavilya.leocorporation.dev) to learn more about the game launcher.
