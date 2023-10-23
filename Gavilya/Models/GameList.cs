@@ -116,10 +116,14 @@ public class GameList : ObservableCollection<Game>
 			}
 		}
 
-		return new List<GameList>
-		{
-			todayList, yesterdayList, thisMonthList, otherList
-		};
+		List<GameList> sortedGames = new();
+
+		if (todayList.Count > 0) sortedGames.Add(todayList);
+		if (yesterdayList.Count > 0) sortedGames.Add(yesterdayList);
+		if (thisMonthList.Count > 0) sortedGames.Add(thisMonthList);
+		if (otherList.Count > 0) sortedGames.Add(otherList);
+
+		return sortedGames;
 	}
 
 	public List<GameList> GetSortedGameByTag()
