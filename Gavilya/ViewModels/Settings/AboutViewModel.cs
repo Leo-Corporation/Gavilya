@@ -31,6 +31,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace Gavilya.ViewModels.Settings;
 public class AboutViewModel : ViewModelBase
@@ -38,6 +39,15 @@ public class AboutViewModel : ViewModelBase
 	private readonly ProfileData _profileData;
 
 	public string Version => Context.Version;
+
+	private string _statusMessage = Properties.Resources.UpdateUn;
+	public string StatusMessage { get => _statusMessage; set { _statusMessage = value; OnPropertyChanged(nameof(StatusMessage)); } }
+
+	private string _statusIcon = "\uF299";
+	public string StatusIcon { get => _statusIcon; set { _statusIcon = value; OnPropertyChanged(nameof(StatusIcon)); } }
+
+	private SolidColorBrush _iconColor = new() { Color = Color.FromRgb(37, 222, 15) };
+	public SolidColorBrush IconColor { get => _iconColor; set { _iconColor = value; OnPropertyChanged(nameof(IconColor)); } }
 
 	public ICommand UpdateCommand { get; }
 	public ICommand LicensesCommand { get; }
@@ -58,6 +68,9 @@ public class AboutViewModel : ViewModelBase
 			var lastVer = await Update.GetLastVersionAsync(Context.LastVersionLink);
 			if (Update.IsAvailable(lastVer, Context.Version))
 			{
+				StatusMessage = Properties.Resources.UpdateAv;
+				StatusIcon = "\uF36E";
+				IconColor = new() { Color = Color.FromRgb(255, 50, 30) };
 				if (MessageBox.Show($"{Properties.Resources.UpdateAvMessage}\n{Properties.Resources.UpdateVersion} {lastVer}\n\n{Properties.Resources.ContinueInstall}", $"{Properties.Resources.Version} {lastVer}", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.No)
 				{
 					return;
@@ -66,6 +79,9 @@ public class AboutViewModel : ViewModelBase
 				Sys.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
 				Application.Current.Shutdown(); // Close
 			}
+			StatusMessage = Properties.Resources.UpdateUn;
+			StatusIcon = "\uF299";
+			IconColor = new() { Color = Color.FromRgb(37, 222, 15) };
 		}
 	}
 

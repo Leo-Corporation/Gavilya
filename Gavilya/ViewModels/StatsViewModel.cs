@@ -37,7 +37,7 @@ public class StatsViewModel : ViewModelBase
 {
 	private string _totalTime;
 	private readonly GameList _games;
-
+	private readonly bool _showHiddenGames;
 	private string _name;
 	public string Name
 	{
@@ -118,17 +118,17 @@ public class StatsViewModel : ViewModelBase
 	public ObservableCollection<RecInfo> Rectangles { get; set; }
 
 	public ICommand SortCommand { get; }
-	public StatsViewModel(GameList games)
+	public StatsViewModel(GameList games, bool showHiddenGames)
 	{
 		_games = games;
-
+		_showHiddenGames = showHiddenGames;
 		if (_games.Count == 0)
 		{
 			StatVis = Visibility.Collapsed;
 			PlaceholderVis = Visibility.Visible;
 			return;
 		}
-		SortedGames = _games.SortByPlayTime(SortByMostPlayed);
+		SortedGames = _games.SortByPlayTime(SortByMostPlayed, _showHiddenGames);
 		SortedGamesVm = SortedGames.Take(10).Select((g, i) => new StatGameViewModel(i, g, this)).ToList();
 
 		int total = 0;
@@ -153,7 +153,7 @@ public class StatsViewModel : ViewModelBase
 		SortByMostPlayed = !SortByMostPlayed;
 		SortIcon = SortByMostPlayed ? "\uF19C" : "\uF149";
 		SortText = SortByMostPlayed ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed;
-		SortedGames = _games.SortByPlayTime(SortByMostPlayed);
+		SortedGames = _games.SortByPlayTime(SortByMostPlayed, _showHiddenGames);
 		SortedGamesVm = SortedGames.Take(10).Select((g, i) => new StatGameViewModel(i, g, this)).ToList();
 
 		if (SortedGames.Count > 0)

@@ -66,17 +66,17 @@ public class GameList : ObservableCollection<Game>
 		return results;
 	}
 
-	public GameList SortByPlayTime(bool sortByMostPlayed)
+	public GameList SortByPlayTime(bool sortByMostPlayed, bool showHiddenGames)
 	{
 		List<Game> sortedGames;
 
 		if (sortByMostPlayed)
 		{
-			sortedGames = this.OrderByDescending(game => game.TotalTimePlayed).ToList();
+			sortedGames = this.Where(game => showHiddenGames || !game.IsHidden).OrderByDescending(game => game.TotalTimePlayed).ToList();
 		}
 		else
 		{
-			sortedGames = this.OrderBy(game => game.TotalTimePlayed).ToList();
+			sortedGames = this.Where(game => showHiddenGames || !game.IsHidden).OrderBy(game => game.TotalTimePlayed).ToList();
 		}
 
 		return new GameList(sortedGames);
@@ -116,10 +116,14 @@ public class GameList : ObservableCollection<Game>
 			}
 		}
 
-		return new List<GameList>
-		{
-			todayList, yesterdayList, thisMonthList, otherList
-		};
+		List<GameList> sortedGames = new();
+
+		if (todayList.Count > 0) sortedGames.Add(todayList);
+		if (yesterdayList.Count > 0) sortedGames.Add(yesterdayList);
+		if (thisMonthList.Count > 0) sortedGames.Add(thisMonthList);
+		if (otherList.Count > 0) sortedGames.Add(otherList);
+
+		return sortedGames;
 	}
 
 	public List<GameList> GetSortedGameByTag()

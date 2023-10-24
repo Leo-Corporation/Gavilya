@@ -185,6 +185,9 @@ public class GameEditionViewModel : ViewModelBase
 	private string _packageFamilyName;
 	public string PackageFamilyName { get => _packageFamilyName; set { _packageFamilyName = value; OnPropertyChanged(nameof(PackageFamilyName)); } }
 
+	private string _applyBtnString;
+	public string ApplyBtnString { get => _applyBtnString; set { _applyBtnString = value; OnPropertyChanged(nameof(ApplyBtnString)); } }
+
 	private ImageSource _imgSrc;
 	public ImageSource ImageSource { get => _imgSrc; set { _imgSrc = value; OnPropertyChanged(nameof(ImageSource)); } }
 
@@ -291,6 +294,8 @@ public class GameEditionViewModel : ViewModelBase
 		DragAreaVis = game.GameType == GameType.Win32 ? Visibility.Visible : Visibility.Collapsed;
 		UwpFieldsVis = game.GameType == GameType.UWP ? Visibility.Visible : Visibility.Collapsed;
 		SteamFieldsVis = game.GameType == GameType.Steam ? Visibility.Visible : Visibility.Collapsed;
+
+		ApplyBtnString = Properties.Resources.EditGame;
 	}
 
 	/// <summary>
@@ -324,6 +329,8 @@ public class GameEditionViewModel : ViewModelBase
 		DragAreaVis = gameType == GameType.Win32 ? Visibility.Visible : Visibility.Collapsed;
 		UwpFieldsVis = gameType == GameType.UWP ? Visibility.Visible : Visibility.Collapsed;
 		SteamFieldsVis = gameType == GameType.Steam ? Visibility.Visible : Visibility.Collapsed;
+
+		ApplyBtnString = Properties.Resources.AddGame;
 	}
 
 	private void ShowConvert(object? obj)
