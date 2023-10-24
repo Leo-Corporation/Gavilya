@@ -10,6 +10,8 @@
     xmlns:vm="clr-namespace:Gavilya.ViewModels"
     d:DesignHeight="450"
     d:DesignWidth="800"
+    FontFamily="..\Fonts\#Hauora"
+    Foreground="{DynamicResource Foreground}"
     mc:Ignorable="d">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -18,18 +20,60 @@
         </Grid.ColumnDefinitions>
 
 
-        <ItemsControl ItemsSource="{Binding GamesVm}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate DataType="{x:Type vm:GameListViewModel}">
-                    <components:GameListComponent />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <StackPanel>
+            <StackPanel Margin="0 10" Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Filled"
+                    FontSize="14"
+                    Text="&#xF719;" />
+                <TextBlock
+                    x:Name="FavTxt"
+                    Margin="10 0 0 0"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.Favorites}" />
+            </StackPanel>
+            <ItemsControl ItemsSource="{Binding FavGamesVm}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:GameListViewModel}">
+                        <components:GameListComponent />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            <StackPanel Margin="0 10" Orientation="Horizontal">
+                <TextBlock
+                    VerticalAlignment="Center"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Filled"
+                    FontSize="14"
+                    Text="&#xF455;" />
+                <TextBlock
+                    x:Name="GamesTxt"
+                    Margin="10 0 0 0"
+                    VerticalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.Games}" />
+            </StackPanel>
+            <ItemsControl ItemsSource="{Binding GamesVm}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:GameListViewModel}">
+                        <components:GameListComponent />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
 
         <Grid Grid.Column="1">
             <Grid.Resources>
