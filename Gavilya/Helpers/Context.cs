@@ -25,6 +25,6 @@ SOFTWARE.
 namespace Gavilya.Helpers;
 public static class Context
 {
-	public static string Version => "4.1.0.2310-pre1";
+	public static string Version => "4.1.0.2310-rc1";
 	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Version.txt";
 }
