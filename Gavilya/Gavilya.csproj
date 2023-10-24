@@ -8,7 +8,7 @@
     <UseWindowsForms>True</UseWindowsForms>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Title>Gavilya</Title>
-    <Version>4.1.0.2310-rc1</Version>
+    <Version>4.1.0.2310</Version>
     <Authors>Léo Corporation</Authors>
     <Description>Gavilya is a simple game launcher for Windows.</Description>
     <Copyright>© 2023</Copyright>
