@@ -177,6 +177,9 @@ public class GamePageViewModel : ViewModelBase
 	private Visibility _platformVis = Visibility.Collapsed;
 	public Visibility PlatformVis { get => _platformVis; set { _platformVis = value; OnPropertyChanged(nameof(PlatformVis)); } }
 
+	private Visibility _adminVis = Visibility.Collapsed;
+	public Visibility AdminVis { get => _adminVis; set { _adminVis = value; OnPropertyChanged(nameof(AdminVis)); } }
+
 	public ICommand PlayCommand { get; }
 	public ICommand FavCommand { get; }
 	public ICommand EditCommand { get; }
@@ -200,6 +203,9 @@ public class GamePageViewModel : ViewModelBase
 		TotalTimePlayed = game.TotalTimePlayed;
 		Command = game.Command;
 		IsFavorite = game.IsFavorite;
+
+		// Launch as admin button
+		AdminVis = game.GameType == Enums.GameType.Win32 ? Visibility.Visible : Visibility.Collapsed;
 
 		// Commands
 		EditCommand = new RelayCommand(Edit);

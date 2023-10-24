@@ -95,7 +95,8 @@
                                 FontSize="14"
                                 FontWeight="Normal"
                                 Foreground="{DynamicResource Foreground}"
-                                Style="{StaticResource RegularButton}">
+                                Style="{StaticResource RegularButton}"
+                                Visibility="{Binding AdminVis}">
                                 <Button.ToolTip>
                                     <ToolTip
                                         Background="{DynamicResource Background}"
