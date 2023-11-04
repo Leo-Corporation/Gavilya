@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:Gavilya.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:Gavilya.ViewModels"
-    d:DesignHeight="450"
+    d:DesignHeight="1450"
     d:DesignWidth="800"
     FontFamily="..\Fonts\#Hauora"
     Foreground="{DynamicResource Foreground}"
@@ -115,6 +115,27 @@
                 FontSize="18"
                 FontWeight="ExtraBold"
                 Text="{x:Static lang:Resources.RecommandedGames}" />
+            <Button
+                x:Name="RandomGameBtn"
+                Margin="5"
+                Padding="5"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Background="{DynamicResource Background2}"
+                Command="{Binding RandomGameCommand}"
+                Content="&#xF4D7;"
+                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                FontSize="13"
+                Foreground="{DynamicResource Foreground}"
+                Style="{StaticResource RegularButton}"
+                Visibility="Visible">
+                <Button.ToolTip>
+                    <ToolTip
+                        Background="{DynamicResource Background}"
+                        Content="{x:Static lang:Resources.RandomGame}"
+                        Foreground="{DynamicResource Foreground}" />
+                </Button.ToolTip>
+            </Button>
         </StackPanel>
         <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
             <ItemsControl ItemsSource="{Binding Recommended}">

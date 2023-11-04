@@ -236,4 +236,11 @@ public class GameList : ObservableCollection<Game>
 			return new();
 		}
 	}
+
+	public Game GetRandomGame()
+	{
+		Random random = new();
+		int i = random.Next(0, Count);
+		return this[i];
+	}
 }
