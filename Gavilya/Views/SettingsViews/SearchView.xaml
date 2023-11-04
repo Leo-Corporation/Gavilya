@@ -100,6 +100,48 @@
                     </Button>
                 </StackPanel>
             </Expander>
+            <Expander
+                Margin="5"
+                Background="{DynamicResource Background2}"
+                Foreground="{DynamicResource Foreground}"
+                Style="{DynamicResource Expander}">
+                <Expander.Header>
+                    <StackPanel Margin="10 15" Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                            FontSize="22"
+                            Text="&#xF4B9;" />
+                        <StackPanel>
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                FontSize="14"
+                                FontWeight="ExtraBold"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{x:Static lang:Resources.KeybordShortcut}" />
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                FontSize="12"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{x:Static lang:Resources.SearchKeyboardShortcutDesc}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Expander.Header>
+                <CheckBox
+                    x:Name="EnableShortcutChk"
+                    Margin="10"
+                    VerticalContentAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource Accent}"
+                    BorderThickness="2"
+                    Command="{Binding EnableShortcutCommand}"
+                    Content="{x:Static lang:Resources.EnableSearchShortcut}"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    IsChecked="{Binding EnableShortcut, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource CheckBoxStyle1}" />
+
+            </Expander>
         </StackPanel>
     </Grid>
 </UserControl>

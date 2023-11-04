@@ -100,6 +100,8 @@ public class Settings
 	/// </summary>
 	public bool ShowHiddenGames { get; set; }
 
+	public bool? EnableSearchShortcut { get; set; }
+
 	public Settings()
 	{
 		IsFirstRun = true;
@@ -117,6 +119,7 @@ public class Settings
 		DefaultView = View.Card;
 		CurrentTheme = "";
 		ShowHiddenGames = false;
+		EnableSearchShortcut = true;
 	}
 }
 

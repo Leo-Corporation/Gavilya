@@ -36,7 +36,11 @@ public class SearchViewModel : ViewModelBase
 	private string _maxResults;
 	public string MaxResults { get => _maxResults; set { _maxResults = value; OnPropertyChanged(nameof(MaxResults)); } }
 
+	private bool _enableShortcut;
+	public bool EnableShortcut { get => _enableShortcut; set { _enableShortcut = value; OnPropertyChanged(nameof(EnableShortcut)); } }
+
 	public ICommand SaveCommand { get; }
+	public ICommand EnableShortcutCommand { get; }
 	public SearchViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
 		_profile = profile;
@@ -44,8 +48,10 @@ public class SearchViewModel : ViewModelBase
 		_mainViewModel = mainViewModel;
 
 		MaxResults = profile.Settings.NumberOfSearchResultsToDisplay.ToString();
+		EnableShortcut = profile.Settings.EnableSearchShortcut ?? true;
 
 		SaveCommand = new RelayCommand(Save);
+		EnableShortcutCommand = new RelayCommand(SetEnableShortcut);
 	}
 
 	private void Save(object? obj)
@@ -56,5 +62,12 @@ public class SearchViewModel : ViewModelBase
 			_profileData.Save();
 			_mainViewModel.CurrentSettings = _profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings;
 		}
+	}
+
+	private void SetEnableShortcut(object? obj)
+	{
+		_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.EnableSearchShortcut = EnableShortcut;
+		_profileData.Save();
+		_mainViewModel.CurrentSettings = _profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings;
 	}
 }

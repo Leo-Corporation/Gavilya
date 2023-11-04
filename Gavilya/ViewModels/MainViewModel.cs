@@ -196,7 +196,12 @@ public class MainViewModel : ViewModelBase
 		};
 
 		var openSearch = Combination.FromString("Control+K");
-		Action openSearchAction = () => { SearchOpen = !SearchOpen; SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45; };
+		Action openSearchAction = () => 
+		{ 
+			if (!(_currentSettings.EnableSearchShortcut ?? true)) return;
+			SearchOpen = !SearchOpen; 
+			SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45; 
+		};
 
 		var assignment = new Dictionary<Combination, Action>
 		{
