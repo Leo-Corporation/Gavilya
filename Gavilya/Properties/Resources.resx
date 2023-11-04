@@ -1009,4 +1009,13 @@
   <data name="MigrateFromV3" xml:space="preserve">
     <value>Migrate from v3</value>
   </data>
+  <data name="KeybordShortcut" xml:space="preserve">
+    <value>Keyboard shortcut</value>
+  </data>
+  <data name="EnableSearchShortcut" xml:space="preserve">
+    <value>Enable search keyboard shortcut</value>
+  </data>
+  <data name="SearchKeyboardShortcutDesc" xml:space="preserve">
+    <value>Keyboard shortcut related settings.</value>
+  </data>
 </root>

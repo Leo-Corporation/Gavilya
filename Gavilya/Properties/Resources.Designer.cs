@@ -124,7 +124,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add a game by clicking on the &quot;Add&quot; button or drag and drop an executable file here..
+        ///   Looks up a localized string similar to Add a game by clicking on the &quot;Add&quot; button..
         /// </summary>
         public static string AddGameWelcome {
             get {
@@ -673,6 +673,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable search keyboard shortcut.
+        /// </summary>
+        public static string EnableSearchShortcut {
+            get {
+                return ResourceManager.GetString("EnableSearchShortcut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Epic Games Store.
         /// </summary>
         public static string EpicGamesStore {
@@ -1200,6 +1209,15 @@ namespace Gavilya.Properties {
         public static string InvalidGameNumber {
             get {
                 return ResourceManager.GetString("InvalidGameNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard shortcut.
+        /// </summary>
+        public static string KeybordShortcut {
+            get {
+                return ResourceManager.GetString("KeybordShortcut", resourceCulture);
             }
         }
         
@@ -2127,6 +2145,15 @@ namespace Gavilya.Properties {
         public static string SearchF {
             get {
                 return ResourceManager.GetString("SearchF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard shortcut related settings..
+        /// </summary>
+        public static string SearchKeyboardShortcutDesc {
+            get {
+                return ResourceManager.GetString("SearchKeyboardShortcutDesc", resourceCulture);
             }
         }
         

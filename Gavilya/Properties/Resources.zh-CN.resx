@@ -1008,4 +1008,13 @@
   <data name="MigrateFromV3" xml:space="preserve">
     <value>从 v3 迁移</value>
   </data>
+  <data name="KeybordShortcut" xml:space="preserve">
+    <value>键盘快捷键</value>
+  </data>
+  <data name="EnableSearchShortcut" xml:space="preserve">
+    <value>启用搜索快捷键</value>
+  </data>
+  <data name="SearchKeyboardShortcutDesc" xml:space="preserve">
+    <value>键盘快捷键相关设置</value>
+  </data>
 </root>
