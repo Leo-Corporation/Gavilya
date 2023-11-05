@@ -1021,4 +1021,7 @@
   <data name="PinUnpinWindow" xml:space="preserve">
     <value>Pin/Unpin window</value>
   </data>
+  <data name="ScanDirectory" xml:space="preserve">
+    <value>Scan a directory</value>
+  </data>
 </root>

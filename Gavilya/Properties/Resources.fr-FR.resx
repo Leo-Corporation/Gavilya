@@ -1020,4 +1020,7 @@
   <data name="PinUnpinWindow" xml:space="preserve">
     <value>Epingler/Désépingler la fenêtre</value>
   </data>
+  <data name="ScanDirectory" xml:space="preserve">
+    <value>Scanner un dossier</value>
+  </data>
 </root>

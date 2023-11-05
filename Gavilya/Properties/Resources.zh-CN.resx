@@ -1020,4 +1020,7 @@
   <data name="PinUnpinWindow" xml:space="preserve">
     <value>插针/解针窗口</value>
   </data>
+  <data name="ScanDirectory" xml:space="preserve">
+    <value>扫描目录</value>
+  </data>
 </root>

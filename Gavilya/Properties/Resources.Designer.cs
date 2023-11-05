@@ -2122,6 +2122,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan a directory.
+        /// </summary>
+        public static string ScanDirectory {
+            get {
+                return ResourceManager.GetString("ScanDirectory", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Screenshots.
         /// </summary>
         public static string Screenshots {
