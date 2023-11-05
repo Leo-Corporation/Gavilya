@@ -53,6 +53,8 @@ public partial class App : Application
 				Language.zh_CN => "zh-CN",
 			});
 
+		currentProfile.Settings.EnableSearchShortcut ??= true;
+
 		if (currentProfile.Settings.MakeAutoSave && IsSaveDay(currentProfile.Settings.AutoSaveDay) && !File.Exists($@"{currentProfile.Settings.SavePath}\GavilyaProfiles_{DateTime.Now:yyyy_MM_dd}.g4v"))
 		{
 			profiles.Backup(currentProfile.Settings.SavePath);

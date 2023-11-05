@@ -22,9 +22,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Helpers;
-public static class Context
+using Gavilya.Commands;
+using System.Windows.Input;
+
+namespace Gavilya.ViewModels;
+
+public class ExecutableViewModel : ViewModelBase
 {
-	public static string Version => "4.2.0.2311";
-	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Version.txt";
+	private readonly GameEditionViewModel _gameEditionViewModel;
+
+	public string Name { get; }
+	public string FilePath { get; }
+
+	public ICommand ClickCommand { get; }
+
+	public ExecutableViewModel(string name, string filePath, GameEditionViewModel gameEditionViewModel)
+	{
+		Name = name;
+		FilePath = filePath;
+		_gameEditionViewModel = gameEditionViewModel;
+
+		ClickCommand = new RelayCommand(Click);
+	}
+
+	private void Click(object? obj)
+	{
+		_gameEditionViewModel.Name = Name;
+		_gameEditionViewModel.Command = FilePath;
+		_gameEditionViewModel.IsExeSelectorOpen = false;
+	}
 }

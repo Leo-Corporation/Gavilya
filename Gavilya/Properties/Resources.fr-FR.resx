@@ -1008,4 +1008,19 @@
   <data name="MigrateFromV3" xml:space="preserve">
     <value>Migrer depuis la v3</value>
   </data>
+  <data name="KeybordShortcut" xml:space="preserve">
+    <value>Raccourci clavier</value>
+  </data>
+  <data name="EnableSearchShortcut" xml:space="preserve">
+    <value>Activer le raccourci clavier de recherche</value>
+  </data>
+  <data name="SearchKeyboardShortcutDesc" xml:space="preserve">
+    <value>Paramètres liés aux raccourcis clavier.</value>
+  </data>
+  <data name="PinUnpinWindow" xml:space="preserve">
+    <value>Epingler/Désépingler la fenêtre</value>
+  </data>
+  <data name="ScanDirectory" xml:space="preserve">
+    <value>Scanner un dossier</value>
+  </data>
 </root>

@@ -35,6 +35,7 @@ namespace Gavilya.ViewModels;
 public class HomePageViewModel : ViewModelBase
 {
 	private readonly GameList _games;
+	private readonly List<Tag> _tags;
 	private readonly MainViewModel _mainViewModel;
 	public string GreetingMessage => $"{Properties.Resources.Hello} {Environment.UserName}{Properties.Resources.ExclamationMark}";
 	public List<MinimalGameViewModel> Favorites => _games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
@@ -49,9 +50,13 @@ public class HomePageViewModel : ViewModelBase
 	
 	private Visibility _placeholderVis = Visibility.Collapsed;
 	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
-	public HomePageViewModel(GameList games, MainViewModel mainViewModel)
+
+	public ICommand RandomGameCommand { get; }
+
+	public HomePageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_games = games;
+		_tags = tags;
 		_mainViewModel = mainViewModel;
 
 		if (_games.Count == 0)
@@ -60,5 +65,13 @@ public class HomePageViewModel : ViewModelBase
 			ContentVis = Visibility.Collapsed;
 		}
 		StatsView = new(_games, _mainViewModel.CurrentSettings.ShowHiddenGames);
+
+		RandomGameCommand = new RelayCommand(GetRandomGame);
+	}
+
+	private void GetRandomGame(object? obj)
+	{
+		var game = _games.GetRandomGame();
+		_mainViewModel.CurrentViewModel = new GamePageViewModel(game, _games, _tags, _mainViewModel);
 	}
 }

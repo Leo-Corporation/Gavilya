@@ -27,6 +27,7 @@ using Gavilya.Enums;
 using Gavilya.Helpers;
 using Gavilya.Models;
 using Gavilya.Models.Rawg;
+using Gavilya.Services;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -163,6 +164,9 @@ public class GameEditionViewModel : ViewModelBase
 	private bool _isUwpOpen = false;
 	public bool IsUwpOpen { get => _isUwpOpen; set { _isUwpOpen = value; OnPropertyChanged(nameof(IsUwpOpen)); } }
 
+	private bool _isExeSelectorOpen = false;
+	public bool IsExeSelectorOpen { get => _isExeSelectorOpen; set { _isExeSelectorOpen = value; OnPropertyChanged(nameof(IsExeSelectorOpen)); } }
+
 
 	private bool _isRawgOpen = false;
 	public bool IsRawgOpen { get => _isRawgOpen; set { _isRawgOpen = value; OnPropertyChanged(nameof(IsRawgOpen)); } }
@@ -194,6 +198,9 @@ public class GameEditionViewModel : ViewModelBase
 	private List<UwpSelectorViewModel> _uwpApps;
 	public List<UwpSelectorViewModel> UwpApps { get => _uwpApps; set { _uwpApps = value; OnPropertyChanged(nameof(UwpApps)); } }
 
+	private List<ExecutableViewModel> _exeApps;
+	public List<ExecutableViewModel> ExeApps { get => _exeApps; set { _exeApps = value; OnPropertyChanged(nameof(ExeApps)); } }
+
 	private Visibility _dragAreaVis = Visibility.Collapsed;
 	public Visibility DragAreaVis { get => _dragAreaVis; set { _dragAreaVis = value; OnPropertyChanged(nameof(DragAreaVis)); } }
 
@@ -219,6 +226,10 @@ public class GameEditionViewModel : ViewModelBase
 	private Visibility _steamSectionVis = Visibility.Collapsed;
 	public Visibility SteamSectionVis { get => _steamSectionVis; set { _steamSectionVis = value; OnPropertyChanged(nameof(SteamSectionVis)); } }
 
+	private Visibility _noExeVis = Visibility.Collapsed;
+	public Visibility NoExeVis { get => _noExeVis; set { _noExeVis = value; OnPropertyChanged(nameof(NoExeVis)); } }
+
+
 	public ICommand AddCommand { get; }
 	public ICommand BrowseFileCommand { get; }
 	public ICommand BrowseImageCommand { get; }
@@ -229,6 +240,8 @@ public class GameEditionViewModel : ViewModelBase
 	public ICommand ShowConvertSectionCommand { get; }
 	public ICommand ProcessHelpCommand { get; }
 	public ICommand DropCommand { get; }
+	public ICommand ScanCommand { get; }
+	public ICommand CloseExeSelectorCommand { get; }
 
 	/// <summary>
 	/// This constructor is used when editing an exisiting game.
@@ -255,6 +268,8 @@ public class GameEditionViewModel : ViewModelBase
 		ShowConvertSectionCommand = new RelayCommand(ShowConvert);
 		ProcessHelpCommand = new RelayCommand(ShowProcessHelp);
 		DropCommand = new RelayCommand(ExecuteDrop);
+		ScanCommand = new RelayCommand(Scan);
+		CloseExeSelectorCommand = new RelayCommand((o) => IsExeSelectorOpen = false);
 
 		// Load properties
 		Name = game.Name;
@@ -322,6 +337,8 @@ public class GameEditionViewModel : ViewModelBase
 		RawgSearchCommand = new RelayCommand(SearchRawg);
 		ProcessHelpCommand = new RelayCommand(ShowProcessHelp);
 		DropCommand = new RelayCommand(ExecuteDrop);
+		ScanCommand = new RelayCommand(Scan);
+		CloseExeSelectorCommand = new RelayCommand((o) => IsExeSelectorOpen = false);
 
 		SelectedTags = new();
 
@@ -482,5 +499,21 @@ public class GameEditionViewModel : ViewModelBase
 	private void ShowProcessHelp(object? obj)
 	{
 		MessageBox.Show(Properties.Resources.ProcessNameHelp, Properties.Resources.Help, MessageBoxButton.OK, MessageBoxImage.Information);
+	}
+
+	private void Scan(object? obj)
+	{
+		using System.Windows.Forms.FolderBrowserDialog dialog = new();
+		System.Windows.Forms.DialogResult result = dialog.ShowDialog();
+
+		if (result == System.Windows.Forms.DialogResult.OK)
+		{
+			string selectedPath = dialog.SelectedPath;
+			GameScannerService gameScannerService = new();
+			ExeApps = gameScannerService.ScanForExecutables(selectedPath, this);
+			if (ExeApps is not null && ExeApps.Count > 0) NoExeVis = Visibility.Collapsed;
+			else NoExeVis = Visibility.Visible;
+			IsExeSelectorOpen = true;
+		}
 	}
 }
