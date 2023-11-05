@@ -31,6 +31,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Windows;
 using System.Windows.Input;
 
@@ -108,11 +109,15 @@ public class MainViewModel : ViewModelBase
 	private Visibility _noResults;
 	public Visibility NoResults { get => _noResults; set { _noResults = value; OnPropertyChanged(nameof(NoResults)); } }
 
+	private string _pinIcon;
+	public string PinIcon { get => _pinIcon; set { _pinIcon = value; OnPropertyChanged(nameof(PinIcon)); } }
+
 	public ICommand MinimizeCommand { get; }
 	public ICommand MaximizeRestoreCommand { get; }
 	public ICommand CloseCommand { get; }
 	public ICommand SearchClickCommand { get; }
 	public ICommand DeleteCommand { get; }
+	public ICommand PinCommand { get; set; }
 
 	public MainViewModel(Window window, Profile profile, ProfileData profiles, Page? startupPage = null)
 	{
@@ -146,6 +151,7 @@ public class MainViewModel : ViewModelBase
 			SearchOpen = !SearchOpen;
 			SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45;
 		});
+		PinCommand = new RelayCommand(Pin);
 
 		// Window System
 		_window.WindowState = CurrentSettings.IsMaximized switch { true => WindowState.Maximized, _ => WindowState.Normal };
@@ -153,6 +159,7 @@ public class MainViewModel : ViewModelBase
 		MaxiIcon = _window.WindowState == WindowState.Maximized ? "\uF670" : "\uFA40";
 		MaxiIconFontSize = _window.WindowState == WindowState.Maximized ? 16 : 12;
 		BorderMargin = _window.WindowState == WindowState.Maximized ? new(0) : new(10); // Set
+		PinIcon = "\uF602";
 
 		// Events
 		_window.StateChanged += (o, e) =>
@@ -253,6 +260,12 @@ public class MainViewModel : ViewModelBase
 	private void Close(object parameter)
 	{
 		_window.Close();
+	}
+
+	private void Pin(object? obj)
+	{
+		_window.Topmost = !_window.Topmost;
+		PinIcon = _window.Topmost ? "\uF604" : "\uF602";
 	}
 
 	private void DeleteGames(object obj)

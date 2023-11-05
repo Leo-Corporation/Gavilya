@@ -62,6 +62,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Button
                         x:Name="SearchBtn"
@@ -104,8 +105,28 @@
                                 Foreground="{DynamicResource Foreground}" />
                         </Button.ToolTip>
                     </Button>
-                    <TextBlock
+                    <Button
+                        Name="PinBtn"
                         Grid.Column="9"
+                        Width="32"
+                        Height="32"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Command="{Binding PinCommand}"
+                        Content="{Binding PinIcon}"
+                        FontFamily="Fonts\#FluentSystemIcons-Regular"
+                        FontSize="14"
+                        Foreground="{DynamicResource Foreground}"
+                        Style="{StaticResource TitleBarButtonStyle}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Background="{DynamicResource Background}"
+                                Content="{x:Static lang:Resources.PinUnpinWindow}"
+                                Foreground="{DynamicResource Foreground}" />
+                        </Button.ToolTip>
+                    </Button>
+                    <TextBlock
+                        Grid.Column="10"
                         VerticalAlignment="Center"
                         FontFamily="Fonts\#FluentSystemIcons-Regular"
                         FontSize="30"
@@ -114,7 +135,7 @@
 
                     <Button
                         x:Name="MinimizeBtn"
-                        Grid.Column="10"
+                        Grid.Column="11"
                         Width="46"
                         Height="32"
                         Background="Transparent"
@@ -126,7 +147,7 @@
                         Style="{StaticResource TitleBarButtonStyle}" />
                     <Button
                         x:Name="MaximizeBtn"
-                        Grid.Column="11"
+                        Grid.Column="12"
                         Width="46"
                         Height="32"
                         Background="Transparent"
@@ -137,7 +158,7 @@
                         Style="{StaticResource TitleBarButtonStyle}" />
                     <Button
                         x:Name="CloseBtn"
-                        Grid.Column="12"
+                        Grid.Column="13"
                         Width="46"
                         Height="32"
                         Command="{Binding CloseCommand}"
