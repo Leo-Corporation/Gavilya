@@ -36,8 +36,8 @@ public class ExecutableViewModel : ViewModelBase
 
 	public ICommand ClickCommand { get; }
 
-    public ExecutableViewModel(string name, string filePath, GameEditionViewModel gameEditionViewModel)
-    {
+	public ExecutableViewModel(string name, string filePath, GameEditionViewModel gameEditionViewModel)
+	{
 		Name = name;
 		FilePath = filePath;
 		_gameEditionViewModel = gameEditionViewModel;
