@@ -1018,4 +1018,7 @@
   <data name="SearchKeyboardShortcutDesc" xml:space="preserve">
     <value>Keyboard shortcut related settings.</value>
   </data>
+  <data name="PinUnpinWindow" xml:space="preserve">
+    <value>Pin/Unpin window</value>
+  </data>
 </root>

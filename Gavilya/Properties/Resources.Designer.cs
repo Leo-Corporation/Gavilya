@@ -1816,6 +1816,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pin/Unpin window.
+        /// </summary>
+        public static string PinUnpinWindow {
+            get {
+                return ResourceManager.GetString("PinUnpinWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Platforms.
         /// </summary>
         public static string Platforms {

@@ -1017,4 +1017,7 @@
   <data name="SearchKeyboardShortcutDesc" xml:space="preserve">
     <value>Paramètres liés aux raccourcis clavier.</value>
   </data>
+  <data name="PinUnpinWindow" xml:space="preserve">
+    <value>Epingler/Désépingler la fenêtre</value>
+  </data>
 </root>

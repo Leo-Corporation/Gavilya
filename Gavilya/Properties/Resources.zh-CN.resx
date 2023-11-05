@@ -1017,4 +1017,7 @@
   <data name="SearchKeyboardShortcutDesc" xml:space="preserve">
     <value>键盘快捷键相关设置</value>
   </data>
+  <data name="PinUnpinWindow" xml:space="preserve">
+    <value>插针/解针窗口</value>
+  </data>
 </root>
