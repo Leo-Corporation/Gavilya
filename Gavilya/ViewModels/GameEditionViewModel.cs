@@ -226,6 +226,10 @@ public class GameEditionViewModel : ViewModelBase
 	private Visibility _steamSectionVis = Visibility.Collapsed;
 	public Visibility SteamSectionVis { get => _steamSectionVis; set { _steamSectionVis = value; OnPropertyChanged(nameof(SteamSectionVis)); } }
 
+	private Visibility _noExeVis = Visibility.Collapsed;
+	public Visibility NoExeVis { get => _noExeVis; set { _noExeVis = value; OnPropertyChanged(nameof(NoExeVis)); } }
+
+
 	public ICommand AddCommand { get; }
 	public ICommand BrowseFileCommand { get; }
 	public ICommand BrowseImageCommand { get; }
@@ -507,6 +511,8 @@ public class GameEditionViewModel : ViewModelBase
 			string selectedPath = dialog.SelectedPath;
 			GameScannerService gameScannerService = new();
 			ExeApps = gameScannerService.ScanForExecutables(selectedPath, this);
+			if (ExeApps is not null && ExeApps.Count > 0) NoExeVis = Visibility.Collapsed;
+			else NoExeVis = Visibility.Visible;
 			IsExeSelectorOpen = true;
 		}
 	}

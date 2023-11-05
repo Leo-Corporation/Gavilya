@@ -144,6 +144,24 @@
                                     </ItemsControl.ItemTemplate>
                                 </ItemsControl>
                             </ScrollViewer>
+                            <StackPanel
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Visibility="{Binding NoExeVis}">
+                                <TextBlock
+                                    Margin="2"
+                                    HorizontalAlignment="Center"
+                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                    FontSize="26"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Text="&#xF690;" />
+                                <TextBlock
+                                    HorizontalAlignment="Center"
+                                    FontFamily="..\Fonts\#Hauora"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Text="{x:Static lang:Resources.NoItemsFound}" />
+                            </StackPanel>
                             <Button
                                 Grid.Row="1"
                                 Margin="5"
