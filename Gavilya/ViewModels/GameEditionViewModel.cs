@@ -265,6 +265,7 @@ public class GameEditionViewModel : ViewModelBase
 		ProcessHelpCommand = new RelayCommand(ShowProcessHelp);
 		DropCommand = new RelayCommand(ExecuteDrop);
 		ScanCommand = new RelayCommand(Scan);
+		CloseExeSelectorCommand = new RelayCommand((o) => IsExeSelectorOpen = false);
 
 		// Load properties
 		Name = game.Name;
@@ -333,6 +334,7 @@ public class GameEditionViewModel : ViewModelBase
 		ProcessHelpCommand = new RelayCommand(ShowProcessHelp);
 		DropCommand = new RelayCommand(ExecuteDrop);
 		ScanCommand = new RelayCommand(Scan);
+		CloseExeSelectorCommand = new RelayCommand((o) => IsExeSelectorOpen = false);
 
 		SelectedTags = new();
 

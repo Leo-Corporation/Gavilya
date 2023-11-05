@@ -150,7 +150,7 @@
                                 Padding="5"
                                 HorizontalAlignment="Center"
                                 Background="{DynamicResource Background2}"
-                                Command="{Binding ScanCommand}"
+                                Command="{Binding CloseExeSelectorCommand}"
                                 Content="{x:Static lang:Resources.Close}"
                                 Cursor="Hand"
                                 FontWeight="Bold"
