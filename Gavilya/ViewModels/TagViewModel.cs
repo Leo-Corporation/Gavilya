@@ -80,12 +80,14 @@ public class TagViewModel : ViewModelBase
 				game.Tags[game.Tags.IndexOf(_tag)] = _tag;
 			}
 		}
+
 		_refresh();
 	}
 
 	private void Delete(object? obj)
 	{
 		_tags.Remove(_tag);
+
 		foreach (Game game in _games)
 		{
 			if (game.Tags?.Contains(_tag) ?? false)
@@ -93,15 +95,18 @@ public class TagViewModel : ViewModelBase
 				game.Tags.Remove(_tag);
 			}
 		}
+
 		_refresh();
 	}
 
 	private void ChangeColor(object? obj)
 	{
-		System.Windows.Forms.ColorDialog colorDialog = new()
+        // Create color picker/dialog
+        System.Windows.Forms.ColorDialog colorDialog = new()
 		{
 			AllowFullOpen = true,
-		}; // Create color picker/dialog
+		};
+
 		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
 		{
 			RGB rgb = new(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B);

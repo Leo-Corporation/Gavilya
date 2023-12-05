@@ -64,6 +64,17 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
+
+                    <Image
+                        x:Name="GavilyaLogo"
+                        Grid.Column="1"
+                        Width="26"
+                        Height="26"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Center"
+                        Source="Gavilya.png" Grid.ColumnSpan="3" Margin="18,0,0,0">
+                    </Image>
+
                     <Button
                         x:Name="SearchBtn"
                         Grid.Column="4"
@@ -173,6 +184,9 @@
                 <Grid.Resources>
                     <DataTemplate DataType="{x:Type viewmodels:LibPageViewModel}">
                         <views:LibPageView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:FavPageViewModel}">
+                        <views:FavPageView />
                     </DataTemplate>
                     <DataTemplate DataType="{x:Type viewmodels:GameEditionViewModel}">
                         <views:GameEditionView />

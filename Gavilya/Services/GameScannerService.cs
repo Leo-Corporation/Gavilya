@@ -28,8 +28,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Gavilya.Services;
 
@@ -42,9 +40,7 @@ public class GameScannerService
 		try
 		{
 			// Recursively search for files with .exe extension in the directory and its subdirectories
-			foreach (string filePath in Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories)
-												  .Where(file => file.EndsWith(".exe", StringComparison.OrdinalIgnoreCase))
-			)
+			foreach (string filePath in Directory.GetFiles(directory, "*.*", SearchOption.AllDirectories).Where(file => file.EndsWith(".exe", StringComparison.OrdinalIgnoreCase)))
 			{
 				string fileName = Path.GetFileName(filePath);
 				FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(filePath); // Get the version

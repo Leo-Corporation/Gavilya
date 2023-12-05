@@ -21,11 +21,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using Gavilya.Enums;
 using System;
 using System.Collections.Generic;
 
 namespace Gavilya.Models;
+
 public class Game
 {
 	public string Name { get; set; }

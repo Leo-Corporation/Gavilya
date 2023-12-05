@@ -24,20 +24,17 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.FirstRun;
+
 public class WelcomeViewModel : ViewModelBase
 {
 	private readonly FirstRunViewModel _firstRunViewModel;
 	private readonly Profile _profile;
 	private readonly ProfileData _profileData;
 	private int _selectedIndex;
+
 	public int SelectedIndex { get => _selectedIndex; set { _selectedIndex = value; OnPropertyChanged(nameof(SelectedIndex)); } }
 
 	public ICommand NextCommand { get; }

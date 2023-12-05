@@ -55,6 +55,7 @@ public static class UwpHelper
 			{
 				StartInfo = processInfo
 			};
+
 			process.Start();
 			await process.WaitForExitAsync();
 

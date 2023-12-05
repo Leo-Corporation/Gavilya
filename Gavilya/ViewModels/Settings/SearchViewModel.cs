@@ -27,6 +27,7 @@ using Gavilya.Models;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class SearchViewModel : ViewModelBase
 {
 	private readonly Profile _profile;
@@ -41,6 +42,7 @@ public class SearchViewModel : ViewModelBase
 
 	public ICommand SaveCommand { get; }
 	public ICommand EnableShortcutCommand { get; }
+
 	public SearchViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
 		_profile = profile;

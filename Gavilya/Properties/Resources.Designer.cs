@@ -115,6 +115,24 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a favorite game.
+        /// </summary>
+        public static string AddFavGame {
+            get {
+                return ResourceManager.GetString("AddFavGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a favorite game by clicking on the &quot;Star&quot; button on a game&apos;s card..
+        /// </summary>
+        public static string AddFavGameWelcome {
+            get {
+                return ResourceManager.GetString("AddFavGameWelcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add a game.
         /// </summary>
         public static string AddGame {
@@ -1852,7 +1870,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Play to {0}.
+        ///   Looks up a localized string similar to Play {0}.
         /// </summary>
         public static string PlayTo {
             get {
@@ -2491,6 +2509,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot run this steam game as it is not installed..
+        /// </summary>
+        public static string SteamAppNotInstalled {
+            get {
+                return ResourceManager.GetString("SteamAppNotInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot launch game: Steam is not running..
         /// </summary>
         public static string SteamNotRunning {
@@ -2734,7 +2761,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What game do you wanna play?.
+        ///   Looks up a localized string similar to What game do you want to play?.
         /// </summary>
         public static string WhatGameToPlay {
             get {

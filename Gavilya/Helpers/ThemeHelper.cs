@@ -25,6 +25,7 @@ SOFTWARE.
 using Gavilya.Models;
 using PeyrSharp.Core;
 using PeyrSharp.Env;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -32,15 +33,18 @@ using System.Windows;
 using System.Xml.Serialization;
 
 namespace Gavilya.Helpers;
+
 public class ThemeHelper
 {
 	public static void ChangeTheme(ThemeInfo theme, string path)
 	{
 		Application.Current.Resources.MergedDictionaries.Clear();
+
 		ResourceDictionary resourceDictionary = new()
 		{
 			Source = new($@"{path}\{theme.FilePath}")
 		};
+
 		Application.Current.Resources.MergedDictionaries.Add(resourceDictionary);
 	}
 
@@ -51,10 +55,12 @@ public class ThemeHelper
 	public static List<(ThemeInfo, string)> GetInstalledThemes()
 	{
 		string themePath = $@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Themes\";
+
 		// If there is no themes
 		if (!Directory.Exists(themePath))
 		{
 			Directory.CreateDirectory(themePath);
+
 			return new()
 			{
 				(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Context.Version), "")
@@ -65,6 +71,7 @@ public class ThemeHelper
 		{
 			(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Context.Version), "")
 		};
+
 		// If there are themes installed
 		foreach (var subdir in Directory.GetDirectories(themePath))
 		{
@@ -75,14 +82,16 @@ public class ThemeHelper
 					var xmlSerializer = new XmlSerializer(typeof(ThemeInfo));
 					StreamReader streamReader = new($@"{subdir}\theme.manifest");
 					ThemeInfo theme = (ThemeInfo)xmlSerializer.Deserialize(streamReader);
-
-
 					installedThemes.Add((theme, subdir));
 				}
-				catch { }
+				catch (Exception ex)
+				{
+					Console.WriteLine("Failed to update installed themes, code: " + ex.StackTrace);
+				}
 
 			}
 		}
+
 		return installedThemes;
 	}
 

@@ -34,6 +34,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class AboutViewModel : ViewModelBase
 {
 	private readonly ProfileData _profileData;
@@ -63,22 +64,27 @@ public class AboutViewModel : ViewModelBase
 	private async void CheckUpdate(object? obj)
 	{
 		System.Windows.Forms.NotifyIcon notifyIcon = new();
+
 		if (await Internet.IsAvailableAsync())
 		{
 			var lastVer = await Update.GetLastVersionAsync(Context.LastVersionLink);
+
 			if (Update.IsAvailable(lastVer, Context.Version))
 			{
 				StatusMessage = Properties.Resources.UpdateAv;
 				StatusIcon = "\uF36E";
 				IconColor = new() { Color = Color.FromRgb(255, 50, 30) };
+
 				if (MessageBox.Show($"{Properties.Resources.UpdateAvMessage}\n{Properties.Resources.UpdateVersion} {lastVer}\n\n{Properties.Resources.ContinueInstall}", $"{Properties.Resources.Version} {lastVer}", MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.No)
 				{
 					return;
 				}
+
 				_profileData.Save();
 				Sys.ExecuteAsAdmin(Directory.GetCurrentDirectory() + @"\Xalyus Updater.exe"); // Start the updater
 				Application.Current.Shutdown(); // Close
 			}
+
 			StatusMessage = Properties.Resources.UpdateUn;
 			StatusIcon = "\uF299";
 			IconColor = new() { Color = Color.FromRgb(37, 222, 15) };

@@ -63,14 +63,17 @@ public class RawgClient
 		try
 		{
 			var client = new RestClient(new Uri("https://api.rawg.io/api/games?")); // Configure the client
+
 			var request = new RestRequest
 			{
 				Method = Method.Get
-			}; // Create a request
-			request.AddQueryParameter("search", _gameName); // Config the request
-			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
-			var response = await client.ExecuteAsync(request); // Execute the request and store the result
+			};
 
+            // Create a request
+            request.AddQueryParameter("search", _gameName); // Config the request
+			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
+
+			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 			var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
 
 			if (gameResults is not null && gameResults.Count > 0) // If there is results
@@ -93,13 +96,16 @@ public class RawgClient
 		try
 		{
 			var client = new RestClient(new Uri($"https://api.rawg.io/api/games/{_gameId}")); // Configure the client
+
 			var request = new RestRequest
 			{
 				Method = Method.Get
-			}; // Create a request
+			};
+			
+			// Create a request
 			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
-			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
+			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 			var game = JsonSerializer.Deserialize<RawgGame>(response.Content); // Deserialize the content of the reponse
 
 			return game;
@@ -116,15 +122,19 @@ public class RawgClient
 		try
 		{
 			var client = new RestClient(new Uri($"https://api.rawg.io/api/games/{_gameId}/achievements?")); // Create a REST Client
+			
 			var request = new RestRequest
 			{
 				Method = Method.Get
-			}; // Create a request
+			};
+			
+			// Create a request
 			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
 			request.AddQueryParameter("page_size", "20");
-			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
+			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 			var achievementsResults = JsonSerializer.Deserialize<AchievementsResults>(response.Content); // Deserialize the content of the reponse
+			
 			return achievementsResults?.Results ?? new(); // Return the results
 		}
 		catch (Exception ex)
@@ -139,14 +149,17 @@ public class RawgClient
 		try
 		{
 			var client = new RestClient(new Uri("https://api.rawg.io/api/games?")); // Configure the client
+			
 			var request = new RestRequest
 			{
 				Method = Method.Get
-			}; // Create a request
+			};
+			
+			// Create a request
 			request.AddQueryParameter("search", _gameName); // Config the request
 			request.AddQueryParameter("key", ApiKeys.RawgApiKey);
-			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 
+			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 			var gameResults = JsonSerializer.Deserialize<GamesResults>(response.Content); // Deserialize the content of the reponse
 
 			if (gameResults is not null && gameResults.Count > 0) // If there is results

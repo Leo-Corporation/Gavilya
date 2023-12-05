@@ -26,7 +26,6 @@ using Gavilya.Commands;
 using Gavilya.Enums;
 using Gavilya.Models;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -70,6 +69,7 @@ public class GameCardViewModel : ViewModelBase
 		set
 		{
 			_coverFilePath = value;
+
 			if (!string.IsNullOrEmpty(value))
 			{
 				BitmapImage bitmapImage = new();
@@ -80,6 +80,7 @@ public class GameCardViewModel : ViewModelBase
 				bitmapImage.EndInit();
 				GameImage = bitmapImage; 
 			}
+
 			OnPropertyChanged(nameof(CoverFilePath));
 		}
 	}
@@ -241,9 +242,9 @@ public class GameCardViewModel : ViewModelBase
 		if (_mainViewModel.ItemsToRemove.Contains(_game))
 		{
 			_mainViewModel.ItemsToRemove.Remove(_game);
-
 			return;
 		}
+
 		_mainViewModel.ItemsToRemove.Add(_game);
 	}
 }

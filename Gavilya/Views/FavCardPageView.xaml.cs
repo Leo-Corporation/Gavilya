@@ -24,14 +24,14 @@ SOFTWARE.
 
 using System.Windows.Controls;
 
-namespace Gavilya.Components;
+namespace Gavilya.Views;
 /// <summary>
-/// Interaction logic for MinimalGameComponent.xaml
+/// Interaction logic for CardPageView.xaml
 /// </summary>
-public partial class MinimalGameComponent : UserControl
+public partial class FavCardPageView : UserControl
 {
-	public MinimalGameComponent()
+	public FavCardPageView()
 	{
 		InitializeComponent();
-    }
+	}
 }

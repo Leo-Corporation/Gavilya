@@ -94,10 +94,12 @@ public class ProfileViewModel : ViewModelBase
 		_mainViewModel = mainViewModel;
 
 		int total = 0;
+
 		for (int i = 0; i < _games.Count; i++)
 		{
 			total += games[i].TotalTimePlayed;
 		}
+
 		TotalText = $"{total / 3600d:0.0}{Properties.Resources.HourShort}";
 		var sortedGames = _games.SortByPlayTime(true, _profile.Settings.ShowHiddenGames);
 
@@ -119,6 +121,7 @@ public class ProfileViewModel : ViewModelBase
 			ContentVis = Visibility.Collapsed;
 			return;
 		}
+
 		double max = sortedGames[0].TotalTimePlayed;
 		RecHeight1 = 150;
 		RecHeight2 = sortedGames[1].TotalTimePlayed / max * 150;
@@ -166,6 +169,7 @@ public class ProfileViewModel : ViewModelBase
 				}
 			}
 		}
+
 		Refresh();
 		IsProfileEditorOpen = false;
 	}
@@ -173,7 +177,6 @@ public class ProfileViewModel : ViewModelBase
 	internal void Refresh()
 	{
 		ProfilesVm = _profileData.Profiles.Select(p => new ProfileCompViewModel(p, _profileData, this)).ToList();
-
 	}
 
 	private void PopupCancel(object? obj)
@@ -188,10 +191,11 @@ public class ProfileViewModel : ViewModelBase
 
 	private void PopupBrowse(object? obj)
 	{
-		OpenFileDialog openFileDialog = new()
+        // OpenFileDialog
+        OpenFileDialog openFileDialog = new()
 		{
 			Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*" // Filter
-		}; // OpenFileDialog
+		};
 
 		if (openFileDialog.ShowDialog() ?? true) // If the user selected a file
 		{

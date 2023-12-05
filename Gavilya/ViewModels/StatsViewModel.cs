@@ -122,20 +122,24 @@ public class StatsViewModel : ViewModelBase
 	{
 		_games = games;
 		_showHiddenGames = showHiddenGames;
+
 		if (_games.Count == 0)
 		{
 			StatVis = Visibility.Collapsed;
 			PlaceholderVis = Visibility.Visible;
 			return;
 		}
+
 		SortedGames = _games.SortByPlayTime(SortByMostPlayed, _showHiddenGames);
 		SortedGamesVm = SortedGames.Take(10).Select((g, i) => new StatGameViewModel(i, g, this)).ToList();
 
 		int total = 0;
+
 		for (int i = 0; i < SortedGames.Count; i++)
 		{
 			total += SortedGames[i].TotalTimePlayed;
 		}
+
 		TotalTime = $"{total / 3600d:0.0}{Properties.Resources.HourShort}";
 
 		if (SortedGames.Count > 0)
@@ -172,8 +176,10 @@ public class StatsViewModel : ViewModelBase
 			LastTimePlayed = Properties.Resources.Never;
 			return;
 		}
+
 		var date = Time.UnixTimeToDateTime(game.LastTimePlayed);
 		string[] months = Properties.Resources.Months.Split(",");
+
 		LastTimePlayed = $"{date.Day} {months[date.Month - 1]} {date.Year}";
 	}
 }

@@ -27,15 +27,11 @@ using Gavilya.Models;
 using Gavilya.Services;
 using Microsoft.Win32;
 using PeyrSharp.Env;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.FirstRun;
+
 public class ImportViewModel : ViewModelBase
 {
 	private readonly FirstRunViewModel _firstRunViewModel;
@@ -59,13 +55,15 @@ public class ImportViewModel : ViewModelBase
 
 	private void Migrate(object? o)
 	{
-		OpenFileDialog openFileDialog = new()
+        // Create an OpenFileDialog
+        OpenFileDialog openFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles} (v3)|*.gav", // Extension
 			InitialDirectory = $@"{FileSys.AppDataPath}\Gavilya",
 			FileName = "Games.gav",
 			Title = Properties.Resources.ImportGames // Title
-		}; // Create an OpenFileDialog
+		};
+		
 		if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
 		{
 			if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
@@ -79,11 +77,13 @@ public class ImportViewModel : ViewModelBase
 
 	private void Import(object? o)
 	{
-		OpenFileDialog openFileDialog = new()
+        // Create an OpenFileDialog
+        OpenFileDialog openFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles}|*.g4vgames", // Extension
 			Title = Properties.Resources.ImportGames // Title
-		}; // Create an OpenFileDialog
+		};
+
 		if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
 		{
 			if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)

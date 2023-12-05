@@ -31,6 +31,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class DataOptionsViewModel : ViewModelBase
 {
 	private readonly Profile _profile;

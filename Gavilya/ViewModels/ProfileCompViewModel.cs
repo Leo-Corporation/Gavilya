@@ -74,6 +74,7 @@ public class ProfileCompViewModel : ViewModelBase
 	{
 		_profiles.SelectedProfileUuid = _profile.ProfileUuid;
 		_profiles.Save();
+
 		Process.Start(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe"); // Start Gavilya
 		Application.Current.Shutdown(0);
 	}

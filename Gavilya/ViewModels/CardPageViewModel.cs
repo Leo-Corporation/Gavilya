@@ -30,6 +30,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
+
 public class CardPageViewModel : ViewModelBase
 {
 	public GameList Games { get; set; }

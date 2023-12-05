@@ -27,11 +27,11 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Gavilya.ViewModels;
+
 public class ListPageViewModel : ViewModelBase
 {
 	public GameList Games { get; set; }
 	public List<GameListViewModel> GamesVm { get => _gamesVm; set { _gamesVm = value; OnPropertyChanged(nameof(GamesVm)); } }
-	public List<GameListViewModel> FavGamesVm { get => _favGamesVm; set { _favGamesVm = value; OnPropertyChanged(nameof(FavGamesVm)); } }
 
 	private ViewModelBase _viewModelBase;
 	private List<GameListViewModel> _gamesVm;
@@ -48,12 +48,11 @@ public class ListPageViewModel : ViewModelBase
 		_mainViewModel = mainViewModel;
 		CurrentGameView = new ListPlaceholder();
 
-		GamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden) && !g.IsFavorite).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
-		FavGamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden) && g.IsFavorite).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
+		GamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
+		
 		Games.CollectionChanged += (o, e) =>
 		{
-			GamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden) && !g.IsFavorite).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
-			FavGamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden) && g.IsFavorite).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
+			GamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
 		};
 	}
 }

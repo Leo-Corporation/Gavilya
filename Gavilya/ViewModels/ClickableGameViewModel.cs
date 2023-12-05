@@ -34,12 +34,14 @@ namespace Gavilya.ViewModels;
 public class ClickableGameViewModel : ViewModelBase
 {
 	private string _coverFilePath;
+
 	public string CoverFilePath
 	{
 		get => _coverFilePath;
 		set
 		{
 			_coverFilePath = value;
+
 			if (!string.IsNullOrEmpty(value))
 			{
 				BitmapImage bitmapImage = new();
@@ -50,9 +52,11 @@ public class ClickableGameViewModel : ViewModelBase
 				bitmapImage.EndInit();
 				GameImage = bitmapImage;
 			}
+
 			OnPropertyChanged(nameof(CoverFilePath));
 		}
 	}
+
 	private ImageSource _gameImage;
 	public ImageSource GameImage { get => _gameImage; set { _gameImage = value; OnPropertyChanged(nameof(GameImage)); } }
 

@@ -27,6 +27,7 @@ using Gavilya.Models;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class StartupViewModel : ViewModelBase
 {
 	private readonly Profile _profile;
@@ -48,7 +49,10 @@ public class StartupViewModel : ViewModelBase
 	private bool _isLibrary;
 	public bool IsLibrary { get => _isLibrary; set { _isLibrary = value; if (value) _page = Page.Library; OnPropertyChanged(nameof(IsLibrary)); } }
 
-	private bool _isRecent;
+    private bool _isFavorite;
+    public bool IsFavorite { get => _isFavorite; set { _isFavorite = value; if (value) _page = Page.Favorites; OnPropertyChanged(nameof(IsFavorite)); } }
+
+    private bool _isRecent;
 	public bool IsRecent { get => _isRecent; set { _isRecent = value; if (value) _page = Page.Recent; OnPropertyChanged(nameof(IsRecent)); } }
 
 	private bool _isProfile;
@@ -72,6 +76,7 @@ public class StartupViewModel : ViewModelBase
 
 		IsHome = profile.Settings.DefaultPage == Page.Home;
 		IsLibrary = profile.Settings.DefaultPage == Page.Library;
+		IsFavorite = profile.Settings.DefaultPage == Page.Favorites;
 		IsRecent = profile.Settings.DefaultPage == Page.Recent;
 		IsProfile = profile.Settings.DefaultPage == Page.Profile;
 

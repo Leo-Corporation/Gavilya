@@ -26,16 +26,11 @@ using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
 using Gavilya.ViewModels.FirstRun;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace Gavilya.ViewModels;
+
 public class FirstRunViewModel : ViewModelBase
 {
 	private readonly Window _window;
@@ -48,6 +43,7 @@ public class FirstRunViewModel : ViewModelBase
 
 	public ICommand MinimizeCommand { get; }
 	public ICommand CloseCommand { get; }
+
 	public FirstRunViewModel(Window window, Profile profile, ProfileData profileData)
     {
 		_window = window;

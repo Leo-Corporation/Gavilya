@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using Gavilya.Commands;
 using Gavilya.Models;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ using System.Linq;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
+
 internal class LibPageViewModel : ViewModelBase
 {
 	private GameList _games;
@@ -66,6 +68,7 @@ internal class LibPageViewModel : ViewModelBase
 		Games = games;
 		_tags = tags;
 		_mainViewModel = mainViewModel;
+
 		CurrentViewModel = _mainViewModel.CurrentSettings.DefaultView switch
 		{
 			View.List => new ListPageViewModel(Games, _tags, _mainViewModel),
@@ -103,6 +106,7 @@ internal class LibPageViewModel : ViewModelBase
 	private void SortAlpha(object? obj)
 	{
 		Games = new(Games.OrderBy(g => g.Name));
+
 		CurrentViewModel = CurrentViewModel switch
 		{
 			ListPageViewModel => new ListPageViewModel(Games, _tags, _mainViewModel),
@@ -114,6 +118,7 @@ internal class LibPageViewModel : ViewModelBase
 	private void SortNoAlpha(object? obj)
 	{
 		Games = new(Games.OrderByDescending(g => g.Name));
+
 		CurrentViewModel = CurrentViewModel switch
 		{
 			ListPageViewModel => new ListPageViewModel(Games, _tags, _mainViewModel),

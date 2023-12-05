@@ -128,7 +128,8 @@ public enum Page
 	Home,
 	Library,
 	Recent,
-	Profile
+	Profile,
+	Favorites
 }
 
 public enum View

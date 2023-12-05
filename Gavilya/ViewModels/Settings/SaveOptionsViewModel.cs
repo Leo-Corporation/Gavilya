@@ -34,6 +34,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class SaveOptionsViewModel : ViewModelBase
 {
 	private readonly Profile _profile;
@@ -65,6 +66,7 @@ public class SaveOptionsViewModel : ViewModelBase
 	public ICommand BrowseCommand { get; }
 	public ICommand SaveNowCommand { get; }
 	public ICommand MakeSaveCommand { get; }
+
 	public SaveOptionsViewModel(Profile profile, ProfileData profileData, GameList games, MainViewModel mainViewModel)
 	{
 		_profile = profile;
@@ -84,11 +86,12 @@ public class SaveOptionsViewModel : ViewModelBase
 
 	private void Export(object? obj)
 	{
-		SaveFileDialog saveFileDialog = new()
+        // Create a SaveFileDialog
+        SaveFileDialog saveFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles}|*.g4vgames", // Extension
 			Title = Properties.Resources.ExportGames // Title
-		}; // Create a SaveFileDialog
+		};
 
 		if (saveFileDialog.ShowDialog() ?? true)
 		{
@@ -98,11 +101,13 @@ public class SaveOptionsViewModel : ViewModelBase
 
 	private void Import(object? obj)
 	{
-		OpenFileDialog openFileDialog = new()
+        // Create an OpenFileDialog
+        OpenFileDialog openFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles}|*.g4vgames", // Extension
 			Title = Properties.Resources.ImportGames // Title
-		}; // Create an OpenFileDialog
+		};
+
 		if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
 		{
 			if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
@@ -116,12 +121,13 @@ public class SaveOptionsViewModel : ViewModelBase
 	{
 		try
 		{
-			SaveFileDialog saveFileDialog = new()
+            // Create a SaveFileDialog
+            SaveFileDialog saveFileDialog = new()
 			{
 				FileName = Properties.Resources.Games,
 				Filter = $"{Properties.Resources.GavFiles}|*.g4v", // Extension
 				Title = Properties.Resources.SaveLocation // Title
-			}; // Create a SaveFileDialog
+			};
 
 			if (saveFileDialog.ShowDialog() ?? true)
 			{

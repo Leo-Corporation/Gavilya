@@ -33,6 +33,7 @@ using System.Windows;
 using System.Windows.Threading;
 
 namespace Gavilya.Helpers;
+
 public class GameLauncherHelper
 {
 	private Game _game;
@@ -47,6 +48,7 @@ public class GameLauncherHelper
 		_game = game;
 		_games = games;
 		_dispatcherTimer = new() { Interval = TimeSpan.FromSeconds(1) };
+
 		_dispatcherTimer.Tick += (o, e) =>
 		{
 			string processName = _game.GameType switch
@@ -56,6 +58,7 @@ public class GameLauncherHelper
 			};
 
 			if (!_gameStarted && Sys.IsProcessRunning(processName)) _gameStarted = true;
+
 			if (_gameStarted && !Sys.IsProcessRunning(processName)) // If the game has been closed
 			{
 				int timeSpent = Sys.UnixTime - _game.LastTimePlayed;
@@ -71,27 +74,30 @@ public class GameLauncherHelper
 		};
 	}
 
-	public bool Launch()
-	{
-		// Check location if the game is a Win32 app
-		if (_game.GameType == GameType.Win32 && !File.Exists(_game.Command)) return false; // Abort
-		if (_game.GameType == GameType.Steam && !CanLaunchSteamGame()) return false;
+    public bool Launch()
+    {
+        // Check location if the game is a Win32 app
+        if (_game.GameType == GameType.Win32 && !File.Exists(_game.Command)) return false; // Abort
+        if (_game.GameType == GameType.Steam && !CanLaunchSteamGame(_game)) return false;
 
-		_game.LastTimePlayed = Sys.UnixTime;
-		OnGameUpdatedEvent?.Invoke(this, new(_game));
+        _game.LastTimePlayed = Sys.UnixTime;
+        OnGameUpdatedEvent?.Invoke(this, new(_game));
 
-		_games[_games.IndexOf(_game)] = _game;
-		Process.Start("explorer.exe", _game.Command);
-		_dispatcherTimer.Start();
+        _games[_games.IndexOf(_game)] = _game;
 
-		return true;
-	}
+        if (_game.GameType == GameType.Steam) Process.Start("cmd", "/c start " + _game.Command);
+        if (_game.GameType == GameType.Win32) Process.Start(_game.Command);
 
-	/// <summary>
-	/// This method only works on Win32 Games.
-	/// </summary>
-	/// <returns></returns>
-	public bool LaunchAsAdmin()
+        _dispatcherTimer.Start();
+
+        return true;
+    }
+
+    /// <summary>
+    /// This method only works on Win32 Games.
+    /// </summary>
+    /// <returns></returns>
+    public bool LaunchAsAdmin()
 	{
 		// Check location if the game is a Win32 app
 		if (_game.GameType != GameType.Win32) return false;
@@ -107,35 +113,30 @@ public class GameLauncherHelper
 		return true;
 	}
 
-	private static bool CanLaunchSteamGame()
-	{
-		try
-		{
-			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\ActiveProcess");
-			string result = key.GetValue("ActiveUser").ToString();
-			if (result == "0")
-			{
-				MessageBox.Show(Properties.Resources.NotLoggedToSteam, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // If the user isn't logged to steam
-				return false; // Return false, Steam cannot launch game.
-			}
+    private static bool CanLaunchSteamGame(Game game)
+    {
+		// Detect if a steam game you are trying to run is installed.
+        try
+        {
+            String steamAppKeyFormat = @"SOFTWARE\Valve\Steam\Apps\" + game.Command.Replace("steam://rungameid/", "");
+            RegistryKey steamAppKey = Registry.CurrentUser.OpenSubKey(steamAppKeyFormat);
+            string isSteamGameInstalled = steamAppKey.GetValue("Installed").ToString();
 
-			// Check if Steam is not running
-			if (!Sys.IsProcessRunning("Steam"))
-			{
-				// Show a message box
-				MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
-				return false; // Return false, Steam cannot launch game.
-			}
-		}
-		catch
-		{
-			return false;
-		}
+            if (isSteamGameInstalled != "1")
+            {
+                MessageBox.Show(Properties.Resources.SteamAppNotInstalled, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+        catch
+        {
+            return false;
+        }
 
-		return true; // Return true, Steam can launch game.
-	}
+        return true; // Return true, Steam can launch game.
+    }
 
-	public class GameEventArgs : EventArgs
+    public class GameEventArgs : EventArgs
 	{
 		public Game Game { get; init; }
 

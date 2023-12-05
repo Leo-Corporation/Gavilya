@@ -27,6 +27,7 @@ using Gavilya.Models;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class HomeOptionsViewModel : ViewModelBase
 {
 	private readonly Profile _profile;

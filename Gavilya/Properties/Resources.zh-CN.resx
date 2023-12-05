@@ -643,7 +643,7 @@
     <value>查看许可证</value>
   </data>
   <data name="WhatGameToPlay" xml:space="preserve">
-    <value>你想玩什么游戏？</value>
+    <value>你想玩什麼遊戲？</value>
   </data>
   <data name="ExclamationMark" xml:space="preserve">
     <value>!</value>
@@ -994,7 +994,7 @@
     <value>时数</value>
   </data>
   <data name="PlayTo" xml:space="preserve">
-    <value>播放到 {0}</value>
+    <value>开始 {0}</value>
   </data>
   <data name="Recents" xml:space="preserve">
     <value>近期活动</value>
@@ -1022,5 +1022,14 @@
   </data>
   <data name="ScanDirectory" xml:space="preserve">
     <value>扫描目录</value>
+  </data>
+  <data name="SteamAppNotInstalled" xml:space="preserve">
+    <value>由於尚未安裝，無法運行此 Steam 遊戲。</value>
+  </data>
+  <data name="AddFavGameWelcome" xml:space="preserve">
+    <value>點擊遊戲卡上的“星星”按鈕即可新增最喜歡的遊戲。</value>
+  </data>
+  <data name="AddFavGame" xml:space="preserve">
+    <value>加入最喜歡的遊戲</value>
   </data>
 </root>

@@ -25,6 +25,7 @@ SOFTWARE.
 using System.Collections.ObjectModel;
 
 namespace Gavilya.Models;
+
 public class ProfileList : ObservableCollection<Profile>
 {
 	public ProfileList() : base()

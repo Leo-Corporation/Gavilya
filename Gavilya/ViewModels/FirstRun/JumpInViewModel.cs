@@ -25,16 +25,12 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Models;
 using PeyrSharp.Env;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.FirstRun;
+
 public class JumpInViewModel : ViewModelBase
 {
 	private readonly Profile _profile;

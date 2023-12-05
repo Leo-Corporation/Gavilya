@@ -26,32 +26,6 @@
                     VerticalAlignment="Center"
                     FontFamily="..\Fonts\#FluentSystemIcons-Filled"
                     FontSize="14"
-                    Text="&#xF719;" />
-                <TextBlock
-                    x:Name="FavTxt"
-                    Margin="10 0 0 0"
-                    VerticalAlignment="Center"
-                    FontSize="14"
-                    FontWeight="ExtraBold"
-                    Text="{x:Static lang:Resources.Favorites}" />
-            </StackPanel>
-            <ItemsControl ItemsSource="{Binding FavGamesVm}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type vm:GameListViewModel}">
-                        <components:GameListComponent />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-            <StackPanel Margin="0 10" Orientation="Horizontal">
-                <TextBlock
-                    VerticalAlignment="Center"
-                    FontFamily="..\Fonts\#FluentSystemIcons-Filled"
-                    FontSize="14"
                     Text="&#xF455;" />
                 <TextBlock
                     x:Name="GamesTxt"
