@@ -67,7 +67,9 @@ internal class FavPageViewModel : ViewModelBase
 
     public FavPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
     {
-        Games = games;
+
+        Games = new GameList(games.Where(game => game.IsFavorite));
+
         _tags = tags;
         _mainViewModel = mainViewModel;
      

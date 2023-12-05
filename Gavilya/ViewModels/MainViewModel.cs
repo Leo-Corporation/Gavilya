@@ -126,9 +126,10 @@ public class MainViewModel : ViewModelBase
 		Games = profile.Games;
 		CurrentSettings = profile.Settings;
 
-		CurrentViewModel = (startupPage is null ? profile.Settings.DefaultPage : startupPage) switch
+        CurrentViewModel = (startupPage is null ? profile.Settings.DefaultPage : startupPage) switch
 		{
 			Page.Library => new LibPageViewModel(Games, profile.Tags, this),
+			Page.Favorites => new FavPageViewModel(Games, profile.Tags, this),
 			Page.Recent => new RecentPageViewModel(Games, profile.Tags, this),
 			Page.Profile => new ProfileViewModel(profile, profiles, Games, this),
 			_ => new HomePageViewModel(Games, profile.Tags, this)

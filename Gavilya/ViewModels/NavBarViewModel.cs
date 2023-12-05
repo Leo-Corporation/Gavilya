@@ -120,9 +120,7 @@ public class NavBarViewModel : ViewModelBase
 
     private void FavoritesPage(object? obj)
     {
-        GameList favoriteGames = new GameList(Games.Where(game => game.IsFavorite));
-
-        _mainViewModel.CurrentViewModel = new FavPageViewModel(favoriteGames, _tags, _mainViewModel);
+        _mainViewModel.CurrentViewModel = new FavPageViewModel(Games, _tags, _mainViewModel);
     }
 
 
