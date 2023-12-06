@@ -235,6 +235,12 @@ public class GameCardViewModel : ViewModelBase
 		IsFavorite = !IsFavorite;
 		_game.IsFavorite = IsFavorite;
 		_games[_games.IndexOf(_game)] = _game;
+
+		// update the favorites page each time you change the favorite state of a game card, so when the last game is unfavorited the favorites page empty card appears
+		if (_mainViewModel.CurrentViewModel is FavPageViewModel)
+		{
+            _mainViewModel.CurrentViewModel = new FavPageViewModel(_mainViewModel.Games, _tags, _mainViewModel);
+        } 
 	}
 
 	private void Check(object? obj)

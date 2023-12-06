@@ -127,9 +127,9 @@ public enum Page
 {
 	Home,
 	Library,
-	Recent,
-	Profile,
-	Favorites
+    Favorites,
+    Recent,
+	Profile
 }
 
 public enum View

@@ -123,7 +123,6 @@ public class NavBarViewModel : ViewModelBase
         _mainViewModel.CurrentViewModel = new FavPageViewModel(Games, _tags, _mainViewModel);
     }
 
-
     private void RecentPage(object? obj)
 	{
 		_mainViewModel.CurrentViewModel = new RecentPageViewModel(Games, _tags, _mainViewModel);
