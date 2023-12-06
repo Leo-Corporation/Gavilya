@@ -1032,4 +1032,7 @@
   <data name="AddFavGame" xml:space="preserve">
     <value>Add a favorite game</value>
   </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>This Week</value>
+  </data>
 </root>

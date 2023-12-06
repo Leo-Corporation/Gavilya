@@ -1032,4 +1032,7 @@
   <data name="AddFavGame" xml:space="preserve">
     <value>加入最喜歡的遊戲</value>
   </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>本星期</value>
+  </data>
 </root>
