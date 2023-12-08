@@ -994,7 +994,7 @@
     <value>heures</value>
   </data>
   <data name="PlayTo" xml:space="preserve">
-    <value>Jouer {0}</value>
+    <value>Jouer à {0}</value>
   </data>
   <data name="Recents" xml:space="preserve">
     <value>Récents</value>
