@@ -86,7 +86,7 @@
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
             FontSize="18"
             Foreground="{DynamicResource Foreground}"
-            IsChecked="{Binding IsFavorite}"
+            IsChecked="{Binding IsFavorites}"
             Style="{DynamicResource NavBarBtn}">
             <RadioButton.ToolTip>
                 <ToolTip
@@ -128,13 +128,13 @@
             Background="Transparent"
             BorderThickness="2 0 0 0"
             Command="{Binding ProfilePageCommand}"
+            Content="&#xF5C7;"
             Cursor="Hand"
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
             FontSize="18"
             Foreground="{DynamicResource Foreground}"
             IsChecked="{Binding IsProfile}"
-            Style="{DynamicResource NavBarBtn}"
-            Content="&#xF5C7;">
+            Style="{DynamicResource NavBarBtn}">
             <RadioButton.ToolTip>
                 <ToolTip
                     Background="{DynamicResource Background}"
@@ -298,7 +298,7 @@
             Text="&#xF4E0;"
             TextAlignment="Center">
             <TextBlock.RenderTransform>
-                <TranslateTransform Y="30"/>
+                <TranslateTransform Y="30" />
             </TextBlock.RenderTransform>
         </TextBlock>
 
@@ -306,8 +306,8 @@
         <RadioButton
             x:Name="SettingsBtn"
             Grid.Row="8"
-            Height="40"
             Width="40"
+            Height="40"
             HorizontalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="2 0 0 0"
@@ -320,11 +320,14 @@
             Style="{DynamicResource NavBarBtn}">
 
             <RadioButton.RenderTransform>
-                <TranslateTransform Y="-12"/>
+                <TranslateTransform Y="-12" />
             </RadioButton.RenderTransform>
 
             <RadioButton.ToolTip>
-                <ToolTip Background="{DynamicResource Background}" Content="{x:Static lang:Resources.RecentGames}" Foreground="{DynamicResource Foreground}" />
+                <ToolTip
+                    Background="{DynamicResource Background}"
+                    Content="{x:Static lang:Resources.RecentGames}"
+                    Foreground="{DynamicResource Foreground}" />
             </RadioButton.ToolTip>
         </RadioButton>
     </Grid>
