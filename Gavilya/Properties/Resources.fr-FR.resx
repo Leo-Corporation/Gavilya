@@ -1030,7 +1030,7 @@
     <value>Ajoutez un jeu aux favoris en cliquant sur l'icône d'étoile sur la carte d'un jeu.</value>
   </data>
   <data name="AddFavGame" xml:space="preserve">
-    <value>Ajouter un jeu favori</value>
+    <value>Ajouter un jeu aux favoris</value>
   </data>
   <data name="ThisWeek" xml:space="preserve">
     <value>Cette Semaine</value>
