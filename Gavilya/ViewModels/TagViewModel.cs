@@ -101,8 +101,8 @@ public class TagViewModel : ViewModelBase
 
 	private void ChangeColor(object? obj)
 	{
-        // Create color picker/dialog
-        System.Windows.Forms.ColorDialog colorDialog = new()
+		// Create color picker/dialog
+		System.Windows.Forms.ColorDialog colorDialog = new()
 		{
 			AllowFullOpen = true,
 		};

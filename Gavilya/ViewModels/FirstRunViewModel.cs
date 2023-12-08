@@ -45,7 +45,7 @@ public class FirstRunViewModel : ViewModelBase
 	public ICommand CloseCommand { get; }
 
 	public FirstRunViewModel(Window window, Profile profile, ProfileData profileData)
-    {
+	{
 		_window = window;
 		_profile = profile;
 		_profileData = profileData;

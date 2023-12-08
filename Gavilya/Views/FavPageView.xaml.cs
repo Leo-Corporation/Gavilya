@@ -26,14 +26,14 @@ using System.Windows.Controls;
 
 namespace Gavilya.Views
 {
-    /// <summary>
-    /// Interaction logic for FavPageView.xaml
-    /// </summary>
-    public partial class FavPageView : UserControl
-    {
-        public FavPageView()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for FavPageView.xaml
+	/// </summary>
+	public partial class FavPageView : UserControl
+	{
+		public FavPageView()
+		{
+			InitializeComponent();
+		}
+	}
 }

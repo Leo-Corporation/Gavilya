@@ -47,7 +47,7 @@ public class HomePageViewModel : ViewModelBase
 
 	private Visibility _contentVis = Visibility.Visible;
 	public Visibility ContentVis { get => _contentVis; set { _contentVis = value; OnPropertyChanged(nameof(ContentVis)); } }
-	
+
 	private Visibility _placeholderVis = Visibility.Collapsed;
 	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
 

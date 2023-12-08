@@ -72,8 +72,8 @@ public class ThemeViewModel : ViewModelBase
 			{
 				Application.Current.Resources.MergedDictionaries.Clear();
 
-                // Create a resource dictionary
-                ResourceDictionary resourceDictionary = new()
+				// Create a resource dictionary
+				ResourceDictionary resourceDictionary = new()
 				{
 					Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative) // Add source
 				};

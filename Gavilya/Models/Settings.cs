@@ -127,8 +127,8 @@ public enum Page
 {
 	Home,
 	Library,
-    Favorites,
-    Recent,
+	Favorites,
+	Recent,
 	Profile
 }
 

@@ -55,15 +55,15 @@ public class ImportViewModel : ViewModelBase
 
 	private void Migrate(object? o)
 	{
-        // Create an OpenFileDialog
-        OpenFileDialog openFileDialog = new()
+		// Create an OpenFileDialog
+		OpenFileDialog openFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles} (v3)|*.gav", // Extension
 			InitialDirectory = $@"{FileSys.AppDataPath}\Gavilya",
 			FileName = "Games.gav",
 			Title = Properties.Resources.ImportGames // Title
 		};
-		
+
 		if (openFileDialog.ShowDialog() ?? true) // If the user opened a file
 		{
 			if (MessageBox.Show(Properties.Resources.ImportConfirmMsg, Properties.Resources.MainWindowTitle, MessageBoxButton.YesNo, MessageBoxImage.Exclamation) == MessageBoxResult.Yes)
@@ -77,8 +77,8 @@ public class ImportViewModel : ViewModelBase
 
 	private void Import(object? o)
 	{
-        // Create an OpenFileDialog
-        OpenFileDialog openFileDialog = new()
+		// Create an OpenFileDialog
+		OpenFileDialog openFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles}|*.g4vgames", // Extension
 			Title = Properties.Resources.ImportGames // Title

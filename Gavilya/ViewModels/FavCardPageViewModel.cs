@@ -33,24 +33,24 @@ namespace Gavilya.ViewModels;
 
 class FavCardPageViewModel : ViewModelBase
 {
-    public GameList Games { get; set; }
+	public GameList Games { get; set; }
 
-    private readonly List<Tag> _tags;
-    readonly MainViewModel _mainViewModel;
-    public List<GameCardViewModel> GamesVm => Games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
+	private readonly List<Tag> _tags;
+	readonly MainViewModel _mainViewModel;
+	public List<GameCardViewModel> GamesVm => Games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
 
-    private Visibility _placeholderVis;
-    public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
+	private Visibility _placeholderVis;
+	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
 
-    public ICommand AddCommand { get; }
+	public ICommand AddCommand { get; }
 
-    public FavCardPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
-    {
-        Games = games;
-        _mainViewModel = mainViewModel;
-        _tags = tags;
+	public FavCardPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
+	{
+		Games = games;
+		_mainViewModel = mainViewModel;
+		_tags = tags;
 
-        PlaceholderVis = Games.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
-        AddCommand = new RelayCommand((o) => _mainViewModel.CurrentViewModel = new GameEditionViewModel(Enums.GameType.Win32, games, _tags, _mainViewModel));
-    }
+		PlaceholderVis = Games.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+		AddCommand = new RelayCommand((o) => _mainViewModel.CurrentViewModel = new GameEditionViewModel(Enums.GameType.Win32, games, _tags, _mainViewModel));
+	}
 }

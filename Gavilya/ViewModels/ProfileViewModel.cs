@@ -72,7 +72,7 @@ public class ProfileViewModel : ViewModelBase
 
 	private string _editProfileName;
 	public string EditProfileName { get => _editProfileName; set { _editProfileName = value; OnPropertyChanged(nameof(EditProfileName)); } }
-	
+
 	private Visibility _contentVis = Visibility.Visible;
 	public Visibility ContentVis { get => _contentVis; set { _contentVis = value; OnPropertyChanged(nameof(ContentVis)); } }
 
@@ -191,8 +191,8 @@ public class ProfileViewModel : ViewModelBase
 
 	private void PopupBrowse(object? obj)
 	{
-        // OpenFileDialog
-        OpenFileDialog openFileDialog = new()
+		// OpenFileDialog
+		OpenFileDialog openFileDialog = new()
 		{
 			Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*" // Filter
 		};

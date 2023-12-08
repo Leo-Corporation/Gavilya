@@ -49,10 +49,10 @@ public class StartupViewModel : ViewModelBase
 	private bool _isLibrary;
 	public bool IsLibrary { get => _isLibrary; set { _isLibrary = value; if (value) _page = Page.Library; OnPropertyChanged(nameof(IsLibrary)); } }
 
-    private bool _isFavorite;
-    public bool IsFavorite { get => _isFavorite; set { _isFavorite = value; if (value) _page = Page.Favorites; OnPropertyChanged(nameof(IsFavorite)); } }
+	private bool _isFavorite;
+	public bool IsFavorite { get => _isFavorite; set { _isFavorite = value; if (value) _page = Page.Favorites; OnPropertyChanged(nameof(IsFavorite)); } }
 
-    private bool _isRecent;
+	private bool _isRecent;
 	public bool IsRecent { get => _isRecent; set { _isRecent = value; if (value) _page = Page.Recent; OnPropertyChanged(nameof(IsRecent)); } }
 
 	private bool _isProfile;

@@ -413,14 +413,14 @@ public class GameEditionViewModel : ViewModelBase
 
 	private void BrowseGame(object? obj)
 	{
-        // OpenFileDialog
-        OpenFileDialog openFileDialog = new()
+		// OpenFileDialog
+		OpenFileDialog openFileDialog = new()
 		{
 			Filter = "EXE|*.exe" // Filter
 		};
 
-        // If the user selected a file
-        if (openFileDialog.ShowDialog() ?? false)
+		// If the user selected a file
+		if (openFileDialog.ShowDialog() ?? false)
 		{
 			FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(openFileDialog.FileName); // Get the version
 
@@ -431,8 +431,8 @@ public class GameEditionViewModel : ViewModelBase
 
 	private void BrowseImage(object? obj)
 	{
-        // OpenFileDialog
-        OpenFileDialog openFileDialog = new()
+		// OpenFileDialog
+		OpenFileDialog openFileDialog = new()
 		{
 			Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*" // Filter
 		};

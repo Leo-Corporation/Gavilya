@@ -74,7 +74,7 @@ public class RawgResultViewModel : ViewModelBase
 		// Load properties
 		if (!string.IsNullOrEmpty(_game.Name)) Name = _game.Name.Length > 50 ? $"{_game.Name[0..50]}..." : _game.Name;
 		if (!string.IsNullOrEmpty(_game.Description)) Description = _game.DescriptionRaw.Length > 150 ? $"{_game.DescriptionRaw[0..150]}..." : _game.DescriptionRaw;
-		
+
 		SelectedScreen = (_game.BackgroundImage, 0);
 
 		// Commands
@@ -88,7 +88,7 @@ public class RawgResultViewModel : ViewModelBase
 	{
 		var game = await new RawgClient(_game.Id).GetGameAsync();
 		if (!string.IsNullOrEmpty(_game.BackgroundImage)) FirstScreen = new BitmapImage(new(_game.BackgroundImage));
-		
+
 		if (!string.IsNullOrEmpty(game?.BackgroundImageAdditional)) SecondScreen = new BitmapImage(new(game.BackgroundImageAdditional));
 		_game.BackgroundImageAdditional = game?.BackgroundImageAdditional ?? "";
 		_game.DescriptionRaw = game?.DescriptionRaw ?? "";
@@ -114,7 +114,7 @@ public class RawgResultViewModel : ViewModelBase
 			_gameEditionViewModel.RawgId = _game.Id;
 			_gameEditionViewModel.IsRawgOpen = false;
 		}
-		catch(Exception ex)
+		catch (Exception ex)
 		{
 			Console.WriteLine("Failed to select rawg result, code: " + ex.StackTrace);
 		}

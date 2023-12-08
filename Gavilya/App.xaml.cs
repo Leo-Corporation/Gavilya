@@ -126,7 +126,7 @@ public partial class App : Application
 
 	private void CreateJumpLists(GameList games)
 	{
-		JumpList jumpList = new();		
+		JumpList jumpList = new();
 
 		var gTasks = games.Where(g => g.IsFavorite).Select(g => new JumpTask()
 		{
@@ -158,16 +158,16 @@ public partial class App : Application
 			IconResourcePath = Assembly.GetEntryAssembly()?.Location
 		});
 
-        jumpList.JumpItems.Add(new JumpTask()
-        {
-            Title = Gavilya.Properties.Resources.Favorites,
-            Arguments = "/page 2",
-            Description = Gavilya.Properties.Resources.Favorites,
-            CustomCategory = Gavilya.Properties.Resources.Tasks,
-            IconResourcePath = Assembly.GetEntryAssembly()?.Location
-        });
+		jumpList.JumpItems.Add(new JumpTask()
+		{
+			Title = Gavilya.Properties.Resources.Favorites,
+			Arguments = "/page 2",
+			Description = Gavilya.Properties.Resources.Favorites,
+			CustomCategory = Gavilya.Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly()?.Location
+		});
 
-        jumpList.JumpItems.Add(new JumpTask()
+		jumpList.JumpItems.Add(new JumpTask()
 		{
 			Title = Gavilya.Properties.Resources.MyProfile,
 			Arguments = "/page 3",

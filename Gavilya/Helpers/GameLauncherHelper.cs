@@ -74,30 +74,30 @@ public class GameLauncherHelper
 		};
 	}
 
-    public bool Launch()
-    {
-        // Check location if the game is a Win32 app
-        if (_game.GameType == GameType.Win32 && !File.Exists(_game.Command)) return false; // Abort
-        if (_game.GameType == GameType.Steam && !CanLaunchSteamGame(_game)) return false;
+	public bool Launch()
+	{
+		// Check location if the game is a Win32 app
+		if (_game.GameType == GameType.Win32 && !File.Exists(_game.Command)) return false; // Abort
+		if (_game.GameType == GameType.Steam && !CanLaunchSteamGame(_game)) return false;
 
-        _game.LastTimePlayed = Sys.UnixTime;
-        OnGameUpdatedEvent?.Invoke(this, new(_game));
+		_game.LastTimePlayed = Sys.UnixTime;
+		OnGameUpdatedEvent?.Invoke(this, new(_game));
 
-        _games[_games.IndexOf(_game)] = _game;
+		_games[_games.IndexOf(_game)] = _game;
 
-        if (_game.GameType == GameType.Steam) Process.Start("cmd", "/c start " + _game.Command);
-        if (_game.GameType == GameType.Win32) Process.Start(_game.Command);
+		if (_game.GameType == GameType.Steam) Process.Start("cmd", "/c start " + _game.Command);
+		if (_game.GameType == GameType.Win32) Process.Start(_game.Command);
 
-        _dispatcherTimer.Start();
+		_dispatcherTimer.Start();
 
-        return true;
-    }
+		return true;
+	}
 
-    /// <summary>
-    /// This method only works on Win32 Games.
-    /// </summary>
-    /// <returns></returns>
-    public bool LaunchAsAdmin()
+	/// <summary>
+	/// This method only works on Win32 Games.
+	/// </summary>
+	/// <returns></returns>
+	public bool LaunchAsAdmin()
 	{
 		// Check location if the game is a Win32 app
 		if (_game.GameType != GameType.Win32) return false;
@@ -113,30 +113,30 @@ public class GameLauncherHelper
 		return true;
 	}
 
-    private static bool CanLaunchSteamGame(Game game)
-    {
+	private static bool CanLaunchSteamGame(Game game)
+	{
 		// Detect if a steam game you are trying to run is installed.
-        try
-        {
-            String steamAppKeyFormat = @"SOFTWARE\Valve\Steam\Apps\" + game.Command.Replace("steam://rungameid/", "");
-            RegistryKey steamAppKey = Registry.CurrentUser.OpenSubKey(steamAppKeyFormat);
-            string isSteamGameInstalled = steamAppKey.GetValue("Installed").ToString();
+		try
+		{
+			String steamAppKeyFormat = @"SOFTWARE\Valve\Steam\Apps\" + game.Command.Replace("steam://rungameid/", "");
+			RegistryKey steamAppKey = Registry.CurrentUser.OpenSubKey(steamAppKeyFormat);
+			string isSteamGameInstalled = steamAppKey.GetValue("Installed").ToString();
 
-            if (isSteamGameInstalled != "1")
-            {
-                MessageBox.Show(Properties.Resources.SteamAppNotInstalled, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-        }
-        catch
-        {
-            return false;
-        }
+			if (isSteamGameInstalled != "1")
+			{
+				MessageBox.Show(Properties.Resources.SteamAppNotInstalled, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+				return false;
+			}
+		}
+		catch
+		{
+			return false;
+		}
 
-        return true; // Return true, Steam can launch game.
-    }
+		return true; // Return true, Steam can launch game.
+	}
 
-    public class GameEventArgs : EventArgs
+	public class GameEventArgs : EventArgs
 	{
 		public Game Game { get; init; }
 

@@ -126,7 +126,7 @@ public class MainViewModel : ViewModelBase
 		Games = profile.Games;
 		CurrentSettings = profile.Settings;
 
-        CurrentViewModel = (startupPage is null ? profile.Settings.DefaultPage : startupPage) switch
+		CurrentViewModel = (startupPage is null ? profile.Settings.DefaultPage : startupPage) switch
 		{
 			Page.Library => new LibPageViewModel(Games, profile.Tags, this),
 			Page.Favorites => new FavPageViewModel(Games, profile.Tags, this),
@@ -210,11 +210,11 @@ public class MainViewModel : ViewModelBase
 
 		var openSearch = Combination.FromString("Control+K");
 
-		Action openSearchAction = () => 
-		{ 
+		Action openSearchAction = () =>
+		{
 			if (!(_currentSettings.EnableSearchShortcut ?? true)) return;
-			SearchOpen = !SearchOpen; 
-			SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45; 
+			SearchOpen = !SearchOpen;
+			SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45;
 		};
 
 		var assignment = new Dictionary<Combination, Action>

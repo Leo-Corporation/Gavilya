@@ -86,8 +86,8 @@ public class SaveOptionsViewModel : ViewModelBase
 
 	private void Export(object? obj)
 	{
-        // Create a SaveFileDialog
-        SaveFileDialog saveFileDialog = new()
+		// Create a SaveFileDialog
+		SaveFileDialog saveFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles}|*.g4vgames", // Extension
 			Title = Properties.Resources.ExportGames // Title
@@ -101,8 +101,8 @@ public class SaveOptionsViewModel : ViewModelBase
 
 	private void Import(object? obj)
 	{
-        // Create an OpenFileDialog
-        OpenFileDialog openFileDialog = new()
+		// Create an OpenFileDialog
+		OpenFileDialog openFileDialog = new()
 		{
 			Filter = $"{Properties.Resources.GavFiles}|*.g4vgames", // Extension
 			Title = Properties.Resources.ImportGames // Title
@@ -121,8 +121,8 @@ public class SaveOptionsViewModel : ViewModelBase
 	{
 		try
 		{
-            // Create a SaveFileDialog
-            SaveFileDialog saveFileDialog = new()
+			// Create a SaveFileDialog
+			SaveFileDialog saveFileDialog = new()
 			{
 				FileName = Properties.Resources.Games,
 				Filter = $"{Properties.Resources.GavFiles}|*.g4v", // Extension

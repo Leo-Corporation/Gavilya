@@ -49,7 +49,7 @@ public class ListPageViewModel : ViewModelBase
 		CurrentGameView = new ListPlaceholder();
 
 		GamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
-		
+
 		Games.CollectionChanged += (o, e) =>
 		{
 			GamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();

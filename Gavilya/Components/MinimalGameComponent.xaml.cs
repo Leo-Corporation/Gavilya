@@ -33,5 +33,5 @@ public partial class MinimalGameComponent : UserControl
 	public MinimalGameComponent()
 	{
 		InitializeComponent();
-    }
+	}
 }

@@ -95,7 +95,7 @@ public class StatsViewModel : ViewModelBase
 
 	private Visibility _statVis = Visibility.Visible;
 	public Visibility StatVis { get => _statVis; set { _statVis = value; OnPropertyChanged(nameof(StatVis)); } }
-	
+
 	private Visibility _placeholderVis = Visibility.Collapsed;
 	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
 

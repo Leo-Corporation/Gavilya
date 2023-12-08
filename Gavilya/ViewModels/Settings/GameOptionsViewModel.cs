@@ -101,14 +101,14 @@ public class GameOptionsViewModel : ViewModelBase
 
 	private void ChangeColor(object? obj)
 	{
-        // Create color picker/dialog
-        System.Windows.Forms.ColorDialog colorDialog = new()
+		// Create color picker/dialog
+		System.Windows.Forms.ColorDialog colorDialog = new()
 		{
 			AllowFullOpen = true,
 		};
 
-        // If the user selected a color
-        if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+		// If the user selected a color
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 		{
 			RGB rgb = new(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B);
 			Color = rgb.ToHex().Value;

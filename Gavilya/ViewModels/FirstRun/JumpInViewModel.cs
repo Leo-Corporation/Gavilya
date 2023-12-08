@@ -37,8 +37,8 @@ public class JumpInViewModel : ViewModelBase
 	private readonly ProfileData _profileData;
 
 	public ICommand CloseCommand { get; }
-    public JumpInViewModel(Profile profile, ProfileData profileData)
-    {        
+	public JumpInViewModel(Profile profile, ProfileData profileData)
+	{
 		_profile = profile;
 		_profileData = profileData;
 

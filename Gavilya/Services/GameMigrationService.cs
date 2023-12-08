@@ -36,7 +36,7 @@ public class GameMigrationService
 	private readonly string _filePath;
 
 	public GameMigrationService(string filePath)
-    {
+	{
 		_filePath = filePath;
 	}
 

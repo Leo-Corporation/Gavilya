@@ -24,109 +24,107 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
 
 internal class FavPageViewModel : ViewModelBase
 {
-    private GameList _games;
-    private readonly MainViewModel _mainViewModel;
-    public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
+	private GameList _games;
+	private readonly MainViewModel _mainViewModel;
+	public GameList Games { get => _games; set { _games = value; OnPropertyChanged(nameof(Games)); } }
 
-    public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
+	public List<GameCardViewModel> GamesVm => Games.Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
 
-    private ViewModelBase _currentViewModel;
-    private readonly List<Tag> _tags;
+	private ViewModelBase _currentViewModel;
+	private readonly List<Tag> _tags;
 
-    public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
+	public ViewModelBase CurrentViewModel { get => _currentViewModel; set { _currentViewModel = value; OnPropertyChanged(nameof(CurrentViewModel)); } }
 
-    private bool _isCardSelected;
-    public bool IsCardSelected
-    {
-        get => _isCardSelected; set { _isCardSelected = value; OnPropertyChanged(nameof(IsCardSelected)); }
-    }
+	private bool _isCardSelected;
+	public bool IsCardSelected
+	{
+		get => _isCardSelected; set { _isCardSelected = value; OnPropertyChanged(nameof(IsCardSelected)); }
+	}
 
-    private bool _isTagSelected;
-    public bool IsTagSelected { get => _isTagSelected; set { _isTagSelected = value; OnPropertyChanged(nameof(IsTagSelected)); } }
+	private bool _isTagSelected;
+	public bool IsTagSelected { get => _isTagSelected; set { _isTagSelected = value; OnPropertyChanged(nameof(IsTagSelected)); } }
 
-    private bool _isListSelected;
-    public bool IsListSelected { get => _isListSelected; set { _isListSelected = value; OnPropertyChanged(nameof(IsListSelected)); } }
+	private bool _isListSelected;
+	public bool IsListSelected { get => _isListSelected; set { _isListSelected = value; OnPropertyChanged(nameof(IsListSelected)); } }
 
 
-    public ICommand CardViewCommand { get; }
-    public ICommand TagViewCommand { get; }
-    public ICommand ListViewCommand { get; }
+	public ICommand CardViewCommand { get; }
+	public ICommand TagViewCommand { get; }
+	public ICommand ListViewCommand { get; }
 
-    public ICommand SortAlphaCommand { get; }
-    public ICommand SortNoAlphaCommand { get; }
+	public ICommand SortAlphaCommand { get; }
+	public ICommand SortNoAlphaCommand { get; }
 
-    public FavPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
-    {
+	public FavPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
+	{
 
-        Games = new GameList(games.Where(game => game.IsFavorite));
+		Games = new GameList(games.Where(game => game.IsFavorite));
 
-        _tags = tags;
-        _mainViewModel = mainViewModel;
-     
-        CurrentViewModel = _mainViewModel.CurrentSettings.DefaultView switch
-        {
-            View.List => new ListPageViewModel(Games, _tags, _mainViewModel),
-            View.Tag => new TagPageViewModel(Games, _tags, _mainViewModel),
-            _ => new CardPageViewModel(Games, _tags, _mainViewModel)
-        };
+		_tags = tags;
+		_mainViewModel = mainViewModel;
 
-        IsCardSelected = _mainViewModel.CurrentSettings.DefaultView == View.Card;
-        IsTagSelected = _mainViewModel.CurrentSettings.DefaultView == View.Tag;
-        IsListSelected = _mainViewModel.CurrentSettings.DefaultView == View.List;
+		CurrentViewModel = _mainViewModel.CurrentSettings.DefaultView switch
+		{
+			View.List => new ListPageViewModel(Games, _tags, _mainViewModel),
+			View.Tag => new TagPageViewModel(Games, _tags, _mainViewModel),
+			_ => new CardPageViewModel(Games, _tags, _mainViewModel)
+		};
 
-        CardViewCommand = new RelayCommand(CardView);
-        TagViewCommand = new RelayCommand(TagView);
-        ListViewCommand = new RelayCommand(ListView);
-        SortAlphaCommand = new RelayCommand(SortAlpha);
-        SortNoAlphaCommand = new RelayCommand(SortNoAlpha);
-    }
+		IsCardSelected = _mainViewModel.CurrentSettings.DefaultView == View.Card;
+		IsTagSelected = _mainViewModel.CurrentSettings.DefaultView == View.Tag;
+		IsListSelected = _mainViewModel.CurrentSettings.DefaultView == View.List;
 
-    private void CardView(object? obj)
-    {
-        CurrentViewModel = new CardPageViewModel(Games, _tags, _mainViewModel);
-    }
+		CardViewCommand = new RelayCommand(CardView);
+		TagViewCommand = new RelayCommand(TagView);
+		ListViewCommand = new RelayCommand(ListView);
+		SortAlphaCommand = new RelayCommand(SortAlpha);
+		SortNoAlphaCommand = new RelayCommand(SortNoAlpha);
+	}
 
-    private void TagView(object? obj)
-    {
-        CurrentViewModel = new TagPageViewModel(Games, _tags, _mainViewModel);
-    }
+	private void CardView(object? obj)
+	{
+		CurrentViewModel = new CardPageViewModel(Games, _tags, _mainViewModel);
+	}
 
-    private void ListView(object? obj)
-    {
-        CurrentViewModel = new ListPageViewModel(Games, _tags, _mainViewModel);
-    }
+	private void TagView(object? obj)
+	{
+		CurrentViewModel = new TagPageViewModel(Games, _tags, _mainViewModel);
+	}
 
-    private void SortAlpha(object? obj)
-    {
-        Games = new(Games.OrderBy(g => g.Name));
+	private void ListView(object? obj)
+	{
+		CurrentViewModel = new ListPageViewModel(Games, _tags, _mainViewModel);
+	}
 
-        CurrentViewModel = CurrentViewModel switch
-        {
-            ListPageViewModel => new ListPageViewModel(Games, _tags, _mainViewModel),
-            TagPageViewModel => new TagPageViewModel(Games, _tags, _mainViewModel),
-            _ => new CardPageViewModel(Games, _tags, _mainViewModel)
-        };
-    }
+	private void SortAlpha(object? obj)
+	{
+		Games = new(Games.OrderBy(g => g.Name));
 
-    private void SortNoAlpha(object? obj)
-    {
-        Games = new(Games.OrderByDescending(g => g.Name));
+		CurrentViewModel = CurrentViewModel switch
+		{
+			ListPageViewModel => new ListPageViewModel(Games, _tags, _mainViewModel),
+			TagPageViewModel => new TagPageViewModel(Games, _tags, _mainViewModel),
+			_ => new CardPageViewModel(Games, _tags, _mainViewModel)
+		};
+	}
 
-        CurrentViewModel = CurrentViewModel switch
-        {
-            ListPageViewModel => new ListPageViewModel(Games, _tags, _mainViewModel),
-            TagPageViewModel => new TagPageViewModel(Games, _tags, _mainViewModel),
-            _ => new CardPageViewModel(Games, _tags, _mainViewModel)
-        };
-    }
+	private void SortNoAlpha(object? obj)
+	{
+		Games = new(Games.OrderByDescending(g => g.Name));
+
+		CurrentViewModel = CurrentViewModel switch
+		{
+			ListPageViewModel => new ListPageViewModel(Games, _tags, _mainViewModel),
+			TagPageViewModel => new TagPageViewModel(Games, _tags, _mainViewModel),
+			_ => new CardPageViewModel(Games, _tags, _mainViewModel)
+		};
+	}
 }

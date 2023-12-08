@@ -78,7 +78,7 @@ public class GameCardViewModel : ViewModelBase
 				bitmapImage.DecodePixelWidth = 256;
 				bitmapImage.DecodePixelHeight = 144;
 				bitmapImage.EndInit();
-				GameImage = bitmapImage; 
+				GameImage = bitmapImage;
 			}
 
 			OnPropertyChanged(nameof(CoverFilePath));
@@ -239,8 +239,8 @@ public class GameCardViewModel : ViewModelBase
 		// update the favorites page each time you change the favorite state of a game card, so when the last game is unfavorited the favorites page empty card appears
 		if (_mainViewModel.CurrentViewModel is FavPageViewModel)
 		{
-            _mainViewModel.CurrentViewModel = new FavPageViewModel(_mainViewModel.Games, _tags, _mainViewModel);
-        } 
+			_mainViewModel.CurrentViewModel = new FavPageViewModel(_mainViewModel.Games, _tags, _mainViewModel);
+		}
 	}
 
 	private void Check(object? obj)

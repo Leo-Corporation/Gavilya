@@ -28,7 +28,6 @@ using Gavilya.Models;
 using PeyrSharp.Enums;
 using PeyrSharp.Env;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
@@ -57,10 +56,10 @@ public class NavBarViewModel : ViewModelBase
 
 	private bool _isProfile;
 	public bool IsProfile { get => _isProfile; set { _isProfile = value; OnPropertyChanged(nameof(IsProfile)); } }
-    private bool _isFavorites;
-    public bool IsFavorites { get => _isFavorites; set { _isFavorites = value; OnPropertyChanged(nameof(IsFavorites)); } }
+	private bool _isFavorites;
+	public bool IsFavorites { get => _isFavorites; set { _isFavorites = value; OnPropertyChanged(nameof(IsFavorites)); } }
 
-    private string _profilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
+	private string _profilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
 	public string ProfilePicture { get => _profilePicture; set { _profilePicture = value; OnPropertyChanged(nameof(ProfilePicture)); } }
 
 	private Visibility _uwpAllowed;
@@ -118,12 +117,12 @@ public class NavBarViewModel : ViewModelBase
 		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _tags, _mainViewModel);
 	}
 
-    private void FavoritesPage(object? obj)
-    {
-        _mainViewModel.CurrentViewModel = new FavPageViewModel(Games, _tags, _mainViewModel);
-    }
+	private void FavoritesPage(object? obj)
+	{
+		_mainViewModel.CurrentViewModel = new FavPageViewModel(Games, _tags, _mainViewModel);
+	}
 
-    private void RecentPage(object? obj)
+	private void RecentPage(object? obj)
 	{
 		_mainViewModel.CurrentViewModel = new RecentPageViewModel(Games, _tags, _mainViewModel);
 	}
@@ -133,7 +132,7 @@ public class NavBarViewModel : ViewModelBase
 		_mainViewModel.CurrentViewModel = new ProfileViewModel(_profile, _profiles, Games, _mainViewModel);
 	}
 
-    private void SettingsPage(object? obj)
+	private void SettingsPage(object? obj)
 	{
 		_mainViewModel.CurrentViewModel = new SettingsPageViewModel(_profile, _profiles, Games, _mainViewModel);
 	}
