@@ -512,6 +512,16 @@
                                     HorizontalScrollBarVisibility="Hidden"
                                     VerticalScrollBarVisibility="Hidden" />
                             </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                    <Setter TargetName="border" Property="BorderBrush" Value="#6600FF" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="2" />
+                                </Trigger>
+                                <Trigger Property="IsKeyboardFocusWithin" Value="False">
+                                    <Setter TargetName="border" Property="BorderBrush" Value="transparent" />
+                                    <Setter TargetName="border" Property="BorderThickness" Value="2" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>

@@ -242,10 +242,10 @@
                             </Grid.RowDefinitions>
 
                             <TextBox
-                                Margin="0 2"
+                                Margin="2 5 2 20"
                                 Padding="10"
                                 Background="{DynamicResource SelectedBackground}"
-                                BorderThickness="0"
+                                BorderThickness="2"
                                 FontFamily="Fonts/#Hauora"
                                 FontSize="14"
                                 FontWeight="Bold"

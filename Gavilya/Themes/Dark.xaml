@@ -22,9 +22,7 @@
     </LinearGradientBrush>
     <LinearGradientBrush x:Key="PlayGradient" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Offset="0" Color="#7300ff" />
-        <!-- Dark Purple -->
         <GradientStop Offset="1" Color="#d300ff" />
-        <!-- Purple -->
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="PlayGradientHover" SpreadMethod="Pad" StartPoint="0.5,0" EndPoint="0.5,1">
