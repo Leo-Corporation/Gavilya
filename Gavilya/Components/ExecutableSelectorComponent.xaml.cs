@@ -30,10 +30,10 @@ namespace Gavilya.Components
 	/// Interaction logic for ExecutableSelectorComponent.xaml
 	/// </summary>
 	public partial class ExecutableSelectorComponent : UserControl
-    {
-        public ExecutableSelectorComponent()
-        {
-            InitializeComponent();
-        }
-    }
+	{
+		public ExecutableSelectorComponent()
+		{
+			InitializeComponent();
+		}
+	}
 }

@@ -34,6 +34,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
+
 public class GamePageViewModel : ViewModelBase
 {
 	private readonly Game _game;
@@ -262,12 +263,18 @@ public class GamePageViewModel : ViewModelBase
 		_slug = rawgGame?.Slug ?? "";
 
 		// Platforms section
-		Platforms = rawgGame?.Platforms.Select(p => p.Platform).ToList() ?? new();
+		if (rawgGame?.Platforms != null)
+		{
+			Platforms = rawgGame?.Platforms.Select(p => p.Platform).ToList() ?? new();
+		}
 
 		// Ratings section
-		rawgGame?.Ratings.ForEach((r) => { _totalRatings += r.Count; });
-		rawgGame?.Ratings.ForEach(AssignRating);
-		Rating = $"{rawgGame?.Rating:0.00}";
+		if (rawgGame?.Ratings != null)
+		{
+			rawgGame?.Ratings.ForEach((r) => { _totalRatings += r.Count; });
+			rawgGame?.Ratings.ForEach(AssignRating);
+			Rating = $"{rawgGame?.Rating:0.00}";
+		}
 
 		// Achievements
 		Achievements = await rawgClient.GetAchievementsAsync();

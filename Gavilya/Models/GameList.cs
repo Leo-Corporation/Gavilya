@@ -21,19 +21,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Xml.Serialization;
 
 namespace Gavilya.Models;
+
 public class GameList : ObservableCollection<Game>
 {
 	public string? Title { get; init; }
 	public string? TagColor { get; init; }
+
 	public GameList() : base()
 	{
 
@@ -41,6 +45,7 @@ public class GameList : ObservableCollection<Game>
 
 	public GameList(IEnumerable<Game> games) : base(games)
 	{
+
 	}
 
 	public GameList(string title) : base()
@@ -59,10 +64,12 @@ public class GameList : ObservableCollection<Game>
 	{
 		var items = this.Take(start..end);
 		GameList results = new();
+
 		foreach (var item in items)
 		{
 			results.Add(item);
 		}
+
 		return results;
 	}
 
@@ -87,10 +94,12 @@ public class GameList : ObservableCollection<Game>
 		DateTime now = DateTime.Now;
 		DateTime todayStart = now.Date;
 		DateTime yesterdayStart = todayStart.AddDays(-1);
+		DateTime thisWeekStart = now.AddDays((int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek - (int)now.DayOfWeek);
 		DateTime thisMonthStart = new(now.Year, now.Month, 1);
 
 		GameList todayList = new(Properties.Resources.Today);
 		GameList yesterdayList = new(Properties.Resources.Yesterday);
+		GameList thisWeekList = new(Properties.Resources.ThisWeek);
 		GameList thisMonthList = new(Properties.Resources.ThisMonth);
 		GameList otherList = new(Properties.Resources.LongTimeAgo);
 
@@ -106,6 +115,10 @@ public class GameList : ObservableCollection<Game>
 			{
 				yesterdayList.Add(game);
 			}
+			else if (lastPlayTime >= thisWeekStart)
+			{
+				thisWeekList.Add(game);
+			}
 			else if (lastPlayTime >= thisMonthStart)
 			{
 				thisMonthList.Add(game);
@@ -120,6 +133,7 @@ public class GameList : ObservableCollection<Game>
 
 		if (todayList.Count > 0) sortedGames.Add(todayList);
 		if (yesterdayList.Count > 0) sortedGames.Add(yesterdayList);
+		if (thisWeekList.Count > 0) sortedGames.Add(thisWeekList);
 		if (thisMonthList.Count > 0) sortedGames.Add(thisMonthList);
 		if (otherList.Count > 0) sortedGames.Add(otherList);
 
@@ -130,6 +144,7 @@ public class GameList : ObservableCollection<Game>
 	{
 		Dictionary<Tag, GameList> tagGamesMap = new();
 		GameList noTags = new(Properties.Resources.Other, "#dddddd");
+
 		// Associate games with their corresponding tags
 		foreach (var game in this)
 		{
@@ -150,20 +165,23 @@ public class GameList : ObservableCollection<Game>
 
 		// Create GameList instances for each tag and add associated games
 		List<GameList> sortedGameLists = new();
+
 		foreach (var kvp in tagGamesMap)
 		{
 			var tag = kvp.Key;
 			var games = kvp.Value;
 
 			var gameList = new GameList(tag.Name, tag.HexColorCode.Contains("#") ? tag.HexColorCode : $"#{tag.HexColorCode}");
+
 			foreach (var game in games)
 			{
 				gameList.Add(game);
 			}
+
 			sortedGameLists.Add(gameList);
 		}
-		sortedGameLists.Add(noTags);
 
+		sortedGameLists.Add(noTags);
 		return sortedGameLists;
 	}
 
@@ -193,6 +211,7 @@ public class GameList : ObservableCollection<Game>
 				StreamReader streamReader = new(filePath); // The path of the file
 
 				var games = (GameList)xmlSerializer.Deserialize(streamReader) ?? new(); // Re-create each GameInfo
+
 				foreach (Game game in games)
 				{
 					if (!Contains(game)) Add(game);

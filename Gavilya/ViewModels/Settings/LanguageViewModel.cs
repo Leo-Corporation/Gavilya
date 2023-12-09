@@ -31,6 +31,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class LanguageViewModel : ViewModelBase
 {
 	private readonly Profile _profile;
@@ -41,6 +42,7 @@ public class LanguageViewModel : ViewModelBase
 	public int SelectedIndex { get => _selectedIndex; set { _selectedIndex = value; OnPropertyChanged(nameof(SelectedIndex)); } }
 
 	public ICommand SaveCommand { get; }
+
 	public LanguageViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
 		_profile = profile;

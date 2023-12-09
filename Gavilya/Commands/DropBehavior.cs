@@ -22,8 +22,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using System.Windows.Input;
 using System.Windows;
+using System.Windows.Input;
 
 namespace Gavilya.Commands
 {
@@ -41,16 +41,18 @@ namespace Gavilya.Commands
 				typeof(DropBehavior),
 				new PropertyMetadata(PreviewDropCommandPropertyChangedCallBack)
 			);
+
 		public static void SetPreviewDropCommand(this UIElement inUIElement, ICommand inCommand)
 		{
 			inUIElement.SetValue(PreviewDropCommandProperty, inCommand);
 		}
+
 		private static ICommand GetPreviewDropCommand(UIElement inUIElement)
 		{
 			return (ICommand)inUIElement.GetValue(PreviewDropCommandProperty);
 		}
-		private static void PreviewDropCommandPropertyChangedCallBack(
-			DependencyObject inDependencyObject, DependencyPropertyChangedEventArgs inEventArgs)
+
+		private static void PreviewDropCommandPropertyChangedCallBack(DependencyObject inDependencyObject, DependencyPropertyChangedEventArgs inEventArgs)
 		{
 			UIElement uiElement = inDependencyObject as UIElement;
 			if (null == uiElement) return;

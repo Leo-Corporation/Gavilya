@@ -36,10 +36,12 @@ public class ProfileData
 	public void Save()
 	{
 		XmlSerializer xmlSerializer = new(GetType());
+
 		if (!Directory.Exists($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya")) // If the directory doesn't exist
 		{
 			Directory.CreateDirectory($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya"); // Create the directory
 		}
+
 		StreamWriter streamWriter = new($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Profiles.g4v");
 		xmlSerializer.Serialize(streamWriter, this);
 		streamWriter.Dispose();
@@ -53,10 +55,13 @@ public class ProfileData
 			{
 				new(Environment.UserName)
 			};
+
 			SelectedProfileUuid = Profiles[0].ProfileUuid;
 			Save();
+
 			return;
 		}
+
 		XmlSerializer xmlSerializer = new(GetType());
 		StreamReader streamReader = new($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Profiles.g4v");
 		ProfileData loadedProfiles = (ProfileData)xmlSerializer.Deserialize(streamReader) ?? new();
@@ -70,10 +75,12 @@ public class ProfileData
 	public void Backup(string filePath)
 	{
 		XmlSerializer xmlSerializer = new(GetType());
+
 		if (!Directory.Exists(filePath)) // If the directory doesn't exist
 		{
 			Directory.CreateDirectory(filePath); // Create the directory
 		}
+
 		StreamWriter streamWriter = new($@"{filePath}\GavilyaProfiles_{DateTime.Now:yyyy_MM_dd}.g4v");
 		xmlSerializer.Serialize(streamWriter, this);
 		streamWriter.Dispose();

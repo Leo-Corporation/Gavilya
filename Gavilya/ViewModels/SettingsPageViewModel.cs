@@ -28,6 +28,7 @@ using Gavilya.ViewModels.Settings;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
+
 public class SettingsPageViewModel : ViewModelBase
 {
 	private ViewModelBase _currentViewModel;

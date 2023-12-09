@@ -67,6 +67,7 @@ public class TagSelectorViewModel : ViewModelBase
 			SelectedTags.Remove(Tag);
 			return;
 		}
+
 		SelectedTags.Add(Tag);
 	}
 }

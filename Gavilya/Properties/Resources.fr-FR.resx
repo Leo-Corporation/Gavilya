@@ -643,7 +643,7 @@
     <value>Voir les licences</value>
   </data>
   <data name="WhatGameToPlay" xml:space="preserve">
-    <value>A quel jeu voulez-vous jouer ?</value>
+    <value>À quel jeu voulez-vous jouer ?</value>
   </data>
   <data name="ExclamationMark" xml:space="preserve">
     <value> !</value>
@@ -1022,5 +1022,17 @@
   </data>
   <data name="ScanDirectory" xml:space="preserve">
     <value>Scanner un dossier</value>
+  </data>
+  <data name="SteamAppNotInstalled" xml:space="preserve">
+    <value>Impossible d'exécuter ce jeu Steam car il n'est pas installé.</value>
+  </data>
+  <data name="AddFavGameWelcome" xml:space="preserve">
+    <value>Ajoutez un jeu aux favoris en cliquant sur l'icône d'étoile sur la carte d'un jeu.</value>
+  </data>
+  <data name="AddFavGame" xml:space="preserve">
+    <value>Ajouter un jeu aux favoris</value>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>Cette Semaine</value>
   </data>
 </root>

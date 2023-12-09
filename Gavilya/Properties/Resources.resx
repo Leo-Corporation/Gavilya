@@ -117,7 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -644,7 +643,7 @@
     <value>See licenses</value>
   </data>
   <data name="WhatGameToPlay" xml:space="preserve">
-    <value>What game do you wanna play?</value>
+    <value>What game do you want to play?</value>
   </data>
   <data name="ExclamationMark" xml:space="preserve">
     <value>!</value>
@@ -995,7 +994,7 @@
     <value>hours</value>
   </data>
   <data name="PlayTo" xml:space="preserve">
-    <value>Play to {0}</value>
+    <value>Play {0}</value>
   </data>
   <data name="Recents" xml:space="preserve">
     <value>Recents</value>
@@ -1023,5 +1022,17 @@
   </data>
   <data name="ScanDirectory" xml:space="preserve">
     <value>Scan a directory</value>
+  </data>
+  <data name="SteamAppNotInstalled" xml:space="preserve">
+    <value>Cannot run this steam game as it is not installed.</value>
+  </data>
+  <data name="AddFavGameWelcome" xml:space="preserve">
+    <value>Add a favorite game by clicking on the "Star" button on a game's card.</value>
+  </data>
+  <data name="AddFavGame" xml:space="preserve">
+    <value>Add a favorite game</value>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>This Week</value>
   </data>
 </root>

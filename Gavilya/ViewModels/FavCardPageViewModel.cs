@@ -22,19 +22,35 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using System;
-using System.ComponentModel;
+using Gavilya.Commands;
+using Gavilya.Models;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
+using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
 
-public class ViewModelBase : INotifyPropertyChanged, IDisposable
+class FavCardPageViewModel : ViewModelBase
 {
-	public event PropertyChangedEventHandler PropertyChanged;
+	public GameList Games { get; set; }
 
-	protected void OnPropertyChanged(string propertyName = null)
+	private readonly List<Tag> _tags;
+	readonly MainViewModel _mainViewModel;
+	public List<GameCardViewModel> GamesVm => Games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden).Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel)).ToList();
+
+	private Visibility _placeholderVis;
+	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
+
+	public ICommand AddCommand { get; }
+
+	public FavCardPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-	}
+		Games = games;
+		_mainViewModel = mainViewModel;
+		_tags = tags;
 
-	public virtual void Dispose() { }
+		PlaceholderVis = Games.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
+		AddCommand = new RelayCommand((o) => _mainViewModel.CurrentViewModel = new GameEditionViewModel(Enums.GameType.Win32, games, _tags, _mainViewModel));
+	}
 }

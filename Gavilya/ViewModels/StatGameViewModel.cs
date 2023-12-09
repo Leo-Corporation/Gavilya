@@ -56,6 +56,7 @@ public class StatGameViewModel : ViewModelBase
 		Name = _game.Name;
 		CoverFilePath = game.CoverFilePath;
 		Index = $"#{i + 1}";
+
 		if (_game.TotalTimePlayed != 0)
 		{
 			TotalTimePlayed = $"{_game.TotalTimePlayed / 3600d:0.0}{Properties.Resources.HourShort}";
@@ -64,6 +65,7 @@ public class StatGameViewModel : ViewModelBase
 		{
 			TotalTimePlayed = Properties.Resources.Never;
 		}
+
 		ClickCommand = new RelayCommand(Click);
 	}
 
@@ -79,8 +81,10 @@ public class StatGameViewModel : ViewModelBase
 			_statsViewModel.LastTimePlayed = Properties.Resources.Never;
 			return;
 		}
+
 		var date = Time.UnixTimeToDateTime(_game.LastTimePlayed);
 		string[] months = Properties.Resources.Months.Split(",");
+
 		_statsViewModel.LastTimePlayed = $"{date.Day} {months[date.Month - 1]} {date.Year}";
 	}
 }

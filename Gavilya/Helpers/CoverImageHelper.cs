@@ -61,10 +61,11 @@ public class CoverImageHelper
 			{
 				File.Delete(FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg");
 			}
-			await DownloadFileAsync(new Uri(_url), FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"); // Download the image
 
+			await DownloadFileAsync(new Uri(_url), FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"); // Download the image
 			return FileSys.AppDataPath + @$"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"; // Return the result
 		}
+
 		await DownloadFileAsync(new Uri(_url), FileSys.AppDataPath + $@"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"); // Download the image
 		return FileSys.AppDataPath + @$"\Léo Corporation\Gavilya\Games\{_gameId}\bg_img{_id}.jpg"; // Return the path
 	}

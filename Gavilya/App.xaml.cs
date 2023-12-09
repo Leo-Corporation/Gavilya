@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using Gavilya.Helpers;
 using Gavilya.Models;
 using Gavilya.ViewModels;
@@ -34,6 +35,7 @@ using System.Windows;
 using System.Windows.Shell;
 
 namespace Gavilya;
+
 /// <summary>
 /// Interaction logic for App.xaml
 /// </summary>
@@ -43,6 +45,7 @@ public partial class App : Application
 	{
 		ProfileData profiles = new();
 		profiles.Load();
+
 		var currentProfile = profiles.Profiles.Where(p => p.ProfileUuid == profiles.SelectedProfileUuid).First();
 
 		if (currentProfile.Settings.Language != Language.Default)
@@ -84,6 +87,7 @@ public partial class App : Application
 			MainWindow.DataContext = firstRunViewModel;
 			MainWindow.Show();
 		}
+
 		base.OnStartup(e);
 	}
 
@@ -122,7 +126,7 @@ public partial class App : Application
 
 	private void CreateJumpLists(GameList games)
 	{
-		JumpList jumpList = new();		
+		JumpList jumpList = new();
 
 		var gTasks = games.Where(g => g.IsFavorite).Select(g => new JumpTask()
 		{
@@ -156,6 +160,15 @@ public partial class App : Application
 
 		jumpList.JumpItems.Add(new JumpTask()
 		{
+			Title = Gavilya.Properties.Resources.Favorites,
+			Arguments = "/page 2",
+			Description = Gavilya.Properties.Resources.Favorites,
+			CustomCategory = Gavilya.Properties.Resources.Tasks,
+			IconResourcePath = Assembly.GetEntryAssembly()?.Location
+		});
+
+		jumpList.JumpItems.Add(new JumpTask()
+		{
 			Title = Gavilya.Properties.Resources.MyProfile,
 			Arguments = "/page 3",
 			Description = Gavilya.Properties.Resources.MyProfile,
@@ -163,11 +176,9 @@ public partial class App : Application
 			IconResourcePath = Assembly.GetEntryAssembly()?.Location
 		});
 
-
 		jumpList.ShowFrequentCategory = false;
 		jumpList.ShowRecentCategory = false;
 
 		JumpList.SetJumpList(Current, jumpList);
 	}
-
 }

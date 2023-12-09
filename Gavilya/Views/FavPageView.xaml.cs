@@ -22,14 +22,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using System.Collections.ObjectModel;
+using System.Windows.Controls;
 
-namespace Gavilya.Models;
-
-public class ProfileList : ObservableCollection<Profile>
+namespace Gavilya.Views
 {
-	public ProfileList() : base()
+	/// <summary>
+	/// Interaction logic for FavPageView.xaml
+	/// </summary>
+	public partial class FavPageView : UserControl
 	{
-
+		public FavPageView()
+		{
+			InitializeComponent();
+		}
 	}
 }

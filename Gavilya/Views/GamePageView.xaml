@@ -105,6 +105,14 @@
                                 </Button.ToolTip>
                             </Button>
 
+                            <TextBlock
+                                Margin="10 0 20 0"
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="30"
+                                Foreground="{DynamicResource SelectedBackground}"
+                                Text="&#xF370;" />
+
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock
                                     VerticalAlignment="Center"
@@ -221,7 +229,7 @@
             Grid.Row="1"
             Margin="0 0 0 20"
             Background="{DynamicResource Background}">
-            <StackPanel Margin="10 0 0 0" Orientation="Horizontal">
+            <StackPanel Margin="10 10 0 0" Orientation="Horizontal">
                 <TextBlock
                     Margin="0 0 10 0"
                     VerticalAlignment="Center"
@@ -284,7 +292,7 @@
 
 
             <StackPanel
-                Margin="10 0"
+                Margin="10 20"
                 Orientation="Horizontal"
                 Visibility="{Binding RatingVis}">
                 <TextBlock

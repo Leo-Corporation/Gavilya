@@ -33,6 +33,7 @@ using System.Windows;
 using System.Windows.Threading;
 
 namespace Gavilya.Helpers;
+
 public class GameLauncherHelper
 {
 	private Game _game;
@@ -47,6 +48,7 @@ public class GameLauncherHelper
 		_game = game;
 		_games = games;
 		_dispatcherTimer = new() { Interval = TimeSpan.FromSeconds(1) };
+
 		_dispatcherTimer.Tick += (o, e) =>
 		{
 			string processName = _game.GameType switch
@@ -56,6 +58,7 @@ public class GameLauncherHelper
 			};
 
 			if (!_gameStarted && Sys.IsProcessRunning(processName)) _gameStarted = true;
+
 			if (_gameStarted && !Sys.IsProcessRunning(processName)) // If the game has been closed
 			{
 				int timeSpent = Sys.UnixTime - _game.LastTimePlayed;
@@ -75,13 +78,16 @@ public class GameLauncherHelper
 	{
 		// Check location if the game is a Win32 app
 		if (_game.GameType == GameType.Win32 && !File.Exists(_game.Command)) return false; // Abort
-		if (_game.GameType == GameType.Steam && !CanLaunchSteamGame()) return false;
+		if (_game.GameType == GameType.Steam && !CanLaunchSteamGame(_game)) return false;
 
 		_game.LastTimePlayed = Sys.UnixTime;
 		OnGameUpdatedEvent?.Invoke(this, new(_game));
 
 		_games[_games.IndexOf(_game)] = _game;
-		Process.Start("explorer.exe", _game.Command);
+
+		if (_game.GameType == GameType.Steam) Process.Start("cmd", "/c start " + _game.Command);
+		if (_game.GameType == GameType.Win32) Process.Start(_game.Command);
+
 		_dispatcherTimer.Start();
 
 		return true;
@@ -107,24 +113,19 @@ public class GameLauncherHelper
 		return true;
 	}
 
-	private static bool CanLaunchSteamGame()
+	private static bool CanLaunchSteamGame(Game game)
 	{
+		// Detect if a steam game you are trying to run is installed.
 		try
 		{
-			RegistryKey key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Valve\Steam\ActiveProcess");
-			string result = key.GetValue("ActiveUser").ToString();
-			if (result == "0")
-			{
-				MessageBox.Show(Properties.Resources.NotLoggedToSteam, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error); // If the user isn't logged to steam
-				return false; // Return false, Steam cannot launch game.
-			}
+			String steamAppKeyFormat = @"SOFTWARE\Valve\Steam\Apps\" + game.Command.Replace("steam://rungameid/", "");
+			RegistryKey steamAppKey = Registry.CurrentUser.OpenSubKey(steamAppKeyFormat);
+			string isSteamGameInstalled = steamAppKey.GetValue("Installed").ToString();
 
-			// Check if Steam is not running
-			if (!Sys.IsProcessRunning("Steam"))
+			if (isSteamGameInstalled != "1")
 			{
-				// Show a message box
-				MessageBox.Show(Properties.Resources.SteamNotRunning, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
-				return false; // Return false, Steam cannot launch game.
+				MessageBox.Show(Properties.Resources.SteamAppNotInstalled, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
+				return false;
 			}
 		}
 		catch

@@ -26,7 +26,6 @@ using Gavilya.Commands;
 using Gavilya.Enums;
 using Gavilya.Models;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -70,6 +69,7 @@ public class GameCardViewModel : ViewModelBase
 		set
 		{
 			_coverFilePath = value;
+
 			if (!string.IsNullOrEmpty(value))
 			{
 				BitmapImage bitmapImage = new();
@@ -78,8 +78,9 @@ public class GameCardViewModel : ViewModelBase
 				bitmapImage.DecodePixelWidth = 256;
 				bitmapImage.DecodePixelHeight = 144;
 				bitmapImage.EndInit();
-				GameImage = bitmapImage; 
+				GameImage = bitmapImage;
 			}
+
 			OnPropertyChanged(nameof(CoverFilePath));
 		}
 	}
@@ -234,6 +235,12 @@ public class GameCardViewModel : ViewModelBase
 		IsFavorite = !IsFavorite;
 		_game.IsFavorite = IsFavorite;
 		_games[_games.IndexOf(_game)] = _game;
+
+		// update the favorites page each time you change the favorite state of a game card, so when the last game is unfavorited the favorites page empty card appears
+		if (_mainViewModel.CurrentViewModel is FavPageViewModel)
+		{
+			_mainViewModel.CurrentViewModel = new FavPageViewModel(_mainViewModel.Games, _tags, _mainViewModel);
+		}
 	}
 
 	private void Check(object? obj)
@@ -241,9 +248,9 @@ public class GameCardViewModel : ViewModelBase
 		if (_mainViewModel.ItemsToRemove.Contains(_game))
 		{
 			_mainViewModel.ItemsToRemove.Remove(_game);
-
 			return;
 		}
+
 		_mainViewModel.ItemsToRemove.Add(_game);
 	}
 }

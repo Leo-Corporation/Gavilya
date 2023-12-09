@@ -32,7 +32,7 @@ public class WindowHelper
 	private readonly Window _window;
 
 	/// <summary>
-	/// The first value is the maximum height, and the seconde one is the maximum width.
+	/// The first value is the maximum height, and the second one is the maximum width.
 	/// </summary>
 	/// <returns></returns>
 	public (double, double) GetMaximumSize()

@@ -72,8 +72,32 @@
             </RadioButton.ToolTip>
         </RadioButton>
         <RadioButton
-            x:Name="RecentTabBtn"
+            x:Name="FavoriteTabBtn"
             Grid.Row="2"
+            Height="40"
+            Margin="5 2"
+            Padding="5"
+            HorizontalContentAlignment="Center"
+            Background="Transparent"
+            BorderThickness="2 0 0 0"
+            Command="{Binding FavoritesPageCommand}"
+            Content="&#xF719;"
+            Cursor="Hand"
+            FontFamily="..\Fonts\#FluentSystemIcons-Filled"
+            FontSize="18"
+            Foreground="{DynamicResource Foreground}"
+            IsChecked="{Binding IsFavorites}"
+            Style="{DynamicResource NavBarBtn}">
+            <RadioButton.ToolTip>
+                <ToolTip
+                    Background="{DynamicResource Background}"
+                    Content="{x:Static lang:Resources.Favorites}"
+                    Foreground="{DynamicResource Foreground}" />
+            </RadioButton.ToolTip>
+        </RadioButton>
+        <RadioButton
+            x:Name="RecentTabBtn"
+            Grid.Row="3"
             Height="40"
             Margin="5 2"
             Padding="5"
@@ -96,7 +120,7 @@
             </RadioButton.ToolTip>
         </RadioButton>
         <RadioButton
-            Grid.Row="3"
+            Grid.Row="4"
             Height="40"
             Margin="5 2"
             Padding="5"
@@ -104,21 +128,13 @@
             Background="Transparent"
             BorderThickness="2 0 0 0"
             Command="{Binding ProfilePageCommand}"
+            Content="&#xF5C7;"
             Cursor="Hand"
             FontFamily="..\Fonts\#FluentSystemIcons-Filled"
             FontSize="18"
             Foreground="{DynamicResource Foreground}"
             IsChecked="{Binding IsProfile}"
             Style="{DynamicResource NavBarBtn}">
-            <Rectangle
-                Width="25"
-                Height="25"
-                RadiusX="15"
-                RadiusY="15">
-                <Rectangle.Fill>
-                    <ImageBrush x:Name="ProfilePicture" ImageSource="{Binding ProfilePicture}" />
-                </Rectangle.Fill>
-            </Rectangle>
             <RadioButton.ToolTip>
                 <ToolTip
                     Background="{DynamicResource Background}"
@@ -126,7 +142,7 @@
                     Foreground="{DynamicResource Foreground}" />
             </RadioButton.ToolTip>
         </RadioButton>
-        <Grid Grid.Row="4">
+        <Grid Grid.Row="5">
             <Button
                 x:Name="AddBtn"
                 Grid.Row="4"
@@ -270,7 +286,6 @@
             </Popup>
         </Grid>
 
-
         <TextBlock
             Grid.Row="5"
             HorizontalAlignment="Center"
@@ -281,57 +296,18 @@
             FontWeight="ExtraLight"
             Foreground="{DynamicResource SelectedBackground}"
             Text="&#xF4E0;"
-            TextAlignment="Center" />
+            TextAlignment="Center">
+            <TextBlock.RenderTransform>
+                <TranslateTransform Y="30" />
+            </TextBlock.RenderTransform>
+        </TextBlock>
 
-        <ScrollViewer
-            Grid.Row="6"
-            CanContentScroll="True"
-            VerticalScrollBarVisibility="Hidden">
-            <ItemsControl ItemsSource="{Binding Favorites}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border
-                            Width="45"
-                            Height="45"
-                            Margin="2.5"
-                            CornerRadius="5"
-                            Cursor="Hand">
-                            <Border.ToolTip>
-                                <ToolTip
-                                    Name="GameNameToolTip"
-                                    Background="{DynamicResource Background}"
-                                    Content="{Binding Name}"
-                                    Foreground="{DynamicResource Foreground}" />
-                            </Border.ToolTip>
-
-                            <Border.Background>
-                                <ImageBrush
-                                    x:Name="GameIcon"
-                                    ImageSource="{Binding GameImage}"
-                                    Stretch="UniformToFill" />
-                            </Border.Background>
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="MouseLeftButtonUp">
-                                    <i:InvokeCommandAction Command="{Binding ClickCommand}" />
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
 
         <RadioButton
             x:Name="SettingsBtn"
             Grid.Row="8"
+            Width="40"
             Height="40"
-            Margin="5 2"
-            Padding="5"
             HorizontalContentAlignment="Center"
             Background="Transparent"
             BorderThickness="2 0 0 0"
@@ -342,6 +318,11 @@
             FontSize="18"
             Foreground="{DynamicResource Foreground}"
             Style="{DynamicResource NavBarBtn}">
+
+            <RadioButton.RenderTransform>
+                <TranslateTransform Y="-12" />
+            </RadioButton.RenderTransform>
+
             <RadioButton.ToolTip>
                 <ToolTip
                     Background="{DynamicResource Background}"

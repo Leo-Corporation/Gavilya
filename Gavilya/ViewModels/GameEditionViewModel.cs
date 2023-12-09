@@ -38,7 +38,6 @@ using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Xml.Linq;
 
 namespace Gavilya.ViewModels;
 
@@ -258,6 +257,7 @@ public class GameEditionViewModel : ViewModelBase
 		GameType = game.GameType;
 		Games = games;
 		Tags = tags;
+
 		AddCommand = new RelayCommand(AddGame, (o) => CanExecute);
 		BrowseFileCommand = new RelayCommand(BrowseGame);
 		BrowseImageCommand = new RelayCommand(BrowseImage);
@@ -328,6 +328,7 @@ public class GameEditionViewModel : ViewModelBase
 		Game = null;
 		Games = games;
 		Tags = tags;
+
 		AddCommand = new RelayCommand(AddGame);
 		BrowseFileCommand = new RelayCommand(BrowseGame);
 		BrowseImageCommand = new RelayCommand(BrowseImage);
@@ -368,6 +369,7 @@ public class GameEditionViewModel : ViewModelBase
 				DragAreaVis = Visibility.Collapsed;
 			}
 		}
+
 		ConvertSteamVis = Visibility.Visible;
 	}
 
@@ -376,6 +378,7 @@ public class GameEditionViewModel : ViewModelBase
 		IDataObject ido = parameter as IDataObject;
 		if (null == ido) return;
 		string[] files = (string[])ido.GetData("FileName");
+
 		if (files.Length > 0)
 		{
 			string filePath = files[0]; // Get the first dropped file
@@ -410,12 +413,14 @@ public class GameEditionViewModel : ViewModelBase
 
 	private void BrowseGame(object? obj)
 	{
+		// OpenFileDialog
 		OpenFileDialog openFileDialog = new()
 		{
 			Filter = "EXE|*.exe" // Filter
-		}; // OpenFileDialog
+		};
 
-		if (openFileDialog.ShowDialog() ?? false) // If the user selected a file
+		// If the user selected a file
+		if (openFileDialog.ShowDialog() ?? false)
 		{
 			FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(openFileDialog.FileName); // Get the version
 
@@ -426,10 +431,11 @@ public class GameEditionViewModel : ViewModelBase
 
 	private void BrowseImage(object? obj)
 	{
+		// OpenFileDialog
 		OpenFileDialog openFileDialog = new()
 		{
 			Filter = "PNG|*.png|JPG|*.jpg|Bitmap|*.bmp|All Files|*.*" // Filter
-		}; // OpenFileDialog
+		};
 
 		if (openFileDialog.ShowDialog() ?? false) // If the user selected a file
 		{
@@ -456,6 +462,7 @@ public class GameEditionViewModel : ViewModelBase
 				GameType.UWP => $@"shell:appsFolder\{PackageFamilyName}!{AppId}",
 				_ => Command
 			};
+
 			Game = new()
 			{
 				Name = Name,
@@ -472,16 +479,20 @@ public class GameEditionViewModel : ViewModelBase
 				Tags = SelectedTags,
 				RawgId = RawgId
 			};
+
 			Games.Add(Game);
 			_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, Tags, _mainViewModel);
+
 			return;
 		}
+
 		string comm2 = GameType switch
 		{
 			GameType.Steam => $"steam://rungameid/{SteamId}",
 			GameType.UWP => $@"shell:appsFolder\{PackageFamilyName}!{AppId}",
 			_ => Command
 		};
+
 		Game.Name = Name;
 		Game.Description = Description;
 		Game.Command = comm2;

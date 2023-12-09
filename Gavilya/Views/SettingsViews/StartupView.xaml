@@ -220,6 +220,32 @@
                         Command="{Binding PageCommand}"
                         Cursor="Hand"
                         GroupName="StartupPageRadioGroup"
+                        IsChecked="{Binding IsFavorite, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{DynamicResource SelectorBtn}">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock
+                                Padding="20"
+                                HorizontalAlignment="Stretch"
+                                FontFamily="..\..\Fonts\#FluentSystemIcons-Filled"
+                                FontSize="44"
+                                Text="&#xF719;"
+                                TextAlignment="Center" />
+                            <TextBlock
+                                Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Background="Transparent"
+                                FontSize="13"
+                                FontWeight="ExtraBold"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{x:Static lang:Resources.Favorites}" />
+                        </StackPanel>
+                    </RadioButton>
+                    <RadioButton
+                        Margin="2 5"
+                        Command="{Binding PageCommand}"
+                        Cursor="Hand"
+                        GroupName="StartupPageRadioGroup"
                         IsChecked="{Binding IsRecent, UpdateSourceTrigger=PropertyChanged}"
                         Style="{DynamicResource SelectorBtn}">
                         <StackPanel Orientation="Vertical">

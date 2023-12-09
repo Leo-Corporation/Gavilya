@@ -28,11 +28,11 @@ using Gavilya.Models;
 using PeyrSharp.Enums;
 using PeyrSharp.Env;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
+
 public class NavBarViewModel : ViewModelBase
 {
 	private readonly MainViewModel _mainViewModel;
@@ -44,7 +44,6 @@ public class NavBarViewModel : ViewModelBase
 	GameList Games { get; set; }
 
 	private List<ClickableGameViewModel> _favVm;
-	public List<ClickableGameViewModel> Favorites { get => _favVm; set { _favVm = value; OnPropertyChanged(nameof(Favorites)); } }
 
 	private bool _isHome;
 	public bool IsHome { get => _isHome; set { _isHome = value; OnPropertyChanged(nameof(IsHome)); } }
@@ -57,6 +56,8 @@ public class NavBarViewModel : ViewModelBase
 
 	private bool _isProfile;
 	public bool IsProfile { get => _isProfile; set { _isProfile = value; OnPropertyChanged(nameof(IsProfile)); } }
+	private bool _isFavorites;
+	public bool IsFavorites { get => _isFavorites; set { _isFavorites = value; OnPropertyChanged(nameof(IsFavorites)); } }
 
 	private string _profilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
 	public string ProfilePicture { get => _profilePicture; set { _profilePicture = value; OnPropertyChanged(nameof(ProfilePicture)); } }
@@ -68,17 +69,20 @@ public class NavBarViewModel : ViewModelBase
 	public ICommand LibraryPageCommand { get; }
 	public ICommand RecentPageCommand { get; }
 	public ICommand ProfilePageCommand { get; }
+	public ICommand FavoritesPageCommand { get; }
 	public ICommand SettingsPageCommand { get; }
 	public ICommand AddCommand { get; }
 	public ICommand AddWin32GameCommand { get; }
 	public ICommand AddUwpGameCommand { get; }
 	public ICommand AddSteamGameCommand { get; }
+
 	public NavBarViewModel(MainViewModel mainViewModel, Profile profile, ProfileData profiles, Page? startupPage = null)
 	{
 		HomePageCommand = new RelayCommand(HomePage);
 		LibraryPageCommand = new RelayCommand(LibraryPage);
 		RecentPageCommand = new RelayCommand(RecentPage);
 		ProfilePageCommand = new RelayCommand(ProfilePage);
+		FavoritesPageCommand = new RelayCommand(FavoritesPage);
 		AddCommand = new RelayCommand(AddGame);
 		AddWin32GameCommand = new RelayCommand(AddWin32Game);
 		AddUwpGameCommand = new RelayCommand(AddUwpGame);
@@ -92,18 +96,15 @@ public class NavBarViewModel : ViewModelBase
 		_tags = profile.Tags;
 
 		var defaultPage = startupPage is null ? _mainViewModel.CurrentSettings.DefaultPage : startupPage;
+
 		IsHome = defaultPage == Page.Home;
 		IsLibrary = defaultPage == Page.Library;
 		IsRecent = defaultPage == Page.Recent;
 		IsProfile = defaultPage == Page.Profile;
-		Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
+		IsFavorites = defaultPage == Page.Favorites;
+
 		UwpAllowed = (Sys.CurrentWindowsVersion == WindowsVersion.Windows10 || Sys.CurrentWindowsVersion == WindowsVersion.Windows11) ? Visibility.Visible : Visibility.Collapsed;
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
-
-		Games.CollectionChanged += (o, e) =>
-		{
-			Favorites = new List<ClickableGameViewModel>(Games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames ? true : !g.IsHidden)).Select(g => new ClickableGameViewModel(g, Games, _tags, _mainViewModel)));
-		};
 	}
 
 	private void HomePage(object? obj)
@@ -114,6 +115,11 @@ public class NavBarViewModel : ViewModelBase
 	private void LibraryPage(object? obj)
 	{
 		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, _tags, _mainViewModel);
+	}
+
+	private void FavoritesPage(object? obj)
+	{
+		_mainViewModel.CurrentViewModel = new FavPageViewModel(Games, _tags, _mainViewModel);
 	}
 
 	private void RecentPage(object? obj)

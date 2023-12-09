@@ -64,6 +64,17 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
+
+                    <Image
+                        x:Name="GavilyaLogo"
+                        Grid.Column="1"
+                        Width="26"
+                        Height="26"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Center"
+                        Source="Assets/Gavilya.png" Grid.ColumnSpan="3" Margin="18,0,0,0">
+                    </Image>
+
                     <Button
                         x:Name="SearchBtn"
                         Grid.Column="4"
@@ -174,6 +185,9 @@
                     <DataTemplate DataType="{x:Type viewmodels:LibPageViewModel}">
                         <views:LibPageView />
                     </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewmodels:FavPageViewModel}">
+                        <views:FavPageView />
+                    </DataTemplate>
                     <DataTemplate DataType="{x:Type viewmodels:GameEditionViewModel}">
                         <views:GameEditionView />
                     </DataTemplate>
@@ -228,10 +242,10 @@
                             </Grid.RowDefinitions>
 
                             <TextBox
-                                Margin="0 2"
+                                Margin="2 5 2 20"
                                 Padding="10"
                                 Background="{DynamicResource SelectedBackground}"
-                                BorderThickness="0"
+                                BorderThickness="2"
                                 FontFamily="Fonts/#Hauora"
                                 FontSize="14"
                                 FontWeight="Bold"

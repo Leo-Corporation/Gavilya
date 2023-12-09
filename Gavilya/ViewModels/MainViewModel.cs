@@ -21,6 +21,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
+
 using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
@@ -31,11 +32,11 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Net.NetworkInformation;
 using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
+
 public class MainViewModel : ViewModelBase
 {
 	private NavBarViewModel _navBarViewModel;
@@ -124,13 +125,16 @@ public class MainViewModel : ViewModelBase
 		// Properties
 		Games = profile.Games;
 		CurrentSettings = profile.Settings;
+
 		CurrentViewModel = (startupPage is null ? profile.Settings.DefaultPage : startupPage) switch
 		{
 			Page.Library => new LibPageViewModel(Games, profile.Tags, this),
+			Page.Favorites => new FavPageViewModel(Games, profile.Tags, this),
 			Page.Recent => new RecentPageViewModel(Games, profile.Tags, this),
 			Page.Profile => new ProfileViewModel(profile, profiles, Games, this),
 			_ => new HomePageViewModel(Games, profile.Tags, this)
 		};
+
 		Query = "";
 
 		// Fields
@@ -146,11 +150,13 @@ public class MainViewModel : ViewModelBase
 		MaximizeRestoreCommand = new RelayCommand(Maximize);
 		CloseCommand = new RelayCommand(Close);
 		DeleteCommand = new RelayCommand(DeleteGames);
+
 		SearchClickCommand = new RelayCommand((o) =>
 		{
 			SearchOpen = !SearchOpen;
 			SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45;
 		});
+
 		PinCommand = new RelayCommand(Pin);
 
 		// Window System
@@ -181,7 +187,6 @@ public class MainViewModel : ViewModelBase
 			profiles.Save();
 		};
 
-
 		RegisterKeyBoardShortcuts();
 
 		CheckUpdateOnStart();
@@ -191,6 +196,7 @@ public class MainViewModel : ViewModelBase
 	private void RegisterKeyBoardShortcuts()
 	{
 		var openFps = Combination.FromString("Control+Shift+F");
+
 		Action openFpsAction = () =>
 		{
 			var proc = new Process();
@@ -203,11 +209,12 @@ public class MainViewModel : ViewModelBase
 		};
 
 		var openSearch = Combination.FromString("Control+K");
-		Action openSearchAction = () => 
-		{ 
+
+		Action openSearchAction = () =>
+		{
 			if (!(_currentSettings.EnableSearchShortcut ?? true)) return;
-			SearchOpen = !SearchOpen; 
-			SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45; 
+			SearchOpen = !SearchOpen;
+			SearchHeight = CurrentSettings.NumberOfSearchResultsToDisplay * 45;
 		};
 
 		var assignment = new Dictionary<Combination, Action>
@@ -215,6 +222,7 @@ public class MainViewModel : ViewModelBase
 			{ openFps, openFpsAction },
 			{openSearch, openSearchAction }
 		};
+
 		Hook.GlobalEvents().OnCombination(assignment);
 	}
 
@@ -291,6 +299,7 @@ public class MainViewModel : ViewModelBase
 	{
 		if (!CurrentSettings.UpdatesAvNotification) return;
 		System.Windows.Forms.NotifyIcon notifyIcon = new();
+
 		if (await Internet.IsAvailableAsync())
 		{
 			notifyIcon.Icon = System.Drawing.Icon.ExtractAssociatedIcon(AppDomain.CurrentDomain.BaseDirectory + @"\Gavilya.exe");

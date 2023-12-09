@@ -28,6 +28,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class FpsViewModel : ViewModelBase
 {
 	private readonly Profile _profile;
@@ -59,6 +60,7 @@ public class FpsViewModel : ViewModelBase
 			_profileData.Save();
 			return;
 		}
+
 		MessageBox.Show(Properties.Resources.IncorrectValue, Properties.Resources.Error, MessageBoxButton.OK, MessageBoxImage.Error);
 	}
 }

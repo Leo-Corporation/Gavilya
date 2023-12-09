@@ -58,6 +58,7 @@ public class GameOptionsViewModel : ViewModelBase
 	public ICommand CheckHiddenGames { get; }
 	public ICommand AddTagCommand { get; }
 	public ICommand ChangeColorCommand { get; }
+
 	public GameOptionsViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
 		_profile = profile;
@@ -100,11 +101,14 @@ public class GameOptionsViewModel : ViewModelBase
 
 	private void ChangeColor(object? obj)
 	{
+		// Create color picker/dialog
 		System.Windows.Forms.ColorDialog colorDialog = new()
 		{
 			AllowFullOpen = true,
-		}; // Create color picker/dialog
-		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) // If the user selected a color
+		};
+
+		// If the user selected a color
+		if (colorDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
 		{
 			RGB rgb = new(colorDialog.Color.R, colorDialog.Color.G, colorDialog.Color.B);
 			Color = rgb.ToHex().Value;

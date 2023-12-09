@@ -1,53 +1,53 @@
-﻿<UserControl
-    x:Class="Gavilya.Components.MinimalGameComponent"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:lang="clr-namespace:Gavilya.Properties"
-    xmlns:local="clr-namespace:Gavilya.Components"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="150"
-    Height="85"
-    Margin="5"
-    FontFamily="../Fonts/#Hauora">
-    <Border CornerRadius="10">
-        <Border.ToolTip>
-            <ToolTip
-                Name="GameNameToolTip"
-                Background="{DynamicResource Background}"
-                Content="{Binding Name}"
-                Foreground="{DynamicResource Foreground}" />
-        </Border.ToolTip>
+﻿<UserControl x:Class="Gavilya.Components.MinimalGameComponent"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:lang="clr-namespace:Gavilya.Properties"
+             xmlns:local="clr-namespace:Gavilya.Components"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Width="150"
+             Height="85"
+             Margin="5"
+             FontFamily="../Fonts/#Hauora">
+    <UserControl.Template>
+        <ControlTemplate TargetType="UserControl">
+            <Border x:Name="MainBorder" CornerRadius="10">
+                <Border.ToolTip>
+                    <ToolTip Name="GameNameToolTip" Background="{DynamicResource Background}" Content="{Binding Name}" Foreground="{DynamicResource Foreground}" />
+                </Border.ToolTip>
 
-        <Border.Background>
-            <ImageBrush
-                x:Name="GameIcon"
-                ImageSource="{Binding GameImage}"
-                Stretch="UniformToFill" />
-        </Border.Background>
+                <Border.Background>
+                    <ImageBrush x:Name="GameIcon" ImageSource="{Binding GameImage}" Stretch="UniformToFill" />
+                </Border.Background>
 
-        <Grid>
-            <Button
-                Name="PlayBtn"
-                Width="35"
-                Height="35"
-                Margin="0 0 20 20"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Bottom"
-                Command="{Binding PlayCommand}"
-                Content="&#xF610;"
-                Cursor="Hand"
-                FontFamily="..\Fonts\#FluentSystemIcons-Filled"
-                Foreground="{DynamicResource HoverForeground}"
-                Style="{StaticResource PlayButton}">
-                <Button.ToolTip>
-                    <ToolTip
-                        Name="ToolTipGamePlay"
-                        Background="{DynamicResource Background}"
-                        Content="{Binding PlayText}"
-                        Foreground="{DynamicResource Foreground}" />
-                </Button.ToolTip>
-            </Button>
-        </Grid>
-    </Border>
+                <Grid>
+                    <Button x:Name="PlayBtn"
+                            Width="35"
+                            Height="35"
+                            Margin="0 0 10 10"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding PlayCommand}"
+                            Content="&#xF610;"
+                            Cursor="Hand"
+                            FontFamily="..\Fonts\#FluentSystemIcons-Filled"
+                            Foreground="{DynamicResource HoverForeground}"
+                            Style="{StaticResource PlayButton}">
+                        <Button.ToolTip>
+                            <ToolTip Name="ToolTipGamePlay" Background="{DynamicResource Background}" Content="{Binding PlayText}" Foreground="{DynamicResource Foreground}" />
+                        </Button.ToolTip>
+                    </Button>
+                </Grid>
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="PlayBtn" Property="Visibility" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter TargetName="PlayBtn" Property="Visibility" Value="Hidden"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </UserControl.Template>
 </UserControl>

@@ -22,12 +22,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
+using Gavilya.Commands;
 using Gavilya.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Input;
 using System.Windows;
-using Gavilya.Commands;
+using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
 

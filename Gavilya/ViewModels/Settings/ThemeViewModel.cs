@@ -33,6 +33,7 @@ using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
+
 public class ThemeViewModel : ViewModelBase
 {
 	private readonly Profile _profile;
@@ -70,23 +71,31 @@ public class ThemeViewModel : ViewModelBase
 			if (i == 0) // If the default theme is selected
 			{
 				Application.Current.Resources.MergedDictionaries.Clear();
+
+				// Create a resource dictionary
 				ResourceDictionary resourceDictionary = new()
 				{
 					Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative) // Add source
-				}; // Create a resource dictionary
+				};
+
 				Application.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
 
 				_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.CurrentTheme = _installedThemes[i].Item2;
 				_mainViewModel.CurrentSettings.CurrentTheme = "";
 				_profileData.Save();
+
 				return;
 			}
+
 			ThemeHelper.ChangeTheme(_installedThemes[i].Item1, _installedThemes[i].Item2);
 			_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.CurrentTheme = _installedThemes[i].Item2 + $@"\theme.manifest";
 			_profileData.Save();
 			_mainViewModel.CurrentSettings.CurrentTheme = _installedThemes[i].Item2 + $@"\theme.manifest";
 		}
-		catch (IndexOutOfRangeException) { }
+		catch (IndexOutOfRangeException ex)
+		{
+			Console.WriteLine("Failed to change theme, code: " + ex.StackTrace);
+		}
 	}
 
 	private void Import(object? obj)

@@ -29,6 +29,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Gavilya.ViewModels;
+
 public class MinimalGameViewModel : ViewModelBase
 {
 	private Game _game;
@@ -45,6 +46,7 @@ public class MinimalGameViewModel : ViewModelBase
 		set
 		{
 			_coverFilePath = value;
+
 			if (!string.IsNullOrEmpty(value))
 			{
 				BitmapImage bitmapImage = new();
@@ -55,6 +57,7 @@ public class MinimalGameViewModel : ViewModelBase
 				bitmapImage.EndInit();
 				GameImage = bitmapImage;
 			}
+
 			OnPropertyChanged(nameof(CoverFilePath));
 		}
 	}

@@ -30,7 +30,7 @@ using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
 
-internal class LibPageViewModel : ViewModelBase
+internal class FavPageViewModel : ViewModelBase
 {
 	private GameList _games;
 	private readonly MainViewModel _mainViewModel;
@@ -63,9 +63,11 @@ internal class LibPageViewModel : ViewModelBase
 	public ICommand SortAlphaCommand { get; }
 	public ICommand SortNoAlphaCommand { get; }
 
-	public LibPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
+	public FavPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
-		Games = games;
+
+		Games = new GameList(games.Where(game => game.IsFavorite));
+
 		_tags = tags;
 		_mainViewModel = mainViewModel;
 
@@ -75,7 +77,6 @@ internal class LibPageViewModel : ViewModelBase
 			View.Tag => new TagPageViewModel(Games, _tags, _mainViewModel),
 			_ => new CardPageViewModel(Games, _tags, _mainViewModel)
 		};
-
 
 		IsCardSelected = _mainViewModel.CurrentSettings.DefaultView == View.Card;
 		IsTagSelected = _mainViewModel.CurrentSettings.DefaultView == View.Tag;
