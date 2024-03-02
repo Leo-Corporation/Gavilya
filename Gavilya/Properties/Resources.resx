@@ -1035,4 +1035,10 @@
   <data name="ThisWeek" xml:space="preserve">
     <value>This Week</value>
   </data>
+  <data name="Package" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="AppID" xml:space="preserve">
+    <value>App ID</value>
+  </data>
 </root>

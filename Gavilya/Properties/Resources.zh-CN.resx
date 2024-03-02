@@ -1035,4 +1035,10 @@
   <data name="ThisWeek" xml:space="preserve">
     <value>本星期</value>
   </data>
+  <data name="Package" xml:space="preserve">
+    <value>包装</value>
+  </data>
+  <data name="AppID" xml:space="preserve">
+    <value>应用程序 ID</value>
+  </data>
 </root>
