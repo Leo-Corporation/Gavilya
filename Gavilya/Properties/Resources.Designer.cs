@@ -754,7 +754,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export your games in Gavilya to .gav save file..
+        ///   Looks up a localized string similar to Export your games in Gavilya to .g4vgames save file..
         /// </summary>
         public static string ExportGamesDescription {
             get {

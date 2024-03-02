@@ -295,10 +295,10 @@
     <value>Import your games</value>
   </data>
   <data name="ExportGamesDescription" xml:space="preserve">
-    <value>Export your games in Gavilya to .gav save file.</value>
+    <value>Export your games in Gavilya to .g4vgames save file.</value>
   </data>
   <data name="ImportGamesDescription" xml:space="preserve">
-    <value>Import a .gav save file in Gavilya. The current save file is going to be replaced by the new one.</value>
+    <value>Import a .g4vgames save file in Gavilya. The current save file is going to be replaced by the new one.</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
