@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Commands;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
@@ -35,7 +36,13 @@ public class ExecutableViewModel : ViewModelBase
 	public string FilePath { get; }
 
 	public ICommand ClickCommand { get; }
+	public ICommand CollapseCommand { get; }
 
+	private Visibility _collapseGridVis = Visibility.Collapsed;
+	public Visibility CollapseGridVid { get => _collapseGridVis; set { _collapseGridVis = value; OnPropertyChanged(nameof(CollapseGridVid)); } }
+
+	private string _collapseIcon = "\uF2A4";
+	public string CollapseIcon { get => _collapseIcon; set { _collapseIcon = value; OnPropertyChanged(nameof(CollapseIcon)); } }
 	public ExecutableViewModel(string name, string filePath, GameEditionViewModel gameEditionViewModel)
 	{
 		Name = name;
@@ -43,6 +50,7 @@ public class ExecutableViewModel : ViewModelBase
 		_gameEditionViewModel = gameEditionViewModel;
 
 		ClickCommand = new RelayCommand(Click);
+		CollapseCommand = new RelayCommand(Collapse);
 	}
 
 	private void Click(object? obj)
@@ -50,5 +58,11 @@ public class ExecutableViewModel : ViewModelBase
 		_gameEditionViewModel.Name = Name;
 		_gameEditionViewModel.Command = FilePath;
 		_gameEditionViewModel.IsExeSelectorOpen = false;
+	}
+
+	private void Collapse(object? obj)
+	{
+		CollapseGridVid = CollapseGridVid == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+		CollapseIcon = CollapseGridVid == Visibility.Visible ? "\uF2B7" : "\uF2A4";
 	}
 }
