@@ -5,6 +5,7 @@
 ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Leo-Corporation/Gavilya/dotnet-desktop.yml?branch=main)
 ![Using PeyrSharp](https://img.shields.io/badge/using-PeyrSharp-DD00FF?logo=nuget)
 <br />
+
 <p align="center">
   <a href="https://github.com/Leo-Corporation/Gavilya">
     <img src=".github/images/logo.png" alt="Logo" width="80" height="80">
@@ -13,7 +14,7 @@
   <h1 align="center">Gavilya</h3>
 
   <p align="center">
-    A simple game launcher written in C# .NET 6.
+    A simple game launcher written in C# .NET 8.
     <br />
     <a href="https://bit.ly/Gavilya"><strong>Download »</strong></a>
     <br />
@@ -27,15 +28,15 @@
 </p>
 
 ## Introduction
-![image](https://github.com/Leo-Corporation/Gavilya/assets/55453279/e795c49c-604a-4de4-b8c8-a7d7652effad)
 
+![image](https://github.com/Leo-Corporation/Gavilya/assets/55453279/e795c49c-604a-4de4-b8c8-a7d7652effad)
 
 Gavilya is a user-friendly game launcher built using C# and WPF, following the MVVM (Model-View-ViewModel) architectural pattern. The launcher aims to simplify the process of managing and launching games from various sources, providing an organized and personalized gaming experience.
 [Click here](https://gavilya.leocorporation.dev) to visit Gavilya's website.
 
 ## Features
 
-Gavilya is a user-friendly game launcher built using C# .NET 6 and WPF, designed to streamline the gaming experience by consolidating games from various sources into a single, accessible platform. With its intuitive interface and diverse set of features, Gavilya offers gamers a convenient and organized way to manage and launch their favorite games.
+Gavilya is a user-friendly game launcher built using C# .NET 8 and WPF, designed to streamline the gaming experience by consolidating games from various sources into a single, accessible platform. With its intuitive interface and diverse set of features, Gavilya offers gamers a convenient and organized way to manage and launch their favorite games.
 
 1. **Game Source Integration:**
    Gavilya supports a wide range of game sources, including Steam, UWP (Universal Windows Platform), and Win32 games. This compatibility ensures that users can effortlessly add and manage their games, regardless of their origin.
@@ -63,15 +64,17 @@ Gavilya is a user-friendly game launcher built using C# .NET 6 and WPF, designed
 
 9. **Top Games Highlight:**
    Gavilya's statistic overview highlights the top games based on playtime or user-defined criteria. This feature enables users to discover their favorite and most-played games easily.
-   
+
 **_And more..._**
 
 In conclusion, Gavilya presents itself as a user-centric game launcher, combining simplicity with a powerful set of features. By seamlessly integrating games from various sources, offering profile support, providing customization options, and supplying insightful statistics, Gavilya elevates the gaming experience for enthusiasts who appreciate organization and efficiency. [Click here](https://gavilya.leocorporation.dev) to visit Gavilya's website and explore its features firsthand.
 
 ## Download
+
 [Click here](https://bit.ly/Gavilya) to download Gavilya.
 
 ## Contributing
+
 Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request.
 
 1. **Fork the Repository**: Start by forking the Gavilya repository to your GitHub account.
@@ -99,15 +102,16 @@ Please note that contributions should align with the project's scope and follow 
 - Visual Studio 2022 v17.0 or higher (VS2019 also works)
   - .NET Desktop Developpement
   - Git
-- .NET 6 (*.NET 5 is also recommanded*)
-- Inno Setup (*optionnal*)
+- .NET 8 (_.NET 5 is also recommanded_)
+- Inno Setup (_optionnal_)
 
 ### Branches
+
 This Git repo has always two branches:
 
-| Name | Release | Description |
-| :--: | :-----: | :---------: |
-| `main` | ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Leo-Corporation/Gavilya) | Stable versions |
+|  Name   |                                                                    Release                                                                     |            Description             |
+| :-----: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------: |
+| `main`  |                      ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Leo-Corporation/Gavilya)                       |          Stable versions           |
 | `vNext` | ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Leo-Corporation/Gavilya?include_prereleases) | Next version of Gavilya (unstable) |
 
 > Note: Other branches can also - of course - exist.
