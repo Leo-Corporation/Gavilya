@@ -633,12 +633,16 @@
                         Value="{TemplateBinding VerticalOffset}">
                         <ScrollBar.Template>
                             <ControlTemplate TargetType="{x:Type ScrollBar}">
-                                <Track x:Name="PART_Track" IsDirectionReversed="true">
+                                <Track
+                                    x:Name="PART_Track"
+                                    MinHeight="20"
+                                    IsDirectionReversed="true">
                                     <Track.Thumb>
                                         <Thumb Background="{DynamicResource SelectedBackground}">
                                             <Thumb.Template>
                                                 <ControlTemplate TargetType="{x:Type Thumb}">
                                                     <Border
+                                                        MinHeight="20"
                                                         Margin="5"
                                                         Background="{TemplateBinding Background}"
                                                         BorderBrush="{TemplateBinding BorderBrush}"

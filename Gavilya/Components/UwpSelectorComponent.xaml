@@ -3,30 +3,100 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:lang="clr-namespace:Gavilya.Properties"
     xmlns:local="clr-namespace:Gavilya.Components"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    MaxWidth="340"
     FontFamily="..\Fonts\#Hauora"
     Foreground="{DynamicResource Foreground}"
     mc:Ignorable="d">
-    <Button
-        Padding="5"
+    <Border
+        Margin="10 5"
+        Padding="10"
         Background="{DynamicResource Background2}"
-        Command="{Binding ClickCommand}"
-        Cursor="Hand"
-        Style="{DynamicResource RegularButton2}">
-        <StackPanel
-            Grid.Column="1"
-            Width="380"
-            VerticalAlignment="Center">
-            <TextBlock
-                x:Name="GameNameTxt"
-                FontSize="18"
-                FontWeight="ExtraBold"
-                Text="{Binding Name}" />
-            <TextBlock
-                x:Name="GamePackageInfoTxt"
-                FontSize="10"
-                Text="{Binding InfoText}" />
-        </StackPanel>
-    </Button>
+        BorderBrush="{DynamicResource SelectedBackground}"
+        BorderThickness="2"
+        CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Name="SsidTxt"
+                    Grid.Column="1"
+                    d:Text="Game Name"
+                    FontSize="16"
+                    FontWeight="ExtraBold"
+                    Text="{Binding Name}" />
+                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                    <Button
+                        x:Name="SelectBtn"
+                        Grid.Row="1"
+                        Margin="0 0 5 0"
+                        Padding="5 2"
+                        HorizontalAlignment="Right"
+                        Background="{DynamicResource Accent}"
+                        Command="{Binding ClickCommand}"
+                        Content="{x:Static lang:Resources.Select}"
+                        Cursor="Hand"
+                        FontWeight="ExtraBold"
+                        Style="{DynamicResource AccentButton}" />
+                    <Button
+                        x:Name="ExpanderBtn"
+                        Grid.Column="1"
+                        Padding="5"
+                        Background="Transparent"
+                        Command="{Binding CollapseCommand}"
+                        Content="{Binding CollapseIcon}"
+                        FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                        Foreground="{DynamicResource Foreground}"
+                        Style="{DynamicResource RegularButton}" />
+                </StackPanel>
+            </Grid>
+            <Grid
+                x:Name="CollapseGrid"
+                Grid.Row="1"
+                Margin="5"
+                d:Visibility="Visible"
+                Visibility="{Binding CollapseGridVid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="10" Text="{x:Static lang:Resources.Package}" />
+                <TextBlock
+                    Grid.Row="1"
+                    FontSize="10"
+                    Text="{x:Static lang:Resources.AppID}" />
+                <TextBlock
+                    x:Name="FilePathTxt"
+                    Grid.Column="1"
+                    Margin="5 0 0 0"
+                    d:Text="C:/File"
+                    FontSize="10"
+                    Text="{Binding PackageName}"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    x:Name="AppTxt"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="5 0 0 0"
+                    d:Text="C:/File"
+                    FontSize="10"
+                    Text="{Binding AppId}"
+                    TextWrapping="Wrap" />
+            </Grid>
+        </Grid>
+    </Border>
 </UserControl>
