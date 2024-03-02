@@ -63,12 +63,7 @@ public class GameList : ObservableCollection<Game>
 	public GameList GetRange(int start, int end)
 	{
 		var items = this.Take(start..end);
-		GameList results = new();
-
-		foreach (var item in items)
-		{
-			results.Add(item);
-		}
+		GameList results = [.. items];
 
 		return results;
 	}
@@ -129,7 +124,7 @@ public class GameList : ObservableCollection<Game>
 			}
 		}
 
-		List<GameList> sortedGames = new();
+		List<GameList> sortedGames = [];
 
 		if (todayList.Count > 0) sortedGames.Add(todayList);
 		if (yesterdayList.Count > 0) sortedGames.Add(yesterdayList);
@@ -142,7 +137,7 @@ public class GameList : ObservableCollection<Game>
 
 	public List<GameList> GetSortedGameByTag()
 	{
-		Dictionary<Tag, GameList> tagGamesMap = new();
+		Dictionary<Tag, GameList> tagGamesMap = [];
 		GameList noTags = new(Properties.Resources.Other, "#dddddd");
 
 		// Associate games with their corresponding tags
@@ -155,7 +150,7 @@ public class GameList : ObservableCollection<Game>
 				{
 					if (!tagGamesMap.ContainsKey(tag))
 					{
-						tagGamesMap[tag] = new GameList();
+						tagGamesMap[tag] = [];
 					}
 
 					tagGamesMap[tag].Add(game);
@@ -164,7 +159,7 @@ public class GameList : ObservableCollection<Game>
 		}
 
 		// Create GameList instances for each tag and add associated games
-		List<GameList> sortedGameLists = new();
+		List<GameList> sortedGameLists = [];
 
 		foreach (var kvp in tagGamesMap)
 		{
@@ -210,7 +205,7 @@ public class GameList : ObservableCollection<Game>
 				XmlSerializer xmlSerializer = new(GetType()); // XML Serializer
 				StreamReader streamReader = new(filePath); // The path of the file
 
-				var games = (GameList)xmlSerializer.Deserialize(streamReader) ?? new(); // Re-create each GameInfo
+				var games = (GameList)xmlSerializer.Deserialize(streamReader) ?? []; // Re-create each GameInfo
 
 				foreach (Game game in games)
 				{
@@ -231,7 +226,7 @@ public class GameList : ObservableCollection<Game>
 	{
 		try
 		{
-			Dictionary<int, int> gameScores = new();
+			Dictionary<int, int> gameScores = [];
 
 			for (int i = 0; i < Count; i++)
 			{
@@ -239,7 +234,7 @@ public class GameList : ObservableCollection<Game>
 			}
 
 			var sort = from pair in gameScores orderby pair.Value descending select pair;
-			GameList recommandedGames = new();
+			GameList recommandedGames = [];
 
 			foreach (KeyValuePair<int, int> keyValuePair in sort)
 			{
@@ -252,7 +247,7 @@ public class GameList : ObservableCollection<Game>
 		}
 		catch (DivideByZeroException)
 		{
-			return new();
+			return [];
 		}
 	}
 

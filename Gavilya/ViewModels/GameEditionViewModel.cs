@@ -280,7 +280,7 @@ public class GameEditionViewModel : ViewModelBase
 		GameType = game.GameType;
 		IsHidden = game.IsHidden;
 		RawgId = game.RawgId;
-		SelectedTags = game.Tags ?? new();
+		SelectedTags = game.Tags ?? [];
 
 		if (!string.IsNullOrEmpty(CoverFilePath))
 		{
@@ -341,7 +341,7 @@ public class GameEditionViewModel : ViewModelBase
 		ScanCommand = new RelayCommand(Scan);
 		CloseExeSelectorCommand = new RelayCommand((o) => IsExeSelectorOpen = false);
 
-		SelectedTags = new();
+		SelectedTags = [];
 
 		// Load UI
 		DragAreaVis = gameType == GameType.Win32 ? Visibility.Visible : Visibility.Collapsed;
@@ -375,8 +375,7 @@ public class GameEditionViewModel : ViewModelBase
 
 	private void ExecuteDrop(object parameter)
 	{
-		IDataObject ido = parameter as IDataObject;
-		if (null == ido) return;
+		if (parameter is not IDataObject ido) return;
 		string[] files = (string[])ido.GetData("FileName");
 
 		if (files.Length > 0)
@@ -408,7 +407,7 @@ public class GameEditionViewModel : ViewModelBase
 	private async void SearchRawg(object? obj)
 	{
 		var results = await new RawgClient(RawgSearchQuery).GetResultsAsync();
-		SearchResults = results?.Results.Select(g => new RawgResultViewModel(g, this)).ToList() ?? new();
+		SearchResults = results?.Results.Select(g => new RawgResultViewModel(g, this)).ToList() ?? [];
 	}
 
 	private void BrowseGame(object? obj)
@@ -521,7 +520,7 @@ public class GameEditionViewModel : ViewModelBase
 		{
 			string selectedPath = dialog.SelectedPath;
 			GameScannerService gameScannerService = new();
-			ExeApps = gameScannerService.ScanForExecutables(selectedPath, this);
+			ExeApps = GameScannerService.ScanForExecutables(selectedPath, this);
 			if (ExeApps is not null && ExeApps.Count > 0) NoExeVis = Visibility.Collapsed;
 			else NoExeVis = Visibility.Visible;
 			IsExeSelectorOpen = true;

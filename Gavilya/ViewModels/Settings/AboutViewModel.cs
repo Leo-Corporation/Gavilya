@@ -39,7 +39,7 @@ public class AboutViewModel : ViewModelBase
 {
 	private readonly ProfileData _profileData;
 
-	public string Version => Context.Version;
+	public static string Version => Context.Version;
 
 	private string _statusMessage = Properties.Resources.UpdateUn;
 	public string StatusMessage { get => _statusMessage; set { _statusMessage = value; OnPropertyChanged(nameof(StatusMessage)); } }

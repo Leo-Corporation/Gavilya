@@ -28,18 +28,9 @@ using System.Linq;
 
 namespace Gavilya.ViewModels;
 
-public class TagPageViewModel : ViewModelBase
+public class TagPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel) : ViewModelBase
 {
-	private readonly MainViewModel _mainViewModel;
-	private readonly List<GameList> _sortedGames;
-	private readonly List<Tag> _tags;
+	private readonly List<GameList> _sortedGames = games.GetSortedGameByTag();
 
-	public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel)).ToList();
-
-	public TagPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
-	{
-		_sortedGames = games.GetSortedGameByTag();
-		_tags = tags;
-		_mainViewModel = mainViewModel;
-	}
+	public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, tags, mainViewModel)).ToList();
 }

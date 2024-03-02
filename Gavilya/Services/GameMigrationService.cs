@@ -31,24 +31,17 @@ using System.Xml.Serialization;
 
 namespace Gavilya.Services;
 
-public class GameMigrationService
+public class GameMigrationService(string filePath)
 {
-	private readonly string _filePath;
-
-	public GameMigrationService(string filePath)
-	{
-		_filePath = filePath;
-	}
-
 	public GameList Migrate()
 	{
 		// 1. Load old games format file
-		List<GameInfo> gameInfos = new();
+		List<GameInfo> gameInfos = [];
 
 		XmlSerializer xmlSerializer = new(typeof(List<GameInfo>)); // XML Serializer
-		StreamReader streamReader = new(_filePath); // The place where the file is gonna be read
+		StreamReader streamReader = new(filePath); // The place where the file is gonna be read
 
-		gameInfos = (List<GameInfo>)xmlSerializer.Deserialize(streamReader) ?? new(); // Re-create each game info
+		gameInfos = (List<GameInfo>)xmlSerializer.Deserialize(streamReader) ?? []; // Re-create each game info
 		streamReader.Dispose();
 
 		// 2. Iterate over each game and convert it to the new format
@@ -71,7 +64,7 @@ public class GameMigrationService
 		return new GameList(games);
 	}
 
-	private GameType GetGameType(bool isSteam, bool isUwp)
+	private static GameType GetGameType(bool isSteam, bool isUwp)
 	{
 		if (isUwp) return GameType.UWP;
 		if (isSteam) return GameType.Steam;

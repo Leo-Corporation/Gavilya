@@ -41,8 +41,8 @@ public class Profile
 		Name = name;
 		ProfilePictureFilePath = "";
 		ProfileUuid = Guid.NewGuid().ToString();
-		Games = new();
-		Tags = new();
+		Games = [];
+		Tags = [];
 		Settings = new();
 	}
 
@@ -51,8 +51,8 @@ public class Profile
 		Name = Environment.UserName;
 		ProfilePictureFilePath = "";
 		ProfileUuid = Guid.NewGuid().ToString();
-		Games = new();
-		Tags = new();
+		Games = [];
+		Tags = [];
 		Settings = new();
 	}
 

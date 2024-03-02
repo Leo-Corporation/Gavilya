@@ -51,10 +51,10 @@ public class ProfileData
 	{
 		if (!File.Exists($@"{FileSys.AppDataPath}\Léo Corporation\Gavilya\Profiles.g4v"))
 		{
-			Profiles = new()
-			{
+			Profiles =
+			[
 				new(Environment.UserName)
-			};
+			];
 
 			SelectedProfileUuid = Profiles[0].ProfileUuid;
 			Save();

@@ -135,12 +135,12 @@ public class RawgClient
 			var response = await client.ExecuteAsync(request); // Execute the request and store the result
 			var achievementsResults = JsonSerializer.Deserialize<AchievementsResults>(response.Content); // Deserialize the content of the reponse
 
-			return achievementsResults?.Results ?? new(); // Return the results
+			return achievementsResults?.Results ?? []; // Return the results
 		}
 		catch (Exception ex)
 		{
 			MessageBox.Show(ex.Message, Properties.Resources.MainWindowTitle, MessageBoxButton.OK, MessageBoxImage.Error); // Error
-			return new();
+			return [];
 		}
 	}
 

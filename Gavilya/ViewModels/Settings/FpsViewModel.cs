@@ -38,7 +38,7 @@ public class FpsViewModel : ViewModelBase
 	private string _opacity;
 	public string Opacity { get => _opacity; set { _opacity = value; OnPropertyChanged(nameof(Opacity)); } }
 
-	public string CombinationString => string.Format(Properties.Resources.OpenFpsCounter, "Control+Shift+F");
+	public static string CombinationString => string.Format(Properties.Resources.OpenFpsCounter, "Control+Shift+F");
 	public ICommand SaveCommand { get; }
 
 	public FpsViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)

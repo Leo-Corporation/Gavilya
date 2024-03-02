@@ -49,7 +49,7 @@ public class MainViewModel : ViewModelBase
 	private readonly List<Tag> _tags;
 	private readonly WindowHelper _windowHelper;
 	private List<ClickableGameViewModel> _searchResults;
-	internal GameList ItemsToRemove { get; set; } = new();
+	internal GameList ItemsToRemove { get; set; } = [];
 
 	private Models.Settings _currentSettings;
 	public Models.Settings CurrentSettings { get => _currentSettings; set { _currentSettings = value; LoadSettings(value); } }
@@ -77,7 +77,7 @@ public class MainViewModel : ViewModelBase
 		set
 		{
 			_query = value;
-			SearchResults = Games.Where(g => g.Name.ToLower().Contains(Query.ToLower())).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query));
+			SearchResults = Games.Where(g => g.Name.Contains(Query, StringComparison.CurrentCultureIgnoreCase)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query));
 			NoResults = SearchResults.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
 		}
 	}

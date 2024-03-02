@@ -265,7 +265,7 @@ public class GamePageViewModel : ViewModelBase
 		// Platforms section
 		if (rawgGame?.Platforms != null)
 		{
-			Platforms = rawgGame?.Platforms.Select(p => p.Platform).ToList() ?? new();
+			Platforms = rawgGame?.Platforms.Select(p => p.Platform).ToList() ?? [];
 		}
 
 		// Ratings section
@@ -313,7 +313,7 @@ public class GamePageViewModel : ViewModelBase
 		_mainViewModel.CurrentViewModel = new GameEditionViewModel(_game, _games, _tags, _mainViewModel);
 	}
 
-	string GetTimeString(int time) => time switch
+	static string GetTimeString(int time) => time switch
 	{
 		< 60 => $"{time} {(time > 1 ? Properties.Resources.SecondsMin : Properties.Resources.Second)}",
 		< 3600 => $"{time / 60d:0.0} {(time > 1 ? Properties.Resources.MinutesMin : Properties.Resources.Minute)}",

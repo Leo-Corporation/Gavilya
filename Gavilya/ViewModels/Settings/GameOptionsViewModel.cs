@@ -115,7 +115,7 @@ public class GameOptionsViewModel : ViewModelBase
 		}
 	}
 
-	private SolidColorBrush GetBrushFromHex(string hex)
+	private static SolidColorBrush GetBrushFromHex(string hex)
 	{
 		var color = new HEX(hex).ToRgb().Color;
 		return new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(color.R, color.G, color.B) };
