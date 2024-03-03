@@ -27,9 +27,8 @@ using System.Windows;
 
 namespace Gavilya.Helpers;
 
-public class WindowHelper
+public class WindowHelper(Window window)
 {
-	private readonly Window _window;
 
 	/// <summary>
 	/// The first value is the maximum height, and the second one is the maximum width.
@@ -37,7 +36,7 @@ public class WindowHelper
 	/// <returns></returns>
 	public (double, double) GetMaximumSize()
 	{
-		System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(_window).Handle); // The current screen
+		System.Windows.Forms.Screen currentScreen = System.Windows.Forms.Screen.FromHandle(new System.Windows.Interop.WindowInteropHelper(window).Handle); // The current screen
 
 		float dpiX;
 		double scaling = 100; // Default scaling = 100%
@@ -60,10 +59,5 @@ public class WindowHelper
 		double factor = scaling / 100d; // Calculate factor
 
 		return (currentScreen.WorkingArea.Height / factor + 8, currentScreen.WorkingArea.Width / factor + 8);
-	}
-
-	public WindowHelper(Window window)
-	{
-		_window = window;
 	}
 }

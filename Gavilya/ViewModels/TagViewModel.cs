@@ -44,10 +44,10 @@ public class TagViewModel : ViewModelBase
 	public SolidColorBrush SolidColorBrush { get => _solidColorBrush; set { _solidColorBrush = value; OnPropertyChanged(nameof(SolidColorBrush)); } }
 
 
-	private List<Tag> _tags;
+	private readonly List<Tag> _tags;
 	private readonly GameList _games;
 	private readonly Action _refresh;
-	private Tag _tag;
+	private readonly Tag _tag;
 
 	public ICommand EditCommand { get; }
 	public ICommand DeleteCommand { get; }
@@ -114,7 +114,7 @@ public class TagViewModel : ViewModelBase
 		}
 	}
 
-	private SolidColorBrush GetBrushFromHex(string hex)
+	private static SolidColorBrush GetBrushFromHex(string hex)
 	{
 		var color = new HEX(hex).ToRgb().Color;
 		return new SolidColorBrush { Color = System.Windows.Media.Color.FromRgb(color.R, color.G, color.B) };

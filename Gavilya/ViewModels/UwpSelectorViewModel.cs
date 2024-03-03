@@ -24,6 +24,7 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels;
@@ -36,9 +37,15 @@ public class UwpSelectorViewModel : ViewModelBase
 	public string AppId { get; }
 	public string Name { get; }
 
-	public string InfoText => $"{PackageName} • {AppId}";
-
+	public ICommand CollapseCommand { get; }
 	public ICommand ClickCommand { get; }
+
+	private Visibility _collapseGridVis = Visibility.Collapsed;
+	public Visibility CollapseGridVid { get => _collapseGridVis; set { _collapseGridVis = value; OnPropertyChanged(nameof(CollapseGridVid)); } }
+
+	private string _collapseIcon = "\uF2A4";
+	public string CollapseIcon { get => _collapseIcon; set { _collapseIcon = value; OnPropertyChanged(nameof(CollapseIcon)); } }
+
 	public UwpSelectorViewModel(UwpApp uwpApp, GameEditionViewModel gameEditionViewModel)
 	{
 		_gameEditionViewModel = gameEditionViewModel;
@@ -48,6 +55,7 @@ public class UwpSelectorViewModel : ViewModelBase
 		Name = uwpApp.Name;
 
 		ClickCommand = new RelayCommand(Click);
+		CollapseCommand = new RelayCommand(Collapse);
 	}
 
 	private void Click(object? obj)
@@ -55,5 +63,11 @@ public class UwpSelectorViewModel : ViewModelBase
 		_gameEditionViewModel.PackageFamilyName = PackageName;
 		_gameEditionViewModel.AppId = AppId;
 		_gameEditionViewModel.IsUwpOpen = false;
+	}
+
+	private void Collapse(object? obj)
+	{
+		CollapseGridVid = CollapseGridVid == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
+		CollapseIcon = CollapseGridVid == Visibility.Visible ? "\uF2B7" : "\uF2A4";
 	}
 }

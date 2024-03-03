@@ -33,9 +33,9 @@ namespace Gavilya.Services;
 
 public class GameScannerService
 {
-	public List<ExecutableViewModel> ScanForExecutables(string directory, GameEditionViewModel gameEditionViewModel)
+	public static List<ExecutableViewModel> ScanForExecutables(string directory, GameEditionViewModel gameEditionViewModel)
 	{
-		List<ExecutableViewModel> executableFiles = new();
+		List<ExecutableViewModel> executableFiles = [];
 
 		try
 		{

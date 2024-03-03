@@ -32,8 +32,8 @@ namespace Gavilya.ViewModels;
 
 public class MinimalGameViewModel : ViewModelBase
 {
-	private Game _game;
-	private GameList _games;
+	private readonly Game _game;
+	private readonly GameList _games;
 	private readonly MainViewModel _mainViewModel;
 
 	private string _name;

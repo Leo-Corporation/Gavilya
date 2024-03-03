@@ -2,16 +2,16 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <UseWindowsForms>True</UseWindowsForms>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Title>Gavilya</Title>
-    <Version>4.3.0.2312</Version>
+    <Version>4.4.0.2403</Version>
     <Authors>Léo Corporation</Authors>
     <Description>Gavilya is a simple game launcher for Windows.</Description>
-    <Copyright>© 2023</Copyright>
+    <Copyright>© 2024</Copyright>
     <PackageProjectUrl>gavilya.leocorporation.dev</PackageProjectUrl>
     <PackageIcon>Gavilya.png</PackageIcon>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
@@ -53,8 +53,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.77" />
     <PackageReference Include="MouseKeyHook" Version="5.7.1" />
-    <PackageReference Include="PeyrSharp.Core" Version="1.10.0.2310" />
-    <PackageReference Include="PeyrSharp.Env" Version="1.10.0.2310" />
+    <PackageReference Include="PeyrSharp.Core" Version="2.1.0.2312" />
+    <PackageReference Include="PeyrSharp.Env" Version="2.1.0.2312" />
     <PackageReference Include="RestSharp" Version="110.2.0" />
   </ItemGroup>
 

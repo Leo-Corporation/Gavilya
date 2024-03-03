@@ -35,7 +35,6 @@ public class ListPageViewModel : ViewModelBase
 
 	private ViewModelBase _viewModelBase;
 	private List<GameListViewModel> _gamesVm;
-	private List<GameListViewModel> _favGamesVm;
 	private readonly List<Tag> _tags;
 	private readonly MainViewModel _mainViewModel;
 

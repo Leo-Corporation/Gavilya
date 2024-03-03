@@ -250,6 +250,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to App ID.
+        /// </summary>
+        public static string AppID {
+            get {
+                return ResourceManager.GetString("AppID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &quot;Application Id&quot; property.
         /// </summary>
         public static string ApplicationId {
@@ -754,7 +763,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export your games in Gavilya to .gav save file..
+        ///   Looks up a localized string similar to Export your games in Gavilya to .g4vgames save file..
         /// </summary>
         public static string ExportGamesDescription {
             get {
@@ -1159,7 +1168,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import a .gav save file in Gavilya. The current save file is going to be replaced by the new one..
+        ///   Looks up a localized string similar to Import a .g4vgames save file in Gavilya. The current save file is going to be replaced by the new one..
         /// </summary>
         public static string ImportGamesDescription {
             get {
@@ -1812,6 +1821,15 @@ namespace Gavilya.Properties {
         public static string P3 {
             get {
                 return ResourceManager.GetString("P3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Package.
+        /// </summary>
+        public static string Package {
+            get {
+                return ResourceManager.GetString("Package", resourceCulture);
             }
         }
         

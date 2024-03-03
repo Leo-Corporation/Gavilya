@@ -2,17 +2,17 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <RootNamespace>Xalyus_Updater</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Xalyus Updater.ico</ApplicationIcon>
-    <Version>4.0.0.2309</Version>
+    <Version>4.0.0.2402</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/Leo-Corporation/Gavilya</RepositoryUrl>
     <PackageProjectUrl>https://leo-corporation.github.io/Gavilya-Web/</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <Copyright>© 2023</Copyright>
+    <Copyright>© 2024</Copyright>
     <Company>Léo Corporation</Company>
   </PropertyGroup>
 

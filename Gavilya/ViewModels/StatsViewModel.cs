@@ -184,11 +184,7 @@ public class StatsViewModel : ViewModelBase
 	}
 }
 
-public class RecInfo : ViewModelBase
+public class RecInfo(double h) : ViewModelBase
 {
-	public double RecHeight { get; }
-	public RecInfo(double h)
-	{
-		RecHeight = h;
-	}
+	public double RecHeight { get; } = h;
 }

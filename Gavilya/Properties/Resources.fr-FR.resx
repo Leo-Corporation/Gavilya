@@ -295,10 +295,10 @@
     <value>Importer vos jeux</value>
   </data>
   <data name="ExportGamesDescription" xml:space="preserve">
-    <value>Exporter vos jeux dans Gavilya dans un fichier de sauvegarde .gav.</value>
+    <value>Exporter vos jeux dans Gavilya dans un fichier de sauvegarde .g4vgames.</value>
   </data>
   <data name="ImportGamesDescription" xml:space="preserve">
-    <value>Importer un fichier de sauvegarde .gav dans Gavilya. Le fichier de sauvegarde actuel sera remplacé par le nouveau.</value>
+    <value>Importer un fichier de sauvegarde .g4vgames dans Gavilya. Le fichier de sauvegarde actuel sera remplacé par le nouveau.</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Exporter</value>
@@ -1034,5 +1034,11 @@
   </data>
   <data name="ThisWeek" xml:space="preserve">
     <value>Cette Semaine</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>Paquet</value>
+  </data>
+  <data name="AppID" xml:space="preserve">
+    <value>ID de l'application</value>
   </data>
 </root>

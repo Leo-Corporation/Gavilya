@@ -54,8 +54,7 @@ namespace Gavilya.Commands
 
 		private static void PreviewDropCommandPropertyChangedCallBack(DependencyObject inDependencyObject, DependencyPropertyChangedEventArgs inEventArgs)
 		{
-			UIElement uiElement = inDependencyObject as UIElement;
-			if (null == uiElement) return;
+			if (inDependencyObject is not UIElement uiElement) return;
 
 			uiElement.Drop += (sender, args) =>
 			{

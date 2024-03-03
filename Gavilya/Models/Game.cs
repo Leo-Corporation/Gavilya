@@ -49,7 +49,7 @@ public class Game
 	{
 		Id = Guid.NewGuid().ToString();
 		RawgId = -1;
-		Tags = new();
+		Tags = [];
 	}
 
 	public override bool Equals(object? obj)

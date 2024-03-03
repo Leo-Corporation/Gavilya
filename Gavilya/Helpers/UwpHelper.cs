@@ -61,9 +61,9 @@ public static class UwpHelper
 
 			string text = await File.ReadAllTextAsync($@"{PeyrSharp.Env.FileSys.AppDataPath}\UwpApps.json"); // Deserialize
 
-			List<UwpApp> apps = JsonSerializer.Deserialize<List<UwpApp>>(text) ?? new(); // Get apps
-			List<UwpApp> sortedApps = new(); // Create final list
-			Dictionary<UwpApp, string> uwpApps = new(); // Create a dictionnary
+			List<UwpApp> apps = JsonSerializer.Deserialize<List<UwpApp>>(text) ?? []; // Get apps
+			List<UwpApp> sortedApps = []; // Create final list
+			Dictionary<UwpApp, string> uwpApps = []; // Create a dictionnary
 
 			// Sort apps to only have UWP apps (they have a "!" in the AppID property)
 			for (int i = 0; i < apps.Count; i++)
@@ -86,7 +86,7 @@ public static class UwpHelper
 		}
 		catch (Exception ex)
 		{
-			return new() { new(ex.StackTrace, ex.Message) };
+			return [new(ex.StackTrace, ex.Message)];
 		}
 	}
 }

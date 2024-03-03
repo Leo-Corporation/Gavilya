@@ -59,7 +59,7 @@ public class SaveOptionsViewModel : ViewModelBase
 	private bool _makeSave;
 	public bool MakeSave { get => _makeSave; set { _makeSave = value; OnPropertyChanged(nameof(MakeSave)); } }
 
-	public IEnumerable<int> Days => Enumerable.Range(1, 31);
+	public static IEnumerable<int> Days => Enumerable.Range(1, 31);
 
 	public ICommand ImportCommand { get; }
 	public ICommand ExportCommand { get; }

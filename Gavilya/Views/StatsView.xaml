@@ -20,6 +20,8 @@
             Margin="10"
             Padding="25"
             Background="{DynamicResource Background2}"
+            BorderBrush="{DynamicResource SelectedBackground}"
+            BorderThickness="2"
             CornerRadius="10"
             Visibility="{Binding StatVis}">
             <Grid>
@@ -162,74 +164,66 @@
                                             Stretch="UniformToFill" />
                                     </Border.Background>
 
-                                    <Grid Height="150">
+                                    <Grid Height="200">
                                         <Grid.Background>
                                             <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                                                 <GradientStop Offset="0.95" Color="#E50A0A1E" />
                                                 <GradientStop Offset="0" Color="#00000000" />
                                             </LinearGradientBrush>
                                         </Grid.Background>
-                                        <TextBlock
-                                            x:Name="GameNameTxt"
-                                            Grid.Row="0"
-                                            Margin="5"
-                                            VerticalAlignment="Bottom"
-                                            d:Text="GameName"
-                                            FontSize="24"
-                                            FontWeight="ExtraBold"
-                                            Text="{Binding Name}"
-                                            TextAlignment="Left" />
+                                        <Grid VerticalAlignment="Bottom">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <TextBlock
+                                                x:Name="GameNameTxt"
+                                                Grid.Row="0"
+                                                Margin="5"
+                                                VerticalAlignment="Bottom"
+                                                d:Text="GameName"
+                                                FontSize="24"
+                                                FontWeight="ExtraBold"
+                                                Text="{Binding Name}"
+                                                TextAlignment="Left" />
+                                            <StackPanel
+                                                Grid.Row="1"
+                                                Margin="5 0 5 5"
+                                                Orientation="Horizontal">
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                                    FontSize="14"
+                                                    Foreground="{DynamicResource Foreground}"
+                                                    Text="&#xF47F;" />
+                                                <TextBlock
+                                                    Margin="5 0"
+                                                    VerticalAlignment="Center"
+                                                    d:Text="10 December 2021"
+                                                    FontWeight="SemiBold"
+                                                    Text="{Binding LastTimePlayed}"
+                                                    TextAlignment="Left" />
+                                                <TextBlock
+                                                    Margin="0 0 5 0"
+                                                    VerticalAlignment="Center"
+                                                    FontWeight="SemiBold"
+                                                    Text="•" />
+                                                <TextBlock
+                                                    VerticalAlignment="Center"
+                                                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                                    Foreground="{DynamicResource Foreground}"
+                                                    Text="&#xF2DE;" />
+                                                <TextBlock
+                                                    Margin="5 0"
+                                                    d:Text="74,5h"
+                                                    FontWeight="SemiBold"
+                                                    Text="{Binding TotalTimePlayed}"
+                                                    TextAlignment="Left" />
+                                            </StackPanel>
+                                        </Grid>
                                     </Grid>
                                 </Border>
 
-                                <Border
-                                    Grid.Row="1"
-                                    Margin="10 10 20 10"
-                                    Padding="10"
-                                    Background="{DynamicResource SelectedBackground}"
-                                    CornerRadius="10">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition />
-                                        </Grid.RowDefinitions>
-                                        <TextBlock
-                                            FontSize="14"
-                                            FontWeight="ExtraBold"
-                                            Foreground="{DynamicResource LightForeground}"
-                                            Text="{x:Static lang:Resources.StatsTimePlayed}" />
-                                        <TextBlock
-                                            Grid.Column="1"
-                                            FontSize="14"
-                                            FontWeight="ExtraBold"
-                                            Foreground="{DynamicResource LightForeground}"
-                                            Text="{x:Static lang:Resources.StatsLastTimePlayed}" />
-
-                                        <TextBlock
-                                            Grid.Row="1"
-                                            Grid.Column="0"
-                                            Margin="0 10 10 10"
-                                            d:Text="74,5h"
-                                            FontSize="22"
-                                            FontWeight="ExtraBold"
-                                            Text="{Binding TotalTimePlayed}"
-                                            TextAlignment="Left" />
-                                        <TextBlock
-                                            Grid.Row="1"
-                                            Grid.Column="1"
-                                            Margin="0 10 10 10"
-                                            d:Text="10 December 2021"
-                                            FontSize="22"
-                                            FontWeight="ExtraBold"
-                                            Text="{Binding LastTimePlayed}"
-                                            TextAlignment="Left" />
-                                    </Grid>
-                                </Border>
 
                                 <StackPanel
                                     Grid.Row="2"

@@ -91,7 +91,7 @@ public partial class App : Application
 		base.OnStartup(e);
 	}
 
-	private bool IsSaveDay(int day)
+	private static bool IsSaveDay(int day)
 	{
 		// Get the current date
 		DateTime currentDate = DateTime.Today;
@@ -124,7 +124,7 @@ public partial class App : Application
 		return false;
 	}
 
-	private void CreateJumpLists(GameList games)
+	private static void CreateJumpLists(GameList games)
 	{
 		JumpList jumpList = new();
 

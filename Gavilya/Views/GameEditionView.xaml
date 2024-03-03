@@ -115,6 +115,8 @@
                         Margin="10"
                         Padding="10"
                         Background="{DynamicResource Background}"
+                        BorderBrush="{DynamicResource Background2}"
+                        BorderThickness="2"
                         CornerRadius="10">
                         <Border.Effect>
                             <DropShadowEffect
@@ -269,6 +271,8 @@
                         Margin="10"
                         Padding="10"
                         Background="{DynamicResource Background}"
+                        BorderBrush="{DynamicResource Background2}"
+                        BorderThickness="2"
                         CornerRadius="10">
                         <Border.Effect>
                             <DropShadowEffect
@@ -466,6 +470,8 @@
                                     Margin="10"
                                     Padding="10"
                                     Background="{DynamicResource Background}"
+                                    BorderBrush="{DynamicResource Background2}"
+                                    BorderThickness="2"
                                     CornerRadius="10">
                                     <Border.Effect>
                                         <DropShadowEffect
@@ -687,6 +693,8 @@
                                 Margin="10"
                                 Padding="10"
                                 Background="{DynamicResource Background}"
+                                BorderBrush="{DynamicResource Background2}"
+                                BorderThickness="2"
                                 CornerRadius="10">
                                 <Border.Effect>
                                     <DropShadowEffect

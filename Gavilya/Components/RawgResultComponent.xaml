@@ -12,9 +12,11 @@
     Foreground="{DynamicResource Foreground}"
     mc:Ignorable="d">
     <Border
-        Margin="10"
+        Margin="10 5"
         Padding="10"
-        Background="{DynamicResource SelectedBackground}"
+        Background="{DynamicResource Background2}"
+        BorderBrush="{DynamicResource SelectedBackground}"
+        BorderThickness="2"
         CornerRadius="10">
 
         <Grid>

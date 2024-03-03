@@ -36,9 +36,9 @@ namespace Gavilya.Helpers;
 
 public class GameLauncherHelper
 {
-	private Game _game;
-	private GameList _games;
-	private DispatcherTimer _dispatcherTimer;
+	private readonly Game _game;
+	private readonly GameList _games;
+	private readonly DispatcherTimer _dispatcherTimer;
 	private bool _gameStarted;
 
 	public event EventHandler<GameEventArgs> OnGameUpdatedEvent;
@@ -136,13 +136,8 @@ public class GameLauncherHelper
 		return true; // Return true, Steam can launch game.
 	}
 
-	public class GameEventArgs : EventArgs
+	public class GameEventArgs(Game game) : EventArgs
 	{
-		public Game Game { get; init; }
-
-		public GameEventArgs(Game game)
-		{
-			Game = game;
-		}
+		public Game Game { get; init; } = game;
 	}
 }

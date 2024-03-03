@@ -36,14 +36,12 @@ namespace Gavilya.ViewModels;
 public class NavBarViewModel : ViewModelBase
 {
 	private readonly MainViewModel _mainViewModel;
-	private Profile _profile;
+	private readonly Profile _profile;
 	private readonly ProfileData _profiles;
 	private readonly List<Tag> _tags;
 	private bool _isPopupOpen = false;
 	public bool IsPopupOpen { get => _isPopupOpen; set { _isPopupOpen = value; OnPropertyChanged(nameof(IsPopupOpen)); } }
 	GameList Games { get; set; }
-
-	private List<ClickableGameViewModel> _favVm;
 
 	private bool _isHome;
 	public bool IsHome { get => _isHome; set { _isHome = value; OnPropertyChanged(nameof(IsHome)); } }

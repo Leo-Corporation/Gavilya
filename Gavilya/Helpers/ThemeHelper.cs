@@ -61,16 +61,16 @@ public class ThemeHelper
 		{
 			Directory.CreateDirectory(themePath);
 
-			return new()
-			{
+			return
+			[
 				(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Context.Version), "")
-			};
+			];
 		}
 
-		List<(ThemeInfo, string)> installedThemes = new()
-		{
+		List<(ThemeInfo, string)> installedThemes =
+		[
 			(new ThemeInfo(Properties.Resources.Default, "Dark.xaml", Context.Version), "")
-		};
+		];
 
 		// If there are themes installed
 		foreach (var subdir in Directory.GetDirectories(themePath))

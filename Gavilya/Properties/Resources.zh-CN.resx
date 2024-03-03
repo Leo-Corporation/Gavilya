@@ -295,10 +295,10 @@
     <value>导入您的游戏</value>
   </data>
   <data name="ExportGamesDescription" xml:space="preserve">
-    <value>将您在 Gavilya 中的游戏导出为 .gav 保存文件。</value>
+    <value>将您在 Gavilya 中的游戏导出为 .g4vgames 保存文件。</value>
   </data>
   <data name="ImportGamesDescription" xml:space="preserve">
-    <value>在 Gavilya 中导入 .gav 保存文件。 当前的保存文件将被新的文件替换。</value>
+    <value>在 Gavilya 中导入 .g4vgames 保存文件。 当前的保存文件将被新的文件替换。</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>导出</value>
@@ -1034,5 +1034,11 @@
   </data>
   <data name="ThisWeek" xml:space="preserve">
     <value>本星期</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>包装</value>
+  </data>
+  <data name="AppID" xml:space="preserve">
+    <value>应用程序 ID</value>
   </data>
 </root>
