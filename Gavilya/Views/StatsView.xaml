@@ -80,6 +80,113 @@
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
                     </ScrollViewer>
+                    <Grid
+                        Grid.Column="1"
+                        Margin="5"
+                        VerticalAlignment="Center">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            MinWidth="23"
+                            Padding="5 2"
+                            VerticalAlignment="Top"
+                            Background="{DynamicResource PlayGradient}"
+                            BorderThickness="1"
+                            CornerRadius="10">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                d:Text="12"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{Binding ClassicGamesCount}" />
+                        </Border>
+                        <TextBlock
+                            Grid.Column="1"
+                            Margin="10 0 0 0"
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Text="{x:Static lang:Resources.WindowsClassicGames}" />
+
+                        <Border
+                            Grid.Row="1"
+                            MinWidth="23"
+                            Margin="0 5"
+                            Padding="5 2"
+                            VerticalAlignment="Top"
+                            BorderThickness="1"
+                            CornerRadius="10">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                d:Text="7"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{Binding SteamGamesCount}" />
+                            <Border.Background>
+                                <LinearGradientBrush>
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                                            <SkewTransform CenterX="0.5" CenterY="0.5" />
+                                            <RotateTransform Angle="180" CenterX="0.5" CenterY="0.5" />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#FF0075E2" />
+                                    <GradientStop Offset="1" Color="#FF003DFB" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <TextBlock
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10 0 0 0"
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Text="{x:Static lang:Resources.SteamGames}" />
+                        <Border
+                            Grid.Row="2"
+                            MinWidth="23"
+                            Padding="5 2"
+                            VerticalAlignment="Top"
+                            BorderThickness="1"
+                            CornerRadius="10">
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                d:Text="1"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{Binding MicrosoftGamesCount}" />
+                            <Border.Background>
+                                <LinearGradientBrush>
+                                    <LinearGradientBrush.RelativeTransform>
+                                        <TransformGroup>
+                                            <ScaleTransform CenterX="0.5" CenterY="0.5" />
+                                            <SkewTransform CenterX="0.5" CenterY="0.5" />
+                                            <RotateTransform Angle="180" CenterX="0.5" CenterY="0.5" />
+                                            <TranslateTransform />
+                                        </TransformGroup>
+                                    </LinearGradientBrush.RelativeTransform>
+                                    <GradientStop Color="#00E20A" />
+                                    <GradientStop Offset="1" Color="#00FB1C" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+                        </Border>
+                        <TextBlock
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Margin="10 0 0 0"
+                            VerticalAlignment="Center"
+                            FontWeight="Bold"
+                            Text="{x:Static lang:Resources.MicrosoftStoreGames}" />
+
+                    </Grid>
                     <Grid Grid.Row="1" Margin="0 15 0 0">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
@@ -134,6 +241,7 @@
 
 
                     <ScrollViewer
+                        Grid.Row="1"
                         Grid.RowSpan="2"
                         Grid.Column="1"
                         HorizontalScrollBarVisibility="Disabled">
