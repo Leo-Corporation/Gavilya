@@ -73,7 +73,7 @@
                                         MaxHeight="110"
                                         Margin="2 0"
                                         VerticalAlignment="Bottom"
-                                        Fill="{DynamicResource SelectedBackground}"
+                                        Fill="{DynamicResource StatGradient}"
                                         RadiusX="10"
                                         RadiusY="10" />
                                 </DataTemplate>
