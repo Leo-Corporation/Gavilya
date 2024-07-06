@@ -1041,4 +1041,13 @@
   <data name="AppID" xml:space="preserve">
     <value>App ID</value>
   </data>
+  <data name="WindowsClassicGames" xml:space="preserve">
+    <value>Classic Windows games</value>
+  </data>
+  <data name="SteamGames" xml:space="preserve">
+    <value>Steam games</value>
+  </data>
+  <data name="MicrosoftStoreGames" xml:space="preserve">
+    <value>Microsoft Store games</value>
+  </data>
 </root>

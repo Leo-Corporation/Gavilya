@@ -1041,4 +1041,13 @@
   <data name="AppID" xml:space="preserve">
     <value>应用程序 ID</value>
   </data>
+  <data name="WindowsClassicGames" xml:space="preserve">
+    <value>经典 Windows 游戏</value>
+  </data>
+  <data name="SteamGames" xml:space="preserve">
+    <value>Steam 游戏</value>
+  </data>
+  <data name="MicrosoftStoreGames" xml:space="preserve">
+    <value>Microsoft 商店游戏</value>
+  </data>
 </root>

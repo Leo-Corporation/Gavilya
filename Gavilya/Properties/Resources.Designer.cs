@@ -1420,6 +1420,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Microsoft Store games.
+        /// </summary>
+        public static string MicrosoftStoreGames {
+            get {
+                return ResourceManager.GetString("MicrosoftStoreGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Migrate from v3.
         /// </summary>
         public static string MigrateFromV3 {
@@ -2536,6 +2545,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Steam games.
+        /// </summary>
+        public static string SteamGames {
+            get {
+                return ResourceManager.GetString("SteamGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot launch game: Steam is not running..
         /// </summary>
         public static string SteamNotRunning {
@@ -2793,6 +2811,15 @@ namespace Gavilya.Properties {
         public static string WhatGameToPlay {
             get {
                 return ResourceManager.GetString("WhatGameToPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classic Windows games.
+        /// </summary>
+        public static string WindowsClassicGames {
+            get {
+                return ResourceManager.GetString("WindowsClassicGames", resourceCulture);
             }
         }
         
