@@ -1041,4 +1041,22 @@
   <data name="AppID" xml:space="preserve">
     <value>应用程序 ID</value>
   </data>
+  <data name="WindowsClassicGames" xml:space="preserve">
+    <value>经典 Windows 游戏</value>
+  </data>
+  <data name="SteamGames" xml:space="preserve">
+    <value>Steam 游戏</value>
+  </data>
+  <data name="MicrosoftStoreGames" xml:space="preserve">
+    <value>Microsoft 商店游戏</value>
+  </data>
+  <data name="GetThemes" xml:space="preserve">
+    <value>获取主题</value>
+  </data>
+  <data name="GroupGamesByDate" xml:space="preserve">
+    <value>按日期分组比赛</value>
+  </data>
+  <data name="RecentPageOptions" xml:space="preserve">
+    <value>最近玩过的游戏页面选项。</value>
+  </data>
 </root>

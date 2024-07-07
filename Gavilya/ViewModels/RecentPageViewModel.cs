@@ -44,9 +44,9 @@ public class RecentPageViewModel : ViewModelBase
 	public ICommand AddCommand { get; }
 	public RecentPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
-		_sortedGames = games.GetSortedGameLists();
-		_tags = tags;
 		_mainViewModel = mainViewModel;
+		_sortedGames = games.GetSortedGameLists(_mainViewModel.CurrentSettings.GroupGamesByDate ?? true);
+		_tags = tags;
 
 		PlaceholderVis = games.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
 		AddCommand = new RelayCommand((o) => _mainViewModel.CurrentViewModel = new GameEditionViewModel(Enums.GameType.Win32, games, _tags, _mainViewModel));

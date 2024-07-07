@@ -28,6 +28,7 @@ using Gavilya.Models;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -48,6 +49,7 @@ public class ThemeViewModel : ViewModelBase
 	public int Index { get => _index; set { _index = value; ChangeTheme(value); OnPropertyChanged(nameof(Index)); } }
 
 	public ICommand ImportCommand { get; }
+	public ICommand GetThemesCommand { get; }
 
 	public ThemeViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
@@ -62,6 +64,7 @@ public class ThemeViewModel : ViewModelBase
 		Index = _installedThemes.IndexOf(_installedThemes.Where(t => t.Item1.Equals(current)).First());
 
 		ImportCommand = new RelayCommand(Import);
+		GetThemesCommand = new RelayCommand(GetThemesOnline);
 	}
 
 	private void ChangeTheme(int i)
@@ -113,5 +116,10 @@ public class ThemeViewModel : ViewModelBase
 			_installedThemes = ThemeHelper.GetInstalledThemes();
 			ThemeNames = _installedThemes.Select(t => t.Item1.Name).ToList();
 		}
+	}
+
+	private void GetThemesOnline(object? obj)
+	{
+		Process.Start("explorer.exe", "https://gavilya.leocorporation.dev/themes");
 	}
 }

@@ -1041,4 +1041,22 @@
   <data name="AppID" xml:space="preserve">
     <value>ID de l'application</value>
   </data>
+  <data name="WindowsClassicGames" xml:space="preserve">
+    <value>Jeux Windows classiques</value>
+  </data>
+  <data name="SteamGames" xml:space="preserve">
+    <value>Jeux Steam</value>
+  </data>
+  <data name="MicrosoftStoreGames" xml:space="preserve">
+    <value>Jeux du Microsoft Store</value>
+  </data>
+  <data name="GetThemes" xml:space="preserve">
+    <value>Obtenir des thèmes</value>
+  </data>
+  <data name="GroupGamesByDate" xml:space="preserve">
+    <value>Regrouper les jeux par date</value>
+  </data>
+  <data name="RecentPageOptions" xml:space="preserve">
+    <value>Options de la page des jeux récemment joués.</value>
+  </data>
 </root>

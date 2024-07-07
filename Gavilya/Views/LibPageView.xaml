@@ -41,6 +41,22 @@
                     FontSize="18"
                     FontWeight="ExtraBold"
                     Text="{x:Static lang:Resources.Library}" />
+                <Border
+                    MinWidth="23"
+                    Margin="10 0"
+                    Padding="5 2"
+                    VerticalAlignment="Center"
+                    Background="{DynamicResource Background2}"
+                    BorderBrush="{DynamicResource LightForeground}"
+                    BorderThickness="1"
+                    CornerRadius="10">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        d:Text="12"
+                        FontWeight="Bold"
+                        Foreground="{DynamicResource LightForeground}"
+                        Text="{Binding GamesCount}" />
+                </Border>
                 <Button
                     x:Name="RandomGameBtn"
                     Grid.Column="1"

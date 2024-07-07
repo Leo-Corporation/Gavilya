@@ -1006,6 +1006,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get themes.
+        /// </summary>
+        public static string GetThemes {
+            get {
+                return ResourceManager.GetString("GetThemes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GitHub.
         /// </summary>
         public static string GitHub {
@@ -1029,6 +1038,15 @@ namespace Gavilya.Properties {
         public static string GoForward {
             get {
                 return ResourceManager.GetString("GoForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group games by date.
+        /// </summary>
+        public static string GroupGamesByDate {
+            get {
+                return ResourceManager.GetString("GroupGamesByDate", resourceCulture);
             }
         }
         
@@ -1416,6 +1434,15 @@ namespace Gavilya.Properties {
         public static string MicrosoftStore {
             get {
                 return ResourceManager.GetString("MicrosoftStore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Store games.
+        /// </summary>
+        public static string MicrosoftStoreGames {
+            get {
+                return ResourceManager.GetString("MicrosoftStoreGames", resourceCulture);
             }
         }
         
@@ -2023,6 +2050,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Recently played games page options..
+        /// </summary>
+        public static string RecentPageOptions {
+            get {
+                return ResourceManager.GetString("RecentPageOptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recents.
         /// </summary>
         public static string Recents {
@@ -2536,6 +2572,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Steam games.
+        /// </summary>
+        public static string SteamGames {
+            get {
+                return ResourceManager.GetString("SteamGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot launch game: Steam is not running..
         /// </summary>
         public static string SteamNotRunning {
@@ -2793,6 +2838,15 @@ namespace Gavilya.Properties {
         public static string WhatGameToPlay {
             get {
                 return ResourceManager.GetString("WhatGameToPlay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Classic Windows games.
+        /// </summary>
+        public static string WindowsClassicGames {
+            get {
+                return ResourceManager.GetString("WindowsClassicGames", resourceCulture);
             }
         }
         

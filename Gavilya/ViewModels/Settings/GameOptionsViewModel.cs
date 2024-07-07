@@ -42,6 +42,9 @@ public class GameOptionsViewModel : ViewModelBase
 	private bool _showHiddenGames;
 	public bool ShowHiddenGames { get => _showHiddenGames; set { _showHiddenGames = value; OnPropertyChanged(nameof(ShowHiddenGames)); } }
 
+	private bool _sortGames;
+	public bool SortGames { get => _sortGames; set { _sortGames = value; OnPropertyChanged(nameof(SortGames)); } }
+
 	private List<TagViewModel> _tagsVm;
 	public List<TagViewModel> TagsVm { get => _tagsVm; set { _tagsVm = value; OnPropertyChanged(nameof(TagsVm)); } }
 	public List<Tag> Tags { get; set; }
@@ -58,6 +61,7 @@ public class GameOptionsViewModel : ViewModelBase
 	public ICommand CheckHiddenGames { get; }
 	public ICommand AddTagCommand { get; }
 	public ICommand ChangeColorCommand { get; }
+	public ICommand CheckSortGames { get; }
 
 	public GameOptionsViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
@@ -66,6 +70,7 @@ public class GameOptionsViewModel : ViewModelBase
 		_mainViewModel = mainViewModel;
 
 		ShowHiddenGames = profile.Settings.ShowHiddenGames;
+		SortGames = profile.Settings.GroupGamesByDate ?? true;
 		Tags = profile.Tags;
 		TagsVm = Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh)).ToList();
 
@@ -73,6 +78,7 @@ public class GameOptionsViewModel : ViewModelBase
 		Color = new RGB(random.Next(255), random.Next(255), random.Next(255)).ToHex().Value;
 
 		CheckHiddenGames = new RelayCommand(HandleCheck);
+		CheckSortGames = new RelayCommand(SortGamesChanged);
 		AddTagCommand = new RelayCommand(Add);
 		ChangeColorCommand = new RelayCommand(ChangeColor);
 	}
@@ -91,6 +97,14 @@ public class GameOptionsViewModel : ViewModelBase
 		Tag tag = new(TagName, Color);
 		Tags.Add(tag);
 		Refresh();
+	}
+
+	private void SortGamesChanged(object? obj)
+	{
+		_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.GroupGamesByDate = SortGames;
+		_mainViewModel.CurrentSettings = _profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings;
+		_profileData.Save();
+		_mainViewModel.Games.Refresh();
 	}
 
 	internal void Refresh()

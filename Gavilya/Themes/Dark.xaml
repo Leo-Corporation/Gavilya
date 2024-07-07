@@ -24,7 +24,10 @@
         <GradientStop Offset="0" Color="#7300ff" />
         <GradientStop Offset="1" Color="#d300ff" />
     </LinearGradientBrush>
-
+    <LinearGradientBrush x:Key="StatGradient" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Offset="0" Color="#9077d3" />
+        <GradientStop Offset="1" Color="#905cff" />
+    </LinearGradientBrush>
     <LinearGradientBrush x:Key="PlayGradientHover" SpreadMethod="Pad" StartPoint="0.5,0" EndPoint="0.5,1">
         <LinearGradientBrush.RelativeTransform>
             <TransformGroup>

@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Commands;
+using Gavilya.Enums;
 using Gavilya.Models;
 using PeyrSharp.Core.Converters;
 using System.Collections.Generic;
@@ -110,6 +111,15 @@ public class StatsViewModel : ViewModelBase
 	private bool _sortByMostPlayed = true;
 	public bool SortByMostPlayed { get => _sortByMostPlayed; set { _sortByMostPlayed = value; OnPropertyChanged(nameof(SortByMostPlayed)); } }
 
+	private int _classicGamesCount = 0;
+	public int ClassicGamesCount { get => _classicGamesCount; set { _classicGamesCount = value; OnPropertyChanged(nameof(ClassicGamesCount)); } }
+
+	private int _steamGamesCount = 0;
+	public int SteamGamesCount { get => _steamGamesCount; set { _steamGamesCount = value; OnPropertyChanged(nameof(SteamGamesCount)); } }
+
+	private int _microsoftGamesCount = 0;
+	public int MicrosoftGamesCount { get => _microsoftGamesCount; set { _microsoftGamesCount = value; OnPropertyChanged(nameof(MicrosoftGamesCount)); } }
+
 	private GameList SortedGames { get; set; }
 
 	private List<StatGameViewModel> _sortedGamesVm;
@@ -138,6 +148,9 @@ public class StatsViewModel : ViewModelBase
 		for (int i = 0; i < SortedGames.Count; i++)
 		{
 			total += SortedGames[i].TotalTimePlayed;
+			if (SortedGames[i].GameType == GameType.Win32) ClassicGamesCount++;
+			else if (SortedGames[i].GameType == GameType.UWP) MicrosoftGamesCount++;
+			else if (SortedGames[i].GameType == GameType.Steam) SteamGamesCount++;
 		}
 
 		TotalTime = $"{total / 3600d:0.0}{Properties.Resources.HourShort}";
