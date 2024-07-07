@@ -100,7 +100,15 @@ public class Settings
 	/// </summary>
 	public bool ShowHiddenGames { get; set; }
 
+	/// <summary>
+	/// True if the search keyboard shortcut is enabled.
+	/// </summary>
 	public bool? EnableSearchShortcut { get; set; }
+
+	/// <summary>
+	/// True if games should be displayed using dates instead of "A long time ago".
+	/// </summary>
+	public bool? GroupGamesByDate { get; set; }
 
 	public Settings()
 	{
@@ -120,6 +128,7 @@ public class Settings
 		CurrentTheme = "";
 		ShowHiddenGames = false;
 		EnableSearchShortcut = true;
+		GroupGamesByDate = true;
 	}
 }
 

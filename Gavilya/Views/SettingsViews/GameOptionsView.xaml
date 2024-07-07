@@ -185,6 +185,48 @@
                     </ItemsControl>
                 </Grid>
             </Expander>
+            <Expander
+                Margin="5"
+                Background="{DynamicResource Background2}"
+                Foreground="{DynamicResource Foreground}"
+                Style="{DynamicResource Expander}">
+                <Expander.Header>
+                    <StackPanel Margin="10 15" Orientation="Horizontal">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontFamily="..\..\Fonts\#FluentSystemIcons-Regular"
+                            FontSize="22"
+                            Text="&#xF47F;" />
+                        <StackPanel>
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                FontSize="14"
+                                FontWeight="ExtraBold"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{x:Static lang:Resources.RecentGames}" />
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                FontSize="12"
+                                Foreground="{DynamicResource Foreground}"
+                                Text="{x:Static lang:Resources.RecentPageOptions}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Expander.Header>
+                <CheckBox
+                    x:Name="SortGamesChk"
+                    Margin="10 5"
+                    VerticalContentAlignment="Center"
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource Accent}"
+                    BorderThickness="2"
+                    Command="{Binding CheckSortGames}"
+                    Content="{x:Static lang:Resources.GroupGamesByDate}"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    IsChecked="{Binding SortGames, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource CheckBoxStyle1}" />
+
+            </Expander>
         </StackPanel>
     </Grid>
 </UserControl>
