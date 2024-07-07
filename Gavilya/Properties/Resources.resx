@@ -1053,4 +1053,10 @@
   <data name="GetThemes" xml:space="preserve">
     <value>Get themes</value>
   </data>
+  <data name="GroupGamesByDate" xml:space="preserve">
+    <value>Group games by date</value>
+  </data>
+  <data name="RecentPageOptions" xml:space="preserve">
+    <value>Recently played games page options.</value>
+  </data>
 </root>

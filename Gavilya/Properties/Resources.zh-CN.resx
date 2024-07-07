@@ -1053,4 +1053,10 @@
   <data name="GetThemes" xml:space="preserve">
     <value>获取主题</value>
   </data>
+  <data name="GroupGamesByDate" xml:space="preserve">
+    <value>按日期分组比赛</value>
+  </data>
+  <data name="RecentPageOptions" xml:space="preserve">
+    <value>最近玩过的游戏页面选项。</value>
+  </data>
 </root>

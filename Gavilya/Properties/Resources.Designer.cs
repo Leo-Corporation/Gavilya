@@ -1042,6 +1042,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group games by date.
+        /// </summary>
+        public static string GroupGamesByDate {
+            get {
+                return ResourceManager.GetString("GroupGamesByDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hello,.
         /// </summary>
         public static string Hello {
@@ -2037,6 +2046,15 @@ namespace Gavilya.Properties {
         public static string RecentGames {
             get {
                 return ResourceManager.GetString("RecentGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recently played games page options..
+        /// </summary>
+        public static string RecentPageOptions {
+            get {
+                return ResourceManager.GetString("RecentPageOptions", resourceCulture);
             }
         }
         
