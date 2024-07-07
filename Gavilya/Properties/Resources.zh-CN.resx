@@ -1050,4 +1050,7 @@
   <data name="MicrosoftStoreGames" xml:space="preserve">
     <value>Microsoft 商店游戏</value>
   </data>
+  <data name="GetThemes" xml:space="preserve">
+    <value>获取主题</value>
+  </data>
 </root>

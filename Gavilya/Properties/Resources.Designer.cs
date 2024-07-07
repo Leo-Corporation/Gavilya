@@ -1006,6 +1006,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get themes.
+        /// </summary>
+        public static string GetThemes {
+            get {
+                return ResourceManager.GetString("GetThemes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GitHub.
         /// </summary>
         public static string GitHub {

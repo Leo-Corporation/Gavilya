@@ -1050,4 +1050,7 @@
   <data name="MicrosoftStoreGames" xml:space="preserve">
     <value>Jeux du Microsoft Store</value>
   </data>
+  <data name="GetThemes" xml:space="preserve">
+    <value>Obtenir des thèmes</value>
+  </data>
 </root>
