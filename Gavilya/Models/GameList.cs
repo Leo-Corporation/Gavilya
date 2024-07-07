@@ -96,7 +96,10 @@ public class GameList : ObservableCollection<Game>
 		GameList yesterdayList = new(Properties.Resources.Yesterday);
 		GameList thisWeekList = new(Properties.Resources.ThisWeek);
 		GameList thisMonthList = new(Properties.Resources.ThisMonth);
-		GameList otherList = new(Properties.Resources.LongTimeAgo);
+
+		// Dictionary to hold games for specific dates outside of today, yesterday, this week, and this month.
+		Dictionary<DateTime, GameList> otherDateLists = [];
+
 
 		foreach (Game game in this)
 		{
@@ -120,9 +123,18 @@ public class GameList : ObservableCollection<Game>
 			}
 			else
 			{
-				otherList.Add(game);
+				// Create a key based on the date part only (ignoring time).
+				DateTime otherDate = lastPlayTime.Date;
+
+				if (!otherDateLists.ContainsKey(otherDate))
+				{
+					// Create a new list for the specific date.
+					otherDateLists[otherDate] = new GameList(otherDate.ToString("D"));
+				}
+				otherDateLists[otherDate].Add(game);
 			}
 		}
+		var sorted = otherDateLists.OrderByDescending(x => x.Key);
 
 		List<GameList> sortedGames = [];
 
@@ -130,7 +142,11 @@ public class GameList : ObservableCollection<Game>
 		if (yesterdayList.Count > 0) sortedGames.Add(yesterdayList);
 		if (thisWeekList.Count > 0) sortedGames.Add(thisWeekList);
 		if (thisMonthList.Count > 0) sortedGames.Add(thisMonthList);
-		if (otherList.Count > 0) sortedGames.Add(otherList);
+		// Add the dynamically created date-specific lists in descending order.
+		foreach (var dateList in sorted)
+		{
+			sortedGames.Add(dateList.Value);
+		}
 
 		return sortedGames;
 	}
