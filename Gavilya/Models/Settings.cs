@@ -159,5 +159,6 @@ public enum Language
 	Default,
 	en_US,
 	fr_FR,
-	zh_CN
+	zh_CN,
+	ru_RU
 }
