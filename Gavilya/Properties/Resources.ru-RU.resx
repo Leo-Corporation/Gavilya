@@ -1,0 +1,1062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Startup" xml:space="preserve">
+    <value>Запуск</value>
+  </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Добро пожаловать в Gavilya</value>
+  </data>
+  <data name="WindowsClassicGames" xml:space="preserve">
+    <value>Стандартные игры Windows</value>
+  </data>
+  <data name="SaveLocation" xml:space="preserve">
+    <value>Сохранить расположение файла</value>
+  </data>
+  <data name="GroupGamesByDate" xml:space="preserve">
+    <value>Группировать игры по дате</value>
+  </data>
+  <data name="NoRatingsAv" xml:space="preserve">
+    <value>Рейтинг у игры отсутствует либо из-за отсутствия связи с RAWG.io, либо она просто не была оценена.</value>
+  </data>
+  <data name="Licenses" xml:space="preserve">
+    <value>Лицензии</value>
+  </data>
+  <data name="InvalidGameNumber" xml:space="preserve">
+    <value>Количество игр должно быть больше 0.</value>
+  </data>
+  <data name="MakeAutoSaves" xml:space="preserve">
+    <value>Сделать автосохранения</value>
+  </data>
+  <data name="GetThemes" xml:space="preserve">
+    <value>Получить темы</value>
+  </data>
+  <data name="Export" xml:space="preserve">
+    <value>Экспорт</value>
+  </data>
+  <data name="MinutesMin" xml:space="preserve">
+    <value>минут</value>
+  </data>
+  <data name="DeleteProfile" xml:space="preserve">
+    <value>Удалить профиль</value>
+  </data>
+  <data name="FpsCounter" xml:space="preserve">
+    <value>Счетчик FPS</value>
+  </data>
+  <data name="Achievements" xml:space="preserve">
+    <value>Достижения</value>
+  </data>
+  <data name="UnusedGameNotification" xml:space="preserve">
+    <value>Неиспользованная игра</value>
+  </data>
+  <data name="DeleteConfirmMessage" xml:space="preserve">
+    <value>Вы действительно хотите удалить эти игры? Операция необратима.</value>
+  </data>
+  <data name="SearchBar" xml:space="preserve">
+    <value>Строка поиска</value>
+  </data>
+  <data name="AddTag" xml:space="preserve">
+    <value>Добавить тег</value>
+  </data>
+  <data name="NotificationLower" xml:space="preserve">
+    <value>уведомлений.</value>
+  </data>
+  <data name="AllFilters" xml:space="preserve">
+    <value>Все</value>
+  </data>
+  <data name="DeleteTagMsg" xml:space="preserve">
+    <value>Вы действительно хотите удалить этот тег? Это удалит ассоциацию с назначенными играми.</value>
+  </data>
+  <data name="Avatar" xml:space="preserve">
+    <value>Аватар</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Конец</value>
+  </data>
+  <data name="GamesL" xml:space="preserve">
+    <value>игры</value>
+  </data>
+  <data name="GoBack" xml:space="preserve">
+    <value>Шаг назад</value>
+  </data>
+  <data name="GitHub" xml:space="preserve">
+    <value>GitHub</value>
+  </data>
+  <data name="UpdateUnMessage" xml:space="preserve">
+    <value>Обновлений нет.</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Удалить выбранную игру(ы)</value>
+  </data>
+  <data name="StatsLastTimePlayed" xml:space="preserve">
+    <value>ПОСЛЕДНИЙ РАЗ ИГРАЛИ</value>
+  </data>
+  <data name="MyProfile" xml:space="preserve">
+    <value>Мой профиль</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Минута</value>
+  </data>
+  <data name="Months" xml:space="preserve">
+    <value>Январь,Февраль,Март,Апрель,Май,Июнь,Июль,Август,Сентябрь,Октябрь,Ноябрь,Декабрь</value>
+  </data>
+  <data name="MicrosoftStoreGames" xml:space="preserve">
+    <value>Игры Microsoft Store</value>
+  </data>
+  <data name="Badges" xml:space="preserve">
+    <value>Значки</value>
+  </data>
+  <data name="AddEditProfile" xml:space="preserve">
+    <value>Добавить/редактировать профиль</value>
+  </data>
+  <data name="MinuteMin" xml:space="preserve">
+    <value>минута</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Искать</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="HideSearchBar" xml:space="preserve">
+    <value>Скрыть поле поиска</value>
+  </data>
+  <data name="LaunchGameAsAdmin" xml:space="preserve">
+    <value>Запустите игру от администратора.</value>
+  </data>
+  <data name="Advanced" xml:space="preserve">
+    <value>Дополнительно</value>
+  </data>
+  <data name="SearchF" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="Import" xml:space="preserve">
+    <value>Импорт</value>
+  </data>
+  <data name="ThisWeek" xml:space="preserve">
+    <value>На этой неделе</value>
+  </data>
+  <data name="ThisMonth" xml:space="preserve">
+    <value>В этом месяце</value>
+  </data>
+  <data name="FileNotExist" xml:space="preserve">
+    <value>Указанный файл не существует.</value>
+  </data>
+  <data name="ImportSuccess" xml:space="preserve">
+    <value>Ваши игры были успешно импортированы.</value>
+  </data>
+  <data name="SidebarPosition" xml:space="preserve">
+    <value>Положение боковой панели.</value>
+  </data>
+  <data name="MainWindowTitle" xml:space="preserve">
+    <value>Gavilya</value>
+  </data>
+  <data name="SeeOnRAWG" xml:space="preserve">
+    <value>Просмотрите на RAWG</value>
+  </data>
+  <data name="LetsGo" xml:space="preserve">
+    <value>Погнали!</value>
+  </data>
+  <data name="ExportGamesDescription" xml:space="preserve">
+    <value>Экспортируйте ваши игры в Gavilya через файл сохранения .g4vgames.</value>
+  </data>
+  <data name="SelectDragDropGame" xml:space="preserve">
+    <value>Выберите игру или перетащите ее сюда</value>
+  </data>
+  <data name="AvailableOn" xml:space="preserve">
+    <value>Доступно</value>
+  </data>
+  <data name="SortInverse" xml:space="preserve">
+    <value>Сортировать в обратном порядке</value>
+  </data>
+  <data name="MicrosoftStore" xml:space="preserve">
+    <value>Microsoft Store</value>
+  </data>
+  <data name="Associated" xml:space="preserve">
+    <value>Ассоциированный</value>
+  </data>
+  <data name="Progress" xml:space="preserve">
+    <value>Достигнутый прогресс:</value>
+  </data>
+  <data name="Profiles" xml:space="preserve">
+    <value>Профили</value>
+  </data>
+  <data name="SeeLicenses" xml:space="preserve">
+    <value>Просмотрите лицензии</value>
+  </data>
+  <data name="YourGames" xml:space="preserve">
+    <value>Ваши игры</value>
+  </data>
+  <data name="TotalTimePlayed" xml:space="preserve">
+    <value>Времени наиграно</value>
+  </data>
+  <data name="OnStartup" xml:space="preserve">
+    <value>При запуске</value>
+  </data>
+  <data name="ExportSuccess" xml:space="preserve">
+    <value>Ваши игры были успешно экспортированы.</value>
+  </data>
+  <data name="NoGames" xml:space="preserve">
+    <value>Нет информации.</value>
+  </data>
+  <data name="SearchKeyboardShortcutDesc" xml:space="preserve">
+    <value>Настройки, связанные с сочетанием клавиш.</value>
+  </data>
+  <data name="ImportGamesFirstRunDescription" xml:space="preserve">
+    <value>Если вы были предыдущим пользователем, возможно, вам захочется импортировать существующий файл сохранения ".gav".</value>
+  </data>
+  <data name="SortAlphabetically" xml:space="preserve">
+    <value>Сортировать по алфавиту</value>
+  </data>
+  <data name="MyBadges" xml:space="preserve">
+    <value>Мои значки</value>
+  </data>
+  <data name="AddProfile" xml:space="preserve">
+    <value>Добавить новый профиль</value>
+  </data>
+  <data name="PackageFamilyName" xml:space="preserve">
+    <value>Свойство "PackageFamilyName"</value>
+  </data>
+  <data name="Sidebar" xml:space="preserve">
+    <value>Боковая панель</value>
+  </data>
+  <data name="Languages" xml:space="preserve">
+    <value>Языки</value>
+  </data>
+  <data name="PagesNames" xml:space="preserve">
+    <value>Ваши игры;Недавние игры;Просмотр списка</value>
+  </data>
+  <data name="Themes" xml:space="preserve">
+    <value>Темы</value>
+  </data>
+  <data name="SelectADirectory" xml:space="preserve">
+    <value>Выбрать каталог</value>
+  </data>
+  <data name="RAWGio" xml:space="preserve">
+    <value>RAWG.io</value>
+  </data>
+  <data name="Integrations" xml:space="preserve">
+    <value>Интеграции</value>
+  </data>
+  <data name="NoAchivementsMsg" xml:space="preserve">
+    <value>Gavilya не обнаружил никаких достижений в базе данных RAWG.io, или эта игра не связана с RAWG.</value>
+  </data>
+  <data name="NoRatings" xml:space="preserve">
+    <value>Игра не имеет рейтинга.</value>
+  </data>
+  <data name="Stores" xml:space="preserve">
+    <value>Хранилища</value>
+  </data>
+  <data name="TheStart" xml:space="preserve">
+    <value>Начало</value>
+  </data>
+  <data name="Second" xml:space="preserve">
+    <value>Секунда</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Поиск</value>
+  </data>
+  <data name="Select" xml:space="preserve">
+    <value>Выбрать</value>
+  </data>
+  <data name="ImportConfirmMsg" xml:space="preserve">
+    <value>Текущие игры будут заменены новыми, данная операция необратима. Вы хотите продолжить?</value>
+  </data>
+  <data name="AllBadges" xml:space="preserve">
+    <value>Все значки</value>
+  </data>
+  <data name="AddFavGameWelcome" xml:space="preserve">
+    <value>Добавить игру в избранное нажав на "звездочку"  у карточки игры.</value>
+  </data>
+  <data name="UpdateAvMessageNotify" xml:space="preserve">
+    <value>Доступны обновления для Gavilya.</value>
+  </data>
+  <data name="FpsCounterOpacity" xml:space="preserve">
+    <value>Прозрачность счетчика FPS.</value>
+  </data>
+  <data name="SwitchProfile" xml:space="preserve">
+    <value>Сменить профиль</value>
+  </data>
+  <data name="PlayTo" xml:space="preserve">
+    <value>Играть в {0}</value>
+  </data>
+  <data name="NameNeededMsg" xml:space="preserve">
+    <value>Пожалуйста, укажите имя.</value>
+  </data>
+  <data name="DefaultViewMode" xml:space="preserve">
+    <value>Стандартный режим просмотра в библиотеке</value>
+  </data>
+  <data name="ContinueInstall" xml:space="preserve">
+    <value>Вы хотите продолжить?</value>
+  </data>
+  <data name="UpdateVersion" xml:space="preserve">
+    <value>Версия:</value>
+  </data>
+  <data name="AchievementPlayerUnlocked" xml:space="preserve">
+    <value>игроков разблокировало это достижение.</value>
+  </data>
+  <data name="Statistics" xml:space="preserve">
+    <value>Статистика</value>
+  </data>
+  <data name="FeatureNeedsInternet" xml:space="preserve">
+    <value>Требуется интернет-соединение.</value>
+  </data>
+  <data name="NotAssociated" xml:space="preserve">
+    <value>Не связано</value>
+  </data>
+  <data name="Profile" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="ImportGames" xml:space="preserve">
+    <value>Импортируйте ваши игры</value>
+  </data>
+  <data name="IncorrectValue" xml:space="preserve">
+    <value>Пожалуйста, укажите верное значение.</value>
+  </data>
+  <data name="EnableSearchShortcut" xml:space="preserve">
+    <value>Включить горячие клавиши поиска</value>
+  </data>
+  <data name="GameNoAchievements" xml:space="preserve">
+    <value>Эта игра не имеет достижений.</value>
+  </data>
+  <data name="AutoSave" xml:space="preserve">
+    <value>Автоматический бэкап</value>
+  </data>
+  <data name="RandomGame" xml:space="preserve">
+    <value>Случайная игра</value>
+  </data>
+  <data name="SelectGameStart" xml:space="preserve">
+    <value>Выберите игру чтобы начать</value>
+  </data>
+  <data name="KeybordShortcut" xml:space="preserve">
+    <value>Горячие клавиши</value>
+  </data>
+  <data name="CheckForUpdates" xml:space="preserve">
+    <value>Проверить обновления</value>
+  </data>
+  <data name="ExportGames" xml:space="preserve">
+    <value>Экспортируйте ваши игры</value>
+  </data>
+  <data name="AddGameWelcome" xml:space="preserve">
+    <value>Добавить игру кнопкой "Добавить игру"</value>
+  </data>
+  <data name="Convert" xml:space="preserve">
+    <value>Конвертировать</value>
+  </data>
+  <data name="WhatGameToPlay" xml:space="preserve">
+    <value>Во что будем играть?</value>
+  </data>
+  <data name="SelectGames" xml:space="preserve">
+    <value>Выберите игры</value>
+  </data>
+  <data name="RAWGDescriptionFirstRun" xml:space="preserve">
+    <value>Gavilya связана с базой данных RAWG.io, которая позволяет Gavilya автоматически находить обложки, описания, и прочую информацию об игре.</value>
+  </data>
+  <data name="ResetSettingsDesc" xml:space="preserve">
+    <value>Сбросить настройки до заводских.</value>
+  </data>
+  <data name="AdminMode" xml:space="preserve">
+    <value>Режим администратора</value>
+  </data>
+  <data name="ScanDirectory" xml:space="preserve">
+    <value>Сканировать каталог</value>
+  </data>
+  <data name="SaveChanges" xml:space="preserve">
+    <value>Сохранить изменения</value>
+  </data>
+  <data name="ExclamationMark" xml:space="preserve">
+    <value>!</value>
+  </data>
+  <data name="MaxNumberOfRecentGames" xml:space="preserve">
+    <value>Максимальное количество игр, показанных в разделе "Недавние".</value>
+  </data>
+  <data name="MakeBackup" xml:space="preserve">
+    <value>Сделать бэкап сейчас</value>
+  </data>
+  <data name="DeleteTag" xml:space="preserve">
+    <value>Удалить тег</value>
+  </data>
+  <data name="Language" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="UpdateUn" xml:space="preserve">
+    <value>Обновлений нет</value>
+  </data>
+  <data name="UpdateAv" xml:space="preserve">
+    <value>Обновлений доступно</value>
+  </data>
+  <data name="Package" xml:space="preserve">
+    <value>Пакет</value>
+  </data>
+  <data name="ShowScreenshots" xml:space="preserve">
+    <value>Показать скриншоты</value>
+  </data>
+  <data name="GavilyaNeedsRestartChanges" xml:space="preserve">
+    <value>Gavilya требует перезапуска для внесения изменений.</value>
+  </data>
+  <data name="AddSteamGame" xml:space="preserve">
+    <value>Добавить игру Steam</value>
+  </data>
+  <data name="ResetSettings" xml:space="preserve">
+    <value>Сбросить настройки</value>
+  </data>
+  <data name="SelectGamesImport" xml:space="preserve">
+    <value>Выберите игры для импорта.</value>
+  </data>
+  <data name="Default" xml:space="preserve">
+    <value>По умолчанию</value>
+  </data>
+  <data name="StatsTimePlayed" xml:space="preserve">
+    <value>ВСЕГО ВРЕМЕНИ НАИГРАНО</value>
+  </data>
+  <data name="AddUWPGame" xml:space="preserve">
+    <value>Добавить игру из магазина Microsoft</value>
+  </data>
+  <data name="RAWGPowered" xml:space="preserve">
+    <value>Совместно с RAWG.io</value>
+  </data>
+  <data name="MostPlayed" xml:space="preserve">
+    <value>Наиболее наигранное</value>
+  </data>
+  <data name="GameFieldsEmpty" xml:space="preserve">
+    <value>Пожалуйста, заполните информацию об игре.</value>
+  </data>
+  <data name="AssociateTags" xml:space="preserve">
+    <value>Ассоциировать теги</value>
+  </data>
+  <data name="AssociateGame" xml:space="preserve">
+    <value>Ассоциировать игру</value>
+  </data>
+  <data name="UnusedGame" xml:space="preserve">
+    <value>Вы не играли с {0}.</value>
+  </data>
+  <data name="Current" xml:space="preserve">
+    <value>Текущий</value>
+  </data>
+  <data name="HoursMin" xml:space="preserve">
+    <value>часов</value>
+  </data>
+  <data name="MigrateFromV3" xml:space="preserve">
+    <value>Перенести из v3</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>ОК</value>
+  </data>
+  <data name="P1" xml:space="preserve">
+    <value>#1</value>
+  </data>
+  <data name="P3" xml:space="preserve">
+    <value>#3</value>
+  </data>
+  <data name="P2" xml:space="preserve">
+    <value>#2</value>
+  </data>
+  <data name="NotificationsLower" xml:space="preserve">
+    <value>уведомления.</value>
+  </data>
+  <data name="SeeGitHubRepo" xml:space="preserve">
+    <value>Просмотрите репозитории GitHub.</value>
+  </data>
+  <data name="SteamAppNotInstalled" xml:space="preserve">
+    <value>Невозможно запустить игру Steam, которая не установлена.</value>
+  </data>
+  <data name="NotLoggedToSteam" xml:space="preserve">
+    <value>Вы не авторизованы в Steam.</value>
+  </data>
+  <data name="Top10MostPlayedGames" xml:space="preserve">
+    <value>10 САМЫХ НАИБОЛЕЕ ЧАСТЫХ ИГР</value>
+  </data>
+  <data name="NumberResults" xml:space="preserve">
+    <value>Количество результатов</value>
+  </data>
+  <data name="SkipStep" xml:space="preserve">
+    <value>Пропустить этот этап</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Добавить</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="About" xml:space="preserve">
+    <value>О лаунчере</value>
+  </data>
+  <data name="Apply" xml:space="preserve">
+    <value>Применить</value>
+  </data>
+  <data name="AppID" xml:space="preserve">
+    <value>ID приложения</value>
+  </data>
+  <data name="GameL" xml:space="preserve">
+    <value>игра</value>
+  </data>
+  <data name="Games" xml:space="preserve">
+    <value>Игры</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="Infos" xml:space="preserve">
+    <value>Информация</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Изображение</value>
+  </data>
+  <data name="Never" xml:space="preserve">
+    <value>Никогда</value>
+  </data>
+  <data name="NoRecommandedGames" xml:space="preserve">
+    <value>Мы не нашли игр, которые вам бы могли понравиться.</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Остальное</value>
+  </data>
+  <data name="Hello" xml:space="preserve">
+    <value>Привет,</value>
+  </data>
+  <data name="OfMonth" xml:space="preserve">
+    <value>месяца.</value>
+  </data>
+  <data name="Tasks" xml:space="preserve">
+    <value>Задачи</value>
+  </data>
+  <data name="Today" xml:space="preserve">
+    <value>Сегодня</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Сброс</value>
+  </data>
+  <data name="Right" xml:space="preserve">
+    <value>Право</value>
+  </data>
+  <data name="Steam" xml:space="preserve">
+    <value>Steam</value>
+  </data>
+  <data name="ResetSettingsMsg" xml:space="preserve">
+    <value>Вы уверен что хотите сбросить ВСЕ настройки? Операция необратима.</value>
+  </data>
+  <data name="RecommandedGames" xml:space="preserve">
+    <value>Вам может понравиться...</value>
+  </data>
+  <data name="DisplayHiddenGames" xml:space="preserve">
+    <value>Отображать скрытые игры</value>
+  </data>
+  <data name="NoItemsFound" xml:space="preserve">
+    <value>Предметов не обнаружено.</value>
+  </data>
+  <data name="AddGame" xml:space="preserve">
+    <value>Добавить игру</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Продолжить</value>
+  </data>
+  <data name="StartAddGame" xml:space="preserve">
+    <value>Начните с добавления игры</value>
+  </data>
+  <data name="AboutYou" xml:space="preserve">
+    <value>О тебе</value>
+  </data>
+  <data name="NeedSpaceOnTheShelvesDesc" xml:space="preserve">
+    <value>Имейте более 50 игр в вашей библиотеке.</value>
+  </data>
+  <data name="GetRAWGImage" xml:space="preserve">
+    <value>Получить RAWG изображение.</value>
+  </data>
+  <data name="TrueGamerDesc" xml:space="preserve">
+    <value>Наиграйте 1000 часов, неважно в какой игре.</value>
+  </data>
+  <data name="PinUnpinWindow" xml:space="preserve">
+    <value>Закрепить/открепить окно</value>
+  </data>
+  <data name="EditGameDescription" xml:space="preserve">
+    <value>Добавить/редактировать описание</value>
+  </data>
+  <data name="SecondsMin" xml:space="preserve">
+    <value>секунд</value>
+  </data>
+  <data name="FirstRunAddGamesDescription" xml:space="preserve">
+    <value>Вы можете добавить игру нажав на кнопку "Добавить" на главной странице, или перетащив EXE-файл на главную страницу.</value>
+  </data>
+  <data name="GameList" xml:space="preserve">
+    <value>Просмотр списка</value>
+  </data>
+  <data name="GameCard" xml:space="preserve">
+    <value>Просмотр карточек</value>
+  </data>
+  <data name="GameTags" xml:space="preserve">
+    <value>Теги игры</value>
+  </data>
+  <data name="LegendaryGamerDesc" xml:space="preserve">
+    <value>Наиграйте как минимум 5000 часов, неважно в какую игру.</value>
+  </data>
+  <data name="CannotLaunchAsAdminUWP" xml:space="preserve">
+    <value>Невозможно запускать Non-Win32 приложения от администратора.</value>
+  </data>
+  <data name="LegendaryGamer" xml:space="preserve">
+    <value>Легендарный игрок</value>
+  </data>
+  <data name="GameNeedsName" xml:space="preserve">
+    <value>Игре нужен исполнительный файл и название.</value>
+  </data>
+  <data name="LastTimePlayed" xml:space="preserve">
+    <value>Последний раз</value>
+  </data>
+  <data name="NoobPlayer" xml:space="preserve">
+    <value>Новичок</value>
+  </data>
+  <data name="GavFiles" xml:space="preserve">
+    <value>G4V файлы</value>
+  </data>
+  <data name="GameProperties" xml:space="preserve">
+    <value>Свойства игры</value>
+  </data>
+  <data name="Notifications" xml:space="preserve">
+    <value>Уведомления</value>
+  </data>
+  <data name="Screenshots" xml:space="preserve">
+    <value>Скриншоты</value>
+  </data>
+  <data name="ImageNotExist" xml:space="preserve">
+    <value>Указанное изображение не существует.</value>
+  </data>
+  <data name="GameProcess" xml:space="preserve">
+    <value>Процесс игры</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="SaveOptions" xml:space="preserve">
+    <value>Настройки сохранения</value>
+  </data>
+  <data name="SecondMin" xml:space="preserve">
+    <value>секунда</value>
+  </data>
+  <data name="BrowseUWPApps" xml:space="preserve">
+    <value>Искать UWP приложения</value>
+  </data>
+  <data name="CoverSearch" xml:space="preserve">
+    <value>Найти обложку для игры</value>
+  </data>
+  <data name="StarterGamer" xml:space="preserve">
+    <value>Начинающий игрок</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>Избранные</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Версия</value>
+  </data>
+  <data name="EpicGamesStore" xml:space="preserve">
+    <value>Epic Games Store</value>
+  </data>
+  <data name="YouHave" xml:space="preserve">
+    <value>У вас</value>
+  </data>
+  <data name="NoNotifications" xml:space="preserve">
+    <value>Уведомлений нет.</value>
+  </data>
+  <data name="RecommandedGamesSection" xml:space="preserve">
+    <value>Раздел "Вам может понравиться..."</value>
+  </data>
+  <data name="NotificationCenter" xml:space="preserve">
+    <value>Центр уведомлений</value>
+  </data>
+  <data name="HourShort" xml:space="preserve">
+    <value>ч</value>
+  </data>
+  <data name="OpenFpsCounter" xml:space="preserve">
+    <value>Нажмите {0} для открытия счетчика FPS.</value>
+  </data>
+  <data name="HideGame" xml:space="preserve">
+    <value>Скрыть игру</value>
+  </data>
+  <data name="AlwaysCheckIfGameRunning" xml:space="preserve">
+    <value>Всегда проверять запущена ли игра</value>
+  </data>
+  <data name="RAWGIntegration" xml:space="preserve">
+    <value>Интеграция базы данных RAWG</value>
+  </data>
+  <data name="Opacity" xml:space="preserve">
+    <value>Прозрачность</value>
+  </data>
+  <data name="Library" xml:space="preserve">
+    <value>Библиотека</value>
+  </data>
+  <data name="ThemesDesc" xml:space="preserve">
+    <value>Установите тему Gavilya.</value>
+  </data>
+  <data name="OtherProfiles" xml:space="preserve">
+    <value>Другие профили</value>
+  </data>
+  <data name="GameGathered" xml:space="preserve">
+    <value>Где все ваши игры хранятся.</value>
+  </data>
+  <data name="ReadyFirstRun" xml:space="preserve">
+    <value>Теперь вы готовы использовать Gavilya.</value>
+  </data>
+  <data name="CrazyAboutIt" xml:space="preserve">
+    <value>Без ума от этого</value>
+  </data>
+  <data name="Platforms" xml:space="preserve">
+    <value>Платформы</value>
+  </data>
+  <data name="XUDoesNotExist" xml:space="preserve">
+    <value>Xalyus Updater не существует, пожалуйста переустановите Gavilya.</value>
+  </data>
+  <data name="AppName" xml:space="preserve">
+    <value>Gavilya (перевод shinnani)</value>
+  </data>
+  <data name="HiddenGames" xml:space="preserve">
+    <value>Скрытые игры</value>
+  </data>
+  <data name="CrazyAboutItDesc" xml:space="preserve">
+    <value>Отметить игру как любимая.</value>
+  </data>
+  <data name="EditGame" xml:space="preserve">
+    <value>Редактировать игру</value>
+  </data>
+  <data name="AddFavGame" xml:space="preserve">
+    <value>Добавить игру в избранное</value>
+  </data>
+  <data name="RecommandedSettings" xml:space="preserve">
+    <value>Настройки, относящиеся к разделу "Вам может понравиться...".</value>
+  </data>
+  <data name="DefaultPageOnStart" xml:space="preserve">
+    <value>Главная страница при запуске</value>
+  </data>
+  <data name="ShowMoreUnplayedGames" xml:space="preserve">
+    <value>Показать игры, в которые вы давно не играли.</value>
+  </data>
+  <data name="NoobPlayerDesc" xml:space="preserve">
+    <value>Наиграйте один час, неважно в какую игру.</value>
+  </data>
+  <data name="SelectGame" xml:space="preserve">
+    <value>Выберите игру</value>
+  </data>
+  <data name="SelectNotification" xml:space="preserve">
+    <value>Выберите уведомления, которые хотите получать в Центре Уведомлений</value>
+  </data>
+  <data name="LongTimeAgo" xml:space="preserve">
+    <value>Давно</value>
+  </data>
+  <data name="Results" xml:space="preserve">
+    <value>Результаты</value>
+  </data>
+  <data name="Recents" xml:space="preserve">
+    <value>Недавние</value>
+  </data>
+  <data name="ApplicationId" xml:space="preserve">
+    <value>"ID приложения"</value>
+  </data>
+  <data name="UpdateAvMessage" xml:space="preserve">
+    <value>Доступные обновления для Gavilya:</value>
+  </data>
+  <data name="NoStatistics" xml:space="preserve">
+    <value>Сейчас статистики нет.</value>
+  </data>
+  <data name="TheStartDesc" xml:space="preserve">
+    <value>Добавьте игру.</value>
+  </data>
+  <data name="GoForward" xml:space="preserve">
+    <value>Шаг вперед</value>
+  </data>
+  <data name="AdvancedGamer" xml:space="preserve">
+    <value>Продвинутый игрок</value>
+  </data>
+  <data name="FavoriteButton" xml:space="preserve">
+    <value>Избранное/убрать из избранного</value>
+  </data>
+  <data name="Ratings" xml:space="preserve">
+    <value>Рейтинги</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Сменить язык</value>
+  </data>
+  <data name="Yesterday" xml:space="preserve">
+    <value>Вчера</value>
+  </data>
+  <data name="EditProfile" xml:space="preserve">
+    <value>Редактировать профиль</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Свойства</value>
+  </data>
+  <data name="SaveSettings" xml:space="preserve">
+    <value>Сохранить настройки.</value>
+  </data>
+  <data name="ErrorOccurred" xml:space="preserve">
+    <value>Произошла ошибка</value>
+  </data>
+  <data name="ThemesImport" xml:space="preserve">
+    <value>Импортируйте тему</value>
+  </data>
+  <data name="ConvertToSteam" xml:space="preserve">
+    <value>Конвертировать в игру Steam</value>
+  </data>
+  <data name="TrueGamer" xml:space="preserve">
+    <value>Истинный игрок</value>
+  </data>
+  <data name="ConvertToSteamMsg" xml:space="preserve">
+    <value>Конвертация EXE игры в игру Steam необратимо, вы уверены что хотите продолжить?</value>
+  </data>
+  <data name="ImportGamesDescription" xml:space="preserve">
+    <value>Импортируйте файлы сохранения .g4vgames в Gavilya. Текущий файл сохранения будет заменен новым.</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Описание</value>
+  </data>
+  <data name="SteamAppId" xml:space="preserve">
+    <value>Steam App ID</value>
+  </data>
+  <data name="SteamGames" xml:space="preserve">
+    <value>Игры Steam</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Установить</value>
+  </data>
+  <data name="RecentGames" xml:space="preserve">
+    <value>Недавние игры</value>
+  </data>
+  <data name="RecentPageOptions" xml:space="preserve">
+    <value>Параметры страницы недавно сыгранных игр.</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Фильтры</value>
+  </data>
+  <data name="StartupPage" xml:space="preserve">
+    <value>Выберите стартовую страницу при запуске.</value>
+  </data>
+  <data name="ChangeLanguageDescription" xml:space="preserve">
+    <value>Сменить язык Gavilya.</value>
+  </data>
+  <data name="Spotlight" xml:space="preserve">
+    <value>Центр внимания</value>
+  </data>
+  <data name="PopupMenu" xml:space="preserve">
+    <value>Gavilya - Меню</value>
+  </data>
+  <data name="PlayLowerCase" xml:space="preserve">
+    <value>Играть</value>
+  </data>
+  <data name="WelcomeRecentGames" xml:space="preserve">
+    <value>Когда вы начнете играть в игры, они будут отображаться здесь.</value>
+  </data>
+  <data name="NeedSpaceOnTheShelves" xml:space="preserve">
+    <value>Нужно место на полках</value>
+  </data>
+  <data name="StarterGamerDesc" xml:space="preserve">
+    <value>Наиграйте 10 часов, неважно в какой игре.</value>
+  </data>
+  <data name="HourMin" xml:space="preserve">
+    <value>час</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Локации</value>
+  </data>
+  <data name="ManageGameTags" xml:space="preserve">
+    <value>Создайте, редактируйте, или удалите ваши игровые теги.</value>
+  </data>
+  <data name="SteamNotRunning" xml:space="preserve">
+    <value>Невозможно запустить игру: Steam не запущен.</value>
+  </data>
+  <data name="DefaultPage" xml:space="preserve">
+    <value>Главная страница</value>
+  </data>
+  <data name="AutoSaveOnDate" xml:space="preserve">
+    <value>Автосохранение в</value>
+  </data>
+  <data name="GetStarted" xml:space="preserve">
+    <value>Начать</value>
+  </data>
+  <data name="ProcessNameHelp" xml:space="preserve">
+    <value>Процесс, который нужно отслеживать при запуске игры. Он позволяет подсчитывать время, в течение которого вы играли в игру. Оставьте поле пустым, чтобы использовать исполняемый файл по умолчанию.</value>
+  </data>
+  <data name="AdvancedGamerDesc" xml:space="preserve">
+    <value>Наиграйте 100 часов, неважно в какой игре.</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Данные</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Готово!</value>
+  </data>
+  <data name="Misc" xml:space="preserve">
+    <value>Прочее</value>
+  </data>
+  <data name="More" xml:space="preserve">
+    <value>Больше</value>
+  </data>
+  <data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Имя</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Далее</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Открыть</value>
+  </data>
+  <data name="Left" xml:space="preserve">
+    <value>Лево</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Домой</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Час</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="Tags" xml:space="preserve">
+    <value>Теги</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="Skip" xml:space="preserve">
+    <value>Пропуск</value>
+  </data>
+  <data name="Show" xml:space="preserve">
+    <value>Показать</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>ИГРАТЬ</value>
+  </data>
+  <data name="CreateAProfile" xml:space="preserve">
+    <value>Создать профиль и начать.</value>
+  </data>
+  <data name="LeastPlayed" xml:space="preserve">
+    <value>Наименее сыграно</value>
+  </data>
+  <data name="DeleteProfileMsg" xml:space="preserve">
+    <value>Вы действительно хотите удалить профиль?</value>
+  </data>
+  <data name="NoProfilesFound" xml:space="preserve">
+    <value>Профилей не было найдено.</value>
+  </data>
+</root>
