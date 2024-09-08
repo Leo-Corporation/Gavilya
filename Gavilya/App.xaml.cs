@@ -51,9 +51,10 @@ public partial class App : Application
 		if (currentProfile.Settings.Language != Language.Default)
 			Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(currentProfile.Settings.Language switch
 			{
-				Language.en_US => "en-US",
+				Language.ru_RU => "ru-RU",
 				Language.fr_FR => "fr-FR",
 				Language.zh_CN => "zh-CN",
+				_ => "en-US",
 			});
 
 		currentProfile.Settings.EnableSearchShortcut ??= true;

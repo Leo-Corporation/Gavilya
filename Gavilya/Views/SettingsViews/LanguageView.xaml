@@ -74,6 +74,7 @@
                             <ComboBoxItem Content="English (United States)" />
                             <ComboBoxItem Content="Français (France)" />
                             <ComboBoxItem Content="中文（简体）" />
+                            <ComboBoxItem Content="Русский (Россия)" />
                         </ComboBox>
                         <Button
                             x:Name="SaveButton"
