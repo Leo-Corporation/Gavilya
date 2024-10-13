@@ -79,6 +79,7 @@ public class GameLauncherHelper
 		// Check location if the game is a Win32 app
 		if (_game.GameType == GameType.Win32 && !File.Exists(_game.Command)) return false; // Abort
 		if (_game.GameType == GameType.Steam && !CanLaunchSteamGame(_game)) return false;
+		if (_game.GameType == GameType.UWP && _game.Command.Split("!").Length < 2) return false;
 
 		_game.LastTimePlayed = Sys.UnixTime;
 		OnGameUpdatedEvent?.Invoke(this, new(_game));
@@ -87,6 +88,7 @@ public class GameLauncherHelper
 
 		if (_game.GameType == GameType.Steam) Process.Start("cmd", "/c start " + _game.Command);
 		if (_game.GameType == GameType.Win32) Process.Start(_game.Command);
+		if (_game.GameType == GameType.UWP) Process.Start("explorer.exe", _game.Command);
 
 		_dispatcherTimer.Start();
 
