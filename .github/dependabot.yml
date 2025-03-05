@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: nuget
-    directory: "/"
+    directory: "/Gavilya"
     schedule:
       interval: daily
       time: "04:00"
