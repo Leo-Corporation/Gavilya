@@ -256,51 +256,6 @@ namespace Gavilya.Helpers
 			public string monitorDevicePath;
 		}
 
-		[StructLayout(LayoutKind.Sequential)]
-		public struct DEVMODE
-		{
-			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)] public string dmDeviceName;
-			public short dmSpecVersion;
-			public short dmDriverVersion;
-			public short dmSize;
-			public short dmDriverExtra;
-			public uint dmFields;
-			public int dmPositionX;
-			public int dmPositionY;
-			public uint dmDisplayOrientation;
-			public uint dmDisplayFixedOutput;
-			public short dmColor;
-			public short dmDuplex;
-			public short dmYResolution;
-			public short dmTTOption;
-			public short dmCollate;
-			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)] public string dmFormName;
-			public short dmLogPixels;
-			public short dmBitsPerPel;
-			public int dmPelsWidth;
-			public int dmPelsHeight;
-			public int dmDisplayFlags;
-			public int dmDisplayFrequency;
-			public int dmICMMethod;
-			public int dmDitherType;
-			public int dmReserved1;
-			public int dmReserved2;
-			public int dmPanningWidth;
-			public int dmPanningHeight;
-		}
-
-		[StructLayout(LayoutKind.Sequential)]
-		public struct DISPLAY_DEVICE
-		{
-			public int cb;
-			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)] public string DeviceName;
-			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)] public string DeviceString;
-			public uint StateFlags;
-			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)] public string DeviceID;
-			[MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)] public string DeviceKey;
-		}
-
-
 		[DllImport("user32.dll")]
 		public static extern int GetDisplayConfigBufferSizes(
 			QUERY_DEVICE_CONFIG_FLAGS Flags,
@@ -323,12 +278,9 @@ namespace Gavilya.Helpers
 			ref DISPLAYCONFIG_TARGET_DEVICE_NAME deviceName
 		);
 
-		[DllImport("user32.dll")]
-		public static extern int ChangeDisplaySettingsEx(string lpszDeviceName, ref DEVMODE lpDevMode, IntPtr hwnd, uint dwflags, IntPtr lParam);
-
 		public static string MonitorFriendlyName(LUID adapterId, uint targetId)
 		{
-			DISPLAYCONFIG_TARGET_DEVICE_NAME deviceName = new DISPLAYCONFIG_TARGET_DEVICE_NAME();
+			DISPLAYCONFIG_TARGET_DEVICE_NAME deviceName = new();
 			deviceName.header.size = (uint)Marshal.SizeOf(typeof(DISPLAYCONFIG_TARGET_DEVICE_NAME));
 			deviceName.header.adapterId = adapterId;
 			deviceName.header.id = targetId;
@@ -341,32 +293,54 @@ namespace Gavilya.Helpers
 
 		public static List<Monitor> GetMonitors()
 		{
-			List<Monitor> monitors = [new(Properties.Resources.MonitorAuto,"-1")];
-			int error = GetDisplayConfigBufferSizes(QUERY_DEVICE_CONFIG_FLAGS.QDC_ONLY_ACTIVE_PATHS,
-				out uint PathCount, out uint ModeCount);
-			
-			if (error != ERROR_SUCCESS)
-				throw new Win32Exception(error);
-
-			DISPLAYCONFIG_PATH_INFO[] DisplayPaths = new DISPLAYCONFIG_PATH_INFO[PathCount];
-			DISPLAYCONFIG_MODE_INFO[] DisplayModes = new DISPLAYCONFIG_MODE_INFO[ModeCount];
-			error = QueryDisplayConfig(QUERY_DEVICE_CONFIG_FLAGS.QDC_ONLY_ACTIVE_PATHS,
-				ref PathCount, DisplayPaths, ref ModeCount, DisplayModes, IntPtr.Zero);
-			
-			if (error != ERROR_SUCCESS)
-				throw new Win32Exception(error);
-
-			for (int i = 0; i < ModeCount; i++)
+			try
 			{
-				if (DisplayModes[i].infoType == DISPLAYCONFIG_MODE_INFO_TYPE.DISPLAYCONFIG_MODE_INFO_TYPE_TARGET)
+				List<Monitor> monitors = [new(Properties.Resources.MonitorAuto, "-1")];
+				int error = GetDisplayConfigBufferSizes(QUERY_DEVICE_CONFIG_FLAGS.QDC_ONLY_ACTIVE_PATHS,
+					out uint PathCount, out uint ModeCount);
+
+				if (error != ERROR_SUCCESS)
+					throw new Win32Exception(error);
+
+				DISPLAYCONFIG_PATH_INFO[] DisplayPaths = new DISPLAYCONFIG_PATH_INFO[PathCount];
+				DISPLAYCONFIG_MODE_INFO[] DisplayModes = new DISPLAYCONFIG_MODE_INFO[ModeCount];
+				error = QueryDisplayConfig(QUERY_DEVICE_CONFIG_FLAGS.QDC_ONLY_ACTIVE_PATHS,
+					ref PathCount, DisplayPaths, ref ModeCount, DisplayModes, IntPtr.Zero);
+
+				if (error != ERROR_SUCCESS)
+					throw new Win32Exception(error);
+				
+				int deviceId = 0; // This counter retrieves the ID of the monitor, since they are enumerated in order.
+				for (int i = 0; i < ModeCount; i++)
 				{
-					Monitor monitor = new(
-						MonitorFriendlyName(DisplayModes[i].adapterId, DisplayModes[i].id),
-						DisplayModes[i].id.ToString());
-					monitors.Add(monitor);
+					if (DisplayModes[i].infoType == DISPLAYCONFIG_MODE_INFO_TYPE.DISPLAYCONFIG_MODE_INFO_TYPE_TARGET)
+					{
+						Monitor monitor = new(
+							MonitorFriendlyName(DisplayModes[i].adapterId, DisplayModes[i].id),
+							deviceId.ToString());
+						monitors.Add(monitor);
+						deviceId++;
+					}
 				}
+				return monitors;
 			}
-			return monitors;
+			catch
+			{
+				return [new(Properties.Resources.MonitorAuto, "-1")];
+			}
+		}
+
+		public static bool SetDefaultMonitor(Monitor monitor)
+		{
+			try
+			{
+				MonitorChangerHelper.SetAsPrimaryMonitor(uint.Parse(monitor.DeviceID));
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
 		}
 	}
 
@@ -383,7 +357,7 @@ namespace Gavilya.Helpers
 
 		public override string ToString()
 		{
-			return Name;
+			return $"{(DeviceID == "-1" ? "" : (int.Parse(DeviceID)+1).ToString() + " .")}{Name}";
 		}
 
 		public override bool Equals(object? obj)

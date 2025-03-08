@@ -28,7 +28,9 @@ using System.Runtime.InteropServices;
 namespace Gavilya.Helpers
 {
 
-
+	/// <summary>
+	/// Based on the work of Carlos Delgado: https://ourcodeworld.com/articles/read/1417/how-to-define-a-monitor-as-the-primary-display-in-windows-10-using-c-sharp
+	/// </summary>
 	class MonitorChangerHelper
 	{
 		/// <summary>
@@ -37,8 +39,8 @@ namespace Gavilya.Helpers
 		/// <param name="id"></param>
 		public static void SetAsPrimaryMonitor(uint id)
 		{
-			DISPLAY_DEVICE device = new DISPLAY_DEVICE();
-			DEVMODE deviceMode = new DEVMODE();
+			DISPLAY_DEVICE device = new();
+			DEVMODE deviceMode = new();
 			device.cb = Marshal.SizeOf(device);
 
 			NativeMethods.EnumDisplayDevices(null, id, ref device, 0);
@@ -56,7 +58,7 @@ namespace Gavilya.Helpers
 				IntPtr.Zero
 			);
 
-			device = new DISPLAY_DEVICE();
+			device = new();
 			device.cb = Marshal.SizeOf(device);
 
 			// Update remaining devices
@@ -65,7 +67,7 @@ namespace Gavilya.Helpers
 				if (device.StateFlags.HasFlag(DisplayDeviceStateFlags.AttachedToDesktop) && otherid != id)
 				{
 					device.cb = Marshal.SizeOf(device);
-					DEVMODE otherDeviceMode = new DEVMODE();
+					DEVMODE otherDeviceMode = new();
 
 					NativeMethods.EnumDisplaySettings(device.DeviceName, -1, ref otherDeviceMode);
 
@@ -99,67 +101,67 @@ namespace Gavilya.Helpers
 		[FieldOffset(0)]
 		public string dmDeviceName;
 		[FieldOffset(32)]
-		public Int16 dmSpecVersion;
+		public short dmSpecVersion;
 		[FieldOffset(34)]
-		public Int16 dmDriverVersion;
+		public short dmDriverVersion;
 		[FieldOffset(36)]
-		public Int16 dmSize;
+		public short dmSize;
 		[FieldOffset(38)]
-		public Int16 dmDriverExtra;
+		public short dmDriverExtra;
 		[FieldOffset(40)]
-		public UInt32 dmFields;
+		public uint dmFields;
 
 		[FieldOffset(44)]
-		Int16 dmOrientation;
+		short dmOrientation;
 		[FieldOffset(46)]
-		Int16 dmPaperSize;
+		short dmPaperSize;
 		[FieldOffset(48)]
-		Int16 dmPaperLength;
+		short dmPaperLength;
 		[FieldOffset(50)]
-		Int16 dmPaperWidth;
+		short dmPaperWidth;
 		[FieldOffset(52)]
-		Int16 dmScale;
+		short dmScale;
 		[FieldOffset(54)]
-		Int16 dmCopies;
+		short dmCopies;
 		[FieldOffset(56)]
-		Int16 dmDefaultSource;
+		short dmDefaultSource;
 		[FieldOffset(58)]
-		Int16 dmPrintQuality;
+		short dmPrintQuality;
 
 		[FieldOffset(44)]
 		public POINTL dmPosition;
 		[FieldOffset(52)]
-		public Int32 dmDisplayOrientation;
+		public int dmDisplayOrientation;
 		[FieldOffset(56)]
-		public Int32 dmDisplayFixedOutput;
+		public int dmDisplayFixedOutput;
 
 		[FieldOffset(60)]
-		public short dmColor; // See note below!
+		public short dmColor;
 		[FieldOffset(62)]
-		public short dmDuplex; // See note below!
+		public short dmDuplex;
 		[FieldOffset(64)]
 		public short dmYResolution;
 		[FieldOffset(66)]
 		public short dmTTOption;
 		[FieldOffset(68)]
-		public short dmCollate; // See note below!
+		public short dmCollate;
 		[FieldOffset(72)]
 		[MarshalAs(UnmanagedType.ByValTStr, SizeConst = CCHFORMNAME)]
 		public string dmFormName;
 		[FieldOffset(102)]
-		public Int16 dmLogPixels;
+		public short dmLogPixels;
 		[FieldOffset(104)]
-		public Int32 dmBitsPerPel;
+		public int dmBitsPerPel;
 		[FieldOffset(108)]
-		public Int32 dmPelsWidth;
+		public int dmPelsWidth;
 		[FieldOffset(112)]
-		public Int32 dmPelsHeight;
+		public int dmPelsHeight;
 		[FieldOffset(116)]
-		public Int32 dmDisplayFlags;
+		public int dmDisplayFlags;
 		[FieldOffset(116)]
-		public Int32 dmNup;
+		public int dmNup;
 		[FieldOffset(120)]
-		public Int32 dmDisplayFrequency;
+		public int dmDisplayFrequency;
 	}
 
 	public enum DISP_CHANGE : int
