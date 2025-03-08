@@ -357,7 +357,7 @@ namespace Gavilya.Helpers
 
 		public override string ToString()
 		{
-			return $"{(DeviceID == "-1" ? "" : (int.Parse(DeviceID)+1).ToString() + " .")}{Name}";
+			return $"{(DeviceID == "-1" ? "" : (int.Parse(DeviceID)+1).ToString() + ". ")}{Name}";
 		}
 
 		public override bool Equals(object? obj)

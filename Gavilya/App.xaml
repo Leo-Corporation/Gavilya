@@ -1019,7 +1019,8 @@
                             Padding="7 5"
                             Background="{DynamicResource Background}"
                             BorderBrush="{DynamicResource SelectedBackground}"
-                            BorderThickness="1">
+                            BorderThickness="1"
+                            CornerRadius="5">
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
                                     <Canvas
