@@ -800,7 +800,23 @@
                     Foreground="{DynamicResource Foreground}"
                     IsChecked="{Binding CheckIfRunning, UpdateSourceTrigger=PropertyChanged}"
                     Style="{DynamicResource CheckBoxStyle1}" />
-
+                <TextBlock
+                    Margin="2"
+                    VerticalAlignment="Center"
+                    FontSize="13"
+                    FontWeight="ExtraBold"
+                    Text="{x:Static lang:Resources.DefaultMonitor}" />
+                <ComboBox
+                    x:Name="MonitorComboBox"
+                    Margin="0 5 0 5"
+                    Padding="4"
+                    Background="{DynamicResource Background2}"
+                    BorderThickness="0"
+                    FontWeight="ExtraBold"
+                    Foreground="{DynamicResource Foreground}"
+                    ItemsSource="{Binding Monitors}"
+                    SelectedIndex="{Binding MonitorIndex, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource ComboBoxStyle1}" />
             </StackPanel>
         </WrapPanel>
 

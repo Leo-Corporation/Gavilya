@@ -23,6 +23,7 @@ SOFTWARE.
 */
 
 using Gavilya.Enums;
+using Gavilya.Helpers;
 using System;
 using System.Collections.Generic;
 
@@ -44,6 +45,7 @@ public class Game
 	public string Id { get; init; }
 	public int RawgId { get; set; }
 	public List<Tag>? Tags { get; set; }
+	public Monitor? DefaultMonitor { get; set; }
 
 	public Game()
 	{
@@ -74,6 +76,7 @@ public class Game
 		hash.Add(Id);
 		hash.Add(RawgId);
 		hash.Add(Tags);
+		hash.Add(DefaultMonitor);
 		return hash.ToHashCode();
 	}
 }

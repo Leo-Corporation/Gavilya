@@ -228,6 +228,11 @@ public class GameEditionViewModel : ViewModelBase
 	private Visibility _noExeVis = Visibility.Collapsed;
 	public Visibility NoExeVis { get => _noExeVis; set { _noExeVis = value; OnPropertyChanged(nameof(NoExeVis)); } }
 
+	private int _monitorIndex = 0;
+	public int MonitorIndex { get => _monitorIndex; set { _monitorIndex = value; OnPropertyChanged(nameof(MonitorIndex)); } }
+
+	private List<Monitor> _monitors => DesktopMonitorHelper.GetMonitors();
+	public List<Monitor> Monitors { get => _monitors; }
 
 	public ICommand AddCommand { get; }
 	public ICommand BrowseFileCommand { get; }
@@ -311,6 +316,16 @@ public class GameEditionViewModel : ViewModelBase
 		SteamFieldsVis = game.GameType == GameType.Steam ? Visibility.Visible : Visibility.Collapsed;
 
 		ApplyBtnString = Properties.Resources.EditGame;
+
+		// Monitor ComboBox
+		if (Game.DefaultMonitor is not null && Monitors.IndexOf(Game.DefaultMonitor) != -1)
+		{
+			MonitorIndex = Monitors.IndexOf(Game.DefaultMonitor);
+		}
+		else
+		{
+			MonitorIndex = 0;
+		}
 	}
 
 	/// <summary>
@@ -476,7 +491,8 @@ public class GameEditionViewModel : ViewModelBase
 				LastTimePlayed = 0,
 				TotalTimePlayed = 0,
 				Tags = SelectedTags,
-				RawgId = RawgId
+				RawgId = RawgId,
+				DefaultMonitor = Monitors[MonitorIndex]
 			};
 
 			Games.Add(Game);
@@ -502,6 +518,7 @@ public class GameEditionViewModel : ViewModelBase
 		Game.IsHidden = IsHidden;
 		Game.Tags = SelectedTags;
 		Game.RawgId = RawgId;
+		Game.DefaultMonitor = Monitors[MonitorIndex];
 		Games[Games.IndexOf(Game)] = Game;
 		_mainViewModel.CurrentViewModel = new LibPageViewModel(Games, Tags, _mainViewModel);
 	}

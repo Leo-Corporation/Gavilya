@@ -1312,7 +1312,7 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Launch game on monitor.
         /// </summary>
         public static string LaunchGameOnMonitor {
             get {
@@ -1506,6 +1506,15 @@ namespace Gavilya.Properties {
         public static string Misc {
             get {
                 return ResourceManager.GetString("Misc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto (recommended).
+        /// </summary>
+        public static string MonitorAuto {
+            get {
+                return ResourceManager.GetString("MonitorAuto", resourceCulture);
             }
         }
         
