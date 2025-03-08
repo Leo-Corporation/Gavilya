@@ -66,7 +66,7 @@ internal class FavPageViewModel : ViewModelBase
 	public FavPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 
-		Games = new GameList(games.Where(game => game.IsFavorite));
+		Games = [.. games.Where(game => game.IsFavorite)];
 
 		_tags = tags;
 		_mainViewModel = mainViewModel;
@@ -106,7 +106,7 @@ internal class FavPageViewModel : ViewModelBase
 
 	private void SortAlpha(object? obj)
 	{
-		Games = new(Games.OrderBy(g => g.Name));
+		Games = [.. Games.OrderBy(g => g.Name)];
 
 		CurrentViewModel = CurrentViewModel switch
 		{
@@ -118,7 +118,7 @@ internal class FavPageViewModel : ViewModelBase
 
 	private void SortNoAlpha(object? obj)
 	{
-		Games = new(Games.OrderByDescending(g => g.Name));
+		Games = [.. Games.OrderByDescending(g => g.Name)];
 
 		CurrentViewModel = CurrentViewModel switch
 		{

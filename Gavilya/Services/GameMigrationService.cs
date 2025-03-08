@@ -61,7 +61,7 @@ public class GameMigrationService(string filePath)
 			GameType = GetGameType(g.IsSteam, g.IsUWP),
 		});
 
-		return new GameList(games);
+		return [.. games];
 	}
 
 	private static GameType GetGameType(bool isSteam, bool isUwp)

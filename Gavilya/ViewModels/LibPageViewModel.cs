@@ -108,7 +108,7 @@ internal class LibPageViewModel : ViewModelBase
 
 	private void SortAlpha(object? obj)
 	{
-		Games = new(Games.OrderBy(g => g.Name));
+		Games = [.. Games.OrderBy(g => g.Name)];
 
 		CurrentViewModel = CurrentViewModel switch
 		{
@@ -120,7 +120,7 @@ internal class LibPageViewModel : ViewModelBase
 
 	private void SortNoAlpha(object? obj)
 	{
-		Games = new(Games.OrderByDescending(g => g.Name));
+		Games = [.. Games.OrderByDescending(g => g.Name)];
 
 		CurrentViewModel = CurrentViewModel switch
 		{

@@ -159,7 +159,7 @@ public class StatsViewModel : ViewModelBase
 		{
 			Refresh(SortedGames[0]);
 			int max = SortedGames[0].TotalTimePlayed;
-			Rectangles = new(SortedGames.Take(10).Select(g => new RecInfo(g.TotalTimePlayed / (double)max * 110)));
+			Rectangles = [.. SortedGames.Take(10).Select(g => new RecInfo(g.TotalTimePlayed / (double)max * 110))];
 		}
 
 		SortCommand = new RelayCommand(Sort);

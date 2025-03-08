@@ -81,7 +81,7 @@ public class GameList : ObservableCollection<Game>
 			sortedGames = this.Where(game => showHiddenGames || !game.IsHidden).OrderBy(game => game.TotalTimePlayed).ToList();
 		}
 
-		return new GameList(sortedGames);
+		return [.. sortedGames];
 	}
 
 	public List<GameList> GetSortedGameLists(bool groupGames)
