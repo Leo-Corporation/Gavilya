@@ -26,11 +26,9 @@ using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
 using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
@@ -42,14 +40,14 @@ public class ThemeViewModel : ViewModelBase
 	private readonly MainViewModel _mainViewModel;
 	private List<(ThemeInfo, string)> _installedThemes;
 
-	private List<string> _themeNames;
-	public List<string> ThemeNames { get => _themeNames; set { _themeNames = value; OnPropertyChanged(nameof(ThemeNames)); } }
 
-	private int _index;
-	public int Index { get => _index; set { _index = value; ChangeTheme(value); OnPropertyChanged(nameof(Index)); } }
+	private List<ThemeSelectorViewModel> _themeSelectors;
+	public List<ThemeSelectorViewModel> ThemeSelectors { get => _themeSelectors; set { _themeSelectors = value; OnPropertyChanged(nameof(ThemeSelectors)); } }
 
 	public ICommand ImportCommand { get; }
 	public ICommand GetThemesCommand { get; }
+
+
 
 	public ThemeViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
@@ -58,47 +56,18 @@ public class ThemeViewModel : ViewModelBase
 		_mainViewModel = mainViewModel;
 		_installedThemes = ThemeHelper.GetInstalledThemes();
 
-		var current = profile.Settings.CurrentTheme == "" ? _installedThemes[0].Item1 : ThemeHelper.GetThemeFromPath(profile.Settings.CurrentTheme);
+		ThemeSelectorViewModel.ThemeChanged += (s, e) => LoadThemeViewModels();
+		LoadThemeViewModels();
 
-		ThemeNames = _installedThemes.Select(t => t.Item1.Name).ToList();
-		Index = _installedThemes.IndexOf(_installedThemes.Where(t => t.Item1.Equals(current)).First());
+		var current = profile.Settings.CurrentTheme == "" ? _installedThemes[0].Item1 : ThemeHelper.GetThemeFromPath(profile.Settings.CurrentTheme);
 
 		ImportCommand = new RelayCommand(Import);
 		GetThemesCommand = new RelayCommand(GetThemesOnline);
 	}
 
-	private void ChangeTheme(int i)
+	private void LoadThemeViewModels()
 	{
-		try
-		{
-			if (i == 0) // If the default theme is selected
-			{
-				Application.Current.Resources.MergedDictionaries.Clear();
-
-				// Create a resource dictionary
-				ResourceDictionary resourceDictionary = new()
-				{
-					Source = new Uri("..\\Themes\\Dark.xaml", UriKind.Relative) // Add source
-				};
-
-				Application.Current.Resources.MergedDictionaries.Add(resourceDictionary); // Add the dictionary
-
-				_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.CurrentTheme = _installedThemes[i].Item2;
-				_mainViewModel.CurrentSettings.CurrentTheme = "";
-				_profileData.Save();
-
-				return;
-			}
-
-			ThemeHelper.ChangeTheme(_installedThemes[i].Item1, _installedThemes[i].Item2);
-			_profileData.Profiles[_profileData.Profiles.IndexOf(_profile)].Settings.CurrentTheme = _installedThemes[i].Item2 + $@"\theme.manifest";
-			_profileData.Save();
-			_mainViewModel.CurrentSettings.CurrentTheme = _installedThemes[i].Item2 + $@"\theme.manifest";
-		}
-		catch (IndexOutOfRangeException ex)
-		{
-			Console.WriteLine("Failed to change theme, code: " + ex.StackTrace);
-		}
+		ThemeSelectors = _installedThemes.Select(t => new ThemeSelectorViewModel(_profile, _profileData, _mainViewModel, t)).ToList();
 	}
 
 	private void Import(object? obj)
@@ -114,7 +83,7 @@ public class ThemeViewModel : ViewModelBase
 		{
 			ThemeHelper.InstallTheme(openFileDialog.FileName);
 			_installedThemes = ThemeHelper.GetInstalledThemes();
-			ThemeNames = _installedThemes.Select(t => t.Item1.Name).ToList();
+			LoadThemeViewModels();
 		}
 	}
 

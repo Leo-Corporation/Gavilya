@@ -107,7 +107,7 @@ public class NavBarViewModel : ViewModelBase
 
 	private void HomePage(object? obj)
 	{
-		_mainViewModel.CurrentViewModel = new HomePageViewModel(Games, _tags, _mainViewModel);
+		_mainViewModel.CurrentViewModel = new HomePageViewModel(_profile, Games, _tags, _mainViewModel);
 	}
 
 	private void LibraryPage(object? obj)

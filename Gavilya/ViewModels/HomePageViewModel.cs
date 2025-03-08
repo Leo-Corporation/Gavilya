@@ -24,7 +24,6 @@ SOFTWARE.
 
 using Gavilya.Commands;
 using Gavilya.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -37,7 +36,11 @@ public class HomePageViewModel : ViewModelBase
 	private readonly GameList _games;
 	private readonly List<Tag> _tags;
 	private readonly MainViewModel _mainViewModel;
-	public static string GreetingMessage => $"{Properties.Resources.Hello} {Environment.UserName}{Properties.Resources.ExclamationMark}";
+	private readonly Profile _profile;
+
+	private string _greetingMessage = $"{Properties.Resources.Hello}{Properties.Resources.ExclamationMark}";
+
+	public string GreetingMessage { get => _greetingMessage; set { _greetingMessage = value; OnPropertyChanged(nameof(GreetingMessage)); } }
 	public List<MinimalGameViewModel> Favorites => _games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
 	public List<MinimalGameViewModel> Recents => _games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden).OrderByDescending(g => g.LastTimePlayed).Take(_mainViewModel.CurrentSettings.MaxNumberRecentGamesShown).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
 	public List<MinimalGameViewModel> Recommended => _games.GetRecommandedGames().Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
@@ -53,11 +56,12 @@ public class HomePageViewModel : ViewModelBase
 
 	public ICommand RandomGameCommand { get; }
 
-	public HomePageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
+	public HomePageViewModel(Profile profile, GameList games, List<Tag> tags, MainViewModel mainViewModel)
 	{
 		_games = games;
 		_tags = tags;
 		_mainViewModel = mainViewModel;
+		_profile = profile;
 
 		if (_games.Count == 0)
 		{
@@ -67,6 +71,7 @@ public class HomePageViewModel : ViewModelBase
 
 		StatsView = new(_games, _mainViewModel.CurrentSettings.ShowHiddenGames);
 		RandomGameCommand = new RelayCommand(GetRandomGame);
+		GreetingMessage = $"{Properties.Resources.Hello} {_profile.Name}{Properties.Resources.ExclamationMark}";
 	}
 
 	private void GetRandomGame(object? obj)

@@ -132,7 +132,7 @@ public class MainViewModel : ViewModelBase
 			Page.Favorites => new FavPageViewModel(Games, profile.Tags, this),
 			Page.Recent => new RecentPageViewModel(Games, profile.Tags, this),
 			Page.Profile => new ProfileViewModel(profile, profiles, Games, this),
-			_ => new HomePageViewModel(Games, profile.Tags, this)
+			_ => new HomePageViewModel(profile, Games, profile.Tags, this)
 		};
 
 		Query = "";
@@ -287,7 +287,7 @@ public class MainViewModel : ViewModelBase
 
 			CurrentViewModel = CurrentViewModel switch
 			{
-				HomePageViewModel => new HomePageViewModel(Games, _tags, this),
+				HomePageViewModel => new HomePageViewModel(_profile, Games, _tags, this),
 				RecentPageViewModel => new RecentPageViewModel(Games, _tags, this),
 				LibPageViewModel => new LibPageViewModel(Games, _tags, this),
 				_ => CurrentViewModel

@@ -1059,4 +1059,13 @@
   <data name="RecentPageOptions" xml:space="preserve">
     <value>Recently played games page options.</value>
   </data>
+  <data name="DefaultMonitor" xml:space="preserve">
+    <value>Default monitor</value>
+  </data>
+  <data name="LaunchGameOnMonitor" xml:space="preserve">
+    <value>Launch game on monitor</value>
+  </data>
+  <data name="MonitorAuto" xml:space="preserve">
+    <value>Auto (recommended)</value>
+  </data>
 </root>

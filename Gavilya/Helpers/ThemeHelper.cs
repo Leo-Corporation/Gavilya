@@ -30,6 +30,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Windows;
+using System.Windows.Media;
 using System.Xml.Serialization;
 
 namespace Gavilya.Helpers;
@@ -107,4 +108,6 @@ public class ThemeHelper
 		StreamReader streamReader = new(path);
 		return (ThemeInfo)xmlSerializer.Deserialize(streamReader);
 	}
+
+	public static SolidColorBrush GetSolidColor(string resource) => (SolidColorBrush)Application.Current.Resources[resource];
 }

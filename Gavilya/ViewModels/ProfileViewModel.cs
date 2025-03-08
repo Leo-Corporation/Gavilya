@@ -103,7 +103,7 @@ public class ProfileViewModel : ViewModelBase
 		TotalText = $"{total / 3600d:0.0}{Properties.Resources.HourShort}";
 		var sortedGames = _games.SortByPlayTime(true, _profile.Settings.ShowHiddenGames);
 
-		TopGames = new(sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null)));
+		TopGames = [.. sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null))];
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
 		ProfileName = profile.Name;
 

@@ -76,6 +76,9 @@ public class GameLauncherHelper
 
 	public bool Launch()
 	{
+		// Changes the default monitor if needed
+		if (_game.DefaultMonitor != null && _game.DefaultMonitor.DeviceID != "-1") DesktopMonitorHelper.SetDefaultMonitor(_game.DefaultMonitor);
+
 		// Check location if the game is a Win32 app
 		if (_game.GameType == GameType.Win32 && !File.Exists(_game.Command)) return false; // Abort
 		if (_game.GameType == GameType.Steam && !CanLaunchSteamGame(_game)) return false;

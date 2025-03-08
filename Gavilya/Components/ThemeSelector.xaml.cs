@@ -22,9 +22,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-namespace Gavilya.Helpers;
-public static class Context
+using System.Windows.Controls;
+
+namespace Gavilya.Components;
+/// <summary>
+/// Logique d'interaction pour ThemeSelector.xaml
+/// </summary>
+public partial class ThemeSelector : UserControl
 {
-	public static string Version => "4.6.0.2503";
-	public static string LastVersionLink => "https://raw.githubusercontent.com/Leo-Corporation/LeoCorp-Docs/master/Liens/Update%20System/Gavilya/Version.txt";
+	public ThemeSelector()
+	{
+		InitializeComponent();
+	}
 }

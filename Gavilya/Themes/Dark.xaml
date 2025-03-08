@@ -11,7 +11,11 @@
     <SolidColorBrush x:Key="Graph" Color="#64648C" />
     <SolidColorBrush x:Key="SelectedItem" Color="#3C3C50" />
     <SolidColorBrush x:Key="CheckedColor" Color="White" />
-
+    <SolidColorBrush x:Key="Green" Color="#25DE0F" />
+    <SolidColorBrush x:Key="LightGreen" Color="#083003" />
+    <SolidColorBrush x:Key="ForegroundGreen" Color="#a9f8a0" />
+    <SolidColorBrush x:Key="LightOrange" Color="#4c2500" />
+    <SolidColorBrush x:Key="ForegroundOrange" Color="#ffca99" />
     <LinearGradientBrush x:Key="GameCardGradient" StartPoint="0.5,0" EndPoint="0.5,1">
         <GradientStop Offset="0.95" Color="#000014" />
         <GradientStop Offset="0" Color="#33C8C8C8" />

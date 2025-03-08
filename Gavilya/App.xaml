@@ -916,8 +916,8 @@
                             <Border
                                 x:Name="templateRoot"
                                 Background="Transparent"
-                                BorderBrush="{DynamicResource Accent}"
-                                BorderThickness="{TemplateBinding BorderThickness}"
+                                BorderBrush="{DynamicResource SelectedBackground}"
+                                BorderThickness="1"
                                 CornerRadius="4"
                                 SnapsToDevicePixels="true">
                                 <Border
@@ -1011,38 +1011,44 @@
                         IsOpen="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
                         Placement="Bottom"
                         PopupAnimation="{DynamicResource {x:Static SystemParameters.ComboBoxPopupAnimationKey}}">
-                        <theme:SystemDropShadowChrome
-                            x:Name="shadow"
+                        <Border
+                            x:Name="dropDownBorder"
                             MinWidth="{Binding ActualWidth, ElementName=templateRoot}"
                             MaxHeight="{TemplateBinding MaxDropDownHeight}"
-                            Color="Transparent">
-                            <Border
-                                x:Name="dropDownBorder"
-                                Background="{DynamicResource Background}"
-                                BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
-                                BorderThickness="1">
-                                <ScrollViewer x:Name="DropDownScrollViewer">
-                                    <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
-                                        <Canvas
-                                            x:Name="canvas"
-                                            Width="0"
-                                            Height="0"
-                                            HorizontalAlignment="Left"
-                                            VerticalAlignment="Top">
-                                            <Rectangle
-                                                x:Name="opaqueRect"
-                                                Width="{Binding ActualWidth, ElementName=dropDownBorder}"
-                                                Height="{Binding ActualHeight, ElementName=dropDownBorder}"
-                                                Fill="{Binding Background, ElementName=dropDownBorder}" />
-                                        </Canvas>
-                                        <ItemsPresenter
-                                            x:Name="ItemsPresenter"
-                                            KeyboardNavigation.DirectionalNavigation="Contained"
-                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
-                                    </Grid>
-                                </ScrollViewer>
-                            </Border>
-                        </theme:SystemDropShadowChrome>
+                            Margin="7"
+                            Padding="7 5"
+                            Background="{DynamicResource Background}"
+                            BorderBrush="{DynamicResource SelectedBackground}"
+                            BorderThickness="1"
+                            CornerRadius="5">
+                            <ScrollViewer x:Name="DropDownScrollViewer">
+                                <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
+                                    <Canvas
+                                        x:Name="canvas"
+                                        Width="0"
+                                        Height="0"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top">
+                                        <Rectangle
+                                            x:Name="opaqueRect"
+                                            Width="{Binding ActualWidth, ElementName=dropDownBorder}"
+                                            Height="{Binding ActualHeight, ElementName=dropDownBorder}"
+                                            Fill="{Binding Background, ElementName=dropDownBorder}" />
+                                    </Canvas>
+                                    <ItemsPresenter
+                                        x:Name="ItemsPresenter"
+                                        KeyboardNavigation.DirectionalNavigation="Contained"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Grid>
+                            </ScrollViewer>
+                            <Border.Effect>
+                                <DropShadowEffect
+                                    BlurRadius="15"
+                                    Opacity="0.3"
+                                    ShadowDepth="0"
+                                    Color="{DynamicResource LightAccentColor}" />
+                            </Border.Effect>
+                        </Border>
                     </Popup>
                     <ToggleButton
                         x:Name="toggleButton"
@@ -1065,10 +1071,6 @@
                         SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
                 </Grid>
                 <ControlTemplate.Triggers>
-                    <Trigger SourceName="PART_Popup" Property="HasDropShadow" Value="true">
-                        <Setter TargetName="shadow" Property="Margin" Value="0 0 5 5" />
-                        <Setter TargetName="shadow" Property="Color" Value="#71000000" />
-                    </Trigger>
                     <Trigger Property="HasItems" Value="false">
                         <Setter TargetName="dropDownBorder" Property="Height" Value="95" />
                     </Trigger>
@@ -1106,6 +1108,28 @@
             <SolidColorBrush x:Key="SliderThumb.Static.Background" Color="#FFF0F0F0" />
             <SolidColorBrush x:Key="SliderThumb.Disabled.Background" Color="#FFF0F0F0" />
             <SolidColorBrush x:Key="SliderThumb.Disabled.Border" Color="#FFD9D9D9" />
+
+            <Style TargetType="ComboBoxItem">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ComboBoxItem">
+                            <Border
+                                Padding="4"
+                                Background="{TemplateBinding Background}"
+                                CornerRadius="5">
+                                <ContentPresenter />
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <!--  Remove default hover effect  -->
+                                <Trigger Property="IsHighlighted" Value="True">
+                                    <Setter Property="Background" Value="{DynamicResource Background2}" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="{x:Type ToolTip}" TargetType="ToolTip">
                 <Setter Property="OverridesDefaultStyle" Value="true" />
                 <Setter Property="HasDropShadow" Value="True" />
