@@ -57,14 +57,9 @@ public class StatGameViewModel : ViewModelBase
 		CoverFilePath = game.CoverFilePath;
 		Index = $"#{i + 1}";
 
-		if (_game.TotalTimePlayed != 0)
-		{
-			TotalTimePlayed = $"{_game.TotalTimePlayed / 3600d:0.0}{Properties.Resources.HourShort}";
-		}
-		else
-		{
-			TotalTimePlayed = Properties.Resources.Never;
-		}
+		TotalTimePlayed = _game.TotalTimePlayed != 0
+			? $"{_game.TotalTimePlayed / 3600d:0.0}{Properties.Resources.HourShort}"
+			: Properties.Resources.Never;
 
 		ClickCommand = new RelayCommand(Click);
 	}

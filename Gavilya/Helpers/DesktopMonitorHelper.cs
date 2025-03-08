@@ -143,11 +143,11 @@ namespace Gavilya.Helpers
 			public LUID adapterId;
 			public uint id;
 			public uint modeInfoIdx;
-			DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY outputTechnology;
-			DISPLAYCONFIG_ROTATION rotation;
-			DISPLAYCONFIG_SCALING scaling;
+			readonly DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY outputTechnology;
+			readonly DISPLAYCONFIG_ROTATION rotation;
+			readonly DISPLAYCONFIG_SCALING scaling;
 			DISPLAYCONFIG_RATIONAL refreshRate;
-			DISPLAYCONFIG_SCANLINE_ORDERING scanLineOrdering;
+			readonly DISPLAYCONFIG_SCANLINE_ORDERING scanLineOrdering;
 			public bool targetAvailable;
 			public uint statusFlags;
 		}
@@ -195,8 +195,8 @@ namespace Gavilya.Helpers
 		[StructLayout(LayoutKind.Sequential)]
 		public struct POINTL
 		{
-			int x;
-			int y;
+			readonly int x;
+			readonly int y;
 		}
 
 		[StructLayout(LayoutKind.Sequential)]
@@ -286,9 +286,7 @@ namespace Gavilya.Helpers
 			deviceName.header.id = targetId;
 			deviceName.header.type = DISPLAYCONFIG_DEVICE_INFO_TYPE.DISPLAYCONFIG_DEVICE_INFO_GET_TARGET_NAME;
 			int error = DisplayConfigGetDeviceInfo(ref deviceName);
-			if (error != ERROR_SUCCESS)
-				throw new Win32Exception(error);
-			return deviceName.monitorFriendlyDeviceName;
+			return error != ERROR_SUCCESS ? throw new Win32Exception(error) : deviceName.monitorFriendlyDeviceName;
 		}
 
 		public static List<Monitor> GetMonitors()
@@ -309,7 +307,7 @@ namespace Gavilya.Helpers
 
 				if (error != ERROR_SUCCESS)
 					throw new Win32Exception(error);
-				
+
 				int deviceId = 0; // This counter retrieves the ID of the monitor, since they are enumerated in order.
 				for (int i = 0; i < ModeCount; i++)
 				{
@@ -357,7 +355,7 @@ namespace Gavilya.Helpers
 
 		public override string ToString()
 		{
-			return $"{(DeviceID == "-1" ? "" : (int.Parse(DeviceID)+1).ToString() + ". ")}{Name}";
+			return $"{(DeviceID == "-1" ? "" : (int.Parse(DeviceID) + 1).ToString() + ". ")}{Name}";
 		}
 
 		public override bool Equals(object? obj)

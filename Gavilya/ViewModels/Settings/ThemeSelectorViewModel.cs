@@ -29,7 +29,6 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Gavilya.ViewModels.Settings;
 public class ThemeSelectorViewModel : ViewModelBase
@@ -57,7 +56,7 @@ public class ThemeSelectorViewModel : ViewModelBase
 
 	private Thickness _borderThickness = new(0);
 	public Thickness BorderThickness { get => _borderThickness; set { _borderThickness = value; OnPropertyChanged(nameof(BorderThickness)); } }
-	
+
 	public static event EventHandler? ThemeChanged;
 	public ThemeSelectorViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel, (ThemeInfo, string) themeInfo)
 	{

@@ -70,17 +70,9 @@ public class GameList : ObservableCollection<Game>
 
 	public GameList SortByPlayTime(bool sortByMostPlayed, bool showHiddenGames)
 	{
-		List<Game> sortedGames;
-
-		if (sortByMostPlayed)
-		{
-			sortedGames = this.Where(game => showHiddenGames || !game.IsHidden).OrderByDescending(game => game.TotalTimePlayed).ToList();
-		}
-		else
-		{
-			sortedGames = this.Where(game => showHiddenGames || !game.IsHidden).OrderBy(game => game.TotalTimePlayed).ToList();
-		}
-
+		List<Game> sortedGames = sortByMostPlayed
+			? this.Where(game => showHiddenGames || !game.IsHidden).OrderByDescending(game => game.TotalTimePlayed).ToList()
+			: this.Where(game => showHiddenGames || !game.IsHidden).OrderBy(game => game.TotalTimePlayed).ToList();
 		return [.. sortedGames];
 	}
 
@@ -149,7 +141,7 @@ public class GameList : ObservableCollection<Game>
 		if (yesterdayList.Count > 0) sortedGames.Add(yesterdayList);
 		if (thisWeekList.Count > 0) sortedGames.Add(thisWeekList);
 		if (thisMonthList.Count > 0) sortedGames.Add(thisMonthList);
-		if (!groupGames && otherList.Count > 0)  sortedGames.Add(otherList);
+		if (!groupGames && otherList.Count > 0) sortedGames.Add(otherList);
 
 		if (groupGames)
 		{
@@ -158,7 +150,7 @@ public class GameList : ObservableCollection<Game>
 			foreach (var dateList in sorted)
 			{
 				sortedGames.Add(dateList.Value);
-			} 
+			}
 		}
 
 		return sortedGames;

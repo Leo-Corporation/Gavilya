@@ -112,21 +112,21 @@ namespace Gavilya.Helpers
 		public uint dmFields;
 
 		[FieldOffset(44)]
-		short dmOrientation;
+		readonly short dmOrientation;
 		[FieldOffset(46)]
-		short dmPaperSize;
+		readonly short dmPaperSize;
 		[FieldOffset(48)]
-		short dmPaperLength;
+		readonly short dmPaperLength;
 		[FieldOffset(50)]
-		short dmPaperWidth;
+		readonly short dmPaperWidth;
 		[FieldOffset(52)]
-		short dmScale;
+		readonly short dmScale;
 		[FieldOffset(54)]
-		short dmCopies;
+		readonly short dmCopies;
 		[FieldOffset(56)]
-		short dmDefaultSource;
+		readonly short dmDefaultSource;
 		[FieldOffset(58)]
-		short dmPrintQuality;
+		readonly short dmPrintQuality;
 
 		[FieldOffset(44)]
 		public POINTL dmPosition;

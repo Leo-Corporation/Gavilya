@@ -26,11 +26,9 @@ using Gavilya.Commands;
 using Gavilya.Helpers;
 using Gavilya.Models;
 using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Gavilya.ViewModels.Settings;
@@ -42,14 +40,14 @@ public class ThemeViewModel : ViewModelBase
 	private readonly MainViewModel _mainViewModel;
 	private List<(ThemeInfo, string)> _installedThemes;
 
-	
+
 	private List<ThemeSelectorViewModel> _themeSelectors;
 	public List<ThemeSelectorViewModel> ThemeSelectors { get => _themeSelectors; set { _themeSelectors = value; OnPropertyChanged(nameof(ThemeSelectors)); } }
 
 	public ICommand ImportCommand { get; }
 	public ICommand GetThemesCommand { get; }
 
-	
+
 
 	public ThemeViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
@@ -57,7 +55,7 @@ public class ThemeViewModel : ViewModelBase
 		_profileData = profileData;
 		_mainViewModel = mainViewModel;
 		_installedThemes = ThemeHelper.GetInstalledThemes();
-		
+
 		ThemeSelectorViewModel.ThemeChanged += (s, e) => LoadThemeViewModels();
 		LoadThemeViewModels();
 
@@ -71,7 +69,7 @@ public class ThemeViewModel : ViewModelBase
 	{
 		ThemeSelectors = _installedThemes.Select(t => new ThemeSelectorViewModel(_profile, _profileData, _mainViewModel, t)).ToList();
 	}
-		
+
 	private void Import(object? obj)
 	{
 		OpenFileDialog openFileDialog = new()

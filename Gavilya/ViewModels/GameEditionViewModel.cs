@@ -318,14 +318,7 @@ public class GameEditionViewModel : ViewModelBase
 		ApplyBtnString = Properties.Resources.EditGame;
 
 		// Monitor ComboBox
-		if (Game.DefaultMonitor is not null && Monitors.IndexOf(Game.DefaultMonitor) != -1)
-		{
-			MonitorIndex = Monitors.IndexOf(Game.DefaultMonitor);
-		}
-		else
-		{
-			MonitorIndex = 0;
-		}
+		MonitorIndex = Game.DefaultMonitor is not null && Monitors.IndexOf(Game.DefaultMonitor) != -1 ? Monitors.IndexOf(Game.DefaultMonitor) : 0;
 	}
 
 	/// <summary>
@@ -538,8 +531,7 @@ public class GameEditionViewModel : ViewModelBase
 			string selectedPath = dialog.SelectedPath;
 			GameScannerService gameScannerService = new();
 			ExeApps = GameScannerService.ScanForExecutables(selectedPath, this);
-			if (ExeApps is not null && ExeApps.Count > 0) NoExeVis = Visibility.Collapsed;
-			else NoExeVis = Visibility.Visible;
+			NoExeVis = ExeApps is not null && ExeApps.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
 			IsExeSelectorOpen = true;
 		}
 	}

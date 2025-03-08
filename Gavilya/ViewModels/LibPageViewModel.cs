@@ -55,7 +55,7 @@ internal class LibPageViewModel : ViewModelBase
 	private bool _isListSelected;
 	public bool IsListSelected { get => _isListSelected; set { _isListSelected = value; OnPropertyChanged(nameof(IsListSelected)); } }
 
-	private int _gamesCount=0;
+	private int _gamesCount = 0;
 	public int GamesCount { get => _gamesCount; set { _gamesCount = value; OnPropertyChanged(nameof(_gamesCount)); } }
 
 	public ICommand CardViewCommand { get; }
