@@ -1015,7 +1015,7 @@
     <value>启用搜索快捷键</value>
   </data>
   <data name="SearchKeyboardShortcutDesc" xml:space="preserve">
-    <value>键盘快捷键相关设置</value>
+    <value>键盘快捷键相关设置。</value>
   </data>
   <data name="PinUnpinWindow" xml:space="preserve">
     <value>插针/解针窗口</value>
@@ -1058,5 +1058,14 @@
   </data>
   <data name="RecentPageOptions" xml:space="preserve">
     <value>最近玩过的游戏页面选项。</value>
+  </data>
+  <data name="DefaultMonitor" xml:space="preserve">
+    <value>默认监视器</value>
+  </data>
+  <data name="LaunchGameOnMonitor" xml:space="preserve">
+    <value>在显示器上启动游戏</value>
+  </data>
+  <data name="MonitorAuto" xml:space="preserve">
+    <value>自动（推荐）</value>
   </data>
 </root>

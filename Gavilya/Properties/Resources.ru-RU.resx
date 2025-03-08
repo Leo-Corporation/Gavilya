@@ -661,7 +661,7 @@
     <value>Отображать скрытые игры</value>
   </data>
   <data name="NoItemsFound" xml:space="preserve">
-    <value>Предметов не обнаружено.</value>
+    <value>Предметов не обнаружено</value>
   </data>
   <data name="AddGame" xml:space="preserve">
     <value>Добавить игру</value>
@@ -853,7 +853,7 @@
     <value>Выберите игру</value>
   </data>
   <data name="SelectNotification" xml:space="preserve">
-    <value>Выберите уведомления, которые хотите получать в Центре Уведомлений</value>
+    <value>Выберите уведомления, которые хотите получать в Центре Уведомлений.</value>
   </data>
   <data name="LongTimeAgo" xml:space="preserve">
     <value>Давно</value>
@@ -1058,5 +1058,14 @@
   </data>
   <data name="NoProfilesFound" xml:space="preserve">
     <value>Профилей не было найдено.</value>
+  </data>
+  <data name="DefaultMonitor" xml:space="preserve">
+    <value>Монитор по умолчанию</value>
+  </data>
+  <data name="LaunchGameOnMonitor" xml:space="preserve">
+    <value>Запуск игры на мониторе</value>
+  </data>
+  <data name="MonitorAuto" xml:space="preserve">
+    <value>Авто (рекомендуется)</value>
   </data>
 </root>

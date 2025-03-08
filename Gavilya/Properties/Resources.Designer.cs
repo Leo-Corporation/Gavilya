@@ -556,6 +556,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default monitor.
+        /// </summary>
+        public static string DefaultMonitor {
+            get {
+                return ResourceManager.GetString("DefaultMonitor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Default page.
         /// </summary>
         public static string DefaultPage {
@@ -1299,6 +1308,15 @@ namespace Gavilya.Properties {
         public static string LaunchGameAsAdmin {
             get {
                 return ResourceManager.GetString("LaunchGameAsAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LaunchGameOnMonitor {
+            get {
+                return ResourceManager.GetString("LaunchGameOnMonitor", resourceCulture);
             }
         }
         

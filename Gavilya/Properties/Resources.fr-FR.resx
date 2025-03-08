@@ -1059,4 +1059,13 @@
   <data name="RecentPageOptions" xml:space="preserve">
     <value>Options de la page des jeux récemment joués.</value>
   </data>
+  <data name="DefaultMonitor" xml:space="preserve">
+    <value>Moniteur par défaut</value>
+  </data>
+  <data name="LaunchGameOnMonitor" xml:space="preserve">
+    <value>Lancer le jeu sur le moniteur</value>
+  </data>
+  <data name="MonitorAuto" xml:space="preserve">
+    <value>Auto (recommandé)</value>
+  </data>
 </root>
