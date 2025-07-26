@@ -41,7 +41,7 @@ public class Tag
 		HexColorCode = "#FF0000";
 		Uuid = Guid.NewGuid().ToString();
 	}
-	public string Uuid { get; }
+	public string Uuid { get; init; }
 	public string Name { get; set; }
 	public string HexColorCode { get; set; }
 
