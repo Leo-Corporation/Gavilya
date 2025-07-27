@@ -97,6 +97,9 @@ public class GameOptionsViewModel : ViewModelBase
 		Tag tag = new(TagName, Color);
 		Tags.Add(tag);
 		Refresh();
+
+		Color = new RGB(new Random().Next(255), new Random().Next(255), new Random().Next(255)).ToHex().Value;
+		TagName = string.Empty;
 	}
 
 	private void SortGamesChanged(object? obj)
