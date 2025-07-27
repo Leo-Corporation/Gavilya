@@ -49,7 +49,7 @@ public class GameEditionViewModel : ViewModelBase
 	GameList Games { get; set; }
 	public List<Tag> Tags { get; }
 	public List<Tag> SelectedTags { get; set; }
-	public List<TagSelectorViewModel> TagsVm => Tags.Select(t => new TagSelectorViewModel(SelectedTags, t, SelectedTags.Contains(t))).ToList();
+	public List<TagSelectorViewModel> TagsVm => [.. Tags.Select(t => new TagSelectorViewModel(SelectedTags, t, SelectedTags.Contains(t)))];
 
 	private List<RawgResultViewModel> _searchResults;
 	public List<RawgResultViewModel> SearchResults { get => _searchResults; set { _searchResults = value; OnPropertyChanged(nameof(SearchResults)); } }
@@ -399,7 +399,7 @@ public class GameEditionViewModel : ViewModelBase
 	private async void BrowseUwp(object? obj)
 	{
 		IsUwpOpen = true;
-		UwpApps = (await UwpHelper.GetUwpAppsAsync()).Select(a => new UwpSelectorViewModel(a, this)).ToList();
+		UwpApps = [.. (await UwpHelper.GetUwpAppsAsync()).Select(a => new UwpSelectorViewModel(a, this))];
 	}
 
 	private void OpenTagPopup(object? obj)

@@ -41,9 +41,9 @@ public class HomePageViewModel : ViewModelBase
 	private string _greetingMessage = $"{Properties.Resources.Hello}{Properties.Resources.ExclamationMark}";
 
 	public string GreetingMessage { get => _greetingMessage; set { _greetingMessage = value; OnPropertyChanged(nameof(GreetingMessage)); } }
-	public List<MinimalGameViewModel> Favorites => _games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
-	public List<MinimalGameViewModel> Recents => _games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden).OrderByDescending(g => g.LastTimePlayed).Take(_mainViewModel.CurrentSettings.MaxNumberRecentGamesShown).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
-	public List<MinimalGameViewModel> Recommended => _games.GetRecommandedGames().Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel)).ToList();
+	public List<MinimalGameViewModel> Favorites => [.. _games.Where(g => g.IsFavorite && (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel))];
+	public List<MinimalGameViewModel> Recents => [.. _games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden).OrderByDescending(g => g.LastTimePlayed).Take(_mainViewModel.CurrentSettings.MaxNumberRecentGamesShown).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel))];
+	public List<MinimalGameViewModel> Recommended => [.. _games.GetRecommandedGames().Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden).Select(g => new MinimalGameViewModel(g, _games, _mainViewModel))];
 
 	private StatsViewModel _statView;
 	public StatsViewModel StatsView { get => _statView; set { _statView = value; OnPropertyChanged(nameof(StatsView)); } }

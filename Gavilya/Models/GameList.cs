@@ -71,8 +71,8 @@ public class GameList : ObservableCollection<Game>
 	public GameList SortByPlayTime(bool sortByMostPlayed, bool showHiddenGames)
 	{
 		List<Game> sortedGames = sortByMostPlayed
-			? this.Where(game => showHiddenGames || !game.IsHidden).OrderByDescending(game => game.TotalTimePlayed).ToList()
-			: this.Where(game => showHiddenGames || !game.IsHidden).OrderBy(game => game.TotalTimePlayed).ToList();
+			? [.. this.Where(game => showHiddenGames || !game.IsHidden).OrderByDescending(game => game.TotalTimePlayed)]
+			: [.. this.Where(game => showHiddenGames || !game.IsHidden).OrderBy(game => game.TotalTimePlayed)];
 		return [.. sortedGames];
 	}
 

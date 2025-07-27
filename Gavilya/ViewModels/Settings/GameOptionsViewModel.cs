@@ -62,6 +62,7 @@ public class GameOptionsViewModel : ViewModelBase
 	public ICommand AddTagCommand { get; }
 	public ICommand ChangeColorCommand { get; }
 	public ICommand CheckSortGames { get; }
+	public ICommand GenerateColorCommand { get; }
 
 	public GameOptionsViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
@@ -72,7 +73,7 @@ public class GameOptionsViewModel : ViewModelBase
 		ShowHiddenGames = profile.Settings.ShowHiddenGames;
 		SortGames = profile.Settings.GroupGamesByDate ?? true;
 		Tags = profile.Tags;
-		TagsVm = Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh)).ToList();
+		TagsVm = [.. Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh))];
 
 		Random random = new();
 		Color = new RGB(random.Next(255), random.Next(255), random.Next(255)).ToHex().Value;
@@ -118,7 +119,7 @@ public class GameOptionsViewModel : ViewModelBase
 
 	internal void Refresh()
 	{
-		TagsVm = Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh)).ToList();
+		TagsVm = [.. Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh))];
 		_profileData.Save();
 	}
 

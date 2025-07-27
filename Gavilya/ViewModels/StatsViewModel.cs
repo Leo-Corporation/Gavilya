@@ -141,7 +141,7 @@ public class StatsViewModel : ViewModelBase
 		}
 
 		SortedGames = _games.SortByPlayTime(SortByMostPlayed, _showHiddenGames);
-		SortedGamesVm = SortedGames.Take(10).Select((g, i) => new StatGameViewModel(i, g, this)).ToList();
+		SortedGamesVm = [.. SortedGames.Take(10).Select((g, i) => new StatGameViewModel(i, g, this))];
 
 		int total = 0;
 
@@ -171,7 +171,7 @@ public class StatsViewModel : ViewModelBase
 		SortIcon = SortByMostPlayed ? "\uF19C" : "\uF149";
 		SortText = SortByMostPlayed ? Properties.Resources.MostPlayed : Properties.Resources.LeastPlayed;
 		SortedGames = _games.SortByPlayTime(SortByMostPlayed, _showHiddenGames);
-		SortedGamesVm = SortedGames.Take(10).Select((g, i) => new StatGameViewModel(i, g, this)).ToList();
+		SortedGamesVm = [.. SortedGames.Take(10).Select((g, i) => new StatGameViewModel(i, g, this))];
 
 		if (SortedGames.Count > 0)
 			Refresh(SortedGames[0]);

@@ -110,7 +110,7 @@ public partial class App : Application
 		if (currentDate.Month == 2)
 		{
 			// If the specified day is 29, 30, or 31, return true
-			if ((day == 29 || day == 30 || day == 31))
+			if ((day is 29 or 30 or 31))
 			{
 				return true;
 			}

@@ -176,7 +176,7 @@ public class ProfileViewModel : ViewModelBase
 
 	internal void Refresh()
 	{
-		ProfilesVm = _profileData.Profiles.Select(p => new ProfileCompViewModel(p, _profileData, this)).ToList();
+		ProfilesVm = [.. _profileData.Profiles.Select(p => new ProfileCompViewModel(p, _profileData, this))];
 	}
 
 	private void PopupCancel(object? obj)

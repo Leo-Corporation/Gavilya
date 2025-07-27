@@ -101,7 +101,7 @@ public class NavBarViewModel : ViewModelBase
 		IsProfile = defaultPage == Page.Profile;
 		IsFavorites = defaultPage == Page.Favorites;
 
-		UwpAllowed = (Sys.CurrentWindowsVersion == WindowsVersion.Windows10 || Sys.CurrentWindowsVersion == WindowsVersion.Windows11) ? Visibility.Visible : Visibility.Collapsed;
+		UwpAllowed = (Sys.CurrentWindowsVersion is WindowsVersion.Windows10 or WindowsVersion.Windows11) ? Visibility.Visible : Visibility.Collapsed;
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
 	}
 

@@ -77,7 +77,7 @@ public class MainViewModel : ViewModelBase
 		set
 		{
 			_query = value;
-			SearchResults = Games.Where(g => g.Name.Contains(Query, StringComparison.CurrentCultureIgnoreCase)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList(); OnPropertyChanged(nameof(Query));
+			SearchResults = [.. Games.Where(g => g.Name.Contains(Query, StringComparison.CurrentCultureIgnoreCase)).Select(g => new ClickableGameViewModel(g, Games, _tags, this))]; OnPropertyChanged(nameof(Query));
 			NoResults = SearchResults.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
 		}
 	}
@@ -183,7 +183,7 @@ public class MainViewModel : ViewModelBase
 
 		Games.CollectionChanged += (o, e) =>
 		{
-			SearchResults = Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this)).ToList();
+			SearchResults = [.. Games.Where(g => g.Name.Contains(Query)).Select(g => new ClickableGameViewModel(g, Games, _tags, this))];
 			profiles.Save();
 		};
 
