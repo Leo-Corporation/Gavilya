@@ -81,6 +81,12 @@ public class GameOptionsViewModel : ViewModelBase
 		CheckSortGames = new RelayCommand(SortGamesChanged);
 		AddTagCommand = new RelayCommand(Add);
 		ChangeColorCommand = new RelayCommand(ChangeColor);
+		GenerateColorCommand = new RelayCommand(GenerateColor);
+	}
+
+	private void GenerateColor(object? obj)
+	{
+		Color = new RGB(new Random().Next(255), new Random().Next(255), new Random().Next(255)).ToHex().Value;
 	}
 
 	private void HandleCheck(object? o)

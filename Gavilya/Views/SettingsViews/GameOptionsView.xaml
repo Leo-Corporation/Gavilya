@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:components="clr-namespace:Gavilya.Components"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:lang="clr-namespace:Gavilya.Properties"
     xmlns:local="clr-namespace:Gavilya.Views.SettingsViews"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -114,6 +115,11 @@
                             Command="{Binding ChangeColorCommand}"
                             Cursor="Hand"
                             Style="{DynamicResource EditButton}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="MouseRightButtonUp">
+                                    <i:InvokeCommandAction Command="{Binding GenerateColorCommand}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
                             <Border
                                 x:Name="ForegroundBorder"
                                 Width="30"
