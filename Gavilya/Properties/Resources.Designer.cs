@@ -970,11 +970,29 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} played this week.
+        /// </summary>
+        public static string GamesLibraryDesc {
+            get {
+                return ResourceManager.GetString("GamesLibraryDesc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Game tags.
         /// </summary>
         public static string GameTags {
             get {
                 return ResourceManager.GetString("GameTags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gaming Streak.
+        /// </summary>
+        public static string GamingStreak {
+            get {
+                return ResourceManager.GetString("GamingStreak", resourceCulture);
             }
         }
         
@@ -1290,6 +1308,24 @@ namespace Gavilya.Properties {
         public static string Languages {
             get {
                 return ResourceManager.GetString("Languages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Session.
+        /// </summary>
+        public static string LastSession {
+            get {
+                return ResourceManager.GetString("LastSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since you played a game.
+        /// </summary>
+        public static string LastSessionDesc {
+            get {
+                return ResourceManager.GetString("LastSessionDesc", resourceCulture);
             }
         }
         
@@ -2730,6 +2766,15 @@ namespace Gavilya.Properties {
         public static string Top10MostPlayedGames {
             get {
                 return ResourceManager.GetString("Top10MostPlayedGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Since you started using Gavilya.
+        /// </summary>
+        public static string TotalPlaytimeDesc {
+            get {
+                return ResourceManager.GetString("TotalPlaytimeDesc", resourceCulture);
             }
         }
         

@@ -1068,4 +1068,19 @@
   <data name="MonitorAuto" xml:space="preserve">
     <value>自动（推荐）</value>
   </data>
+  <data name="GamingStreak" xml:space="preserve">
+    <value>游戏连胜</value>
+  </data>
+  <data name="TotalPlaytimeDesc" xml:space="preserve">
+    <value>自您开始使用Gavilya以来</value>
+  </data>
+  <data name="GamesLibraryDesc" xml:space="preserve">
+    <value>{0} 本周上演</value>
+  </data>
+  <data name="LastSession" xml:space="preserve">
+    <value>最后一节课</value>
+  </data>
+  <data name="LastSessionDesc" xml:space="preserve">
+    <value>既然你玩了游戏</value>
+  </data>
 </root>
