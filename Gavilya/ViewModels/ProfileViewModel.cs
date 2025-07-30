@@ -25,6 +25,7 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Models;
 using Microsoft.Win32;
+using PeyrSharp.Core.Converters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -54,6 +55,15 @@ public class ProfileViewModel : ViewModelBase
 
 	private string _totalText;
 	public string TotalText { get => _totalText; set { _totalText = value; OnPropertyChanged(nameof(TotalText)); } }
+
+	private string _totalGamesText;
+	public string TotalGamesText { get => _totalGamesText; set { _totalGamesText = value; OnPropertyChanged(nameof(TotalGamesText)); } }
+
+	private string _totalGamesTextDesc;
+	public string TotalGamesTextDesc { get => _totalGamesTextDesc; set { _totalGamesTextDesc = value; OnPropertyChanged(nameof(TotalGamesTextDesc)); } }
+
+	private string _lastSessionText;
+	public string LastSessionText { get => _lastSessionText; set { _lastSessionText = value; OnPropertyChanged(nameof(LastSessionText)); } }
 
 	private string _profilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
 	public string ProfilePicture { get => _profilePicture; set { _profilePicture = value; OnPropertyChanged(nameof(ProfilePicture)); } }
@@ -102,6 +112,12 @@ public class ProfileViewModel : ViewModelBase
 
 		TotalText = $"{total / 3600d:0.0}{Properties.Resources.HourShort}";
 		var sortedGames = _games.SortByPlayTime(true, _profile.Settings.ShowHiddenGames);
+
+		TotalGamesText = _games.Count.ToString();
+		TotalGamesTextDesc = string.Format(Properties.Resources.GamesLibraryDesc, _games.GetNumberOfGamesLastWeek());
+
+		// Get the last session time
+		LastSessionText = GetLastSessionTime();
 
 		TopGames = [.. sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null))];
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
@@ -172,6 +188,33 @@ public class ProfileViewModel : ViewModelBase
 
 		Refresh();
 		IsProfileEditorOpen = false;
+	}
+
+	/// <summary>
+	/// Returns today if the date is today, yesterday if the date is yesterday,
+	/// this week if the date is this week, this month if the date is this month,
+	/// and x months ago otherwise.
+	/// </summary>
+	/// <returns></returns>
+	private string GetLastSessionTime()
+	{
+
+
+		var lastSession = _games.OrderByDescending(g => g.LastTimePlayed)
+			.FirstOrDefault(g => g.LastTimePlayed > 0);
+		if (lastSession == null)
+			return Properties.Resources.Never;
+
+		DateTime lastSessionDate = Time.UnixTimeToDateTime(lastSession.LastTimePlayed);
+		DateTime today = DateTime.Now.Date;
+		return lastSessionDate.ToString("dd/MM/yyyy HH:mm") switch
+		{
+			_ when lastSessionDate.Date == today => Properties.Resources.Today,
+			_ when lastSessionDate.Date == today.AddDays(-1) => Properties.Resources.Yesterday,
+			_ when lastSessionDate >= today.AddDays(-(int)today.DayOfWeek) => Properties.Resources.ThisWeek,
+			_ when lastSessionDate.Month == today.Month && lastSessionDate.Year == today.Year => Properties.Resources.ThisMonth,
+			_ => $"{lastSessionDate:MMMM yyyy} ({(today - lastSessionDate).TotalDays} {Properties.Resources.Months})"
+		};
 	}
 
 	internal void Refresh()

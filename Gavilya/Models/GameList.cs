@@ -278,4 +278,11 @@ public class GameList : ObservableCollection<Game>
 		int i = random.Next(0, Count);
 		return this[i];
 	}
+
+	public int GetNumberOfGamesLastWeek()
+	{
+		DateTime now = DateTime.Now;
+		DateTime thisWeekStart = now.AddDays((int)CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek - (int)now.DayOfWeek);
+		return this.Count(game => DateTimeOffset.FromUnixTimeSeconds(game.LastTimePlayed).DateTime >= thisWeekStart);
+	}
 }
