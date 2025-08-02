@@ -446,7 +446,7 @@
                                 FontWeight="Bold"
                                 Text="{x:Static lang:Resources.TopGames}" />
                         </StackPanel>
-                        <ItemsControl ItemsSource="{Binding TopGames}">
+                        <ItemsControl ItemsSource="{Binding TopGames}" Visibility="{Binding ContentVis}">
                             <ItemsControl.ItemsPanel>
                                 <ItemsPanelTemplate>
                                     <StackPanel />
@@ -527,6 +527,13 @@
                                 </DataTemplate>
                             </ItemsControl.ItemTemplate>
                         </ItemsControl>
+                        <TextBlock
+                            Margin="0 10 0 0"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            Foreground="{DynamicResource LightForeground}"
+                            Text="{x:Static lang:Resources.NoGames}"
+                            Visibility="{Binding PlaceholderVis}" />
                     </StackPanel>
                 </Border>
 
@@ -557,6 +564,7 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
@@ -589,8 +597,16 @@
                                 Maximum="{Binding GamesCount}"
                                 Minimum="0"
                                 Style="{DynamicResource ProgressBarStyle1}"
+                                Visibility="{Binding ContentVis}"
                                 Value="{Binding SteamGamesCount}" />
-
+                            <TextBlock
+                                Grid.Column="3"
+                                Margin="10 0 0 0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                Text="{Binding SteamGamesCount}" />
                             <TextBlock
                                 Grid.Row="1"
                                 HorizontalAlignment="Center"
@@ -619,7 +635,17 @@
                                 Maximum="{Binding GamesCount}"
                                 Minimum="0"
                                 Style="{DynamicResource ProgressBarStyle1}"
+                                Visibility="{Binding ContentVis}"
                                 Value="{Binding MicrosoftGamesCount}" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="3"
+                                Margin="10 0 0 0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                Text="{Binding MicrosoftGamesCount}" />
                             <TextBlock
                                 Grid.Row="2"
                                 HorizontalAlignment="Center"
@@ -648,7 +674,17 @@
                                 Maximum="{Binding GamesCount}"
                                 Minimum="0"
                                 Style="{DynamicResource ProgressBarStyle1}"
+                                Visibility="{Binding ContentVis}"
                                 Value="{Binding ClassicGamesCount}" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="3"
+                                Margin="10 0 0 0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                Text="{Binding ClassicGamesCount}" />
                         </Grid>
                     </StackPanel>
 

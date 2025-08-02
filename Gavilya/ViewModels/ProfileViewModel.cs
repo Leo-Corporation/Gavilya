@@ -77,13 +77,16 @@ public class ProfileViewModel : ViewModelBase
 	private Visibility _contentVis = Visibility.Visible;
 	public Visibility ContentVis { get => _contentVis; set { _contentVis = value; OnPropertyChanged(nameof(ContentVis)); } }
 
-	private int _steamGamesCount;
+	private Visibility _placeholderVis = Visibility.Collapsed;
+	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
+
+	private int _steamGamesCount = 0;
 	public int SteamGamesCount { get => _steamGamesCount; set { _steamGamesCount = value; OnPropertyChanged(nameof(SteamGamesCount)); } }
 
-	private int _microsoftGamesCount;
+	private int _microsoftGamesCount = 0;
 	public int MicrosoftGamesCount { get => _microsoftGamesCount; set { _microsoftGamesCount = value; OnPropertyChanged(nameof(MicrosoftGamesCount)); } }
 
-	private int _classicGamesCount;
+	private int _classicGamesCount = 0;
 	public int ClassicGamesCount { get => _classicGamesCount; set { _classicGamesCount = value; OnPropertyChanged(nameof(ClassicGamesCount)); } }
 
 	private int _gamesCount;
@@ -128,7 +131,7 @@ public class ProfileViewModel : ViewModelBase
 		// Get the last session time
 		LastSessionText = GetLastSessionTime();
 
-		double max = sortedGames[0].TotalTimePlayed;
+		double max = sortedGames.Count > 0 ? sortedGames[0].TotalTimePlayed : 0;
 
 		TopGames = [.. sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null, g.TotalTimePlayed / max * 100))];
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
@@ -142,10 +145,10 @@ public class ProfileViewModel : ViewModelBase
 		PopupBrowseCommand = new RelayCommand(PopupBrowse);
 		PopupResetCommand = new RelayCommand(PopupReset);
 
-		// Load graph
 		if (sortedGames.Count < 3)
 		{
 			ContentVis = Visibility.Collapsed;
+			PlaceholderVis = Visibility.Visible;
 			return;
 		}
 	}
