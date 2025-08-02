@@ -83,6 +83,32 @@
                 </Setter>
             </Style>
 
+            <Style x:Key="RoundedProgressBar" TargetType="ProgressBar">
+                <Setter Property="Background" Value="{DynamicResource Background2}" />
+                <Setter Property="Foreground" Value="{DynamicResource SelectedBackground}" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ProgressBar">
+                            <Grid MinWidth="200" MinHeight="14">
+                                <Border
+                                    x:Name="PART_Track"
+                                    Background="{TemplateBinding Background}"
+                                    BorderThickness="0"
+                                    CornerRadius="20" />
+                                <Border
+                                    x:Name="PART_Indicator"
+                                    Width="{TemplateBinding Value}"
+                                    Margin="0"
+                                    HorizontalAlignment="Left"
+                                    Background="{TemplateBinding Foreground}"
+                                    BorderThickness="0"
+                                    CornerRadius="20" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
             <Style x:Key="NavBarBtn" TargetType="RadioButton">
                 <Setter Property="Foreground" Value="{DynamicResource Foreground}" />
                 <Setter Property="Template">
