@@ -1083,4 +1083,7 @@
   <data name="LastSessionDesc" xml:space="preserve">
     <value>Поскольку вы играли в игру</value>
   </data>
+  <data name="TopGames" xml:space="preserve">
+    <value>Лучшие игры по времени игры</value>
+  </data>
 </root>

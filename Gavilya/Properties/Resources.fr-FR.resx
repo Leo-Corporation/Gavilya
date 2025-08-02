@@ -1083,4 +1083,7 @@
   <data name="LastSessionDesc" xml:space="preserve">
     <value>Depuis la dernière session</value>
   </data>
+  <data name="TopGames" xml:space="preserve">
+    <value>Top des jeux</value>
+  </data>
 </root>

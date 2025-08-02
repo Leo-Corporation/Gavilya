@@ -306,11 +306,15 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
                 <Border
                     Margin="10"
                     Padding="10"
                     Background="{DynamicResource Background}"
-                    BorderBrush="{DynamicResource Background2}"
+                    BorderBrush="{DynamicResource SelectedBackground}"
                     BorderThickness="2"
                     CornerRadius="10">
                     <Grid>
@@ -330,7 +334,7 @@
                                 Text="{Binding TotalText}" />
                             <TextBlock
                                 FontSize="11"
-                                Foreground="{DynamicResource Gray}"
+                                Foreground="{DynamicResource LightForeground}"
                                 Text="{x:Static lang:Resources.TotalPlaytimeDesc}" />
                         </StackPanel>
                         <TextBlock
@@ -338,7 +342,7 @@
                             HorizontalAlignment="Right"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                             FontSize="18"
-                            Foreground="{DynamicResource Background2}"
+                            Foreground="{DynamicResource SelectedBackground}"
                             Text="&#xF2DE;" />
                     </Grid>
                 </Border>
@@ -347,7 +351,7 @@
                     Margin="10"
                     Padding="10"
                     Background="{DynamicResource Background}"
-                    BorderBrush="{DynamicResource Background2}"
+                    BorderBrush="{DynamicResource SelectedBackground}"
                     BorderThickness="2"
                     CornerRadius="10">
                     <Grid>
@@ -368,7 +372,7 @@
                             <TextBlock
                                 d:Text="4 played this month"
                                 FontSize="11"
-                                Foreground="{DynamicResource Gray}"
+                                Foreground="{DynamicResource LightForeground}"
                                 Text="{Binding TotalGamesTextDesc}" />
                         </StackPanel>
                         <TextBlock
@@ -376,7 +380,7 @@
                             HorizontalAlignment="Right"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                             FontSize="18"
-                            Foreground="{DynamicResource Background2}"
+                            Foreground="{DynamicResource SelectedBackground}"
                             Text="&#xF451;" />
                     </Grid>
                 </Border>
@@ -385,7 +389,7 @@
                     Margin="10"
                     Padding="10"
                     Background="{DynamicResource Background}"
-                    BorderBrush="{DynamicResource Background2}"
+                    BorderBrush="{DynamicResource SelectedBackground}"
                     BorderThickness="2"
                     CornerRadius="10">
                     <Grid>
@@ -406,7 +410,7 @@
                             <TextBlock
                                 d:Text="Personnal Record"
                                 FontSize="11"
-                                Foreground="{DynamicResource Gray}"
+                                Foreground="{DynamicResource LightForeground}"
                                 Text="{x:Static lang:Resources.LastSessionDesc}" />
                         </StackPanel>
                         <TextBlock
@@ -414,158 +418,118 @@
                             HorizontalAlignment="Right"
                             FontFamily="..\Fonts\#FluentSystemIcons-Regular"
                             FontSize="18"
-                            Foreground="{DynamicResource Background2}"
+                            Foreground="{DynamicResource SelectedBackground}"
                             Text="&#xF343;" />
                     </Grid>
                 </Border>
-            </Grid>
-            <StackPanel
-                x:Name="GraphPanel"
-                Grid.Row="0"
-                Height="200"
-                HorizontalAlignment="Center"
-                Orientation="Horizontal"
-                Visibility="{Binding ContentVis}">
-                <StackPanel VerticalAlignment="Bottom">
-                    <Rectangle
-                        x:Name="Top2Rect"
-                        Width="50"
-                        Height="{Binding RecHeight2}"
-                        Margin="10 0 10 0"
-                        VerticalAlignment="Bottom"
-                        Fill="{DynamicResource SelectedBackground}"
-                        RadiusX="5"
-                        RadiusY="5">
-                        <Rectangle.ToolTip>
-                            <ToolTip
-                                x:Name="Top2ToolTip"
-                                Background="{DynamicResource Background}"
-                                Foreground="{DynamicResource Foreground}" />
-                        </Rectangle.ToolTip>
-                    </Rectangle>
-                    <TextBlock
-                        x:Name="P2Txt"
-                        Margin="0 10 0 0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="16"
-                        FontWeight="ExtraBold"
-                        Text="{x:Static lang:Resources.P2}" />
-                </StackPanel>
-                <StackPanel VerticalAlignment="Bottom">
-                    <Rectangle
-                        x:Name="Top1Rect"
-                        Width="50"
-                        Height="{Binding RecHeight1}"
-                        Margin="10 0 10 0"
-                        VerticalAlignment="Bottom"
-                        Fill="{DynamicResource SelectedBackground}"
-                        RadiusX="5"
-                        RadiusY="5">
-                        <Rectangle.ToolTip>
-                            <ToolTip
-                                x:Name="Top1ToolTip"
-                                Background="{DynamicResource Background}"
-                                Foreground="{DynamicResource Foreground}" />
-                        </Rectangle.ToolTip>
-                    </Rectangle>
-                    <TextBlock
-                        x:Name="P1Txt"
-                        Margin="0 10 0 0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="16"
-                        FontWeight="ExtraBold"
-                        Text="{x:Static lang:Resources.P1}" />
-                </StackPanel>
-                <StackPanel VerticalAlignment="Bottom">
-                    <Rectangle
-                        x:Name="Top3Rect"
-                        Width="50"
-                        Height="{Binding RecHeight3}"
-                        Margin="10 0 10 0"
-                        VerticalAlignment="Bottom"
-                        Fill="{DynamicResource SelectedBackground}"
-                        RadiusX="5"
-                        RadiusY="5">
-                        <Rectangle.ToolTip>
-                            <ToolTip
-                                x:Name="Top3ToolTip"
-                                Background="{DynamicResource Background}"
-                                Foreground="{DynamicResource Foreground}" />
-                        </Rectangle.ToolTip>
-                    </Rectangle>
-                    <TextBlock
-                        x:Name="P3Txt"
-                        Margin="0 10 0 0"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        FontSize="16"
-                        FontWeight="ExtraBold"
-                        Text="{x:Static lang:Resources.P3}" />
-                </StackPanel>
-            </StackPanel>
-            <ItemsControl ItemsSource="{Binding TopGames}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <StackPanel />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type vm:StatGameViewModel}">
-                        <Border
-                            Margin="10 10 10 5"
-                            Padding="10"
-                            Background="{DynamicResource Background2}"
-                            CornerRadius="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
 
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    FontSize="16"
-                                    FontWeight="ExtraBold"
-                                    Foreground="#FF646478"
-                                    Text="{Binding Index}" />
-                                <Rectangle
-                                    Grid.Column="1"
-                                    Width="150"
-                                    Height="84.375"
-                                    Margin="10"
-                                    RadiusX="10"
-                                    RadiusY="10">
-                                    <Rectangle.Fill>
-                                        <ImageBrush x:Name="GameImg1" ImageSource="{Binding CoverFilePath}" />
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                                <TextBlock
-                                    x:Name="GameName1"
-                                    Grid.Column="2"
-                                    Margin="10 0 0 0"
-                                    VerticalAlignment="Center"
-                                    d:Text="GameName"
-                                    FontSize="18"
-                                    FontWeight="ExtraBold"
-                                    Text="{Binding Name}" />
-                                <TextBlock
-                                    x:Name="Game1TimeTxt"
-                                    Grid.Column="3"
-                                    Margin="10 0 0 0"
-                                    VerticalAlignment="Center"
-                                    d:Text="10,3h"
-                                    FontStyle="Italic"
-                                    FontWeight="Normal"
-                                    Text="{Binding TotalTimePlayed}" />
-                            </Grid>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+                <Border
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    Margin="10"
+                    Padding="10"
+                    Background="{DynamicResource Background}"
+                    BorderBrush="{DynamicResource SelectedBackground}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="18"
+                                Text="&#xF8EB;" />
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Text="{x:Static lang:Resources.TopGames}" />
+                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding TopGames}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:StatGameViewModel}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Border
+                                            Width="40"
+                                            Height="40"
+                                            Padding="5"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center"
+                                            Background="{DynamicResource SelectedBackground}"
+                                            CornerRadius="50">
+                                            <TextBlock
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                FontSize="16"
+                                                FontWeight="ExtraBold"
+                                                Foreground="{DynamicResource Foreground}"
+                                                Text="{Binding Index}" />
+                                        </Border>
+                                        <Rectangle
+                                            Grid.Column="1"
+                                            Width="50"
+                                            Height="80"
+                                            Margin="10">
+                                            <Rectangle.Fill>
+                                                <ImageBrush
+                                                    x:Name="GameImg1"
+                                                    ImageSource="{Binding CoverFilePath}"
+                                                    Stretch="UniformToFill" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                        <StackPanel
+                                            Grid.Column="2"
+                                            Margin="10 0 0 0"
+                                            VerticalAlignment="Center">
+                                            <TextBlock
+                                                x:Name="GameName1"
+                                                VerticalAlignment="Center"
+                                                d:Text="GameName"
+                                                FontSize="18"
+                                                FontWeight="ExtraBold"
+                                                Text="{Binding Name}" />
+                                            <TextBlock
+                                                x:Name="Game1TimeTxt"
+                                                VerticalAlignment="Center"
+                                                d:Text="10,3h"
+                                                FontWeight="Normal"
+                                                Foreground="{DynamicResource LightForeground}"
+                                                Text="{Binding TotalTimePlayed}" />
+                                        </StackPanel>
+                                        <ProgressBar
+                                            x:Name="Graph"
+                                            Grid.Column="3"
+                                            Width="100"
+                                            Height="20"
+                                            Margin="5"
+                                            VerticalAlignment="Center"
+                                            Background="{DynamicResource Background2}"
+                                            BorderThickness="0"
+                                            Foreground="{DynamicResource SelectedBackground}"
+                                            Maximum="100"
+                                            Minimum="0"
+                                            Style="{DynamicResource ProgressBarStyle1}"
+                                            Value="{Binding PlayTimeProgress}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
+            </Grid>
         </StackPanel>
     </Grid>
 </UserControl>

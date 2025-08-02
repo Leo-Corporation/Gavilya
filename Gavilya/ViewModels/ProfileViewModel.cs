@@ -44,15 +44,6 @@ public class ProfileViewModel : ViewModelBase
 
 	public ObservableCollection<StatGameViewModel> TopGames { get; set; }
 
-	private double _recHeight1;
-	public double RecHeight1 { get => _recHeight1; set { _recHeight1 = value; OnPropertyChanged(nameof(RecHeight1)); } }
-
-	private double _recHeight2;
-	public double RecHeight2 { get => _recHeight2; set { _recHeight2 = value; OnPropertyChanged(nameof(RecHeight2)); } }
-
-	private double _recHeight3;
-	public double RecHeight3 { get => _recHeight3; set { _recHeight3 = value; OnPropertyChanged(nameof(RecHeight3)); } }
-
 	private string _totalText;
 	public string TotalText { get => _totalText; set { _totalText = value; OnPropertyChanged(nameof(TotalText)); } }
 
@@ -119,7 +110,9 @@ public class ProfileViewModel : ViewModelBase
 		// Get the last session time
 		LastSessionText = GetLastSessionTime();
 
-		TopGames = [.. sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null))];
+		double max = sortedGames[0].TotalTimePlayed;
+
+		TopGames = [.. sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null, g.TotalTimePlayed / max * 100))];
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
 		ProfileName = profile.Name;
 
@@ -137,12 +130,6 @@ public class ProfileViewModel : ViewModelBase
 			ContentVis = Visibility.Collapsed;
 			return;
 		}
-
-		double max = sortedGames[0].TotalTimePlayed;
-		RecHeight1 = 150;
-		RecHeight2 = sortedGames[1].TotalTimePlayed / max * 150;
-		RecHeight3 = sortedGames[2].TotalTimePlayed / max * 150;
-
 	}
 
 	private void AddProfile(object? obj)
@@ -198,8 +185,6 @@ public class ProfileViewModel : ViewModelBase
 	/// <returns></returns>
 	private string GetLastSessionTime()
 	{
-
-
 		var lastSession = _games.OrderByDescending(g => g.LastTimePlayed)
 			.FirstOrDefault(g => g.LastTimePlayed > 0);
 		if (lastSession == null)

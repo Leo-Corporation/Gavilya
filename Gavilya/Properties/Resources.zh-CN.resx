@@ -1083,4 +1083,7 @@
   <data name="LastSessionDesc" xml:space="preserve">
     <value>既然你玩了游戏</value>
   </data>
+  <data name="TopGames" xml:space="preserve">
+    <value>按游玩时间排序的热门游戏</value>
+  </data>
 </root>

@@ -2770,6 +2770,15 @@ namespace Gavilya.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TopGames {
+            get {
+                return ResourceManager.GetString("TopGames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Since you started using Gavilya.
         /// </summary>
         public static string TotalPlaytimeDesc {
