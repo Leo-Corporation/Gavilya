@@ -6,7 +6,6 @@
     xmlns:lang="clr-namespace:Gavilya.Properties"
     xmlns:local="clr-namespace:Gavilya.Components"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Width="500"
     Height="80"
     FontFamily="../Fonts/#Hauora"
     Foreground="{DynamicResource Foreground}"

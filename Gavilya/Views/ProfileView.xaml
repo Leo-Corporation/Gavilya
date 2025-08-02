@@ -14,11 +14,6 @@
     Foreground="{DynamicResource Foreground}"
     mc:Ignorable="d">
     <Grid x:Name="PageContent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
         <Popup
             AllowsTransparency="True"
             IsOpen="{Binding IsProfileEditorOpen}"
@@ -163,70 +158,8 @@
                 </StackPanel>
             </Border>
         </Popup>
-
-        <StackPanel Margin="10" Orientation="Horizontal">
-            <TextBlock
-                VerticalAlignment="Center"
-                FontFamily="..\Fonts\#FluentSystemIcons-Filled"
-                FontSize="18"
-                Text="&#xF5C8;" />
-            <TextBlock
-                Margin="10 0 0 0"
-                VerticalAlignment="Center"
-                FontSize="18"
-                FontWeight="ExtraBold"
-                Text="{x:Static lang:Resources.Profiles}" />
-        </StackPanel>
         <StackPanel Grid.Row="1">
-            <Border
-                Margin="5"
-                Padding="5"
-                HorizontalAlignment="Center"
-                Background="{DynamicResource Background2}"
-                CornerRadius="5">
-                <Grid x:Name="ProfileSwitcher">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
 
-                    <ItemsControl ItemsSource="{Binding ProfilesVm}">
-                        <ItemsControl.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <StackPanel />
-                            </ItemsPanelTemplate>
-                        </ItemsControl.ItemsPanel>
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate DataType="{x:Type vm:ProfileCompViewModel}">
-                                <components:ProfileComponent />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-
-                    <Button
-                        x:Name="AddProfileBtn"
-                        Grid.Row="1"
-                        Padding="5"
-                        Background="Transparent"
-                        Command="{Binding AddProfileCommand}"
-                        Foreground="{DynamicResource Foreground}"
-                        Style="{DynamicResource RegularButton}">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0 0 5 0"
-                                VerticalAlignment="Center"
-                                FontFamily="../Fonts/#FluentSystemIcons-Regular"
-                                FontSize="16"
-                                Text="&#xF10A;" />
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                FontSize="14"
-                                FontWeight="Bold"
-                                Text="{x:Static lang:Resources.AddProfile}" />
-                        </StackPanel>
-                    </Button>
-                </Grid>
-            </Border>
             <StackPanel Margin="10" Orientation="Horizontal">
                 <TextBlock
                     VerticalAlignment="Center"
@@ -299,6 +232,150 @@
                             Foreground="{DynamicResource Foreground}" />
                     </Button.ToolTip>
                 </Button>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Border
+                    Margin="10"
+                    Padding="10"
+                    Background="{DynamicResource Background}"
+                    BorderBrush="{DynamicResource SelectedBackground}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="18"
+                                Text="&#xF5BE;" />
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Text="{x:Static lang:Resources.Profiles}" />
+                        </StackPanel>
+                        <Border
+                            Margin="5"
+                            Padding="5"
+                            CornerRadius="5">
+                            <Grid x:Name="ProfileSwitcher">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <ItemsControl ItemsSource="{Binding ProfilesVm}">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate DataType="{x:Type vm:ProfileCompViewModel}">
+                                            <components:ProfileComponent />
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <Button
+                                    x:Name="AddProfileBtn"
+                                    Grid.Row="1"
+                                    Padding="5"
+                                    Background="Transparent"
+                                    Command="{Binding AddProfileCommand}"
+                                    Foreground="{DynamicResource Foreground}"
+                                    Style="{DynamicResource RegularButton}" HorizontalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0 0 5 0"
+                                            VerticalAlignment="Center"
+                                            FontFamily="../Fonts/#FluentSystemIcons-Regular"
+                                            FontSize="16"
+                                            Text="&#xF10A;" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            FontWeight="Bold"
+                                            Text="{x:Static lang:Resources.AddProfile}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Border>
+                <Border
+                    Grid.Column="1"
+                    Margin="10"
+                    Padding="10"
+                    Background="{DynamicResource Background}"
+                    BorderBrush="{DynamicResource SelectedBackground}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="18"
+                                Text="&#xF22B;" />
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Text="{x:Static lang:Resources.RecentGames}" />
+                        </StackPanel>
+                        <TextBlock
+                            Margin="0 20 0 0"
+                            HorizontalAlignment="Center"
+                            FontSize="16"
+                            Foreground="{DynamicResource LightForeground}"
+                            Text="{x:Static lang:Resources.NoGames}"
+                            Visibility="{Binding PlaceholderVis}" />
+                        <ItemsControl ItemsSource="{Binding RecentGames}" Visibility="{Binding ContentVis}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:RecentGamesItemViewModel}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image
+                                            Width="30"
+                                            Height="50"
+                                            Margin="5"
+                                            VerticalAlignment="Center"
+                                            Source="{Binding CoverFilePath}"
+                                            Stretch="UniformToFill" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Margin="5 0 0 0"
+                                            VerticalAlignment="Center"
+                                            FontSize="16"
+                                            FontWeight="Bold"
+                                            Text="{Binding Name}" />
+                                        <TextBlock
+                                            Grid.Column="2"
+                                            VerticalAlignment="Center"
+                                            Foreground="{DynamicResource LightForeground}"
+                                            Text="{Binding LastTimePlayed}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </Border>
             </Grid>
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -689,72 +766,7 @@
                     </StackPanel>
                 </Border>
             </Grid>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-                <Border
-                    Margin="10"
-                    Padding="10"
-                    Background="{DynamicResource Background}"
-                    BorderBrush="{DynamicResource SelectedBackground}"
-                    BorderThickness="2"
-                    CornerRadius="10">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                                FontSize="18"
-                                Text="&#xF22B;" />
-                            <TextBlock
-                                Margin="10 0 0 0"
-                                VerticalAlignment="Center"
-                                FontSize="18"
-                                FontWeight="Bold"
-                                Text="{x:Static lang:Resources.RecentGames}" />
-                        </StackPanel>
-                        <ItemsControl ItemsSource="{Binding RecentGames}" Visibility="{Binding ContentVis}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <StackPanel />
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate DataType="{x:Type vm:RecentGamesItemViewModel}">
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <Image
-                                            Width="30"
-                                            Height="50"
-                                            Margin="5"
-                                            VerticalAlignment="Center"
-                                            Source="{Binding CoverFilePath}"
-                                            Stretch="UniformToFill" />
-                                        <TextBlock
-                                            Grid.Column="1"
-                                            Margin="5 0 0 0"
-                                            VerticalAlignment="Center"
-                                            FontSize="16"
-                                            FontWeight="Bold"
-                                            Text="{Binding Name}" />
-                                        <TextBlock
-                                            Grid.Column="2"
-                                            VerticalAlignment="Center"
-                                            Foreground="{DynamicResource LightForeground}"
-                                            Text="{Binding LastTimePlayed}" />
-                                    </Grid>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </Border>
-            </Grid>
+
         </StackPanel>
     </Grid>
 </UserControl>

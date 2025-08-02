@@ -43,7 +43,7 @@ public class ProfileViewModel : ViewModelBase
 	private readonly MainViewModel _mainViewModel;
 
 	public ObservableCollection<StatGameViewModel> TopGames { get; set; }
-	public ObservableCollection<RecentGamesItemViewModel> RecentGames { get; set; } 
+	public ObservableCollection<RecentGamesItemViewModel> RecentGames { get; set; }
 
 	private string _totalText;
 	public string TotalText { get => _totalText; set { _totalText = value; OnPropertyChanged(nameof(TotalText)); } }
