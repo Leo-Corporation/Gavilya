@@ -77,6 +77,18 @@ public class ProfileViewModel : ViewModelBase
 	private Visibility _contentVis = Visibility.Visible;
 	public Visibility ContentVis { get => _contentVis; set { _contentVis = value; OnPropertyChanged(nameof(ContentVis)); } }
 
+	private int _steamGamesCount;
+	public int SteamGamesCount { get => _steamGamesCount; set { _steamGamesCount = value; OnPropertyChanged(nameof(SteamGamesCount)); } }
+
+	private int _microsoftGamesCount;
+	public int MicrosoftGamesCount { get => _microsoftGamesCount; set { _microsoftGamesCount = value; OnPropertyChanged(nameof(MicrosoftGamesCount)); } }
+
+	private int _classicGamesCount;
+	public int ClassicGamesCount { get => _classicGamesCount; set { _classicGamesCount = value; OnPropertyChanged(nameof(ClassicGamesCount)); } }
+
+	private int _gamesCount;
+	public int GamesCount { get => _gamesCount; set { _gamesCount = value; OnPropertyChanged(nameof(GamesCount)); } }
+
 	public ICommand AddProfileCommand { get; }
 	public ICommand EditCommand { get; }
 	public ICommand PopupAddCommand { get; }
@@ -99,7 +111,13 @@ public class ProfileViewModel : ViewModelBase
 		for (int i = 0; i < _games.Count; i++)
 		{
 			total += games[i].TotalTimePlayed;
+
+			if (games[i].GameType == Enums.GameType.Steam) SteamGamesCount++;
+			else if (games[i].GameType == Enums.GameType.UWP) MicrosoftGamesCount++;
+			else ClassicGamesCount++;
 		}
+
+		GamesCount = _games.Count;
 
 		TotalText = $"{total / 3600d:0.0}{Properties.Resources.HourShort}";
 		var sortedGames = _games.SortByPlayTime(true, _profile.Settings.ShowHiddenGames);

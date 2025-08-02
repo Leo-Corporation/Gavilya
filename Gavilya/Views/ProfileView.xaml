@@ -529,6 +529,130 @@
                         </ItemsControl>
                     </StackPanel>
                 </Border>
+
+                <Border
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    Margin="10"
+                    Padding="10"
+                    Background="{DynamicResource Background}"
+                    BorderBrush="{DynamicResource SelectedBackground}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="18"
+                                Text="&#xF8C3;" />
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Text="{x:Static lang:Resources.Platforms}" />
+                        </StackPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="16"
+                                Text="&#xF451;" />
+                            <TextBlock
+                                Grid.Column="1"
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                Text="Steam" />
+                            <ProgressBar
+                                Grid.Column="2"
+                                Width="50"
+                                Height="20"
+                                Margin="0 5"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource Background2}"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource SelectedBackground}"
+                                Maximum="{Binding GamesCount}"
+                                Minimum="0"
+                                Style="{DynamicResource ProgressBarStyle1}"
+                                Value="{Binding SteamGamesCount}" />
+
+                            <TextBlock
+                                Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="16"
+                                Text="&#xF732;" />
+                            <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                Text="UWP" />
+                            <ProgressBar
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Width="50"
+                                Height="20"
+                                Margin="0 5"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource Background2}"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource SelectedBackground}"
+                                Maximum="{Binding GamesCount}"
+                                Minimum="0"
+                                Style="{DynamicResource ProgressBarStyle1}"
+                                Value="{Binding MicrosoftGamesCount}" />
+                            <TextBlock
+                                Grid.Row="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="16"
+                                Text="&#xF4C4;" />
+                            <TextBlock
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Center"
+                                FontSize="14"
+                                FontWeight="SemiBold"
+                                Text="Win32" />
+                            <ProgressBar
+                                Grid.Row="2"
+                                Grid.Column="2"
+                                Width="50"
+                                Height="20"
+                                Margin="0 5"
+                                VerticalAlignment="Center"
+                                Background="{DynamicResource Background2}"
+                                BorderThickness="0"
+                                Foreground="{DynamicResource SelectedBackground}"
+                                Maximum="{Binding GamesCount}"
+                                Minimum="0"
+                                Style="{DynamicResource ProgressBarStyle1}"
+                                Value="{Binding ClassicGamesCount}" />
+                        </Grid>
+                    </StackPanel>
+
+                </Border>
             </Grid>
         </StackPanel>
     </Grid>
