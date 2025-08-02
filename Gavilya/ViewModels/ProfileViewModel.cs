@@ -43,6 +43,7 @@ public class ProfileViewModel : ViewModelBase
 	private readonly MainViewModel _mainViewModel;
 
 	public ObservableCollection<StatGameViewModel> TopGames { get; set; }
+	public ObservableCollection<RecentGamesItemViewModel> RecentGames { get; set; } 
 
 	private string _totalText;
 	public string TotalText { get => _totalText; set { _totalText = value; OnPropertyChanged(nameof(TotalText)); } }
@@ -136,6 +137,12 @@ public class ProfileViewModel : ViewModelBase
 		TopGames = [.. sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null, g.TotalTimePlayed / max * 100))];
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
 		ProfileName = profile.Name;
+
+		RecentGames = [.. _games
+			.OrderByDescending(g => g.LastTimePlayed)
+			.Where(g => g.LastTimePlayed > 0 && (profile.Settings.ShowHiddenGames || !g.IsHidden))
+			.Take(3)
+			.Select(g => new RecentGamesItemViewModel(g))];
 
 		Refresh();
 		AddProfileCommand = new RelayCommand(AddProfile);

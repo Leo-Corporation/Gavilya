@@ -687,7 +687,72 @@
                                 Text="{Binding ClassicGamesCount}" />
                         </Grid>
                     </StackPanel>
-
+                </Border>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Border
+                    Margin="10"
+                    Padding="10"
+                    Background="{DynamicResource Background}"
+                    BorderBrush="{DynamicResource SelectedBackground}"
+                    BorderThickness="2"
+                    CornerRadius="10">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                                FontSize="18"
+                                Text="&#xF22B;" />
+                            <TextBlock
+                                Margin="10 0 0 0"
+                                VerticalAlignment="Center"
+                                FontSize="18"
+                                FontWeight="Bold"
+                                Text="{x:Static lang:Resources.RecentGames}" />
+                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding RecentGames}" Visibility="{Binding ContentVis}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type vm:RecentGamesItemViewModel}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Image
+                                            Width="30"
+                                            Height="50"
+                                            Margin="5"
+                                            VerticalAlignment="Center"
+                                            Source="{Binding CoverFilePath}"
+                                            Stretch="UniformToFill" />
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            Margin="5 0 0 0"
+                                            VerticalAlignment="Center"
+                                            FontSize="16"
+                                            FontWeight="Bold"
+                                            Text="{Binding Name}" />
+                                        <TextBlock
+                                            Grid.Column="2"
+                                            VerticalAlignment="Center"
+                                            Foreground="{DynamicResource LightForeground}"
+                                            Text="{Binding LastTimePlayed}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
                 </Border>
             </Grid>
         </StackPanel>
