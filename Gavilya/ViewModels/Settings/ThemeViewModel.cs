@@ -67,7 +67,7 @@ public class ThemeViewModel : ViewModelBase
 
 	private void LoadThemeViewModels()
 	{
-		ThemeSelectors = _installedThemes.Select(t => new ThemeSelectorViewModel(_profile, _profileData, _mainViewModel, t)).ToList();
+		ThemeSelectors = [.. _installedThemes.Select(t => new ThemeSelectorViewModel(_profile, _profileData, _mainViewModel, t))];
 	}
 
 	private void Import(object? obj)

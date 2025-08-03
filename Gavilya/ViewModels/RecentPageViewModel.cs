@@ -37,7 +37,7 @@ public class RecentPageViewModel : ViewModelBase
 	private readonly List<GameList> _sortedGames;
 	private readonly List<Tag> _tags;
 
-	public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel)).ToList();
+	public List<GameGroupViewModel> GameGroupViewModels => [.. _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, _tags, _mainViewModel))];
 	private Visibility _placeholderVis;
 	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
 

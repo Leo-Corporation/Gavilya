@@ -25,6 +25,7 @@ SOFTWARE.
 using Gavilya.Commands;
 using Gavilya.Models;
 using Microsoft.Win32;
+using PeyrSharp.Core.Converters;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -42,18 +43,19 @@ public class ProfileViewModel : ViewModelBase
 	private readonly MainViewModel _mainViewModel;
 
 	public ObservableCollection<StatGameViewModel> TopGames { get; set; }
-
-	private double _recHeight1;
-	public double RecHeight1 { get => _recHeight1; set { _recHeight1 = value; OnPropertyChanged(nameof(RecHeight1)); } }
-
-	private double _recHeight2;
-	public double RecHeight2 { get => _recHeight2; set { _recHeight2 = value; OnPropertyChanged(nameof(RecHeight2)); } }
-
-	private double _recHeight3;
-	public double RecHeight3 { get => _recHeight3; set { _recHeight3 = value; OnPropertyChanged(nameof(RecHeight3)); } }
+	public ObservableCollection<RecentGamesItemViewModel> RecentGames { get; set; }
 
 	private string _totalText;
 	public string TotalText { get => _totalText; set { _totalText = value; OnPropertyChanged(nameof(TotalText)); } }
+
+	private string _totalGamesText;
+	public string TotalGamesText { get => _totalGamesText; set { _totalGamesText = value; OnPropertyChanged(nameof(TotalGamesText)); } }
+
+	private string _totalGamesTextDesc;
+	public string TotalGamesTextDesc { get => _totalGamesTextDesc; set { _totalGamesTextDesc = value; OnPropertyChanged(nameof(TotalGamesTextDesc)); } }
+
+	private string _lastSessionText;
+	public string LastSessionText { get => _lastSessionText; set { _lastSessionText = value; OnPropertyChanged(nameof(LastSessionText)); } }
 
 	private string _profilePicture = "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png";
 	public string ProfilePicture { get => _profilePicture; set { _profilePicture = value; OnPropertyChanged(nameof(ProfilePicture)); } }
@@ -75,6 +77,21 @@ public class ProfileViewModel : ViewModelBase
 
 	private Visibility _contentVis = Visibility.Visible;
 	public Visibility ContentVis { get => _contentVis; set { _contentVis = value; OnPropertyChanged(nameof(ContentVis)); } }
+
+	private Visibility _placeholderVis = Visibility.Collapsed;
+	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
+
+	private int _steamGamesCount = 0;
+	public int SteamGamesCount { get => _steamGamesCount; set { _steamGamesCount = value; OnPropertyChanged(nameof(SteamGamesCount)); } }
+
+	private int _microsoftGamesCount = 0;
+	public int MicrosoftGamesCount { get => _microsoftGamesCount; set { _microsoftGamesCount = value; OnPropertyChanged(nameof(MicrosoftGamesCount)); } }
+
+	private int _classicGamesCount = 0;
+	public int ClassicGamesCount { get => _classicGamesCount; set { _classicGamesCount = value; OnPropertyChanged(nameof(ClassicGamesCount)); } }
+
+	private int _gamesCount;
+	public int GamesCount { get => _gamesCount; set { _gamesCount = value; OnPropertyChanged(nameof(GamesCount)); } }
 
 	public ICommand AddProfileCommand { get; }
 	public ICommand EditCommand { get; }
@@ -98,14 +115,34 @@ public class ProfileViewModel : ViewModelBase
 		for (int i = 0; i < _games.Count; i++)
 		{
 			total += games[i].TotalTimePlayed;
+
+			if (games[i].GameType == Enums.GameType.Steam) SteamGamesCount++;
+			else if (games[i].GameType == Enums.GameType.UWP) MicrosoftGamesCount++;
+			else ClassicGamesCount++;
 		}
+
+		GamesCount = _games.Count;
 
 		TotalText = $"{total / 3600d:0.0}{Properties.Resources.HourShort}";
 		var sortedGames = _games.SortByPlayTime(true, _profile.Settings.ShowHiddenGames);
 
-		TopGames = [.. sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null))];
+		TotalGamesText = _games.Count.ToString();
+		TotalGamesTextDesc = string.Format(Properties.Resources.GamesLibraryDesc, _games.GetNumberOfGamesLastWeek());
+
+		// Get the last session time
+		LastSessionText = GetLastSessionTime();
+
+		double max = sortedGames.Count > 0 ? sortedGames[0].TotalTimePlayed : 0;
+
+		TopGames = [.. sortedGames.Take(3).Select((g, i) => new StatGameViewModel(i, g, null, g.TotalTimePlayed / max * 100))];
 		ProfilePicture = string.IsNullOrEmpty(profile.ProfilePictureFilePath) ? "pack://application:,,,/Gavilya;component/Assets/DefaultPP.png" : profile.ProfilePictureFilePath;
 		ProfileName = profile.Name;
+
+		RecentGames = [.. _games
+			.OrderByDescending(g => g.LastTimePlayed)
+			.Where(g => g.LastTimePlayed > 0 && (profile.Settings.ShowHiddenGames || !g.IsHidden))
+			.Take(3)
+			.Select(g => new RecentGamesItemViewModel(g))];
 
 		Refresh();
 		AddProfileCommand = new RelayCommand(AddProfile);
@@ -115,18 +152,12 @@ public class ProfileViewModel : ViewModelBase
 		PopupBrowseCommand = new RelayCommand(PopupBrowse);
 		PopupResetCommand = new RelayCommand(PopupReset);
 
-		// Load graph
 		if (sortedGames.Count < 3)
 		{
 			ContentVis = Visibility.Collapsed;
+			PlaceholderVis = Visibility.Visible;
 			return;
 		}
-
-		double max = sortedGames[0].TotalTimePlayed;
-		RecHeight1 = 150;
-		RecHeight2 = sortedGames[1].TotalTimePlayed / max * 150;
-		RecHeight3 = sortedGames[2].TotalTimePlayed / max * 150;
-
 	}
 
 	private void AddProfile(object? obj)
@@ -174,9 +205,34 @@ public class ProfileViewModel : ViewModelBase
 		IsProfileEditorOpen = false;
 	}
 
+	/// <summary>
+	/// Returns today if the date is today, yesterday if the date is yesterday,
+	/// this week if the date is this week, this month if the date is this month,
+	/// and x months ago otherwise.
+	/// </summary>
+	/// <returns></returns>
+	private string GetLastSessionTime()
+	{
+		var lastSession = _games.OrderByDescending(g => g.LastTimePlayed)
+			.FirstOrDefault(g => g.LastTimePlayed > 0);
+		if (lastSession == null)
+			return Properties.Resources.Never;
+
+		DateTime lastSessionDate = Time.UnixTimeToDateTime(lastSession.LastTimePlayed);
+		DateTime today = DateTime.Now.Date;
+		return lastSessionDate.ToString("dd/MM/yyyy HH:mm") switch
+		{
+			_ when lastSessionDate.Date == today => Properties.Resources.Today,
+			_ when lastSessionDate.Date == today.AddDays(-1) => Properties.Resources.Yesterday,
+			_ when lastSessionDate >= today.AddDays(-(int)today.DayOfWeek) => Properties.Resources.ThisWeek,
+			_ when lastSessionDate.Month == today.Month && lastSessionDate.Year == today.Year => Properties.Resources.ThisMonth,
+			_ => $"{lastSessionDate:MMMM yyyy} ({(today - lastSessionDate).TotalDays} {Properties.Resources.Months})"
+		};
+	}
+
 	internal void Refresh()
 	{
-		ProfilesVm = _profileData.Profiles.Select(p => new ProfileCompViewModel(p, _profileData, this)).ToList();
+		ProfilesVm = [.. _profileData.Profiles.Select(p => new ProfileCompViewModel(p, _profileData, this))];
 	}
 
 	private void PopupCancel(object? obj)

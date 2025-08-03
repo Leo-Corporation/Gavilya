@@ -46,20 +46,25 @@ public class StatGameViewModel : ViewModelBase
 	private string _coverFilePath;
 	public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value; OnPropertyChanged(nameof(CoverFilePath)); } }
 
+	private double _playTimeProgress;
+	public double PlayTimeProgress { get => _playTimeProgress; set { _playTimeProgress = value; OnPropertyChanged(nameof(PlayTimeProgress)); } }
+
 	public ICommand ClickCommand { get; }
 
-	public StatGameViewModel(int i, Game game, StatsViewModel? statsViewModel)
+	public StatGameViewModel(int i, Game game, StatsViewModel? statsViewModel, double playTimeProgress = 0)
 	{
 		_game = game;
 		if (statsViewModel is not null) _statsViewModel = statsViewModel;
 
 		Name = _game.Name;
 		CoverFilePath = game.CoverFilePath;
-		Index = $"#{i + 1}";
+		Index = $"{i + 1}";
 
 		TotalTimePlayed = _game.TotalTimePlayed != 0
 			? $"{_game.TotalTimePlayed / 3600d:0.0}{Properties.Resources.HourShort}"
 			: Properties.Resources.Never;
+
+		PlayTimeProgress = playTimeProgress;
 
 		ClickCommand = new RelayCommand(Click);
 	}

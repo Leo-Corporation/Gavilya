@@ -32,5 +32,5 @@ public class TagPageViewModel(GameList games, List<Tag> tags, MainViewModel main
 {
 	private readonly List<GameList> _sortedGames = games.GetSortedGameByTag();
 
-	public List<GameGroupViewModel> GameGroupViewModels => _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, tags, mainViewModel)).ToList();
+	public List<GameGroupViewModel> GameGroupViewModels => [.. _sortedGames.Where(list => list.Count > 0).Select(list => new GameGroupViewModel(list.Title ?? "", list, tags, mainViewModel))];
 }

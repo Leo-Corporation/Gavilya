@@ -1068,4 +1068,22 @@
   <data name="MonitorAuto" xml:space="preserve">
     <value>Auto (recommended)</value>
   </data>
+  <data name="GamingStreak" xml:space="preserve">
+    <value>Gaming Streak</value>
+  </data>
+  <data name="TotalPlaytimeDesc" xml:space="preserve">
+    <value>Since you started using Gavilya</value>
+  </data>
+  <data name="GamesLibraryDesc" xml:space="preserve">
+    <value>{0} played this week</value>
+  </data>
+  <data name="LastSession" xml:space="preserve">
+    <value>Last Session</value>
+  </data>
+  <data name="LastSessionDesc" xml:space="preserve">
+    <value>Since you played a game</value>
+  </data>
+  <data name="TopGames" xml:space="preserve">
+    <value>Top Games by Playtime</value>
+  </data>
 </root>

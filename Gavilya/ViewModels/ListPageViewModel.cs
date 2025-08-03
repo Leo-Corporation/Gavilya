@@ -47,11 +47,11 @@ public class ListPageViewModel : ViewModelBase
 		_mainViewModel = mainViewModel;
 		CurrentGameView = new ListPlaceholder();
 
-		GamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
+		GamesVm = [.. Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel))];
 
 		Games.CollectionChanged += (o, e) =>
 		{
-			GamesVm = Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel)).ToList();
+			GamesVm = [.. Games.Where(g => (_mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden)).Select(g => new GameListViewModel(g, Games, _tags, this, _mainViewModel))];
 		};
 	}
 }

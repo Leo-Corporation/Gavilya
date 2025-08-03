@@ -22,35 +22,27 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. 
 */
 
-using Gavilya.Commands;
 using Gavilya.Models;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Input;
+using PeyrSharp.Core.Converters;
 
 namespace Gavilya.ViewModels;
 
-public class CardPageViewModel : ViewModelBase
+public class RecentGamesItemViewModel : ViewModelBase
 {
-	public GameList Games { get; set; }
+	private string _name;
+	public string Name { get => _name; set { _name = value; OnPropertyChanged(nameof(Name)); } }
 
-	private readonly List<Tag> _tags;
-	readonly MainViewModel _mainViewModel;
-	public List<GameCardViewModel> GamesVm => [.. Games.Where(g => _mainViewModel.CurrentSettings.ShowHiddenGames || !g.IsHidden).Select(g => new GameCardViewModel(g, Games, _tags, _mainViewModel))];
+	private string _coverFilePath;
+	public string CoverFilePath { get => _coverFilePath; set { _coverFilePath = value; OnPropertyChanged(nameof(CoverFilePath)); } }
 
-	private Visibility _placeholderVis;
-	public Visibility PlaceholderVis { get => _placeholderVis; set { _placeholderVis = value; OnPropertyChanged(nameof(PlaceholderVis)); } }
+	private string _lastTimePlayed;
+	public string LastTimePlayed { get => _lastTimePlayed; set { _lastTimePlayed = value; OnPropertyChanged(nameof(LastTimePlayed)); } }
 
-	public ICommand AddCommand { get; }
 
-	public CardPageViewModel(GameList games, List<Tag> tags, MainViewModel mainViewModel)
+	public RecentGamesItemViewModel(Game game)
 	{
-		Games = games;
-		_mainViewModel = mainViewModel;
-		_tags = tags;
-
-		PlaceholderVis = Games.Count > 0 ? Visibility.Collapsed : Visibility.Visible;
-		AddCommand = new RelayCommand((o) => _mainViewModel.CurrentViewModel = new GameEditionViewModel(Enums.GameType.Win32, games, _tags, _mainViewModel));
+		Name = game.Name;
+		CoverFilePath = game.CoverFilePath;
+		LastTimePlayed = Time.UnixTimeToDateTime(game.LastTimePlayed).ToString("d");
 	}
 }

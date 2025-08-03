@@ -25,137 +25,194 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Border BorderThickness="0" CornerRadius="5">
-        <Border.Background>
-            <ImageBrush
-                x:Name="GameIcon"
-                ImageSource="{Binding GameImage}"
-                Stretch="UniformToFill" />
-        </Border.Background>
+        <Grid ClipToBounds="True">
+            <Grid.Clip>
+                <RectangleGeometry
+                    RadiusX="5"
+                    RadiusY="5"
+                    Rect="0,0,256,144" />
+                <!--  Will auto-resize via SizeChanged below  -->
+            </Grid.Clip>
+            <Image
+                x:Name="GameIconOverlay"
+                Source="{Binding GameImage}"
+                Stretch="UniformToFill">
+                <Image.RenderTransform>
+                    <ScaleTransform CenterX="128" CenterY="72" ScaleX="1" ScaleY="1" />
+                </Image.RenderTransform>
 
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-
-            <CheckBox
-                x:Name="CheckBox"
-                Grid.Row="0"
-                Grid.Column="0"
-                Margin="5 5 0 0"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Center"
-                x:FieldModifier="public"
-                Background="Transparent"
-                BorderBrush="{DynamicResource Foreground}"
-                Command="{Binding CheckCommand}"
-                Cursor="Hand"
-                IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
-                Style="{DynamicResource CheckBoxStyle1}"
-                Visibility="{Binding MouseHoverVis}" />
-
-            <Button
-                Name="FavBtn"
-                Grid.Column="2"
-                Width="20"
-                Height="20"
-                Margin="5 5 5 0"
-                VerticalAlignment="Center"
-                Background="Transparent"
-                Command="{Binding FavCommand}"
-                Content="{Binding FavIcon}"
-                Cursor="Hand"
-                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                FontSize="15"
-                Foreground="{DynamicResource Foreground}"
-                Style="{DynamicResource EditButton}"
-                Visibility="{Binding MouseHoverVis}">
-                <Button.ToolTip>
-                    <ToolTip
-                        Background="{DynamicResource Background}"
-                        Content="{x:Static lang:Resources.FavoriteButton}"
-                        Foreground="{DynamicResource Foreground}" />
-                </Button.ToolTip>
-            </Button>
-            <Button
-                Name="EditBtn"
-                Grid.Column="3"
-                Width="20"
-                Height="20"
-                Margin="0 5 5 0"
-                VerticalAlignment="Center"
-                Background="Transparent"
-                Command="{Binding EditCommand}"
-                Content="&#xF3DE;"
-                Cursor="Hand"
-                FontFamily="..\Fonts\#FluentSystemIcons-Regular"
-                FontSize="15"
-                Foreground="{DynamicResource HoverForeground}"
-                Style="{DynamicResource EditButton}"
-                Visibility="{Binding MouseHoverVis}">
-                <Button.ToolTip>
-                    <ToolTip
-                        Background="{DynamicResource Background}"
-                        Content="{x:Static lang:Resources.EditGame}"
-                        Foreground="{DynamicResource Foreground}" />
-                </Button.ToolTip>
-            </Button>
-
-            <Grid
-                x:Name="InfoGrid"
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="6"
-                VerticalAlignment="Bottom"
-                Background="{DynamicResource GameCardGradient2}"
-                Visibility="{Binding MouseHoverVis}">
-
-
+                <Image.Style>
+                    <Style TargetType="Image">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Border}}" Value="True">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                To="1.1"
+                                                Duration="0:0:0.2">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <QuadraticEase EasingMode="EaseOut" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                To="1.1"
+                                                Duration="0:0:0.2">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <QuadraticEase EasingMode="EaseOut" />
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+                                                To="1"
+                                                Duration="0:0:0.2" />
+                                            <DoubleAnimation
+                                                Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+                                                To="1"
+                                                Duration="0:0:0.2" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Image.Style>
+            </Image>
+            <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <TextBlock
-                    x:Name="GameNameTxt"
-                    Margin="10 5"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <CheckBox
+                    x:Name="CheckBox"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="5 5 0 0"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
-                    d:Text="Text"
-                    FontSize="14"
-                    FontWeight="ExtraBold"
-                    Foreground="{DynamicResource HoverForeground}"
-                    Text="{Binding Name}"
-                    TextWrapping="Wrap" />
+                    x:FieldModifier="public"
+                    Background="Transparent"
+                    BorderBrush="{DynamicResource Foreground}"
+                    Command="{Binding CheckCommand}"
+                    Cursor="Hand"
+                    IsChecked="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
+                    Style="{DynamicResource CheckBoxStyle1}"
+                    Visibility="{Binding MouseHoverVis}" />
 
                 <Button
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    Margin="20 0 20 15"
-                    Padding="10"
-                    VerticalAlignment="Bottom"
-                    Command="{Binding PlayCommand}"
-                    Content="&#xF610;"
+                    Name="FavBtn"
+                    Grid.Column="2"
+                    Width="20"
+                    Height="20"
+                    Margin="5 5 5 0"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    Command="{Binding FavCommand}"
+                    Content="{Binding FavIcon}"
                     Cursor="Hand"
-                    FontFamily="../Fonts/#FluentSystemIcons-Filled"
-                    FontSize="13"
-                    FontWeight="ExtraBold"
-                    Foreground="{DynamicResource HoverForeground}"
-                    Style="{DynamicResource PlayButton}">
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    FontSize="15"
+                    Foreground="{DynamicResource Foreground}"
+                    Style="{DynamicResource EditButton}"
+                    Visibility="{Binding MouseHoverVis}">
                     <Button.ToolTip>
                         <ToolTip
-                            Name="PlayToolTip"
                             Background="{DynamicResource Background}"
-                            Content="{Binding PlayText}"
+                            Content="{x:Static lang:Resources.FavoriteButton}"
                             Foreground="{DynamicResource Foreground}" />
                     </Button.ToolTip>
                 </Button>
+                <Button
+                    Name="EditBtn"
+                    Grid.Column="3"
+                    Width="20"
+                    Height="20"
+                    Margin="0 5 5 0"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    Command="{Binding EditCommand}"
+                    Content="&#xF3DE;"
+                    Cursor="Hand"
+                    FontFamily="..\Fonts\#FluentSystemIcons-Regular"
+                    FontSize="15"
+                    Foreground="{DynamicResource HoverForeground}"
+                    Style="{DynamicResource EditButton}"
+                    Visibility="{Binding MouseHoverVis}">
+                    <Button.ToolTip>
+                        <ToolTip
+                            Background="{DynamicResource Background}"
+                            Content="{x:Static lang:Resources.EditGame}"
+                            Foreground="{DynamicResource Foreground}" />
+                    </Button.ToolTip>
+                </Button>
+
+                <Grid
+                    x:Name="InfoGrid"
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="6"
+                    VerticalAlignment="Bottom"
+                    Background="{DynamicResource GameCardGradient2}"
+                    Visibility="{Binding MouseHoverVis}">
+
+
+
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        x:Name="GameNameTxt"
+                        Margin="10 5"
+                        VerticalAlignment="Center"
+                        d:Text="Text"
+                        FontSize="14"
+                        FontWeight="ExtraBold"
+                        Foreground="{DynamicResource HoverForeground}"
+                        Text="{Binding Name}"
+                        TextWrapping="Wrap" />
+
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Margin="20 0 20 15"
+                        Padding="10"
+                        VerticalAlignment="Bottom"
+                        Command="{Binding PlayCommand}"
+                        Content="&#xF610;"
+                        Cursor="Hand"
+                        FontFamily="../Fonts/#FluentSystemIcons-Filled"
+                        FontSize="13"
+                        FontWeight="ExtraBold"
+                        Foreground="{DynamicResource HoverForeground}"
+                        Style="{DynamicResource PlayButton}">
+                        <Button.ToolTip>
+                            <ToolTip
+                                Name="PlayToolTip"
+                                Background="{DynamicResource Background}"
+                                Content="{Binding PlayText}"
+                                Foreground="{DynamicResource Foreground}" />
+                        </Button.ToolTip>
+                    </Button>
+                </Grid>
             </Grid>
         </Grid>
     </Border>

@@ -62,6 +62,7 @@ public class GameOptionsViewModel : ViewModelBase
 	public ICommand AddTagCommand { get; }
 	public ICommand ChangeColorCommand { get; }
 	public ICommand CheckSortGames { get; }
+	public ICommand GenerateColorCommand { get; }
 
 	public GameOptionsViewModel(Profile profile, ProfileData profileData, MainViewModel mainViewModel)
 	{
@@ -72,7 +73,7 @@ public class GameOptionsViewModel : ViewModelBase
 		ShowHiddenGames = profile.Settings.ShowHiddenGames;
 		SortGames = profile.Settings.GroupGamesByDate ?? true;
 		Tags = profile.Tags;
-		TagsVm = Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh)).ToList();
+		TagsVm = [.. Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh))];
 
 		Random random = new();
 		Color = new RGB(random.Next(255), random.Next(255), random.Next(255)).ToHex().Value;
@@ -81,6 +82,12 @@ public class GameOptionsViewModel : ViewModelBase
 		CheckSortGames = new RelayCommand(SortGamesChanged);
 		AddTagCommand = new RelayCommand(Add);
 		ChangeColorCommand = new RelayCommand(ChangeColor);
+		GenerateColorCommand = new RelayCommand(GenerateColor);
+	}
+
+	private void GenerateColor(object? obj)
+	{
+		Color = new RGB(new Random().Next(255), new Random().Next(255), new Random().Next(255)).ToHex().Value;
 	}
 
 	private void HandleCheck(object? o)
@@ -97,6 +104,9 @@ public class GameOptionsViewModel : ViewModelBase
 		Tag tag = new(TagName, Color);
 		Tags.Add(tag);
 		Refresh();
+
+		Color = new RGB(new Random().Next(255), new Random().Next(255), new Random().Next(255)).ToHex().Value;
+		TagName = string.Empty;
 	}
 
 	private void SortGamesChanged(object? obj)
@@ -109,7 +119,7 @@ public class GameOptionsViewModel : ViewModelBase
 
 	internal void Refresh()
 	{
-		TagsVm = Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh)).ToList();
+		TagsVm = [.. Tags.Select(t => new TagViewModel(t, Tags, _profile.Games, Refresh))];
 		_profileData.Save();
 	}
 
